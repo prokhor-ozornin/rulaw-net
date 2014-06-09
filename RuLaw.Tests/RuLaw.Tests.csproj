@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A6CF72CE-56CC-4B61-98A8-3C940BC599C9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RuLaw</RootNamespace>
+    <AssemblyName>RuLaw.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\RuLaw.Tests.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>../LawApi.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Catharsis.Commons, Version=2.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Catharsis.Commons.2.2.5\lib\net40\Catharsis.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiConfiguratorTests.cs" />
+    <Compile Include="AuthoritiesLawApiCallTests.cs" />
+    <Compile Include="AuthorityTests.cs" />
+    <Compile Include="DateTranscriptMeetingTests.cs" />
+    <Compile Include="DateTranscriptsResultTests.cs" />
+    <Compile Include="DeputySearchResultTests.cs" />
+    <Compile Include="DeputyTranscriptLawApiCallTests.cs" />
+    <Compile Include="DeputyTranscriptsResultTests.cs" />
+    <Compile Include="EducationExtensionsTests.cs" />
+    <Compile Include="ErrorTests.cs" />
+    <Compile Include="IDateableExtensionsTests.cs" />
+    <Compile Include="IDeputyTranscriptLawApiCallExtensionsTests.cs" />
+    <Compile Include="INameableExtensionsTests.cs" />
+    <Compile Include="ITranscriptsApiCallerExtensionsTests.cs" />
+    <Compile Include="IVotesApiCallerExtensionsTests.cs" />
+    <Compile Include="IVotesSearchLawApiCallExtensionsTests.cs" />
+    <Compile Include="JsonDefaultSettingsTests.cs" />
+    <Compile Include="LawCommitteesTests.cs" />
+    <Compile Include="LawEventExtensionsTests.cs" />
+    <Compile Include="FederalAuthorityTests.cs" />
+    <Compile Include="LawApiCallTests.cs" />
+    <Compile Include="LawEventStageTests.cs" />
+    <Compile Include="LawsSearchResultTests.cs" />
+    <Compile Include="LawSubjectTests.cs" />
+    <Compile Include="LawTranscriptExtensionsTests.cs" />
+    <Compile Include="LawTranscriptsResultTests.cs" />
+    <Compile Include="LawTypeTests.cs" />
+    <Compile Include="QuestionsSearchResultTests.cs" />
+    <Compile Include="QuestionTranscriptsResultTests.cs" />
+    <Compile Include="ResolutionTranscriptsResultTests.cs" />
+    <Compile Include="TranscriptMeetingQuestionExtensionsTests.cs" />
+    <Compile Include="TranscriptMeetingQuestionPartTests.cs" />
+    <Compile Include="TranscriptMeetingQuestionTests.cs" />
+    <Compile Include="TranscriptMeetingTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MockJsonObject.cs" />
+    <Compile Include="NameableEntityTests.cs" />
+    <Compile Include="QuestionExtensionsTests.cs" />
+    <Compile Include="TranscriptsApiCallerTests.cs" />
+    <Compile Include="RegionalAuthorityTests.cs" />
+    <Compile Include="RuLawXmlSerializerTests.cs" />
+    <Compile Include="RuLawXmlDeserializerTests.cs" />
+    <Compile Include="DateTimeExtensionsTests.cs" />
+    <Compile Include="DeputiesLawApiCallTests.cs" />
+    <Compile Include="DeputyActivityTests.cs" />
+    <Compile Include="DeputyExtensionsTests.cs" />
+    <Compile Include="DeputyInfoExtensionsTests.cs" />
+    <Compile Include="DeputyInfoTests.cs" />
+    <Compile Include="DeputyRequestAddresseeTests.cs" />
+    <Compile Include="DeputyRequestExtensionsTests.cs" />
+    <Compile Include="DeputyRequestSignerTests.cs" />
+    <Compile Include="DeputyRequestTests.cs" />
+    <Compile Include="EducationTests.cs" />
+    <Compile Include="IDeputiesLawApiCallExtensionsTests.cs" />
+    <Compile Include="InstancesLawApiCallTests.cs" />
+    <Compile Include="LawEventDocumentTests.cs" />
+    <Compile Include="IPeriodableExtensionsTests.cs" />
+    <Compile Include="LawBranchTests.cs" />
+    <Compile Include="CommitteeTests.cs" />
+    <Compile Include="DeputyTests.cs" />
+    <Compile Include="LawEventTests.cs" />
+    <Compile Include="IActiveExtensionsTests.cs" />
+    <Compile Include="IApiCallerExtensionsTests.cs" />
+    <Compile Include="ILawsLawApiCallExtensionsTests.cs" />
+    <Compile Include="ApiCallerTests.cs" />
+    <Compile Include="QuestionsLawApiCallTests.cs" />
+    <Compile Include="RuLawExceptionTests.cs" />
+    <Compile Include="RuLawJsonDeserializerTests.cs" />
+    <Compile Include="RuLawJsonSerializerTests.cs" />
+    <Compile Include="RuLawTests.cs" />
+    <Compile Include="LawExtensionsTests.cs" />
+    <Compile Include="LawsLawApiCallTests.cs" />
+    <Compile Include="LawTests.cs" />
+    <Compile Include="ConvocationTests.cs" />
+    <Compile Include="StagePhaseTests.cs" />
+    <Compile Include="InstanceTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionTests.cs" />
+    <Compile Include="SessionTests.cs" />
+    <Compile Include="PhaseStageTests.cs" />
+    <Compile Include="StringExtensionsTests.cs" />
+    <Compile Include="TopicTests.cs" />
+    <Compile Include="TranscriptVoteTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UnitTestsBase.cs" />
+    <Compile Include="VoteExtensionsTests.cs" />
+    <Compile Include="VotesApiCallerTests.cs" />
+    <Compile Include="VotesSearchResultTests.cs" />
+    <Compile Include="VotesSearchLawApiCallTests.cs" />
+    <Compile Include="VoteTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RuLaw.4.0\RuLaw.4.0.csproj">
+      <Project>{56023B07-2487-4B69-BF54-D1CA334A130F}</Project>
+      <Name>RuLaw.4.0</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
