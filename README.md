@@ -1,3 +1,21 @@
+**RuLaw.NET** is a .NET library for official [Russian State Duma API web service](http://api.duma.gov.ru) for querying and searching information of laws, deputies, authorities, sessions, votings and the like. 
+
+**NuGet package** : https://www.nuget.org/packages/RuLaw
+
+***
+
+**Support**
+
+This project needs your support for further developments ! Please consider donating.
+
+- _Yandex.Money_ : 41001577953208
+
+- _WebMoney (WMR)_ : R399275865890
+
+[![Image](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=APHM8MU9N76V8 "Donate")
+
+***
+
 **Initialization**
 
 Before you can make requests to the State Duma API, you need to setup it.
