@@ -11,17 +11,18 @@ namespace RuLaw
     /// <summary>
     ///   <para>Performs testing of class constructor(s).</para>
     /// </summary>
-    /// <seealso cref="RuLawException(string, Exception)"/>
+    /// <seealso cref="RuLawException(Error, Exception)"/>
     [Fact]
     public void Constructors()
     {
-      Assert.Throws<ArgumentNullException>(() => new RuLawException(null));
-      Assert.Throws<ArgumentException>(() => new RuLawException(string.Empty));
+      Assert.Throws<NullReferenceException>(() => new RuLawException(null));
 
       var innerException = new Exception();
-      var exception = new RuLawException("message", innerException);
+      var error = new Error(1, "text");
+      var exception = new RuLawException(error, innerException);
       Assert.True(ReferenceEquals(exception.InnerException, innerException));
-      Assert.Equal("message", exception.Message);
+      Assert.Equal("text", exception.Message);
+      Assert.True(ReferenceEquals(error, exception.Error));
     }
   }
 }

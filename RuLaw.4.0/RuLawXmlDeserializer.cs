@@ -1,4 +1,7 @@
-﻿using RestSharp;
+﻿using System.IO;
+using System.Xml.Serialization;
+using Catharsis.Commons;
+using RestSharp;
 using RestSharp.Deserializers;
 
 namespace RuLaw
@@ -7,7 +10,11 @@ namespace RuLaw
   {
     public T Deserialize<T>(IRestResponse response)
     {
-      return response.Content.XmlRuLawResult<T>();
+      var serializer = new XmlSerializer(typeof(T), new XmlRootAttribute("result"));
+      using (var source = new StringReader(response.Content))
+      {
+        return serializer.Deserialize(source).To<T>();
+      }
     }
 
     public string RootElement { get; set; }

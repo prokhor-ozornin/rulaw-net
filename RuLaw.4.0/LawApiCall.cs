@@ -2,7 +2,7 @@
 
 namespace RuLaw
 {
-  public abstract class LawApiCall : ILawApiCall
+  internal abstract class LawApiCall : ILawApiCall
   {
     private readonly IDictionary<string, object> parameters = new Dictionary<string, object>();
 

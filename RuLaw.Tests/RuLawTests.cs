@@ -16,7 +16,7 @@ namespace RuLaw
     public void API_Method()
     {
       Assert.Throws<ArgumentNullException>(() => RuLaw.API(null));
-      Assert.Throws<RuLawException>(() => RuLaw.API(configurator => { }));
+      Assert.Throws<InvalidOperationException>(() => RuLaw.API(configurator => { }));
       
       var caller = RuLaw.API(configurator => configurator.ApiKey("apiKey"));
       Assert.Equal("apiKey", caller.ApiToken);

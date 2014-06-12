@@ -23,7 +23,7 @@ namespace RuLaw
 
       if (apiConfigurator.GetApiKey().IsEmpty())
       {
-        throw new RuLawException("API Key was not specified when configuring API caller");
+        throw new InvalidOperationException("API Key was not specified when configuring API caller");
       }
 
       return new ApiCaller(apiConfigurator.GetFormat(), apiConfigurator.GetApiKey(), apiConfigurator.GetAppKey());

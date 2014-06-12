@@ -91,9 +91,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current entity.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current error.</para>
     /// </summary>
-    /// <returns>A string that represents the current entity.</returns>
+    /// <returns>A string that represents the current error.</returns>
     public override string ToString()
     {
       return this.Text;

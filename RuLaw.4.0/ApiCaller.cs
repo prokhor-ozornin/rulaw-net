@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Net;
+using System.Xml.Serialization;
 using Catharsis.Commons;
 using RestSharp;
 using RestSharp.Deserializers;
@@ -57,7 +59,7 @@ namespace RuLaw
       get { return this.format; }
     }
 
-    public IRestResponse Call(string resource, IEnumerable<KeyValuePair<string, object>> parameters = null, IEnumerable<KeyValuePair<string, object>> headers = null)
+    public IRestResponse Call(string resource, IDictionary<string, object> parameters = null, IDictionary<string, object> headers = null)
     {
       Assertion.NotEmpty(resource);
 
@@ -66,7 +68,7 @@ namespace RuLaw
 
       if (response.ErrorException != null || response.StatusCode != HttpStatusCode.OK)
       {
-        throw new RuLawException(response.ErrorMessage ?? response.StatusDescription, response.ErrorException);
+        throw new RuLawException(new Error((int) response.StatusCode, response.ErrorMessage ?? response.StatusDescription), response.ErrorException);
       }
 
       Error error = null;
@@ -79,7 +81,11 @@ namespace RuLaw
             break;
 
           case DataFormat.Xml:
-            error = response.Content.XmlRuLawResult<Error>();
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Error), new XmlRootAttribute("result"));
+            using (var source = new StringReader(response.Content))
+            {
+              error = serializer.Deserialize(source).To<Error>();
+            }
             break;
         }
       }
@@ -88,20 +94,20 @@ namespace RuLaw
       }
       if (error != null && !error.Text.IsEmpty())
       {
-        throw new RuLawException(error.Text);
+        throw new RuLawException(error);
       }
 
       return response;
     }
 
-    public IRestResponse<T> Call<T>(string resource, IEnumerable<KeyValuePair<string, object>> parameters = null, IEnumerable<KeyValuePair<string, object>> headers = null) where T : new()
+    public IRestResponse<T> Call<T>(string resource, IDictionary<string, object> parameters = null, IDictionary<string, object> headers = null) where T : new()
     {
       var request = this.CreateRequest(resource, parameters);
       var response = this.restClient.Get<T>(request);
 
       if (response.ErrorException != null || response.StatusCode != HttpStatusCode.OK)
       {
-        throw new RuLawException(response.ErrorMessage ?? response.StatusDescription, response.ErrorException);
+        throw new RuLawException(new Error((int) response.StatusCode, response.ErrorMessage ?? response.StatusDescription), response.ErrorException);
       }
 
       Error error = null;
@@ -114,7 +120,11 @@ namespace RuLaw
             break;
 
           case DataFormat.Xml:
-            error = response.Content.XmlRuLawResult<Error>();
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Error), new XmlRootAttribute("result"));
+            using (var source = new StringReader(response.Content))
+            {
+              error = serializer.Deserialize(source).To<Error>();
+            }
             break;
         }
       }
@@ -123,7 +133,7 @@ namespace RuLaw
       }
       if (error != null && !error.Text.IsEmpty())
       {
-        throw new RuLawException(error.Text);
+        throw new RuLawException(error);
       }
 
       return response;

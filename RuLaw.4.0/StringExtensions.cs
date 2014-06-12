@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
 
@@ -28,25 +26,6 @@ namespace RuLaw
       Assertion.NotEmpty(json);
 
       return JsonConvert.DeserializeObject<T>(json, settings ?? JsonDefaultSettings.Deserializer);
-    }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="xml"></param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentNullException">If <paramref name="xml"/> is a <c>null</c> reference.</exception>
-    /// <exception cref="ArgumentException">If <paramref name="xml"/> is <see cref="string.Empty"/> string.</exception>
-    public static T XmlRuLawResult<T>(this string xml)
-    {
-      Assertion.NotEmpty(xml);
-
-      var serializer = new XmlSerializer(typeof(T), new XmlRootAttribute("result"));
-      using (var source = new StringReader(xml))
-      {
-        return serializer.Deserialize(source).To<T>();
-      }
     }
   }
 }

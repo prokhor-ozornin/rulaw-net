@@ -12,8 +12,6 @@ namespace RuLaw
     /// </summary>
     /// <param name="format"></param>
     /// <returns></returns>
-    /// <exception cref="ArgumentNullException">If <paramref name="format"/> is a <c>null</c> reference.</exception>
-    /// <exception cref="ArgumentException">If <paramref name="format"/> is <see cref="string.Empty"/> string.</exception>
     IApiConfigurator Format(ApiDataFormat format);
 
     /// <summary>

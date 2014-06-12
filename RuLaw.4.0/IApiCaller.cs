@@ -34,7 +34,7 @@ namespace RuLaw
     /// <exception cref="ArgumentNullException">If <paramref name="resource"/> is a <c>null</c> reference.</exception>
     /// <exception cref="ArgumentException">If <paramref name="resource"/> is <see cref="string.Empty"/> string.</exception>
     /// <exception cref="RuLawException"></exception>
-    IRestResponse Call(string resource, IEnumerable<KeyValuePair<string, object>> parameters = null, IEnumerable<KeyValuePair<string, object>> headers = null);
+    IRestResponse Call(string resource, IDictionary<string, object> parameters = null, IDictionary<string, object> headers = null);
 
     /// <summary>
     ///   <para></para>
@@ -47,6 +47,6 @@ namespace RuLaw
     /// <exception cref="ArgumentNullException">If <paramref name="resource"/> is a <c>null</c> reference.</exception>
     /// <exception cref="ArgumentException">If <paramref name="resource"/> is <see cref="string.Empty"/> string.</exception>
     /// <exception cref="RuLawException"></exception>
-    IRestResponse<T> Call<T>(string resource, IEnumerable<KeyValuePair<string, object>> parameters = null, IEnumerable<KeyValuePair<string, object>> headers = null) where T : new();
+    IRestResponse<T> Call<T>(string resource, IDictionary<string, object> parameters = null, IDictionary<string, object> headers = null) where T : new();
   }
 }

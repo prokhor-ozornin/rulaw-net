@@ -45,8 +45,8 @@ namespace RuLaw
     /// <summary>
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
-    ///     <item><description><see cref="ApiCaller.Call(string, IEnumerable{KeyValuePair{string, object}}, IEnumerable{KeyValuePair{string, object}})"/> method.</description></item>
-    ///     <item><description><see cref="ApiCaller.Call{T}(string, IEnumerable{KeyValuePair{string, object}}, IEnumerable{KeyValuePair{string, object}})"/> method.</description></item>
+    ///     <item><description><see cref="ApiCaller.Call(string, IDictionary{string, object}, IDictionary{string, object})"/> method.</description></item>
+    ///     <item><description><see cref="ApiCaller.Call{T}(string, IDictionary{string, object}, IDictionary{string, object})"/> method.</description></item>
     ///   </list>
     /// </summary>
     [Fact]
