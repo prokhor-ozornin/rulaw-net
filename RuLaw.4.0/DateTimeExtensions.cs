@@ -9,10 +9,10 @@ namespace RuLaw
   public static class DateTimeExtensions
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>Returns a string representation of specified date in a format that used by the RuLaw API.</para>
     /// </summary>
-    /// <param name="date"></param>
-    /// <returns></returns>
+    /// <param name="date"><see cref="DateTime"/> instance to convert to string. Only date component is used.</param>
+    /// <returns>String representation of date.</returns>
     public static string RuLawDate(this DateTime date)
     {
       return date.ToString("yyyy-MM-dd");

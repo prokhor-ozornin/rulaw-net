@@ -15,7 +15,7 @@ namespace RuLaw
     [Fact]
     public void Constructors()
     {
-      Assert.Throws<NullReferenceException>(() => new RuLawException(null));
+      Assert.Throws<ArgumentNullException>(() => new RuLawException(null));
 
       var innerException = new Exception();
       var error = new Error(1, "text");

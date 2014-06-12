@@ -89,10 +89,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two meetings instances are equal.</para>
+    ///   <para>Determines whether two <see cref="DateTranscriptMeeting"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The meeting to compare with the current one.</param>
-    /// <returns><c>true</c> if specified meeting is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(DateTranscriptMeeting other)
     {
       return this.Equality(other, meeting => meeting.Date);

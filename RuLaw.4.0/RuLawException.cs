@@ -1,11 +1,12 @@
 ﻿using System;
+using Catharsis.Commons;
 
 namespace RuLaw
 {
   /// <summary>
   ///   <para>Base exception that represents a failure in the process of RuLaw API method call.</para>
   /// </summary>
-  public sealed class RuLawException : Exception
+  public sealed class RuLawException : ApplicationException
   {
     private readonly Error error;
 
@@ -15,8 +16,10 @@ namespace RuLaw
     /// <param name="error">The error that explains the reason for the exception.</param>
     /// <param name="innerException">The exception that is the cause of the current exception, or a <c>null</c> reference if no inner exception is specified.</param>
     /// <exception cref="ArgumentNullException">If <paramref name="error"/> is a <c>null</c> reference.</exception>
-    public RuLawException(Error error, Exception innerException = null) : base(error.Text, innerException)
+    public RuLawException(Error error, Exception innerException = null) : base(error != null ? error.Text : string.Empty, innerException)
     {
+      Assertion.NotNull(error);
+
       this.error = error;
     }
 
