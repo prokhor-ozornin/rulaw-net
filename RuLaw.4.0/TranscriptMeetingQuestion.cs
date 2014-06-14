@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -10,14 +9,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Transcript's question.</para>
   /// </summary>
-  [Description("Transcript's question")]
   [XmlType("question")]
   public class TranscriptMeetingQuestion : IComparable<TranscriptMeetingQuestion>, IEquatable<TranscriptMeetingQuestion>, INameable
   {
     /// <summary>
     ///   <para>Title of question.</para>
     /// </summary>
-    [Description("Title of question")]
     [JsonProperty("name")]
     [XmlElement("name")]
     public virtual string Name { get; set; }
@@ -25,7 +22,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>List of transcript's fragments.</para>
     /// </summary>
-    [Description("List of transcript's fragments")]
     [JsonProperty("parts")]
     [XmlElement("part")]
     public virtual List<TranscriptMeetingQuestionPart> Parts { get; set; }
@@ -33,7 +29,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Question's review stage.</para>
     /// </summary>
-    [Description("Question's review stage")]
     [JsonProperty("stage")]
     [XmlElement("stage")]
     public virtual string Stage { get; set; }
@@ -47,9 +42,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Compares the current question with another.</para>
+    ///   <para>Compares the current <see cref="TranscriptMeetingQuestion"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="TranscriptMeetingQuestion"/> to compare with this instance.</param>
     public virtual int CompareTo(TranscriptMeetingQuestion other)
     {
@@ -57,10 +52,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two questions instances are equal.</para>
+    ///   <para>Determines whether two <see cref="TranscriptMeetingQuestion"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The question to compare with the current one.</param>
-    /// <returns><c>true</c> if specified question is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(TranscriptMeetingQuestion other)
     {
       return this.Equality(other, question => question.Name, question => question.Stage);
@@ -86,9 +81,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current question.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="TranscriptMeetingQuestion"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current question.</returns>
+    /// <returns>A string that represents the current <see cref="TranscriptMeetingQuestion"/>.</returns>
     public override string ToString()
     {
       return this.Name;

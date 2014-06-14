@@ -10,15 +10,6 @@ namespace RuLaw
   public sealed class TranscriptVoteTests : UnitTestsBase<TranscriptVote>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Date", "Line");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>
     [Fact]

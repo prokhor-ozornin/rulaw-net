@@ -14,7 +14,7 @@ namespace RuLaw
     /// </summary>
     /// <param name="call"></param>
     /// <param name="convocation"></param>
-    /// <returns></returns>
+    /// <returns>Back reference to the provided <paramref name="call"/> instance.</returns>
     /// <exception cref="ArgumentNullException">If either <paramref name="call"/> or <paramref name="convocation"/> is a <c>null</c> reference.</exception>
     public static IVotesSearchLawApiCall Convocation(this IVotesSearchLawApiCall call, Convocation convocation)
     {
@@ -29,7 +29,7 @@ namespace RuLaw
     /// </summary>
     /// <param name="call"></param>
     /// <param name="deputy"></param>
-    /// <returns></returns>
+    /// <returns>Back reference to the provided <paramref name="call"/> instance.</returns>
     /// <exception cref="ArgumentNullException">If either <paramref name="call"/> or <paramref name="deputy"/> is a <c>null</c> reference.</exception>
     public static IVotesSearchLawApiCall Deputy(this IVotesSearchLawApiCall call, Deputy deputy)
     {

@@ -1,27 +1,27 @@
 ﻿namespace RuLaw
 {
   /// <summary>
-  ///   <para></para>
+  ///   <para>Type of person's voting result.</para>
   /// </summary>
   public enum VotePersonResult
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>Vote "for".</para>
     /// </summary>
     For,
     
     /// <summary>
-    ///   <para></para>
+    ///   <para>Vote "against".</para>
     /// </summary>
     Against,
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Abstained.</para>
     /// </summary>
     Abstain,
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Absent.</para>
     /// </summary>
     Absent
   }

@@ -8,15 +8,6 @@ namespace RuLaw
   public sealed class InstanceTests : UnitTestsBase<Instance>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Id", "Name", "Active");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>
     [Fact]

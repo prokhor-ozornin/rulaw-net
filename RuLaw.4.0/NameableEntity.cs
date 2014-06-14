@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -7,22 +6,20 @@ using Newtonsoft.Json;
 namespace RuLaw
 {
   /// <summary>
-  ///   <para></para>
+  ///   <para>Represents abstract business domain entity that can have a have.</para>
   /// </summary>
   public abstract class NameableEntity<ENTITY> : IComparable<ENTITY>, IEquatable<ENTITY>, IRuLawEntity, INameable where ENTITY : NameableEntity<ENTITY>
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>Unique identifier of entity.</para>
     /// </summary>
-    [Description("Unique identifier of entity")]
     [JsonProperty("id")]
     [XmlElement("id")]
     public virtual long Id { get; set; }
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Name of entity.</para>
     /// </summary>
-    [Description("Name of entity")]
     [JsonProperty("name")]
     [XmlElement("name")]
     public virtual string Name { get; set; }

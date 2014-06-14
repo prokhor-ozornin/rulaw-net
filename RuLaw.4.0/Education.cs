@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -9,14 +8,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Deputy's higher education information record.</para>
   /// </summary>
-  [Description("Deputy's higher education information record")]
   [XmlType("education")]
   public class Education : IComparable<Education>, IEquatable<Education>
   {
     /// <summary>
     ///   <para>Name of education institution.</para>
     /// </summary>
-    [Description("Name of education institution")]
     [JsonProperty("institution")]
     [XmlElement("institution")]
     public virtual string Institution { get; set; }
@@ -24,15 +21,14 @@ namespace RuLaw
     /// <summary>
     ///   <para>Year of graduation.</para>
     /// </summary>
-    [Description("Year of graduation")]
     [JsonProperty("year")]
     [XmlElement("year")]
     public virtual short Year { get; set; }
 
     /// <summary>
-    ///   <para>Compares the current education with another.</para>
+    ///   <para>Compares the current <see cref="Education"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="Education"/> to compare with this instance.</param>
     public virtual int CompareTo(Education other)
     {
@@ -40,10 +36,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two educations instances are equal.</para>
+    ///   <para>Determines whether two <see cref="Education"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The education to compare with the current one.</param>
-    /// <returns><c>true</c> if specified education is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(Education other)
     {
       return this.Equality(other, education => education.Institution, education => education.Year);
@@ -69,9 +65,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current deputy.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="Education"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current deputy.</returns>
+    /// <returns>A string that represents the current <see cref="Education"/>.</returns>
     public override string ToString()
     {
       return "{0} ({1})".FormatSelf(this.Institution, this.Year);

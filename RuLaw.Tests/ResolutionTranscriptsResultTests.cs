@@ -11,15 +11,6 @@ namespace RuLaw
   public sealed class ResolutionTranscriptsResultTests : UnitTestsBase<ResolutionTranscriptsResult>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Meetings", "Number");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>
     [Fact]

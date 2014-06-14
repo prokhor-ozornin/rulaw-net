@@ -10,15 +10,6 @@ namespace RuLaw
   public sealed class DeputyRequestTests : UnitTestsBase<DeputyRequest>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Id", "Name");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>
     [Fact]

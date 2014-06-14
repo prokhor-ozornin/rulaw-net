@@ -9,15 +9,6 @@ namespace RuLaw
   public sealed class QuestionTranscriptsResultTests : UnitTestsBase<QuestionTranscriptsResult>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Meetings");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of class constructor(s).</para>
     /// </summary>
     /// <seealso cref="QuestionTranscriptsResult()"/>

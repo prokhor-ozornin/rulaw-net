@@ -12,13 +12,13 @@ namespace RuLaw
   public static class IPeriodableExtensions
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>Filters sequence of entities, leaving those with a date/time period located between specified borders.</para>
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="entities"></param>
-    /// <param name="from"></param>
-    /// <param name="to"></param>
-    /// <returns></returns>
+    /// <typeparam name="T">Type of entities.</typeparam>
+    /// <param name="entities">Source sequence of entities.</param>
+    /// <param name="from">Lower bound of starting period.</param>
+    /// <param name="to">Upper bound of ending period.</param>
+    /// <returns>Filters sequence of entities.</returns>
     /// <exception cref="ArgumentNullException">If <paramref name="entities"/> is a <c>null</c> reference.</exception>
     public static IEnumerable<T> Period<T>(this IEnumerable<T> entities, DateTime? from = null, DateTime? to = null) where T : IPeriodable
     {

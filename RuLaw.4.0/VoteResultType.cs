@@ -1,27 +1,27 @@
 ﻿namespace RuLaw
 {
   /// <summary>
-  ///   <para></para>
+  ///   <para>Type of vote result.</para>
   /// </summary>
   public enum VoteResultType
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>Quantitative.</para>
     /// </summary>
     Quantitative,
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Rating.</para>
     /// </summary>
     Rating,
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Qualitative.</para>
     /// </summary>
     Qualitative,
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Alternative.</para>
     /// </summary>
     Alternative
   }

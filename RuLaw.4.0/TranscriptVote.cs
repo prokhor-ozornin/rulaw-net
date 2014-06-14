@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -9,14 +8,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Transcript's vote.</para>
   /// </summary>
-  [Description("Transcript's vote")]
   [XmlType("vote")]
   public class TranscriptVote : IComparable<TranscriptVote>, IEquatable<TranscriptVote>, IDateable
   {
     /// <summary>
     ///   <para>Date of voting.</para>
     /// </summary>
-    [Description("Date of voting")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime Date { get; set; }
@@ -24,7 +21,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date of voting.</para>
     /// </summary>
-    [Description("Date of voting")]
     [JsonProperty("date")]
     [XmlElement("date")]
     public virtual string DateString
@@ -36,15 +32,14 @@ namespace RuLaw
     /// <summary>
     ///   <para>Transcript's line number.</para>
     /// </summary>
-    [Description("Transcript's line number")]
     [JsonProperty("line")]
     [XmlElement("line")]
     public virtual int Line { get; set; }
 
     /// <summary>
-    ///   <para>Compares the current vote with another.</para>
+    ///   <para>Compares the current <see cref="TranscriptVote"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="TranscriptVote"/> to compare with this instance.</param>
     public virtual int CompareTo(TranscriptVote other)
     {
@@ -52,10 +47,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two votes instances are equal.</para>
+    ///   <para>Determines whether two <see cref="TranscriptVote"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The vote to compare with the current one.</param>
-    /// <returns><c>true</c> if specified vote is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(TranscriptVote other)
     {
       return this.Equality(other, vote => vote.Date, vote => vote.Line);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -9,14 +8,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Deputy's activity record.</para>
   /// </summary>
-  [Description("Deputy's activity record")]
   [XmlType("activity")]
   public class DeputyActivity : IComparable<DeputyActivity>, IEquatable<DeputyActivity>, INameable
   {
     /// <summary>
     ///   <para>Identifier of committee.</para>
     /// </summary>
-    [Description("Identifier of committee")]
     [JsonProperty("subdivisionId")]
     [XmlElement("subdivisionId")]
     public virtual long CommitteeId { get; set; }
@@ -24,7 +21,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Genitive name of committee.</para>
     /// </summary>
-    [Description("Genitive name of committee")]
     [JsonProperty("subdivisionNameGenitive")]
     [XmlElement("subdivisionNameGenitive")]
     public virtual string CommitteeNameGenitive { get; set; }
@@ -32,15 +28,14 @@ namespace RuLaw
     /// <summary>
     ///   <para>Name of activity.</para>
     /// </summary>
-    [Description("Name of activity")]
     [JsonProperty("name")]
     [XmlElement("name")]
     public virtual string Name { get; set; }
 
     /// <summary>
-    ///   <para>Compares the current activity with another.</para>
+    ///   <para>Compares the current <see cref="DeputyActivity"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="DeputyActivity"/> to compare with this instance.</param>
     public virtual int CompareTo(DeputyActivity other)
     {
@@ -48,10 +43,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two activities instances are equal.</para>
+    ///   <para>Determines whether two <see cref="DeputyActivity"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The activity to compare with the current one.</param>
-    /// <returns><c>true</c> if specified activity is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(DeputyActivity other)
     {
       return this.Equality(other, activity => activity.Name, activity => activity.CommitteeId);
@@ -77,9 +72,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current activity.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="DeputyActivity"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current activity.</returns>
+    /// <returns>A string that represents the current <see cref="DeputyActivity"/>.</returns>
     public override string ToString()
     {
       return this.Name;

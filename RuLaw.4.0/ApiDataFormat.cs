@@ -10,13 +10,11 @@ namespace RuLaw
     /// <summary>
     ///   <para>JSON format.</para>
     /// </summary>
-    [Description("JSON")]
     Json,
 
     /// <summary>
     ///   <para>XML format.</para>
     /// </summary>
-    [Description("XML")]
     Xml
   }
 }

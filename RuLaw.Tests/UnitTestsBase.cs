@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
 using Catharsis.Commons;
 using Xunit;
@@ -50,11 +49,6 @@ namespace RuLaw
       Assert.True(typeof(T).NewInstance().Property(property, oldValue).GetHashCode() != typeof(T).NewInstance().Property(property, newValue).GetHashCode());
     }
 
-    protected void TestDescription(params string[] properties)
-    {
-      properties.Each(property => Assert.False(typeof(T).AnyProperty(property).Description().IsEmpty()));
-    }
-
     protected void TestJson(T instance, object attributes)
     {
       Assertion.NotNull(instance);
@@ -72,7 +66,7 @@ namespace RuLaw
         }
         else if (value.GetType().IsPrimitive)
         {
-          value = string.Format(CultureInfo.InvariantCulture, "{0}", value);
+          value = value.ToStringInvariant();
         }
         else if (value is string)
         {
@@ -107,7 +101,7 @@ namespace RuLaw
           value = value.To<DateTime>().AsXml();
         }
 
-        return string.Format(CultureInfo.InvariantCulture, "<{0}>{1}</{0}>", property.Name, value);
+        return "<{0}>{1}</{0}>".FormatInvariant(property.Name, value);
       });
       
       var xml = instance.Xml();

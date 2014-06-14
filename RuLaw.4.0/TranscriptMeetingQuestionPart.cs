@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -10,14 +9,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Part of meeting question's transcript.</para>
   /// </summary>
-  [Description("Part of meeting question's transcript")]
   [XmlType("part")]
   public class TranscriptMeetingQuestionPart : IComparable<TranscriptMeetingQuestionPart>, IEquatable<TranscriptMeetingQuestionPart>
   {
     /// <summary>
     ///   <para>End line of transcript's text fragment.</para>
     /// </summary>
-    [Description("End line of transcript's text fragment")]
     [JsonProperty("endLine")]
     [XmlElement("endLine")]
     public virtual int EndLine { get; set; }
@@ -25,7 +22,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Lines of transcript's fragment.</para>
     /// </summary>
-    [Description("Lines of transcript's fragment")]
     [JsonProperty("lines")]
     [XmlElement("line")]
     public virtual List<string> Lines { get; set; }
@@ -33,7 +29,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Start line of transcript's text fragment.</para>
     /// </summary>
-    [Description("Start line of transcript's text fragment")]
     [JsonProperty("startLine")]
     [XmlElement("startLine")]
     public virtual int StartLine { get; set; }
@@ -41,7 +36,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Full text of transcript.</para>
     /// </summary>
-    [Description("Full text of transcript")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual string Text
@@ -52,7 +46,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>List of question' votes.</para>
     /// </summary>
-    [Description("List of question' votes")]
     [JsonProperty("votes")]
     [XmlElement("vote")]
     public virtual List<TranscriptVote> Votes { get; set; }
@@ -67,9 +60,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Compares the current question's part with another.</para>
+    ///   <para>Compares the current <see cref="TranscriptMeetingQuestionPart"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="TranscriptMeetingQuestionPart"/> to compare with this instance.</param>
     public virtual int CompareTo(TranscriptMeetingQuestionPart other)
     {
@@ -77,10 +70,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two question's parts instances are equal.</para>
+    ///   <para>Determines whether two <see cref="TranscriptMeetingQuestionPart"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The question's part to compare with the current one.</param>
-    /// <returns><c>true</c> if specified question's part is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(TranscriptMeetingQuestionPart other)
     {
       return this.Equality(other, part => part.StartLine, part => part.EndLine);
@@ -106,9 +99,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current question's part.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="TranscriptMeetingQuestionPart"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current question's part.</returns>
+    /// <returns>A string that represents the current <see cref="TranscriptMeetingQuestionPart"/>.</returns>
     public override string ToString()
     {
       return this.Text;

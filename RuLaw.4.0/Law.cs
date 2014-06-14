@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -9,14 +8,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Duma's law.</para>
   /// </summary>
-  [Description("Duma's law")]
   [XmlType("law")]
   public class Law : IComparable<Law>, IEquatable<Law>, IRuLawEntity, IDateable, INameable
   {
     /// <summary>
     ///   <para>Unique identifier of law.</para>
     /// </summary>
-    [Description("Unique identifier of law")]
     [JsonProperty("id")]
     [XmlElement("id")]
     public virtual long Id { get; set; }
@@ -24,7 +21,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Law comments.</para>
     /// </summary>
-    [Description("Law comments")]
     [JsonProperty("comments")]
     [XmlElement("comments")]
     public virtual string Comments { get; set; }
@@ -32,7 +28,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Committees, associated with a law.</para>
     /// </summary>
-    [Description("Committees, associated with a law")]
     [JsonProperty("committees")]
     [XmlElement("committees")]
     public virtual LawCommittees Committees { get; set; }
@@ -40,7 +35,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date when law was suggested for review.</para>
     /// </summary>
-    [Description("Date when law was suggested for review")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime Date { get; set; }
@@ -48,7 +42,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date when law was suggested for review.</para>
     /// </summary>
-    [Description("Date when law was suggested for review")]
     [JsonProperty("introductionDate")]
     [XmlElement("introductionDate")]
     public virtual string DateString
@@ -60,7 +53,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Last event, associated with a law.</para>
     /// </summary>
-    [Description("Last event, associated with a law")]
     [JsonProperty("lastEvent")]
     [XmlElement("lastEvent")]
     public virtual LawEvent LastEvent { get; set; }
@@ -68,7 +60,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Name of law.</para>
     /// </summary>
-    [Description("Name of law")]
     [JsonProperty("name")]
     [XmlElement("name")]
     public virtual string Name { get; set; }
@@ -76,7 +67,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Number of law.</para>
     /// </summary>
-    [Description("Number of law")]
     [JsonProperty("number")]
     [XmlElement("number")]
     public virtual string Number { get; set; }
@@ -84,7 +74,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Subject of law.</para>
     /// </summary>
-    [Description("Subject of law")]
     [JsonProperty("subject")]
     [XmlElement("subject")]
     public virtual LawSubject Subject { get; set; }
@@ -92,7 +81,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>URL address of law's transcript.</para>
     /// </summary>
-    [Description("URL address of law's transcript")]
     [JsonProperty("transcriptUrl")]
     [XmlElement("transcriptUrl")]
     public virtual string TranscriptUrl { get; set; }
@@ -100,7 +88,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Type of law.</para>
     /// </summary>
-    [Description("Type of law")]
     [JsonProperty("type")]
     [XmlElement("type")]
     public virtual LawType Type { get; set; }
@@ -108,7 +95,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>URL address of law in ASOZD system.</para>
     /// </summary>
-    [Description("URL address of law in ASOZD system")]
     [JsonProperty("url")]
     [XmlElement("url")]
     public virtual string Url { get; set; }
@@ -123,9 +109,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Compares the current law with another.</para>
+    ///   <para>Compares the current <see cref="Law"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="Law"/> to compare with this instance.</param>
     public virtual int CompareTo(Law other)
     {
@@ -133,10 +119,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two convocations instances are equal.</para>
+    ///   <para>Determines whether two <see cref="Law"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The convocation to compare with the current one.</param>
-    /// <returns><c>true</c> if specified convocation is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(Law other)
     {
       return this.Equality(other, law => law.Id);
@@ -162,9 +148,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current law.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="Law"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current law.</returns>
+    /// <returns>A string that represents the current <see cref="Law"/>.</returns>
     public override string ToString()
     {
       return this.Name;

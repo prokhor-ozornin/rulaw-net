@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
@@ -9,14 +8,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Result of laws search.</para>
   /// </summary>
-  [Description("Result of laws search")]
   [XmlType("result")]
   public sealed class LawsSearchResult : IComparable<LawsSearchResult>
   {
     /// <summary>
     ///   <para>Number of result laws.</para>
     /// </summary>
-    [Description("Number of result laws")]
     [JsonProperty("count")]
     [XmlElement("count")]
     public int Count { get; set; }
@@ -24,7 +21,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>List of result laws.</para>
     /// </summary>
-    [Description("List of result laws")]
     [JsonProperty("laws")]
     [XmlElement("law")]
     public List<Law> Laws { get; set; }
@@ -32,7 +28,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Number of results page.</para>
     /// </summary>
-    [Description("Number of results page")]
     [JsonProperty("page")]
     [XmlElement("page")]
     public int Page { get; set; }
@@ -40,7 +35,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Text query formulation.</para>
     /// </summary>
-    [Description("Text query formulation")]
     [JsonProperty("wording")]
     [XmlElement("wording")]
     public string Wording { get; set; }
@@ -54,9 +48,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Compares the current laws search result with another.</para>
+    ///   <para>Compares the current <see cref="LawsSearchResult"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="LawsSearchResult"/> to compare with this instance.</param>
     public int CompareTo(LawsSearchResult other)
     {
@@ -64,9 +58,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current laws search result.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="LawsSearchResult"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current laws search result.</returns>
+    /// <returns>A string that represents the current <see cref="LawsSearchResult"/>.</returns>
     public override string ToString()
     {
       return this.Wording;

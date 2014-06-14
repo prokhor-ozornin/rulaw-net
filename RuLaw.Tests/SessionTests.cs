@@ -10,15 +10,6 @@ namespace RuLaw
   public sealed class SessionTests : UnitTestsBase<Session>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Id", "FromDate", "Name", "ToDate");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>
     [Fact]

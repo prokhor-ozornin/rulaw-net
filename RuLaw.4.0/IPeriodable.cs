@@ -3,17 +3,17 @@
 namespace RuLaw
 {
   /// <summary>
-  ///   <para></para>
+  ///   <para>Represents a business domain entity that is associated with a time period.</para>
   /// </summary>
   public interface IPeriodable
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>Start date/time of period.</para>
     /// </summary>
     DateTime FromDate { get; set; }
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>End date/time of period, or a <c>null</c> reference if it's not finished.</para>
     /// </summary>
     DateTime? ToDate { get; set; }
   }

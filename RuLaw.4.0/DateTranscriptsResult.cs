@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -10,14 +9,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Transcripts search result.</para>
   /// </summary>
-  [Description("Transcripts search result")]
   [XmlType("result")]
   public sealed class DateTranscriptsResult : IComparable<DateTranscriptsResult>, IEquatable<DateTranscriptsResult>, IDateable
   {
     /// <summary>
     ///   <para>Date of meetings.</para>
     /// </summary>
-    [Description("Date of meetings")]
     [JsonIgnore]
     [XmlIgnore]
     public DateTime Date { get; set; }
@@ -25,7 +22,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date of meetings.</para>
     /// </summary>
-    [Description("Date of meetings")]
     [JsonProperty("date")]
     [XmlElement("date")]
     public string DateString
@@ -37,7 +33,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>List of meetings transcripts.</para>
     /// </summary>
-    [Description("List of meetings transcripts")]
     [JsonProperty("meetings")]
     [XmlElement("meeting")]
     public List<DateTranscriptMeeting> Meetings { get; set; }
@@ -51,9 +46,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Compares the current transcripts search result with another.</para>
+    ///   <para>Compares the current <see cref="DateTranscriptsResult"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="DateTranscriptsResult"/> to compare with this instance.</param>
     public int CompareTo(DateTranscriptsResult other)
     {
@@ -61,10 +56,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two transcripts search results instances are equal.</para>
+    ///   <para>Determines whether two <see cref="DateTranscriptsResult"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The transcripts search result to compare with the current one.</param>
-    /// <returns><c>true</c> if specified search result is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public bool Equals(DateTranscriptsResult other)
     {
       return this.Equality(other, result => result.Date);
@@ -90,9 +85,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current transcripts search result.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="DateTranscriptsResult"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current transcripts search result.</returns>
+    /// <returns>A string that represents the current <see cref="DateTranscriptsResult"/>.</returns>
     public override string ToString()
     {
       return this.Date.RuLawDate();

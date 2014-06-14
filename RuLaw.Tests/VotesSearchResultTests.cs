@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Catharsis.Commons;
 using Xunit;
 
 namespace RuLaw
@@ -11,15 +10,6 @@ namespace RuLaw
   /// </summary>
   public sealed class VotesSearchResultTests : UnitTestsBase<VotesSearchResult>
   {
-    /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Count", "Page", "PageSize", "Votes", "Wording");
-    }
-
     /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>

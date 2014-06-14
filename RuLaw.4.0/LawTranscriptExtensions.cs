@@ -12,11 +12,11 @@ namespace RuLaw
   public static class LawTranscriptExtensions
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>Searches for a transcript of law with a specified number and returns it.</para>
     /// </summary>
-    /// <param name="transcripts"></param>
-    /// <param name="number"></param>
-    /// <returns></returns>
+    /// <param name="transcripts">Source sequence of laws transcripts for searching.</param>
+    /// <param name="number">Unique number of law to search for (case-insensitive).</param>
+    /// <returns>Transcript of law with a specified number, or a <c>null</c> reference if it could not be found.</returns>
     /// <exception cref="ArgumentNullException">If either <paramref name="transcripts"/> or <paramref name="number"/> is a <c>null</c> reference.</exception>
     /// <exception cref="ArgumentException">If <paramref name="number"/> is <see cref="string.Empty"/> string.</exception>
     public static LawTranscriptsResult Number(this IEnumerable<LawTranscriptsResult> transcripts, string number)

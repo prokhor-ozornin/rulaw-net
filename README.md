@@ -1,4 +1,4 @@
-**RuLaw.NET** is a .NET library for official [Russian State Duma API web service](http://api.duma.gov.ru) for querying and searching information of laws, deputies, authorities, sessions, votings and the like. 
+Ôªø**RuLaw.NET** is a .NET library for official [Russian State Duma API web service](http://api.duma.gov.ru) for querying and searching information of laws, deputies, authorities, sessions, votings and the like. 
 
 **NuGet package** : https://www.nuget.org/packages/RuLaw
 
@@ -46,7 +46,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IEnumerable<Topic> topics = caller.Topics();`
+`IList<Topic> topics = caller.Topics();`
 
 ***
 
@@ -60,7 +60,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IEnumerable<LawBranch> branches = caller.Branches();`
+`IList<LawBranch> branches = caller.Branches();`
 
 ***
 
@@ -74,9 +74,9 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IEnumerable<Deputy> deputies = caller.Deputies();`
+`IList<Deputy> deputies = caller.Deputies();`
 
-IEnumerable<Deputy> deputies = caller.Deputies(x=> x.Position(DeputyPosition.DumaDeputy).Current(false).Name("¿"));
+`IList<Deputy> deputies = caller.Deputies(x=> x.Position(DeputyPosition.DumaDeputy).Current(false).Name("–ê"));`
 
 ***
 
@@ -90,7 +90,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IEnumerable<Committee> committees = caller.Committees();`
+`IList<Committee> committees = caller.Committees();`
 
 ***
 
@@ -104,9 +104,9 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IEnumerable<RegionalAuthority> authorities = caller.RegionalAuthorities();`
+`IList<RegionalAuthority> authorities = caller.RegionalAuthorities();`
 
-`IEnumerable<RegionalAuthority> authorities = caller.RegionalAuthorities(x => x.Current(false));`
+`IList<RegionalAuthority> authorities = caller.RegionalAuthorities(x => x.Current(false));`
 
 ***
 
@@ -120,9 +120,9 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IEnumerable<FederalAuthority> authorities = caller.FederalAuthorities();`
+`IList<FederalAuthority> authorities = caller.FederalAuthorities();`
 
-`IEnumerable<FederalAuthority> authorities = caller.FederalAuthorities(x => x.Current());`
+`IList<FederalAuthority> authorities = caller.FederalAuthorities(x => x.Current());`
 
 ***
 
@@ -136,7 +136,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IEnumerable<LawStage> stages = caller.Stages();`
+`IList<LawStage> stages = caller.Stages();`
 
 ***
 
@@ -150,9 +150,9 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IEnumerable<Instance> instances = caller.Instances();`
+`IList<Instance> instances = caller.Instances();`
 
-`IEnumerable<Instance> instances = caller.Instances(x => x.Current());`
+`IList<Instance> instances = caller.Instances(x => x.Current());`
 
 ***
 
@@ -166,7 +166,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IEnumerable<Convocation> convocations = caller.Convocations();`
+`IList<Convocation> convocations = caller.Convocations();`
 
 ***
 
@@ -180,7 +180,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`LawsSearchResult laws = Laws(call => call.Name("ÍÛÂÌËÂ").Sorting(LawsSorting.DateDescending));`
+`LawsSearchResult laws = Laws(call => call.Name("–∫—É—Ä–µ–Ω–∏–µ").Sorting(LawsSorting.DateDescending));`
 
 ***
 
@@ -194,7 +194,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`QuestionsSearchResult questions = caller.Questions(x => x.From(new DateTime(2013, 1, 1)).To(new DateTime(2013, 12, 31)).Name("Ó·‡ÁÓ‚‡ÌËÂ").PageSize(PageSize.Five).Page(2)));`
+`QuestionsSearchResult questions = caller.Questions(x => x.From(new DateTime(2013, 1, 1)).To(new DateTime(2013, 12, 31)).Name("–æ–±—Ä–∞–∑–æ–≤–∞–Ω–∏–µ").PageSize(PageSize.Five).Page(2)));`
 
 ***
 
@@ -222,7 +222,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IEnumerable<DeputyRequest> requests = caller.Requests();`
+`IList<DeputyRequest> requests = caller.Requests();`
 
 ***
 

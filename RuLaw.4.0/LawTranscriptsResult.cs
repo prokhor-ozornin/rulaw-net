@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -10,14 +9,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Transcript of Duma's law.</para>
   /// </summary>
-  [Description("Transcript of Duma's law")]
   [XmlType("result")]
   public class LawTranscriptsResult : IComparable<LawTranscriptsResult>, IEquatable<LawTranscriptsResult>, INameable
   {
     /// <summary>
     ///   <para>Law's comments.</para>
     /// </summary>
-    [Description("Law's comments")]
     [JsonProperty("comments")]
     [XmlElement("comments")]
     public virtual string Comments { get; set; }
@@ -25,7 +22,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>List of law's associated meetings.</para>
     /// </summary>
-    [Description("List of law's associated meetings")]
     [JsonProperty("meetings")]
     [XmlElement("meeting")]
     public virtual List<TranscriptMeeting> Meetings { get; set; }
@@ -33,7 +29,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Name of law.</para>
     /// </summary>
-    [Description("Name of law")]
     [JsonProperty("name")]
     [XmlElement("name")]
     public virtual string Name { get; set; }
@@ -41,7 +36,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Number of law.</para>
     /// </summary>
-    [Description("Number of law")]
     [JsonProperty("number")]
     [XmlElement("number")]
     public virtual string Number { get; set; }
@@ -55,9 +49,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Compares the current law's transcript with another.</para>
+    ///   <para>Compares the current <see cref="LawTranscriptsResult"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="LawTranscriptsResult"/> to compare with this instance.</param>
     public virtual int CompareTo(LawTranscriptsResult other)
     {
@@ -65,10 +59,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two transcripts instances are equal.</para>
+    ///   <para>Determines whether two <see cref="LawTranscriptsResult"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The transcript to compare with the current one.</param>
-    /// <returns><c>true</c> if specified transcript is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(LawTranscriptsResult other)
     {
       return this.Equality(other, transcript => transcript.Number);
@@ -94,9 +88,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current law's transcript.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="LawTranscriptsResult"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current law's transcript.</returns>
+    /// <returns>A string that represents the current <see cref="LawTranscriptsResult"/>.</returns>
     public override string ToString()
     {
       return this.Number;

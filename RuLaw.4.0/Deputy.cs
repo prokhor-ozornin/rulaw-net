@@ -9,14 +9,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Deputy/member of Council of Federation.</para>
   /// </summary>
-  [Description("Deputy/member of Council of Federation")]
   [XmlType("deputy")]
   public class Deputy : NameableEntity<Deputy>, IActive
   {
     /// <summary>
     ///   <para>Whether the deputy is working at present or not.</para>
     /// </summary>
-    [Description("Whether the deputy is working at present or not")]
     [JsonProperty("isCurrent")]
     [XmlElement("isCurrent")]
     public virtual bool Active { get; set; }
@@ -24,15 +22,14 @@ namespace RuLaw
     /// <summary>
     ///   <para>Work position of deputy.</para>
     /// </summary>
-    [Description("Work position of deputy")]
     [JsonProperty("position")]
     [XmlElement("position")]
     public virtual string Position { get; set; }
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Returns work position of deputy as instance of <see cref="DeputyPosition"/> enumeration.</para>
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Work position of deputy, or a <c>null</c> reference if <see cref="Position"/> property was not yet set.</returns>
     public virtual DeputyPosition? GetPosition()
     {
       if (this.Position.IsEmpty())

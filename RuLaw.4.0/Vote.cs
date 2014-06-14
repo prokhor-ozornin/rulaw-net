@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -9,14 +8,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Laws voting.</para>
   /// </summary>
-  [Description("Laws voting")]
   [XmlType("vote")]
   public class Vote : IComparable<Vote>, IEquatable<Vote>, IRuLawEntity, IDateable
   {
     /// <summary>
     ///   <para>Identifier of vote.</para>
     /// </summary>
-    [Description("Identifier of vote")]
     [JsonProperty("id")]
     [XmlElement("id")]
     public virtual long Id { get; set; }
@@ -24,7 +21,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Count of absent (non-voted) deputies in a faction.</para>
     /// </summary>
-    [Description("Count of absent (non-voted) deputies in a faction")]
     [JsonProperty("absentCount")]
     [XmlElement("absentCount")]
     public virtual int? AbsentVotesCount { get; set; }
@@ -32,7 +28,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Count of abstained deputies in a faction.</para>
     /// </summary>
-    [Description("Count of abstained deputies in a faction")]
     [JsonProperty("abstainCount")]
     [XmlElement("abstainCount")]
     public virtual int? AbstainVotesCount { get; set; }
@@ -40,7 +35,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Count of deputies in a faction who have voted against.</para>
     /// </summary>
-    [Description("Count of deputies in a faction who have voted against")]
     [JsonProperty("againstCount")]
     [XmlElement("againstCount")]
     public virtual int? AgainstVotesCount { get; set; }
@@ -48,7 +42,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date of voting.</para>
     /// </summary>
-    [Description("Date of voting")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime Date { get; set; }
@@ -56,7 +49,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date of voting.</para>
     /// </summary>
-    [Description("Date of voting")]
     [JsonProperty("voteDate")]
     [XmlElement("voteDate")]
     public virtual string DateString
@@ -68,7 +60,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Count of deputies in a faction who have voted for.</para>
     /// </summary>
-    [Description("Count of deputies in a faction who have voted for")]
     [JsonProperty("forCount")]
     [XmlElement("forCount")]
     public virtual int? ForVotesCount { get; set; }
@@ -76,7 +67,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Whether the vote represents a faction (false), or a deputy (true) result.</para>
     /// </summary>
-    [Description("Whether the vote represents a faction (false), or a deputy (true) result")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual bool Personal
@@ -87,7 +77,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Result of deputy voting.</para>
     /// </summary>
-    [Description("Result of deputy voting")]
     [JsonProperty("personResult")]
     [XmlElement("personResult")]
     public virtual string PersonResult { get; set; }
@@ -95,7 +84,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Type of voting result.</para>
     /// </summary>
-    [Description("Type of voting result")]
     [JsonProperty("resultType")]
     [XmlElement("resultType")]
     public virtual string ResultType { get; set; }
@@ -103,7 +91,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Subject of convocation.</para>
     /// </summary>
-    [Description("Subject of convocation")]
     [JsonProperty("subject")]
     [XmlElement("subject")]
     public virtual string Subject { get; set; }
@@ -111,7 +98,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Whether the law passed (true) or not (false) according to voting.</para>
     /// </summary>
-    [Description("Whether the law passed (true) or not (false) according to voting")]
     [JsonProperty("result")]
     [XmlElement("result")]
     public virtual bool Successful { get; set; }
@@ -119,15 +105,14 @@ namespace RuLaw
     /// <summary>
     ///   <para>Number of voted deputies in faction.</para>
     /// </summary>
-    [Description("Number of voted deputies in faction")]
     [JsonProperty("voteCount")]
     [XmlElement("voteCount")]
     public virtual int? TotalVotesCount { get; set; }
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Returns result of deputy voting as instance of <see cref="VotePersonResult"/> enumeration.</para>
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Result of deputy voting, or a <c>null</c> reference if <see cref="PersonResult"/> property was not yet set.</returns>
     public virtual VotePersonResult? GetPersonResult()
     {
       if (this.PersonResult.IsEmpty())
@@ -155,9 +140,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Returns type of voting result as instance of <see cref="VoteResultType"/> enumeration.</para>
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Type of voting result, or a <c>null</c> reference if <see cref="ResultType"/> property was not yet set.</returns>
     public virtual VoteResultType? GetResultType()
     {
       if (this.ResultType.IsEmpty())
@@ -185,9 +170,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Compares the current vote with another.</para>
+    ///   <para>Compares the current <see cref="Vote"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="Vote"/> to compare with this instance.</param>
     public virtual int CompareTo(Vote other)
     {
@@ -195,10 +180,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two votes instances are equal.</para>
+    ///   <para>Determines whether two <see cref="Vote"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The vote to compare with the current one.</param>
-    /// <returns><c>true</c> if specified vote is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(Vote other)
     {
       return this.Equality(other, vote => vote.Id);
@@ -224,9 +209,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current vote.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="Vote"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current vote.</returns>
+    /// <returns>A string that represents the current <see cref="Vote"/>.</returns>
     public override string ToString()
     {
       return this.Subject;

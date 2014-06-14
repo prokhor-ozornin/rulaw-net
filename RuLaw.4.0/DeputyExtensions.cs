@@ -12,11 +12,11 @@ namespace RuLaw
   public static class DeputyExtensions
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>Filters sequence of deputies, leaving those with specified position.</para>
     /// </summary>
-    /// <param name="deputies"></param>
-    /// <param name="position"></param>
-    /// <returns></returns>
+    /// <param name="deputies">Source sequence of deputies to filter.</param>
+    /// <param name="position">Position to search for (case-insensitive).</param>
+    /// <returns>Filtered sequence of deputies with specified position.</returns>
     /// <exception cref="ArgumentNullException">If either <paramref name="deputies"/> or <paramref name="position"/> is a <c>null</c> reference.</exception>
     public static IEnumerable<Deputy> Position(this IEnumerable<Deputy> deputies, string position)
     {

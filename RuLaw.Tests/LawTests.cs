@@ -12,15 +12,6 @@ namespace RuLaw
   public sealed class LawTests : UnitTestsBase<Law>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Id", "Comments", "Committees", "Date", "LastEvent", "Name", "Number", "Subject", "TranscriptUrl", "Type", "Url");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>
     [Fact]

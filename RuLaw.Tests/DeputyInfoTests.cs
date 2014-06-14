@@ -12,15 +12,6 @@ namespace RuLaw
   public sealed class DeputyInfoTests : UnitTestsBase<DeputyInfo>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Id", "Active", "Activities", "BirthDate", "Degrees", "Educations", "FactionId", "FactionName", "FactionRegion", "FactionRole", "FirstName", "LastName", "LawsCount", "MiddleName", "Ranks", "Regions", "SpeachesCount", "TranscriptLink", "VoteLink", "WorkStartDate", "WorkEndDate");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>
     [Fact]

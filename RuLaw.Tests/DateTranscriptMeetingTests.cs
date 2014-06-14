@@ -12,15 +12,6 @@ namespace RuLaw
   public sealed class DateTranscriptMeetingTests : UnitTestsBase<DateTranscriptMeeting>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Date", "Number", "Lines", "Text", "Votes");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>
     [Fact]

@@ -164,7 +164,7 @@ namespace RuLaw
         {
           if (parameter.Value != null)
           {
-            request.AddParameter(parameter.Key, parameter.Value);
+            request.AddParameter(parameter.Key, parameter.Value.ToStringInvariant());
           }
         }
       }

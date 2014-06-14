@@ -33,9 +33,9 @@
     <DocumentationFile>bin\Release\RuLaw.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Catharsis.Commons, Version=2.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Catharsis.Commons, Version=2.3.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Catharsis.Commons.2.2.5\lib\net35\Catharsis.Commons.dll</HintPath>
+      <HintPath>..\packages\Catharsis.Commons.2.3.5\lib\net35\Catharsis.Commons.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net35\Newtonsoft.Json.dll</HintPath>
@@ -216,9 +216,6 @@
     <Compile Include="..\RuLaw.4.0\ITranscriptsApiCallerExtensions.cs">
       <Link>ITranscriptsApiCallerExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\IVotesApiCall.cs">
-      <Link>IVotesApiCall.cs</Link>
-    </Compile>
     <Compile Include="..\RuLaw.4.0\IVotesApiCaller.cs">
       <Link>IVotesApiCaller.cs</Link>
     </Compile>
@@ -311,9 +308,6 @@
     </Compile>
     <Compile Include="..\RuLaw.4.0\Question.cs">
       <Link>Question.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\QuestionExtensions.cs">
-      <Link>QuestionExtensions.cs</Link>
     </Compile>
     <Compile Include="..\RuLaw.4.0\QuestionsLawApiCall.cs">
       <Link>QuestionsLawApiCall.cs</Link>

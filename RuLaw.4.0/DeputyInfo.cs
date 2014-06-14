@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -10,14 +9,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Detailed deputy information.</para>
   /// </summary>
-  [Description("Detailed deputy information")]
   [XmlType("deputy")]
   public class DeputyInfo : IComparable<DeputyInfo>, IEquatable<DeputyInfo>, IRuLawEntity, IActive
   {
     /// <summary>
     ///   <para>Unique identifier of deputy.</para>
     /// </summary>
-    [Description("Unique identifier of deputy")]
     [JsonProperty("id")]
     [XmlElement("id")]
     public virtual long Id { get; set; }
@@ -25,7 +22,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Whether deputy has authority and power at present moment.</para>
     /// </summary>
-    [Description("Whether deputy has authority and power at present moment")]
     [JsonProperty("isActual")]
     [XmlElement("isActual")]
     public virtual bool Active { get; set; }
@@ -33,7 +29,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Collection of deputy's activities in committees.</para>
     /// </summary>
-    [Description("Collection of deputy's activities in committees")]
     [JsonProperty("activity")]
     [XmlElement("activity")]
     public virtual List<DeputyActivity> Activities { get; set; }
@@ -41,7 +36,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Birth date of deputy.</para>
     /// </summary>
-    [Description("Birth date of deputy")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime BirthDate { get; set; }
@@ -49,7 +43,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Birth date of deputy.</para>
     /// </summary>
-    [Description("Birth date of deputy")]
     [JsonProperty("birthdate")]
     [XmlElement("birthdate")]
     public virtual string BirthDateString
@@ -61,7 +54,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Scientific degrees of deputy.</para>
     /// </summary>
-    [Description("Scientific degrees of deputy")]
     [JsonProperty("degrees")]
     [XmlElement("degree")]
     public virtual List<string> Degrees { get; set; }
@@ -69,7 +61,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Higher educations of deputy.</para>
     /// </summary>
-    [Description("Higher educations of deputy")]
     [JsonProperty("educations")]
     [XmlElement("education")]
     public virtual List<Education> Educations { get; set; }
@@ -77,7 +68,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Identifier of deputy's political faction.</para>
     /// </summary>
-    [Description("Identifier of deputy's political factionn")]
     [JsonProperty("factionId")]
     [XmlElement("factionId")]
     public virtual long FactionId { get; set; }
@@ -85,7 +75,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Name of deputy's political faction.</para>
     /// </summary>
-    [Description("Name of deputy's political faction")]
     [JsonProperty("factionName")]
     [XmlElement("factionName")]
     public virtual string FactionName { get; set; }
@@ -93,7 +82,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Association of deputy's political faction with a region.</para>
     /// </summary>
-    [Description("Association of deputy's political faction with a region")]
     [JsonProperty("factionRegion")]
     [XmlElement("factionRegion")]
     public virtual string FactionRegion { get; set; }
@@ -101,7 +89,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Role of deputy's in his political faction.</para>
     /// </summary>
-    [Description("Role of deputy's in his political faction")]
     [JsonProperty("factionRole")]
     [XmlElement("factionRole")]
     public virtual string FactionRole { get; set; }
@@ -109,7 +96,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>First name of deputy.</para>
     /// </summary>
-    [Description("First name of deputy")]
     [JsonProperty("name")]
     [XmlElement("name")]
     public virtual string FirstName { get; set; }
@@ -117,7 +103,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Full name of deputy.</para>
     /// </summary>
-    [Description("Full name of deputy")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual string FullName
@@ -128,7 +113,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Last name of deputy.</para>
     /// </summary>
-    [Description("Last name of deputy")]
     [JsonProperty("family")]
     [XmlElement("family")]
     public virtual string LastName { get; set; }
@@ -136,7 +120,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Number of laws which have been initiated by the deputy.</para>
     /// </summary>
-    [Description("Number of laws which have been initiated by the deputy")]
     [JsonProperty("lawcount")]
     [XmlElement("lawcount")]
     public virtual int LawsCount { get; set; }
@@ -144,7 +127,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Middle name of deputy.</para>
     /// </summary>
-    [Description("Middle name of deputy")]
     [JsonProperty("patronymic")]
     [XmlElement("patronymic")]
     public virtual string MiddleName { get; set; }
@@ -152,7 +134,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Scientific ranks of deputy.</para>
     /// </summary>
-    [Description("Scientific ranks of deputy")]
     [JsonProperty("ranks")]
     [XmlElement("rank")]
     public virtual List<string> Ranks { get; set; }
@@ -160,7 +141,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Association of deputy's with regions.</para>
     /// </summary>
-    [Description("Association of deputy's with regions")]
     [JsonProperty("regions")]
     [XmlElement("region")]
     public virtual List<string> Regions { get; set; }
@@ -168,7 +148,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Number of deputy's public speaches.</para>
     /// </summary>
-    [Description("Number of deputy's public speaches")]
     [JsonProperty("speachCount")]
     [XmlElement("speachCount")]
     public virtual int SpeachesCount { get; set; }
@@ -176,7 +155,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>URL link for transcripts of deputy's speaches.</para>
     /// </summary>
-    [Description("URL link for transcripts of deputy's speaches")]
     [JsonProperty("transcriptLink")]
     [XmlElement("transcriptLink")]
     public virtual string TranscriptLink { get; set; }
@@ -184,7 +162,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>URL link for deputy's votes.</para>
     /// </summary>
-    [Description("URL link for deputy's votes")]
     [JsonProperty("voteLink")]
     [XmlElement("voteLink")]
     public virtual string VoteLink { get; set; }
@@ -192,7 +169,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Start date of deputy's authorities in last convocation.</para>
     /// </summary>
-    [Description("Start date of deputy's authorities in last convocation")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime WorkStartDate { get; set; }
@@ -200,7 +176,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Start date of deputy's authorities in last convocation.</para>
     /// </summary>
-    [Description("Start date of deputy's authorities in last convocation")]
     [JsonProperty("credentialsStart")]
     [XmlElement("credentialsStart")]
     public virtual string WorkStartDateString
@@ -212,7 +187,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>End date of deputy's authorities in last convocation.</para>
     /// </summary>
-    [Description("End date of deputy's authorities in last convocation")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime? WorkEndDate { get; set; }
@@ -220,7 +194,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>End date of deputy's authorities in last convocation.</para>
     /// </summary>
-    [Description("End date of deputy's authorities in last convocation")]
     [JsonProperty("credentialsEnd")]
     [XmlElement("credentialsEnd")]
     public virtual string WorkEndDateString
@@ -242,9 +215,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Compares the current deputy with another.</para>
+    ///   <para>Compares the current <see cref="DeputyInfo"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="DeputyInfo"/> to compare with this instance.</param>
     public virtual int CompareTo(DeputyInfo other)
     {
@@ -252,10 +225,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two deputies instances are equal.</para>
+    ///   <para>Determines whether two <see cref="DeputyInfo"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The deputy to compare with the current one.</param>
-    /// <returns><c>true</c> if specified deputy is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(DeputyInfo other)
     {
       return this.Equality(other, deputy => deputy.Id);
@@ -281,9 +254,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current deputy.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="DeputyInfo"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current deputy.</returns>
+    /// <returns>A string that represents the current <see cref="DeputyInfo"/>.</returns>
     public override string ToString()
     {
       return this.FullName;

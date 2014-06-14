@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -10,14 +9,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Transcript of Duma's meeting.</para>
   /// </summary>
-  [Description("Transcript of Duma's meeting")]
   [XmlType("meeting")]
   public class TranscriptMeeting : IComparable<TranscriptMeeting>, IEquatable<TranscriptMeeting>, IDateable
   {
     /// <summary>
     ///   <para>Date of meeting.</para>
     /// </summary>
-    [Description("Date of meeting")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime Date { get; set; }
@@ -25,7 +22,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date of meeting.</para>
     /// </summary>
-    [Description("Date of meeting")]
     [JsonProperty("date")]
     [XmlElement("date")]
     public virtual string DateString
@@ -37,7 +33,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Number of lines in transcript.</para>
     /// </summary>
-    [Description("Number of lines in transcript")]
     [JsonProperty("maxNumber")]
     [XmlElement("maxNumber")]
     public virtual int LinesCount { get; set; }
@@ -45,7 +40,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Number of meeting.</para>
     /// </summary>
-    [Description("Number of meeting")]
     [JsonProperty("number")]
     [XmlElement("number")]
     public virtual int Number { get; set; }
@@ -53,7 +47,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Questions that were discussed during the meeting.</para>
     /// </summary>
-    [Description("Questions that were discussed during the meeting")]
     [JsonProperty("questions")]
     [XmlElement("question")]
     public virtual List<TranscriptMeetingQuestion> Questions { get; set; }
@@ -67,9 +60,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Compares the current meeting with another.</para>
+    ///   <para>Compares the current <see cref="TranscriptMeeting"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="TranscriptMeeting"/> to compare with this instance.</param>
     public virtual int CompareTo(TranscriptMeeting other)
     {
@@ -77,10 +70,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two meetings instances are equal.</para>
+    ///   <para>Determines whether two <see cref="TranscriptMeeting"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The meeting to compare with the current one.</param>
-    /// <returns><c>true</c> if specified meeting is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(TranscriptMeeting other)
     {
       return this.Equality(other, meeting => meeting.Date, meeting => meeting.Number);
@@ -106,9 +99,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current transcript.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="TranscriptMeeting"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current transcript.</returns>
+    /// <returns>A string that represents the current <see cref="TranscriptMeeting"/>.</returns>
     public override string ToString()
     {
       return this.Date.ISO8601();

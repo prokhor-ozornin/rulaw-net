@@ -3,32 +3,32 @@
 namespace RuLaw
 {
   /// <summary>
-  ///   <para></para>
+  ///   <para>Type of votes sorting.</para>
   /// </summary>
   public enum VotesSorting
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>By date (ascending).</para>
     /// </summary>
     DateAscending,
     
     /// <summary>
-    ///   <para></para>
+    ///   <para>By date (descending).</para>
     /// </summary>
     DateDescending,
     
     /// <summary>
-    ///   <para></para>
+    ///   <para>By date (descending), ascending for each day.</para>
     /// </summary>
     DateDescendingByDay,
     
     /// <summary>
-    ///   <para></para>
+    ///   <para>By result (ascending).</para>
     /// </summary>
     ResultAscending,
     
     /// <summary>
-    ///   <para></para>
+    ///   <para>By result (descending).</para>
     /// </summary>
     ResultDescending
   }

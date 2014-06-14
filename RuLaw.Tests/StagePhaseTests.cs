@@ -8,15 +8,6 @@ namespace RuLaw
   public sealed class StagePhaseTests : UnitTestsBase<StagePhase>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Id", "Name", "Instance");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>
     [Fact]

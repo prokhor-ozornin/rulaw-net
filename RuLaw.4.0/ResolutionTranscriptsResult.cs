@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -10,14 +9,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Transcript of Duma law's resolution.</para>
   /// </summary>
-  [Description("Transcript of Duma law's resolution")]
   [XmlType("result")]
   public sealed class ResolutionTranscriptsResult : IEquatable<ResolutionTranscriptsResult>
   {
     /// <summary>
     ///   <para>Collection of Duma's meetings.</para>
     /// </summary>
-    [Description("Collection of Duma's meetings")]
     [JsonProperty("meetings")]
     [XmlElement("meeting")]
     public List<TranscriptMeeting> Meetings { get; set; }
@@ -25,7 +22,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Number of resolution.</para>
     /// </summary>
-    [Description("Number of resolution")]
     [JsonProperty("number")]
     [XmlElement("number")]
     public string Number { get; set; }
@@ -39,10 +35,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two transcripts results instances are equal.</para>
+    ///   <para>Determines whether two <see cref="ResolutionTranscriptsResult"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The transcripts result to compare with the current one.</param>
-    /// <returns><c>true</c> if specified transcripts result is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public bool Equals(ResolutionTranscriptsResult other)
     {
       return this.Equality(other, result => result.Number);
@@ -68,9 +64,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current transcripts result.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="ResolutionTranscriptsResult"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current transcripts result.</returns>
+    /// <returns>A string that represents the current <see cref="ResolutionTranscriptsResult"/>.</returns>
     public override string ToString()
     {
       return this.Number;

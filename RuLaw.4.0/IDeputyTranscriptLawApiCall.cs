@@ -3,38 +3,38 @@
 namespace RuLaw
 {
   /// <summary>
-  ///   <para></para>
+  ///   <para>Representation of deputies transcripts search request to Russian State Duma REST API.</para>
   /// </summary>
-  public interface IDeputyTranscriptLawApiCall : IPagedLawApiCall<IDeputyTranscriptLawApiCall>
+  public interface IDeputyTranscriptLawApiCall : IPagedLawApiCall<IDeputyTranscriptLawApiCall>, ILawApiCall
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>Specifies identier of deputy, transcripts of whose speeches should be looked up.</para>
     /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
+    /// <param name="id">Identifier of deputy.</param>
+    /// <returns>Back reference to the current request.</returns>
     IDeputyTranscriptLawApiCall Deputy(long id);
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Specifies lower bound of session's date.</para>
     /// </summary>
-    /// <param name="from"></param>
-    /// <returns></returns>
+    /// <param name="from">Session's date.</param>
+    /// <returns>Back reference to the current request.</returns>
     IDeputyTranscriptLawApiCall From(DateTime from);
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Specifies name of question.</para>
     /// </summary>
-    /// <param name="name"></param>
-    /// <returns></returns>
+    /// <param name="name">Name of question.</param>
+    /// <returns>Back reference to the current request.</returns>
     /// <exception cref="ArgumentNullException">If <paramref name="name"/> is a <c>null</c> reference.</exception>
     /// <exception cref="ArgumentException">If <paramref name="name"/> is <see cref="string.Empty"/> string.</exception>
     IDeputyTranscriptLawApiCall Name(string name);
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Specifies upper bound of session's date.</para>
     /// </summary>
-    /// <param name="to"></param>
-    /// <returns></returns>
+    /// <param name="to">Session's date.</param>
+    /// <returns>Back reference to the current request.</returns>
     IDeputyTranscriptLawApiCall To(DateTime to);
   }
 }

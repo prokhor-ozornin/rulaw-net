@@ -29,7 +29,16 @@ namespace RuLaw
     [Fact]
     public void Deserialize_Method()
     {
-      var subject = Guid.NewGuid();
+      object subject = "subject";
+      Assert.Equal(subject, new RuLawXmlDeserializer().Deserialize<string>(new RestResponse { Content = @"<?xml version=""1.0""?><result>{0}</result>".FormatSelf(subject) }));
+
+      subject = true;
+      Assert.Equal(subject, new RuLawXmlDeserializer().Deserialize<bool>(new RestResponse { Content = @"<?xml version=""1.0""?><result>{0}</result>".FormatSelf(subject).ToLowerInvariant() }));
+
+      subject = 15.5;
+      Assert.Equal(subject, new RuLawXmlDeserializer().Deserialize<double>(new RestResponse { Content = @"<?xml version=""1.0""?><result>{0}</result>".FormatInvariant(subject) }));
+
+      subject = Guid.NewGuid();
       Assert.Equal(subject, new RuLawXmlDeserializer().Deserialize<Guid>(new RestResponse { Content = @"<?xml version=""1.0""?><result>{0}</result>".FormatSelf(subject) }));
     }
 

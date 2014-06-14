@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
   /// <summary>
   ///   <para>Number of results to display per page.</para>
@@ -10,19 +8,26 @@ namespace RuLaw
     /// <summary>
     ///   <para>Five.</para>
     /// </summary>
-    [Description("Five")]
     Five = 5,
 
     /// <summary>
     ///   <para>Ten.</para>
     /// </summary>
-    [Description("Ten")]
     Ten = 10,
     
     /// <summary>
     ///   <para>Twenty.</para>
     /// </summary>
-    [Description("Twenty")]
     Twenty = 20,
+
+    /// <summary>
+    ///   <para>Fifty.</para>
+    /// </summary>
+    Fifty = 50,
+
+    /// <summary>
+    ///   <para>Hundred.</para>
+    /// </summary>
+    Hundred = 100
   }
 }

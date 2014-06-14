@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -10,14 +9,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Duma's convocation.</para>
   /// </summary>
-  [Description("Duma's convocation")]
   [XmlType("period")]
   public class Convocation : IComparable<Convocation>, IEquatable<Convocation>, IRuLawEntity, INameable, IPeriodable
   {
     /// <summary>
     ///   <para>Unique identifier of convocation.</para>
     /// </summary>
-    [Description("Unique identifier of convocation")]
     [JsonProperty("id")]
     [XmlElement("id")]
     public virtual long Id { get; set; }
@@ -25,7 +22,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date when convocation was started.</para>
     /// </summary>
-    [Description("Date when convocation was started")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime FromDate { get; set; }
@@ -33,7 +29,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date when convocation was started.</para>
     /// </summary>
-    [Description("Date when convocation was started")]
     [JsonProperty("startDate")]
     [XmlElement("startDate")]
     public virtual string FromDateString
@@ -45,7 +40,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Name of convocation.</para>
     /// </summary>
-    [Description("Name of convocation")]
     [JsonProperty("name")]
     [XmlElement("name")]
     public virtual string Name { get; set; }
@@ -53,7 +47,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Collection of sessions which are part of the convocation.</para>
     /// </summary>
-    [Description("Collection of sessions which are part of the convocation")]
     [JsonProperty("sessions")]
     [XmlElement("session")]
     public virtual List<Session> Sessions { get; set; }
@@ -61,7 +54,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date when convocation was ended.</para>
     /// </summary>
-    [Description("Date when convocation was ended")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime? ToDate { get; set; }
@@ -69,7 +61,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date when convocation was ended.</para>
     /// </summary>
-    [Description("Date when convocation was ended")]
     [JsonProperty("endDate")]
     [XmlElement("endDate")]
     public virtual string ToDateString
@@ -87,9 +78,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Compares the current convocation with another.</para>
+    ///   <para>Compares the current <see cref="Convocation"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="Convocation"/> to compare with this instance.</param>
     public virtual int CompareTo(Convocation other)
     {
@@ -97,10 +88,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two convocations instances are equal.</para>
+    ///   <para>Determines whether two <see cref="Convocation"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The convocation to compare with the current one.</param>
-    /// <returns><c>true</c> if specified convocation is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(Convocation other)
     {
       return this.Equality(other, convocation => convocation.Id);
@@ -126,9 +117,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current convocation.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="Convocation"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current convocation.</returns>
+    /// <returns>A string that represents the current <see cref="Convocation"/>.</returns>
     public override string ToString()
     {
       return this.Name;

@@ -10,15 +10,6 @@ namespace RuLaw
   public sealed class TranscriptMeetingQuestionTests : UnitTestsBase<TranscriptMeetingQuestion>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Name", "Parts", "Stage");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>
     [Fact]

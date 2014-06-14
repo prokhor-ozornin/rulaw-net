@@ -29,7 +29,16 @@ namespace RuLaw
     [Fact]
     public void Serialize_Method()
     {
-      var subject = Guid.NewGuid();
+      object subject = "subject";
+      Assert.True(new RuLawXmlSerializer().Serialize(subject).Contains("<result>{0}</result>".FormatSelf(subject)));
+
+      subject = true;
+      Assert.True(new RuLawXmlSerializer().Serialize(subject).Contains("<result>{0}</result>".FormatSelf(subject).ToLowerInvariant()));
+
+      subject = 15.5;
+      Assert.True(new RuLawXmlSerializer().Serialize(subject).Contains("<result>{0}</result>".FormatInvariant(subject)));
+
+      subject = Guid.NewGuid();
       Assert.True(new RuLawXmlSerializer().Serialize(subject).Contains("<result>{0}</result>".FormatSelf(subject)));
     }
 

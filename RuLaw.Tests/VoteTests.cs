@@ -10,15 +10,6 @@ namespace RuLaw
   public sealed class VoteTests : UnitTestsBase<Vote>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Id", "AbsentVotesCount", "AbstainVotesCount", "AgainstVotesCount", "Date", "ForVotesCount", "PersonResult", "ResultType", "Subject", "Successful", "TotalVotesCount");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>
     [Fact]

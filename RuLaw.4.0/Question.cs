@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -9,14 +8,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Question of Duma's session.</para>
   /// </summary>
-  [Description("Question of Duma's session")]
   [XmlType("question")]
   public class Question : IComparable<Question>, IEquatable<Question>, INameable, IDateable
   {
     /// <summary>
     ///   <para>Code of question.</para>
     /// </summary>
-    [Description("Code of question")]
     [JsonProperty("kodvopr")]
     [XmlElement("kodvopr")]
     public virtual int Code { get; set; }
@@ -24,7 +21,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date of session.</para>
     /// </summary>
-    [Description("Date of session")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime Date { get; set; }
@@ -32,7 +28,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date of session.</para>
     /// </summary>
-    [Description("Date of session")]
     [JsonProperty("datez")]
     [XmlElement("datez")]
     public virtual string DateString
@@ -44,7 +39,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Last line in question's transcript.</para>
     /// </summary>
-    [Description("Last line in question's transcript.")]
     [JsonProperty("nend")]
     [XmlElement("nend")]
     public virtual int EndLine { get; set; }
@@ -52,7 +46,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Title of question.</para>
     /// </summary>
-    [Description("Title of question")]
     [JsonProperty("name")]
     [XmlElement("name")]
     public virtual string Name { get; set; }
@@ -60,7 +53,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Code of session.</para>
     /// </summary>
-    [Description("Code of session")]
     [JsonProperty("kodz")]
     [XmlElement("kodz")]
     public virtual int SessionCode { get; set; }
@@ -68,15 +60,14 @@ namespace RuLaw
     /// <summary>
     ///   <para>First line in question's transcript.</para>
     /// </summary>
-    [Description("First line in question's transcript")]
     [JsonProperty("nbegin")]
     [XmlElement("nbegin")]
     public virtual int StartLine { get; set; }
 
     /// <summary>
-    ///   <para>Compares the current question with another.</para>
+    ///   <para>Compares the current <see cref="Question"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="Question"/> to compare with this instance.</param>
     public virtual int CompareTo(Question other)
     {
@@ -84,10 +75,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two questions instances are equal.</para>
+    ///   <para>Determines whether two <see cref="Question"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The question to compare with the current one.</param>
-    /// <returns><c>true</c> if specified question is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(Question other)
     {
       return this.Equality(other, question => question.Code, question => question.SessionCode);
@@ -113,9 +104,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current question.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="Question"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current question.</returns>
+    /// <returns>A string that represents the current <see cref="Question"/>.</returns>
     public override string ToString()
     {
       return this.Name;

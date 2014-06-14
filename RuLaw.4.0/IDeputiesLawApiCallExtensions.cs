@@ -10,11 +10,11 @@ namespace RuLaw
   public static class IDeputiesLawApiCallExtensions
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>Specifies position of deputies to lookup.</para>
     /// </summary>
-    /// <param name="call"></param>
-    /// <param name="position"></param>
-    /// <returns></returns>
+    /// <param name="call">API call instance to use.</param>
+    /// <param name="position">Position of deputies.</param>
+    /// <returns>Back reference to the provided <paramref name="call"/> instance.</returns>
     /// <exception cref="ArgumentNullException">If <paramref name="call"/> is a <c>null</c> reference.</exception>
     public static IDeputiesLawApiCall Position(this IDeputiesLawApiCall call, DeputyPosition position)
     {

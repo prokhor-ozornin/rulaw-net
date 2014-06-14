@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -9,14 +8,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Document, associated with a law's event.</para>
   /// </summary>
-  [Description("Document, associated with a law's event")]
   [XmlType("document")]
   public class LawEventDocument : IComparable<LawEventDocument>, IEquatable<LawEventDocument>, INameable
   {
     /// <summary>
     ///   <para>Name of document.</para>
     /// </summary>
-    [Description("Name of document")]
     [JsonProperty("name")]
     [XmlElement("name")]
     public virtual string Name { get; set; }
@@ -24,15 +21,14 @@ namespace RuLaw
     /// <summary>
     ///   <para>Type of document.</para>
     /// </summary>
-    [Description("Type of document")]
     [JsonProperty("type")]
     [XmlElement("type")]
     public virtual string Type { get; set; }
 
     /// <summary>
-    ///   <para>Compares the current document with another.</para>
+    ///   <para>Compares the current <see cref="LawEventDocument"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="LawEventDocument"/> to compare with this instance.</param>
     public virtual int CompareTo(LawEventDocument other)
     {
@@ -40,10 +36,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two document instances are equal.</para>
+    ///   <para>Determines whether two <see cref="LawEventDocument"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The document to compare with the current one.</param>
-    /// <returns><c>true</c> if specified document is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(LawEventDocument other)
     {
       return this.Equality(other, document => document.Name);
@@ -69,9 +65,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current document.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="LawEventDocument"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current document.</returns>
+    /// <returns>A string that represents the current <see cref="LawEventDocument"/>.</returns>
     public override string ToString()
     {
       return this.Name;

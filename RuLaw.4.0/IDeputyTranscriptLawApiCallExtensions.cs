@@ -10,11 +10,11 @@ namespace RuLaw
   public static class IDeputyTranscriptLawApiCallExtensions
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>Specifies deputy, transcripts of whose speeches should be looked up.</para>
     /// </summary>
-    /// <param name="call"></param>
-    /// <param name="deputy"></param>
-    /// <returns></returns>
+    /// <param name="call">API call instance to use.</param>
+    /// <param name="deputy">Subject deputy.</param>
+    /// <returns>Back reference to the provided <paramref name="call"/> instance.</returns>
     /// <exception cref="ArgumentNullException">If either <paramref name="call"/> or <paramref name="deputy"/> is a <c>null</c> reference.</exception>
     public static IDeputyTranscriptLawApiCall Deputy(this IDeputyTranscriptLawApiCall call, Deputy deputy)
     {

@@ -10,15 +10,6 @@ namespace RuLaw
   public sealed class QuestionTests : UnitTestsBase<Question>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Code", "Date", "EndLine", "Name", "SessionCode", "StartLine");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of JSON serialization/deserialization process.</para>
     /// </summary>
     [Fact]

@@ -1,42 +1,42 @@
 ﻿namespace RuLaw
 {
   /// <summary>
-  ///   <para>Способ сортировки результатов</para>
+  ///   <para>Type of laws sorting.</para>
   /// </summary>
   public enum LawsSorting
   {
     /// <summary>
-    ///   <para>По названию законопроекта</para>
+    ///   <para>By name of law.</para>
     /// </summary>
     Name,
     
     /// <summary>
-    ///   <para>По номеру законопроекта</para>
+    ///   <para>By number of law.</para>
     /// </summary>
     Number,
 
     /// <summary>
-    ///   <para>По дате внесения в ГД (по убыванию)</para>
+    ///   <para>By proposal date in State Duma (descending).</para>
     /// </summary>
     DateDescending,
 
     /// <summary>
-    ///   <para>По дате внесения в ГД (по возрастанию)</para>
+    ///   <para>By proposal date in State Duma (ascending).</para>
     /// </summary>
     DateAscending,
 
     /// <summary>
-    ///   <para>По дате последнего события (по убыванию)</para>
+    ///   <para>By date of last event (descending).</para>
     /// </summary>
     LastEventDateDescending,
 
     /// <summary>
-    ///   <para>По дате последнего события (по возрастанию)</para>
+    ///   <para>By date of last event (ascending).</para>
     /// </summary>
     LastEventDateAscending,
 
     /// <summary>
-    ///   <para>По ответственному комитету</para>
+    ///   <para>By responsible committee.</para>
     /// </summary>
     ResponsibleCommittee
   }

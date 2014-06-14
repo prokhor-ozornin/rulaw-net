@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -9,7 +8,6 @@ namespace RuLaw
   /// <summary>
   ///   <para>RuLaw API call error.</para>
   /// </summary>
-  [Description("RuLaw API call error")]
   [XmlType("error")]
   public sealed class Error : IComparable<Error>, IEquatable<Error>
   {
@@ -38,7 +36,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Numeric code of error.</para>
     /// </summary>
-    [Description("Numeric code of error")]
     [JsonProperty("code")]
     [XmlElement("code")]
     public int Code { get; set; }
@@ -46,15 +43,14 @@ namespace RuLaw
     /// <summary>
     ///   <para>Text description of error.</para>
     /// </summary>
-    [Description("Text description of error")]
     [JsonProperty("text")]
     [XmlElement("text")]
     public string Text { get; set; }
 
     /// <summary>
-    ///   <para>Compares the current error with another.</para>
+    ///   <para>Compares the current <see cref="Error"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="Error"/> to compare with this instance.</param>
     public int CompareTo(Error other)
     {
@@ -91,9 +87,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current error.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="Error"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current error.</returns>
+    /// <returns>A string that represents the current <see cref="Error"/>.</returns>
     public override string ToString()
     {
       return this.Text;

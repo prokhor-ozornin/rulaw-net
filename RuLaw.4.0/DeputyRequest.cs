@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -9,14 +8,12 @@ namespace RuLaw
   /// <summary>
   ///   <para>Deputy's request.</para>
   /// </summary>
-  [Description("Deputy's request")]
   [XmlType("request")]
   public class DeputyRequest : IComparable<DeputyRequest>, IEquatable<DeputyRequest>, IRuLawEntity, IDateable, INameable
   {
     /// <summary>
     ///   <para>Unique identifier of deputy's request.</para>
     /// </summary>
-    [Description("Unique identifier of deputy's request")]
     [JsonProperty("requestId")]
     [XmlElement("requestId")]
     public virtual long Id { get; set; }
@@ -24,7 +21,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Addressee of deputy's request.</para>
     /// </summary>
-    [Description("Addressee of deputy's request")]
     [JsonProperty("addressee")]
     [XmlElement("addressee")]
     public virtual DeputyRequestAddressee Addressee { get; set; }
@@ -32,7 +28,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Text of answer for deputy's request.</para>
     /// </summary>
-    [Description("Text of answer for deputy's request")]
     [JsonProperty("answer")]
     [XmlElement("answer")]
     public virtual string Answer { get; set; }
@@ -40,7 +35,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date when deputy's request was in control stage.</para>
     /// </summary>
-    [Description("Date when deputy's request was in control stage")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime ControlDate { get; set; }
@@ -48,7 +42,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date when deputy's request was in control stage.</para>
     /// </summary>
-    [Description("Date when deputy's request was in control stage")]
     [JsonProperty("controlDate")]
     [XmlElement("controlDate")]
     public virtual string ControlDateString
@@ -60,7 +53,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date when deputy's request was initiated.</para>
     /// </summary>
-    [Description("Date when deputy's request was initiated")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime Date { get; set; }
@@ -68,7 +60,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date when deputy's request was initiated.</para>
     /// </summary>
-    [Description("Date when deputy's request was initiated")]
     [JsonProperty("requestDate")]
     [XmlElement("requestDate")]
     public virtual string DateString
@@ -80,7 +71,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Number of associated document.</para>
     /// </summary>
-    [Description("Number of associated document")]
     [JsonProperty("documentNumber")]
     [XmlElement("documentNumber")]
     public virtual string DocumentNumber { get; set; }
@@ -88,7 +78,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Number of associated resolution.</para>
     /// </summary>
-    [Description("Number of associated resolution")]
     [JsonProperty("resolution")]
     [XmlElement("resolution")]
     public virtual string ResolutionNumber { get; set; }
@@ -96,7 +85,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Initiator person of deputy request.</para>
     /// </summary>
-    [Description("Initiator person of deputy request")]
     [JsonProperty("initiator")]
     [XmlElement("initiator")]
     public virtual string Initiator { get; set; }
@@ -104,7 +92,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Name of deputy request.</para>
     /// </summary>
-    [Description("Name of deputy request")]
     [JsonProperty("name")]
     [XmlElement("name")]
     public virtual string Name { get; set; }
@@ -112,7 +99,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date when deputy's request was signed.</para>
     /// </summary>
-    [Description("Date when deputy's request was signed")]
     [JsonIgnore]
     [XmlIgnore]
     public virtual DateTime SignDate { get; set; }
@@ -120,7 +106,6 @@ namespace RuLaw
     /// <summary>
     ///   <para>Date when deputy's request was signed.</para>
     /// </summary>
-    [Description("Date when deputy's request was signed")]
     [JsonProperty("signedDate")]
     [XmlElement("signedDate")]
     public virtual string SignDateString
@@ -132,15 +117,14 @@ namespace RuLaw
     /// <summary>
     ///   <para>Person who signed deputy's request.</para>
     /// </summary>
-    [Description("Person who signed deputy's request")]
     [JsonProperty("signedBy")]
     [XmlElement("signedBy")]
     public virtual DeputyRequestSigner Signer { get; set; }
 
     /// <summary>
-    ///   <para>Compares the current deputy request with another.</para>
+    ///   <para>Compares the current <see cref="DeputyRequest"/> instance with another.</para>
     /// </summary>
-    /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+    /// <returns>A value that indicates the relative order of the instances being compared.</returns>
     /// <param name="other">The <see cref="DeputyRequest"/> to compare with this instance.</param>
     public virtual int CompareTo(DeputyRequest other)
     {
@@ -148,10 +132,10 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Determines whether two deputy requests instances are equal.</para>
+    ///   <para>Determines whether two <see cref="DeputyRequest"/> instances are equal.</para>
     /// </summary>
-    /// <param name="other">The deputy request to compare with the current one.</param>
-    /// <returns><c>true</c> if specified deputy request is equal to the current, <c>false</c> otherwise.</returns>
+    /// <param name="other">The instance to compare with the current one.</param>
+    /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
     public virtual bool Equals(DeputyRequest other)
     {
       return this.Equality(other, request => request.Id);
@@ -177,9 +161,9 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Returns a <see cref="string"/> that represents the current deputy request.</para>
+    ///   <para>Returns a <see cref="string"/> that represents the current <see cref="DeputyRequest"/> instance.</para>
     /// </summary>
-    /// <returns>A string that represents the current deputy request.</returns>
+    /// <returns>A string that represents the current <see cref="DeputyRequest"/>.</returns>
     public override string ToString()
     {
       return this.Name;

@@ -12,12 +12,12 @@ namespace RuLaw
   public static class DeputyInfoExtensions
   {
     /// <summary>
-    ///   <para></para>
+    ///   <para>Filters sequence of deputies, leaving those that were born in specified date period.</para>
     /// </summary>
-    /// <param name="deputies"></param>
-    /// <param name="from"></param>
-    /// <param name="to"></param>
-    /// <returns></returns>
+    /// <param name="deputies">Source sequence of deputies to filter.</param>
+    /// <param name="from">Start date of period.</param>
+    /// <param name="to">End date of period.</param>
+    /// <returns>Filtered sequence of deputies that were born between <paramref name="from"/> and <paramref name="to"/> dates.</returns>
     /// <exception cref="ArgumentNullException">If <paramref name="deputies"/> is a <c>null</c> reference.</exception>
     public static IEnumerable<DeputyInfo> BirthDate(this IEnumerable<DeputyInfo> deputies, DateTime? from = null, DateTime? to = null)
     {
@@ -37,11 +37,11 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Filters sequence of deputies, leaving those that have a specified scientific degree.</para>
     /// </summary>
-    /// <param name="deputies"></param>
-    /// <param name="degree"></param>
-    /// <returns></returns>
+    /// <param name="deputies">Source sequence of deputies to filter.</param>
+    /// <param name="degree">Scientific degree to search for (case-insensitive).</param>
+    /// <returns>Filtered sequence of deputies that have a specified degree.</returns>
     /// <exception cref="ArgumentNullException">If either <paramref name="deputies"/> or <paramref name="degree"/> is a <c>null</c> reference.</exception>
     /// <exception cref="ArgumentException">If <paramref name="degree"/> is <see cref="string.Empty"/> string.</exception>
     public static IEnumerable<DeputyInfo> Degree(this IEnumerable<DeputyInfo> deputies, string degree)
@@ -53,11 +53,11 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Filters sequence of deputies, leaving those belonging to specified faction.</para>
     /// </summary>
-    /// <param name="deputies"></param>
-    /// <param name="faction"></param>
-    /// <returns></returns>
+    /// <param name="deputies">Source sequence of deputies to filter.</param>
+    /// <param name="faction">Faction name to search for (case-insensitive).</param>
+    /// <returns>Filtered sequence of deputies that belong to specified faction.</returns>
     /// <exception cref="ArgumentNullException">If either <paramref name="deputies"/> or <paramref name="faction"/> is a <c>null</c> reference.</exception>
     /// <exception cref="ArgumentException">If <paramref name="faction"/> is <see cref="string.Empty"/> string.</exception>
     public static IEnumerable<DeputyInfo> Faction(this IEnumerable<DeputyInfo> deputies, string faction)
@@ -69,11 +69,11 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Filters sequence of deputies, leaving those containing a given part in their names.</para>
     /// </summary>
-    /// <param name="deputies"></param>
-    /// <param name="name"></param>
-    /// <returns></returns>
+    /// <param name="deputies">Source sequence of deputies to filter.</param>
+    /// <param name="name">Part or full name to search for (case-insensitive).</param>
+    /// <returns>Filtered sequence of deputies with specified name.</returns>
     /// <exception cref="ArgumentNullException">If either <paramref name="deputies"/> or <paramref name="name"/> is a <c>null</c> reference.</exception>
     /// <exception cref="ArgumentException">If <paramref name="name"/> is <see cref="string.Empty"/> string.</exception>
     public static IEnumerable<DeputyInfo> Name(this IEnumerable<DeputyInfo> deputies, string name)
@@ -85,11 +85,11 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Filters sequence of deputies, leaving those having a specified rank.</para>
     /// </summary>
-    /// <param name="deputies"></param>
-    /// <param name="rank"></param>
-    /// <returns></returns>
+    /// <param name="deputies">Source sequence of deputies to filter.</param>
+    /// <param name="rank">Rank to search for (case-insensitive).</param>
+    /// <returns>Filtered sequence of deputies that have a specified rank.</returns>
     /// <exception cref="ArgumentNullException">If either <paramref name="deputies"/> or <paramref name="rank"/> is a <c>null</c> reference.</exception>
     /// <exception cref="ArgumentException">If <paramref name="rank"/> is <see cref="string.Empty"/> string.</exception>
     public static IEnumerable<DeputyInfo> Rank(this IEnumerable<DeputyInfo> deputies, string rank)
@@ -101,11 +101,11 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Filters sequence of deputies, leaving those linked to a specified region.</para>
     /// </summary>
-    /// <param name="deputies"></param>
-    /// <param name="region"></param>
-    /// <returns></returns>
+    /// <param name="deputies">Source sequence of deputies to filter.</param>
+    /// <param name="region">Region to search for (case-insensitive).</param>
+    /// <returns>Filtered sequence of deputies linked to a specified region.</returns>
     /// <exception cref="ArgumentNullException">If either <paramref name="deputies"/> or <paramref name="region"/> is a <c>null</c> reference.</exception>
     /// <exception cref="ArgumentException">If <paramref name="region"/> is <see cref="string.Empty"/> string.</exception>
     public static IEnumerable<DeputyInfo> Region(this IEnumerable<DeputyInfo> deputies, string region)
@@ -117,12 +117,12 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para></para>
+    ///   <para>Filters sequence of deputies, leaving those with a work timespan in specified borders.</para>
     /// </summary>
-    /// <param name="deputies"></param>
-    /// <param name="from"></param>
-    /// <param name="to"></param>
-    /// <returns></returns>
+    /// <param name="deputies">Source sequence of deputies to filter.</param>
+    /// <param name="from">Lower bound of work starting date.</param>
+    /// <param name="to">Upper bound of work ending date.</param>
+    /// <returns>Filtered sequence of deputies.</returns>
     /// <exception cref="ArgumentNullException">If <paramref name="deputies"/> is a <c>null</c> reference.</exception>
     public static IEnumerable<DeputyInfo> WorkDate(this IEnumerable<DeputyInfo> deputies, DateTime? from = null, DateTime? to = null)
     {

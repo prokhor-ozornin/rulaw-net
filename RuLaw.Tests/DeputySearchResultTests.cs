@@ -8,15 +8,6 @@ namespace RuLaw
   public sealed class DeputySearchResultTests : UnitTestsBase<DeputySearchResult>
   {
     /// <summary>
-    ///   <para>Performs testing of class attributes.</para>
-    /// </summary>
-    [Fact]
-    public void Attributes()
-    {
-      this.TestDescription("Deputy");
-    }
-
-    /// <summary>
     ///   <para>Performs testing of class constructor(s).</para>
     /// </summary>
     /// <seealso cref="DeputySearchResult()"/>
