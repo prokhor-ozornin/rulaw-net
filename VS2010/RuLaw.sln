@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuLaw.3.5.CP", "RuLaw.3.5.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuLaw.4.0", "RuLaw.4.0\RuLaw.4.0.csproj", "{56023B07-2487-4B69-BF54-D1CA334A130F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuLaw.4.0.CP", "RuLaw.4.0.CP\RuLaw.4.0.CP.csproj", "{4764B277-ADF2-4272-A40E-71BE8B23B891}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{56023B07-2487-4B69-BF54-D1CA334A130F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56023B07-2487-4B69-BF54-D1CA334A130F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56023B07-2487-4B69-BF54-D1CA334A130F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4764B277-ADF2-4272-A40E-71BE8B23B891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4764B277-ADF2-4272-A40E-71BE8B23B891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4764B277-ADF2-4272-A40E-71BE8B23B891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4764B277-ADF2-4272-A40E-71BE8B23B891}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
