@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -24,6 +25,7 @@ namespace RuLaw
     /// </summary>
     [JsonProperty("date")]
     [XmlElement("date")]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public string DateString
     {
       get { return this.Date.ISO8601(); }

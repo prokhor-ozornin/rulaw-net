@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -44,6 +45,7 @@ namespace RuLaw
     /// </summary>
     [JsonProperty("controlDate")]
     [XmlElement("controlDate")]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual string ControlDateString
     {
       get { return this.ControlDate.ISO8601(); }
@@ -62,6 +64,7 @@ namespace RuLaw
     /// </summary>
     [JsonProperty("requestDate")]
     [XmlElement("requestDate")]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual string DateString
     {
       get { return this.Date.ISO8601(); }
@@ -108,6 +111,7 @@ namespace RuLaw
     /// </summary>
     [JsonProperty("signedDate")]
     [XmlElement("signedDate")]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual string SignDateString
     {
       get { return this.SignDate.ISO8601(); }

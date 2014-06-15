@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Xml.Serialization;
 using Catharsis.Commons;
 using Newtonsoft.Json;
@@ -51,6 +52,7 @@ namespace RuLaw
     /// </summary>
     [JsonProperty("voteDate")]
     [XmlElement("voteDate")]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual string DateString
     {
       get { return this.Date.ISO8601(); }
