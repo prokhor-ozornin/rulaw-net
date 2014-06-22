@@ -37,7 +37,7 @@ namespace RuLaw
       this.restClient.AddHandler("text/json", this.jsonDeserializer);
       this.restClient.AddHandler("text/x-json", this.jsonDeserializer);
       this.restClient.AddHandler("text/javascript", this.jsonDeserializer);
-      this.restClient.AddHandler("*", this.jsonDeserializer);
+      this.restClient.AddHandler("*", this.xmlDeserializer);
       if (!appToken.IsEmpty())
       {
         this.restClient.AddDefaultParameter("app_token", appToken);

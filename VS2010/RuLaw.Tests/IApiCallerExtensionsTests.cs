@@ -16,178 +16,348 @@ namespace RuLaw
     private readonly IApiCaller jsonApiCaller = RuLaw.API(api => api.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]).Format(ApiDataFormat.Json));
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.Branches(IApiCaller)"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.Branches(IApiCaller)"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Branches(IApiCaller, out IList{LawBranch})"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void Branches_Method()
+    public void Branches_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Branches(null));
 
+      IList<LawBranch> branches;
+
       this.TestBranches(this.xmlApiCaller.Branches());
+      Assert.True(this.xmlApiCaller.Branches(out branches));
+      this.TestBranches(branches);
+
       this.TestBranches(this.jsonApiCaller.Branches());
+      Assert.True(this.jsonApiCaller.Branches(out branches));
+      this.TestBranches(branches);
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.Committees(IApiCaller)"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.Committees(IApiCaller)"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Committees(IApiCaller, out IList{Committee})"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void Committees_Method()
+    public void Committees_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Committees(null));
 
+      IList<Committee> committees;
+      
       this.TestCommittees(this.xmlApiCaller.Committees());
+      Assert.True(this.xmlApiCaller.Committees(out committees));
+      this.TestCommittees(committees);
+
       this.TestCommittees(this.jsonApiCaller.Committees());
+      Assert.True(this.jsonApiCaller.Committees(out committees));
+      this.TestCommittees(committees);
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.Convocations(IApiCaller)"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.Convocations(IApiCaller)"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Convocations(IApiCaller, out IList{Convocation})"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void Convocations_Method()
+    public void Convocations_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Convocations(null));
 
+      IList<Convocation> convocations;
+
       this.TestConvocations(this.xmlApiCaller.Convocations());
+      Assert.True(this.xmlApiCaller.Convocations(out convocations));
+      this.TestConvocations(convocations);
+
       this.TestConvocations(this.jsonApiCaller.Convocations());
+      Assert.True(this.jsonApiCaller.Convocations(out convocations));
+      this.TestConvocations(convocations);
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.Deputy(IApiCaller, long)"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.Deputy(IApiCaller, long)"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Deputy(IApiCaller, long, out DeputyInfo)"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void Deputy_Method()
+    public void Deputy_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Deputy(null, 0));
 
       const long id = 99100142;
+      DeputyInfo deputy;
+
       this.TestDeputyInfo(this.xmlApiCaller.Deputy(id));
+      Assert.True(this.xmlApiCaller.Deputy(id, out deputy));
+      this.TestDeputyInfo(deputy);
+
       this.TestDeputyInfo(this.jsonApiCaller.Deputy(id));
+      Assert.True(this.jsonApiCaller.Deputy(id, out deputy));
+      this.TestDeputyInfo(deputy);
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.Deputies(IApiCaller, Action{IDeputiesLawApiCall})"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.Deputies(IApiCaller, Action{IDeputiesLawApiCall})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Deputies(IApiCaller, out IList{Deputy}, Action{IDeputiesLawApiCall})"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void Deputies_Method()
+    public void Deputies_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Deputies(null));
 
+      IList<Deputy> deputies;
+
       this.TestDeputies(this.xmlApiCaller.Deputies());
+      Assert.True(this.xmlApiCaller.Deputies(out deputies));
+      this.TestDeputies(deputies);
+
       this.TestDeputies(this.jsonApiCaller.Deputies());
+      Assert.True(this.jsonApiCaller.Deputies(out deputies));
+      this.TestDeputies(deputies);
 
       var call = (Action<IDeputiesLawApiCall>)(x => x.Position(DeputyPosition.DumaDeputy).Current(false).Name("А"));
+      
       this.TestDeputies(this.xmlApiCaller.Deputies(call));
+      Assert.True(this.xmlApiCaller.Deputies(out deputies, call));
+      this.TestDeputies(deputies);
+
       this.TestDeputies(this.jsonApiCaller.Deputies(call));
+      Assert.True(this.jsonApiCaller.Deputies(out deputies, call));
+      this.TestDeputies(deputies);
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.FederalAuthorities(IApiCaller, Action{IAuthoritiesLawApiCall})"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.FederalAuthorities(IApiCaller, Action{IAuthoritiesLawApiCall})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.FederalAuthorities(IApiCaller, out IList{FederalAuthority}, Action{IAuthoritiesLawApiCall})"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void FederalAuthorities_Method()
+    public void FederalAuthorities_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.FederalAuthorities(null));
 
+      IList<FederalAuthority> authorities;
+
       this.TestFederalAuthorities(this.xmlApiCaller.FederalAuthorities());
+      Assert.True(this.xmlApiCaller.FederalAuthorities(out authorities));
+      this.TestFederalAuthorities(authorities);
+
       this.TestFederalAuthorities(this.jsonApiCaller.FederalAuthorities());
+      Assert.True(this.jsonApiCaller.FederalAuthorities(out authorities));
+      this.TestFederalAuthorities(authorities);
 
       var call = (Action<IAuthoritiesLawApiCall>) (x => x.Current());
+
       this.TestFederalAuthorities(this.xmlApiCaller.FederalAuthorities(call));
+      Assert.True(this.xmlApiCaller.FederalAuthorities(out authorities, call));
+      this.TestFederalAuthorities(authorities);
+
       this.TestFederalAuthorities(this.jsonApiCaller.FederalAuthorities(call));
+      Assert.True(this.jsonApiCaller.FederalAuthorities(out authorities, call));
+      this.TestFederalAuthorities(authorities);
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.Instances(IApiCaller, Action{IInstancesLawApiCall})"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.Instances(IApiCaller, Action{IInstancesLawApiCall})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Instances(IApiCaller, out IList{Instance}, Action{IInstancesLawApiCall})"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void Instances_Method()
+    public void Instances_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Instances(null));
 
+      IList<Instance> instances;
+
       this.TestInstances(this.xmlApiCaller.Instances());
+      Assert.True(this.xmlApiCaller.Instances(out instances));
+      this.TestInstances(instances);
+
       this.TestInstances(this.jsonApiCaller.Instances());
+      Assert.True(this.jsonApiCaller.Instances(out instances));
+      this.TestInstances(instances);
 
       var call = (Action<IInstancesLawApiCall>)(x => x.Current());
+
       this.TestInstances(this.xmlApiCaller.Instances(call));
+      Assert.True(this.xmlApiCaller.Instances(out instances, call));
+      this.TestInstances(instances);
+
       this.TestInstances(this.jsonApiCaller.Instances(call));
+      Assert.True(this.jsonApiCaller.Instances(out instances, call));
+      this.TestInstances(instances);
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.Laws(IApiCaller, Action{ILawsLawApiCall})"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.Laws(IApiCaller, Action{ILawsLawApiCall})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Laws(IApiCaller, Action{ILawsLawApiCall}, out LawsSearchResult)"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void Laws_Method()
+    public void Laws_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Laws(null, request => { }));
       Assert.Throws<ArgumentNullException>(() => this.xmlApiCaller.Laws(null));
 
-      this.TestLawsSearchResult(this.xmlApiCaller.Laws(call => call.Name("курение").Sorting(LawsSorting.DateDescending)));
-      this.TestLawsSearchResult(this.jsonApiCaller.Laws(call => call.Name("курение").Sorting(LawsSorting.DateDescending)));
+      LawsSearchResult result;
+
+      var call = (Action<ILawsLawApiCall>) (x => x.Name("курение").Sorting(LawsSorting.DateDescending));
+
+      this.TestLawsSearchResult(this.xmlApiCaller.Laws(call));
+      Assert.True(this.xmlApiCaller.Laws(call, out result));
+      this.TestLawsSearchResult(result);
+
+      this.TestLawsSearchResult(this.jsonApiCaller.Laws(call));
+      Assert.True(this.jsonApiCaller.Laws(call, out result));
+      this.TestLawsSearchResult(result);
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.Questions(IApiCaller, Action{IQuestionsLawApiCall})"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.Questions(IApiCaller, Action{IQuestionsLawApiCall})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Questions(IApiCaller, out QuestionsSearchResult, Action{IQuestionsLawApiCall})"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void Questions_Method()
+    public void Questions_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Questions(null));
 
+      QuestionsSearchResult result;
+
       var call = (Action<IQuestionsLawApiCall>)(x => x.From(new DateTime(2013, 1, 1)).To(new DateTime(2013, 12, 31)).Name("образование").PageSize(PageSize.Five).Page(2));
+
       this.TestQuestionsSearchResult(this.xmlApiCaller.Questions(call));
+      Assert.True(this.xmlApiCaller.Questions(out result, call));
+      this.TestQuestionsSearchResult(result);
+
       this.TestQuestionsSearchResult(this.jsonApiCaller.Questions(call));
+      Assert.True(this.jsonApiCaller.Questions(out result, call));
+      this.TestQuestionsSearchResult(result);
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.RegionalAuthorities(IApiCaller, Action{IAuthoritiesLawApiCall})"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.RegionalAuthorities(IApiCaller, Action{IAuthoritiesLawApiCall})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.RegionalAuthorities(IApiCaller, out IList{RegionalAuthority}, Action{IAuthoritiesLawApiCall})"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void RegionalAuthorities_Method()
+    public void RegionalAuthorities_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.RegionalAuthorities(null));
 
+      IList<RegionalAuthority> authorities;
+
       this.TestRegionalAuthorities(this.xmlApiCaller.RegionalAuthorities());
+      Assert.True(this.xmlApiCaller.RegionalAuthorities(out authorities));
+      this.TestRegionalAuthorities(authorities);
+
       this.TestRegionalAuthorities(this.jsonApiCaller.RegionalAuthorities());
+      Assert.True(this.jsonApiCaller.RegionalAuthorities(out authorities));
+      this.TestRegionalAuthorities(authorities);
 
       var call = (Action<IAuthoritiesLawApiCall>)(x => x.Current(false));
+
       this.TestRegionalAuthorities(this.xmlApiCaller.RegionalAuthorities(call));
+      Assert.True(this.xmlApiCaller.RegionalAuthorities(out authorities, call));
+      this.TestRegionalAuthorities(authorities);
+
       this.TestRegionalAuthorities(this.jsonApiCaller.RegionalAuthorities(call));
+      Assert.True(this.jsonApiCaller.RegionalAuthorities(out authorities, call));
+      this.TestRegionalAuthorities(authorities);
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.Requests(IApiCaller)"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.Requests(IApiCaller)"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Requests(IApiCaller, out IList{DeputyRequest})"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void Requests_Method()
+    public void Requests_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Requests(null));
 
+      IList<DeputyRequest> requests;
+
       this.TestRequests(this.xmlApiCaller.Requests());
+      Assert.True(this.xmlApiCaller.Requests(out requests));
+      this.TestRequests(requests);
+
       this.TestRequests(this.jsonApiCaller.Requests());
+      Assert.True(this.jsonApiCaller.Requests(out requests));
+      this.TestRequests(requests);
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.Stages(IApiCaller)"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.Stages(IApiCaller)"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Stages(IApiCaller, out IList{PhaseStage})"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void Stages_Method()
+    public void Stages_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Stages(null));
 
+      IList<PhaseStage> stages;
+
       this.TestStages(this.xmlApiCaller.Stages());
+      Assert.True(this.xmlApiCaller.Stages(out stages));
+      this.TestStages(stages);
+
       this.TestStages(this.jsonApiCaller.Stages());
+      Assert.True(this.jsonApiCaller.Stages(out stages));
+      this.TestStages(stages);
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="IApiCallerExtensions.Topics(IApiCaller)"/> method.</para>
+    ///   <para>Performs testing of following methods :</para>
+    ///   <list type="bullet">
+    ///     <item><description><see cref="IApiCallerExtensions.Topics(IApiCaller)"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Topics(IApiCaller, out IList{Topic})"/></description></item>
+    ///   </list>
     /// </summary>
     [Fact]
-    public void Topics_Method()
+    public void Topics_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Topics(null));
 
+      IList<Topic> topics;
+
       this.TestTopics(this.xmlApiCaller.Topics());
+      Assert.True(this.xmlApiCaller.Topics(out topics));
+      this.TestTopics(topics);
+
       this.TestTopics(this.jsonApiCaller.Topics());
+      Assert.True(this.jsonApiCaller.Topics(out topics));
+      this.TestTopics(topics);
     }
 
     /// <summary>

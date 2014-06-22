@@ -106,6 +106,30 @@ namespace RuLaw
     }
 
     /// <summary>
+    ///   <para>Returns list of laws branches.</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="branches">Collection of laws branches.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="branches"/> output parameter contains list of law branches, or <c>false</c> if call failed and <paramref name="branches"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="caller"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-otrasley-zakonodatelstva"/>
+    public static bool Branches(this IApiCaller caller, out IList<LawBranch> branches)
+    {
+      Assertion.NotNull(caller);
+
+      try
+      {
+        branches = caller.Branches();
+        return true;
+      }
+      catch
+      {
+        branches = null;
+        return false;
+      }
+    }
+
+    /// <summary>
     ///   <para>Returns list of committees.</para>
     /// </summary>
     /// <param name="caller">API caller instance to be used.</param>
@@ -118,6 +142,30 @@ namespace RuLaw
       Assertion.NotNull(caller);
 
       return caller.Call<List<Committee>>("/{0}/committees".FormatSelf(caller.ApiToken)).Data;
+    }
+
+    /// <summary>
+    ///   <para>Returns list of committees.</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="committees">Collection of committees.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="committees"/> output parameter contains list of committees, or <c>false</c> if call failed and <paramref name="committees"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="caller"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-komitetov"/>
+    public static bool Committees(this IApiCaller caller, out IList<Committee> committees)
+    {
+      Assertion.NotNull(caller);
+
+      try
+      {
+        committees = caller.Committees();
+        return true;
+      }
+      catch
+      {
+        committees = null;
+        return false;
+      }
     }
 
     /// <summary>
@@ -146,6 +194,31 @@ namespace RuLaw
     }
 
     /// <summary>
+    ///   <para>Returns list of deputies of the State Duma and members of the Federation Council.</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="deputies">Collection of deputies.</param>
+    /// <param name="call">Delegate to configure additional parameters of request.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="deputies"/> output parameter contains list of deputies, or <c>false</c> if call failed and <paramref name="deputies"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="caller"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
+    public static bool Deputies(this IApiCaller caller, out IList<Deputy> deputies, Action<IDeputiesLawApiCall> call = null)
+    {
+      Assertion.NotNull(caller);
+
+      try
+      {
+        deputies = caller.Deputies(call);
+        return true;
+      }
+      catch
+      {
+        deputies = null;
+        return false;
+      }
+    }
+
+    /// <summary>
     ///   <para>Returns detailed information about specific deputy of the State Duma.</para>
     /// </summary>
     /// <param name="caller">API caller instance to be used.</param>
@@ -164,6 +237,31 @@ namespace RuLaw
       }
 
       return caller.Call<DeputyInfo>("/{0}/deputy".FormatSelf(caller.ApiToken), new Dictionary<string, object> { { "id", id } }).Data;
+    }
+
+    /// <summary>
+    ///   <para>Returns detailed information about specific deputy of the State Duma.</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="id">Identifier of deputy.</param>
+    /// <param name="deputy">Detailed deputy information.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="deputy"/> output parameter contains deputy information, or <c>false</c> if call failed and <paramref name="deputy"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="caller"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
+    public static bool Deputy(this IApiCaller caller, long id, out DeputyInfo deputy)
+    {
+      Assertion.NotNull(caller);
+
+      try
+      {
+        deputy = caller.Deputy(id);
+        return true;
+      }
+      catch
+      {
+        deputy = null;
+        return false;
+      }
     }
 
     /// <summary>
@@ -192,6 +290,31 @@ namespace RuLaw
     }
 
     /// <summary>
+    ///   <para>Returns list of federal law authorities.</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="authorities">Collection of authorities.</param>
+    /// <param name="call">Delegate to configure additional parameters of request.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="authorities"/> output parameter contains list of federal authorities, or <c>false</c> if call failed and <paramref name="authorities"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="caller"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-federalnih-organov-vlasti"/>
+    public static bool FederalAuthorities(this IApiCaller caller, out IList<FederalAuthority> authorities, Action<IAuthoritiesLawApiCall> call = null)
+    {
+      Assertion.NotNull(caller);
+
+      try
+      {
+        authorities = caller.FederalAuthorities(call);
+        return true;
+      }
+      catch
+      {
+        authorities = null;
+        return false;
+      }
+    }
+
+    /// <summary>
     ///   <para>Returns list of instances.</para>
     /// </summary>
     /// <param name="caller">API caller instance to be used.</param>
@@ -217,6 +340,31 @@ namespace RuLaw
     }
 
     /// <summary>
+    ///   <para>Returns list of instances.</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="instances">Collection of instances.</param>
+    /// <param name="call">Delegate to configure additional parameters of request.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="instances"/> output parameter contains list of instances, or <c>false</c> if call failed and <paramref name="instances"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="caller"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
+    public static bool Instances(this IApiCaller caller, out IList<Instance> instances, Action<IInstancesLawApiCall> call = null)
+    {
+      Assertion.NotNull(caller);
+
+      try
+      {
+        instances = caller.Instances(call);
+        return true;
+      }
+      catch
+      {
+        instances = null;
+        return false;
+      }
+    }
+
+    /// <summary>
     ///   <para>Returns list of found laws. Response contains records of laws as well as latest events for each of the law.</para>
     /// </summary>
     /// <param name="caller">API caller instance to be used.</param>
@@ -237,6 +385,32 @@ namespace RuLaw
     }
 
     /// <summary>
+    ///   <para>Returns list of found laws. Response contains records of laws as well as latest events for each of the law.</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="call">Delegate to configure parameters of request.</param>
+    /// <param name="result">Laws search result.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="result"/> output parameter contains result of laws search, or <c>false</c> if call failed and <paramref name="result"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If either <paramref name="caller"/> or <paramref name="call"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
+    public static bool Laws(this IApiCaller caller, Action<ILawsLawApiCall> call, out LawsSearchResult result)
+    {
+      Assertion.NotNull(caller);
+      Assertion.NotNull(call);
+
+      try
+      {
+        result = caller.Laws(call);
+        return true;
+      }
+      catch
+      {
+        result = null;
+        return false;
+      }
+    }
+
+    /// <summary>
     ///   <para>Returns list of State Duma's convocations and sessions.</para>
     /// </summary>
     /// <param name="caller">API caller instance to be used.</param>
@@ -249,6 +423,30 @@ namespace RuLaw
       Assertion.NotNull(caller);
 
       return caller.Call<List<Convocation>>("/{0}/periods".FormatSelf(caller.ApiToken)).Data;
+    }
+
+    /// <summary>
+    ///   <para>Returns list of State Duma's convocations and sessions.</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="convocations">Collection of convocations.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="convocations"/> output parameter contains list of convocations, or <c>false</c> if call failed and <paramref name="convocations"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="caller"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-sozivov-i-sessiy"/>
+    public static bool Convocations(this IApiCaller caller, out IList<Convocation> convocations)
+    {
+      Assertion.NotNull(caller);
+
+      try
+      {
+        convocations = caller.Convocations();
+        return true;
+      }
+      catch
+      {
+        convocations = null;
+        return false;
+      }
     }
 
     /// <summary>
@@ -277,6 +475,31 @@ namespace RuLaw
     }
 
     /// <summary>
+    ///   <para>Returns list of questions of the meetings agend of the State Duma.</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="result">Questions search result.</param>
+    /// <param name="call">Delegate to configure additional parameters of request.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="result"/> output parameter contains questions search result, or <c>false</c> if call failed and <paramref name="result"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="caller"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
+    public static bool Questions(this IApiCaller caller, out QuestionsSearchResult result, Action<IQuestionsLawApiCall> call = null)
+    {
+      Assertion.NotNull(caller);
+
+      try
+      {
+        result = caller.Questions(call);
+        return true;
+      }
+      catch
+      {
+        result = null;
+        return false;
+      }
+    }
+
+    /// <summary>
     ///   <para>Returns list of regional law authorities.</para>
     /// </summary>
     /// <param name="caller">API caller instance to be used.</param>
@@ -302,6 +525,31 @@ namespace RuLaw
     }
 
     /// <summary>
+    ///   <para>Returns list of regional law authorities.</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="authorities">Collection of authorities.</param>
+    /// <param name="call">Delegate to configure additional parameters of request.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="authorities"/> output parameter contains list of regional authorities, or <c>false</c> if call failed and <paramref name="authorities"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="caller"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-regionalnih-organov-vlasti"/>
+    public static bool RegionalAuthorities(this IApiCaller caller, out IList<RegionalAuthority> authorities, Action<IAuthoritiesLawApiCall> call = null)
+    {
+      Assertion.NotNull(caller);
+
+      try
+      {
+        authorities = caller.RegionalAuthorities(call);
+        return true;
+      }
+      catch
+      {
+        authorities = null;
+        return false;
+      }
+    }
+
+    /// <summary>
     ///   <para>Returns list of deputies requests.</para>
     /// </summary>
     /// <param name="caller">API caller instance to be used.</param>
@@ -314,6 +562,30 @@ namespace RuLaw
       Assertion.NotNull(caller);
 
       return caller.Call<List<DeputyRequest>>("/{0}/requests".FormatSelf(caller.ApiToken)).Data;
+    }
+
+    /// <summary>
+    ///   <para>Returns list of deputies requests.</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="requests">Collection of requests.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="requests"/> output parameter contains list of deputies requests, or <c>false</c> if call failed and <paramref name="requests"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="caller"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/deputatskie-zaprosi"/>
+    public static bool Requests(this IApiCaller caller, out IList<DeputyRequest> requests)
+    {
+      Assertion.NotNull(caller);
+
+      try
+      {
+        requests = caller.Requests();
+        return true;
+      }
+      catch
+      {
+        requests = null;
+        return false;
+      }
     }
 
     /// <summary>
@@ -332,6 +604,30 @@ namespace RuLaw
     }
 
     /// <summary>
+    ///   <para>Returns list of laws review stages.</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="stages">Collection of stages.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="stages"/> output parameter contains list of stages, or <c>false</c> if call failed and <paramref name="stages"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="caller"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-stadiy-rassmotreniya"/>
+    public static bool Stages(this IApiCaller caller, out IList<PhaseStage> stages)
+    {
+      Assertion.NotNull(caller);
+
+      try
+      {
+        stages = caller.Stages();
+        return true;
+      }
+      catch
+      {
+        stages = null;
+        return false;
+      }
+    }
+
+    /// <summary>
     ///   <para>Returns list of topics (subject units).</para>
     /// </summary>
     /// <param name="caller">API caller instance to be used.</param>
@@ -344,6 +640,30 @@ namespace RuLaw
       Assertion.NotNull(caller);
 
       return caller.Call<List<Topic>>("/{0}/topics".FormatSelf(caller.ApiToken)).Data;
+    }
+
+    /// <summary>
+    ///   <para>Returns list of topics (subject units).</para>
+    /// </summary>
+    /// <param name="caller">API caller instance to be used.</param>
+    /// <param name="topics">Collection of topics.</param>
+    /// <returns><c>true</c> if call was successful and <paramref name="topics"/> output parameter contains list of topics, or <c>false</c> if call failed and <paramref name="topics"/> output parameter is a <c>null</c> reference.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="caller"/> is a <c>null</c> reference.</exception>
+    /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-tematicheskih-blokov"/>
+    public static bool Topics(this IApiCaller caller, out IList<Topic> topics)
+    {
+      Assertion.NotNull(caller);
+
+      try
+      {
+        topics = caller.Topics();
+        return true;
+      }
+      catch
+      {
+        topics = null;
+        return false;
+      }
     }
 
     /// <summary>
