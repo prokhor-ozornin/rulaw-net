@@ -139,7 +139,7 @@ namespace RuLaw
       return response;
     }
 
-    private RestRequest CreateRequest(string resource, IEnumerable<KeyValuePair<string, object>> parameters = null)
+    private RestRequest CreateRequest(string resource, IDictionary<string, object> parameters = null)
     {
       Assertion.NotEmpty(resource);
 

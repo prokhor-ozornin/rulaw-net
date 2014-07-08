@@ -60,86 +60,416 @@
     <Compile Include="..\RuLaw.4.0\ApiDataFormat.cs">
       <Link>ApiDataFormat.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\AuthoritiesLawApiCall.cs">
-      <Link>AuthoritiesLawApiCall.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Extensions\IDeputiesLawApiCallExtensions.cs">
+      <Link>Calls\Extensions\IDeputiesLawApiCallExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\Authority.cs">
-      <Link>Authority.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Extensions\IDeputyTranscriptLawApiCallExtensions.cs">
+      <Link>Calls\Extensions\IDeputyTranscriptLawApiCallExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\Committee.cs">
-      <Link>Committee.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Extensions\ILawsLawApiCallExtensions.cs">
+      <Link>Calls\Extensions\ILawsLawApiCallExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\Convocation.cs">
-      <Link>Convocation.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Extensions\IVotesSearchLawApiCallExtensions.cs">
+      <Link>Calls\Extensions\IVotesSearchLawApiCallExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DateTimeExtensions.cs">
-      <Link>DateTimeExtensions.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Extensions\LawsEventsSearchMode.cs">
+      <Link>Calls\Extensions\LawsEventsSearchMode.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DateTranscriptMeeting.cs">
-      <Link>DateTranscriptMeeting.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Extensions\LawsSorting.cs">
+      <Link>Calls\Extensions\LawsSorting.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DateTranscriptsResult.cs">
-      <Link>DateTranscriptsResult.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Extensions\LawStatus.cs">
+      <Link>Calls\Extensions\LawStatus.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputiesLawApiCall.cs">
-      <Link>DeputiesLawApiCall.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Extensions\LawTypes.cs">
+      <Link>Calls\Extensions\LawTypes.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\Deputy.cs">
-      <Link>Deputy.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Implementation\AuthoritiesLawApiCall.cs">
+      <Link>Calls\Implementation\AuthoritiesLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputyActivity.cs">
-      <Link>DeputyActivity.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Implementation\DeputiesLawApiCall.cs">
+      <Link>Calls\Implementation\DeputiesLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputyExtensions.cs">
-      <Link>DeputyExtensions.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Implementation\DeputyTranscriptLawApiCall.cs">
+      <Link>Calls\Implementation\DeputyTranscriptLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputyInfo.cs">
-      <Link>DeputyInfo.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Implementation\InstancesLawApiCall.cs">
+      <Link>Calls\Implementation\InstancesLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputyInfoExtensions.cs">
-      <Link>DeputyInfoExtensions.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Implementation\LawApiCall.cs">
+      <Link>Calls\Implementation\LawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputyPosition.cs">
-      <Link>DeputyPosition.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Implementation\LawsLawApiCall.cs">
+      <Link>Calls\Implementation\LawsLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputyRequest.cs">
-      <Link>DeputyRequest.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Implementation\QuestionsLawApiCall.cs">
+      <Link>Calls\Implementation\QuestionsLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputyRequestAddressee.cs">
-      <Link>DeputyRequestAddressee.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Implementation\VotesSearchLawApiCall.cs">
+      <Link>Calls\Implementation\VotesSearchLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputyRequestExtensions.cs">
-      <Link>DeputyRequestExtensions.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Interface\IAuthoritiesLawApiCall.cs">
+      <Link>Calls\Interface\IAuthoritiesLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputyRequestSigner.cs">
-      <Link>DeputyRequestSigner.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Interface\IDeputiesLawApiCall.cs">
+      <Link>Calls\Interface\IDeputiesLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputySearchResult.cs">
-      <Link>DeputySearchResult.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Interface\IDeputyTranscriptLawApiCall.cs">
+      <Link>Calls\Interface\IDeputyTranscriptLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputyTranscriptLawApiCall.cs">
-      <Link>DeputyTranscriptLawApiCall.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Interface\IInstancesLawApiCall.cs">
+      <Link>Calls\Interface\IInstancesLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\DeputyTranscriptsResult.cs">
-      <Link>DeputyTranscriptsResult.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Interface\ILawApiCall.cs">
+      <Link>Calls\Interface\ILawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\Education.cs">
-      <Link>Education.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Interface\ILawsLawApiCall.cs">
+      <Link>Calls\Interface\ILawsLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\EducationExtensions.cs">
-      <Link>EducationExtensions.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Calls\Interface\IPagedLawApiCall.cs">
+      <Link>Calls\Interface\IPagedLawApiCall.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Calls\Interface\IQuestionsLawApiCall.cs">
+      <Link>Calls\Interface\IQuestionsLawApiCall.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Calls\Interface\IVotesSearchLawApiCall.cs">
+      <Link>Calls\Interface\IVotesSearchLawApiCall.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\DeputyExtensions.cs">
+      <Link>Domain\Extensions\DeputyExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\DeputyInfoExtensions.cs">
+      <Link>Domain\Extensions\DeputyInfoExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\DeputyRequestExtensions.cs">
+      <Link>Domain\Extensions\DeputyRequestExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\EducationExtensions.cs">
+      <Link>Domain\Extensions\EducationExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\IActiveExtensions.cs">
+      <Link>Domain\Extensions\IActiveExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\IDateableExtensions.cs">
+      <Link>Domain\Extensions\IDateableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\IDateTranscriptMeetingExtensions.cs">
+      <Link>Domain\Extensions\IDateTranscriptMeetingExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\IDeputyExtensions.cs">
+      <Link>Domain\Extensions\IDeputyExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\IDeputyInfoExtensions.cs">
+      <Link>Domain\Extensions\IDeputyInfoExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\INameableExtensions.cs">
+      <Link>Domain\Extensions\INameableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\IPeriodableExtensions.cs">
+      <Link>Domain\Extensions\IPeriodableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\ITranscriptMeetingQuestionPartExtensions.cs">
+      <Link>Domain\Extensions\ITranscriptMeetingQuestionPartExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\IVoteExtensions.cs">
+      <Link>Domain\Extensions\IVoteExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\LawEventExtensions.cs">
+      <Link>Domain\Extensions\LawEventExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\LawExtensions.cs">
+      <Link>Domain\Extensions\LawExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\LawTranscriptExtensions.cs">
+      <Link>Domain\Extensions\LawTranscriptExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\TranscriptMeetingQuestionExtensions.cs">
+      <Link>Domain\Extensions\TranscriptMeetingQuestionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\VoteExtensions.cs">
+      <Link>Domain\Extensions\VoteExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Authority.cs">
+      <Link>Domain\Implementation\Authority.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Committee.cs">
+      <Link>Domain\Implementation\Committee.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Convocation.cs">
+      <Link>Domain\Implementation\Convocation.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\DateTranscriptMeeting.cs">
+      <Link>Domain\Implementation\DateTranscriptMeeting.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Deputy.cs">
+      <Link>Domain\Implementation\Deputy.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\DeputyActivity.cs">
+      <Link>Domain\Implementation\DeputyActivity.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\DeputyInfo.cs">
+      <Link>Domain\Implementation\DeputyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\DeputyPosition.cs">
+      <Link>Domain\Implementation\DeputyPosition.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\DeputyRequest.cs">
+      <Link>Domain\Implementation\DeputyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\DeputyRequestAddressee.cs">
+      <Link>Domain\Implementation\DeputyRequestAddressee.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\DeputyRequestSigner.cs">
+      <Link>Domain\Implementation\DeputyRequestSigner.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Education.cs">
+      <Link>Domain\Implementation\Education.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\FederalAuthority.cs">
+      <Link>Domain\Implementation\FederalAuthority.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Instance.cs">
+      <Link>Domain\Implementation\Instance.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Law.cs">
+      <Link>Domain\Implementation\Law.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\LawBranch.cs">
+      <Link>Domain\Implementation\LawBranch.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\LawCommittees.cs">
+      <Link>Domain\Implementation\LawCommittees.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\LawEvent.cs">
+      <Link>Domain\Implementation\LawEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\LawEventDocument.cs">
+      <Link>Domain\Implementation\LawEventDocument.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\LawEventPhase.cs">
+      <Link>Domain\Implementation\LawEventPhase.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\LawEventStage.cs">
+      <Link>Domain\Implementation\LawEventStage.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\LawSubject.cs">
+      <Link>Domain\Implementation\LawSubject.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\LawType.cs">
+      <Link>Domain\Implementation\LawType.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\NameableEntity.cs">
+      <Link>Domain\Implementation\NameableEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\PhaseStage.cs">
+      <Link>Domain\Implementation\PhaseStage.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Question.cs">
+      <Link>Domain\Implementation\Question.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\RegionalAuthority.cs">
+      <Link>Domain\Implementation\RegionalAuthority.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Results\DateTranscriptsResult.cs">
+      <Link>Domain\Implementation\Results\DateTranscriptsResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Results\DeputySearchResult.cs">
+      <Link>Domain\Implementation\Results\DeputySearchResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Results\DeputyTranscriptsResult.cs">
+      <Link>Domain\Implementation\Results\DeputyTranscriptsResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Results\LawsSearchResult.cs">
+      <Link>Domain\Implementation\Results\LawsSearchResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Results\LawTranscriptsResult.cs">
+      <Link>Domain\Implementation\Results\LawTranscriptsResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Results\QuestionsSearchResult.cs">
+      <Link>Domain\Implementation\Results\QuestionsSearchResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Results\QuestionTranscriptsResult.cs">
+      <Link>Domain\Implementation\Results\QuestionTranscriptsResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Results\ResolutionTranscriptsResult.cs">
+      <Link>Domain\Implementation\Results\ResolutionTranscriptsResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Results\VotePersonResult.cs">
+      <Link>Domain\Implementation\Results\VotePersonResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Results\VotesSearchResult.cs">
+      <Link>Domain\Implementation\Results\VotesSearchResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Session.cs">
+      <Link>Domain\Implementation\Session.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\StagePhase.cs">
+      <Link>Domain\Implementation\StagePhase.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Topic.cs">
+      <Link>Domain\Implementation\Topic.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\TranscriptMeeting.cs">
+      <Link>Domain\Implementation\TranscriptMeeting.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\TranscriptMeetingQuestion.cs">
+      <Link>Domain\Implementation\TranscriptMeetingQuestion.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\TranscriptMeetingQuestionPart.cs">
+      <Link>Domain\Implementation\TranscriptMeetingQuestionPart.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\TranscriptVote.cs">
+      <Link>Domain\Implementation\TranscriptVote.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\Vote.cs">
+      <Link>Domain\Implementation\Vote.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Implementation\VoteResultType.cs">
+      <Link>Domain\Implementation\VoteResultType.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IActive.cs">
+      <Link>Domain\Interface\IActive.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IAuthority.cs">
+      <Link>Domain\Interface\IAuthority.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ICommittee.cs">
+      <Link>Domain\Interface\ICommittee.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IConvocation.cs">
+      <Link>Domain\Interface\IConvocation.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IDateable.cs">
+      <Link>Domain\Interface\IDateable.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IDateTranscriptMeeting.cs">
+      <Link>Domain\Interface\IDateTranscriptMeeting.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IDeputy.cs">
+      <Link>Domain\Interface\IDeputy.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IDeputyActivity.cs">
+      <Link>Domain\Interface\IDeputyActivity.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IDeputyInfo.cs">
+      <Link>Domain\Interface\IDeputyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IDeputyRequest.cs">
+      <Link>Domain\Interface\IDeputyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IDeputyRequestAddressee.cs">
+      <Link>Domain\Interface\IDeputyRequestAddressee.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IDeputyRequestSigner.cs">
+      <Link>Domain\Interface\IDeputyRequestSigner.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IEducation.cs">
+      <Link>Domain\Interface\IEducation.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IEntity.cs">
+      <Link>Domain\Interface\IEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IInstance.cs">
+      <Link>Domain\Interface\IInstance.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ILaw.cs">
+      <Link>Domain\Interface\ILaw.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ILawBranch.cs">
+      <Link>Domain\Interface\ILawBranch.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ILawCommittees.cs">
+      <Link>Domain\Interface\ILawCommittees.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ILawEvent.cs">
+      <Link>Domain\Interface\ILawEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ILawEventDocument.cs">
+      <Link>Domain\Interface\ILawEventDocument.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ILawEventPhase.cs">
+      <Link>Domain\Interface\ILawEventPhase.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ILawEventStage.cs">
+      <Link>Domain\Interface\ILawEventStage.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ILawSubject.cs">
+      <Link>Domain\Interface\ILawSubject.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ILawType.cs">
+      <Link>Domain\Interface\ILawType.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\INameable.cs">
+      <Link>Domain\Interface\INameable.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IPeriodable.cs">
+      <Link>Domain\Interface\IPeriodable.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IPhaseStage.cs">
+      <Link>Domain\Interface\IPhaseStage.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IQuestion.cs">
+      <Link>Domain\Interface\IQuestion.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ISession.cs">
+      <Link>Domain\Interface\ISession.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IStagePhase.cs">
+      <Link>Domain\Interface\IStagePhase.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ITopic.cs">
+      <Link>Domain\Interface\ITopic.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ITranscriptMeeting.cs">
+      <Link>Domain\Interface\ITranscriptMeeting.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ITranscriptMeetingQuestion.cs">
+      <Link>Domain\Interface\ITranscriptMeetingQuestion.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ITranscriptMeetingQuestionPart.cs">
+      <Link>Domain\Interface\ITranscriptMeetingQuestionPart.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\ITranscriptVote.cs">
+      <Link>Domain\Interface\ITranscriptVote.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\IVote.cs">
+      <Link>Domain\Interface\IVote.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\Results\IDateTranscriptsResult.cs">
+      <Link>Domain\Interface\Results\IDateTranscriptsResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\Results\IDeputyTranscriptsResult.cs">
+      <Link>Domain\Interface\Results\IDeputyTranscriptsResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\Results\ILawsSearchResult.cs">
+      <Link>Domain\Interface\Results\ILawsSearchResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\Results\ILawTranscriptsResult.cs">
+      <Link>Domain\Interface\Results\ILawTranscriptsResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\Results\IQuestionsSearchResult.cs">
+      <Link>Domain\Interface\Results\IQuestionsSearchResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\Results\IQuestionTranscriptsResult.cs">
+      <Link>Domain\Interface\Results\IQuestionTranscriptsResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\Results\IResolutionTranscriptsResult.cs">
+      <Link>Domain\Interface\Results\IResolutionTranscriptsResult.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Interface\Results\IVotesSearchResult.cs">
+      <Link>Domain\Interface\Results\IVotesSearchResult.cs</Link>
     </Compile>
     <Compile Include="..\RuLaw.4.0\Error.cs">
       <Link>Error.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\FederalAuthority.cs">
-      <Link>FederalAuthority.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Extensions\DateTimeExtensions.cs">
+      <Link>Extensions\DateTimeExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\IActive.cs">
-      <Link>IActive.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Extensions\ObjectExtensions.cs">
+      <Link>Extensions\ObjectExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\IActiveExtensions.cs">
-      <Link>IActiveExtensions.cs</Link>
+    <Compile Include="..\RuLaw.4.0\Extensions\StringExtensions.cs">
+      <Link>Extensions\StringExtensions.cs</Link>
     </Compile>
     <Compile Include="..\RuLaw.4.0\IApiCaller.cs">
       <Link>IApiCaller.cs</Link>
@@ -149,66 +479,6 @@
     </Compile>
     <Compile Include="..\RuLaw.4.0\IApiConfigurator.cs">
       <Link>IApiConfigurator.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IAuthoritiesLawApiCall.cs">
-      <Link>IAuthoritiesLawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IDateable.cs">
-      <Link>IDateable.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IDateableExtensions.cs">
-      <Link>IDateableExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IDeputiesLawApiCall.cs">
-      <Link>IDeputiesLawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IDeputiesLawApiCallExtensions.cs">
-      <Link>IDeputiesLawApiCallExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IDeputyTranscriptLawApiCall.cs">
-      <Link>IDeputyTranscriptLawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IDeputyTranscriptLawApiCallExtensions.cs">
-      <Link>IDeputyTranscriptLawApiCallExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IInstancesLawApiCall.cs">
-      <Link>IInstancesLawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\ILawApiCall.cs">
-      <Link>ILawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\ILawsLawApiCall.cs">
-      <Link>ILawsLawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\ILawsLawApiCallExtensions.cs">
-      <Link>ILawsLawApiCallExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\INameable.cs">
-      <Link>INameable.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\INameableExtensions.cs">
-      <Link>INameableExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\Instance.cs">
-      <Link>Instance.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\InstancesLawApiCall.cs">
-      <Link>InstancesLawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IPagedLawApiCall.cs">
-      <Link>IPagedLawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IPeriodable.cs">
-      <Link>IPeriodable.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IPeriodableExtensions.cs">
-      <Link>IPeriodableExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IQuestionsLawApiCall.cs">
-      <Link>IQuestionsLawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IRuLawEntity.cs">
-      <Link>IRuLawEntity.cs</Link>
     </Compile>
     <Compile Include="..\RuLaw.4.0\ITranscriptsApiCaller.cs">
       <Link>ITranscriptsApiCaller.cs</Link>
@@ -222,107 +492,14 @@
     <Compile Include="..\RuLaw.4.0\IVotesApiCallerExtensions.cs">
       <Link>IVotesApiCallerExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\IVotesSearchLawApiCall.cs">
-      <Link>IVotesSearchLawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\IVotesSearchLawApiCallExtensions.cs">
-      <Link>IVotesSearchLawApiCallExtensions.cs</Link>
-    </Compile>
     <Compile Include="..\RuLaw.4.0\JsonDefaultSettings.cs">
       <Link>JsonDefaultSettings.cs</Link>
     </Compile>
     <Compile Include="..\RuLaw.4.0\JsonEntityOrderedContractResolver.cs">
       <Link>JsonEntityOrderedContractResolver.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\Law.cs">
-      <Link>Law.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawApiCall.cs">
-      <Link>LawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawBranch.cs">
-      <Link>LawBranch.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawCommittees.cs">
-      <Link>LawCommittees.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawEvent.cs">
-      <Link>LawEvent.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawEventDocument.cs">
-      <Link>LawEventDocument.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawEventExtensions.cs">
-      <Link>LawEventExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawEventPhase.cs">
-      <Link>LawEventPhase.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawEventStage.cs">
-      <Link>LawEventStage.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawExtensions.cs">
-      <Link>LawExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawsEventsSearchMode.cs">
-      <Link>LawsEventsSearchMode.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawsLawApiCall.cs">
-      <Link>LawsLawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawsSearchResult.cs">
-      <Link>LawsSearchResult.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawsSorting.cs">
-      <Link>LawsSorting.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawStatus.cs">
-      <Link>LawStatus.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawSubject.cs">
-      <Link>LawSubject.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawTranscriptExtensions.cs">
-      <Link>LawTranscriptExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawTranscriptsResult.cs">
-      <Link>LawTranscriptsResult.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawType.cs">
-      <Link>LawType.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\LawTypes.cs">
-      <Link>LawTypes.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\NameableEntity.cs">
-      <Link>NameableEntity.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\ObjectExtensions.cs">
-      <Link>ObjectExtensions.cs</Link>
-    </Compile>
     <Compile Include="..\RuLaw.4.0\PageSize.cs">
       <Link>PageSize.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\PhaseStage.cs">
-      <Link>PhaseStage.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\Question.cs">
-      <Link>Question.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\QuestionsLawApiCall.cs">
-      <Link>QuestionsLawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\QuestionsSearchResult.cs">
-      <Link>QuestionsSearchResult.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\QuestionTranscriptsResult.cs">
-      <Link>QuestionTranscriptsResult.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\RegionalAuthority.cs">
-      <Link>RegionalAuthority.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\ResolutionTranscriptsResult.cs">
-      <Link>ResolutionTranscriptsResult.cs</Link>
     </Compile>
     <Compile Include="..\RuLaw.4.0\RuLaw.cs">
       <Link>RuLaw.cs</Link>
@@ -342,56 +519,11 @@
     <Compile Include="..\RuLaw.4.0\RuLawXmlSerializer.cs">
       <Link>RuLawXmlSerializer.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\Session.cs">
-      <Link>Session.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\StagePhase.cs">
-      <Link>StagePhase.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\StringExtensions.cs">
-      <Link>StringExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\Topic.cs">
-      <Link>Topic.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\TranscriptMeeting.cs">
-      <Link>TranscriptMeeting.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\TranscriptMeetingQuestion.cs">
-      <Link>TranscriptMeetingQuestion.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\TranscriptMeetingQuestionExtensions.cs">
-      <Link>TranscriptMeetingQuestionExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\TranscriptMeetingQuestionPart.cs">
-      <Link>TranscriptMeetingQuestionPart.cs</Link>
-    </Compile>
     <Compile Include="..\RuLaw.4.0\TranscriptsApiCaller.cs">
       <Link>TranscriptsApiCaller.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\TranscriptVote.cs">
-      <Link>TranscriptVote.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\Vote.cs">
-      <Link>Vote.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\VoteExtensions.cs">
-      <Link>VoteExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\VotePersonResult.cs">
-      <Link>VotePersonResult.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\VoteResultType.cs">
-      <Link>VoteResultType.cs</Link>
-    </Compile>
     <Compile Include="..\RuLaw.4.0\VotesApiCaller.cs">
       <Link>VotesApiCaller.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\VotesSearchLawApiCall.cs">
-      <Link>VotesSearchLawApiCall.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\VotesSearchResult.cs">
-      <Link>VotesSearchResult.cs</Link>
     </Compile>
     <Compile Include="..\RuLaw.4.0\VotesSorting.cs">
       <Link>VotesSorting.cs</Link>
@@ -401,6 +533,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

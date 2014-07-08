@@ -41,11 +41,11 @@ namespace RuLaw
     /// <summary>
     ///   <para>Performs testing of <see cref="TranscriptsApiCaller.Deputy(long, DateTime?, DateTime?, string, int?, PageSize?)"/> method.</para>
     /// </summary>
-    [Fact]
+    [Fact(Skip = "")]
     public void Deputy_Method()
     {
-      this.TestDeputyTranscriptsResult(this.xmlApiCaller.Transcripts().Deputy(id: 99100142, from: new DateTime(2013, 1, 1), to: new DateTime(2013, 12, 31), page: 2, limit: PageSize.Five));
-      this.TestDeputyTranscriptsResult(this.jsonApiCaller.Transcripts().Deputy(id: 99100142, from: new DateTime(2013, 1, 1), to: new DateTime(2013, 12, 31), page: 2, limit: PageSize.Five));
+      this.TestDeputyTranscriptsResult(this.xmlApiCaller.Transcripts().Deputy(id: 99100142));
+      this.TestDeputyTranscriptsResult(this.jsonApiCaller.Transcripts().Deputy(id: 99100142));
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ namespace RuLaw
       this.TestResolutionTranscriptsResult(this.jsonApiCaller.Transcripts().Resolution("276569-6"));
     }
 
-    private void TestDateTranscriptsResult(DateTranscriptsResult result)
+    private void TestDateTranscriptsResult(IDateTranscriptsResult result)
     {
       Assertion.NotNull(result);
 
@@ -94,18 +94,18 @@ namespace RuLaw
       Assert.True(meetings.Any());
       var meeting = meetings.Single(x => x.Number == 97);
       Assert.Equal(new DateTime(2013, 5, 14), meeting.Date);
-      Assert.True(meeting.Text.Contains("ХРОНИКА"));
-      Assert.True(meeting.Text.Contains("заседания Государственной Думы"));
-      Assert.True(meeting.Text.Contains("14 мая 2013 года"));
+      Assert.True(meeting.Text().Contains("ХРОНИКА"));
+      Assert.True(meeting.Text().Contains("заседания Государственной Думы"));
+      Assert.True(meeting.Text().Contains("14 мая 2013 года"));
 
-      Assert.Equal(29, meeting.Votes.Count);
+      Assert.Equal(29, meeting.Votes.Count());
 
       var vote = meeting.Votes.First();
       Assert.Equal(6366, vote.Line);
       Assert.Equal(new DateTime(2013, 5, 14, 18, 16, 0), vote.Date);
     }
 
-    private void TestDeputyTranscriptsResult(DeputyTranscriptsResult result)
+    private void TestDeputyTranscriptsResult(IDeputyTranscriptsResult result)
     {
       Assertion.NotNull(result);
 
@@ -126,15 +126,15 @@ namespace RuLaw
       Assert.Equal("Об отчёте Правительства Российской Федерации о результатах его деятельности за 2013 год.", question.Name);
       Assert.Null(question.Stage);
 
-      Assert.Equal(3, question.Parts.Count);
+      Assert.Equal(3, question.Parts.Count());
       var part = question.Parts.First();
       Assert.Equal(4099, part.StartLine);
       Assert.Equal(4262, part.EndLine);
-      Assert.True(part.Text.Contains("ЖИРИНОВСКИЙ В. В., руководитель фракции ЛДПР."));
+      Assert.True(part.Text().Contains("ЖИРИНОВСКИЙ В. В., руководитель фракции ЛДПР."));
       Assert.False(part.Votes.Any());
     }
 
-    private void TestLawTranscriptsResult(LawTranscriptsResult transcript)
+    private void TestLawTranscriptsResult(ILawTranscriptsResult transcript)
     {
       Assertion.NotNull(transcript);
 
@@ -144,7 +144,7 @@ namespace RuLaw
 
       var meetings = transcript.Meetings;
       Assert.True(meetings.Any());
-      Assert.Equal(2, meetings.Count);
+      Assert.Equal(2, meetings.Count());
 
       var meeting = meetings.First();
       Assert.Equal(new DateTime(2013, 6, 21), meeting.Date);
@@ -154,34 +154,34 @@ namespace RuLaw
       Assert.Equal(@"О проекте федерального закона № 140513-6 ""О внесении изменений в главы 23 и 26 части второй Налогового кодекса Российской Федерации"" (в части уточнения видов доходов от использования авторских или смежных прав; принят в первом чтении 15 мая 2013 года с наименованием ""О внесении изменений в статью 208 Налогового кодекса Российской Федерации"").", question.Name);
       Assert.Equal("Рассмотрение законопроекта во втором чтении", question.Stage);
 
-      Assert.Equal(2, question.Parts.Count);
+      Assert.Equal(2, question.Parts.Count());
 
-      var part = question.Parts[0];
+      var part = question.Parts.ElementAt(0);
       Assert.Equal(3501, part.StartLine);
       Assert.Equal(3544, part.EndLine);
-      Assert.True(part.Text.Contains("Продолжаем работу. 29-й пункт порядка работы"));
+      Assert.True(part.Text().Contains("Продолжаем работу. 29-й пункт порядка работы"));
 
       var vote = part.Votes.Single();
       Assert.Equal(3525, vote.Line);
       Assert.Equal(new DateTime(2013, 6, 21, 12, 34, 14), vote.Date);
 
-      part = question.Parts[1];
+      part = question.Parts.ElementAt(1);
       Assert.Equal(7210, part.StartLine);
       Assert.Equal(7246, part.EndLine);
-      Assert.True(part.Text.Contains("29-й пункт порядка работы, проект федерального закона"));
+      Assert.True(part.Text().Contains("29-й пункт порядка работы, проект федерального закона"));
 
-      Assert.Equal(2, part.Votes.Count);
+      Assert.Equal(2, part.Votes.Count());
       
-      vote = part.Votes[0];
+      vote = part.Votes.ElementAt(0);
       Assert.Equal(7218, vote.Line);
       Assert.Equal(new DateTime(2013, 6, 21, 16, 45, 15), vote.Date);
 
-      vote = part.Votes[1];
+      vote = part.Votes.ElementAt(1);
       Assert.Equal(7237, vote.Line);
       Assert.Equal(new DateTime(2013, 6, 21, 16, 45, 44), vote.Date);
     }
 
-    private void TestQuestionTranscriptsResult(QuestionTranscriptsResult result)
+    private void TestQuestionTranscriptsResult(IQuestionTranscriptsResult result)
     {
       Assertion.NotNull(result);
 
@@ -200,14 +200,14 @@ namespace RuLaw
       var part = question.Parts.Single();
       Assert.Equal(4372, part.StartLine);
       Assert.Equal(4424, part.EndLine);
-      Assert.True(part.Text.Contains("ЗАДОРНОВ М.М. О Счетной палате?"));
+      Assert.True(part.Text().Contains("ЗАДОРНОВ М.М. О Счетной палате?"));
 
       var vote = part.Votes.Single();
       Assert.Equal(4404, vote.Line);
       Assert.Equal(new DateTime(1995, 1, 18, 16, 18, 52), vote.Date);
     }
 
-    private void TestResolutionTranscriptsResult(ResolutionTranscriptsResult result)
+    private void TestResolutionTranscriptsResult(IResolutionTranscriptsResult result)
     {
       Assertion.NotNull(result);
 
@@ -225,18 +225,18 @@ namespace RuLaw
       Assert.Equal("О проекте постановления Государственной Думы \u2116 276569-6 \"О внесении изменений в план проведения \"правительственного часа\" на весеннюю сессию Государственной Думы 2013 года, утверждённый постановлением Государственной Думы Федерального Собрания Российской Федерации \"О плане проведения \"правительственного часа\" на весеннюю сессию Государственной Думы 2013 года\" (в части проведения \"правительственного часа\" 22 мая 2013 года).", question.Name);
       Assert.Null(question.Stage);
 
-      Assert.Equal(2, question.Parts.Count);
+      Assert.Equal(2, question.Parts.Count());
       
-      var part = question.Parts[0];
+      var part = question.Parts.ElementAt(0);
       Assert.Equal(1183, part.StartLine);
       Assert.Equal(1209, part.EndLine);
-      Assert.True(part.Text.Contains("2-й вопрос, проект постановления Государственной Думы"));
+      Assert.True(part.Text().Contains("2-й вопрос, проект постановления Государственной Думы"));
       Assert.False(part.Votes.Any());
 
-      part = question.Parts[1];
+      part = question.Parts.ElementAt(1);
       Assert.Equal(4948, part.StartLine);
       Assert.Equal(4965, part.EndLine);
-      Assert.True(part.Text.Contains("2-й пункт повестки, проект постановления Государственной Думы"));
+      Assert.True(part.Text().Contains("2-й пункт повестки, проект постановления Государственной Думы"));
 
       var vote = part.Votes.Single();
       Assert.Equal(4956, vote.Line);

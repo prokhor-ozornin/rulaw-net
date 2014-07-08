@@ -18,7 +18,7 @@ namespace RuLaw
     /// <exception cref="ArgumentNullException">If either <paramref name="caller"/> or <paramref name="call"/> is a <c>null</c> reference.</exception>
     /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
     /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
-    public static DeputyTranscriptsResult Deputy(this ITranscriptsApiCaller caller, Action<IDeputyTranscriptLawApiCall> call)
+    public static IDeputyTranscriptsResult Deputy(this ITranscriptsApiCaller caller, Action<IDeputyTranscriptLawApiCall> call)
     {
       Assertion.NotNull(caller);
       Assertion.NotNull(call);
@@ -40,7 +40,7 @@ namespace RuLaw
     /// <returns><c>true</c> if call was successful and <paramref name="result"/> output parameter contains result of deputy's transcripts search, or <c>false</c> if call failed and <paramref name="result"/> output parameter is a <c>null</c> reference.</returns>
     /// <exception cref="ArgumentNullException">If either <paramref name="caller"/> or <paramref name="call"/> is a <c>null</c> reference.</exception>
     /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
-    public static bool Deputy(this ITranscriptsApiCaller caller, Action<IDeputyTranscriptLawApiCall> call, out DeputyTranscriptsResult result)
+    public static bool Deputy(this ITranscriptsApiCaller caller, Action<IDeputyTranscriptLawApiCall> call, out IDeputyTranscriptsResult result)
     {
       Assertion.NotNull(caller);
       Assertion.NotNull(call);

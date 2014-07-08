@@ -19,7 +19,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.Branches(IApiCaller)"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.Branches(IApiCaller, out IList{LawBranch})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Branches(IApiCaller, out IEnumerable{ILawBranch})"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -27,7 +27,7 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Branches(null));
 
-      IList<LawBranch> branches;
+      IEnumerable<ILawBranch> branches;
 
       this.TestBranches(this.xmlApiCaller.Branches());
       Assert.True(this.xmlApiCaller.Branches(out branches));
@@ -42,7 +42,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.Committees(IApiCaller)"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.Committees(IApiCaller, out IList{Committee})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Committees(IApiCaller, out IEnumerable{ICommittee})"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -50,7 +50,7 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Committees(null));
 
-      IList<Committee> committees;
+      IEnumerable<ICommittee> committees;
       
       this.TestCommittees(this.xmlApiCaller.Committees());
       Assert.True(this.xmlApiCaller.Committees(out committees));
@@ -65,7 +65,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.Convocations(IApiCaller)"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.Convocations(IApiCaller, out IList{Convocation})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Convocations(IApiCaller, out IEnumerable{IConvocation})"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -73,7 +73,7 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Convocations(null));
 
-      IList<Convocation> convocations;
+      IEnumerable<IConvocation> convocations;
 
       this.TestConvocations(this.xmlApiCaller.Convocations());
       Assert.True(this.xmlApiCaller.Convocations(out convocations));
@@ -88,7 +88,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.Deputy(IApiCaller, long)"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.Deputy(IApiCaller, long, out DeputyInfo)"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Deputy(IApiCaller, long, out IDeputyInfo)"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -97,7 +97,7 @@ namespace RuLaw
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Deputy(null, 0));
 
       const long id = 99100142;
-      DeputyInfo deputy;
+      IDeputyInfo deputy;
 
       this.TestDeputyInfo(this.xmlApiCaller.Deputy(id));
       Assert.True(this.xmlApiCaller.Deputy(id, out deputy));
@@ -112,7 +112,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.Deputies(IApiCaller, Action{IDeputiesLawApiCall})"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.Deputies(IApiCaller, out IList{Deputy}, Action{IDeputiesLawApiCall})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Deputies(IApiCaller, out IEnumerable{IDeputy}, Action{IDeputiesLawApiCall})"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -120,7 +120,7 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Deputies(null));
 
-      IList<Deputy> deputies;
+      IEnumerable<IDeputy> deputies;
 
       this.TestDeputies(this.xmlApiCaller.Deputies());
       Assert.True(this.xmlApiCaller.Deputies(out deputies));
@@ -145,7 +145,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.FederalAuthorities(IApiCaller, Action{IAuthoritiesLawApiCall})"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.FederalAuthorities(IApiCaller, out IList{FederalAuthority}, Action{IAuthoritiesLawApiCall})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.FederalAuthorities(IApiCaller, out IEnumerable{IAuthority}, Action{IAuthoritiesLawApiCall})"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -153,7 +153,7 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.FederalAuthorities(null));
 
-      IList<FederalAuthority> authorities;
+      IEnumerable<IAuthority> authorities;
 
       this.TestFederalAuthorities(this.xmlApiCaller.FederalAuthorities());
       Assert.True(this.xmlApiCaller.FederalAuthorities(out authorities));
@@ -178,7 +178,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.Instances(IApiCaller, Action{IInstancesLawApiCall})"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.Instances(IApiCaller, out IList{Instance}, Action{IInstancesLawApiCall})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Instances(IApiCaller, out IEnumerable{IInstance}, Action{IInstancesLawApiCall})"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -186,7 +186,7 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Instances(null));
 
-      IList<Instance> instances;
+      IEnumerable<IInstance> instances;
 
       this.TestInstances(this.xmlApiCaller.Instances());
       Assert.True(this.xmlApiCaller.Instances(out instances));
@@ -211,7 +211,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.Laws(IApiCaller, Action{ILawsLawApiCall})"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.Laws(IApiCaller, Action{ILawsLawApiCall}, out LawsSearchResult)"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Laws(IApiCaller, Action{ILawsLawApiCall}, out ILawsSearchResult)"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -220,7 +220,7 @@ namespace RuLaw
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Laws(null, request => { }));
       Assert.Throws<ArgumentNullException>(() => this.xmlApiCaller.Laws(null));
 
-      LawsSearchResult result;
+      ILawsSearchResult result;
 
       var call = (Action<ILawsLawApiCall>) (x => x.Name("курение").Sorting(LawsSorting.DateDescending));
 
@@ -237,7 +237,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.Questions(IApiCaller, Action{IQuestionsLawApiCall})"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.Questions(IApiCaller, out QuestionsSearchResult, Action{IQuestionsLawApiCall})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Questions(IApiCaller, out IQuestionsSearchResult, Action{IQuestionsLawApiCall})"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -245,7 +245,7 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Questions(null));
 
-      QuestionsSearchResult result;
+      IQuestionsSearchResult result;
 
       var call = (Action<IQuestionsLawApiCall>)(x => x.From(new DateTime(2013, 1, 1)).To(new DateTime(2013, 12, 31)).Name("образование").PageSize(PageSize.Five).Page(2));
 
@@ -262,7 +262,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.RegionalAuthorities(IApiCaller, Action{IAuthoritiesLawApiCall})"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.RegionalAuthorities(IApiCaller, out IList{RegionalAuthority}, Action{IAuthoritiesLawApiCall})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.RegionalAuthorities(IApiCaller, out IEnumerable{IAuthority}, Action{IAuthoritiesLawApiCall})"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -270,7 +270,7 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.RegionalAuthorities(null));
 
-      IList<RegionalAuthority> authorities;
+      IEnumerable<IAuthority> authorities;
 
       this.TestRegionalAuthorities(this.xmlApiCaller.RegionalAuthorities());
       Assert.True(this.xmlApiCaller.RegionalAuthorities(out authorities));
@@ -295,7 +295,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.Requests(IApiCaller)"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.Requests(IApiCaller, out IList{DeputyRequest})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Requests(IApiCaller, out IEnumerable{IDeputyRequest})"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -303,7 +303,7 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Requests(null));
 
-      IList<DeputyRequest> requests;
+      IEnumerable<IDeputyRequest> requests;
 
       this.TestRequests(this.xmlApiCaller.Requests());
       Assert.True(this.xmlApiCaller.Requests(out requests));
@@ -318,7 +318,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.Stages(IApiCaller)"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.Stages(IApiCaller, out IList{PhaseStage})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Stages(IApiCaller, out IEnumerable{IPhaseStage})"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -326,7 +326,7 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Stages(null));
 
-      IList<PhaseStage> stages;
+      IEnumerable<IPhaseStage> stages;
 
       this.TestStages(this.xmlApiCaller.Stages());
       Assert.True(this.xmlApiCaller.Stages(out stages));
@@ -341,7 +341,7 @@ namespace RuLaw
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
     ///     <item><description><see cref="IApiCallerExtensions.Topics(IApiCaller)"/></description></item>
-    ///     <item><description><see cref="IApiCallerExtensions.Topics(IApiCaller, out IList{Topic})"/></description></item>
+    ///     <item><description><see cref="IApiCallerExtensions.Topics(IApiCaller, out IEnumerable{ITopic})"/></description></item>
     ///   </list>
     /// </summary>
     [Fact]
@@ -349,7 +349,7 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Topics(null));
 
-      IList<Topic> topics;
+      IEnumerable<ITopic> topics;
 
       this.TestTopics(this.xmlApiCaller.Topics());
       Assert.True(this.xmlApiCaller.Topics(out topics));
@@ -384,57 +384,57 @@ namespace RuLaw
       Assert.False(ReferenceEquals(this.xmlApiCaller.Votes(), this.xmlApiCaller.Votes()));
     }
 
-    private void TestBranches(IEnumerable<LawBranch> branches)
+    private void TestBranches(IEnumerable<ILawBranch> branches)
     {
       Assertion.NotNull(branches);
 
-      Assert.True(branches is IList<LawBranch>);
+      Assert.True(branches is List<LawBranch>);
       Assert.True(branches.Any());
       var branch = branches.Single(x => x.Id == 68252);
       Assert.Equal("Безопасность и охрана правопорядка", branch.Name);
     }
 
-    private void TestCommittees(IEnumerable<Committee> committees)
+    private void TestCommittees(IEnumerable<ICommittee> committees)
     {
       Assertion.NotNull(committees);
 
-      Assert.True(committees is IList<Committee>);
+      Assert.True(committees is List<Committee>);
       Assert.True(committees.Any());
       var commmittee = committees.Single(x => x.Id == 6274200);
       Assert.Equal("Комитет ГД по аграрным вопросам", commmittee.Name);
       Assert.Equal(new DateTime(1994, 1, 20), commmittee.FromDate);
     }
 
-    private void TestConvocations(IEnumerable<Convocation> convocations)
+    private void TestConvocations(IEnumerable<IConvocation> convocations)
     {
       Assertion.NotNull(convocations);
 
-      Assert.True(convocations is IList<Convocation>);
+      Assert.True(convocations is List<Convocation>);
       Assert.True(convocations.Any());
       var convocation = convocations.Single(x => x.Id == 82100004);
       Assert.Equal("4-ый созыв", convocation.Name);
       Assert.Equal(new DateTime(2003, 12, 29), convocation.FromDate);
       Assert.Equal(new DateTime(2007, 12, 23), convocation.ToDate);
-      Assert.Equal(8, convocation.Sessions.Count);
+      Assert.Equal(8, convocation.Sessions.Count());
       
-      var session = convocation.Sessions[0];
+      var session = convocation.Sessions.ElementAt(0);
       Assert.Equal(82200021, session.Id);
       Assert.Equal("Весенняя сессия 2004 г.", session.Name);
       Assert.Equal(new DateTime(2004, 1, 12), session.FromDate);
       Assert.Equal(new DateTime(2004, 7, 10), session.ToDate);
 
-      session = convocation.Sessions[1];
+      session = convocation.Sessions.ElementAt(1);
       Assert.Equal(82200022, session.Id);
       Assert.Equal("Осенняя сессия 2004 г.", session.Name);
       Assert.Equal(new DateTime(2004, 9, 1), session.FromDate);
       Assert.Equal(new DateTime(2004, 12, 31), session.ToDate);
     }
 
-    private void TestDeputies(IEnumerable<Deputy> deputies)
+    private void TestDeputies(IEnumerable<IDeputy> deputies)
     {
       Assertion.NotNull(deputies);
 
-      Assert.True(deputies is IList<Deputy>);
+      Assert.True(deputies is List<Deputy>);
       Assert.True(deputies.Any());
       var deputy = deputies.Single(x => x.Id == 99100491);
       Assert.Equal("Абдулатипов Рамазан Гаджимурадович", deputy.Name);
@@ -442,7 +442,7 @@ namespace RuLaw
       Assert.False(deputy.Active);
     }
 
-    private void TestDeputyInfo(DeputyInfo deputy)
+    private void TestDeputyInfo(IDeputyInfo deputy)
     {
       Assertion.NotNull(deputy);
 
@@ -475,11 +475,11 @@ namespace RuLaw
       Assert.True(deputy.Activities.Any(activity => activity.Name == "Член комитета" && activity.CommitteeId == 6274500 && activity.CommitteeNameGenitive == "Комитета ГД по обороне"));
     }
 
-    private void TestFederalAuthorities(IEnumerable<Authority> authorities)
+    private void TestFederalAuthorities(IEnumerable<IAuthority> authorities)
     {
       Assertion.NotNull(authorities);
 
-      Assert.True(authorities is IList<FederalAuthority>);
+      Assert.True(authorities is List<FederalAuthority>);
       Assert.True(authorities.Any());
       var authority = authorities.Single(x => x.Id == 6231000);
       Assert.Equal("Верховный Суд РФ", authority.Name);
@@ -488,7 +488,7 @@ namespace RuLaw
       Assert.Null(authority.ToDate);
     }
 
-    private void TestLawsSearchResult(LawsSearchResult result)
+    private void TestLawsSearchResult(ILawsSearchResult result)
     {
       Assertion.NotNull(result);
 
@@ -532,7 +532,7 @@ namespace RuLaw
       var deputy = law.Subject.Deputies.Single();
       Assert.Equal(99100270, deputy.Id);
       Assert.True(deputy.Active);
-      Assert.Equal(DeputyPosition.DumaDeputy, deputy.GetPosition());
+      Assert.Equal(DeputyPosition.DumaDeputy, deputy.Position());
       Assert.Equal("Митрофанов Алексей Валентинович", deputy.Name);
 
       Assert.Null(law.TranscriptUrl);
@@ -543,18 +543,18 @@ namespace RuLaw
       Assert.Equal("http://asozd2.duma.gov.ru/main.nsf/%28SpravkaNew%29?OpenAgent&RN=170826-6&02", law.Url);
     }
 
-    private void TestInstances(IEnumerable<Instance> instances)
+    private void TestInstances(IEnumerable<IInstance> instances)
     {
       Assertion.NotNull(instances);
 
-      Assert.True(instances is IList<Instance>);
+      Assert.True(instances is List<Instance>);
       Assert.True(instances.Any());
       var instance = instances.Single(x => x.Id == 177);
       Assert.Equal("ГД (Пленарное заседание)", instance.Name);
       Assert.True(instance.Active);
     }
 
-    private void TestQuestionsSearchResult(QuestionsSearchResult result)
+    private void TestQuestionsSearchResult(IQuestionsSearchResult result)
     {
       Assertion.NotNull(result);
 
@@ -608,11 +608,11 @@ namespace RuLaw
       Assert.Equal(6278, question.EndLine);
     }
 
-    private void TestRegionalAuthorities(IEnumerable<Authority> authorities)
+    private void TestRegionalAuthorities(IEnumerable<IAuthority> authorities)
     {
       Assertion.NotNull(authorities);
 
-      Assert.True(authorities is IList<RegionalAuthority>);
+      Assert.True(authorities is List<RegionalAuthority>);
       Assert.True(authorities.Any());
       var authority = authorities.Single(x => x.Id == 6217700);
       Assert.Equal("Агинская Бурятская окружная Дума", authority.Name);
@@ -621,11 +621,11 @@ namespace RuLaw
       Assert.Equal(new DateTime(2008, 10, 12), authority.ToDate);
     }
 
-    private void TestRequests(IEnumerable<DeputyRequest> requests)
+    private void TestRequests(IEnumerable<IDeputyRequest> requests)
     {
       Assertion.NotNull(requests);
 
-      Assert.True(requests is IList<DeputyRequest>);
+      Assert.True(requests is List<DeputyRequest>);
       Assert.True(requests.Any());
       var request = requests.First(x => x.Id == 14);
       Assert.Equal("Герасименко Н.Ф.", request.Initiator);
@@ -642,31 +642,31 @@ namespace RuLaw
       Assert.Equal(@"Председателю Правительства РФ\М.Е. Фрадкову", request.Addressee.Name);
     }
 
-    private void TestStages(IEnumerable<PhaseStage> stages)
+    private void TestStages(IEnumerable<IPhaseStage> stages)
     {
       Assertion.NotNull(stages);
 
-      Assert.True(stages is IList<PhaseStage>);
+      Assert.True(stages is List<PhaseStage>);
       Assert.True(stages.Any());
       var stage = stages.Single(x => x.Id == 1);
       Assert.Equal("Внесение законопроекта в Государственную Думу", stage.Name);
-      Assert.Equal(3, stage.Phases.Count);
+      Assert.Equal(3, stage.Phases.Count());
 
-      var phase = stage.Phases[0];
+      var phase = stage.Phases.ElementAt(0);
       Assert.Equal(1, phase.Id);
       Assert.Equal("Регистрация законопроекта и материалов к нему в САДД Государственной Думы", phase.Name);
       Assert.Equal(173, phase.Instance.Id);
       Assert.Equal("УДИО ГД", phase.Instance.Name);
       Assert.True(phase.Instance.Active);
 
-      phase = stage.Phases[1];
+      phase = stage.Phases.ElementAt(1);
       Assert.Equal(2, phase.Id);
       Assert.Equal("Прохождение законопроекта у Председателя Государственной Думы", phase.Name);
       Assert.Equal(174, phase.Instance.Id);
       Assert.Equal("Секретариат Председателя ГД", phase.Instance.Name);
       Assert.True(phase.Instance.Active);
 
-      phase = stage.Phases[2];
+      phase = stage.Phases.ElementAt(2);
       Assert.Equal(3, phase.Id);
       Assert.Equal("Регистрация законопроекта в Секретариате Совета Государственной Думы", phase.Name);
       Assert.Equal(175, phase.Instance.Id);
@@ -674,11 +674,11 @@ namespace RuLaw
       Assert.True(phase.Instance.Active);
     }
 
-    private void TestTopics(IEnumerable<Topic> topics)
+    private void TestTopics(IEnumerable<ITopic> topics)
     {
       Assert.NotNull(topics);
 
-      Assert.True(topics is IList<Topic>);
+      Assert.True(topics is List<Topic>);
       Assert.True(topics.Any());
       var topic = topics.Single(x => x.Id == 62701);
       Assert.Equal("Бюджетное, налоговое, финансовое законодательство", topic.Name);

@@ -19,7 +19,7 @@ namespace RuLaw
     /// <returns>Transcripts for given date.</returns>
     /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
     /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-na-zadannuyu-datu"/>
-    DateTranscriptsResult Date(DateTime date);
+    IDateTranscriptsResult Date(DateTime date);
 
     /// <summary>
     ///   <para>Returns transcripts of particular deputy's speeches.</para>
@@ -33,7 +33,7 @@ namespace RuLaw
     /// <returns>Transcripts of given deputy.</returns>
     /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
     /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
-    DeputyTranscriptsResult Deputy(long id, DateTime? from = null, DateTime? to = null, string name = null, int? page = null, PageSize? limit = null);
+    IDeputyTranscriptsResult Deputy(long id, DateTime? from = null, DateTime? to = null, string name = null, int? page = null, PageSize? limit = null);
 
     /// <summary>
     ///   <para>Returns transcript of given law.</para>
@@ -44,7 +44,7 @@ namespace RuLaw
     /// <exception cref="ArgumentException">If <paramref name="number"/> is <see cref="string.Empty"/> string.</exception>
     /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
     /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-po-zakonoproektu"/>
-    LawTranscriptsResult Law(string number);
+    ILawTranscriptsResult Law(string number);
 
     /// <summary>
     ///   <para>Returns transcripts of Duma's agenda question.</para>
@@ -54,7 +54,7 @@ namespace RuLaw
     /// <returns>Transcript of agenda's question.</returns>
     /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
     /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogramma-rassmotreniya-voprosa"/>
-    QuestionTranscriptsResult Question(int meeting, int question);
+    IQuestionTranscriptsResult Question(int meeting, int question);
 
     /// <summary>
     ///   <para>Returns transcripts of resolution's draft.</para>
@@ -65,6 +65,6 @@ namespace RuLaw
     /// <exception cref="ArgumentException">If <paramref name="number"/> is <see cref="string.Empty"/> string.</exception>
     /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
     /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-po-proektu-postanovleniya"/>
-    ResolutionTranscriptsResult Resolution(string number);
+    IResolutionTranscriptsResult Resolution(string number);
   }
 }

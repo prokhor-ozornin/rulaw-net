@@ -46,7 +46,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IList<Topic> topics = caller.Topics();`
+`IEnumerable<ITopic> topics = caller.Topics();`
 
 ***
 
@@ -60,7 +60,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IList<LawBranch> branches = caller.Branches();`
+`IEnumerable<ILawBranch> branches = caller.Branches();`
 
 ***
 
@@ -74,9 +74,9 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IList<Deputy> deputies = caller.Deputies();`
+`IEnumerable<IDeputy> deputies = caller.Deputies();`
 
-`IList<Deputy> deputies = caller.Deputies(x=> x.Position(DeputyPosition.DumaDeputy).Current(false).Name("А"));`
+`IEnumerable<IDeputy> deputies = caller.Deputies(x=> x.Position(DeputyPosition.DumaDeputy).Current(false).Name("А"));`
 
 ***
 
@@ -90,7 +90,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IList<Committee> committees = caller.Committees();`
+`IEnumerable<ICommittee> committees = caller.Committees();`
 
 ***
 
@@ -104,9 +104,9 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IList<RegionalAuthority> authorities = caller.RegionalAuthorities();`
+`IEnumerable<IAuthority> authorities = caller.RegionalAuthorities();`
 
-`IList<RegionalAuthority> authorities = caller.RegionalAuthorities(x => x.Current(false));`
+`IEnumerable<IAuthority> authorities = caller.RegionalAuthorities(x => x.Current(false));`
 
 ***
 
@@ -120,9 +120,9 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IList<FederalAuthority> authorities = caller.FederalAuthorities();`
+`IEnumerable<IAuthority> authorities = caller.FederalAuthorities();`
 
-`IList<FederalAuthority> authorities = caller.FederalAuthorities(x => x.Current());`
+`IEnumerable<IAuthority> authorities = caller.FederalAuthorities(x => x.Current());`
 
 ***
 
@@ -136,7 +136,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IList<LawStage> stages = caller.Stages();`
+`IEnumerable<ILawStage> stages = caller.Stages();`
 
 ***
 
@@ -150,9 +150,9 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IList<Instance> instances = caller.Instances();`
+`IEnumerable<IInstance> instances = caller.Instances();`
 
-`IList<Instance> instances = caller.Instances(x => x.Current());`
+`IEnumerable<IInstance> instances = caller.Instances(x => x.Current());`
 
 ***
 
@@ -166,7 +166,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IList<Convocation> convocations = caller.Convocations();`
+`IEnumerable<IConvocation> convocations = caller.Convocations();`
 
 ***
 
@@ -180,7 +180,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`LawsSearchResult laws = Laws(call => call.Name("курение").Sorting(LawsSorting.DateDescending));`
+`ILawsSearchResult laws = Laws(call => call.Name("курение").Sorting(LawsSorting.DateDescending));`
 
 ***
 
@@ -194,7 +194,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`QuestionsSearchResult questions = caller.Questions(x => x.From(new DateTime(2013, 1, 1)).To(new DateTime(2013, 12, 31)).Name("образование").PageSize(PageSize.Five).Page(2)));`
+`IQuestionsSearchResult questions = caller.Questions(x => x.From(new DateTime(2013, 1, 1)).To(new DateTime(2013, 12, 31)).Name("образование").PageSize(PageSize.Five).Page(2)));`
 
 ***
 
@@ -208,7 +208,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`DeputyInfo deputy = caller.Deputy(99100142);`
+`IDeputyInfo deputy = caller.Deputy(99100142);`
 
 ***
 
@@ -222,7 +222,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`IList<DeputyRequest> requests = caller.Requests();`
+`IEnumerable<IDeputyRequest> requests = caller.Requests();`
 
 ***
 
@@ -242,7 +242,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`DateTranscriptsResult transcripts = caller.Transcripts().Date(new DateTime(2013, 5, 14));`
+`IDateTranscriptsResult transcripts = caller.Transcripts().Date(new DateTime(2013, 5, 14));`
 
 ***
 
@@ -256,9 +256,9 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`DeputyTranscriptsResult transcript = caller.Transcripts().Deputy(id: 99100142, from: new DateTime(2013, 1, 1), to: new DateTime(2013, 12, 31), page: 2, limit: PageSize.Five);`
+`IDeputyTranscriptsResult transcript = caller.Transcripts().Deputy(id: 99100142, from: new DateTime(2013, 1, 1), to: new DateTime(2013, 12, 31), page: 2, limit: PageSize.Five);`
 
-`DeputyTranscriptsResult transcript = caller.Transcripts().Deputy(call => call.Deputy(99100142).From(new DateTime(2013, 1, 1)).To(new DateTime(2013, 12, 31)).Page(2).PageSize(PageSize.Five));`
+`IDeputyTranscriptsResult transcript = caller.Transcripts().Deputy(call => call.Deputy(99100142).From(new DateTime(2013, 1, 1)).To(new DateTime(2013, 12, 31)).Page(2).PageSize(PageSize.Five));`
 
 ***
 
@@ -272,7 +272,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`LawTranscriptsResult transcripts = caller.Transcripts().Law("140513-6");`
+`ILawTranscriptsResult transcripts = caller.Transcripts().Law("140513-6");`
 
 **Questions**
 
@@ -284,7 +284,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`QuestionTranscriptsResult transcripts = caller.Transcripts().Question(80, 13);`
+`IQuestionTranscriptsResult transcripts = caller.Transcripts().Question(80, 13);`
 
 ***
 
@@ -298,7 +298,7 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`ResolutionTranscriptsResult transcripts = caller.Transcripts().Resolution("276569-6");`
+`IResolutionTranscriptsResult transcripts = caller.Transcripts().Resolution("276569-6");`
 
 ***
 
@@ -318,6 +318,6 @@ _Code:_
 
 `IApiCaller caller = ...`
 
-`VotesSearchResult votes = caller.Votes().Search(from: new DateTime(2011, 12, 21)), this.xmlApiCaller.Votes().Search(from: new DateTime(2011, 12, 21), deputy: 99111987);`
+`IVotesSearchResult votes = caller.Votes().Search(from: new DateTime(2011, 12, 21)), this.xmlApiCaller.Votes().Search(from: new DateTime(2011, 12, 21), deputy: 99111987);`
 
-`VotesSearchResult votes = caller.Votes().Search(call => call.From(new DateTime(2011, 12, 21)).Deputy(99111987));`
+`IVotesSearchResult votes = caller.Votes().Search(call => call.From(new DateTime(2011, 12, 21)).Deputy(99111987));`

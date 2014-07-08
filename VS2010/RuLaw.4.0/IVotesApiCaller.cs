@@ -28,6 +28,6 @@ namespace RuLaw
     /// <returns>Votes search result.</returns>
     /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
     /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
-    VotesSearchResult Search(long? convocation = null, DateTime? from = null, DateTime? to = null, long? faction = null, long? deputy = null, string number = null, string keywords = null, int? page = null, PageSize? limit = null, VotesSorting? sorting = null);
+    IVotesSearchResult Search(long? convocation = null, DateTime? from = null, DateTime? to = null, long? faction = null, long? deputy = null, string number = null, string keywords = null, int? page = null, PageSize? limit = null, VotesSorting? sorting = null);
   }
 }

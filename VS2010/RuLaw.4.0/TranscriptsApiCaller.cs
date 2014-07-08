@@ -20,29 +20,29 @@ namespace RuLaw
       this.caller = caller;
     }
 
-    public DateTranscriptsResult Date(DateTime date)
+    public IDateTranscriptsResult Date(DateTime date)
     {
       return this.caller.Call<DateTranscriptsResult>("/{0}/transcriptFull/{1}".FormatSelf(this.caller.ApiToken, date.RuLawDate())).Data;
     }
 
-    public DeputyTranscriptsResult Deputy(long id, DateTime? from = null, DateTime? to = null, string name = null, int? page = null, PageSize? limit = null)
+    public IDeputyTranscriptsResult Deputy(long id, DateTime? from = null, DateTime? to = null, string name = null, int? page = null, PageSize? limit = null)
     {
-      return this.caller.Call<DeputyTranscriptsResult>("/{0}/transcriptDeputy/{1}".FormatSelf(this.caller.ApiToken, id), new Dictionary<string, object> { { "dateFrom", from }, { "dateTo", to }, { "name", name }, { "page", page }, { "limit", (int) limit } }).Data;
+      return this.caller.Call<DeputyTranscriptsResult>("/{0}/transcriptDeputy/{1}".FormatSelf(this.caller.ApiToken, id), new Dictionary<string, object> { { "dateFrom", from != null ? from.Value.RuLawDate() : null}, { "dateTo", to != null ? to.Value.RuLawDate() : null }, { "name", name }, { "page", page }, { "limit", (int?) limit } }).Data;
     }
 
-    public LawTranscriptsResult Law(string number)
+    public ILawTranscriptsResult Law(string number)
     {
       Assertion.NotEmpty(number);
 
       return this.caller.Call<LawTranscriptsResult>("/{0}/transcript/{1}".FormatSelf(this.caller.ApiToken, number)).Data;
     }
 
-    public QuestionTranscriptsResult Question(int meeting, int question)
+    public IQuestionTranscriptsResult Question(int meeting, int question)
     {
       return this.caller.Call<QuestionTranscriptsResult>("/{0}/transcriptQuestion/{1}/{2}".FormatSelf(this.caller.ApiToken, meeting, question)).Data;
     }
 
-    public ResolutionTranscriptsResult Resolution(string number)
+    public IResolutionTranscriptsResult Resolution(string number)
     {
       Assertion.NotEmpty(number);
 

@@ -18,7 +18,7 @@ namespace RuLaw
     /// <exception cref="ArgumentNullException">If either <paramref name="caller"/> or <paramref name="call"/> is a <c>null</c> reference.</exception>
     /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
     /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
-    public static VotesSearchResult Search(this IVotesApiCaller caller, Action<IVotesSearchLawApiCall> call)
+    public static IVotesSearchResult Search(this IVotesApiCaller caller, Action<IVotesSearchLawApiCall> call)
     {
       Assertion.NotNull(caller);
       Assertion.NotNull(call);
@@ -38,7 +38,7 @@ namespace RuLaw
     /// <returns><c>true</c> if call was successful and <paramref name="result"/> output parameter contains result of votes search, or <c>false</c> if call failed and <paramref name="result"/> output parameter is a <c>null</c> reference.</returns>
     /// <exception cref="ArgumentNullException">If either <paramref name="caller"/> or <paramref name="call"/> is a <c>null</c> reference.</exception>
     /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
-    public static bool Search(this IVotesApiCaller caller, Action<IVotesSearchLawApiCall> call, out VotesSearchResult result)
+    public static bool Search(this IVotesApiCaller caller, Action<IVotesSearchLawApiCall> call, out IVotesSearchResult result)
     {
       Assertion.NotNull(caller);
       Assertion.NotNull(call);
