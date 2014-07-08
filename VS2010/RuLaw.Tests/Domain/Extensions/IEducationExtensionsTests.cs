@@ -6,17 +6,17 @@ using Xunit;
 namespace RuLaw
 {
   /// <summary>
-  ///   <para>Tests set for class <see cref="EducationExtensions"/>.</para>
+  ///   <para>Tests set for class <see cref="IEducationExtensions"/>.</para>
   /// </summary>
-  public sealed class EducationExtensionsTests
+  public sealed class IEducationExtensionsTests
   {
     /// <summary>
-    ///   <para>Performs testing of <see cref="EducationExtensions.Institution(IEnumerable{IEducation}, string)"/> method.</para>
+    ///   <para>Performs testing of <see cref="IEducationExtensions.Institution{ENTITY}(IEnumerable{ENTITY}, string)"/> method.</para>
     /// </summary>
     [Fact]
     public void Institution_Method()
     {
-      Assert.Throws<ArgumentNullException>(() => EducationExtensions.Institution(null, "institution"));
+      Assert.Throws<ArgumentNullException>(() => IEducationExtensions.Institution<IEducation>(null, "institution"));
       Assert.Throws<ArgumentNullException>(() => Enumerable.Empty<IEducation>().Institution(null));
       Assert.Throws<ArgumentException>(() => Enumerable.Empty<IEducation>().Institution(string.Empty));
 
@@ -30,12 +30,12 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="EducationExtensions.Year(IEnumerable{IEducation}, short?, short?)"/> method.</para>
+    ///   <para>Performs testing of <see cref="IEducationExtensions.Year{ENTITY}(IEnumerable{ENTITY}, short?, short?)"/> method.</para>
     /// </summary>
     [Fact]
     public void Year_Method()
     {
-      Assert.Throws<ArgumentNullException>(() => EducationExtensions.Year(null));
+      Assert.Throws<ArgumentNullException>(() => IEducationExtensions.Year<IEducation>(null));
 
       Assert.False(Enumerable.Empty<IEducation>().Year().Any());
 

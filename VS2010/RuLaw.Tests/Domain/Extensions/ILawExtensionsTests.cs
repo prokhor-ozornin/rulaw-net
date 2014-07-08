@@ -6,12 +6,12 @@ using Xunit;
 namespace RuLaw
 {
   /// <summary>
-  ///   <para>Tests set for class <see cref="LawExtensions"/>.</para>
+  ///   <para>Tests set for class <see cref="ILawExtensions"/>.</para>
   /// </summary>
-  public sealed class LawExtensionsTests
+  public sealed class ILawExtensionsTests
   {
     /// <summary>
-    ///   <para>Performs testing of <see cref="LawExtensions.Number(IEnumerable{ILaw}, string)"/> method.</para>
+    ///   <para>Performs testing of <see cref="ILawExtensions.Number{ENTITY}(IEnumerable{ENTITY}, string)"/> method.</para>
     /// </summary>
     [Fact]
     public void Number_Method()

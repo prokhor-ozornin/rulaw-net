@@ -95,19 +95,17 @@
     <Compile Include="Domain\Implementation\Results\DateTranscriptsResult.cs" />
     <Compile Include="Calls\Implementation\DeputiesLawApiCall.cs" />
     <Compile Include="Domain\Implementation\DeputyActivity.cs" />
-    <Compile Include="Domain\Extensions\DeputyExtensions.cs" />
     <Compile Include="Domain\Implementation\DeputyInfo.cs" />
-    <Compile Include="Domain\Extensions\DeputyInfoExtensions.cs" />
     <Compile Include="Domain\Implementation\DeputyPosition.cs" />
     <Compile Include="Domain\Implementation\DeputyRequest.cs" />
     <Compile Include="Domain\Implementation\DeputyRequestAddressee.cs" />
-    <Compile Include="Domain\Extensions\DeputyRequestExtensions.cs" />
+    <Compile Include="Domain\Extensions\IDeputyRequestExtensions.cs" />
     <Compile Include="Domain\Implementation\DeputyRequestSigner.cs" />
     <Compile Include="Domain\Implementation\Results\DeputySearchResult.cs" />
     <Compile Include="Domain\Implementation\Results\DeputyTranscriptsResult.cs" />
     <Compile Include="Calls\Implementation\DeputyTranscriptLawApiCall.cs" />
     <Compile Include="Domain\Implementation\Education.cs" />
-    <Compile Include="Domain\Extensions\EducationExtensions.cs" />
+    <Compile Include="Domain\Extensions\IEducationExtensions.cs" />
     <Compile Include="Error.cs" />
     <Compile Include="Domain\Interface\IAuthority.cs" />
     <Compile Include="Domain\Interface\ICommittee.cs" />
@@ -138,7 +136,7 @@
     <Compile Include="JsonDefaultSettings.cs" />
     <Compile Include="JsonEntityOrderedContractResolver.cs" />
     <Compile Include="Domain\Implementation\LawCommittees.cs" />
-    <Compile Include="Domain\Extensions\LawEventExtensions.cs" />
+    <Compile Include="Domain\Extensions\ILawEventExtensions.cs" />
     <Compile Include="Domain\Implementation\FederalAuthority.cs" />
     <Compile Include="Calls\Interface\IAuthoritiesLawApiCall.cs" />
     <Compile Include="Calls\Interface\IDeputiesLawApiCall.cs" />
@@ -169,7 +167,6 @@
     <Compile Include="Domain\Implementation\Results\LawsSearchResult.cs" />
     <Compile Include="Domain\Implementation\LawSubject.cs" />
     <Compile Include="Domain\Implementation\Results\LawTranscriptsResult.cs" />
-    <Compile Include="Domain\Extensions\LawTranscriptExtensions.cs" />
     <Compile Include="Domain\Implementation\LawType.cs" />
     <Compile Include="Domain\Implementation\Results\QuestionsSearchResult.cs" />
     <Compile Include="Domain\Implementation\Results\QuestionTranscriptsResult.cs" />
@@ -178,7 +175,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Domain\Implementation\TranscriptMeetingQuestion.cs" />
-    <Compile Include="Domain\Extensions\TranscriptMeetingQuestionExtensions.cs" />
+    <Compile Include="Domain\Extensions\ITranscriptMeetingQuestionExtensions.cs" />
     <Compile Include="Domain\Implementation\TranscriptMeetingQuestionPart.cs" />
     <Compile Include="Domain\Implementation\NameableEntity.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
@@ -191,7 +188,7 @@
     <Compile Include="ApiCaller.cs" />
     <Compile Include="ApiConfigurator.cs" />
     <Compile Include="RuLawException.cs" />
-    <Compile Include="Domain\Extensions\LawExtensions.cs" />
+    <Compile Include="Domain\Extensions\ILawExtensions.cs" />
     <Compile Include="Calls\Extensions\LawsSorting.cs" />
     <Compile Include="Calls\Extensions\LawStatus.cs" />
     <Compile Include="Calls\Extensions\LawTypes.cs" />
@@ -215,7 +212,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Domain\Implementation\Vote.cs" />
-    <Compile Include="Domain\Extensions\VoteExtensions.cs" />
     <Compile Include="Domain\Implementation\Results\VotePersonResult.cs" />
     <Compile Include="VotesApiCaller.cs" />
     <Compile Include="Domain\Implementation\Results\VotesSearchResult.cs" />

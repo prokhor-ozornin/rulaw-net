@@ -6,17 +6,17 @@ using Xunit;
 namespace RuLaw
 {
   /// <summary>
-  ///   <para>Tests set for class <see cref="DeputyRequestExtensions"/>.</para>
+  ///   <para>Tests set for class <see cref="IDeputyRequestExtensions"/>.</para>
   /// </summary>
-  public sealed class DeputyRequestExtensionsTests
+  public sealed class IDeputyRequestExtensionsTests
   {
     /// <summary>
-    ///   <para>Performs testing of <see cref="DeputyRequestExtensions.Answer(IEnumerable{IDeputyRequest}, string)"/> method.</para>
+    ///   <para>Performs testing of <see cref="IDeputyRequestExtensions.Answer{ENTITY}(IEnumerable{ENTITY}, string)"/> method.</para>
     /// </summary>
     [Fact]
     public void Answer_Method()
     {
-      Assert.Throws<ArgumentNullException>(() => DeputyRequestExtensions.Answer(null, "text"));
+      Assert.Throws<ArgumentNullException>(() => IDeputyRequestExtensions.Answer<IDeputyRequest>(null, "text"));
       Assert.Throws<ArgumentNullException>(() => Enumerable.Empty<IDeputyRequest>().Answer(null));
       Assert.Throws<ArgumentException>(() => Enumerable.Empty<IDeputyRequest>().Answer(string.Empty));
 
@@ -30,12 +30,12 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="DeputyRequestExtensions.ControlDate(IEnumerable{IDeputyRequest}, DateTime?, DateTime?)"/> method.</para>
+    ///   <para>Performs testing of <see cref="IDeputyRequestExtensions.ControlDate{ENTITY}(IEnumerable{ENTITY}, DateTime?, DateTime?)"/> method.</para>
     /// </summary>
     [Fact]
     public void ControlDate_Method()
     {
-      Assert.Throws<ArgumentNullException>(() => DeputyRequestExtensions.ControlDate(null));
+      Assert.Throws<ArgumentNullException>(() => IDeputyRequestExtensions.ControlDate<IDeputyRequest>(null));
 
       Assert.False(Enumerable.Empty<IDeputyRequest>().ControlDate().Any());
 
@@ -52,12 +52,12 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="DeputyRequestExtensions.Initiator(IEnumerable{IDeputyRequest}, string)"/> method.</para>
+    ///   <para>Performs testing of <see cref="IDeputyRequestExtensions.Initiator{ENTITY}(IEnumerable{ENTITY}, string)"/> method.</para>
     /// </summary>
     [Fact]
     public void Initiator_Method()
     {
-      Assert.Throws<ArgumentNullException>(() => DeputyRequestExtensions.Initiator(null, "initiator"));
+      Assert.Throws<ArgumentNullException>(() => IDeputyRequestExtensions.Initiator<IDeputyRequest>(null, "initiator"));
       Assert.Throws<ArgumentNullException>(() => Enumerable.Empty<IDeputyRequest>().Initiator(null));
       Assert.Throws<ArgumentException>(() => Enumerable.Empty<IDeputyRequest>().Initiator(string.Empty));
 
@@ -71,12 +71,12 @@ namespace RuLaw
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="DeputyRequestExtensions.SignDate(IEnumerable{IDeputyRequest}, DateTime?, DateTime?)"/> method.</para>
+    ///   <para>Performs testing of <see cref="IDeputyRequestExtensions.SignDate{ENTITY}(IEnumerable{ENTITY}, DateTime?, DateTime?)"/> method.</para>
     /// </summary>
     [Fact]
     public void SignDate_Method()
     {
-      Assert.Throws<ArgumentNullException>(() => DeputyRequestExtensions.SignDate(null));
+      Assert.Throws<ArgumentNullException>(() => IDeputyRequestExtensions.SignDate<IDeputyRequest>(null));
 
       var date = new DateTime(2000, 1, 1);
 

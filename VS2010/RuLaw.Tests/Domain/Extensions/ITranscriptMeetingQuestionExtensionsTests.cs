@@ -6,17 +6,17 @@ using Xunit;
 namespace RuLaw
 {
   /// <summary>
-  ///   <para>Tests set for class <see cref="TranscriptMeetingQuestionExtensions"/>.</para>
+  ///   <para>Tests set for class <see cref="ITranscriptMeetingQuestionExtensions"/>.</para>
   /// </summary>
-  public sealed class TranscriptMeetingQuestionExtensionsTests
+  public sealed class ITranscriptMeetingQuestionExtensionsTests
   {
     /// <summary>
-    ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionExtensions.Stage(IEnumerable{ITranscriptMeetingQuestion}, string)"/> method.</para>
+    ///   <para>Performs testing of <see cref="ITranscriptMeetingQuestionExtensions.Stage{ENTITY}(IEnumerable{ENTITY}, string)"/> method.</para>
     /// </summary>
     [Fact]
     public void Stage_Method()
     {
-      Assert.Throws<ArgumentNullException>(() => TranscriptMeetingQuestionExtensions.Stage(null, "stage"));
+      Assert.Throws<ArgumentNullException>(() => ITranscriptMeetingQuestionExtensions.Stage<ITranscriptMeetingQuestion>(null, "stage"));
       Assert.Throws<ArgumentNullException>(() => Enumerable.Empty<ITranscriptMeetingQuestion>().Stage(null));
       Assert.Throws<ArgumentException>(() => Enumerable.Empty<ITranscriptMeetingQuestion>().Stage(string.Empty));
 

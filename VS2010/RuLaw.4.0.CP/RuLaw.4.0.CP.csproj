@@ -134,18 +134,6 @@
     <Compile Include="..\RuLaw.4.0\Calls\Interface\IVotesSearchLawApiCall.cs">
       <Link>Calls\Interface\IVotesSearchLawApiCall.cs</Link>
     </Compile>
-    <Compile Include="..\RuLaw.4.0\Domain\Extensions\DeputyExtensions.cs">
-      <Link>Domain\Extensions\DeputyExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\Domain\Extensions\DeputyInfoExtensions.cs">
-      <Link>Domain\Extensions\DeputyInfoExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\Domain\Extensions\DeputyRequestExtensions.cs">
-      <Link>Domain\Extensions\DeputyRequestExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\Domain\Extensions\EducationExtensions.cs">
-      <Link>Domain\Extensions\EducationExtensions.cs</Link>
-    </Compile>
     <Compile Include="..\RuLaw.4.0\Domain\Extensions\IActiveExtensions.cs">
       <Link>Domain\Extensions\IActiveExtensions.cs</Link>
     </Compile>
@@ -161,32 +149,32 @@
     <Compile Include="..\RuLaw.4.0\Domain\Extensions\IDeputyInfoExtensions.cs">
       <Link>Domain\Extensions\IDeputyInfoExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\IDeputyRequestExtensions.cs">
+      <Link>Domain\Extensions\IDeputyRequestExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\IEducationExtensions.cs">
+      <Link>Domain\Extensions\IEducationExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\ILawEventExtensions.cs">
+      <Link>Domain\Extensions\ILawEventExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\ILawExtensions.cs">
+      <Link>Domain\Extensions\ILawExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\RuLaw.4.0\Domain\Extensions\INameableExtensions.cs">
       <Link>Domain\Extensions\INameableExtensions.cs</Link>
     </Compile>
     <Compile Include="..\RuLaw.4.0\Domain\Extensions\IPeriodableExtensions.cs">
       <Link>Domain\Extensions\IPeriodableExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\RuLaw.4.0\Domain\Extensions\ITranscriptMeetingQuestionExtensions.cs">
+      <Link>Domain\Extensions\ITranscriptMeetingQuestionExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\RuLaw.4.0\Domain\Extensions\ITranscriptMeetingQuestionPartExtensions.cs">
       <Link>Domain\Extensions\ITranscriptMeetingQuestionPartExtensions.cs</Link>
     </Compile>
     <Compile Include="..\RuLaw.4.0\Domain\Extensions\IVoteExtensions.cs">
       <Link>Domain\Extensions\IVoteExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\Domain\Extensions\LawEventExtensions.cs">
-      <Link>Domain\Extensions\LawEventExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\Domain\Extensions\LawExtensions.cs">
-      <Link>Domain\Extensions\LawExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\Domain\Extensions\LawTranscriptExtensions.cs">
-      <Link>Domain\Extensions\LawTranscriptExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\Domain\Extensions\TranscriptMeetingQuestionExtensions.cs">
-      <Link>Domain\Extensions\TranscriptMeetingQuestionExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\RuLaw.4.0\Domain\Extensions\VoteExtensions.cs">
-      <Link>Domain\Extensions\VoteExtensions.cs</Link>
     </Compile>
     <Compile Include="..\RuLaw.4.0\Domain\Implementation\Authority.cs">
       <Link>Domain\Implementation\Authority.cs</Link>

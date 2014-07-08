@@ -16,7 +16,7 @@ namespace RuLaw
     [Fact]
     public void Period_Methods()
     {
-      Assert.Throws<ArgumentNullException>(() => DeputyInfoExtensions.WorkDate(null));
+      Assert.Throws<ArgumentNullException>(() => IPeriodableExtensions.Period<IPeriodable>(null));
 
       Assert.False(Enumerable.Empty<PeriodableEntity>().Period().Any());
 

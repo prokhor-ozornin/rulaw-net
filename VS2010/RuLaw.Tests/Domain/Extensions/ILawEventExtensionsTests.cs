@@ -6,17 +6,17 @@ using Xunit;
 namespace RuLaw
 {
   /// <summary>
-  ///   <para>Tests set for class <see cref="LawEventExtensions"/>.</para>
+  ///   <para>Tests set for class <see cref="ILawEventExtensions"/>.</para>
   /// </summary>
-  public sealed class LawEventExtensionsTests
+  public sealed class ILawEventExtensionsTests
   {
     /// <summary>
-    ///   <para>Performs testing of <see cref="LawEventExtensions.Solution(IEnumerable{ILawEvent}, string)"/> method.</para>
+    ///   <para>Performs testing of <see cref="ILawEventExtensions.Solution{ENTITY}(IEnumerable{ENTITY}, string)"/> method.</para>
     /// </summary>
     [Fact]
     public void Solution_Method()
     {
-      Assert.Throws<ArgumentNullException>(() => LawEventExtensions.Solution(null, "solution"));
+      Assert.Throws<ArgumentNullException>(() => ILawEventExtensions.Solution<ILawEvent>(null, "solution"));
       Assert.Throws<ArgumentNullException>(() => Enumerable.Empty<ILawEvent>().Solution(null));
       Assert.Throws<ArgumentException>(() => Enumerable.Empty<ILawEvent>().Solution(string.Empty));
 

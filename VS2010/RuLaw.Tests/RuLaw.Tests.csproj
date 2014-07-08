@@ -73,7 +73,7 @@
     <Compile Include="Domain\Extensions\IDeputyExtensionsTests.cs" />
     <Compile Include="Domain\Extensions\IDeputyInfoExtensionsTests.cs" />
     <Compile Include="Domain\Extensions\ITranscriptMeetingQuestionPartExtensionsTests.cs" />
-    <Compile Include="Domain\Extensions\EducationExtensionsTests.cs" />
+    <Compile Include="Domain\Extensions\IEducationExtensionsTests.cs" />
     <Compile Include="ErrorTests.cs" />
     <Compile Include="Domain\Extensions\IDateableExtensionsTests.cs" />
     <Compile Include="Calls\Extensions\IDeputyTranscriptLawApiCallExtensionsTests.cs" />
@@ -83,19 +83,18 @@
     <Compile Include="Calls\Extensions\IVotesSearchLawApiCallExtensionsTests.cs" />
     <Compile Include="JsonDefaultSettingsTests.cs" />
     <Compile Include="Domain\Implementation\LawCommitteesTests.cs" />
-    <Compile Include="Domain\Extensions\LawEventExtensionsTests.cs" />
+    <Compile Include="Domain\Extensions\ILawEventExtensionsTests.cs" />
     <Compile Include="Domain\Implementation\FederalAuthorityTests.cs" />
     <Compile Include="Calls\Implementation\LawApiCallTests.cs" />
     <Compile Include="Domain\Implementation\LawEventStageTests.cs" />
     <Compile Include="Domain\Implementation\Results\LawsSearchResultTests.cs" />
     <Compile Include="Domain\Implementation\LawSubjectTests.cs" />
-    <Compile Include="Domain\Extensions\LawTranscriptExtensionsTests.cs" />
     <Compile Include="Domain\Implementation\Results\LawTranscriptsResultTests.cs" />
     <Compile Include="Domain\Implementation\LawTypeTests.cs" />
     <Compile Include="Domain\Implementation\Results\QuestionsSearchResultTests.cs" />
     <Compile Include="Domain\Implementation\Results\QuestionTranscriptsResultTests.cs" />
     <Compile Include="Domain\Implementation\Results\ResolutionTranscriptsResultTests.cs" />
-    <Compile Include="Domain\Extensions\TranscriptMeetingQuestionExtensionsTests.cs" />
+    <Compile Include="Domain\Extensions\ITranscriptMeetingQuestionExtensionsTests.cs" />
     <Compile Include="Domain\Implementation\TranscriptMeetingQuestionPartTests.cs" />
     <Compile Include="Domain\Implementation\TranscriptMeetingQuestionTests.cs" />
     <Compile Include="Domain\Implementation\TranscriptMeetingTests.cs">
@@ -110,11 +109,9 @@
     <Compile Include="Extensions\DateTimeExtensionsTests.cs" />
     <Compile Include="Calls\Implementation\DeputiesLawApiCallTests.cs" />
     <Compile Include="Domain\Implementation\DeputyActivityTests.cs" />
-    <Compile Include="Domain\Extensions\DeputyExtensionsTests.cs" />
-    <Compile Include="Domain\Extensions\DeputyInfoExtensionsTests.cs" />
     <Compile Include="Domain\Implementation\DeputyInfoTests.cs" />
     <Compile Include="Domain\Implementation\DeputyRequestAddresseeTests.cs" />
-    <Compile Include="Domain\Extensions\DeputyRequestExtensionsTests.cs" />
+    <Compile Include="Domain\Extensions\IDeputyRequestExtensionsTests.cs" />
     <Compile Include="Domain\Implementation\DeputyRequestSignerTests.cs" />
     <Compile Include="Domain\Implementation\DeputyRequestTests.cs" />
     <Compile Include="Domain\Implementation\EducationTests.cs" />
@@ -135,7 +132,7 @@
     <Compile Include="RuLawJsonDeserializerTests.cs" />
     <Compile Include="RuLawJsonSerializerTests.cs" />
     <Compile Include="RuLawTests.cs" />
-    <Compile Include="Domain\Extensions\LawExtensionsTests.cs" />
+    <Compile Include="Domain\Extensions\ILawExtensionsTests.cs" />
     <Compile Include="Calls\Implementation\LawsLawApiCallTests.cs" />
     <Compile Include="Domain\Implementation\LawTests.cs" />
     <Compile Include="Domain\Implementation\ConvocationTests.cs" />
@@ -151,7 +148,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UnitTestsBase.cs" />
-    <Compile Include="Domain\Extensions\VoteExtensionsTests.cs" />
     <Compile Include="VotesApiCallerTests.cs" />
     <Compile Include="Domain\Implementation\Results\VotesSearchResultTests.cs" />
     <Compile Include="Calls\Implementation\VotesSearchLawApiCallTests.cs" />

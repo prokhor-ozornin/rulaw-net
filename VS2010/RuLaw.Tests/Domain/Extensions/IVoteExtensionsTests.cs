@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace RuLaw
@@ -52,6 +54,57 @@ namespace RuLaw
       Assert.Equal(VoteResultType.Rating, new Vote { ResultType = "рейтинговое" }.ResultType());
       Assert.Equal(VoteResultType.Qualitative, new Vote { ResultType = "качественное" }.ResultType());
       Assert.Equal(VoteResultType.Alternative, new Vote { ResultType = "альтернативное" }.ResultType());
+    }
+
+    /// <summary>
+    ///   <para>Performs testing of <see cref="IVoteExtensions.Subject{ENTITY}(IEnumerable{ENTITY}, string)"/> method.</para>
+    /// </summary>
+    [Fact]
+    public void Subject_Method()
+    {
+      Assert.Throws<ArgumentNullException>(() => IVoteExtensions.Subject<IVote>(null, "subject"));
+      Assert.Throws<ArgumentNullException>(() => Enumerable.Empty<IVote>().Subject(null));
+      Assert.Throws<ArgumentException>(() => Enumerable.Empty<IVote>().Subject(string.Empty));
+
+      Assert.False(Enumerable.Empty<IVote>().Subject("subject").Any());
+
+      var first = new Vote { Subject = "FIRST" };
+      var second = new Vote { Subject = "Second" };
+      var votes = new[] { null, first, second };
+      Assert.True(ReferenceEquals(first, votes.Subject("first").Single()));
+      Assert.True(ReferenceEquals(second, votes.Subject("second").Single()));
+    }
+
+    /// <summary>
+    ///   <para>Performs testing of <see cref="IVoteExtensions.Successful{ENTITY}(IEnumerable{ENTITY})"/> method.</para>
+    /// </summary>
+    [Fact]
+    public void Successful_Method()
+    {
+      Assert.Throws<ArgumentNullException>(() => IVoteExtensions.Successful<IVote>(null));
+
+      Assert.False(Enumerable.Empty<IVote>().Successful().Any());
+
+      var first = new Vote { Successful = true };
+      var second = new Vote { Successful = false };
+      var votes = new[] { null, first, second };
+      Assert.True(ReferenceEquals(first, votes.Successful().Single()));
+    }
+
+    /// <summary>
+    ///   <para>Performs testing of <see cref="IVoteExtensions.Unsuccessful{ENTITY}(IEnumerable{ENTITY})"/> method.</para>
+    /// </summary>
+    [Fact]
+    public void Unsuccessful_Method()
+    {
+      Assert.Throws<ArgumentNullException>(() => IVoteExtensions.Unsuccessful<IVote>(null));
+
+      Assert.False(Enumerable.Empty<IVote>().Unsuccessful().Any());
+
+      var first = new Vote { Successful = true };
+      var second = new Vote { Successful = false };
+      var votes = new[] { null, first, second };
+      Assert.True(ReferenceEquals(second, votes.Unsuccessful().Single()));
     }
   }
 }
