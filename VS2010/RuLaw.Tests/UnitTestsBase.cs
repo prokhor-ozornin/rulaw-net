@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Xml.Linq;
 using Catharsis.Commons;
 using Xunit;
 
@@ -102,13 +103,13 @@ namespace RuLaw
         }
         else if (value is DateTime)
         {
-          value = value.To<DateTime>().AsXml();
+          value = XDocument.Parse(value.To<DateTime>().ToXml()).Root.Value;
         }
 
         return "<{0}>{1}</{0}>".FormatInvariant(property.Name, value);
       });
       
-      var xml = instance.Xml();
+      var xml = instance.ToXml();
       Assert.True(xml.Contains(@"<?xml version=""1.0"" encoding=""utf-16""?>"));
       if (attributes == null)
       {
