@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['name',['Name',['../interface_ru_law_1_1_i_deputies_law_api_call.html#afa0d613ad0987c33e872d4852a8decbc',1,'RuLaw.IDeputiesLawApiCall.Name()'],['../interface_ru_law_1_1_i_deputy_transcript_law_api_call.html#a4b2257b8df9ef2358f0e94a9a2ff10f0',1,'RuLaw.IDeputyTranscriptLawApiCall.Name()'],['../interface_ru_law_1_1_i_laws_law_api_call.html#a1dfb4352d77314d1eb96796cc3bdd095',1,'RuLaw.ILawsLawApiCall.Name()'],['../interface_ru_law_1_1_i_questions_law_api_call.html#af82ce92ea0f7749e1a20c77bc6e081f6',1,'RuLaw.IQuestionsLawApiCall.Name()']]],
+  ['name_3c_20entity_20_3e',['Name&lt; ENTITY &gt;',['../class_ru_law_1_1_i_nameable_extensions.html#a03f5e65db8a87556bbd042eb9fedfefc',1,'RuLaw.INameableExtensions.Name&lt; ENTITY &gt;(this IQueryable&lt; ENTITY &gt; entities, string name)'],['../class_ru_law_1_1_i_nameable_extensions.html#aab373b140c7ec6cff4ab94891d59f24d',1,'RuLaw.INameableExtensions.Name&lt; ENTITY &gt;(this IEnumerable&lt; ENTITY &gt; entities, string name)']]],
+  ['number',['Number',['../interface_ru_law_1_1_i_laws_law_api_call.html#a439ec04f0a13052c3b98b870303fc4d4',1,'RuLaw.ILawsLawApiCall.Number()'],['../interface_ru_law_1_1_i_votes_search_law_api_call.html#a3309dff6db0e4a810c7a1d74d29a88f8',1,'RuLaw.IVotesSearchLawApiCall.Number()']]],
+  ['number_3c_20entity_20_3e',['Number&lt; ENTITY &gt;',['../class_ru_law_1_1_i_law_extensions.html#a24afc953c7f35ba439135c7693f652d9',1,'RuLaw::ILawExtensions']]]
+];
