@@ -36,7 +36,7 @@ namespace RuLaw
       Assert.True(caller.Field("xmlDeserializer").To<IDeserializer>() is RuLawXmlDeserializer);
 
       var client = caller.Field("restClient").To<RestClient>();
-      Assert.Equal("http://api.duma.gov.ru/api", client.BaseUrl);
+      Assert.Equal("http://api.duma.gov.ru/api", client.BaseUrl.ToString());
       var token = client.DefaultParameters.FirstOrDefault(x => x.Name == "app_token");
       Assert.NotNull(token);
       Assert.Equal("appToken", token.Value);
