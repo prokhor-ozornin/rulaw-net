@@ -1,4 +1,4 @@
 var class_ru_law_1_1_i_dateable_extensions =
 [
-    [ "Date< ENTITY >", "class_ru_law_1_1_i_dateable_extensions.html#acfe9cdc57a17eefa360ff6275357d4ee", null ]
+    [ "Date< ENTITY >", "class_ru_law_1_1_i_dateable_extensions.html#a5c24e97c36b610e57c70757372ff6576", null ]
 ];

@@ -1,6 +1,6 @@
 var NAVTREEINDEX3 =
 {
-"interface_ru_law_1_1_i_transcripts_api_caller.html#a578dd570d148878ad1baed09f57bfc20":[1,0,0,86,3],
+"interface_ru_law_1_1_i_transcripts_api_caller.html#ac34c523a685f421e3312bde4fe90f404":[1,0,0,86,1],
 "interface_ru_law_1_1_i_transcripts_api_caller.html#adabb5726c9273e480aedbb5d089ea28c":[1,0,0,86,0],
 "interface_ru_law_1_1_i_transcripts_api_caller.html#af2833cc250e69bfd0fda0476829ebe7c":[1,0,0,86,5],
 "interface_ru_law_1_1_i_transcripts_api_caller.html#af49407038c40ff7e3fdd500aad8c490b":[1,0,0,86,2],
@@ -15,7 +15,7 @@ var NAVTREEINDEX3 =
 "interface_ru_law_1_1_i_vote.html#aaf847c41d778411774fd1e6a83e9df73":[1,0,0,89,5],
 "interface_ru_law_1_1_i_vote.html#af6bdad2923b80ef9a3fc351cccd0f924":[1,0,0,89,4],
 "interface_ru_law_1_1_i_votes_api_caller.html":[1,0,0,91],
-"interface_ru_law_1_1_i_votes_api_caller.html#a4884aa647c4a890518ecf1126961520f":[1,0,0,91,0],
+"interface_ru_law_1_1_i_votes_api_caller.html#a42737515b17c4c96eb51e41fb53afde7":[1,0,0,91,0],
 "interface_ru_law_1_1_i_votes_api_caller.html#ac6003648d67993d7adae1341bc13c184":[1,0,0,91,1],
 "interface_ru_law_1_1_i_votes_search_law_api_call.html":[1,0,0,93],
 "interface_ru_law_1_1_i_votes_search_law_api_call.html#a24c4c80ec24aab663015e5dd3eee0acd":[1,0,0,93,8],
@@ -37,6 +37,5 @@ var NAVTREEINDEX3 =
 "namespace_ru_law.html":[1,0,0],
 "namespacemembers.html":[0,0],
 "namespacemembers_enum.html":[0,1],
-"namespacemembers_eval.html":[0,2],
 "pages.html":[]
 };

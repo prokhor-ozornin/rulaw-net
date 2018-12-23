@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['page',['Page',['../interface_ru_law_1_1_i_paged_law_api_call_3_01_t_01_4.html#af49bc8429651d13e41b6a7ce5020000c',1,'RuLaw.IPagedLawApiCall&lt; T &gt;.Page()'],['../interface_ru_law_1_1_i_votes_search_law_api_call.html#a589d5c5d68224bb9be12b5192e8a08fd',1,'RuLaw.IVotesSearchLawApiCall.Page()']]],
-  ['pagesize',['PageSize',['../interface_ru_law_1_1_i_paged_law_api_call_3_01_t_01_4.html#a835c640968353e83b985f8a3fed399cc',1,'RuLaw::IPagedLawApiCall&lt; T &gt;']]],
-  ['period_3c_20entity_20_3e',['Period&lt; ENTITY &gt;',['../class_ru_law_1_1_i_periodable_extensions.html#ae2acf8331de37f9650d4aa964b935c2f',1,'RuLaw::IPeriodableExtensions']]],
+  ['page',['Page',['../interface_ru_law_1_1_i_paged_law_api_call.html#af49bc8429651d13e41b6a7ce5020000c',1,'RuLaw.IPagedLawApiCall.Page()'],['../interface_ru_law_1_1_i_votes_search_law_api_call.html#a589d5c5d68224bb9be12b5192e8a08fd',1,'RuLaw.IVotesSearchLawApiCall.Page()']]],
+  ['pagesize',['PageSize',['../interface_ru_law_1_1_i_paged_law_api_call.html#a835c640968353e83b985f8a3fed399cc',1,'RuLaw::IPagedLawApiCall']]],
+  ['period_3c_20entity_20_3e',['Period&lt; ENTITY &gt;',['../class_ru_law_1_1_i_periodable_extensions.html#a92ddf4767b21cf83d4fbb04806686950',1,'RuLaw::IPeriodableExtensions']]],
   ['personal',['Personal',['../class_ru_law_1_1_i_vote_extensions.html#ac621f6c5151d4f8a8c5fdd0981539e71',1,'RuLaw::IVoteExtensions']]],
   ['personresult',['PersonResult',['../class_ru_law_1_1_i_vote_extensions.html#aca2ba8e4f924a3b174b7b1c82db28a0c',1,'RuLaw::IVoteExtensions']]],
   ['phasestage',['PhaseStage',['../class_ru_law_1_1_phase_stage.html#aaf060b10316a986b28e1f9005ad308d0',1,'RuLaw::PhaseStage']]],

@@ -6,149 +6,105 @@ var hierarchy =
     [ "DefaultContractResolver", null, [
       [ "RuLaw.JsonEntityOrderedContractResolver", "class_ru_law_1_1_json_entity_ordered_contract_resolver.html", null ]
     ] ],
-    [ "IComparable< ENTITY >", null, [
-      [ "RuLaw.NameableEntity< ENTITY >", "class_ru_law_1_1_nameable_entity_3_01_e_n_t_i_t_y_01_4.html", [
-        [ "RuLaw.Authority", "class_ru_law_1_1_authority.html", [
-          [ "RuLaw.FederalAuthority", "class_ru_law_1_1_federal_authority.html", null ],
-          [ "RuLaw.RegionalAuthority", "class_ru_law_1_1_regional_authority.html", null ]
-        ] ],
-        [ "RuLaw.Committee", "class_ru_law_1_1_committee.html", null ],
-        [ "RuLaw.Convocation", "class_ru_law_1_1_convocation.html", null ],
-        [ "RuLaw.Deputy", "class_ru_law_1_1_deputy.html", null ],
-        [ "RuLaw.DeputyRequestAddressee", "class_ru_law_1_1_deputy_request_addressee.html", null ],
-        [ "RuLaw.DeputyRequestSigner", "class_ru_law_1_1_deputy_request_signer.html", null ],
-        [ "RuLaw.Instance", "class_ru_law_1_1_instance.html", null ],
-        [ "RuLaw.LawBranch", "class_ru_law_1_1_law_branch.html", null ],
-        [ "RuLaw.LawEventPhase", "class_ru_law_1_1_law_event_phase.html", null ],
-        [ "RuLaw.LawEventStage", "class_ru_law_1_1_law_event_stage.html", null ],
-        [ "RuLaw.LawType", "class_ru_law_1_1_law_type.html", null ],
-        [ "RuLaw.PhaseStage", "class_ru_law_1_1_phase_stage.html", null ],
-        [ "RuLaw.StagePhase", "class_ru_law_1_1_stage_phase.html", null ],
-        [ "RuLaw.Topic", "class_ru_law_1_1_topic.html", null ]
-      ] ]
-    ] ],
-    [ "IComparable< Error >", null, [
-      [ "RuLaw.Error", "class_ru_law_1_1_error.html", null ]
-    ] ],
-    [ "IComparable< IDateTranscriptMeeting >", null, [
-      [ "RuLaw.DateTranscriptMeeting", "class_ru_law_1_1_date_transcript_meeting.html", null ]
-    ] ],
-    [ "IComparable< IDateTranscriptsResult >", null, [
-      [ "RuLaw.DateTranscriptsResult", "class_ru_law_1_1_date_transcripts_result.html", null ]
-    ] ],
-    [ "IComparable< IDeputyActivity >", null, [
-      [ "RuLaw.DeputyActivity", "class_ru_law_1_1_deputy_activity.html", null ]
-    ] ],
-    [ "IComparable< IDeputyInfo >", null, [
-      [ "RuLaw.DeputyInfo", "class_ru_law_1_1_deputy_info.html", null ]
-    ] ],
-    [ "IComparable< IDeputyRequest >", null, [
-      [ "RuLaw.DeputyRequest", "class_ru_law_1_1_deputy_request.html", null ]
-    ] ],
-    [ "IComparable< IDeputyTranscriptsResult >", null, [
-      [ "RuLaw.DeputyTranscriptsResult", "class_ru_law_1_1_deputy_transcripts_result.html", null ]
-    ] ],
-    [ "IComparable< IEducation >", null, [
-      [ "RuLaw.Education", "class_ru_law_1_1_education.html", null ]
-    ] ],
-    [ "IComparable< ILaw >", null, [
-      [ "RuLaw.Law", "class_ru_law_1_1_law.html", null ]
-    ] ],
-    [ "IComparable< ILawEvent >", null, [
-      [ "RuLaw.LawEvent", "class_ru_law_1_1_law_event.html", null ]
-    ] ],
-    [ "IComparable< ILawEventDocument >", null, [
-      [ "RuLaw.LawEventDocument", "class_ru_law_1_1_law_event_document.html", null ]
-    ] ],
-    [ "IComparable< ILawsSearchResult >", null, [
-      [ "RuLaw.LawsSearchResult", "class_ru_law_1_1_laws_search_result.html", null ]
-    ] ],
-    [ "IComparable< ILawTranscriptsResult >", null, [
-      [ "RuLaw.LawTranscriptsResult", "class_ru_law_1_1_law_transcripts_result.html", null ]
-    ] ],
-    [ "IComparable< IQuestion >", null, [
-      [ "RuLaw.Question", "class_ru_law_1_1_question.html", null ]
-    ] ],
-    [ "IComparable< IQuestionsSearchResult >", null, [
-      [ "RuLaw.QuestionsSearchResult", "class_ru_law_1_1_questions_search_result.html", null ]
-    ] ],
-    [ "IComparable< ISession >", null, [
-      [ "RuLaw.Session", "class_ru_law_1_1_session.html", null ]
-    ] ],
-    [ "IComparable< ITranscriptMeeting >", null, [
-      [ "RuLaw.TranscriptMeeting", "class_ru_law_1_1_transcript_meeting.html", null ]
-    ] ],
-    [ "IComparable< ITranscriptMeetingQuestion >", null, [
-      [ "RuLaw.TranscriptMeetingQuestion", "class_ru_law_1_1_transcript_meeting_question.html", null ]
-    ] ],
-    [ "IComparable< ITranscriptMeetingQuestionPart >", null, [
-      [ "RuLaw.TranscriptMeetingQuestionPart", "class_ru_law_1_1_transcript_meeting_question_part.html", null ]
-    ] ],
-    [ "IComparable< ITranscriptVote >", null, [
-      [ "RuLaw.TranscriptVote", "class_ru_law_1_1_transcript_vote.html", null ]
-    ] ],
-    [ "IComparable< IVote >", null, [
-      [ "RuLaw.Vote", "class_ru_law_1_1_vote.html", null ]
-    ] ],
-    [ "IComparable< IVotesSearchResult >", null, [
+    [ "IComparable", null, [
+      [ "RuLaw.DateTranscriptMeeting", "class_ru_law_1_1_date_transcript_meeting.html", null ],
+      [ "RuLaw.DateTranscriptsResult", "class_ru_law_1_1_date_transcripts_result.html", null ],
+      [ "RuLaw.DeputyActivity", "class_ru_law_1_1_deputy_activity.html", null ],
+      [ "RuLaw.DeputyInfo", "class_ru_law_1_1_deputy_info.html", null ],
+      [ "RuLaw.DeputyRequest", "class_ru_law_1_1_deputy_request.html", null ],
+      [ "RuLaw.DeputyTranscriptsResult", "class_ru_law_1_1_deputy_transcripts_result.html", null ],
+      [ "RuLaw.Education", "class_ru_law_1_1_education.html", null ],
+      [ "RuLaw.Error", "class_ru_law_1_1_error.html", null ],
+      [ "RuLaw.Law", "class_ru_law_1_1_law.html", null ],
+      [ "RuLaw.LawEvent", "class_ru_law_1_1_law_event.html", null ],
+      [ "RuLaw.LawEventDocument", "class_ru_law_1_1_law_event_document.html", null ],
+      [ "RuLaw.LawsSearchResult", "class_ru_law_1_1_laws_search_result.html", null ],
+      [ "RuLaw.LawTranscriptsResult", "class_ru_law_1_1_law_transcripts_result.html", null ],
+      [ "RuLaw.NameableEntity< ENTITY >", "class_ru_law_1_1_nameable_entity.html", null ],
+      [ "RuLaw.Question", "class_ru_law_1_1_question.html", null ],
+      [ "RuLaw.QuestionsSearchResult", "class_ru_law_1_1_questions_search_result.html", null ],
+      [ "RuLaw.Session", "class_ru_law_1_1_session.html", null ],
+      [ "RuLaw.TranscriptMeeting", "class_ru_law_1_1_transcript_meeting.html", null ],
+      [ "RuLaw.TranscriptMeetingQuestion", "class_ru_law_1_1_transcript_meeting_question.html", null ],
+      [ "RuLaw.TranscriptMeetingQuestionPart", "class_ru_law_1_1_transcript_meeting_question_part.html", null ],
+      [ "RuLaw.TranscriptVote", "class_ru_law_1_1_transcript_vote.html", null ],
+      [ "RuLaw.Vote", "class_ru_law_1_1_vote.html", null ],
       [ "RuLaw.VotesSearchResult", "class_ru_law_1_1_votes_search_result.html", null ]
     ] ],
-    [ "IEquatable< ENTITY >", null, [
-      [ "RuLaw.NameableEntity< ENTITY >", "class_ru_law_1_1_nameable_entity_3_01_e_n_t_i_t_y_01_4.html", null ]
-    ] ],
-    [ "IEquatable< Error >", null, [
-      [ "RuLaw.Error", "class_ru_law_1_1_error.html", null ]
-    ] ],
-    [ "IEquatable< IDateTranscriptMeeting >", null, [
-      [ "RuLaw.DateTranscriptMeeting", "class_ru_law_1_1_date_transcript_meeting.html", null ]
-    ] ],
-    [ "IEquatable< IDateTranscriptsResult >", null, [
-      [ "RuLaw.DateTranscriptsResult", "class_ru_law_1_1_date_transcripts_result.html", null ]
-    ] ],
-    [ "IEquatable< IDeputyActivity >", null, [
-      [ "RuLaw.DeputyActivity", "class_ru_law_1_1_deputy_activity.html", null ]
-    ] ],
-    [ "IEquatable< IDeputyInfo >", null, [
-      [ "RuLaw.DeputyInfo", "class_ru_law_1_1_deputy_info.html", null ]
-    ] ],
-    [ "IEquatable< IDeputyRequest >", null, [
-      [ "RuLaw.DeputyRequest", "class_ru_law_1_1_deputy_request.html", null ]
-    ] ],
-    [ "IEquatable< IEducation >", null, [
-      [ "RuLaw.Education", "class_ru_law_1_1_education.html", null ]
-    ] ],
-    [ "IEquatable< ILaw >", null, [
-      [ "RuLaw.Law", "class_ru_law_1_1_law.html", null ]
-    ] ],
-    [ "IEquatable< ILawEventDocument >", null, [
-      [ "RuLaw.LawEventDocument", "class_ru_law_1_1_law_event_document.html", null ]
-    ] ],
-    [ "IEquatable< ILawTranscriptsResult >", null, [
-      [ "RuLaw.LawTranscriptsResult", "class_ru_law_1_1_law_transcripts_result.html", null ]
-    ] ],
-    [ "IEquatable< IQuestion >", null, [
-      [ "RuLaw.Question", "class_ru_law_1_1_question.html", null ]
-    ] ],
-    [ "IEquatable< IResolutionTranscriptsResult >", null, [
-      [ "RuLaw.ResolutionTranscriptsResult", "class_ru_law_1_1_resolution_transcripts_result.html", null ]
-    ] ],
-    [ "IEquatable< ISession >", null, [
-      [ "RuLaw.Session", "class_ru_law_1_1_session.html", null ]
-    ] ],
-    [ "IEquatable< ITranscriptMeeting >", null, [
-      [ "RuLaw.TranscriptMeeting", "class_ru_law_1_1_transcript_meeting.html", null ]
-    ] ],
-    [ "IEquatable< ITranscriptMeetingQuestion >", null, [
-      [ "RuLaw.TranscriptMeetingQuestion", "class_ru_law_1_1_transcript_meeting_question.html", null ]
-    ] ],
-    [ "IEquatable< ITranscriptMeetingQuestionPart >", null, [
-      [ "RuLaw.TranscriptMeetingQuestionPart", "class_ru_law_1_1_transcript_meeting_question_part.html", null ]
-    ] ],
-    [ "IEquatable< ITranscriptVote >", null, [
-      [ "RuLaw.TranscriptVote", "class_ru_law_1_1_transcript_vote.html", null ]
-    ] ],
-    [ "IEquatable< IVote >", null, [
+    [ "IEquatable", null, [
+      [ "RuLaw.DateTranscriptMeeting", "class_ru_law_1_1_date_transcript_meeting.html", null ],
+      [ "RuLaw.DateTranscriptsResult", "class_ru_law_1_1_date_transcripts_result.html", null ],
+      [ "RuLaw.DeputyActivity", "class_ru_law_1_1_deputy_activity.html", null ],
+      [ "RuLaw.DeputyInfo", "class_ru_law_1_1_deputy_info.html", null ],
+      [ "RuLaw.DeputyRequest", "class_ru_law_1_1_deputy_request.html", null ],
+      [ "RuLaw.Education", "class_ru_law_1_1_education.html", null ],
+      [ "RuLaw.Error", "class_ru_law_1_1_error.html", null ],
+      [ "RuLaw.Law", "class_ru_law_1_1_law.html", null ],
+      [ "RuLaw.LawEventDocument", "class_ru_law_1_1_law_event_document.html", null ],
+      [ "RuLaw.LawTranscriptsResult", "class_ru_law_1_1_law_transcripts_result.html", null ],
+      [ "RuLaw.NameableEntity< ENTITY >", "class_ru_law_1_1_nameable_entity.html", null ],
+      [ "RuLaw.Question", "class_ru_law_1_1_question.html", null ],
+      [ "RuLaw.ResolutionTranscriptsResult", "class_ru_law_1_1_resolution_transcripts_result.html", null ],
+      [ "RuLaw.Session", "class_ru_law_1_1_session.html", null ],
+      [ "RuLaw.TranscriptMeeting", "class_ru_law_1_1_transcript_meeting.html", null ],
+      [ "RuLaw.TranscriptMeetingQuestion", "class_ru_law_1_1_transcript_meeting_question.html", null ],
+      [ "RuLaw.TranscriptMeetingQuestionPart", "class_ru_law_1_1_transcript_meeting_question_part.html", null ],
+      [ "RuLaw.TranscriptVote", "class_ru_law_1_1_transcript_vote.html", null ],
       [ "RuLaw.Vote", "class_ru_law_1_1_vote.html", null ]
+    ] ],
+    [ "RuLaw.IPagedLawApiCall< IDeputyTranscriptLawApiCall >", "interface_ru_law_1_1_i_paged_law_api_call.html", [
+      [ "RuLaw.IDeputyTranscriptLawApiCall", "interface_ru_law_1_1_i_deputy_transcript_law_api_call.html", null ]
+    ] ],
+    [ "RuLaw.IPagedLawApiCall< ILawsLawApiCall >", "interface_ru_law_1_1_i_paged_law_api_call.html", [
+      [ "RuLaw.ILawsLawApiCall", "interface_ru_law_1_1_i_laws_law_api_call.html", null ]
+    ] ],
+    [ "RuLaw.IPagedLawApiCall< IQuestionsLawApiCall >", "interface_ru_law_1_1_i_paged_law_api_call.html", [
+      [ "RuLaw.IQuestionsLawApiCall", "interface_ru_law_1_1_i_questions_law_api_call.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< Authority >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.Authority", "class_ru_law_1_1_authority.html", [
+        [ "RuLaw.FederalAuthority", "class_ru_law_1_1_federal_authority.html", null ],
+        [ "RuLaw.RegionalAuthority", "class_ru_law_1_1_regional_authority.html", null ]
+      ] ]
+    ] ],
+    [ "RuLaw.NameableEntity< Committee >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.Committee", "class_ru_law_1_1_committee.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< Convocation >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.Convocation", "class_ru_law_1_1_convocation.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< Deputy >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.Deputy", "class_ru_law_1_1_deputy.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< DeputyRequestAddressee >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.DeputyRequestAddressee", "class_ru_law_1_1_deputy_request_addressee.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< DeputyRequestSigner >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.DeputyRequestSigner", "class_ru_law_1_1_deputy_request_signer.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< Instance >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.Instance", "class_ru_law_1_1_instance.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< LawBranch >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.LawBranch", "class_ru_law_1_1_law_branch.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< LawEventPhase >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.LawEventPhase", "class_ru_law_1_1_law_event_phase.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< LawEventStage >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.LawEventStage", "class_ru_law_1_1_law_event_stage.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< LawType >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.LawType", "class_ru_law_1_1_law_type.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< PhaseStage >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.PhaseStage", "class_ru_law_1_1_phase_stage.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< StagePhase >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.StagePhase", "class_ru_law_1_1_stage_phase.html", null ]
+    ] ],
+    [ "RuLaw.NameableEntity< Topic >", "class_ru_law_1_1_nameable_entity.html", [
+      [ "RuLaw.Topic", "class_ru_law_1_1_topic.html", null ]
     ] ],
     [ "RuLaw.DateTimeExtensions", "class_ru_law_1_1_date_time_extensions.html", null ],
     [ "RuLaw.DeputySearchResult", "class_ru_law_1_1_deputy_search_result.html", null ],
@@ -255,7 +211,7 @@ var hierarchy =
         [ "RuLaw.Topic", "class_ru_law_1_1_topic.html", null ]
       ] ],
       [ "RuLaw.IVote", "interface_ru_law_1_1_i_vote.html", null ],
-      [ "RuLaw.NameableEntity< ENTITY >", "class_ru_law_1_1_nameable_entity_3_01_e_n_t_i_t_y_01_4.html", null ]
+      [ "RuLaw.NameableEntity< ENTITY >", "class_ru_law_1_1_nameable_entity.html", null ]
     ] ],
     [ "RuLaw.ILawApiCall", "interface_ru_law_1_1_i_law_api_call.html", [
       [ "RuLaw.IAuthoritiesLawApiCall", "interface_ru_law_1_1_i_authorities_law_api_call.html", null ],
@@ -312,14 +268,10 @@ var hierarchy =
       [ "RuLaw.ITranscriptMeetingQuestion", "interface_ru_law_1_1_i_transcript_meeting_question.html", [
         [ "RuLaw.TranscriptMeetingQuestion", "class_ru_law_1_1_transcript_meeting_question.html", null ]
       ] ],
-      [ "RuLaw.NameableEntity< ENTITY >", "class_ru_law_1_1_nameable_entity_3_01_e_n_t_i_t_y_01_4.html", null ]
+      [ "RuLaw.NameableEntity< ENTITY >", "class_ru_law_1_1_nameable_entity.html", null ]
     ] ],
     [ "RuLaw.INameableExtensions", "class_ru_law_1_1_i_nameable_extensions.html", null ],
-    [ "RuLaw.IPagedLawApiCall< T >", "interface_ru_law_1_1_i_paged_law_api_call_3_01_t_01_4.html", [
-      [ "RuLaw.IDeputyTranscriptLawApiCall", "interface_ru_law_1_1_i_deputy_transcript_law_api_call.html", null ],
-      [ "RuLaw.ILawsLawApiCall", "interface_ru_law_1_1_i_laws_law_api_call.html", null ],
-      [ "RuLaw.IQuestionsLawApiCall", "interface_ru_law_1_1_i_questions_law_api_call.html", null ]
-    ] ],
+    [ "RuLaw.IPagedLawApiCall< T >", "interface_ru_law_1_1_i_paged_law_api_call.html", null ],
     [ "RuLaw.IPeriodable", "interface_ru_law_1_1_i_periodable.html", [
       [ "RuLaw.IAuthority", "interface_ru_law_1_1_i_authority.html", null ],
       [ "RuLaw.ICommittee", "interface_ru_law_1_1_i_committee.html", null ],

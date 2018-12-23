@@ -1,35 +1,29 @@
-var NAVTREE =
-[
-  [ "RuLaw.NET", "index.html", [
-    [ "Package Functions", "namespacemembers.html", [
-      [ "All", "namespacemembers.html", null ],
-      [ "Enumerations", "namespacemembers_enum.html", null ],
-      [ "Enumerator", "namespacemembers_eval.html", null ]
-    ] ],
-    [ "Classes", null, [
-      [ "Class List", "annotated.html", "annotated" ],
-      [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
-      [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Properties", "functions_prop.html", "functions_prop" ]
-      ] ]
-    ] ]
-  ] ]
-];
+/*
+ @licstart  The following is the entire license notice for the
+ JavaScript code in this file.
 
-var NAVTREEINDEX =
-[
-"annotated.html",
-"class_ru_law_1_1_i_vote_extensions.html#ad584f7e495dae8c2d531cae6f6100a65",
-"functions_func.html",
-"interface_ru_law_1_1_i_transcripts_api_caller.html#a578dd570d148878ad1baed09f57bfc20"
-];
+ Copyright (C) 1997-2017 by Dimitri van Heesch
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ @licend  The above is the entire license notice
+ for the JavaScript code in this file
+ */
 var navTreeSubIndices = new Array();
+var arrowDown = '&#9660;';
+var arrowRight = '&#9654;';
 
 function getData(varName)
 {
@@ -102,21 +96,21 @@ function cachedLink()
 
 function getScript(scriptName,func,show)
 {
-  var head = document.getElementsByTagName("head")[0]; 
+  var head = document.getElementsByTagName("head")[0];
   var script = document.createElement('script');
   script.id = scriptName;
   script.type = 'text/javascript';
-  script.onload = func; 
-  script.src = scriptName+'.js'; 
-  if ($.browser.msie && $.browser.version<=8) { 
+  script.onload = func;
+  script.src = scriptName+'.js';
+  if ($.browser.msie && $.browser.version<=8) {
     // script.onload does not work with older versions of IE
     script.onreadystatechange = function() {
-      if (script.readyState=='complete' || script.readyState=='loaded') { 
-        func(); if (show) showRoot(); 
+      if (script.readyState=='complete' || script.readyState=='loaded') {
+        func(); if (show) showRoot();
       }
     }
   }
-  head.appendChild(script); 
+  head.appendChild(script);
 }
 
 function createIndent(o,domNode,node,level)
@@ -125,18 +119,17 @@ function createIndent(o,domNode,node,level)
   var n = node;
   while (n.parentNode) { level++; n=n.parentNode; }
   if (node.childrenData) {
-    var imgNode = document.createElement("img");
+    var imgNode = document.createElement("span");
+    imgNode.className = 'arrow';
     imgNode.style.paddingLeft=(16*level).toString()+'px';
-    imgNode.width  = 16;
-    imgNode.height = 22;
-    imgNode.border = 0;
+    imgNode.innerHTML=arrowRight;
     node.plus_img = imgNode;
     node.expandToggle = document.createElement("a");
     node.expandToggle.href = "javascript:void(0)";
     node.expandToggle.onclick = function() {
       if (node.expanded) {
         $(node.getChildrenUL()).slideUp("fast");
-        node.plus_img.src = node.relpath+"ftv2pnode.png";
+        node.plus_img.innerHTML=arrowRight;
         node.expanded = false;
       } else {
         expandNode(o, node, false, false);
@@ -144,15 +137,13 @@ function createIndent(o,domNode,node,level)
     }
     node.expandToggle.appendChild(imgNode);
     domNode.appendChild(node.expandToggle);
-    imgNode.src = node.relpath+"ftv2pnode.png";
   } else {
     var span = document.createElement("span");
-    span.style.display = 'inline-block';
+    span.className = 'arrow';
     span.style.width   = 16*(level+1)+'px';
-    span.style.height  = '22px';
     span.innerHTML = '&#160;';
     domNode.appendChild(span);
-  } 
+  }
 }
 
 var animationInProgress = false;
@@ -226,7 +217,7 @@ function newNode(o, po, text, link, childrenData, lastNode)
       var aname = '#'+link.split('#')[1];
       var srcPage = stripPath(pathName());
       var targetPage = stripPath(link.split('#')[0]);
-      a.href = srcPage!=targetPage ? url : "javascript:void(0)"; 
+      a.href = srcPage!=targetPage ? url : "javascript:void(0)";
       a.onclick = function(){
         storeLink(link);
         if (!$(a).parent().parent().hasClass('selected'))
@@ -244,7 +235,7 @@ function newNode(o, po, text, link, childrenData, lastNode)
       a.onclick = function() { storeLink(link); }
     }
   } else {
-    if (childrenData != null) 
+    if (childrenData != null)
     {
       a.className = "nolink";
       a.href = "javascript:void(0)";
@@ -293,17 +284,13 @@ function expandNode(o, node, imm, showRoot)
     } else {
       if (!node.childrenVisited) {
         getNode(o, node);
-      } if (imm || ($.browser.msie && $.browser.version>8)) { 
+      } if (imm || ($.browser.msie && $.browser.version>8)) {
         // somehow slideDown jumps to the start of tree for IE9 :-(
         $(node.getChildrenUL()).show();
       } else {
         $(node.getChildrenUL()).slideDown("fast");
       }
-      if (node.isLast) {
-        node.plus_img.src = node.relpath+"ftv2mlastnode.png";
-      } else {
-        node.plus_img.src = node.relpath+"ftv2mnode.png";
-      }
+      node.plus_img.innerHTML = arrowDown;
       node.expanded = true;
     }
   }
@@ -372,11 +359,7 @@ function showNode(o, node, index, hash)
         getNode(o, node);
       }
       $(node.getChildrenUL()).css({'display':'block'});
-      if (node.isLast) {
-        node.plus_img.src = node.relpath+"ftv2mlastnode.png";
-      } else {
-        node.plus_img.src = node.relpath+"ftv2mnode.png";
-      }
+      node.plus_img.innerHTML = arrowDown;
       node.expanded = true;
       var n = node.children[o.breadcrumbs[index]];
       if (index+1<o.breadcrumbs.length) {
@@ -513,10 +496,9 @@ function initNavTree(toroot,relpath)
   o.node.relpath = relpath;
   o.node.expanded = false;
   o.node.isLast = true;
-  o.node.plus_img = document.createElement("img");
-  o.node.plus_img.src = relpath+"ftv2pnode.png";
-  o.node.plus_img.width = 16;
-  o.node.plus_img.height = 22;
+  o.node.plus_img = document.createElement("span");
+  o.node.plus_img.className = 'arrow';
+  o.node.plus_img.innerHTML = arrowRight;
 
   if (localStorageSupported()) {
     var navSync = $('#nav-sync');
@@ -555,4 +537,4 @@ function initNavTree(toroot,relpath)
      }
   })
 }
-
+/* @license-end */
