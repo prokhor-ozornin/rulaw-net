@@ -15,8 +15,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new DeputyRequest(), new { controlDate = default(DateTime), requestDate = default(DateTime), requestId = 0, signedDate = default(DateTime) });
-      this.TestJson(
+      TestJson(new DeputyRequest(), new { controlDate = default(DateTime), requestDate = default(DateTime), requestId = 0, signedDate = default(DateTime) });
+      TestJson(
         new DeputyRequest
         {
           Id = 1,
@@ -41,8 +41,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new DeputyRequest(), "request", new { controlDate = default(DateTime).ISO8601(), requestDate = default(DateTime).ISO8601(), requestId = 0, signedDate = default(DateTime).ISO8601() });
-      this.TestXml(
+      TestXml(new DeputyRequest(), "request", new { controlDate = default(DateTime).ISO8601(), requestDate = default(DateTime).ISO8601(), requestId = 0, signedDate = default(DateTime).ISO8601() });
+      TestXml(
         new DeputyRequest
         {
           Id = 1,
@@ -185,7 +185,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
     }
 
     /// <summary>
@@ -198,7 +198,7 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Id", 1, 2);
+      TestEquality("Id", 1, 2);
     }
 
     /// <summary>
@@ -207,7 +207,7 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Id", 1, 2);
+      TestHashCode("Id", 1, 2);
     }
 
     /// <summary>

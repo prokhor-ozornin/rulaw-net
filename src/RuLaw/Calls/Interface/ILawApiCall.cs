@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System.Collections.Generic;
+
   /// <summary>
   ///   <para>Representation of a custom web request to Russian State Duma REST API.</para>
   /// </summary>

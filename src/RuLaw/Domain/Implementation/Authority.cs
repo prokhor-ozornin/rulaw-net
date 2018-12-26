@@ -1,10 +1,10 @@
-﻿using System;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Law authority.</para>
   /// </summary>
@@ -32,8 +32,8 @@ namespace RuLaw
     [XmlElement("startDate")]
     public string FromDateOriginal
     {
-      get { return this.FromDate.ISO8601(); }
-      set { this.FromDate = DateTime.Parse(value); }
+      get { return FromDate.ISO8601(); }
+      set { FromDate = DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -50,8 +50,8 @@ namespace RuLaw
     [XmlElement("stopDate")]
     public string ToDateOriginal
     {
-      get { return this.ToDate != null ? this.ToDate.Value.ISO8601() : null; }
-      set { this.ToDate = value.IsEmpty() ? (DateTime?)null : DateTime.Parse(value); }
+      get { return ToDate != null ? ToDate.Value.ISO8601() : null; }
+      set { ToDate = value.IsEmpty() ? (DateTime?)null : DateTime.Parse(value); }
     }
   }
 }

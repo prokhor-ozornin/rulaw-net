@@ -1,10 +1,10 @@
-﻿using System.IO;
-using System.Xml.Serialization;
-using RestSharp.Serializers;
-using XmlSerializer = System.Xml.Serialization.XmlSerializer;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System.IO;
+  using System.Xml.Serialization;
+  using RestSharp.Serializers;
+  using XmlSerializer = System.Xml.Serialization.XmlSerializer;
+
   internal sealed class RuLawXmlSerializer : IXmlSerializer
   {
     public string Serialize(object subject)

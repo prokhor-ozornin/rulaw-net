@@ -1,37 +1,37 @@
-﻿using System;
-using Catharsis.Commons;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using Catharsis.Commons;
+
   internal sealed class VotesSearchLawApiCall : LawApiCall, IVotesSearchLawApiCall
   {
     public IVotesSearchLawApiCall Convocation(long id)
     {
-      this.Parameters["convocation"] = id;
+      Parameters["convocation"] = id;
       return this;
     }
 
     public IVotesSearchLawApiCall From(DateTime date)
     {
-      this.Parameters["from"] = date.RuLawDate();
+      Parameters["from"] = date.RuLawDate();
       return this;
     }
 
     public IVotesSearchLawApiCall To(DateTime date)
     {
-      this.Parameters["to"] = date.RuLawDate();
+      Parameters["to"] = date.RuLawDate();
       return this;
     }
 
     public IVotesSearchLawApiCall Faction(long id)
     {
-      this.Parameters["faction"] = id;
+      Parameters["faction"] = id;
       return this;
     }
 
     public IVotesSearchLawApiCall Deputy(long id)
     {
-      this.Parameters["deputy"] = id;
+      Parameters["deputy"] = id;
       return this;
     }
 
@@ -39,7 +39,7 @@ namespace RuLaw
     {
       Assertion.NotEmpty(number);
 
-      this.Parameters["number"] = number;
+      Parameters["number"] = number;
       return this;
     }
 
@@ -47,25 +47,25 @@ namespace RuLaw
     {
       Assertion.NotEmpty(keywords);
 
-      this.Parameters["keywords"] = keywords;
+      Parameters["keywords"] = keywords;
       return this;
     }
 
     public IVotesSearchLawApiCall Page(int page)
     {
-      this.Parameters["page"] = page;
+      Parameters["page"] = page;
       return this;
     }
 
     public IVotesSearchLawApiCall Limit(PageSize limit)
     {
-      this.Parameters["limit"] = (int) limit;
+      Parameters["limit"] = (int) limit;
       return this;
     }
 
     public IVotesSearchLawApiCall Sorting(VotesSorting sorting)
     {
-      this.Parameters["sort"] = sorting.String();
+      Parameters["sort"] = sorting.String();
       return this;
     }
   }

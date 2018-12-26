@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Default settings for <see cref="JsonConverter"/>.</para>
   /// </summary>

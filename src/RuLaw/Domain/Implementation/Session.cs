@@ -1,10 +1,10 @@
-﻿using System;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Duma work session.</para>
   /// </summary>
@@ -32,8 +32,8 @@ namespace RuLaw
     [XmlElement("startDate")]
     public string FromDateOriginal
     {
-      get { return this.FromDate.ISO8601(); }
-      set { this.FromDate = DateTime.Parse(value); }
+      get { return FromDate.ISO8601(); }
+      set { FromDate = DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -57,8 +57,8 @@ namespace RuLaw
     [XmlElement("endDate")]
     public string ToDateOriginal
     {
-      get { return this.ToDate != null ? this.ToDate.Value.ISO8601() : null; }
-      set { this.ToDate = value.IsEmpty() ? (DateTime?)null : DateTime.Parse(value); }
+      get { return ToDate != null ? ToDate.Value.ISO8601() : null; }
+      set { ToDate = value.IsEmpty() ? (DateTime?)null : DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="ISession"/> to compare with this instance.</param>
     public int CompareTo(ISession other)
     {
-      return this.FromDate.CompareTo(other.FromDate);
+      return FromDate.CompareTo(other.FromDate);
     }
 
     /// <summary>
@@ -88,7 +88,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as ISession);
+      return Equals(other as ISession);
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ namespace RuLaw
     /// <returns>A string that represents the current <see cref="Session"/>.</returns>
     public override string ToString()
     {
-      return this.Name;
+      return Name;
     }
   }
 }

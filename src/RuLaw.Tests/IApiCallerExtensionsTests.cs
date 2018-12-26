@@ -29,13 +29,13 @@ namespace RuLaw
 
       IEnumerable<ILawBranch> branches;
 
-      this.TestBranches(this.xmlApiCaller.Branches());
-      Assert.True(this.xmlApiCaller.Branches(out branches));
-      this.TestBranches(branches);
+      TestBranches(xmlApiCaller.Branches());
+      Assert.True(xmlApiCaller.Branches(out branches));
+      TestBranches(branches);
 
-      this.TestBranches(this.jsonApiCaller.Branches());
-      Assert.True(this.jsonApiCaller.Branches(out branches));
-      this.TestBranches(branches);
+      TestBranches(jsonApiCaller.Branches());
+      Assert.True(jsonApiCaller.Branches(out branches));
+      TestBranches(branches);
     }
 
     /// <summary>
@@ -52,13 +52,13 @@ namespace RuLaw
 
       IEnumerable<ICommittee> committees;
       
-      this.TestCommittees(this.xmlApiCaller.Committees());
-      Assert.True(this.xmlApiCaller.Committees(out committees));
-      this.TestCommittees(committees);
+      TestCommittees(xmlApiCaller.Committees());
+      Assert.True(xmlApiCaller.Committees(out committees));
+      TestCommittees(committees);
 
-      this.TestCommittees(this.jsonApiCaller.Committees());
-      Assert.True(this.jsonApiCaller.Committees(out committees));
-      this.TestCommittees(committees);
+      TestCommittees(jsonApiCaller.Committees());
+      Assert.True(jsonApiCaller.Committees(out committees));
+      TestCommittees(committees);
     }
 
     /// <summary>
@@ -75,13 +75,13 @@ namespace RuLaw
 
       IEnumerable<IConvocation> convocations;
 
-      this.TestConvocations(this.xmlApiCaller.Convocations());
-      Assert.True(this.xmlApiCaller.Convocations(out convocations));
-      this.TestConvocations(convocations);
+      TestConvocations(xmlApiCaller.Convocations());
+      Assert.True(xmlApiCaller.Convocations(out convocations));
+      TestConvocations(convocations);
 
-      this.TestConvocations(this.jsonApiCaller.Convocations());
-      Assert.True(this.jsonApiCaller.Convocations(out convocations));
-      this.TestConvocations(convocations);
+      TestConvocations(jsonApiCaller.Convocations());
+      Assert.True(jsonApiCaller.Convocations(out convocations));
+      TestConvocations(convocations);
     }
 
     /// <summary>
@@ -99,13 +99,13 @@ namespace RuLaw
       const long id = 99100142;
       IDeputyInfo deputy;
 
-      this.TestDeputyInfo(this.xmlApiCaller.Deputy(id));
-      Assert.True(this.xmlApiCaller.Deputy(id, out deputy));
-      this.TestDeputyInfo(deputy);
+      TestDeputyInfo(xmlApiCaller.Deputy(id));
+      Assert.True(xmlApiCaller.Deputy(id, out deputy));
+      TestDeputyInfo(deputy);
 
-      this.TestDeputyInfo(this.jsonApiCaller.Deputy(id));
-      Assert.True(this.jsonApiCaller.Deputy(id, out deputy));
-      this.TestDeputyInfo(deputy);
+      TestDeputyInfo(jsonApiCaller.Deputy(id));
+      Assert.True(jsonApiCaller.Deputy(id, out deputy));
+      TestDeputyInfo(deputy);
     }
 
     /// <summary>
@@ -122,23 +122,23 @@ namespace RuLaw
 
       IEnumerable<IDeputy> deputies;
 
-      this.TestDeputies(this.xmlApiCaller.Deputies());
-      Assert.True(this.xmlApiCaller.Deputies(out deputies));
-      this.TestDeputies(deputies);
+      TestDeputies(xmlApiCaller.Deputies());
+      Assert.True(xmlApiCaller.Deputies(out deputies));
+      TestDeputies(deputies);
 
-      this.TestDeputies(this.jsonApiCaller.Deputies());
-      Assert.True(this.jsonApiCaller.Deputies(out deputies));
-      this.TestDeputies(deputies);
+      TestDeputies(jsonApiCaller.Deputies());
+      Assert.True(jsonApiCaller.Deputies(out deputies));
+      TestDeputies(deputies);
 
       var call = (Action<IDeputiesLawApiCall>)(x => x.Position(DeputyPosition.DumaDeputy).Current(false).Name("А"));
       
-      this.TestDeputies(this.xmlApiCaller.Deputies(call));
-      Assert.True(this.xmlApiCaller.Deputies(out deputies, call));
-      this.TestDeputies(deputies);
+      TestDeputies(xmlApiCaller.Deputies(call));
+      Assert.True(xmlApiCaller.Deputies(out deputies, call));
+      TestDeputies(deputies);
 
-      this.TestDeputies(this.jsonApiCaller.Deputies(call));
-      Assert.True(this.jsonApiCaller.Deputies(out deputies, call));
-      this.TestDeputies(deputies);
+      TestDeputies(jsonApiCaller.Deputies(call));
+      Assert.True(jsonApiCaller.Deputies(out deputies, call));
+      TestDeputies(deputies);
     }
 
     /// <summary>
@@ -155,23 +155,23 @@ namespace RuLaw
 
       IEnumerable<IAuthority> authorities;
 
-      this.TestFederalAuthorities(this.xmlApiCaller.FederalAuthorities());
-      Assert.True(this.xmlApiCaller.FederalAuthorities(out authorities));
-      this.TestFederalAuthorities(authorities);
+      TestFederalAuthorities(xmlApiCaller.FederalAuthorities());
+      Assert.True(xmlApiCaller.FederalAuthorities(out authorities));
+      TestFederalAuthorities(authorities);
 
-      this.TestFederalAuthorities(this.jsonApiCaller.FederalAuthorities());
-      Assert.True(this.jsonApiCaller.FederalAuthorities(out authorities));
-      this.TestFederalAuthorities(authorities);
+      TestFederalAuthorities(jsonApiCaller.FederalAuthorities());
+      Assert.True(jsonApiCaller.FederalAuthorities(out authorities));
+      TestFederalAuthorities(authorities);
 
       var call = (Action<IAuthoritiesLawApiCall>) (x => x.Current());
 
-      this.TestFederalAuthorities(this.xmlApiCaller.FederalAuthorities(call));
-      Assert.True(this.xmlApiCaller.FederalAuthorities(out authorities, call));
-      this.TestFederalAuthorities(authorities);
+      TestFederalAuthorities(xmlApiCaller.FederalAuthorities(call));
+      Assert.True(xmlApiCaller.FederalAuthorities(out authorities, call));
+      TestFederalAuthorities(authorities);
 
-      this.TestFederalAuthorities(this.jsonApiCaller.FederalAuthorities(call));
-      Assert.True(this.jsonApiCaller.FederalAuthorities(out authorities, call));
-      this.TestFederalAuthorities(authorities);
+      TestFederalAuthorities(jsonApiCaller.FederalAuthorities(call));
+      Assert.True(jsonApiCaller.FederalAuthorities(out authorities, call));
+      TestFederalAuthorities(authorities);
     }
 
     /// <summary>
@@ -188,23 +188,23 @@ namespace RuLaw
 
       IEnumerable<IInstance> instances;
 
-      this.TestInstances(this.xmlApiCaller.Instances());
-      Assert.True(this.xmlApiCaller.Instances(out instances));
-      this.TestInstances(instances);
+      TestInstances(xmlApiCaller.Instances());
+      Assert.True(xmlApiCaller.Instances(out instances));
+      TestInstances(instances);
 
-      this.TestInstances(this.jsonApiCaller.Instances());
-      Assert.True(this.jsonApiCaller.Instances(out instances));
-      this.TestInstances(instances);
+      TestInstances(jsonApiCaller.Instances());
+      Assert.True(jsonApiCaller.Instances(out instances));
+      TestInstances(instances);
 
       var call = (Action<IInstancesLawApiCall>)(x => x.Current());
 
-      this.TestInstances(this.xmlApiCaller.Instances(call));
-      Assert.True(this.xmlApiCaller.Instances(out instances, call));
-      this.TestInstances(instances);
+      TestInstances(xmlApiCaller.Instances(call));
+      Assert.True(xmlApiCaller.Instances(out instances, call));
+      TestInstances(instances);
 
-      this.TestInstances(this.jsonApiCaller.Instances(call));
-      Assert.True(this.jsonApiCaller.Instances(out instances, call));
-      this.TestInstances(instances);
+      TestInstances(jsonApiCaller.Instances(call));
+      Assert.True(jsonApiCaller.Instances(out instances, call));
+      TestInstances(instances);
     }
 
     /// <summary>
@@ -218,19 +218,19 @@ namespace RuLaw
     public void Laws_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Laws(null, request => { }));
-      Assert.Throws<ArgumentNullException>(() => this.xmlApiCaller.Laws(null));
+      Assert.Throws<ArgumentNullException>(() => xmlApiCaller.Laws(null));
 
       ILawsSearchResult result;
 
       var call = (Action<ILawsLawApiCall>) (x => x.Name("курение").Sorting(LawsSorting.DateDescending));
 
-      this.TestLawsSearchResult(this.xmlApiCaller.Laws(call));
-      Assert.True(this.xmlApiCaller.Laws(call, out result));
-      this.TestLawsSearchResult(result);
+      TestLawsSearchResult(xmlApiCaller.Laws(call));
+      Assert.True(xmlApiCaller.Laws(call, out result));
+      TestLawsSearchResult(result);
 
-      this.TestLawsSearchResult(this.jsonApiCaller.Laws(call));
-      Assert.True(this.jsonApiCaller.Laws(call, out result));
-      this.TestLawsSearchResult(result);
+      TestLawsSearchResult(jsonApiCaller.Laws(call));
+      Assert.True(jsonApiCaller.Laws(call, out result));
+      TestLawsSearchResult(result);
     }
 
     /// <summary>
@@ -249,13 +249,13 @@ namespace RuLaw
 
       var call = (Action<IQuestionsLawApiCall>)(x => x.From(new DateTime(2013, 1, 1)).To(new DateTime(2013, 12, 31)).Name("образование").PageSize(PageSize.Five).Page(2));
 
-      this.TestQuestionsSearchResult(this.xmlApiCaller.Questions(call));
-      Assert.True(this.xmlApiCaller.Questions(out result, call));
-      this.TestQuestionsSearchResult(result);
+      TestQuestionsSearchResult(xmlApiCaller.Questions(call));
+      Assert.True(xmlApiCaller.Questions(out result, call));
+      TestQuestionsSearchResult(result);
 
-      this.TestQuestionsSearchResult(this.jsonApiCaller.Questions(call));
-      Assert.True(this.jsonApiCaller.Questions(out result, call));
-      this.TestQuestionsSearchResult(result);
+      TestQuestionsSearchResult(jsonApiCaller.Questions(call));
+      Assert.True(jsonApiCaller.Questions(out result, call));
+      TestQuestionsSearchResult(result);
     }
 
     /// <summary>
@@ -272,23 +272,23 @@ namespace RuLaw
 
       IEnumerable<IAuthority> authorities;
 
-      this.TestRegionalAuthorities(this.xmlApiCaller.RegionalAuthorities());
-      Assert.True(this.xmlApiCaller.RegionalAuthorities(out authorities));
-      this.TestRegionalAuthorities(authorities);
+      TestRegionalAuthorities(xmlApiCaller.RegionalAuthorities());
+      Assert.True(xmlApiCaller.RegionalAuthorities(out authorities));
+      TestRegionalAuthorities(authorities);
 
-      this.TestRegionalAuthorities(this.jsonApiCaller.RegionalAuthorities());
-      Assert.True(this.jsonApiCaller.RegionalAuthorities(out authorities));
-      this.TestRegionalAuthorities(authorities);
+      TestRegionalAuthorities(jsonApiCaller.RegionalAuthorities());
+      Assert.True(jsonApiCaller.RegionalAuthorities(out authorities));
+      TestRegionalAuthorities(authorities);
 
       var call = (Action<IAuthoritiesLawApiCall>)(x => x.Current(false));
 
-      this.TestRegionalAuthorities(this.xmlApiCaller.RegionalAuthorities(call));
-      Assert.True(this.xmlApiCaller.RegionalAuthorities(out authorities, call));
-      this.TestRegionalAuthorities(authorities);
+      TestRegionalAuthorities(xmlApiCaller.RegionalAuthorities(call));
+      Assert.True(xmlApiCaller.RegionalAuthorities(out authorities, call));
+      TestRegionalAuthorities(authorities);
 
-      this.TestRegionalAuthorities(this.jsonApiCaller.RegionalAuthorities(call));
-      Assert.True(this.jsonApiCaller.RegionalAuthorities(out authorities, call));
-      this.TestRegionalAuthorities(authorities);
+      TestRegionalAuthorities(jsonApiCaller.RegionalAuthorities(call));
+      Assert.True(jsonApiCaller.RegionalAuthorities(out authorities, call));
+      TestRegionalAuthorities(authorities);
     }
 
     /// <summary>
@@ -305,13 +305,13 @@ namespace RuLaw
 
       IEnumerable<IDeputyRequest> requests;
 
-      this.TestRequests(this.xmlApiCaller.Requests());
-      Assert.True(this.xmlApiCaller.Requests(out requests));
-      this.TestRequests(requests);
+      TestRequests(xmlApiCaller.Requests());
+      Assert.True(xmlApiCaller.Requests(out requests));
+      TestRequests(requests);
 
-      this.TestRequests(this.jsonApiCaller.Requests());
-      Assert.True(this.jsonApiCaller.Requests(out requests));
-      this.TestRequests(requests);
+      TestRequests(jsonApiCaller.Requests());
+      Assert.True(jsonApiCaller.Requests(out requests));
+      TestRequests(requests);
     }
 
     /// <summary>
@@ -328,13 +328,13 @@ namespace RuLaw
 
       IEnumerable<IPhaseStage> stages;
 
-      this.TestStages(this.xmlApiCaller.Stages());
-      Assert.True(this.xmlApiCaller.Stages(out stages));
-      this.TestStages(stages);
+      TestStages(xmlApiCaller.Stages());
+      Assert.True(xmlApiCaller.Stages(out stages));
+      TestStages(stages);
 
-      this.TestStages(this.jsonApiCaller.Stages());
-      Assert.True(this.jsonApiCaller.Stages(out stages));
-      this.TestStages(stages);
+      TestStages(jsonApiCaller.Stages());
+      Assert.True(jsonApiCaller.Stages(out stages));
+      TestStages(stages);
     }
 
     /// <summary>
@@ -351,13 +351,13 @@ namespace RuLaw
 
       IEnumerable<ITopic> topics;
 
-      this.TestTopics(this.xmlApiCaller.Topics());
-      Assert.True(this.xmlApiCaller.Topics(out topics));
-      this.TestTopics(topics);
+      TestTopics(xmlApiCaller.Topics());
+      Assert.True(xmlApiCaller.Topics(out topics));
+      TestTopics(topics);
 
-      this.TestTopics(this.jsonApiCaller.Topics());
-      Assert.True(this.jsonApiCaller.Topics(out topics));
-      this.TestTopics(topics);
+      TestTopics(jsonApiCaller.Topics());
+      Assert.True(jsonApiCaller.Topics(out topics));
+      TestTopics(topics);
     }
 
     /// <summary>
@@ -368,8 +368,8 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Transcripts(null));
 
-      Assert.True(this.xmlApiCaller.Transcripts() is TranscriptsApiCaller);
-      Assert.False(ReferenceEquals(this.xmlApiCaller.Transcripts(), this.xmlApiCaller.Transcripts()));
+      Assert.True(xmlApiCaller.Transcripts() is TranscriptsApiCaller);
+      Assert.False(ReferenceEquals(xmlApiCaller.Transcripts(), xmlApiCaller.Transcripts()));
     }
 
     /// <summary>
@@ -380,8 +380,8 @@ namespace RuLaw
     {
       Assert.Throws<ArgumentNullException>(() => IApiCallerExtensions.Votes(null));
 
-      Assert.True(this.xmlApiCaller.Votes() is VotesApiCaller);
-      Assert.False(ReferenceEquals(this.xmlApiCaller.Votes(), this.xmlApiCaller.Votes()));
+      Assert.True(xmlApiCaller.Votes() is VotesApiCaller);
+      Assert.False(ReferenceEquals(xmlApiCaller.Votes(), xmlApiCaller.Votes()));
     }
 
     private void TestBranches(IEnumerable<ILawBranch> branches)

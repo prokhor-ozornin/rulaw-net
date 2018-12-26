@@ -1,8 +1,8 @@
-﻿using System;
-using Catharsis.Commons;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using Catharsis.Commons;
+
   /// <summary>
   ///   <para>Entry point to RuLaw API client service, allowing to perform remote calls to API web service.</para>
   /// </summary>

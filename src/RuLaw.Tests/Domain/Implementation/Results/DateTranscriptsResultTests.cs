@@ -17,8 +17,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new DateTranscriptsResult(), new { date = default(DateTime), meetings = new object[] {} });
-      this.TestJson(
+      TestJson(new DateTranscriptsResult(), new { date = default(DateTime), meetings = new object[] {} });
+      TestJson(
         new DateTranscriptsResult
         {
           Date = DateTime.MinValue,
@@ -34,8 +34,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new DateTranscriptsResult(), "result", new { date = default(DateTime).ISO8601()  });
-      this.TestXml(
+      TestXml(new DateTranscriptsResult(), "result", new { date = default(DateTime).ISO8601()  });
+      TestXml(
         new DateTranscriptsResult
         {
           Date = DateTime.MinValue,
@@ -92,7 +92,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestEquality("Date", DateTime.MinValue, DateTime.MaxValue);
     }
 
     /// <summary>
@@ -114,7 +114,7 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestHashCode("Date", DateTime.MinValue, DateTime.MaxValue);
     }
 
     /// <summary>

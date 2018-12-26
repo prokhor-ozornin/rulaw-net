@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Catharsis.Commons;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using Catharsis.Commons;
+
   /// <summary>
   ///   <para>Set of extension methods for interface <see cref="IDateable"/>.</para>
   /// </summary>

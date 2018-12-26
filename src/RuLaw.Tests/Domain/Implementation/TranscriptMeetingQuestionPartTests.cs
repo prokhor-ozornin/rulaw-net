@@ -18,8 +18,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new TranscriptMeetingQuestionPart(), new { endLine = 0, lines = new object[] {}, startLine = 0, votes = new object[] {} });
-      this.TestJson(
+      TestJson(new TranscriptMeetingQuestionPart(), new { endLine = 0, lines = new object[] {}, startLine = 0, votes = new object[] {} });
+      TestJson(
         new TranscriptMeetingQuestionPart
         {
            EndLine = 2,
@@ -37,8 +37,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new TranscriptMeetingQuestionPart(), "part", new { endLine = 0, startLine = 0 });
-      this.TestXml(
+      TestXml(new TranscriptMeetingQuestionPart(), "part", new { endLine = 0, startLine = 0 });
+      TestXml(
         new TranscriptMeetingQuestionPart
         {
           EndLine = 2,
@@ -127,7 +127,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("StartLine", 1, 2);
+      TestCompareTo("StartLine", 1, 2);
     }
 
     /// <summary>
@@ -140,8 +140,8 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("StartLine", 1, 2);
-      this.TestEquality("EndLine", 1, 2);
+      TestEquality("StartLine", 1, 2);
+      TestEquality("EndLine", 1, 2);
     }
 
     /// <summary>
@@ -150,8 +150,8 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("StartLine", 1, 2);
-      this.TestHashCode("EndLine", 1, 2);
+      TestHashCode("StartLine", 1, 2);
+      TestHashCode("EndLine", 1, 2);
     }
 
     /// <summary>

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Xml.Serialization;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Subject of law.</para>
   /// </summary>
@@ -18,7 +18,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<IAuthority> Departments
     {
-      get { return this.DepartmentsOriginal.Cast<IAuthority>(); }
+      get { return DepartmentsOriginal.Cast<IAuthority>(); }
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<IDeputy> Deputies
     {
-      get { return this.DeputiesOriginal.Cast<IDeputy>(); }
+      get { return DeputiesOriginal.Cast<IDeputy>(); }
     }
 
     /// <summary>
@@ -50,8 +50,8 @@ namespace RuLaw
     /// </summary>
     public LawSubject()
     {
-      this.DepartmentsOriginal = new List<Authority>();
-      this.DeputiesOriginal = new List<Deputy>();
+      DepartmentsOriginal = new List<Authority>();
+      DeputiesOriginal = new List<Deputy>();
     }
   }
 }

@@ -1,19 +1,19 @@
-﻿using System;
-using Catharsis.Commons;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using Catharsis.Commons;
+
   internal sealed class LawsLawApiCall : LawApiCall, ILawsLawApiCall
   {
     public ILawsLawApiCall Branch(long id)
     {
-      this.Parameters["class"] = id;
+      Parameters["class"] = id;
       return this;
     }
 
     public ILawsLawApiCall Deputy(long id)
     {
-      this.Parameters["deputy"] = id;
+      Parameters["deputy"] = id;
       return this;
     }
 
@@ -21,19 +21,19 @@ namespace RuLaw
     {
       Assertion.NotEmpty(number);
 
-      this.Parameters["document_number"] = number;
+      Parameters["document_number"] = number;
       return this;
     }
 
     public ILawsLawApiCall FederalAuthority(long id)
     {
-      this.Parameters["federal_subject"] = id;
+      Parameters["federal_subject"] = id;
       return this;
     }
 
     public ILawsLawApiCall Type(int type)
     {
-      this.Parameters["law_type"] = type;
+      Parameters["law_type"] = type;
       return this;
     }
 
@@ -41,13 +41,13 @@ namespace RuLaw
     {
       Assertion.NotEmpty(sort);
 
-      this.Parameters["sort"] = sort;
+      Parameters["sort"] = sort;
       return this;
     }
 
     public ILawsLawApiCall Status(int status)
     {
-      this.Parameters["status"] = status;
+      Parameters["status"] = status;
       return this;
     }
 
@@ -55,7 +55,7 @@ namespace RuLaw
     {
       Assertion.NotEmpty(name);
 
-      this.Parameters["name"] = name;
+      Parameters["name"] = name;
       return this;
     }
 
@@ -63,67 +63,67 @@ namespace RuLaw
     {
       Assertion.NotEmpty(number);
 
-      this.Parameters["number"] = number;
+      Parameters["number"] = number;
       return this;
     }
 
     public ILawsLawApiCall Page(int page)
     {
-      this.Parameters["page"] = page;
+      Parameters["page"] = page;
       return this;
     }
 
     public ILawsLawApiCall PageSize(PageSize size)
     {
-      this.Parameters["limit"] = (int) size;
+      Parameters["limit"] = (int) size;
       return this;
     }
 
     public ILawsLawApiCall ProfileCommittee(long id)
     {
-      this.Parameters["profile_committee"] = id;
+      Parameters["profile_committee"] = id;
       return this;
     }
 
     public ILawsLawApiCall RegionalAuthority(long id)
     {
-      this.Parameters["regional_subject"] = id;
+      Parameters["regional_subject"] = id;
       return this;
     }
 
     public ILawsLawApiCall RegistrationEnd(DateTime date)
     {
-      this.Parameters["registration_end"] = date.RuLawDate();
+      Parameters["registration_end"] = date.RuLawDate();
       return this;
     }
 
     public ILawsLawApiCall RegistrationStart(DateTime date)
     {
-      this.Parameters["registration_start"] = date.RuLawDate();
+      Parameters["registration_start"] = date.RuLawDate();
       return this;
     }
 
     public ILawsLawApiCall ResponsibleCommittee(long id)
     {
-      this.Parameters["responsible_committee"] = id;
+      Parameters["responsible_committee"] = id;
       return this;
     }
 
     public ILawsLawApiCall SoExecutorCommittee(long id)
     {
-      this.Parameters["soexecutor_committee"] = id;
+      Parameters["soexecutor_committee"] = id;
       return this;
     }
     
     public ILawsLawApiCall EventsSearchMode(int mode)
     {
-      this.Parameters["search_mode"] = mode;
+      Parameters["search_mode"] = mode;
       return this;
     }
 
     public ILawsLawApiCall Topic(long id)
     {
-      this.Parameters["topic"] = id;
+      Parameters["topic"] = id;
       return this;
     }
   }

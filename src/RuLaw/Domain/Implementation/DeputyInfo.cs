@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Detailed deputy information.</para>
   /// </summary>
@@ -34,7 +34,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<IDeputyActivity> Activities
     {
-      get { return this.ActivitiesOriginal.Cast<IDeputyActivity>(); }
+      get { return ActivitiesOriginal.Cast<IDeputyActivity>(); }
     }
 
     /// <summary>
@@ -58,8 +58,8 @@ namespace RuLaw
     [XmlElement("birthdate")]
     public string BirthDateOriginal
     {
-      get { return this.BirthDate.ISO8601(); }
-      set { this.BirthDate = DateTime.Parse(value); }
+      get { return BirthDate.ISO8601(); }
+      set { BirthDate = DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<string> Degrees
     {
-      get { return this.DegreesOriginal; }
+      get { return DegreesOriginal; }
     }
 
     /// <summary>
@@ -86,7 +86,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<IEducation> Educations
     {
-      get { return this.EducationsOriginal.Cast<IEducation>(); }
+      get { return EducationsOriginal.Cast<IEducation>(); }
     }
 
     /// <summary>
@@ -159,7 +159,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<string> Ranks
     {
-      get { return this.RanksOriginal; }
+      get { return RanksOriginal; }
     }
 
     /// <summary>
@@ -176,7 +176,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<string> Regions
     {
-      get { return this.RegionsOriginal; }
+      get { return RegionsOriginal; }
     }
 
     /// <summary>
@@ -221,8 +221,8 @@ namespace RuLaw
     [XmlElement("credentialsStart")]
     public string WorkStartDateOriginal
     {
-      get { return this.WorkStartDate.ISO8601(); }
-      set { this.WorkStartDate = DateTime.Parse(value); }
+      get { return WorkStartDate.ISO8601(); }
+      set { WorkStartDate = DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -239,8 +239,8 @@ namespace RuLaw
     [XmlElement("credentialsEnd")]
     public string WorkEndDateOriginal
     {
-      get { return this.WorkEndDate != null ? this.WorkEndDate.Value.ISO8601() : null; }
-      set { this.WorkEndDate = value.IsEmpty() ? (DateTime?)null : DateTime.Parse(value); }
+      get { return WorkEndDate != null ? WorkEndDate.Value.ISO8601() : null; }
+      set { WorkEndDate = value.IsEmpty() ? (DateTime?)null : DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -248,11 +248,11 @@ namespace RuLaw
     /// </summary>
     public DeputyInfo()
     {
-      this.ActivitiesOriginal = new List<DeputyActivity>();
-      this.DegreesOriginal = new List<string>();
-      this.EducationsOriginal = new List<Education>();
-      this.RanksOriginal = new List<string>();
-      this.RegionsOriginal = new List<string>();
+      ActivitiesOriginal = new List<DeputyActivity>();
+      DegreesOriginal = new List<string>();
+      EducationsOriginal = new List<Education>();
+      RanksOriginal = new List<string>();
+      RegionsOriginal = new List<string>();
     }
 
     /// <summary>
@@ -282,7 +282,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as IDeputyInfo);
+      return Equals(other as IDeputyInfo);
     }
 
     /// <summary>

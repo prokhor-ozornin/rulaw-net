@@ -15,8 +15,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new TranscriptVote(), new { date = default(DateTime), line = 0 });
-      this.TestJson(
+      TestJson(new TranscriptVote(), new { date = default(DateTime), line = 0 });
+      TestJson(
         new TranscriptVote
         {
           Date = DateTime.MinValue,
@@ -32,8 +32,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new TranscriptVote(), "vote", new { date = default(DateTime).ISO8601(), line = 0 });
-      this.TestXml(
+      TestXml(new TranscriptVote(), "vote", new { date = default(DateTime).ISO8601(), line = 0 });
+      TestXml(
         new TranscriptVote
         {
           Date = DateTime.MinValue,
@@ -80,7 +80,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
     }
 
     /// <summary>
@@ -93,8 +93,8 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Date", DateTime.MinValue, DateTime.MaxValue);
-      this.TestEquality("Line", 1, 2);
+      TestEquality("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestEquality("Line", 1, 2);
     }
 
     /// <summary>
@@ -103,8 +103,8 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Date", DateTime.MinValue, DateTime.MaxValue);
-      this.TestHashCode("Line", 1, 2);
+      TestHashCode("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestHashCode("Line", 1, 2);
     }
   }
 }

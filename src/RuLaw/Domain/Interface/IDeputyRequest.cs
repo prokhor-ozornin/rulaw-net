@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+
   /// <summary>
   ///   <para>Deputy's request.</para>
   /// </summary>

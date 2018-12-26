@@ -1,31 +1,31 @@
-﻿using System;
-using Catharsis.Commons;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using Catharsis.Commons;
+
   internal sealed class DeputyTranscriptLawApiCall : LawApiCall, IDeputyTranscriptLawApiCall
   {
     public IDeputyTranscriptLawApiCall Page(int page)
     {
-      this.Parameters["page"] = page;
+      Parameters["page"] = page;
       return this;
     }
 
     public IDeputyTranscriptLawApiCall PageSize(PageSize size)
     {
-      this.Parameters["limit"] = (int) size;
+      Parameters["limit"] = (int) size;
       return this;
     }
 
     public IDeputyTranscriptLawApiCall Deputy(long id)
     {
-      this.Parameters["deputy"] = id;
+      Parameters["deputy"] = id;
       return this;
     }
 
     public IDeputyTranscriptLawApiCall From(DateTime from)
     {
-      this.Parameters["dateFrom"] = from.RuLawDate();
+      Parameters["dateFrom"] = from.RuLawDate();
       return this;
     }
 
@@ -33,13 +33,13 @@ namespace RuLaw
     {
       Assertion.NotEmpty(name);
 
-      this.Parameters["name"] = name;
+      Parameters["name"] = name;
       return this;
     }
 
     public IDeputyTranscriptLawApiCall To(DateTime to)
     {
-      this.Parameters["dateTo"] = to.RuLawDate();
+      Parameters["dateTo"] = to.RuLawDate();
       return this;
     }
   }

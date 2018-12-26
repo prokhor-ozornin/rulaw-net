@@ -15,8 +15,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new PhaseStage(), new { id = 0, phases = new object[] { } });
-      this.TestJson(
+      TestJson(new PhaseStage(), new { id = 0, phases = new object[] { } });
+      TestJson(
         new PhaseStage
         {
           Id = 1,
@@ -33,8 +33,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new PhaseStage(), "stage", new { id = 0 });
-      this.TestXml(
+      TestXml(new PhaseStage(), "stage", new { id = 0 });
+      TestXml(
         new PhaseStage
         {
           Id = 1,
@@ -101,7 +101,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Name", "first", "second");
+      TestCompareTo("Name", "first", "second");
     }
 
     /// <summary>
@@ -114,7 +114,7 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Id", 1, 2);
+      TestEquality("Id", 1, 2);
     }
 
     /// <summary>
@@ -123,7 +123,7 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Id", 1, 2);
+      TestHashCode("Id", 1, 2);
     }
 
     /// <summary>

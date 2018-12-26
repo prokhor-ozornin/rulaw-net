@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Transcript of Duma's meeting.</para>
   /// </summary>
@@ -27,8 +27,8 @@ namespace RuLaw
     [XmlElement("date")]
     public string DateOriginal
     {
-      get { return this.Date.ISO8601(); }
-      set { this.Date = DateTime.Parse(value); }
+      get => Date.ISO8601();
+      set => Date = DateTime.Parse(value);
     }
 
     /// <summary>
@@ -36,10 +36,7 @@ namespace RuLaw
     /// </summary>
     [JsonIgnore]
     [XmlIgnore]
-    public IEnumerable<string> Lines
-    {
-      get { return this.LinesOriginal; }
-    }
+    public IEnumerable<string> Lines => LinesOriginal;
 
     /// <summary>
     ///   <para>Transcript's text lines.</para>
@@ -60,10 +57,7 @@ namespace RuLaw
     /// </summary>
     [JsonIgnore]
     [XmlIgnore]
-    public IEnumerable<ITranscriptVote> Votes
-    {
-      get { return this.VotesOriginal.Cast<ITranscriptVote>(); }
-    }
+    public IEnumerable<ITranscriptVote> Votes => VotesOriginal;
 
     /// <summary>
     ///   <para>Meeting's votes.</para>
@@ -77,8 +71,8 @@ namespace RuLaw
     /// </summary>
     public DateTranscriptMeeting()
     {
-      this.LinesOriginal = new List<string>();
-      this.VotesOriginal = new List<TranscriptVote>();
+      LinesOriginal = new List<string>();
+      VotesOriginal = new List<TranscriptVote>();
     }
 
     /// <summary>
@@ -88,7 +82,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="IDateTranscriptMeeting"/> to compare with this instance.</param>
     public int CompareTo(IDateTranscriptMeeting other)
     {
-      return this.Date.CompareTo(other.Date);
+      return Date.CompareTo(other.Date);
     }
 
     /// <summary>
@@ -108,7 +102,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as IDateTranscriptMeeting);
+      return Equals(other as IDateTranscriptMeeting);
     }
 
     /// <summary>

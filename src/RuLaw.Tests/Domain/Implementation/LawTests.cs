@@ -17,8 +17,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new Law(), new { id = 0, committees = new { profile = new object[] {}, soexecutor = new object[] {}}, introductionDate = default(DateTime), subject = new { departments = new object[] {}, deputies = new object[] {} }});
-      this.TestJson(new Law
+      TestJson(new Law(), new { id = 0, committees = new { profile = new object[] {}, soexecutor = new object[] {}}, introductionDate = default(DateTime), subject = new { departments = new object[] {}, deputies = new object[] {} }});
+      TestJson(new Law
         {
           Id = 1,
           Comments = "comments",
@@ -74,8 +74,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new Law(), "law", new { id = 0, introductionDate = default(DateTime).ISO8601() });
-      this.TestXml(new Law
+      TestXml(new Law(), "law", new { id = 0, introductionDate = default(DateTime).ISO8601() });
+      TestXml(new Law
       {
         Id = 1,
         Comments = "comments",
@@ -250,7 +250,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
     }
 
     /// <summary>
@@ -263,7 +263,7 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Id", 1, 2);
+      TestEquality("Id", 1, 2);
     }
 
     /// <summary>
@@ -272,7 +272,7 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Id", 1, 2);
+      TestHashCode("Id", 1, 2);
     }
 
     /// <summary>

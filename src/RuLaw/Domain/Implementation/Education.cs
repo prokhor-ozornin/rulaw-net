@@ -1,13 +1,12 @@
-﻿using System;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
-    using System.Globalization;
+  using System;
+  using System.Globalization;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
 
-    /// <summary>
+  /// <summary>
   ///   <para>Deputy's higher education information record.</para>
   /// </summary>
   [XmlType("education")]
@@ -34,7 +33,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="IEducation"/> to compare with this instance.</param>
     public int CompareTo(IEducation other)
     {
-      return this.Year.CompareTo(other.Year);
+      return Year.CompareTo(other.Year);
     }
 
     /// <summary>
@@ -54,7 +53,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as IEducation);
+      return Equals(other as IEducation);
     }
 
     /// <summary>
@@ -72,7 +71,7 @@ namespace RuLaw
     /// <returns>A string that represents the current <see cref="Education"/>.</returns>
     public override string ToString()
     {
-      return string.Format(CultureInfo.InvariantCulture, "{0} ({1})", this.Institution, this.Year);
+      return string.Format(CultureInfo.InvariantCulture, "{0} ({1})", Institution, Year);
     }
   }
 }

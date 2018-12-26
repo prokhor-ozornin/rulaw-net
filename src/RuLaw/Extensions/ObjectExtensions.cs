@@ -1,9 +1,9 @@
-﻿using System;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Set of extension methods for class <see cref="object"/>.</para>
   /// </summary>

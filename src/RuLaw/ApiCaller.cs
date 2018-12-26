@@ -1,17 +1,16 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using RestSharp;
-using RestSharp.Deserializers;
-using RestSharp.Serializers;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
-    using System.Globalization;
+  using System.Collections.Generic;
+  using System.Globalization;
+  using System.IO;
+  using System.Net;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using RestSharp;
+  using RestSharp.Deserializers;
+  using RestSharp.Serializers;
 
-    internal sealed class ApiCaller : IApiCaller
+  internal sealed class ApiCaller : IApiCaller
   {
     private const string EndpointUrl = "http://api.duma.gov.ru/api";
 
@@ -32,41 +31,42 @@ namespace RuLaw
       this.appToken = appToken;
       this.format = format;
 
-      this.restClient = new RestClient(string.Format(CultureInfo.InvariantCulture, EndpointUrl, apiToken));
-      this.restClient.AddHandler("application/xml", this.xmlDeserializer);
-      this.restClient.AddHandler("text/xml", this.xmlDeserializer);
-      this.restClient.AddHandler("application/json", this.jsonDeserializer);
-      this.restClient.AddHandler("text/json", this.jsonDeserializer);
-      this.restClient.AddHandler("text/x-json", this.jsonDeserializer);
-      this.restClient.AddHandler("text/javascript", this.jsonDeserializer);
-      this.restClient.AddHandler("*", this.xmlDeserializer);
+      restClient = new RestClient(string.Format(CultureInfo.InvariantCulture, EndpointUrl, apiToken));
+      restClient.AddHandler("application/xml", xmlDeserializer);
+      restClient.AddHandler("text/xml", xmlDeserializer);
+      restClient.AddHandler("application/json", jsonDeserializer);
+      restClient.AddHandler("text/json", jsonDeserializer);
+      restClient.AddHandler("text/x-json", jsonDeserializer);
+      restClient.AddHandler("text/javascript", jsonDeserializer);
+      restClient.AddHandler("*", xmlDeserializer);
+
       if (!appToken.IsEmpty())
       {
-        this.restClient.AddDefaultParameter("app_token", appToken);
+        restClient.AddDefaultParameter("app_token", appToken);
       }
     }
 
     public string ApiToken
     {
-      get { return this.apiToken; }
+      get { return apiToken; }
     }
 
     public string AppToken
     {
-      get { return this.appToken; }
+      get { return appToken; }
     }
 
     public ApiDataFormat Format
     {
-      get { return this.format; }
+      get { return format; }
     }
 
     public IRestResponse Call(string resource, IDictionary<string, object> parameters = null, IDictionary<string, object> headers = null)
     {
       Assertion.NotEmpty(resource);
 
-      var request = this.CreateRequest(resource, parameters);
-      var response = this.restClient.Get(request);
+      var request = CreateRequest(resource, parameters);
+      var response = restClient.Get(request);
 
       if (response.ErrorException != null || response.StatusCode != HttpStatusCode.OK)
       {
@@ -104,8 +104,8 @@ namespace RuLaw
 
     public IRestResponse<T> Call<T>(string resource, IDictionary<string, object> parameters = null, IDictionary<string, object> headers = null) where T : new()
     {
-      var request = this.CreateRequest(resource, parameters);
-      var response = this.restClient.Get<T>(request);
+      var request = CreateRequest(resource, parameters);
+      var response = restClient.Get<T>(request);
 
       if (response.ErrorException != null || response.StatusCode != HttpStatusCode.OK)
       {
@@ -145,18 +145,18 @@ namespace RuLaw
     {
       Assertion.NotEmpty(resource);
 
-      var request = new RestRequest(string.Format(CultureInfo.InvariantCulture, "{0}.{1}", resource, this.format.ToString().ToLowerInvariant()));
+      var request = new RestRequest(string.Format(CultureInfo.InvariantCulture, "{0}.{1}", resource, format.ToString().ToLowerInvariant()));
 
-      switch (this.format)
+      switch (format)
       {
         case ApiDataFormat.Json:
           request.RequestFormat = DataFormat.Json;
-          request.JsonSerializer = this.jsonSerializer;
+          request.JsonSerializer = jsonSerializer;
           break;
 
         case ApiDataFormat.Xml:
           request.RequestFormat = DataFormat.Xml;
-          request.XmlSerializer = this.xmlSerializer;
+          request.XmlSerializer = xmlSerializer;
           break;
       }
 

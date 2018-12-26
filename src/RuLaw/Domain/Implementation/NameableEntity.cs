@@ -1,10 +1,10 @@
-﻿using System;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Represents abstract business domain entity that can have a have.</para>
   /// </summary>
@@ -31,7 +31,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="ENTITY"/> to compare with this instance.</param>
     public virtual int CompareTo(ENTITY other)
     {
-      return this.Name.CompareTo(other.Name, StringComparison.InvariantCultureIgnoreCase);
+      return Name.CompareTo(other.Name, StringComparison.InvariantCultureIgnoreCase);
     }
 
     /// <summary>
@@ -51,7 +51,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as ENTITY);
+      return Equals(other as ENTITY);
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ namespace RuLaw
     /// <returns>A string that represents the current entity.</returns>
     public override string ToString()
     {
-      return this.Name;
+      return Name;
     }
   }
 }

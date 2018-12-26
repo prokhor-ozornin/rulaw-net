@@ -15,14 +15,14 @@ namespace RuLaw
     public void Json()
     {
       var entity = new MockNameableEntity();
-      this.TestJson(entity, new { id = 0 });
+      TestJson(entity, new { id = 0 });
 
       entity = new MockNameableEntity
       {
         Id = 1,
         Name = "name"
       };
-      this.TestJson(entity, new { id = 1, name = "name" });
+      TestJson(entity, new { id = 1, name = "name" });
     }
 
     /// <summary>
@@ -32,14 +32,14 @@ namespace RuLaw
     public void Xml()
     {
       var entity = new MockNameableEntity();
-      this.TestXml(entity, "entity", new { id = 0 });
+      TestXml(entity, "entity", new { id = 0 });
 
       entity = new MockNameableEntity
       {
         Id = 1,
         Name = "name"
       };
-      this.TestXml(entity, "entity", new { id = 1, name = "name" });
+      TestXml(entity, "entity", new { id = 1, name = "name" });
     }
 
     /// <summary>
@@ -78,7 +78,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Name", "first", "second");
+      TestCompareTo("Name", "first", "second");
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Id", 1, 2);
+      TestEquality("Id", 1, 2);
     }
 
     /// <summary>
@@ -100,7 +100,7 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Id", 1, 2);
+      TestHashCode("Id", 1, 2);
     }
 
     /// <summary>

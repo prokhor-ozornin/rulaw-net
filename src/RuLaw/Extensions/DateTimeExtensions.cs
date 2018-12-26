@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+
   /// <summary>
   ///   <para>Set of extension methods for structure <see cref="DateTime"/>.</para>
   /// </summary>

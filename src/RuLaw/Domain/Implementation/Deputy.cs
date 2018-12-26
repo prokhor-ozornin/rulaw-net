@@ -1,8 +1,8 @@
-﻿using System.Xml.Serialization;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System.Xml.Serialization;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Deputy/member of Council of Federation.</para>
   /// </summary>

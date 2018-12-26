@@ -1,8 +1,8 @@
-﻿using RestSharp;
-using RestSharp.Deserializers;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using RestSharp;
+  using RestSharp.Deserializers;
+
   internal sealed class RuLawJsonDeserializer : IDeserializer
   {
     public T Deserialize<T>(IRestResponse response)

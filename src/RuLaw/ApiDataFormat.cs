@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
   /// <summary>
   ///   <para>Format of RuLaw API data exchange.</para>

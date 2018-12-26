@@ -1,10 +1,10 @@
-﻿using System;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Deputy's request.</para>
   /// </summary>
@@ -25,7 +25,7 @@ namespace RuLaw
     [XmlIgnore]
     public IDeputyRequestAddressee Addressee
     {
-      get { return this.AddresseeOriginal; }
+      get { return AddresseeOriginal; }
     }
 
     /// <summary>
@@ -56,8 +56,8 @@ namespace RuLaw
     [XmlElement("controlDate")]
     public string ControlDateOriginal
     {
-      get { return this.ControlDate.ISO8601(); }
-      set { this.ControlDate = DateTime.Parse(value); }
+      get { return ControlDate.ISO8601(); }
+      set { ControlDate = DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -74,8 +74,8 @@ namespace RuLaw
     [XmlElement("requestDate")]
     public string DateOriginal
     {
-      get { return this.Date.ISO8601(); }
-      set { this.Date = DateTime.Parse(value); }
+      get { return Date.ISO8601(); }
+      set { Date = DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -120,8 +120,8 @@ namespace RuLaw
     [XmlElement("signedDate")]
     public string SignDateOriginal
     {
-      get { return this.SignDate.ISO8601(); }
-      set { this.SignDate = DateTime.Parse(value); }
+      get { return SignDate.ISO8601(); }
+      set { SignDate = DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -131,7 +131,7 @@ namespace RuLaw
     [XmlIgnore]
     public IDeputyRequestSigner Signer
     {
-      get { return this.SignerOriginal; }
+      get { return SignerOriginal; }
     }
 
     /// <summary>
@@ -148,7 +148,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="IDeputyRequest"/> to compare with this instance.</param>
     public int CompareTo(IDeputyRequest other)
     {
-      return this.Date.CompareTo(other.Date);
+      return Date.CompareTo(other.Date);
     }
 
     /// <summary>
@@ -168,7 +168,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as IDeputyRequest);
+      return Equals(other as IDeputyRequest);
     }
 
     /// <summary>
@@ -186,7 +186,7 @@ namespace RuLaw
     /// <returns>A string that represents the current <see cref="DeputyRequest"/>.</returns>
     public override string ToString()
     {
-      return this.Name;
+      return Name;
     }
   }
 }

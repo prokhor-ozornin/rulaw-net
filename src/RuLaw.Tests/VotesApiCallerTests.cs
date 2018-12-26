@@ -34,8 +34,8 @@ namespace RuLaw
     [Fact]
     public void Search_Method()
     {
-      this.TestVoteSearchResult(this.xmlApiCaller.Votes().Search(from: DateTime.UtcNow.Subtract(TimeSpan.FromDays(180)), to : DateTime.UtcNow), this.xmlApiCaller.Votes().Search(from: new DateTime(2011, 12, 21), to : new DateTime(2011, 12, 31), deputy: 99111987));
-      this.TestVoteSearchResult(this.jsonApiCaller.Votes().Search(from: DateTime.UtcNow.Subtract(TimeSpan.FromDays(180)), to : DateTime.UtcNow), this.xmlApiCaller.Votes().Search(from: new DateTime(2011, 12, 21), to : new DateTime(2011, 12, 31), deputy: 99111987));
+      TestVoteSearchResult(xmlApiCaller.Votes().Search(from: DateTime.UtcNow.Subtract(TimeSpan.FromDays(180)), to : DateTime.UtcNow), xmlApiCaller.Votes().Search(from: new DateTime(2011, 12, 21), to : new DateTime(2011, 12, 31), deputy: 99111987));
+      TestVoteSearchResult(jsonApiCaller.Votes().Search(from: DateTime.UtcNow.Subtract(TimeSpan.FromDays(180)), to : DateTime.UtcNow), xmlApiCaller.Votes().Search(from: new DateTime(2011, 12, 21), to : new DateTime(2011, 12, 31), deputy: 99111987));
     }
 
     private void TestVoteSearchResult(IVotesSearchResult factionResult, IVotesSearchResult deputyResult)

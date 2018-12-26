@@ -16,8 +16,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new DeputyTranscriptsResult(), new { meetings = new object[] {}, page = 0, pageSize = 0, totalCount = 0 });
-      this.TestJson(
+      TestJson(new DeputyTranscriptsResult(), new { meetings = new object[] {}, page = 0, pageSize = 0, totalCount = 0 });
+      TestJson(
         new DeputyTranscriptsResult
         {
           MeetingsOriginal = new List<TranscriptMeeting> { new TranscriptMeeting() },
@@ -36,8 +36,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new DeputyTranscriptsResult(), "result", new { page = 0, pageSize = 0, totalCount = 0 });
-      this.TestXml(
+      TestXml(new DeputyTranscriptsResult(), "result", new { page = 0, pageSize = 0, totalCount = 0 });
+      TestXml(
         new DeputyTranscriptsResult
         {
           MeetingsOriginal = new List<TranscriptMeeting> { new TranscriptMeeting() },
@@ -127,7 +127,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Name", "first", "second");
+      TestCompareTo("Name", "first", "second");
     }
 
     /// <summary>

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Transcript of Duma's law.</para>
   /// </summary>
@@ -27,7 +27,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<ITranscriptMeeting> Meetings
     {
-      get { return this.MeetingsOriginal.Cast<ITranscriptMeeting>(); }
+      get { return MeetingsOriginal.Cast<ITranscriptMeeting>(); }
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ namespace RuLaw
     /// </summary>
     public LawTranscriptsResult()
     {
-      this.MeetingsOriginal = new List<TranscriptMeeting>();
+      MeetingsOriginal = new List<TranscriptMeeting>();
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="ILawTranscriptsResult"/> to compare with this instance.</param>
     public int CompareTo(ILawTranscriptsResult other)
     {
-      return this.Number.CompareTo(other.Number, StringComparison.InvariantCultureIgnoreCase);
+      return Number.CompareTo(other.Number, StringComparison.InvariantCultureIgnoreCase);
     }
 
     /// <summary>
@@ -86,7 +86,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as ILawTranscriptsResult);
+      return Equals(other as ILawTranscriptsResult);
     }
 
     /// <summary>
@@ -104,7 +104,7 @@ namespace RuLaw
     /// <returns>A string that represents the current <see cref="LawTranscriptsResult"/>.</returns>
     public override string ToString()
     {
-      return this.Number;
+      return Number;
     }
   }
 }

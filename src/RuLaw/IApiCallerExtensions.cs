@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Catharsis.Commons;
-using RestSharp;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
-    using System.Globalization;
+  using System;
+  using System.Collections.Generic;
+  using System.Globalization;
+  using Catharsis.Commons;
+  using RestSharp;
 
-    /// <summary>
+  /// <summary>
   ///   <para>Set of extension methods for interface <see cref="IApiCallerExtensions"/>.</para>
   /// </summary>
   /// <seealso cref="IApiCaller"/>

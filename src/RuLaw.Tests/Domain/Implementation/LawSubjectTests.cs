@@ -16,8 +16,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new LawSubject(), new { departments = new object[] {}, deputies = new object[] {} });
-      this.TestJson(
+      TestJson(new LawSubject(), new { departments = new object[] {}, deputies = new object[] {} });
+      TestJson(
         new LawSubject
         {
           DepartmentsOriginal = new List<Authority> { new Authority { Id = 1 } },

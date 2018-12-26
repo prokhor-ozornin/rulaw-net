@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using RestSharp;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Collections.Generic;
+  using RestSharp;
+
   /// <summary>
   ///   <para>Entry point for RuLaw API.</para>
   /// </summary>

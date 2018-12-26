@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Part of meeting question's transcript.</para>
   /// </summary>
@@ -25,10 +25,7 @@ namespace RuLaw
     /// </summary>
     [JsonIgnore]
     [XmlIgnore]
-    public IEnumerable<string> Lines
-    {
-      get { return this.LinesOriginal; }
-    }
+    public IEnumerable<string> Lines => LinesOriginal;
 
     /// <summary>
     ///   <para>Lines of transcript's fragment.</para>
@@ -49,10 +46,7 @@ namespace RuLaw
     /// </summary>
     [JsonIgnore]
     [XmlIgnore]
-    public IEnumerable<ITranscriptVote> Votes
-    {
-      get { return this.VotesOriginal.Cast<ITranscriptVote>(); }
-    }
+    public IEnumerable<ITranscriptVote> Votes => VotesOriginal;
 
     /// <summary>
     ///   <para>List of question' votes.</para>
@@ -66,8 +60,8 @@ namespace RuLaw
     /// </summary>
     public TranscriptMeetingQuestionPart()
     {
-      this.LinesOriginal = new List<string>();
-      this.VotesOriginal = new List<TranscriptVote>();
+      LinesOriginal = new List<string>();
+      VotesOriginal = new List<TranscriptVote>();
     }
 
     /// <summary>
@@ -77,7 +71,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="ITranscriptMeetingQuestionPart"/> to compare with this instance.</param>
     public int CompareTo(ITranscriptMeetingQuestionPart other)
     {
-      return this.StartLine.CompareTo(other.StartLine);
+      return StartLine.CompareTo(other.StartLine);
     }
 
     /// <summary>
@@ -97,7 +91,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as ITranscriptMeetingQuestionPart);
+      return Equals(other as ITranscriptMeetingQuestionPart);
     }
 
     /// <summary>

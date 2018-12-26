@@ -4,7 +4,7 @@
   {
     public IInstancesLawApiCall Current(bool current = true)
     {
-      this.Parameters["current"] = current.ToString().ToLowerInvariant();
+      Parameters["current"] = current.ToString().ToLowerInvariant();
       return this;
     }
   }

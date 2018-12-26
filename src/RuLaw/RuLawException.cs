@@ -1,15 +1,13 @@
-﻿using System;
-using Catharsis.Commons;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using Catharsis.Commons;
+
   /// <summary>
   ///   <para>Base exception that represents a failure in the process of RuLaw API method call.</para>
   /// </summary>
   public sealed class RuLawException : ApplicationException
   {
-    private readonly Error error;
-
     /// <summary>
     ///   <para>Initializes a new instance of the exception with a specified error message and a reference to the inner exception that is the cause of this exception.</para>
     /// </summary>
@@ -20,15 +18,12 @@ namespace RuLaw
     {
       Assertion.NotNull(error);
 
-      this.error = error;
+      Error = error;
     }
 
     /// <summary>
     ///   <para>Error that explains the reason for the exception.</para>
     /// </summary>
-    public Error Error
-    {
-      get { return this.error; }
-    }
+    public Error Error { get; private set; }
   }
 }

@@ -15,8 +15,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new Session(), new { id = 0, startDate = default(DateTime) });
-      this.TestJson(
+      TestJson(new Session(), new { id = 0, startDate = default(DateTime) });
+      TestJson(
         new Session
         {
            Id = 1,
@@ -34,8 +34,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new Session(), "session", new { id = 0, startDate = default(DateTime).ISO8601() });
-      this.TestXml(
+      TestXml(new Session(), "session", new { id = 0, startDate = default(DateTime).ISO8601() });
+      TestXml(
         new Session
         {
           Id = 1,
@@ -104,7 +104,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("FromDate", DateTime.MinValue, DateTime.MaxValue);
+      TestCompareTo("FromDate", DateTime.MinValue, DateTime.MaxValue);
     }
 
     /// <summary>
@@ -117,7 +117,7 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Id", 1, 2);
+      TestEquality("Id", 1, 2);
     }
 
     /// <summary>
@@ -126,7 +126,7 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Id", 1, 2);
+      TestHashCode("Id", 1, 2);
     }
 
     /// <summary>

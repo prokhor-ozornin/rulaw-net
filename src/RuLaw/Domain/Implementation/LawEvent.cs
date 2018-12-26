@@ -1,10 +1,10 @@
-﻿using System;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Event, associated with a law.</para>
   /// </summary>
@@ -25,8 +25,8 @@ namespace RuLaw
     [XmlElement("date")]
     public string DateOriginal
     {
-      get { return this.Date.ISO8601(); }
-      set { this.Date = DateTime.Parse(value); }
+      get { return Date.ISO8601(); }
+      set { Date = DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ namespace RuLaw
     [XmlIgnore]
     public ILawEventDocument Document
     {
-      get { return this.DocumentOriginal; }
+      get { return DocumentOriginal; }
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ namespace RuLaw
     [XmlIgnore]
     public ILawEventPhase Phase
     {
-      get { return this.PhaseOriginal; }
+      get { return PhaseOriginal; }
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ namespace RuLaw
     [XmlIgnore]
     public ILawEventStage Stage
     {
-      get { return this.StageOriginal; }
+      get { return StageOriginal; }
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="ILawEvent"/> to compare with this instance.</param>
     public int CompareTo(ILawEvent other)
     {
-      return this.Date.CompareTo(other.Date);
+      return Date.CompareTo(other.Date);
     }
 
     /// <summary>
@@ -103,7 +103,7 @@ namespace RuLaw
     /// <returns>A string that represents the current <see cref="LawEvent"/>.</returns>
     public override string ToString()
     {
-      return this.Solution;
+      return Solution;
     }
   }
 }

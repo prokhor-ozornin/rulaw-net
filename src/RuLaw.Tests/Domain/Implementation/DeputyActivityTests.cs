@@ -13,8 +13,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new DeputyActivity(), new { subdivisionId = 0 });
-      this.TestJson(
+      TestJson(new DeputyActivity(), new { subdivisionId = 0 });
+      TestJson(
         new DeputyActivity
         {
           CommitteeId = 1,
@@ -31,8 +31,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new DeputyActivity(), "activity", new { subdivisionId = 0 });
-      this.TestXml(
+      TestXml(new DeputyActivity(), "activity", new { subdivisionId = 0 });
+      TestXml(
         new DeputyActivity
         {
           CommitteeId = 1,
@@ -90,7 +90,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Name", "first", "second");
+      TestCompareTo("Name", "first", "second");
     }
 
     /// <summary>
@@ -103,7 +103,7 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Name", "first", "second");
+      TestEquality("Name", "first", "second");
     }
 
     /// <summary>
@@ -112,7 +112,7 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Name", "first", "second");
+      TestHashCode("Name", "first", "second");
     }
 
     /// <summary>

@@ -15,8 +15,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new LawEvent(), new { date = default(DateTime).ISO8601() });
-      this.TestJson(
+      TestJson(new LawEvent(), new { date = default(DateTime).ISO8601() });
+      TestJson(
         new LawEvent
         {
           Date = DateTime.MinValue,
@@ -35,8 +35,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new LawEvent(), "lastEvent", new { date = default(DateTime).ISO8601() });
-      this.TestXml(
+      TestXml(new LawEvent(), "lastEvent", new { date = default(DateTime).ISO8601() });
+      TestXml(
         new LawEvent
         {
           Date = DateTime.MinValue,
@@ -125,7 +125,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
     }
 
     /// <summary>

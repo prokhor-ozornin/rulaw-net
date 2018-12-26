@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+
   /// <summary>
   ///   <para>Represents a business domain entity that is associated with a time period.</para>
   /// </summary>

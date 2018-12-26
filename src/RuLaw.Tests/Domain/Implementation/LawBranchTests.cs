@@ -13,8 +13,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new LawBranch(), new { id = 0 });
-      this.TestJson(new LawBranch { Id = 1, Name = "name" }, new { id = 1, name = "name" });
+      TestJson(new LawBranch(), new { id = 0 });
+      TestJson(new LawBranch { Id = 1, Name = "name" }, new { id = 1, name = "name" });
     }
 
     /// <summary>
@@ -23,8 +23,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new LawBranch(), "class", new { id = 0 });
-      this.TestXml(new LawBranch { Id = 1, Name = "name" }, "class", new { id = 1, name = "name" });
+      TestXml(new LawBranch(), "class", new { id = 0 });
+      TestXml(new LawBranch { Id = 1, Name = "name" }, "class", new { id = 1, name = "name" });
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Name", "first", "second");
+      TestCompareTo("Name", "first", "second");
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Id", 1, 2);
+      TestEquality("Id", 1, 2);
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Id", 1, 2);
+      TestHashCode("Id", 1, 2);
     }
 
     /// <summary>

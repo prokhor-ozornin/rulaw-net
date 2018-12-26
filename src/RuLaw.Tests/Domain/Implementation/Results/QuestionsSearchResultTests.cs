@@ -16,8 +16,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new QuestionsSearchResult(), new { page = 0, pageSize = 0, questions = new object[] { }, totalCount = 0 });
-      this.TestJson(
+      TestJson(new QuestionsSearchResult(), new { page = 0, pageSize = 0, questions = new object[] { }, totalCount = 0 });
+      TestJson(
         new QuestionsSearchResult
         {
           Count = 1,
@@ -35,8 +35,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new QuestionsSearchResult(), "result", new { page = 0, pageSize = 0, totalCount = 0 });
-      this.TestXml(
+      TestXml(new QuestionsSearchResult(), "result", new { page = 0, pageSize = 0, totalCount = 0 });
+      TestXml(
         new QuestionsSearchResult
         {
           Count = 1,
@@ -115,7 +115,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Count", 1, 2);
+      TestCompareTo("Count", 1, 2);
     }
   }
 }

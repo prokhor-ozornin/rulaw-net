@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+
   /// <summary>
   ///   <para>Type of votes sorting.</para>
   /// </summary>

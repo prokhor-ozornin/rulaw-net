@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System.Collections.Generic;
+
   /// <summary>
   ///   <para>Transcript of Duma's agenda question.</para>
   /// </summary>

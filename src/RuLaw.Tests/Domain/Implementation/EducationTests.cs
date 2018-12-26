@@ -13,8 +13,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new Education(), new { year = 0 });
-      this.TestJson(
+      TestJson(new Education(), new { year = 0 });
+      TestJson(
         new Education
         {
           Institution = "institution",
@@ -30,8 +30,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new Education(), "education", new { year = 0 });
-      this.TestXml(
+      TestXml(new Education(), "education", new { year = 0 });
+      TestXml(
         new Education
         {
           Institution = "institution",
@@ -78,7 +78,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Year", (short) 1, (short) 2);
+      TestCompareTo("Year", (short) 1, (short) 2);
     }
 
     /// <summary>
@@ -91,8 +91,8 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Institution", "first", "second");
-      this.TestEquality("Year", (short) 1, (short) 2);
+      TestEquality("Institution", "first", "second");
+      TestEquality("Year", (short) 1, (short) 2);
     }
 
     /// <summary>
@@ -101,8 +101,8 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Institution", "first", "second");
-      this.TestHashCode("Year", (short) 1, (short) 2);
+      TestHashCode("Institution", "first", "second");
+      TestHashCode("Year", (short) 1, (short) 2);
     }
 
     /// <summary>

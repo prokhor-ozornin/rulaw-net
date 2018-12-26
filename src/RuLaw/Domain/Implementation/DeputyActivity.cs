@@ -1,10 +1,10 @@
-﻿using System;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Deputy's activity record.</para>
   /// </summary>
@@ -39,7 +39,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="IDeputyActivity"/> to compare with this instance.</param>
     public int CompareTo(IDeputyActivity other)
     {
-      return this.Name.CompareTo(other.Name, StringComparison.InvariantCultureIgnoreCase);
+      return Name.CompareTo(other.Name, StringComparison.InvariantCultureIgnoreCase);
     }
 
     /// <summary>
@@ -59,7 +59,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as IDeputyActivity);
+      return Equals(other as IDeputyActivity);
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ namespace RuLaw
     /// <returns>A string that represents the current <see cref="DeputyActivity"/>.</returns>
     public override string ToString()
     {
-      return this.Name;
+      return Name;
     }
   }
 }

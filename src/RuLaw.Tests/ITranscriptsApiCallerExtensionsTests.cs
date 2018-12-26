@@ -26,19 +26,19 @@ namespace RuLaw
     public void Deputy_Methods()
     {
       Assert.Throws<ArgumentNullException>(() => ITranscriptsApiCallerExtensions.Deputy(null, x => { }));
-      Assert.Throws<ArgumentNullException>(() => this.xmlApiCaller.Transcripts().Deputy(null));
-      Assert.Throws<KeyNotFoundException>(() => this.xmlApiCaller.Transcripts().Deputy(x => { }));
+      Assert.Throws<ArgumentNullException>(() => xmlApiCaller.Transcripts().Deputy(null));
+      Assert.Throws<KeyNotFoundException>(() => xmlApiCaller.Transcripts().Deputy(x => { }));
 
       IDeputyTranscriptsResult result;
       var call = (Action<IDeputyTranscriptLawApiCall>) (x => x.Deputy(99100142).From(new DateTime(2014, 1, 1)).To(new DateTime(2014, 12, 31)).Page(1).PageSize(PageSize.Ten));
 
-      this.TestDeputyTranscriptsResult(this.xmlApiCaller.Transcripts().Deputy(call));
-      Assert.True(this.xmlApiCaller.Transcripts().Deputy(call, out result));
-      this.TestDeputyTranscriptsResult(result);
+      TestDeputyTranscriptsResult(xmlApiCaller.Transcripts().Deputy(call));
+      Assert.True(xmlApiCaller.Transcripts().Deputy(call, out result));
+      TestDeputyTranscriptsResult(result);
 
-      this.TestDeputyTranscriptsResult(this.jsonApiCaller.Transcripts().Deputy(call));
-      Assert.True(this.jsonApiCaller.Transcripts().Deputy(call, out result));
-      this.TestDeputyTranscriptsResult(result);
+      TestDeputyTranscriptsResult(jsonApiCaller.Transcripts().Deputy(call));
+      Assert.True(jsonApiCaller.Transcripts().Deputy(call, out result));
+      TestDeputyTranscriptsResult(result);
     }
 
     private void TestDeputyTranscriptsResult(IDeputyTranscriptsResult result)

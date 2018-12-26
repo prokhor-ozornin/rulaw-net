@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+
   /// <summary>
   ///   <para>Representation of sessions questions search request to Russian State Duma REST API.</para>
   /// </summary>

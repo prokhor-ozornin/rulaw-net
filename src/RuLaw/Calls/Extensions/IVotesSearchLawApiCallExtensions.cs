@@ -1,8 +1,8 @@
-﻿using System;
-using Catharsis.Commons;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using Catharsis.Commons;
+
   /// <summary>
   ///   <para>Set of extension methods for interface <see cref="IVotesSearchLawApiCall"/>.</para>
   /// </summary>

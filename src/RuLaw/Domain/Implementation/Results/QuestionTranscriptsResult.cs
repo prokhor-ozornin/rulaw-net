@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Xml.Serialization;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Transcript of Duma's agenda question.</para>
   /// </summary>
@@ -17,7 +17,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<ITranscriptMeeting> Meetings
     {
-      get { return this.MeetingsOriginal.Cast<ITranscriptMeeting>(); }
+      get { return MeetingsOriginal.Cast<ITranscriptMeeting>(); }
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ namespace RuLaw
     /// </summary>
     public QuestionTranscriptsResult()
     {
-      this.MeetingsOriginal = new List<TranscriptMeeting>();
+      MeetingsOriginal = new List<TranscriptMeeting>();
     }
   }
 }

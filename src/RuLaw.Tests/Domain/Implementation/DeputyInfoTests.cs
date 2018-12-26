@@ -17,8 +17,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new DeputyInfo(), new { id = 0, activity = new object[] {}, birthdate = default(DateTime), credentialsStart = default(DateTime), degrees = new object[] {}, educations = new object[] {}, factionId = 0, isActual = false, lawcount = 0, ranks = new object[] {}, regions = new object[] {}, speachCount = 0} );
-      this.TestJson(
+      TestJson(new DeputyInfo(), new { id = 0, activity = new object[] {}, birthdate = default(DateTime), credentialsStart = default(DateTime), degrees = new object[] {}, educations = new object[] {}, factionId = 0, isActual = false, lawcount = 0, ranks = new object[] {}, regions = new object[] {}, speachCount = 0} );
+      TestJson(
         new DeputyInfo
         {
           Id = 1,
@@ -53,8 +53,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new DeputyInfo(), "deputy", new { id = 0, birthdate = default(DateTime).ISO8601(), credentialsStart = default(DateTime).ISO8601(), factionId = 0, isActual = false, lawcount = 0, speachCount = 0 });
-      this.TestXml(
+      TestXml(new DeputyInfo(), "deputy", new { id = 0, birthdate = default(DateTime).ISO8601(), credentialsStart = default(DateTime).ISO8601(), factionId = 0, isActual = false, lawcount = 0, speachCount = 0 });
+      TestXml(
         new DeputyInfo
         {
           Id = 1,
@@ -352,7 +352,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("FirstName", "first", "second");
+      TestCompareTo("FirstName", "first", "second");
     }
 
     /// <summary>
@@ -365,7 +365,7 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Id", 1, 2);
+      TestEquality("Id", 1, 2);
     }
 
     /// <summary>
@@ -374,7 +374,7 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Id", 1, 2);
+      TestHashCode("Id", 1, 2);
     }
 
     /// <summary>

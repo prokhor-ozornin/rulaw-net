@@ -1,7 +1,7 @@
-﻿using System.Xml.Serialization;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System.Xml.Serialization;
+
   /// <summary>
   ///   <para>Phase of law's review process.</para>
   /// </summary>

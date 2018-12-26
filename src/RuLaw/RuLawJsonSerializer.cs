@@ -1,7 +1,7 @@
-﻿using RestSharp.Serializers;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using RestSharp.Serializers;
+
   internal sealed class RuLawJsonSerializer : ISerializer
   {
     public string Serialize(object subject)

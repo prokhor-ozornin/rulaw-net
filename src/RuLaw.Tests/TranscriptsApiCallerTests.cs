@@ -34,8 +34,8 @@ namespace RuLaw
     [Fact]
     public void Date_Method()
     {
-      this.TestDateTranscriptsResult(this.xmlApiCaller.Transcripts().Date(new DateTime(2013, 5, 14)));
-      this.TestDateTranscriptsResult(this.jsonApiCaller.Transcripts().Date(new DateTime(2013, 5, 14)));
+      TestDateTranscriptsResult(xmlApiCaller.Transcripts().Date(new DateTime(2013, 5, 14)));
+      TestDateTranscriptsResult(jsonApiCaller.Transcripts().Date(new DateTime(2013, 5, 14)));
     }
 
     /// <summary>
@@ -44,8 +44,8 @@ namespace RuLaw
     [Fact(Skip = "")]
     public void Deputy_Method()
     {
-      this.TestDeputyTranscriptsResult(this.xmlApiCaller.Transcripts().Deputy(id: 99100142));
-      this.TestDeputyTranscriptsResult(this.jsonApiCaller.Transcripts().Deputy(id: 99100142));
+      TestDeputyTranscriptsResult(xmlApiCaller.Transcripts().Deputy(id: 99100142));
+      TestDeputyTranscriptsResult(jsonApiCaller.Transcripts().Deputy(id: 99100142));
     }
 
     /// <summary>
@@ -54,11 +54,11 @@ namespace RuLaw
     [Fact]
     public void Law_Method()
     {
-      Assert.Throws<ArgumentNullException>(() => this.xmlApiCaller.Transcripts().Law(null));
-      Assert.Throws<ArgumentException>(() => this.xmlApiCaller.Transcripts().Law(string.Empty));
+      Assert.Throws<ArgumentNullException>(() => xmlApiCaller.Transcripts().Law(null));
+      Assert.Throws<ArgumentException>(() => xmlApiCaller.Transcripts().Law(string.Empty));
 
-      this.TestLawTranscriptsResult(this.xmlApiCaller.Transcripts().Law("140513-6"));
-      this.TestLawTranscriptsResult(this.jsonApiCaller.Transcripts().Law("140513-6"));
+      TestLawTranscriptsResult(xmlApiCaller.Transcripts().Law("140513-6"));
+      TestLawTranscriptsResult(jsonApiCaller.Transcripts().Law("140513-6"));
     }
 
     /// <summary>
@@ -67,8 +67,8 @@ namespace RuLaw
     [Fact]
     public void Question_Method()
     {
-      this.TestQuestionTranscriptsResult(this.xmlApiCaller.Transcripts().Question(80, 13));
-      this.TestQuestionTranscriptsResult(this.jsonApiCaller.Transcripts().Question(80, 13));
+      TestQuestionTranscriptsResult(xmlApiCaller.Transcripts().Question(80, 13));
+      TestQuestionTranscriptsResult(jsonApiCaller.Transcripts().Question(80, 13));
     }
 
     /// <summary>
@@ -77,11 +77,11 @@ namespace RuLaw
     [Fact]
     public void Resolution_Method()
     {
-      Assert.Throws<ArgumentNullException>(() => this.xmlApiCaller.Transcripts().Resolution(null));
-      Assert.Throws<ArgumentException>(() => this.xmlApiCaller.Transcripts().Resolution(string.Empty));
+      Assert.Throws<ArgumentNullException>(() => xmlApiCaller.Transcripts().Resolution(null));
+      Assert.Throws<ArgumentException>(() => xmlApiCaller.Transcripts().Resolution(string.Empty));
 
-      this.TestResolutionTranscriptsResult(this.xmlApiCaller.Transcripts().Resolution("276569-6"));
-      this.TestResolutionTranscriptsResult(this.jsonApiCaller.Transcripts().Resolution("276569-6"));
+      TestResolutionTranscriptsResult(xmlApiCaller.Transcripts().Resolution("276569-6"));
+      TestResolutionTranscriptsResult(jsonApiCaller.Transcripts().Resolution("276569-6"));
     }
 
     private void TestDateTranscriptsResult(IDateTranscriptsResult result)

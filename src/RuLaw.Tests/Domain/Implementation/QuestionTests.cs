@@ -15,8 +15,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new Question(), new { datez = DateTime.MinValue, kodvopr = 0, kodz = 0, nbegin = 0, nend = 0 });
-      this.TestJson(
+      TestJson(new Question(), new { datez = DateTime.MinValue, kodvopr = 0, kodz = 0, nbegin = 0, nend = 0 });
+      TestJson(
         new Question
         {
           Code = 1,
@@ -36,8 +36,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new Question(), "question", new { datez = DateTime.MinValue.ISO8601(), kodvopr = 0, kodz = 0, nbegin = 0, nend = 0 });
-      this.TestXml(
+      TestXml(new Question(), "question", new { datez = DateTime.MinValue.ISO8601(), kodvopr = 0, kodz = 0, nbegin = 0, nend = 0 });
+      TestXml(
         new Question
         {
           Code = 1,
@@ -129,7 +129,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Name", "first", "second");
+      TestCompareTo("Name", "first", "second");
     }
 
     /// <summary>
@@ -142,8 +142,8 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Code", 1, 2);
-      this.TestEquality("SessionCode", 1, 2);
+      TestEquality("Code", 1, 2);
+      TestEquality("SessionCode", 1, 2);
     }
 
     /// <summary>
@@ -152,8 +152,8 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Code", 1, 2);
-      this.TestHashCode("SessionCode", 1, 2);
+      TestHashCode("Code", 1, 2);
+      TestHashCode("SessionCode", 1, 2);
     }
 
     /// <summary>

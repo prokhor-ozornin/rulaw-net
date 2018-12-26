@@ -15,8 +15,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new Vote(), new { id = 0, result = false, voteDate = default(DateTime) });
-      this.TestJson(
+      TestJson(new Vote(), new { id = 0, result = false, voteDate = default(DateTime) });
+      TestJson(
         new Vote
         {
           Id = 1,
@@ -41,8 +41,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new Vote(), "vote", new { id = 0, result = false, voteDate = default(DateTime).ISO8601() });
-      this.TestXml(
+      TestXml(new Vote(), "vote", new { id = 0, result = false, voteDate = default(DateTime).ISO8601() });
+      TestXml(
         new Vote
         {
           Id = 1,
@@ -188,7 +188,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
     }
 
     /// <summary>
@@ -201,7 +201,7 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Id", 1, 2);
+      TestEquality("Id", 1, 2);
     }
 
     /// <summary>
@@ -210,7 +210,7 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Id", 1, 2);
+      TestHashCode("Id", 1, 2);
     }
 
     /// <summary>

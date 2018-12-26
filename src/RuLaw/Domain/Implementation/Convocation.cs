@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Duma's convocation.</para>
   /// </summary>
@@ -27,8 +27,8 @@ namespace RuLaw
     [XmlElement("startDate")]
     public string FromDateOriginal
     {
-      get { return this.FromDate.ISO8601(); }
-      set { this.FromDate = DateTime.Parse(value); }
+      get { return FromDate.ISO8601(); }
+      set { FromDate = DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -38,7 +38,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<ISession> Sessions
     {
-      get { return this.SessionsOriginal.Cast<ISession>(); }
+      get { return SessionsOriginal.Cast<ISession>(); }
     }
 
     /// <summary>
@@ -62,8 +62,8 @@ namespace RuLaw
     [XmlElement("endDate")]
     public string ToDateOriginal
     {
-      get { return this.ToDate != null ? this.ToDate.Value.ISO8601() : null; }
-      set { this.ToDate = value.IsEmpty() ? (DateTime?) null : DateTime.Parse(value); }
+      get { return ToDate != null ? ToDate.Value.ISO8601() : null; }
+      set { ToDate = value.IsEmpty() ? (DateTime?) null : DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -71,7 +71,7 @@ namespace RuLaw
     /// </summary>
     public Convocation()
     {
-      this.SessionsOriginal = new List<Session>();
+      SessionsOriginal = new List<Session>();
     }
   }
 }

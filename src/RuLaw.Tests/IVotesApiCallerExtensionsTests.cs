@@ -31,15 +31,15 @@ namespace RuLaw
       var factionResultCall = (Action<IVotesSearchLawApiCall>) (call => call.From(DateTime.UtcNow.Subtract(TimeSpan.FromDays(180))).To(DateTime.UtcNow));
       var deputyResultCall = (Action<IVotesSearchLawApiCall>) (call => call.From(DateTime.UtcNow.Subtract(TimeSpan.FromDays(180))).To(DateTime.UtcNow).Deputy(99111987));
 
-      this.TestVoteSearchResult(this.xmlApiCaller.Votes().Search(factionResultCall), this.xmlApiCaller.Votes().Search(deputyResultCall));
-      Assert.True(this.xmlApiCaller.Votes().Search(factionResultCall, out factionResult));
-      Assert.True(this.xmlApiCaller.Votes().Search(deputyResultCall, out deputyResult));
-      this.TestVoteSearchResult(factionResult, deputyResult);
+      TestVoteSearchResult(xmlApiCaller.Votes().Search(factionResultCall), xmlApiCaller.Votes().Search(deputyResultCall));
+      Assert.True(xmlApiCaller.Votes().Search(factionResultCall, out factionResult));
+      Assert.True(xmlApiCaller.Votes().Search(deputyResultCall, out deputyResult));
+      TestVoteSearchResult(factionResult, deputyResult);
 
-      this.TestVoteSearchResult(this.jsonApiCaller.Votes().Search(factionResultCall), this.jsonApiCaller.Votes().Search(deputyResultCall));
-      Assert.True(this.jsonApiCaller.Votes().Search(factionResultCall, out factionResult));
-      Assert.True(this.jsonApiCaller.Votes().Search(deputyResultCall, out deputyResult));
-      this.TestVoteSearchResult(factionResult, deputyResult);
+      TestVoteSearchResult(jsonApiCaller.Votes().Search(factionResultCall), jsonApiCaller.Votes().Search(deputyResultCall));
+      Assert.True(jsonApiCaller.Votes().Search(factionResultCall, out factionResult));
+      Assert.True(jsonApiCaller.Votes().Search(deputyResultCall, out deputyResult));
+      TestVoteSearchResult(factionResult, deputyResult);
     }
 
     private void TestVoteSearchResult(IVotesSearchResult factionResult, IVotesSearchResult deputyResult)

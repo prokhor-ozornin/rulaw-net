@@ -1,11 +1,11 @@
-﻿using System.IO;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using RestSharp;
-using RestSharp.Deserializers;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System.IO;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using RestSharp;
+  using RestSharp.Deserializers;
+
   internal sealed class RuLawXmlDeserializer : IDeserializer
   {
     public T Deserialize<T>(IRestResponse response)

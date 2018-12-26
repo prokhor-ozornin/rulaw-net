@@ -1,8 +1,8 @@
-﻿using System.Xml.Serialization;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System.Xml.Serialization;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Phase of law's workflow stage.</para>
   /// </summary>
@@ -16,7 +16,7 @@ namespace RuLaw
     [XmlIgnore]
     public IInstance Instance
     {
-      get { return this.InstanceOriginal; }
+      get { return InstanceOriginal; }
     }
 
     /// <summary>

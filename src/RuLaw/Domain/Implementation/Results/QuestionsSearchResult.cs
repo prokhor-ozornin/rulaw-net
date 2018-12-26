@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Xml.Serialization;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Result of questions search.</para>
   /// </summary>
@@ -40,7 +40,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<IQuestion> Questions
     {
-      get { return this.QuestionsOriginal.Cast<IQuestion>(); }
+      get { return QuestionsOriginal.Cast<IQuestion>(); }
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ namespace RuLaw
     /// </summary>
     public QuestionsSearchResult()
     {
-      this.QuestionsOriginal = new List<Question>();
+      QuestionsOriginal = new List<Question>();
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="IQuestionsSearchResult"/> to compare with this instance.</param>
     public int CompareTo(IQuestionsSearchResult other)
     {
-      return this.Count.CompareTo(other.Count);
+      return Count.CompareTo(other.Count);
     }
   }
 }

@@ -1,14 +1,14 @@
-﻿using Catharsis.Commons;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using Catharsis.Commons;
+
   internal sealed class DeputiesLawApiCall : LawApiCall, IDeputiesLawApiCall
   {
     public IDeputiesLawApiCall Name(string name)
     {
       Assertion.NotEmpty(name);
 
-      this.Parameters["begin"] = name;
+      Parameters["begin"] = name;
       return this;
     }
 
@@ -16,13 +16,13 @@ namespace RuLaw
     {
       Assertion.NotEmpty(position);
 
-      this.Parameters["position"] = position;
+      Parameters["position"] = position;
       return this;
     }
 
     public IDeputiesLawApiCall Current(bool current = true)
     {
-      this.Parameters["current"] = current.ToString().ToLowerInvariant();
+      Parameters["current"] = current.ToString().ToLowerInvariant();
       return this;
     }
   }

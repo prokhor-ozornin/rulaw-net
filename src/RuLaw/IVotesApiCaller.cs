@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+
   /// <summary>
   ///   <para>Represents an API caller regarding operations of searching for votes/votings.</para>
   /// </summary>

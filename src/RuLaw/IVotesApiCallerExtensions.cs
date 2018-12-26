@@ -1,11 +1,10 @@
-﻿using System;
-using Catharsis.Commons;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
-    using System.Globalization;
+  using System;
+  using System.Globalization;
+  using Catharsis.Commons;
 
-    /// <summary>
+  /// <summary>
   ///   <para>Set of extension methods for interface <see cref="IVotesApiCaller"/>.</para>
   /// </summary>
   /// <seealso cref="IVotesApiCaller"/>

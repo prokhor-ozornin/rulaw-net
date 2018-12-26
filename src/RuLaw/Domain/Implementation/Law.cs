@@ -1,10 +1,10 @@
-﻿using System;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Duma's law.</para>
   /// </summary>
@@ -32,7 +32,7 @@ namespace RuLaw
     [XmlIgnore]
     public ILawCommittees Committees
     {
-      get { return this.CommitteesOriginal; }
+      get { return CommitteesOriginal; }
     }
 
     /// <summary>
@@ -56,8 +56,8 @@ namespace RuLaw
     [XmlElement("introductionDate")]
     public string DateOriginal
     {
-      get { return this.Date.ISO8601(); }
-      set { this.Date = DateTime.Parse(value); }
+      get { return Date.ISO8601(); }
+      set { Date = DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ namespace RuLaw
     [XmlIgnore]
     public ILawEvent LastEvent
     {
-      get { return this.LastEventOriginal; }
+      get { return LastEventOriginal; }
     }
 
     /// <summary>
@@ -98,7 +98,7 @@ namespace RuLaw
     [XmlIgnore]
     public ILawSubject Subject
     {
-      get { return this.SubjectOriginal; }
+      get { return SubjectOriginal; }
     }
 
     /// <summary>
@@ -134,8 +134,8 @@ namespace RuLaw
     /// </summary>
     public Law()
     {
-      this.CommitteesOriginal = new LawCommittees();
-      this.SubjectOriginal = new LawSubject();
+      CommitteesOriginal = new LawCommittees();
+      SubjectOriginal = new LawSubject();
     }
 
     /// <summary>
@@ -145,7 +145,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="ILaw"/> to compare with this instance.</param>
     public int CompareTo(ILaw other)
     {
-      return this.Date.CompareTo(other.Date);
+      return Date.CompareTo(other.Date);
     }
 
     /// <summary>
@@ -165,7 +165,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as ILaw);
+      return Equals(other as ILaw);
     }
 
     /// <summary>
@@ -183,7 +183,7 @@ namespace RuLaw
     /// <returns>A string that represents the current <see cref="Law"/>.</returns>
     public override string ToString()
     {
-      return this.Name;
+      return Name;
     }
   }
 }

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Xml.Serialization;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Committees, associated with a law.</para>
   /// </summary>
@@ -18,7 +18,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<ICommittee> Profile
     {
-      get { return this.ProfileOriginal.Cast<ICommittee>(); }
+      get { return ProfileOriginal.Cast<ICommittee>(); }
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ namespace RuLaw
     [XmlIgnore]
     public ICommittee Responsible
     {
-      get { return this.ResponsibleOriginal; }
+      get { return ResponsibleOriginal; }
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<ICommittee> SoExecutor
     {
-      get { return this.SoExecutorOriginal.Cast<ICommittee>(); }
+      get { return SoExecutorOriginal.Cast<ICommittee>(); }
     }
 
     /// <summary>
@@ -67,8 +67,8 @@ namespace RuLaw
     /// </summary>
     public LawCommittees()
     {
-      this.ProfileOriginal = new List<Committee>();
-      this.SoExecutorOriginal = new List<Committee>();
+      ProfileOriginal = new List<Committee>();
+      SoExecutorOriginal = new List<Committee>();
     }
   }
 }

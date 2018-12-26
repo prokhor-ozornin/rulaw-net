@@ -17,8 +17,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new TranscriptMeeting(), new { date = default(DateTime), maxNumber = 0, number = 0, questions = new object[] { } });
-      this.TestJson(
+      TestJson(new TranscriptMeeting(), new { date = default(DateTime), maxNumber = 0, number = 0, questions = new object[] { } });
+      TestJson(
         new TranscriptMeeting
         {
           Date = DateTime.MinValue,
@@ -36,8 +36,8 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(new TranscriptMeeting(), "meeting", new { date = default(DateTime).ISO8601(), maxNumber = 0, number = 0 });
-      this.TestXml(
+      TestXml(new TranscriptMeeting(), "meeting", new { date = default(DateTime).ISO8601(), maxNumber = 0, number = 0 });
+      TestXml(
         new TranscriptMeeting
         {
           Date = DateTime.MinValue,
@@ -116,7 +116,7 @@ namespace RuLaw
     [Fact]
     public void CompareTo_Method()
     {
-      this.TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestCompareTo("Date", DateTime.MinValue, DateTime.MaxValue);
     }
 
     /// <summary>
@@ -129,8 +129,8 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Date", DateTime.MinValue, DateTime.MaxValue);
-      this.TestEquality("Number", 1, 2);
+      TestEquality("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestEquality("Number", 1, 2);
     }
 
     /// <summary>
@@ -139,8 +139,8 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Date", DateTime.MinValue, DateTime.MaxValue);
-      this.TestHashCode("Number", 1, 2);
+      TestHashCode("Date", DateTime.MinValue, DateTime.MaxValue);
+      TestHashCode("Number", 1, 2);
     }
 
     /// <summary>

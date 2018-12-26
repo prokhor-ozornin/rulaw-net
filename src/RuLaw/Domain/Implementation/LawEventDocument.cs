@@ -1,10 +1,10 @@
-﻿using System;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Document, associated with a law's event.</para>
   /// </summary>
@@ -32,7 +32,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="ILawEventDocument"/> to compare with this instance.</param>
     public int CompareTo(ILawEventDocument other)
     {
-      return this.Name.CompareTo(other.Name, StringComparison.InvariantCultureIgnoreCase);
+      return Name.CompareTo(other.Name, StringComparison.InvariantCultureIgnoreCase);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as ILawEventDocument);
+      return Equals(other as ILawEventDocument);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ namespace RuLaw
     /// <returns>A string that represents the current <see cref="LawEventDocument"/>.</returns>
     public override string ToString()
     {
-      return this.Name;
+      return Name;
     }
   }
 }

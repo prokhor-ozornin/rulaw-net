@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Xml.Serialization;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Result of laws search.</para>
   /// </summary>
@@ -26,7 +26,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<ILaw> Laws
     {
-      get { return this.LawsOriginal.Cast<ILaw>(); }
+      get { return LawsOriginal.Cast<ILaw>(); }
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ namespace RuLaw
     /// </summary>
     public LawsSearchResult()
     {
-      this.LawsOriginal = new List<Law>();
+      LawsOriginal = new List<Law>();
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="ILawsSearchResult"/> to compare with this instance.</param>
     public int CompareTo(ILawsSearchResult other)
     {
-      return this.Count.CompareTo(other.Count);
+      return Count.CompareTo(other.Count);
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ namespace RuLaw
     /// <returns>A string that represents the current <see cref="LawsSearchResult"/>.</returns>
     public override string ToString()
     {
-      return this.Wording;
+      return Wording;
     }
   }
 }

@@ -16,8 +16,8 @@ namespace RuLaw
     [Fact]
     public void Json()
     {
-      this.TestJson(new ResolutionTranscriptsResult(), new { meetings = new object[] { } });
-      this.TestJson(
+      TestJson(new ResolutionTranscriptsResult(), new { meetings = new object[] { } });
+      TestJson(
         new ResolutionTranscriptsResult
         {
           MeetingsOriginal = new List<TranscriptMeeting> { new TranscriptMeeting() },
@@ -33,7 +33,7 @@ namespace RuLaw
     [Fact]
     public void Xml()
     {
-      this.TestXml(
+      TestXml(
         new ResolutionTranscriptsResult
         {
           MeetingsOriginal = new List<TranscriptMeeting> { new TranscriptMeeting() },
@@ -93,7 +93,7 @@ namespace RuLaw
     [Fact]
     public void Equals_Methods()
     {
-      this.TestEquality("Number", "first", "second");
+      TestEquality("Number", "first", "second");
     }
 
     /// <summary>
@@ -102,7 +102,7 @@ namespace RuLaw
     [Fact]
     public void GetHashCode_Method()
     {
-      this.TestHashCode("Number", "first", "second");
+      TestHashCode("Number", "first", "second");
     }
 
     /// <summary>

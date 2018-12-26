@@ -1,10 +1,10 @@
-﻿using System;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>RuLaw API call error.</para>
   /// </summary>
@@ -29,8 +29,8 @@ namespace RuLaw
     {
       Assertion.NotEmpty(text);
 
-      this.Code = code;
-      this.Text = text;
+      Code = code;
+      Text = text;
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="Error"/> to compare with this instance.</param>
     public int CompareTo(Error other)
     {
-      return this.Code.CompareTo(other.Code);
+      return Code.CompareTo(other.Code);
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as Error);
+      return Equals(other as Error);
     }
 
     /// <summary>
@@ -92,7 +92,7 @@ namespace RuLaw
     /// <returns>A string that represents the current <see cref="Error"/>.</returns>
     public override string ToString()
     {
-      return this.Text;
+      return Text;
     }
   }
 }

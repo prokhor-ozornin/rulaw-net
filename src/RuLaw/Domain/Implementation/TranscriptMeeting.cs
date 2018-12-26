@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Catharsis.Commons;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Xml.Serialization;
+  using Catharsis.Commons;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Transcript of Duma's meeting.</para>
   /// </summary>
@@ -27,8 +27,8 @@ namespace RuLaw
     [XmlElement("date")]
     public string DateOriginal
     {
-      get { return this.Date.ISO8601(); }
-      set { this.Date = DateTime.Parse(value); }
+      get { return Date.ISO8601(); }
+      set { Date = DateTime.Parse(value); }
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<ITranscriptMeetingQuestion> Questions
     {
-      get { return this.QuestionsOriginal.Cast<ITranscriptMeetingQuestion>(); }
+      get { return QuestionsOriginal.Cast<ITranscriptMeetingQuestion>(); }
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ namespace RuLaw
     /// </summary>
     public TranscriptMeeting()
     {
-      this.QuestionsOriginal = new List<TranscriptMeetingQuestion>();
+      QuestionsOriginal = new List<TranscriptMeetingQuestion>();
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ namespace RuLaw
     /// <param name="other">The <see cref="ITranscriptMeeting"/> to compare with this instance.</param>
     public int CompareTo(ITranscriptMeeting other)
     {
-      return this.Date.CompareTo(other.Date);
+      return Date.CompareTo(other.Date);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ namespace RuLaw
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as ITranscriptMeeting);
+      return Equals(other as ITranscriptMeeting);
     }
 
     /// <summary>
@@ -115,7 +115,7 @@ namespace RuLaw
     /// <returns>A string that represents the current <see cref="TranscriptMeeting"/>.</returns>
     public override string ToString()
     {
-      return this.Date.ISO8601();
+      return Date.ISO8601();
     }
   }
 }

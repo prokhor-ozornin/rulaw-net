@@ -1,7 +1,7 @@
-﻿using Catharsis.Commons;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using Catharsis.Commons;
+
   internal sealed class ApiConfigurator : IApiConfigurator
   {
     private ApiDataFormat format = ApiDataFormat.Json;
@@ -18,7 +18,7 @@ namespace RuLaw
     {
       Assertion.NotEmpty(key);
 
-      this.apiKey = key;
+      apiKey = key;
       return this;
     }
 
@@ -26,23 +26,23 @@ namespace RuLaw
     {
       Assertion.NotEmpty(key);
 
-      this.appKey = key;
+      appKey = key;
       return this;
     }
 
     public string GetApiKey()
     {
-      return this.apiKey;
+      return apiKey;
     }
 
     public string GetAppKey()
     {
-      return this.appKey;
+      return appKey;
     }
 
     public ApiDataFormat GetFormat()
     {
-      return this.format;
+      return format;
     }
   }
 }

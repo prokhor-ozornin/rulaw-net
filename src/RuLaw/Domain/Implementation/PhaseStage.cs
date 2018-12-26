@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Xml.Serialization;
+  using Newtonsoft.Json;
+
   /// <summary>
   ///   <para>Law workflow stage.</para>
   /// </summary>
@@ -18,7 +18,7 @@ namespace RuLaw
     [XmlIgnore]
     public IEnumerable<IStagePhase> Phases
     {
-      get { return this.PhasesOriginal.Cast<IStagePhase>(); }
+      get { return PhasesOriginal.Cast<IStagePhase>(); }
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ namespace RuLaw
     /// </summary>
     public PhaseStage()
     {
-      this.PhasesOriginal = new List<StagePhase>();
+      PhasesOriginal = new List<StagePhase>();
     }
   }
 }

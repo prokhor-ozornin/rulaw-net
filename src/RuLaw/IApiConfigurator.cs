@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace RuLaw
+﻿namespace RuLaw
 {
+  using System;
+
   /// <summary>
   ///   <para>Configurator of basic parameters that are used when making requests to Russian State Duma REST web service.</para>
   /// </summary>
