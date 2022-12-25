@@ -1,10 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>RuLaw</AssemblyName>
+    <LangVersion>latest</LangVersion>
     <Version>2.0</Version>
     <Authors>Prokhor Ozornin &lt;prokhor.ozornin@yandex.ru&gt;</Authors>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>True</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -12,177 +20,200 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\RuLaw\ApiCaller.cs" Link="ApiCaller.cs" />
-    <Compile Include="..\RuLaw\ApiConfigurator.cs" Link="ApiConfigurator.cs" />
-    <Compile Include="..\RuLaw\ApiDataFormat.cs" Link="ApiDataFormat.cs" />
-    <Compile Include="..\RuLaw\Calls\Extensions\IDeputiesLawApiCallExtensions.cs" Link="Calls\Extensions\IDeputiesLawApiCallExtensions.cs" />
-    <Compile Include="..\RuLaw\Calls\Extensions\IDeputyTranscriptLawApiCallExtensions.cs" Link="Calls\Extensions\IDeputyTranscriptLawApiCallExtensions.cs" />
-    <Compile Include="..\RuLaw\Calls\Extensions\ILawsLawApiCallExtensions.cs" Link="Calls\Extensions\ILawsLawApiCallExtensions.cs" />
-    <Compile Include="..\RuLaw\Calls\Extensions\IVotesSearchLawApiCallExtensions.cs" Link="Calls\Extensions\IVotesSearchLawApiCallExtensions.cs" />
-    <Compile Include="..\RuLaw\Calls\Extensions\LawsEventsSearchMode.cs" Link="Calls\Extensions\LawsEventsSearchMode.cs" />
-    <Compile Include="..\RuLaw\Calls\Extensions\LawsSorting.cs" Link="Calls\Extensions\LawsSorting.cs" />
-    <Compile Include="..\RuLaw\Calls\Extensions\LawStatus.cs" Link="Calls\Extensions\LawStatus.cs" />
-    <Compile Include="..\RuLaw\Calls\Extensions\LawTypes.cs" Link="Calls\Extensions\LawTypes.cs" />
-    <Compile Include="..\RuLaw\Calls\Implementation\AuthoritiesLawApiCall.cs" Link="Calls\Implementation\AuthoritiesLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Implementation\DeputiesLawApiCall.cs" Link="Calls\Implementation\DeputiesLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Implementation\DeputyTranscriptLawApiCall.cs" Link="Calls\Implementation\DeputyTranscriptLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Implementation\InstancesLawApiCall.cs" Link="Calls\Implementation\InstancesLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Implementation\LawApiCall.cs" Link="Calls\Implementation\LawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Implementation\LawsLawApiCall.cs" Link="Calls\Implementation\LawsLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Implementation\QuestionsLawApiCall.cs" Link="Calls\Implementation\QuestionsLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Implementation\VotesSearchLawApiCall.cs" Link="Calls\Implementation\VotesSearchLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Interface\IAuthoritiesLawApiCall.cs" Link="Calls\Interface\IAuthoritiesLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Interface\IDeputiesLawApiCall.cs" Link="Calls\Interface\IDeputiesLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Interface\IDeputyTranscriptLawApiCall.cs" Link="Calls\Interface\IDeputyTranscriptLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Interface\IInstancesLawApiCall.cs" Link="Calls\Interface\IInstancesLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Interface\ILawApiCall.cs" Link="Calls\Interface\ILawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Interface\ILawsLawApiCall.cs" Link="Calls\Interface\ILawsLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Interface\IPagedLawApiCall.cs" Link="Calls\Interface\IPagedLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Interface\IQuestionsLawApiCall.cs" Link="Calls\Interface\IQuestionsLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Calls\Interface\IVotesSearchLawApiCall.cs" Link="Calls\Interface\IVotesSearchLawApiCall.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\IActiveExtensions.cs" Link="Domain\Extensions\IActiveExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\IDateableExtensions.cs" Link="Domain\Extensions\IDateableExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\IDateTranscriptMeetingExtensions.cs" Link="Domain\Extensions\IDateTranscriptMeetingExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\IDeputyExtensions.cs" Link="Domain\Extensions\IDeputyExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\IDeputyInfoExtensions.cs" Link="Domain\Extensions\IDeputyInfoExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\IDeputyRequestExtensions.cs" Link="Domain\Extensions\IDeputyRequestExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\IEducationExtensions.cs" Link="Domain\Extensions\IEducationExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\ILawEventExtensions.cs" Link="Domain\Extensions\ILawEventExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\ILawExtensions.cs" Link="Domain\Extensions\ILawExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\INameableExtensions.cs" Link="Domain\Extensions\INameableExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\IPeriodableExtensions.cs" Link="Domain\Extensions\IPeriodableExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\ITranscriptMeetingQuestionExtensions.cs" Link="Domain\Extensions\ITranscriptMeetingQuestionExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\ITranscriptMeetingQuestionPartExtensions.cs" Link="Domain\Extensions\ITranscriptMeetingQuestionPartExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Extensions\IVoteExtensions.cs" Link="Domain\Extensions\IVoteExtensions.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Authority.cs" Link="Domain\Implementation\Authority.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Committee.cs" Link="Domain\Implementation\Committee.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Convocation.cs" Link="Domain\Implementation\Convocation.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\DateTranscriptMeeting.cs" Link="Domain\Implementation\DateTranscriptMeeting.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Deputy.cs" Link="Domain\Implementation\Deputy.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\DeputyActivity.cs" Link="Domain\Implementation\DeputyActivity.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\DeputyInfo.cs" Link="Domain\Implementation\DeputyInfo.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\DeputyPosition.cs" Link="Domain\Implementation\DeputyPosition.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\DeputyRequest.cs" Link="Domain\Implementation\DeputyRequest.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\DeputyRequestAddressee.cs" Link="Domain\Implementation\DeputyRequestAddressee.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\DeputyRequestSigner.cs" Link="Domain\Implementation\DeputyRequestSigner.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Education.cs" Link="Domain\Implementation\Education.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\FederalAuthority.cs" Link="Domain\Implementation\FederalAuthority.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Instance.cs" Link="Domain\Implementation\Instance.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Law.cs" Link="Domain\Implementation\Law.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\LawBranch.cs" Link="Domain\Implementation\LawBranch.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\LawCommittees.cs" Link="Domain\Implementation\LawCommittees.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\LawEvent.cs" Link="Domain\Implementation\LawEvent.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\LawEventDocument.cs" Link="Domain\Implementation\LawEventDocument.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\LawEventPhase.cs" Link="Domain\Implementation\LawEventPhase.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\LawEventStage.cs" Link="Domain\Implementation\LawEventStage.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\LawSubject.cs" Link="Domain\Implementation\LawSubject.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\LawType.cs" Link="Domain\Implementation\LawType.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\NameableEntity.cs" Link="Domain\Implementation\NameableEntity.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\PhaseStage.cs" Link="Domain\Implementation\PhaseStage.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Question.cs" Link="Domain\Implementation\Question.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\RegionalAuthority.cs" Link="Domain\Implementation\RegionalAuthority.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Results\DateTranscriptsResult.cs" Link="Domain\Implementation\Results\DateTranscriptsResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Results\DeputySearchResult.cs" Link="Domain\Implementation\Results\DeputySearchResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Results\DeputyTranscriptsResult.cs" Link="Domain\Implementation\Results\DeputyTranscriptsResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Results\LawsSearchResult.cs" Link="Domain\Implementation\Results\LawsSearchResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Results\LawTranscriptsResult.cs" Link="Domain\Implementation\Results\LawTranscriptsResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Results\QuestionsSearchResult.cs" Link="Domain\Implementation\Results\QuestionsSearchResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Results\QuestionTranscriptsResult.cs" Link="Domain\Implementation\Results\QuestionTranscriptsResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Results\ResolutionTranscriptsResult.cs" Link="Domain\Implementation\Results\ResolutionTranscriptsResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Results\VotePersonResult.cs" Link="Domain\Implementation\Results\VotePersonResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Results\VotesSearchResult.cs" Link="Domain\Implementation\Results\VotesSearchResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Session.cs" Link="Domain\Implementation\Session.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\StagePhase.cs" Link="Domain\Implementation\StagePhase.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Topic.cs" Link="Domain\Implementation\Topic.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\TranscriptMeeting.cs" Link="Domain\Implementation\TranscriptMeeting.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\TranscriptMeetingQuestion.cs" Link="Domain\Implementation\TranscriptMeetingQuestion.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\TranscriptMeetingQuestionPart.cs" Link="Domain\Implementation\TranscriptMeetingQuestionPart.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\TranscriptVote.cs" Link="Domain\Implementation\TranscriptVote.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\Vote.cs" Link="Domain\Implementation\Vote.cs" />
-    <Compile Include="..\RuLaw\Domain\Implementation\VoteResultType.cs" Link="Domain\Implementation\VoteResultType.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IActive.cs" Link="Domain\Interface\IActive.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IAuthority.cs" Link="Domain\Interface\IAuthority.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ICommittee.cs" Link="Domain\Interface\ICommittee.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IConvocation.cs" Link="Domain\Interface\IConvocation.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IDateable.cs" Link="Domain\Interface\IDateable.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IDateTranscriptMeeting.cs" Link="Domain\Interface\IDateTranscriptMeeting.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IDeputy.cs" Link="Domain\Interface\IDeputy.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IDeputyActivity.cs" Link="Domain\Interface\IDeputyActivity.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IDeputyInfo.cs" Link="Domain\Interface\IDeputyInfo.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IDeputyRequest.cs" Link="Domain\Interface\IDeputyRequest.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IDeputyRequestAddressee.cs" Link="Domain\Interface\IDeputyRequestAddressee.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IDeputyRequestSigner.cs" Link="Domain\Interface\IDeputyRequestSigner.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IEducation.cs" Link="Domain\Interface\IEducation.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IEntity.cs" Link="Domain\Interface\IEntity.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IInstance.cs" Link="Domain\Interface\IInstance.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ILaw.cs" Link="Domain\Interface\ILaw.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ILawBranch.cs" Link="Domain\Interface\ILawBranch.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ILawCommittees.cs" Link="Domain\Interface\ILawCommittees.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ILawEvent.cs" Link="Domain\Interface\ILawEvent.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ILawEventDocument.cs" Link="Domain\Interface\ILawEventDocument.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ILawEventPhase.cs" Link="Domain\Interface\ILawEventPhase.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ILawEventStage.cs" Link="Domain\Interface\ILawEventStage.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ILawSubject.cs" Link="Domain\Interface\ILawSubject.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ILawType.cs" Link="Domain\Interface\ILawType.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\INameable.cs" Link="Domain\Interface\INameable.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IPeriodable.cs" Link="Domain\Interface\IPeriodable.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IPhaseStage.cs" Link="Domain\Interface\IPhaseStage.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IQuestion.cs" Link="Domain\Interface\IQuestion.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ISession.cs" Link="Domain\Interface\ISession.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IStagePhase.cs" Link="Domain\Interface\IStagePhase.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ITopic.cs" Link="Domain\Interface\ITopic.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ITranscriptMeeting.cs" Link="Domain\Interface\ITranscriptMeeting.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ITranscriptMeetingQuestion.cs" Link="Domain\Interface\ITranscriptMeetingQuestion.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ITranscriptMeetingQuestionPart.cs" Link="Domain\Interface\ITranscriptMeetingQuestionPart.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\ITranscriptVote.cs" Link="Domain\Interface\ITranscriptVote.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\IVote.cs" Link="Domain\Interface\IVote.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\Results\IDateTranscriptsResult.cs" Link="Domain\Interface\Results\IDateTranscriptsResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\Results\IDeputyTranscriptsResult.cs" Link="Domain\Interface\Results\IDeputyTranscriptsResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\Results\ILawsSearchResult.cs" Link="Domain\Interface\Results\ILawsSearchResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\Results\ILawTranscriptsResult.cs" Link="Domain\Interface\Results\ILawTranscriptsResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\Results\IQuestionsSearchResult.cs" Link="Domain\Interface\Results\IQuestionsSearchResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\Results\IQuestionTranscriptsResult.cs" Link="Domain\Interface\Results\IQuestionTranscriptsResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\Results\IResolutionTranscriptsResult.cs" Link="Domain\Interface\Results\IResolutionTranscriptsResult.cs" />
-    <Compile Include="..\RuLaw\Domain\Interface\Results\IVotesSearchResult.cs" Link="Domain\Interface\Results\IVotesSearchResult.cs" />
-    <Compile Include="..\RuLaw\Error.cs" Link="Error.cs" />
-    <Compile Include="..\RuLaw\Extensions\DateTimeExtensions.cs" Link="Extensions\DateTimeExtensions.cs" />
-    <Compile Include="..\RuLaw\Extensions\ObjectExtensions.cs" Link="Extensions\ObjectExtensions.cs" />
-    <Compile Include="..\RuLaw\Extensions\StringExtensions.cs" Link="Extensions\StringExtensions.cs" />
-    <Compile Include="..\RuLaw\IApiCaller.cs" Link="IApiCaller.cs" />
-    <Compile Include="..\RuLaw\IApiCallerExtensions.cs" Link="IApiCallerExtensions.cs" />
-    <Compile Include="..\RuLaw\IApiConfigurator.cs" Link="IApiConfigurator.cs" />
-    <Compile Include="..\RuLaw\ITranscriptsApiCaller.cs" Link="ITranscriptsApiCaller.cs" />
-    <Compile Include="..\RuLaw\ITranscriptsApiCallerExtensions.cs" Link="ITranscriptsApiCallerExtensions.cs" />
-    <Compile Include="..\RuLaw\IVotesApiCaller.cs" Link="IVotesApiCaller.cs" />
-    <Compile Include="..\RuLaw\IVotesApiCallerExtensions.cs" Link="IVotesApiCallerExtensions.cs" />
-    <Compile Include="..\RuLaw\JsonDefaultSettings.cs" Link="JsonDefaultSettings.cs" />
-    <Compile Include="..\RuLaw\JsonEntityOrderedContractResolver.cs" Link="JsonEntityOrderedContractResolver.cs" />
-    <Compile Include="..\RuLaw\PageSize.cs" Link="PageSize.cs" />
+    <Compile Remove="Domain\**" />
+    <EmbeddedResource Remove="Domain\**" />
+    <None Remove="Domain\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\RuLaw\Core\IApi.cs" Link="Core\IApi.cs" />
+    <Compile Include="..\RuLaw\Core\IApiConfigurator.cs" Link="Core\IApiConfigurator.cs" />
+    <Compile Include="..\RuLaw\Core\IAuthoritiesApi.cs" Link="Core\IAuthoritiesApi.cs" />
+    <Compile Include="..\RuLaw\Core\IAuthoritiesApiExtensions.cs" Link="Core\IAuthoritiesApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\IBranchesApi.cs" Link="Core\IBranchesApi.cs" />
+    <Compile Include="..\RuLaw\Core\IBranchesApiExtensions.cs" Link="Core\IBranchesApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\ICommitteesApi.cs" Link="Core\ICommitteesApi.cs" />
+    <Compile Include="..\RuLaw\Core\ICommitteesApiExtensions.cs" Link="Core\ICommitteesApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\IConvocationsApi.cs" Link="Core\IConvocationsApi.cs" />
+    <Compile Include="..\RuLaw\Core\IConvocationsApiExtensions.cs" Link="Core\IConvocationsApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\IDeputiesApi.cs" Link="Core\IDeputiesApi.cs" />
+    <Compile Include="..\RuLaw\Core\IDeputiesApiExtensions.cs" Link="Core\IDeputiesApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\IError.cs" Link="Core\IError.cs" />
+    <Compile Include="..\RuLaw\Core\IInstancesApi.cs" Link="Core\IInstancesApi.cs" />
+    <Compile Include="..\RuLaw\Core\IInstancesApiExtensions.cs" Link="Core\IInstancesApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\ILawsApi.cs" Link="Core\ILawsApi.cs" />
+    <Compile Include="..\RuLaw\Core\ILawsApiExtensions.cs" Link="Core\ILawsApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\Implementation\Api.cs" Link="Core\Implementation\Api.cs" />
+    <Compile Include="..\RuLaw\Core\Implementation\ApiConfigurator.cs" Link="Core\Implementation\ApiConfigurator.cs" />
+    <Compile Include="..\RuLaw\Core\Implementation\Error.cs" Link="Core\Implementation\Error.cs" />
+    <Compile Include="..\RuLaw\Core\IQuestionsApi.cs" Link="Core\IQuestionsApi.cs" />
+    <Compile Include="..\RuLaw\Core\IQuestionsApiExtensions.cs" Link="Core\IQuestionsApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\IRequestsApi.cs" Link="Core\IRequestsApi.cs" />
+    <Compile Include="..\RuLaw\Core\IRequestsApiExtensions.cs" Link="Core\IRequestsApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\IResultable.cs" Link="Core\IResultable.cs" />
+    <Compile Include="..\RuLaw\Core\IStagesApi.cs" Link="Core\IStagesApi.cs" />
+    <Compile Include="..\RuLaw\Core\IStagesApiExtensions.cs" Link="Core\IStagesApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\ITopicsApi.cs" Link="Core\ITopicsApi.cs" />
+    <Compile Include="..\RuLaw\Core\ITopicsApiExtensions.cs" Link="Core\ITopicsApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\ITranscriptsApi.cs" Link="Core\ITranscriptsApi.cs" />
+    <Compile Include="..\RuLaw\Core\ITranscriptsApiExtensions.cs" Link="Core\ITranscriptsApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\IVotesApi.cs" Link="Core\IVotesApi.cs" />
+    <Compile Include="..\RuLaw\Core\IVotesApiExtensions.cs" Link="Core\IVotesApiExtensions.cs" />
+    <Compile Include="..\RuLaw\Core\PageSize.cs" Link="Core\PageSize.cs" />
+    <Compile Include="..\RuLaw\Core\RuLawException.cs" Link="Core\RuLawException.cs" />
+    <Compile Include="..\RuLaw\Entity\IActive.cs" Link="Entity\IActive.cs" />
+    <Compile Include="..\RuLaw\Entity\IActiveExtensions.cs" Link="Entity\IActiveExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\IAuthority.cs" Link="Entity\IAuthority.cs" />
+    <Compile Include="..\RuLaw\Entity\ICommittee.cs" Link="Entity\ICommittee.cs" />
+    <Compile Include="..\RuLaw\Entity\IConvocation.cs" Link="Entity\IConvocation.cs" />
+    <Compile Include="..\RuLaw\Entity\IDateable.cs" Link="Entity\IDateable.cs" />
+    <Compile Include="..\RuLaw\Entity\IDateableExtensions.cs" Link="Entity\IDateableExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\IDateTranscriptMeeting.cs" Link="Entity\IDateTranscriptMeeting.cs" />
+    <Compile Include="..\RuLaw\Entity\IDateTranscriptsResult.cs" Link="Entity\IDateTranscriptsResult.cs" />
+    <Compile Include="..\RuLaw\Entity\IDeputy.cs" Link="Entity\IDeputy.cs" />
+    <Compile Include="..\RuLaw\Entity\IDeputyActivity.cs" Link="Entity\IDeputyActivity.cs" />
+    <Compile Include="..\RuLaw\Entity\IDeputyExtensions.cs" Link="Entity\IDeputyExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\IDeputyInfo.cs" Link="Entity\IDeputyInfo.cs" />
+    <Compile Include="..\RuLaw\Entity\IDeputyInfoExtensions.cs" Link="Entity\IDeputyInfoExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\IDeputyRequest.cs" Link="Entity\IDeputyRequest.cs" />
+    <Compile Include="..\RuLaw\Entity\IDeputyRequestAddressee.cs" Link="Entity\IDeputyRequestAddressee.cs" />
+    <Compile Include="..\RuLaw\Entity\IDeputyRequestExtensions.cs" Link="Entity\IDeputyRequestExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\IDeputyRequestSigner.cs" Link="Entity\IDeputyRequestSigner.cs" />
+    <Compile Include="..\RuLaw\Entity\IDeputyTranscriptsResult.cs" Link="Entity\IDeputyTranscriptsResult.cs" />
+    <Compile Include="..\RuLaw\Entity\IEducation.cs" Link="Entity\IEducation.cs" />
+    <Compile Include="..\RuLaw\Entity\IEducationExtensions.cs" Link="Entity\IEducationExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\IEntity.cs" Link="Entity\IEntity.cs" />
+    <Compile Include="..\RuLaw\Entity\IInstance.cs" Link="Entity\IInstance.cs" />
+    <Compile Include="..\RuLaw\Entity\ILaw.cs" Link="Entity\ILaw.cs" />
+    <Compile Include="..\RuLaw\Entity\ILawBranch.cs" Link="Entity\ILawBranch.cs" />
+    <Compile Include="..\RuLaw\Entity\ILawCommittees.cs" Link="Entity\ILawCommittees.cs" />
+    <Compile Include="..\RuLaw\Entity\ILawEvent.cs" Link="Entity\ILawEvent.cs" />
+    <Compile Include="..\RuLaw\Entity\ILawEventDocument.cs" Link="Entity\ILawEventDocument.cs" />
+    <Compile Include="..\RuLaw\Entity\ILawEventExtensions.cs" Link="Entity\ILawEventExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\ILawEventPhase.cs" Link="Entity\ILawEventPhase.cs" />
+    <Compile Include="..\RuLaw\Entity\ILawEventStage.cs" Link="Entity\ILawEventStage.cs" />
+    <Compile Include="..\RuLaw\Entity\ILawExtensions.cs" Link="Entity\ILawExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\ILawsSearchResult.cs" Link="Entity\ILawsSearchResult.cs" />
+    <Compile Include="..\RuLaw\Entity\ILawSubject.cs" Link="Entity\ILawSubject.cs" />
+    <Compile Include="..\RuLaw\Entity\ILawTranscriptsResult.cs" Link="Entity\ILawTranscriptsResult.cs" />
+    <Compile Include="..\RuLaw\Entity\ILawType.cs" Link="Entity\ILawType.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\Authority.cs" Link="Entity\Implementation\Authority.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\Committee.cs" Link="Entity\Implementation\Committee.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\Convocation.cs" Link="Entity\Implementation\Convocation.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\DateTranscriptMeeting.cs" Link="Entity\Implementation\DateTranscriptMeeting.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\DateTranscriptsResult.cs" Link="Entity\Implementation\DateTranscriptsResult.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\Deputy.cs" Link="Entity\Implementation\Deputy.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\DeputyActivity.cs" Link="Entity\Implementation\DeputyActivity.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\DeputyInfo.cs" Link="Entity\Implementation\DeputyInfo.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\DeputyPosition.cs" Link="Entity\Implementation\DeputyPosition.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\DeputyRequest.cs" Link="Entity\Implementation\DeputyRequest.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\DeputyRequestAddressee.cs" Link="Entity\Implementation\DeputyRequestAddressee.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\DeputyRequestSigner.cs" Link="Entity\Implementation\DeputyRequestSigner.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\DeputyTranscriptsResult.cs" Link="Entity\Implementation\DeputyTranscriptsResult.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\Education.cs" Link="Entity\Implementation\Education.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\FederalAuthority.cs" Link="Entity\Implementation\FederalAuthority.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\Instance.cs" Link="Entity\Implementation\Instance.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\Law.cs" Link="Entity\Implementation\Law.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\LawBranch.cs" Link="Entity\Implementation\LawBranch.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\LawCommittees.cs" Link="Entity\Implementation\LawCommittees.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\LawEvent.cs" Link="Entity\Implementation\LawEvent.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\LawEventDocument.cs" Link="Entity\Implementation\LawEventDocument.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\LawEventPhase.cs" Link="Entity\Implementation\LawEventPhase.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\LawEventStage.cs" Link="Entity\Implementation\LawEventStage.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\LawsSearchResult.cs" Link="Entity\Implementation\LawsSearchResult.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\LawSubject.cs" Link="Entity\Implementation\LawSubject.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\LawTranscriptsResult.cs" Link="Entity\Implementation\LawTranscriptsResult.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\LawType.cs" Link="Entity\Implementation\LawType.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\PhaseStage.cs" Link="Entity\Implementation\PhaseStage.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\Question.cs" Link="Entity\Implementation\Question.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\QuestionsSearchResult.cs" Link="Entity\Implementation\QuestionsSearchResult.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\QuestionTranscriptsResult.cs" Link="Entity\Implementation\QuestionTranscriptsResult.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\RegionalAuthority.cs" Link="Entity\Implementation\RegionalAuthority.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\ResolutionTranscriptsResult.cs" Link="Entity\Implementation\ResolutionTranscriptsResult.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\Session.cs" Link="Entity\Implementation\Session.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\StagePhase.cs" Link="Entity\Implementation\StagePhase.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\Topic.cs" Link="Entity\Implementation\Topic.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\TranscriptMeeting.cs" Link="Entity\Implementation\TranscriptMeeting.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\TranscriptMeetingQuestion.cs" Link="Entity\Implementation\TranscriptMeetingQuestion.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\TranscriptMeetingQuestionPart.cs" Link="Entity\Implementation\TranscriptMeetingQuestionPart.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\TranscriptVote.cs" Link="Entity\Implementation\TranscriptVote.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\Vote.cs" Link="Entity\Implementation\Vote.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\VotePersonResult.cs" Link="Entity\Implementation\VotePersonResult.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\VoteResultType.cs" Link="Entity\Implementation\VoteResultType.cs" />
+    <Compile Include="..\RuLaw\Entity\Implementation\VotesSearchResult.cs" Link="Entity\Implementation\VotesSearchResult.cs" />
+    <Compile Include="..\RuLaw\Entity\INameable.cs" Link="Entity\INameable.cs" />
+    <Compile Include="..\RuLaw\Entity\INameableExtensions.cs" Link="Entity\INameableExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\IPageable.cs" Link="Entity\IPageable.cs" />
+    <Compile Include="..\RuLaw\Entity\IPageableExtensions.cs" Link="Entity\IPageableExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\IPeriodable.cs" Link="Entity\IPeriodable.cs" />
+    <Compile Include="..\RuLaw\Entity\IPeriodableExtensions.cs" Link="Entity\IPeriodableExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\IPhaseStage.cs" Link="Entity\IPhaseStage.cs" />
+    <Compile Include="..\RuLaw\Entity\IQuestion.cs" Link="Entity\IQuestion.cs" />
+    <Compile Include="..\RuLaw\Entity\IQuestionsSearchResult.cs" Link="Entity\IQuestionsSearchResult.cs" />
+    <Compile Include="..\RuLaw\Entity\IQuestionTranscriptsResult.cs" Link="Entity\IQuestionTranscriptsResult.cs" />
+    <Compile Include="..\RuLaw\Entity\IResolutionTranscriptsResult.cs" Link="Entity\IResolutionTranscriptsResult.cs" />
+    <Compile Include="..\RuLaw\Entity\ISession.cs" Link="Entity\ISession.cs" />
+    <Compile Include="..\RuLaw\Entity\IStagePhase.cs" Link="Entity\IStagePhase.cs" />
+    <Compile Include="..\RuLaw\Entity\ITopic.cs" Link="Entity\ITopic.cs" />
+    <Compile Include="..\RuLaw\Entity\ITranscriptMeeting.cs" Link="Entity\ITranscriptMeeting.cs" />
+    <Compile Include="..\RuLaw\Entity\ITranscriptMeetingQuestion.cs" Link="Entity\ITranscriptMeetingQuestion.cs" />
+    <Compile Include="..\RuLaw\Entity\ITranscriptMeetingQuestionExtensions.cs" Link="Entity\ITranscriptMeetingQuestionExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\ITranscriptMeetingQuestionPart.cs" Link="Entity\ITranscriptMeetingQuestionPart.cs" />
+    <Compile Include="..\RuLaw\Entity\ITranscriptVote.cs" Link="Entity\ITranscriptVote.cs" />
+    <Compile Include="..\RuLaw\Entity\IVote.cs" Link="Entity\IVote.cs" />
+    <Compile Include="..\RuLaw\Entity\IVoteExtensions.cs" Link="Entity\IVoteExtensions.cs" />
+    <Compile Include="..\RuLaw\Entity\IVotesSearchResult.cs" Link="Entity\IVotesSearchResult.cs" />
+    <Compile Include="..\RuLaw\Extensions\DateTimeOffsetExtensions.cs" Link="Extensions\DateTimeOffsetExtensions.cs" />
+    <Compile Include="..\RuLaw\Extensions\JsonExtensions.cs" Link="Extensions\JsonExtensions.cs" />
+    <Compile Include="..\RuLaw\Extensions\JsonRestSerializer.cs" Link="Extensions\JsonRestSerializer.cs" />
+    <Compile Include="..\RuLaw\IRuLawApi.cs" Link="IRuLawApi.cs" />
+    <Compile Include="..\RuLaw\IRuLawApiExtensions.cs" Link="IRuLawApiExtensions.cs" />
+    <Compile Include="..\RuLaw\IsExternalInit.cs" Link="IsExternalInit.cs" />
+    <Compile Include="..\RuLaw\Requests\IApiRequest.cs" Link="Requests\IApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\IAuthoritiesApiRequest.cs" Link="Requests\IAuthoritiesApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\IDeputiesApiRequest.cs" Link="Requests\IDeputiesApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\IDeputiesApiRequestExtensions.cs" Link="Requests\IDeputiesApiRequestExtensions.cs" />
+    <Compile Include="..\RuLaw\Requests\IDeputyTranscriptApiRequest.cs" Link="Requests\IDeputyTranscriptApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\IDeputyTranscriptApiRequestExtensions.cs" Link="Requests\IDeputyTranscriptApiRequestExtensions.cs" />
+    <Compile Include="..\RuLaw\Requests\IInstancesApiRequest.cs" Link="Requests\IInstancesApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\ILawsApiRequest.cs" Link="Requests\ILawsApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\ILawsApiRequestExtensions.cs" Link="Requests\ILawsApiRequestExtensions.cs" />
+    <Compile Include="..\RuLaw\Requests\Implementation\ApiRequest.cs" Link="Requests\Implementation\ApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\Implementation\AuthoritiesApiRequest.cs" Link="Requests\Implementation\AuthoritiesApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\Implementation\DeputiesApiRequest.cs" Link="Requests\Implementation\DeputiesApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\Implementation\DeputyTranscriptApiRequest.cs" Link="Requests\Implementation\DeputyTranscriptApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\Implementation\InstancesApiRequest.cs" Link="Requests\Implementation\InstancesApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\Implementation\LawsApiRequest.cs" Link="Requests\Implementation\LawsApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\Implementation\QuestionsApiRequest.cs" Link="Requests\Implementation\QuestionsApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\Implementation\VotesSearchApiRequest.cs" Link="Requests\Implementation\VotesSearchApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\IPagedApiRequest.cs" Link="Requests\IPagedApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\IQuestionsApiRequest.cs" Link="Requests\IQuestionsApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\IVotesSearchApiRequest.cs" Link="Requests\IVotesSearchApiRequest.cs" />
+    <Compile Include="..\RuLaw\Requests\IVotesSearchApiRequestExtensions.cs" Link="Requests\IVotesSearchApiRequestExtensions.cs" />
+    <Compile Include="..\RuLaw\Requests\LawsEventsSearchMode.cs" Link="Requests\LawsEventsSearchMode.cs" />
+    <Compile Include="..\RuLaw\Requests\LawsSorting.cs" Link="Requests\LawsSorting.cs" />
+    <Compile Include="..\RuLaw\Requests\LawStatus.cs" Link="Requests\LawStatus.cs" />
+    <Compile Include="..\RuLaw\Requests\LawTypes.cs" Link="Requests\LawTypes.cs" />
+    <Compile Include="..\RuLaw\Requests\VotesSorting.cs" Link="Requests\VotesSorting.cs" />
     <Compile Include="..\RuLaw\RuLaw.cs" Link="RuLaw.cs" />
-    <Compile Include="..\RuLaw\RuLawException.cs" Link="RuLawException.cs" />
-    <Compile Include="..\RuLaw\RuLawJsonDeserializer.cs" Link="RuLawJsonDeserializer.cs" />
-    <Compile Include="..\RuLaw\RuLawJsonSerializer.cs" Link="RuLawJsonSerializer.cs" />
-    <Compile Include="..\RuLaw\RuLawXmlDeserializer.cs" Link="RuLawXmlDeserializer.cs" />
-    <Compile Include="..\RuLaw\RuLawXmlSerializer.cs" Link="RuLawXmlSerializer.cs" />
-    <Compile Include="..\RuLaw\TranscriptsApiCaller.cs" Link="TranscriptsApiCaller.cs" />
-    <Compile Include="..\RuLaw\VotesApiCaller.cs" Link="VotesApiCaller.cs" />
-    <Compile Include="..\RuLaw\VotesSorting.cs" Link="VotesSorting.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Catharsis.Commons" Version="4.0.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="RestSharp" Version="106.5.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="RestSharp" Version="108.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Calls\Extensions\" />
-    <Folder Include="Calls\Implementation\" />
-    <Folder Include="Calls\Interface\" />
-    <Folder Include="Domain\Extensions\" />
-    <Folder Include="Domain\Implementation\Results\" />
-    <Folder Include="Domain\Interface\Results\" />
+    <Folder Include="Core\Implementation\" />
+    <Folder Include="Entity\Implementation\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Requests\Implementation\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Catharsis.Commons">
+      <HintPath>..\..\..\Catharsis.NET.Commons\src\Catharsis.Commons.Standard\bin\Release\netstandard2.1\Catharsis.Commons.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

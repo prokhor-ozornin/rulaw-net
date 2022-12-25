@@ -1,202 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\xunit.runner.visualstudio.2.4.1\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\packages\xunit.runner.visualstudio.2.4.1\build\net20\xunit.runner.visualstudio.props')" />
-  <Import Project="..\packages\xunit.core.2.4.1\build\xunit.core.props" Condition="Exists('..\packages\xunit.core.2.4.1\build\xunit.core.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A6CF72CE-56CC-4B61-98A8-3C940BC599C9}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RuLaw</RootNamespace>
-    <AssemblyName>RuLaw.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\RuLaw.Tests.xml</DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>../LawApi.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Catharsis.Commons, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Catharsis.Commons.4.0.1\lib\net472\Catharsis.Commons.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp, Version=106.5.4.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.106.5.4\lib\net452\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.XML" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.abstractions.2.0.3\lib\net35\xunit.abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="xunit.assert, Version=2.4.1.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.assert.2.4.1\lib\netstandard1.1\xunit.assert.dll</HintPath>
-    </Reference>
-    <Reference Include="xunit.core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.extensibility.core.2.4.1\lib\net452\xunit.core.dll</HintPath>
-    </Reference>
-    <Reference Include="xunit.execution.desktop, Version=2.4.1.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.extensibility.execution.2.4.1\lib\net452\xunit.execution.desktop.dll</HintPath>
+    <PackageReference Include="FluentAssertions" Version="6.8.0" />
+    <PackageReference Include="FluentAssertions.Json" Version="6.1.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="xunit" Version="2.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RuLaw.Core\RuLaw.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Catharsis.Commons">
+      <HintPath>..\..\..\Catharsis.NET.Commons\src\Catharsis.Commons.Core\bin\Release\net6.0\Catharsis.Commons.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ApiConfiguratorTests.cs" />
-    <Compile Include="Calls\Implementation\AuthoritiesLawApiCallTests.cs" />
-    <Compile Include="Domain\Extensions\IVoteExtensionsTests.cs" />
-    <Compile Include="Domain\Implementation\AuthorityTests.cs" />
-    <Compile Include="Domain\Implementation\DateTranscriptMeetingTests.cs" />
-    <Compile Include="Domain\Implementation\Results\DateTranscriptsResultTests.cs" />
-    <Compile Include="Domain\Implementation\Results\DeputySearchResultTests.cs" />
-    <Compile Include="Calls\Implementation\DeputyTranscriptLawApiCallTests.cs" />
-    <Compile Include="Domain\Implementation\Results\DeputyTranscriptsResultTests.cs" />
-    <Compile Include="Domain\Extensions\IDateTranscriptMeetingExtensionsTests.cs" />
-    <Compile Include="Domain\Extensions\IDeputyExtensionsTests.cs" />
-    <Compile Include="Domain\Extensions\IDeputyInfoExtensionsTests.cs" />
-    <Compile Include="Domain\Extensions\ITranscriptMeetingQuestionPartExtensionsTests.cs" />
-    <Compile Include="Domain\Extensions\IEducationExtensionsTests.cs" />
-    <Compile Include="ErrorTests.cs" />
-    <Compile Include="Domain\Extensions\IDateableExtensionsTests.cs" />
-    <Compile Include="Calls\Extensions\IDeputyTranscriptLawApiCallExtensionsTests.cs" />
-    <Compile Include="Domain\Extensions\INameableExtensionsTests.cs" />
-    <Compile Include="ITranscriptsApiCallerExtensionsTests.cs" />
-    <Compile Include="IVotesApiCallerExtensionsTests.cs" />
-    <Compile Include="Calls\Extensions\IVotesSearchLawApiCallExtensionsTests.cs" />
-    <Compile Include="JsonDefaultSettingsTests.cs" />
-    <Compile Include="Domain\Implementation\LawCommitteesTests.cs" />
-    <Compile Include="Domain\Extensions\ILawEventExtensionsTests.cs" />
-    <Compile Include="Domain\Implementation\FederalAuthorityTests.cs" />
-    <Compile Include="Calls\Implementation\LawApiCallTests.cs" />
-    <Compile Include="Domain\Implementation\LawEventStageTests.cs" />
-    <Compile Include="Domain\Implementation\Results\LawsSearchResultTests.cs" />
-    <Compile Include="Domain\Implementation\LawSubjectTests.cs" />
-    <Compile Include="Domain\Implementation\Results\LawTranscriptsResultTests.cs" />
-    <Compile Include="Domain\Implementation\LawTypeTests.cs" />
-    <Compile Include="Domain\Implementation\Results\QuestionsSearchResultTests.cs" />
-    <Compile Include="Domain\Implementation\Results\QuestionTranscriptsResultTests.cs" />
-    <Compile Include="Domain\Implementation\Results\ResolutionTranscriptsResultTests.cs" />
-    <Compile Include="Domain\Extensions\ITranscriptMeetingQuestionExtensionsTests.cs" />
-    <Compile Include="Domain\Implementation\TranscriptMeetingQuestionPartTests.cs" />
-    <Compile Include="Domain\Implementation\TranscriptMeetingQuestionTests.cs" />
-    <Compile Include="Domain\Implementation\TranscriptMeetingTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MockJsonObject.cs" />
-    <Compile Include="Domain\Implementation\NameableEntityTests.cs" />
-    <Compile Include="TranscriptsApiCallerTests.cs" />
-    <Compile Include="Domain\Implementation\RegionalAuthorityTests.cs" />
-    <Compile Include="RuLawXmlSerializerTests.cs" />
-    <Compile Include="RuLawXmlDeserializerTests.cs" />
-    <Compile Include="Extensions\DateTimeExtensionsTests.cs" />
-    <Compile Include="Calls\Implementation\DeputiesLawApiCallTests.cs" />
-    <Compile Include="Domain\Implementation\DeputyActivityTests.cs" />
-    <Compile Include="Domain\Implementation\DeputyInfoTests.cs" />
-    <Compile Include="Domain\Implementation\DeputyRequestAddresseeTests.cs" />
-    <Compile Include="Domain\Extensions\IDeputyRequestExtensionsTests.cs" />
-    <Compile Include="Domain\Implementation\DeputyRequestSignerTests.cs" />
-    <Compile Include="Domain\Implementation\DeputyRequestTests.cs" />
-    <Compile Include="Domain\Implementation\EducationTests.cs" />
-    <Compile Include="Calls\Extensions\IDeputiesLawApiCallExtensionsTests.cs" />
-    <Compile Include="InstancesLawApiCallTests.cs" />
-    <Compile Include="Domain\Implementation\LawEventDocumentTests.cs" />
-    <Compile Include="Domain\Extensions\IPeriodableExtensionsTests.cs" />
-    <Compile Include="Domain\Implementation\LawBranchTests.cs" />
-    <Compile Include="Domain\Implementation\CommitteeTests.cs" />
-    <Compile Include="Domain\Implementation\DeputyTests.cs" />
-    <Compile Include="Domain\Implementation\LawEventTests.cs" />
-    <Compile Include="Domain\Extensions\IActiveExtensionsTests.cs" />
-    <Compile Include="IApiCallerExtensionsTests.cs" />
-    <Compile Include="Calls\Extensions\ILawsLawApiCallExtensionsTests.cs" />
-    <Compile Include="ApiCallerTests.cs" />
-    <Compile Include="Calls\Implementation\QuestionsLawApiCallTests.cs" />
-    <Compile Include="RuLawExceptionTests.cs" />
-    <Compile Include="RuLawJsonDeserializerTests.cs" />
-    <Compile Include="RuLawJsonSerializerTests.cs" />
-    <Compile Include="RuLawTests.cs" />
-    <Compile Include="Domain\Extensions\ILawExtensionsTests.cs" />
-    <Compile Include="Calls\Implementation\LawsLawApiCallTests.cs" />
-    <Compile Include="Domain\Implementation\LawTests.cs" />
-    <Compile Include="Domain\Implementation\ConvocationTests.cs" />
-    <Compile Include="Domain\Implementation\StagePhaseTests.cs" />
-    <Compile Include="Domain\Implementation\InstanceTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Domain\Implementation\QuestionTests.cs" />
-    <Compile Include="Domain\Implementation\SessionTests.cs" />
-    <Compile Include="Domain\Implementation\PhaseStageTests.cs" />
-    <Compile Include="Extensions\StringExtensionsTests.cs" />
-    <Compile Include="Domain\Implementation\TopicTests.cs" />
-    <Compile Include="Domain\Implementation\TranscriptVoteTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UnitTestsBase.cs" />
-    <Compile Include="VotesApiCallerTests.cs" />
-    <Compile Include="Domain\Implementation\Results\VotesSearchResultTests.cs" />
-    <Compile Include="Calls\Implementation\VotesSearchLawApiCallTests.cs" />
-    <Compile Include="Domain\Implementation\VoteTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RuLaw.4.7.2\RuLaw.4.7.2.csproj">
-      <Project>{b78a842d-3beb-497b-8877-da24a713e5e9}</Project>
-      <Name>RuLaw.4.7.2</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\xunit.core.2.4.1\build\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.4.1\build\xunit.core.props'))" />
-    <Error Condition="!Exists('..\packages\xunit.core.2.4.1\build\xunit.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.4.1\build\xunit.core.targets'))" />
-    <Error Condition="!Exists('..\packages\xunit.runner.visualstudio.2.4.1\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.runner.visualstudio.2.4.1\build\net20\xunit.runner.visualstudio.props'))" />
-  </Target>
-  <Import Project="..\packages\xunit.core.2.4.1\build\xunit.core.targets" Condition="Exists('..\packages\xunit.core.2.4.1\build\xunit.core.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
