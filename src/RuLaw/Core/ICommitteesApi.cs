@@ -12,5 +12,5 @@ public interface ICommitteesApi
   /// <returns>Collection of committees.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-komitetov"/>
-  IAsyncEnumerable<ICommittee> All(CancellationToken cancellation = default);
+  IAsyncEnumerable<ICommittee> AllAsync(CancellationToken cancellation = default);
 }

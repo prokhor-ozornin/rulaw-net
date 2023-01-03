@@ -11,18 +11,15 @@ public sealed class IConvocationsApiExtensionsTest : IDisposable
 {
   private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
 
-  private CancellationToken Cancellation { get; } = new(true);
-
   /// <summary>
-  ///   <para>Performs testing of <see cref="IConvocationsApiExtensions.All(IConvocationsApi, out IEnumerable{IConvocation}?, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IConvocationsApiExtensions.All(IConvocationsApi)"/> method.</para>
   /// </summary>
   [Fact]
   public void All_Method()
   {
-    AssertionExtensions.Should(() => IConvocationsApiExtensions.All(null!, out _)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Api.Convocations.All(out _, Cancellation)).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => IConvocationsApiExtensions.All(null)).ThrowExactly<ArgumentNullException>();
 
-    Api.Convocations.All(out var convocations).Should().BeTrue();
+    var convocations = Api.Convocations.All();
 
     convocations.Should().NotBeNullOrEmpty().And.BeOfType<List<Convocation>>();
 

@@ -150,12 +150,12 @@ public sealed class AuthorityInfoTests : UnitTest<Authority.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="Authority.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="Authority.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new Authority.Info().Result();
+    var result = new Authority.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<Authority>();
     result.Id.Should().BeNull();
     result.Name.Should().BeNull();

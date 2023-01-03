@@ -128,12 +128,12 @@ public sealed class QuestionsSearchResultInfoTests : UnitTest<QuestionsSearchRes
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new LawsSearchResult.Info().Result();
+    var result = new LawsSearchResult.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<LawsSearchResult>();
     result.Page.Should().BeNull();
     result.Count.Should().BeNull();

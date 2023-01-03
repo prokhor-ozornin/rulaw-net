@@ -174,12 +174,12 @@ public sealed class QuestionInfoTests : UnitTest<Question.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="Question.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="Question.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new Question.Info().Result();
+    var result = new Question.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<Question>();
     result.Name.Should().BeNull();
     result.Date.Should().BeNull();

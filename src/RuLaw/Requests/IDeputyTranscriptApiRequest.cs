@@ -10,7 +10,7 @@ public interface IDeputyTranscriptApiRequest : IPagedApiRequest<IDeputyTranscrip
   /// </summary>
   /// <param name="name">Name of question.</param>
   /// <returns>Back reference to the current request.</returns>
-  IDeputyTranscriptApiRequest Name(string? name);
+  IDeputyTranscriptApiRequest Name(string name);
 
   /// <summary>
   ///   <para>Specifies identifier of deputy, transcripts of whose speeches should be looked up.</para>

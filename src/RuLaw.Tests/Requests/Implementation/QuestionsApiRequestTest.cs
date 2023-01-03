@@ -44,7 +44,7 @@ public sealed class QuestionsApiRequestTest
   [Fact]
   public void PageSize_Method()
   {
-    void Validate(PageSize? size)
+    static void Validate(PageSize? size)
     {
       var request = new QuestionsApiRequest();
 

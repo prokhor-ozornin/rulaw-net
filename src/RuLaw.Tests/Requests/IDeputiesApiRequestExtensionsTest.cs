@@ -14,7 +14,7 @@ public sealed class IDeputiesLawApiCallExtensionsTests
   [Fact]
   public void Position_Method()
   {
-    AssertionExtensions.Should(() => IDeputiesApiRequestExtensions.Position(null!, DeputyPosition.DumaDeputy)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputiesApiRequestExtensions.Position(null, DeputyPosition.DumaDeputy)).ThrowExactly<ArgumentNullException>();
 
     var request = new DeputiesApiRequest();
 

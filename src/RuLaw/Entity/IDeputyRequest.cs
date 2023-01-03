@@ -8,27 +8,27 @@ public interface IDeputyRequest : IEntity, IDateable, INameable, IComparable<IDe
   /// <summary>
   ///   <para>Number of associated document.</para>
   /// </summary>
-  string? DocumentNumber { get; }
+  string DocumentNumber { get; }
 
   /// <summary>
   ///   <para>Initiator person of deputy request.</para>
   /// </summary>
-  string? Initiator { get; }
+  string Initiator { get; }
 
   /// <summary>
   ///   <para>Addressee of deputy's request.</para>
   /// </summary>
-  IDeputyRequestAddressee? Addressee { get; }
+  IDeputyRequestAddressee Addressee { get; }
 
   /// <summary>
   ///   <para>Text of answer for deputy's request.</para>
   /// </summary>
-  string? Answer { get; }
+  string Answer { get; }
 
   /// <summary>
   ///   <para>Person who signed deputy's request.</para>
   /// </summary>
-  IDeputyRequestSigner? Signer { get; }
+  IDeputyRequestSigner Signer { get; }
 
   /// <summary>
   ///   <para>Date when deputy's request was signed.</para>
@@ -43,5 +43,5 @@ public interface IDeputyRequest : IEntity, IDateable, INameable, IComparable<IDe
   /// <summary>
   ///   <para>Number of associated resolution.</para>
   /// </summary>
-  string? ResolutionNumber { get; }
+  string ResolutionNumber { get; }
 }

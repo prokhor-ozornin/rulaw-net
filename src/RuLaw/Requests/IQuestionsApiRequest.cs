@@ -10,7 +10,7 @@ public interface IQuestionsApiRequest : IPagedApiRequest<IQuestionsApiRequest>, 
   /// </summary>
   /// <param name="name">Full or partial name of questions.</param>
   /// <returns>Back reference to the current request.</returns>
-  IQuestionsApiRequest Name(string? name);
+  IQuestionsApiRequest Name(string name);
 
   /// <summary>
   ///   <para>Specifies lower bound (min) date of sessions.</para>

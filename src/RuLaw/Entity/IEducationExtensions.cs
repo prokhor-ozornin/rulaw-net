@@ -13,7 +13,7 @@ public static class IEducationExtensions
   /// <param name="educations">Source sequence of educations to filter.</param>
   /// <param name="institution">Full or partial name of institution to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of educations associated with given institution.</returns>
-  public static IEnumerable<TEntity?> Institution<TEntity>(this IEnumerable<TEntity?> educations, string institution) where TEntity : IEducation => educations.Where(education => education != null && education.Institution.ToLowerInvariant().Contains(institution.ToLowerInvariant()));
+  public static IEnumerable<TEntity> Institution<TEntity>(this IEnumerable<TEntity> educations, string institution) where TEntity : IEducation => educations.Where(education => education != null && education.Institution.ToLowerInvariant().Contains(institution.ToLowerInvariant()));
 
   /// <summary>
   ///   <para>Filters sequence of educations, leaving those that were gained in specified date period.</para>
@@ -23,7 +23,7 @@ public static class IEducationExtensions
   /// <param name="from">Start date of period.</param>
   /// <param name="to">End date of period.</param>
   /// <returns>Filtered sequence of educations that were gained between <paramref name="from"/> and <paramref name="to"/> dates.</returns>
-  public static IEnumerable<TEntity?> Year<TEntity>(this IEnumerable<TEntity?> educations, short? from = null, short? to = null) where TEntity : IEducation
+  public static IEnumerable<TEntity> Year<TEntity>(this IEnumerable<TEntity> educations, short? from = null, short? to = null) where TEntity : IEducation
   {
     if (from != null)
     {

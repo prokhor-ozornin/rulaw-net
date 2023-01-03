@@ -16,19 +16,18 @@ public sealed class ITranscriptsApiExtensionsTest : IDisposable
   private CancellationToken Cancellation { get; } = new(true);
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ITranscriptsApiExtensions.Date(ITranscriptsApi, out IDateTranscriptsResult?, DateTimeOffset, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ITranscriptsApiExtensions.Date(ITranscriptsApi, DateTimeOffset)"/> method.</para>
   /// </summary>
   [Fact]
   public void Date_Method()
   {
-    AssertionExtensions.Should(() => ITranscriptsApiExtensions.Date(null!, out _, DateTimeOffset.UtcNow)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Api.Transcripts.Date(out _, DateTimeOffset.UtcNow, Cancellation)).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => ITranscriptsApiExtensions.Date(null, DateTimeOffset.UtcNow)).ThrowExactly<ArgumentNullException>();
 
-    Api.Transcripts.Date(out var result, new DateTimeOffset(year: 2013, month: 5, day: 14, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Should().BeTrue();
+    var result = Api.Transcripts.Date(new DateTimeOffset(year: 2013, month: 5, day: 14, hour: 0, minute: 0, second: 0, TimeSpan.Zero));
 
     result.Should().NotBeNull().And.BeOfType<DateTranscriptsResult>();
 
-    result!.Date.Should().HaveYear(2013).And.HaveMonth(5).And.HaveDay(5).And.HaveOffset(TimeSpan.Zero);
+    result.Date.Should().HaveYear(2013).And.HaveMonth(5).And.HaveDay(5).And.HaveOffset(TimeSpan.Zero);
 
     var meetings = result.Meetings;
     meetings.Should().NotBeNullOrEmpty().And.BeOfType<List<DateTranscriptMeeting>>();
@@ -47,23 +46,17 @@ public sealed class ITranscriptsApiExtensionsTest : IDisposable
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
   ///   <list type="bullet">
-  ///     <item><description><see cref="ITranscriptsApiExtensions.Deputy(ITranscriptsApi, Action{IDeputyTranscriptApiRequest}, CancellationToken)"/></description></item>
-  ///     <item><description><see cref="ITranscriptsApiExtensions.Deputy(ITranscriptsApi, out IDeputyTranscriptsResult?, Action{IDeputyTranscriptApiRequest}, CancellationToken)"/></description></item>
+  ///     <item><description><see cref="ITranscriptsApiExtensions.Deputy(ITranscriptsApi, IDeputyTranscriptApiRequest)"/></description></item>
+  ///     <item><description><see cref="ITranscriptsApiExtensions.Deputy(ITranscriptsApi, Action{IDeputyTranscriptApiRequest})"/></description></item>
   ///   </list>
   /// </summary>
   [Fact]
   public void Deputy_Methods()
   {
-    using (new AssertionScope())
+    static void Validate(IDeputyTranscriptsResult result)
     {
-      AssertionExtensions.Should(() => ITranscriptsApiExtensions.Deputy(null!, _ => { })).ThrowExactlyAsync<ArgumentNullException>().Await();
-      AssertionExtensions.Should(() => Api.Transcripts.Deputy(null!)).ThrowExactlyAsync<ArgumentNullException>().Await();
-      AssertionExtensions.Should(() => Api.Transcripts.Deputy(_ => { }, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
-
-      var result = Api.Transcripts.Deputy(request => request.Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)).Await();
-      
       result.Should().NotBeNull().And.BeOfType<DeputyTranscriptsResult>();
-      
+
       result.Name.Should().Be("Жириновский Владимир Вольфович");
       result.PageSize.Should().Be((int) PageSize.Twenty);
       result.Page.Should().Be(1);
@@ -81,46 +74,71 @@ public sealed class ITranscriptsApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => ITranscriptsApiExtensions.Deputy(null!, out _, _ => { })).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => Api.Transcripts.Deputy(out _, null!)).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => Api.Transcripts.Deputy(out _, _ => {}, Cancellation)).ThrowExactly<TaskCanceledException>();
+      AssertionExtensions.Should(() => ITranscriptsApiExtensions.Deputy(null, new DeputyTranscriptApiRequest())).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => Api.Transcripts.Deputy((IDeputyTranscriptApiRequest) null)).ThrowExactly<ArgumentNullException>();
 
-      Api.Transcripts.Deputy(out var result, request => request.Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)).Should().BeTrue();
+      var result = Api.Transcripts.Deputy(new DeputyTranscriptApiRequest().Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten));
+      Validate(result);
+    }
 
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ITranscriptsApiExtensions.Deputy(null, _ => {})).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => Api.Transcripts.Deputy((Action<IDeputyTranscriptApiRequest>) null)).ThrowExactly<ArgumentNullException>();
+
+      var result = Api.Transcripts.Deputy(request => request.Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten));
+      Validate(result);
+    }
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="ITranscriptsApiExtensions.DeputyAsync(ITranscriptsApi, Action{IDeputyTranscriptApiRequest})"/> method.</para>
+  /// </summary>
+  [Fact]
+  public void DeputyAsync_Method()
+  {
+    static void Validate(IDeputyTranscriptsResult result)
+    {
       result.Should().NotBeNull().And.BeOfType<DeputyTranscriptsResult>();
 
-      result!.Name.Should().Be("Жириновский Владимир Вольфович");
+      result.Name.Should().Be("Жириновский Владимир Вольфович");
       result.PageSize.Should().Be((int) PageSize.Twenty);
       result.Page.Should().Be(1);
       result.Count.Should().BePositive();
-      
+
       var meetings = result.Meetings;
-      meetings.Should().NotBeNullOrEmpty().And.BeOfType<TranscriptMeeting>();
+      meetings.Should().NotBeNullOrEmpty().And.BeOfType<List<TranscriptMeeting>>();
 
       var meeting = meetings.First();
       meeting.Date.Should().BeOnOrBefore(DateTimeOffset.UtcNow);
       meeting.LinesCount.Should().BePositive();
       meeting.Number.Should().BePositive();
-      meeting.Questions.Should().NotBeNullOrEmpty().And.BeOfType<List<Question>>();
+      meeting.Questions.Should().NotBeNullOrEmpty().And.BeOfType<Question>();
     }
+
+    AssertionExtensions.Should(() => ITranscriptsApiExtensions.DeputyAsync(null, _ => { })).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync((Action<IDeputyTranscriptApiRequest>) null)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync(_ => { }, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+
+    var result = Api.Transcripts.DeputyAsync(request => request.Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)).Await();
+    Validate(result);
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ITranscriptsApiExtensions.Law(ITranscriptsApi, out ILawTranscriptsResult?, string, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ITranscriptsApiExtensions.Law(ITranscriptsApi, string)"/> method.</para>
   /// </summary>
   [Fact]
   public void Law_Method()
   {
-    AssertionExtensions.Should(() => ITranscriptsApiExtensions.Law(null!, out _, "number")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Api.Transcripts.Law(out _,  null!)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Api.Transcripts.Law(out _, string.Empty)).ThrowExactly<ArgumentException>();
-    AssertionExtensions.Should(() => Api.Transcripts.Law(out _, "number", Cancellation)).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => ITranscriptsApiExtensions.Law(null, "number")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Api.Transcripts.Law(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Api.Transcripts.Law(string.Empty)).ThrowExactly<ArgumentException>();
 
-    Api.Transcripts.Law(out var result, "140513-6").Should().BeTrue();
+    var result = Api.Transcripts.Law("140513-6");
 
     result.Should().NotBeNull().And.BeOfType<LawTranscriptsResult>();
 
-    result!.Number.Should().Be("140513-6");
+    result.Number.Should().Be("140513-6");
     result.Name.Should().Be("О внесении изменений в главы 23 и 26 части второй Налогового кодекса Российской Федерации");
     result.Comments.Should().Be("в части уточнения видов доходов, полученных от использования в Российской Федерации авторских или  смежных прав");
 
@@ -166,15 +184,14 @@ public sealed class ITranscriptsApiExtensionsTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ITranscriptsApiExtensions.Question(ITranscriptsApi, out IQuestionTranscriptsResult?, long, long, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ITranscriptsApiExtensions.Question(ITranscriptsApi, long, long)"/> method.</para>
   /// </summary>
   [Fact]
   public void Question_Method()
   {
-    AssertionExtensions.Should(() => ITranscriptsApiExtensions.Question(null!, out _, long.MinValue, long.MaxValue)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => ITranscriptsApiExtensions.Question(null!, out _, long.MinValue, long.MaxValue, Cancellation)).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => ITranscriptsApiExtensions.Question(null, 0, 0)).ThrowExactly<ArgumentNullException>();
 
-    Api.Transcripts.Question(out var result, 80, 13).Should().BeTrue();
+    var result = Api.Transcripts.Question(80, 13);
 
     result.Should().NotBeNull().And.BeOfType<QuestionTranscriptsResult>();
 
@@ -201,14 +218,16 @@ public sealed class ITranscriptsApiExtensionsTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ITranscriptsApiExtensions.Resolution(ITranscriptsApi, out IResolutionTranscriptsResult?, string, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ITranscriptsApiExtensions.Resolution(ITranscriptsApi, string)"/> method.</para>
   /// </summary>
   [Fact]
   public void Resolution_Method()
   {
-    AssertionExtensions.Should(() => ITranscriptsApiExtensions.Resolution(null!, out _, Guid.Empty.ToString())).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => ITranscriptsApiExtensions.Resolution(null, "number")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Api.Transcripts.Resolution(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Api.Transcripts.Resolution(string.Empty)).ThrowExactly<ArgumentException>();
 
-    Api.Transcripts.Resolution(out var result, "276569-6").Should().BeTrue();
+    var result = Api.Transcripts.Resolution("276569-6");
 
     result.Should().NotBeNull().And.BeOfType<ResolutionTranscriptsResult>();
 

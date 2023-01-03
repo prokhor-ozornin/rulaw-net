@@ -150,12 +150,12 @@ public sealed class VotesSearchResultInfoTests : UnitTest<VotesSearchResult.Info
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchResult.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="VotesSearchResult.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new VotesSearchResult.Info().Result();
+    var result = new VotesSearchResult.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<VotesSearchResult>();
     result.Page.Should().BeNull();
     result.PageSize.Should().BeNull();

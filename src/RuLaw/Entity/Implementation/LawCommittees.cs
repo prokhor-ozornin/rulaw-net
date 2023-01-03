@@ -11,7 +11,7 @@ public sealed class LawCommittees : ILawCommittees
   /// <summary>
   ///   <para>Responsible committee.</para>
   /// </summary>
-  public ICommittee? Responsible { get; }
+  public ICommittee Responsible { get; }
 
   /// <summary>
   ///   <para>List of profile committees.</para>
@@ -29,9 +29,9 @@ public sealed class LawCommittees : ILawCommittees
   /// <param name="responsible"></param>
   /// <param name="profile"></param>
   /// <param name="soExecutor"></param>
-  public LawCommittees(ICommittee? responsible = null,
-                       IEnumerable<ICommittee>? profile = null,
-                       IEnumerable<ICommittee>? soExecutor = null)
+  public LawCommittees(ICommittee responsible = null,
+                       IEnumerable<ICommittee> profile = null,
+                       IEnumerable<ICommittee> soExecutor = null)
   {
     Responsible = responsible;
     Profile = profile ?? new List<ICommittee>();
@@ -53,7 +53,7 @@ public sealed class LawCommittees : ILawCommittees
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public LawCommittees(object info) : this(new Info().Properties(info)) {}
+  public LawCommittees(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para></para>
@@ -65,24 +65,24 @@ public sealed class LawCommittees : ILawCommittees
     ///   <para>Responsible committee.</para>
     /// </summary>
     [DataMember(Name = "responsible", IsRequired = true)]
-    public Committee? Responsible { get; init; }
+    public Committee Responsible { get; init; }
 
     /// <summary>
     ///   <para>List of profile committees.</para>
     /// </summary>
     [DataMember(Name = "profile", IsRequired = true)]
-    public List<Committee>? Profile { get; init; }
+    public List<Committee> Profile { get; init; }
 
     /// <summary>
     ///   <para>List of so-executor committees.</para>
     /// </summary>
     [DataMember(Name = "soexecutor", IsRequired = true)]
-    public List<Committee>? SoExecutor { get; init; }
+    public List<Committee> SoExecutor { get; init; }
 
     /// <summary>
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public ILawCommittees Result() => new LawCommittees(this);
+    public ILawCommittees ToResult() => new LawCommittees(this);
   }
 }

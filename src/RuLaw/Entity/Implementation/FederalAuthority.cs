@@ -17,7 +17,7 @@ public sealed class FederalAuthority : Authority
   /// <param name="fromDate"></param>
   /// <param name="toDate"></param>
   public FederalAuthority(long? id = null,
-                          string? name = null,
+                          string name = null,
                           bool? active = null,
                           DateTimeOffset? fromDate = null,
                           DateTimeOffset? toDate = null) : base(id, name, active, fromDate, toDate)
@@ -34,7 +34,7 @@ public sealed class FederalAuthority : Authority
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public FederalAuthority(object info) : this(new Info().Properties(info)) {}
+  public FederalAuthority(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para></para>

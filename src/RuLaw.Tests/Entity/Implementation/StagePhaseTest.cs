@@ -126,12 +126,12 @@ public sealed class StagePhaseInfoTests : UnitTest<StagePhase.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="StagePhase.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="StagePhase.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new StagePhase.Info().Result();
+    var result = new StagePhase.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<StagePhase>();
     result.Id.Should().BeNull();
     result.Name.Should().BeNull();

@@ -16,7 +16,7 @@ public static class IPageableExtensions
   /// <param name="from"></param>
   /// <param name="to"></param>
   /// <returns></returns>
-  public static IEnumerable<TEntity?> Page<TEntity>(this IEnumerable<TEntity?> entities, int? from = null, int? to = null) where TEntity : IPageable
+  public static IEnumerable<TEntity> Page<TEntity>(this IEnumerable<TEntity> entities, int? from = null, int? to = null) where TEntity : IPageable
   {
     if (from != null)
     {
@@ -39,7 +39,7 @@ public static class IPageableExtensions
   /// <param name="from"></param>
   /// <param name="to"></param>
   /// <returns></returns>
-  public static IEnumerable<TEntity?> PageSize<TEntity>(this IEnumerable<TEntity?> entities, int? from = null, int? to = null) where TEntity : IPageable
+  public static IEnumerable<TEntity> PageSize<TEntity>(this IEnumerable<TEntity> entities, int? from = null, int? to = null) where TEntity : IPageable
   {
     if (from != null)
     {

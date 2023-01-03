@@ -14,7 +14,7 @@ public sealed class IPeriodableExtensionsTest
   [Fact]
   public void Period_Method()
   {
-    AssertionExtensions.Should(() => IPeriodableExtensions.Period<IPeriodable>(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IPeriodableExtensions.Period<IPeriodable>(null)).ThrowExactly<ArgumentNullException>();
 
     Enumerable.Empty<PeriodableEntity>().Period().Should().NotBeNull().And.BeEmpty();
 

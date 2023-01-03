@@ -166,12 +166,12 @@ public sealed class ConvocationInfoTests : UnitTest<Convocation.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="Convocation.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new Convocation.Info().Result();
+    var result = new Convocation.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<Convocation>();
     result.Id.Should().BeNull();
     result.Name.Should().BeNull();

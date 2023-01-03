@@ -4,42 +4,42 @@ internal sealed class DeputyTranscriptApiRequest : ApiRequest, IDeputyTranscript
 {
   public IDeputyTranscriptApiRequest Page(int? page)
   {
-    Parameters["page"] = page;
+    WithParameter("page", page);
 
     return this;
   }
 
   public IDeputyTranscriptApiRequest PageSize(PageSize? size)
   {
-    Parameters["limit"] = (int?) size;
+    WithParameter("limit", (int?) size);
 
     return this;
   }
 
-  public IDeputyTranscriptApiRequest Name(string? name)
+  public IDeputyTranscriptApiRequest Name(string name)
   {
-    Parameters["name"] = name;
+    WithParameter("name", name);
 
     return this;
   }
 
   public IDeputyTranscriptApiRequest Deputy(long? id)
   {
-    Parameters["deputy"] = id;
+    WithParameter("deputy", id);
 
     return this;
   }
 
   public IDeputyTranscriptApiRequest FromDate(DateTimeOffset? from)
   {
-    Parameters["dateFrom"] = from?.AsString();
+    WithParameter("dateFrom", from?.AsString());
 
     return this;
   }
 
   public IDeputyTranscriptApiRequest ToDate(DateTimeOffset? to)
   {
-    Parameters["dateTo"] = to?.AsString();
+    WithParameter("dateTo", to?.AsString());
 
     return this;
   }

@@ -12,5 +12,5 @@ public static class IDeputyTranscriptApiRequestExtensions
   /// <param name="request">API request instance to use.</param>
   /// <param name="deputy">Subject deputy.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static IDeputyTranscriptApiRequest Deputy(this IDeputyTranscriptApiRequest request, IDeputy? deputy) => request.Deputy(deputy?.Id);
+  public static IDeputyTranscriptApiRequest Deputy(this IDeputyTranscriptApiRequest request, IDeputy deputy) => request.Deputy(deputy?.Id);
 }

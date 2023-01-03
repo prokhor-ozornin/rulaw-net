@@ -13,7 +13,7 @@ public interface IAuthoritiesApi
   /// <returns>Collection of authorities.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-federalnih-organov-vlasti"/>
-  IAsyncEnumerable<IAuthority> Federal(IAuthoritiesApiRequest? request = null, CancellationToken cancellation = default);
+  IAsyncEnumerable<IAuthority> FederalAsync(IAuthoritiesApiRequest request = null, CancellationToken cancellation = default);
 
   /// <summary>
   ///   <para>Returns list of regional law authorities.</para>
@@ -23,5 +23,5 @@ public interface IAuthoritiesApi
   /// <returns>Collection of authorities.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-regionalnih-organov-vlasti"/>
-  IAsyncEnumerable<IAuthority> Regional(IAuthoritiesApiRequest? request = null, CancellationToken cancellation = default);
+  IAsyncEnumerable<IAuthority> RegionalAsync(IAuthoritiesApiRequest request = null, CancellationToken cancellation = default);
 }

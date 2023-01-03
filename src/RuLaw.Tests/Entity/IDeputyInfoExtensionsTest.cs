@@ -14,8 +14,8 @@ public sealed class IDeputyInfoExtensionsTest
   [Fact]
   public void FullName_Method()
   {
-    AssertionExtensions.Should(() => IDeputyInfoExtensions.FullName<IDeputyInfo>(null!, "name")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().FullName(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputyInfoExtensions.FullName<IDeputyInfo>(null, "name")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().FullName(null)).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().FullName(string.Empty)).ThrowExactly<ArgumentException>();
 
     Enumerable.Empty<IDeputyInfo>().FullName("name").Should().NotBeNull().And.BeEmpty();
@@ -34,8 +34,8 @@ public sealed class IDeputyInfoExtensionsTest
   [Fact]
   public void BirthDate_Method()
   {
-    AssertionExtensions.Should(() => IDeputyInfoExtensions.BirthDate<IDeputyInfo>(null!)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => ((IEnumerable<IDeputyInfo>) null!).BirthDate()).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputyInfoExtensions.BirthDate<IDeputyInfo>(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => ((IEnumerable<IDeputyInfo>) null).BirthDate()).ThrowExactly<ArgumentNullException>();
 
     Enumerable.Empty<IDeputyInfo>().BirthDate().Should().NotBeNull().And.BeEmpty();
 
@@ -57,7 +57,7 @@ public sealed class IDeputyInfoExtensionsTest
   [Fact]
   public void WorkDate_Method()
   {
-    AssertionExtensions.Should(() => IDeputyInfoExtensions.WorkDate<IDeputyInfo>(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputyInfoExtensions.WorkDate<IDeputyInfo>(null)).ThrowExactly<ArgumentNullException>();
 
     Enumerable.Empty<IDeputyInfo>().WorkDate().Should().NotBeNull().And.BeEmpty();
 
@@ -86,8 +86,8 @@ public sealed class IDeputyInfoExtensionsTest
   [Fact]
   public void Faction_Method()
   {
-    AssertionExtensions.Should(() => IDeputyInfoExtensions.Faction<IDeputyInfo>(null!, "faction")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Faction(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputyInfoExtensions.Faction<IDeputyInfo>(null, "faction")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Faction(null)).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Faction(string.Empty)).Throw<ArgumentException>();
 
     Enumerable.Empty<IDeputyInfo>().Faction("faction").Should().NotBeNull().And.BeEmpty();
@@ -105,8 +105,8 @@ public sealed class IDeputyInfoExtensionsTest
   [Fact]
   public void Degree_Method()
   {
-    AssertionExtensions.Should(() => IDeputyInfoExtensions.Degree<IDeputyInfo>(null!, "degree")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Degree(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputyInfoExtensions.Degree<IDeputyInfo>(null, "degree")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Degree(null)).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Degree(string.Empty)).ThrowExactly<ArgumentException>();
 
     Enumerable.Empty<IDeputyInfo>().Degree("degree").Should().NotBeNull().And.BeEmpty();
@@ -125,8 +125,8 @@ public sealed class IDeputyInfoExtensionsTest
   [Fact]
   public void Rank_Method()
   {
-    AssertionExtensions.Should(() => IDeputyInfoExtensions.Rank<IDeputyInfo>(null!, "name")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Rank(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputyInfoExtensions.Rank<IDeputyInfo>(null, "name")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Rank(null)).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Rank(string.Empty)).ThrowExactly<ArgumentException>();
 
     Enumerable.Empty<IDeputyInfo>().Rank("rank").Should().NotBeNull().And.BeEmpty();
@@ -146,8 +146,8 @@ public sealed class IDeputyInfoExtensionsTest
   [Fact]
   public void Region_Method()
   {
-    AssertionExtensions.Should(() => IDeputyInfoExtensions.Region<IDeputyInfo>(null!, "name")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Region(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputyInfoExtensions.Region<IDeputyInfo>(null, "name")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Region(null)).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Region(string.Empty)).ThrowExactly<ArgumentException>();
 
     Enumerable.Empty<IDeputyInfo>().Region("region").Should().NotBeNull().And.BeEmpty();

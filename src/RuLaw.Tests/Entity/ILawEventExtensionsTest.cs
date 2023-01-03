@@ -14,8 +14,8 @@ public sealed class ILawEventExtensionsTest
   [Fact]
   public void Solution_Method()
   {
-    AssertionExtensions.Should(() => ILawEventExtensions.Solution<ILawEvent>(null!, "solution")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<ILawEvent>().Solution(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => ILawEventExtensions.Solution<ILawEvent>(null, "solution")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Enumerable.Empty<ILawEvent>().Solution(null)).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => Enumerable.Empty<ILawEvent>().Solution(string.Empty)).ThrowExactly<ArgumentException>();
 
     Enumerable.Empty<ILawEvent>().Solution("solution").Should().NotBeNull().And.BeEmpty();

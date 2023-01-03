@@ -23,8 +23,8 @@ public sealed class LawSubject : ILawSubject
   /// </summary>
   /// <param name="departments"></param>
   /// <param name="deputies"></param>
-  public LawSubject(IEnumerable<IAuthority>? departments = null,
-                    IEnumerable<IDeputy>? deputies = null)
+  public LawSubject(IEnumerable<IAuthority> departments = null,
+                    IEnumerable<IDeputy> deputies = null)
   {
     Departments = departments ?? new List<IAuthority>();
     Deputies = deputies ?? new List<IDeputy>();
@@ -44,7 +44,7 @@ public sealed class LawSubject : ILawSubject
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public LawSubject(object info) : this(new Info().Properties(info)) {}
+  public LawSubject(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para></para>
@@ -56,18 +56,18 @@ public sealed class LawSubject : ILawSubject
     ///   <para>Departments that are subjects of law.</para>
     /// </summary>
     [DataMember(Name = "departments", IsRequired = true)]
-    public List<Authority>? Departments { get; init; }
+    public List<Authority> Departments { get; init; }
 
     /// <summary>
     ///   <para>Deputies that are subjects of law.</para>
     /// </summary>
     [DataMember(Name = "deputies", IsRequired = true)]
-    public List<Deputy>? Deputies { get; init; }
+    public List<Deputy> Deputies { get; init; }
 
     /// <summary>
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public ILawSubject Result() => new LawSubject(this);
+    public ILawSubject ToResult() => new LawSubject(this);
   }
 }

@@ -150,12 +150,12 @@ public sealed class CommitteeInfoTests : UnitTest<Committee.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="Committee.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="Committee.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new Committee.Info().Result();
+    var result = new Committee.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<Committee>();
     result.Id.Should().NotBeNull();
     result.Name.Should().NotBeNull();

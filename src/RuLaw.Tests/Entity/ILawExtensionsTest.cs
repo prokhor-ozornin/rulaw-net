@@ -14,7 +14,7 @@ public sealed class ILawExtensionsTest
   [Fact]
   public void Number_Method()
   {
-    AssertionExtensions.Should(() => ((IEnumerable<ILaw>) null!).Number("number")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => ((IEnumerable<ILaw>) null).Number("number")).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => Enumerable.Empty<ILaw>().Number(string.Empty)).ThrowExactly<ArgumentException>();
 
     var laws = new[] {null, new Law(new {Number = "first"}), null, new Law(new {Number = "second"})};

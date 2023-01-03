@@ -158,12 +158,12 @@ public sealed class LawEventInfoTests : UnitTest<LawEvent.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawEvent.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="LawEvent.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new LawEvent.Info().Result();
+    var result = new LawEvent.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<LawEvent>();
     result.Date.Should().BeNull();
     result.Solution.Should().BeNull();

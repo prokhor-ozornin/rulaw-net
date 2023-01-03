@@ -16,7 +16,7 @@ public sealed class Convocation : IConvocation
   /// <summary>
   ///   <para>Name of the entity.</para>
   /// </summary>
-  public string? Name { get; }
+  public string Name { get; }
 
   /// <summary>
   ///   <para>Start date of authority functioning.</para>
@@ -42,10 +42,10 @@ public sealed class Convocation : IConvocation
   /// <param name="toDate"></param>
   /// <param name="sessions"></param>
   public Convocation(long? id = null,
-                     string? name = null,
+                     string name = null,
                      DateTimeOffset? fromDate = null,
                      DateTimeOffset? toDate = null,
-                     IEnumerable<ISession>? sessions = null)
+                     IEnumerable<ISession> sessions = null)
   {
     Id = id;
     Name = name;
@@ -71,28 +71,28 @@ public sealed class Convocation : IConvocation
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public Convocation(object info) : this(new Info().Properties(info)) {}
+  public Convocation(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
   /// </summary>
   /// <returns>A value that indicates the relative order of the objects being compared.</returns>
   /// <param name="other">The <see cref="IConvocation"/> to compare with this instance.</param>
-  public int CompareTo(IConvocation? other) => Name.Compare(other?.Name);
+  public int CompareTo(IConvocation other) => Name.Compare(other?.Name);
 
   /// <summary>
   ///   <para>Determines whether two entities instances are equal.</para>
   /// </summary>
   /// <param name="other">The entity to compare with the current one.</param>
   /// <returns><c>true</c> if specified entity is equal to the current, <c>false</c> otherwise.</returns>
-  public bool Equals(IConvocation? other) => this.Equality(other, nameof(Id));
+  public bool Equals(IConvocation other) => this.Equality(other, nameof(Id));
 
   /// <summary>
   ///   <para>Determines whether the specified <see cref="object"/> is equal to the current <see cref="object"/>.</para>
   /// </summary>
   /// <param name="other">The object to compare with the current object.</param>
   /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
-  public override bool Equals(object? other) => Equals(other as IConvocation);
+  public override bool Equals(object other) => Equals(other as IConvocation);
 
   /// <summary>
   ///   <para>Returns hash code for the current object.</para>
@@ -122,30 +122,30 @@ public sealed class Convocation : IConvocation
     ///   <para>Name of entity.</para>
     /// </summary>
     [DataMember(Name = "name", IsRequired = true)]
-    public string? Name { get; init; }
+    public string Name { get; init; }
 
     /// <summary>
     ///   <para>Start date of authority functioning.</para>
     /// </summary>
     [DataMember(Name = "startDate", IsRequired = true)]
-    public string? FromDate { get; init; }
+    public string FromDate { get; init; }
 
     /// <summary>
     ///   <para>End date of authority functioning.</para>
     /// </summary>
     [DataMember(Name = "stopDate")]
-    public string? ToDate { get; init; }
+    public string ToDate { get; init; }
 
     /// <summary>
     ///   <para>Collection of sessions which are part of the convocation.</para>
     /// </summary>
     [DataMember(Name = "sessions", IsRequired = true)]
-    public List<Session>? Sessions { get; init; }
+    public List<Session> Sessions { get; init; }
 
     /// <summary>
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IConvocation Result() => new Convocation(this);
+    public IConvocation ToResult() => new Convocation(this);
   }
 }

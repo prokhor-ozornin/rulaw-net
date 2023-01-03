@@ -16,7 +16,7 @@ public sealed class Session : ISession
   /// <summary>
   ///   <para>Name of work session.</para>
   /// </summary>
-  public string? Name { get; }
+  public string Name { get; }
 
   /// <summary>
   ///   <para>Date when work session was started.</para>
@@ -36,7 +36,7 @@ public sealed class Session : ISession
   /// <param name="fromDate"></param>
   /// <param name="toDate"></param>
   public Session(long? id = null,
-                 string? name = null,
+                 string name = null,
                  DateTimeOffset? fromDate = null,
                  DateTimeOffset? toDate = null)
   {
@@ -62,28 +62,28 @@ public sealed class Session : ISession
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public Session(object info) : this(new Info().Properties(info)) {}
+  public Session(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Compares the current <see cref="ISession"/> instance with another.</para>
   /// </summary>
   /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="ISession"/> to compare with this instance.</param>
-  public int CompareTo(ISession? other) => Nullable.Compare(FromDate, other?.FromDate);
+  public int CompareTo(ISession other) => Nullable.Compare(FromDate, other?.FromDate);
 
   /// <summary>
   ///   <para>Determines whether two <see cref="ISession"/> instances are equal.</para>
   /// </summary>
   /// <param name="other">The instance to compare with the current one.</param>
   /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
-  public bool Equals(ISession? other) => this.Equality(other, nameof(Id));
+  public bool Equals(ISession other) => this.Equality(other, nameof(Id));
 
   /// <summary>
   ///   <para>Determines whether the specified <see cref="object"/> is equal to the current <see cref="object"/>.</para>
   /// </summary>
   /// <param name="other">The object to compare with the current object.</param>
   /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
-  public override bool Equals(object? other) => Equals(other as ISession);
+  public override bool Equals(object other) => Equals(other as ISession);
 
   /// <summary>
   ///   <para>Returns hash code for the current object.</para>
@@ -113,24 +113,24 @@ public sealed class Session : ISession
     ///   <para>Name of work session.</para>
     /// </summary>
     [DataMember(Name = "name", IsRequired = true)]
-    public string? Name { get; init; }
+    public string Name { get; init; }
 
     /// <summary>
     ///   <para>Date when work session was started.</para>
     /// </summary>
     [DataMember(Name = "startDate", IsRequired = true)]
-    public string? FromDate { get; init; }
+    public string FromDate { get; init; }
 
     /// <summary>
     ///   <para>Date when work session was ended.</para>
     /// </summary>
     [DataMember(Name = "endDate", IsRequired = true)]
-    public string? ToDate { get; init; }
+    public string ToDate { get; init; }
 
     /// <summary>
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public ISession Result() => new Session(this);
+    public ISession ToResult() => new Session(this);
   }
 }

@@ -95,7 +95,7 @@ public sealed class VotesSearchApiRequestTest
   [Fact]
   public void FromDate_Method()
   {
-    void Validate(DateTimeOffset? date)
+    static void Validate(DateTimeOffset? date)
     {
       var request = new VotesSearchApiRequest();
 
@@ -121,7 +121,7 @@ public sealed class VotesSearchApiRequestTest
   [Fact]
   public void ToDate_Method()
   {
-    void Validate(DateTimeOffset? date)
+    static void Validate(DateTimeOffset? date)
     {
       var request = new VotesSearchApiRequest();
 
@@ -210,7 +210,7 @@ public sealed class VotesSearchApiRequestTest
   [Fact]
   public void Limit_Method()
   {
-    void Validate(PageSize? size)
+    static void Validate(PageSize? size)
     {
       var request = new VotesSearchApiRequest();
 

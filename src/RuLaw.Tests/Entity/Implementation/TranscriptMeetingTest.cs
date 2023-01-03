@@ -159,12 +159,12 @@ public sealed class TranscriptMeetingInfoTests : UnitTest<TranscriptMeeting.Info
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeeting.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="TranscriptMeeting.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new TranscriptMeeting.Info().Result();
+    var result = new TranscriptMeeting.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<TranscriptMeeting>();
     result.Date.Should().BeNull();
     result.Number.Should().BeNull();

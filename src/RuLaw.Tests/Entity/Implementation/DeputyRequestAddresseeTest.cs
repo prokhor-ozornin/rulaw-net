@@ -102,12 +102,12 @@ public sealed class DeputyRequestAddresseeInfoTests : UnitTest<DeputyRequestAddr
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new DeputyRequestAddressee.Info().Result();
+    var result = new DeputyRequestAddressee.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<DeputyRequestAddressee>();
     result.Id.Should().BeNull();
     result.Name.Should().BeNull();

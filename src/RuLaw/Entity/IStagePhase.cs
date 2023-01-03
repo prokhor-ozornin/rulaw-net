@@ -8,5 +8,5 @@ public interface IStagePhase : IEntity, INameable, IComparable<IStagePhase>, IEq
   /// <summary>
   ///  <para>Law workflow instance.</para>
   /// </summary>
-  IInstance? Instance { get; }
+  IInstance Instance { get; }
 }

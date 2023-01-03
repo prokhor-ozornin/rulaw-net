@@ -13,7 +13,7 @@ internal sealed class Api : IApi
   private RestClient RestClient { get; }
 
   public string ApiToken { get; }
-  public string? AppToken { get; }
+  public string AppToken { get; }
 
   public IBranchesApi Branches { get; }
   public ICommitteesApi Committees { get; }
@@ -29,7 +29,7 @@ internal sealed class Api : IApi
   public ITranscriptsApi Transcripts { get; }
   public IVotesApi Votes { get; }
 
-  public Api(string apiToken, string? appToken = null)
+  public Api(string apiToken, string appToken = null)
   {
     ApiToken = apiToken;
     AppToken = appToken;
@@ -75,7 +75,7 @@ internal sealed class Api : IApi
     disposed = true;
   }
 
-  private async Task<T> Request<T>(string resource, IDictionary<string, object?>? parameters = null, CancellationToken cancellation = default) where T : new()
+  private async Task<T> Request<T>(string resource, IReadOnlyDictionary<string, object> parameters = null, CancellationToken cancellation = default) where T : new()
   {
     var request = new RestRequest($"{resource}.json")
     {
@@ -86,19 +86,19 @@ internal sealed class Api : IApi
     {
       foreach (var parameter in parameters)
       {
-        request.AddParameter(parameter.Key, parameter.Value?.ToStringInvariant());
+        request.AddParameter(parameter.Key, parameter.Value?.ToInvariantString());
       }
     }
 
-    var response = await RestClient.ExecuteGetAsync<T>(request, cancellation);
+    var response = await RestClient.ExecuteGetAsync<T>(request, cancellation).ConfigureAwait(false);
 
     if (response.ErrorException != null || response.StatusCode != HttpStatusCode.OK)
     {
-      var responseError = new Error((int) response.StatusCode, response.ErrorMessage ?? (response.StatusDescription ?? response.StatusCode.ToStringInvariant()));
+      var responseError = new Error((int) response.StatusCode, response.ErrorMessage ?? (response.StatusDescription ?? response.StatusCode.ToInvariantString()));
       throw new RuLawException(responseError, response.ErrorException);
     }
 
-    Error? error = null;
+    Error error = null;
 
     try
     {
@@ -122,11 +122,13 @@ internal sealed class Api : IApi
 
     public BranchesApi(Api api) => Api = api;
 
-    public async IAsyncEnumerable<ILawBranch> All([EnumeratorCancellation] CancellationToken cancellation = default)
+    public async IAsyncEnumerable<ILawBranch> AllAsync([EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      foreach (var branch in await Api.Request<List<LawBranch.Info>>($"/{Api.ApiToken}/classes", null, cancellation))
+      var result = await Api.Request<List<LawBranch.Info>>($"/{Api.ApiToken}/classes", null, cancellation).ConfigureAwait(false);
+
+      foreach (var branch in result.WithCancellation(cancellation))
       {
-        yield return branch.Result();
+        yield return branch.ToResult();
       }
     }
   }
@@ -137,11 +139,13 @@ internal sealed class Api : IApi
 
     public CommitteesApi(Api api) => Api = api;
 
-    public async IAsyncEnumerable<ICommittee> All([EnumeratorCancellation] CancellationToken cancellation = default)
+    public async IAsyncEnumerable<ICommittee> AllAsync([EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      foreach (var committee in await Api.Request<List<Committee.Info>>($"/{Api.ApiToken}/committees", null, cancellation))
+      var result = await Api.Request<List<Committee.Info>>($"/{Api.ApiToken}/committees", null, cancellation).ConfigureAwait(false);
+
+      foreach (var committee in result.WithCancellation(cancellation))
       {
-        yield return committee.Result();
+        yield return committee.ToResult();
       }
     }
   }
@@ -152,13 +156,15 @@ internal sealed class Api : IApi
 
     public DeputiesApi(Api api) => Api = api;
 
-    public async Task<IDeputyInfo> Find(long id, CancellationToken cancellation = default) => (await Api.Request<DeputyInfo.Info>($"/{Api.ApiToken}/deputy", new Dictionary<string, object?> {{"id", id}}, cancellation)).Result();
+    public async Task<IDeputyInfo> FindAsync(long id, CancellationToken cancellation = default) => (await Api.Request<DeputyInfo.Info>($"/{Api.ApiToken}/deputy", new Dictionary<string, object> {{"id", id}}, cancellation).ConfigureAwait(false)).ToResult();
 
-    public async IAsyncEnumerable<IDeputy> Search(IDeputiesApiRequest? request = null, [EnumeratorCancellation] CancellationToken cancellation = default)
+    public async IAsyncEnumerable<IDeputy> SearchAsync(IDeputiesApiRequest request = null, [EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      foreach (var deputy in await Api.Request<List<Deputy.Info>>($"/{Api.ApiToken}/deputies", request?.Parameters, cancellation))
+      var result = await Api.Request<List<Deputy.Info>>($"/{Api.ApiToken}/deputies", request?.Parameters, cancellation).ConfigureAwait(false);
+
+      foreach (var deputy in result.WithCancellation(cancellation))
       {
-        yield return deputy.Result();
+        yield return deputy.ToResult();
       }
     }
   }
@@ -169,19 +175,23 @@ internal sealed class Api : IApi
 
     public AuthoritiesApi(Api api) => Api = api;
 
-    public async IAsyncEnumerable<IAuthority> Federal(IAuthoritiesApiRequest? request = null, [EnumeratorCancellation] CancellationToken cancellation = default)
+    public async IAsyncEnumerable<IAuthority> FederalAsync(IAuthoritiesApiRequest request = null, [EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      foreach (var authority in await Api.Request<List<FederalAuthority.Info>>($"/{Api.ApiToken}/federal-organs", request?.Parameters, cancellation))
+      var result = await Api.Request<List<FederalAuthority.Info>>($"/{Api.ApiToken}/federal-organs", request?.Parameters, cancellation).ConfigureAwait(false);
+
+      foreach (var authority in result.WithCancellation(cancellation))
       {
-        yield return authority.Result();
+        yield return authority.ToResult();
       }
     }
 
-    public async IAsyncEnumerable<IAuthority> Regional(IAuthoritiesApiRequest? request = null, [EnumeratorCancellation] CancellationToken cancellation = default)
+    public async IAsyncEnumerable<IAuthority> RegionalAsync(IAuthoritiesApiRequest request = null, [EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      foreach (var authority in await Api.Request<List<RegionalAuthority.Info>>($"/{Api.ApiToken}/regional-organs", request?.Parameters, cancellation))
+      var result = await Api.Request<List<RegionalAuthority.Info>>($"/{Api.ApiToken}/regional-organs", request?.Parameters, cancellation).ConfigureAwait(false);
+
+      foreach (var authority in result.WithCancellation(cancellation))
       {
-        yield return authority.Result();
+        yield return authority.ToResult();
       }
     }
   }
@@ -192,11 +202,13 @@ internal sealed class Api : IApi
 
     public InstancesApi(Api api) => Api = api;
 
-    public async IAsyncEnumerable<IInstance> Search(IInstancesApiRequest? request = null, [EnumeratorCancellation] CancellationToken cancellation = default)
+    public async IAsyncEnumerable<IInstance> SearchAsync(IInstancesApiRequest request = null, [EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      foreach (var instance in await Api.Request<List<Instance.Info>>($"/{Api.ApiToken}/instances", request?.Parameters, cancellation))
+      var result = await Api.Request<List<Instance.Info>>($"/{Api.ApiToken}/instances", request?.Parameters, cancellation).ConfigureAwait(false);
+
+      foreach (var instance in result.WithCancellation(cancellation))
       {
-        yield return instance.Result();
+        yield return instance.ToResult();
       }
     }
   }
@@ -207,7 +219,7 @@ internal sealed class Api : IApi
 
     public LawsApi(Api api) => Api = api;
 
-    public async Task<ILawsSearchResult> Search(ILawsApiRequest request, CancellationToken cancellation = default) => (await Api.Request<LawsSearchResult.Info>($"/{Api.ApiToken}/search", request.Parameters, cancellation)).Result();
+    public async Task<ILawsSearchResult> SearchAsync(ILawsApiRequest request, CancellationToken cancellation = default) => (await Api.Request<LawsSearchResult.Info>($"/{Api.ApiToken}/search", request.Parameters, cancellation).ConfigureAwait(false)).ToResult();
   }
 
   private sealed class ConvocationsApi : IConvocationsApi
@@ -216,11 +228,13 @@ internal sealed class Api : IApi
 
     public ConvocationsApi(Api api) => Api = api;
 
-    public async IAsyncEnumerable<IConvocation> All([EnumeratorCancellation] CancellationToken cancellation = default)
+    public async IAsyncEnumerable<IConvocation> AllAsync([EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      foreach (var convocation in await Api.Request<List<Convocation.Info>>($"/{Api.ApiToken}/periods", null, cancellation))
+      var result = await Api.Request<List<Convocation.Info>>($"/{Api.ApiToken}/periods", null, cancellation).ConfigureAwait(false);
+
+      foreach (var convocation in result.WithCancellation(cancellation))
       {
-        yield return convocation.Result();
+        yield return convocation.ToResult();
       }
     }
   }
@@ -231,7 +245,7 @@ internal sealed class Api : IApi
 
     public QuestionsApi(Api api) => Api = api;
 
-    public async Task<IQuestionsSearchResult> Search(IQuestionsApiRequest? request = null, CancellationToken cancellation = default) => (await Api.Request<QuestionsSearchResult.Info>($"/{Api.ApiToken}/questions", request?.Parameters, cancellation)).Result();
+    public async Task<IQuestionsSearchResult> SearchAsync(IQuestionsApiRequest request = null, CancellationToken cancellation = default) => (await Api.Request<QuestionsSearchResult.Info>($"/{Api.ApiToken}/questions", request?.Parameters, cancellation).ConfigureAwait(false)).ToResult();
   }
 
   private sealed class RequestsApi : IRequestsApi
@@ -240,11 +254,13 @@ internal sealed class Api : IApi
 
     public RequestsApi(Api api) => Api = api;
 
-    public async IAsyncEnumerable<IDeputyRequest> All([EnumeratorCancellation] CancellationToken cancellation = default)
+    public async IAsyncEnumerable<IDeputyRequest> AllAsync([EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      foreach (var request in await Api.Request<List<DeputyRequest.Info>>($"/{Api.ApiToken}/requests", null, cancellation))
+      var result = await Api.Request<List<DeputyRequest.Info>>($"/{Api.ApiToken}/requests", null, cancellation).ConfigureAwait(false);
+
+      foreach (var request in result.WithCancellation(cancellation))
       {
-        yield return request.Result();
+        yield return request.ToResult();
       }
     }
   }
@@ -255,11 +271,13 @@ internal sealed class Api : IApi
 
     public StagesApi(Api api) => Api = api;
 
-    public async IAsyncEnumerable<IPhaseStage> All([EnumeratorCancellation] CancellationToken cancellation = default)
+    public async IAsyncEnumerable<IPhaseStage> AllAsync([EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      foreach (var stage in await Api.Request<List<PhaseStage.Info>>($"/{Api.ApiToken}/stages", null, cancellation))
+      var result = await Api.Request<List<PhaseStage.Info>>($"/{Api.ApiToken}/stages", null, cancellation).ConfigureAwait(false);
+
+      foreach (var stage in result.WithCancellation(cancellation))
       {
-        yield return stage.Result();
+        yield return stage.ToResult();
       }
     }
   }
@@ -270,11 +288,13 @@ internal sealed class Api : IApi
 
     public TopicsApi(Api api) => Api = api;
 
-    public async IAsyncEnumerable<ITopic> All([EnumeratorCancellation] CancellationToken cancellation = default)
+    public async IAsyncEnumerable<ITopic> AllAsync([EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      foreach (var topic in await Api.Request<List<Topic.Info>>($"/{Api.ApiToken}/topics", null, cancellation))
+      var result = await Api.Request<List<Topic.Info>>($"/{Api.ApiToken}/topics", null, cancellation).ConfigureAwait(false);
+
+      foreach (var topic in result.WithCancellation(cancellation))
       {
-        yield return topic.Result();
+        yield return topic.ToResult();
       }
     }
   }
@@ -285,15 +305,15 @@ internal sealed class Api : IApi
 
     public TranscriptsApi(Api api) => Api = api;
 
-    public async Task<IDateTranscriptsResult> Date(DateTimeOffset date, CancellationToken cancellation = default) => (await Api.Request<DateTranscriptsResult.Info>($"/{Api.ApiToken}/transcriptFull/{date.AsString()}", null, cancellation)).Result();
+    public async Task<IDateTranscriptsResult> DateAsync(DateTimeOffset date, CancellationToken cancellation = default) => (await Api.Request<DateTranscriptsResult.Info>($"/{Api.ApiToken}/transcriptFull/{date.AsString()}", null, cancellation).ConfigureAwait(false)).ToResult();
 
-    public async Task<IDeputyTranscriptsResult> Deputy(IDeputyTranscriptApiRequest request, CancellationToken cancellation = default) => (await Api.Request<DeputyTranscriptsResult.Info>($"/{Api.ApiToken}/transcriptDeputy/{request.Parameters["deputy"]}", request.Parameters, cancellation)).Result();
+    public async Task<IDeputyTranscriptsResult> DeputyAsync(IDeputyTranscriptApiRequest request, CancellationToken cancellation = default) => (await Api.Request<DeputyTranscriptsResult.Info>($"/{Api.ApiToken}/transcriptDeputy/{request.Parameters["deputy"]}", request.Parameters, cancellation).ConfigureAwait(false)).ToResult();
 
-    public async Task<ILawTranscriptsResult> Law(string number, CancellationToken cancellation = default) => (await Api.Request<LawTranscriptsResult.Info>($"/{Api.ApiToken}/transcript/{number}", null, cancellation)).Result();
+    public async Task<ILawTranscriptsResult> LawAsync(string number, CancellationToken cancellation = default) => (await Api.Request<LawTranscriptsResult.Info>($"/{Api.ApiToken}/transcript/{number}", null, cancellation).ConfigureAwait(false)).ToResult();
 
-    public async Task<IQuestionTranscriptsResult> Question(long meeting, long question, CancellationToken cancellation = default) => (await Api.Request<QuestionTranscriptsResult.Info>($"/{Api.ApiToken}/transcriptQuestion/{meeting}/{question}", null, cancellation)).Result();
+    public async Task<IQuestionTranscriptsResult> QuestionAsync(long meeting, long question, CancellationToken cancellation = default) => (await Api.Request<QuestionTranscriptsResult.Info>($"/{Api.ApiToken}/transcriptQuestion/{meeting}/{question}", null, cancellation).ConfigureAwait(false)).ToResult();
 
-    public async Task<IResolutionTranscriptsResult> Resolution(string number, CancellationToken cancellation = default) => (await Api.Request<ResolutionTranscriptsResult.Info>($"/{Api.ApiToken}/transcriptResolution/{number}", null, cancellation)).Result();
+    public async Task<IResolutionTranscriptsResult> ResolutionAsync(string number, CancellationToken cancellation = default) => (await Api.Request<ResolutionTranscriptsResult.Info>($"/{Api.ApiToken}/transcriptResolution/{number}", null, cancellation).ConfigureAwait(false)).ToResult();
   }
 
   private sealed class VotesApi : IVotesApi
@@ -302,6 +322,6 @@ internal sealed class Api : IApi
 
     public VotesApi(Api api) => Api = api;
 
-    public async Task<IVotesSearchResult> Search(IVotesSearchApiRequest request, CancellationToken cancellation = default) => (await Api.Request<VotesSearchResult.Info>($"/{Api.ApiToken}/voteSearch", request.Parameters, cancellation)).Result();
+    public async Task<IVotesSearchResult> SearchAsync(IVotesSearchApiRequest request, CancellationToken cancellation = default) => (await Api.Request<VotesSearchResult.Info>($"/{Api.ApiToken}/voteSearch", request.Parameters, cancellation).ConfigureAwait(false)).ToResult();
   }
 }

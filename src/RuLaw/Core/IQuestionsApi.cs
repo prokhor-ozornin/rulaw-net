@@ -13,5 +13,5 @@ public interface IQuestionsApi
   /// <returns>Questions search result.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
-  Task<IQuestionsSearchResult> Search(IQuestionsApiRequest? request = null, CancellationToken cancellation = default);
+  Task<IQuestionsSearchResult> SearchAsync(IQuestionsApiRequest request = null, CancellationToken cancellation = default);
 }

@@ -10,7 +10,7 @@ public interface IVotesSearchApiRequest : IApiRequest
   /// </summary>
   /// <param name="number">Number of law.</param>
   /// <returns>Back reference to the current request.</returns>
-  IVotesSearchApiRequest Number(string? number);
+  IVotesSearchApiRequest Number(string number);
 
   /// <summary>
   ///   <para>Specifies identifier of faction.</para>
@@ -52,7 +52,7 @@ public interface IVotesSearchApiRequest : IApiRequest
   /// </summary>
   /// <param name="keywords">Search keywords.</param>
   /// <returns>Back reference to the current request.</returns>
-  IVotesSearchApiRequest Keywords(string? keywords);
+  IVotesSearchApiRequest Keywords(string keywords);
 
   /// <summary>
   ///   <para>Specifies number of results page. Equals to 1 by default.</para>

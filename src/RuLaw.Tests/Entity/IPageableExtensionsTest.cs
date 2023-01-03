@@ -14,7 +14,7 @@ public sealed class IPageableExtensionsTest
   [Fact]
   public void Page_Method()
   {
-    AssertionExtensions.Should(() => IDeputyRequestExtensions.SignDate<IDeputyRequest>(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputyRequestExtensions.SignDate<IDeputyRequest>(null)).ThrowExactly<ArgumentNullException>();
 
     var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
@@ -34,7 +34,7 @@ public sealed class IPageableExtensionsTest
   [Fact]
   public void PageSize_Method()
   {
-    AssertionExtensions.Should(() => ((IEnumerable<PageableEntity>) null!).Page(0)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => ((IEnumerable<PageableEntity>) null).Page(0)).ThrowExactly<ArgumentNullException>();
 
     Enumerable.Empty<PageableEntity>().Page().Should().BeEmpty();
 

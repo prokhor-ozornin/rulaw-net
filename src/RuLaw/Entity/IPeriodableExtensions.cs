@@ -14,7 +14,7 @@ public static class IPeriodableExtensions
   /// <param name="from">Lower bound of starting period.</param>
   /// <param name="to">Upper bound of ending period.</param>
   /// <returns>Filters sequence of entities.</returns>
-  public static IEnumerable<TEntity?> Period<TEntity>(this IEnumerable<TEntity?> entities, DateTimeOffset? from = null, DateTimeOffset? to = null) where TEntity : IPeriodable
+  public static IEnumerable<TEntity> Period<TEntity>(this IEnumerable<TEntity> entities, DateTimeOffset? from = null, DateTimeOffset? to = null) where TEntity : IPeriodable
   {
     if (from != null)
     {

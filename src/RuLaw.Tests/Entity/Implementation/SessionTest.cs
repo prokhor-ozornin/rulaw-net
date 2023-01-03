@@ -134,12 +134,12 @@ public sealed class SessionInfoTests : UnitTest<Session.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="Session.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="Session.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new Session.Info().Result();
+    var result = new Session.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<Session>();
     result.Id.Should().BeNull();
     result.Name.Should().BeNull();

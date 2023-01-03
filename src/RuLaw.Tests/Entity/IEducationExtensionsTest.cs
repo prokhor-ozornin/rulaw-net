@@ -14,8 +14,8 @@ public sealed class IEducationExtensionsTest
   [Fact]
   public void Institution_Method()
   {
-    AssertionExtensions.Should(() => IEducationExtensions.Institution<IEducation>(null!, "institution")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IEducation>().Institution(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IEducationExtensions.Institution<IEducation>(null, "institution")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Enumerable.Empty<IEducation>().Institution(null)).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => Enumerable.Empty<IEducation>().Institution(string.Empty)).ThrowExactly<ArgumentException>();
 
     Enumerable.Empty<IEducation>().Institution("institution").Should().NotBeNull().And.BeEmpty();
@@ -33,7 +33,7 @@ public sealed class IEducationExtensionsTest
   [Fact]
   public void Year_Method()
   {
-    AssertionExtensions.Should(() => IEducationExtensions.Year<IEducation>(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IEducationExtensions.Year<IEducation>(null)).ThrowExactly<ArgumentNullException>();
 
     Enumerable.Empty<IEducation>().Year().Should().NotBeNull().And.BeEmpty();
 

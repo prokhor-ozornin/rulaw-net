@@ -113,12 +113,12 @@ public sealed class ResolutionTranscriptsResultInfoTests : UnitTest<ResolutionTr
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new ResolutionTranscriptsResult.Info().Result();
+    var result = new ResolutionTranscriptsResult.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<ResolutionTranscriptsResult>();
     result.Number.Should().BeNull();
     result.Meetings.Should().BeEmpty();

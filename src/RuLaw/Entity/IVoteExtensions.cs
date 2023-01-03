@@ -52,7 +52,7 @@ public static class IVoteExtensions
   /// <param name="votes">Source sequence of votes for filtering.</param>
   /// <param name="subject">Subject to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of votes with specified subject.</returns>
-  public static IEnumerable<TEntity?> Subject<TEntity>(this IEnumerable<TEntity?> votes, string subject) where TEntity : IVote => votes.Where(vote => vote?.Subject != null && vote.Subject.ToLowerInvariant().Contains(subject.ToLowerInvariant()));
+  public static IEnumerable<TEntity> Subject<TEntity>(this IEnumerable<TEntity> votes, string subject) where TEntity : IVote => votes.Where(vote => vote?.Subject != null && vote.Subject.ToLowerInvariant().Contains(subject.ToLowerInvariant()));
 
   /// <summary>
   ///   <para>Filters sequence of votes, leaving those that were successful.</para>
@@ -60,7 +60,7 @@ public static class IVoteExtensions
   /// <typeparam name="TEntity">Type of entities.</typeparam>
   /// <param name="votes">Source sequence of votes for filtering.</param>
   /// <returns>Filtered sequence of successful votes.</returns>
-  public static IEnumerable<TEntity?> Successful<TEntity>(this IEnumerable<TEntity?> votes) where TEntity : IVote => votes.Where(vote => vote != null && vote.Successful.GetValueOrDefault());
+  public static IEnumerable<TEntity> Successful<TEntity>(this IEnumerable<TEntity> votes) where TEntity : IVote => votes.Where(vote => vote != null && vote.Successful.GetValueOrDefault());
 
   /// <summary>
   ///   <para>Filters sequence of votes, leaving those that were unsuccessful.</para>
@@ -68,5 +68,5 @@ public static class IVoteExtensions
   /// <typeparam name="TEntity">Type of entities.</typeparam>
   /// <param name="votes">Source sequence of votes for filtering.</param>
   /// <returns>Filtered sequence of unsuccessful votes.</returns>
-  public static IEnumerable<TEntity?> Unsuccessful<TEntity>(this IEnumerable<TEntity?> votes) where TEntity : IVote => votes.Where(vote => vote != null && !vote.Successful.GetValueOrDefault());
+  public static IEnumerable<TEntity> Unsuccessful<TEntity>(this IEnumerable<TEntity> votes) where TEntity : IVote => votes.Where(vote => vote != null && !vote.Successful.GetValueOrDefault());
 }

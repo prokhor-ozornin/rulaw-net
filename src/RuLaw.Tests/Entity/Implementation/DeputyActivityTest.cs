@@ -118,12 +118,12 @@ public sealed class DeputyActivityInfoTests : UnitTest<DeputyActivity.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyActivity.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="DeputyActivity.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new DeputyActivity.Info().Result();
+    var result = new DeputyActivity.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<DeputyActivity>();
     result.Name.Should().BeNull();
     result.CommitteeId.Should().BeNull();

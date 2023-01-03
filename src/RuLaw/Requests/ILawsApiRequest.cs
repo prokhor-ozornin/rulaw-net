@@ -10,7 +10,7 @@ public interface ILawsApiRequest : IApiRequest, IPagedApiRequest<ILawsApiRequest
   /// </summary>
   /// <param name="name">Full or partial name of law(s).</param>
   /// <returns>Back reference to the current request.</returns>
-  ILawsApiRequest Name(string? name);
+  ILawsApiRequest Name(string name);
 
   /// <summary>
   ///   <para>Specifies numeric code of law's type.</para>
@@ -31,14 +31,14 @@ public interface ILawsApiRequest : IApiRequest, IPagedApiRequest<ILawsApiRequest
   /// </summary>
   /// <param name="number">Number of law.</param>
   /// <returns>Back reference to the current request.</returns>
-  ILawsApiRequest Number(string? number);
+  ILawsApiRequest Number(string number);
 
   /// <summary>
   ///   <para>Specifies identifier of law's document.</para>
   /// </summary>
   /// <param name="number">Law's document number.</param>
   /// <returns>Back reference to the current request.</returns>
-  ILawsApiRequest DocumentNumber(string? number);
+  ILawsApiRequest DocumentNumber(string number);
 
   /// <summary>
   ///   <para>Specifies numeric code of law's status.</para>
@@ -115,7 +115,7 @@ public interface ILawsApiRequest : IApiRequest, IPagedApiRequest<ILawsApiRequest
   /// </summary>
   /// <param name="sort">Laws sorting type.</param>
   /// <returns>Back reference to the current request.</returns>
-  ILawsApiRequest Sorting(string? sort);
+  ILawsApiRequest Sorting(string sort);
 
   /// <summary>
   ///   <para>Specifies numeric code of events search mode.</para>

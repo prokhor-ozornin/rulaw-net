@@ -8,7 +8,7 @@ public interface IVote : IEntity, IDateable, IComparable<IVote>, IEquatable<IVot
   /// <summary>
   ///   <para>Subject of convocation.</para>
   /// </summary>
-  string? Subject { get; }
+  string Subject { get; }
 
   /// <summary>
   ///   <para>Whether the law passed (true) or not (false) according to voting.</para>
@@ -18,12 +18,12 @@ public interface IVote : IEntity, IDateable, IComparable<IVote>, IEquatable<IVot
   /// <summary>
   ///   <para>Type of voting result.</para>
   /// </summary>
-  string? ResultType { get; }
+  string ResultType { get; }
 
   /// <summary>
   ///   <para>Result of deputy voting.</para>
   /// </summary>
-  string? PersonResult { get; }
+  string PersonResult { get; }
 
   /// <summary>
   ///   <para>Number of voted deputies in faction.</para>

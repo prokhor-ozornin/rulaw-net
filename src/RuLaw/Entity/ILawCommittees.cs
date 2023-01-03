@@ -8,7 +8,7 @@ public interface ILawCommittees
   /// <summary>
   ///   <para>Responsible committee.</para>
   /// </summary>
-  ICommittee? Responsible { get; }
+  ICommittee Responsible { get; }
 
   /// <summary>
   ///   <para>List of profile committees.</para>

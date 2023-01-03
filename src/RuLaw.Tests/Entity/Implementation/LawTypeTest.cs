@@ -102,12 +102,12 @@ public sealed class LawTypeInfoTests : UnitTest<LawType.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawType.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="LawType.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new LawType.Info().Result();
+    var result = new LawType.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<LawType>();
     result.Id.Should().BeNull();
     result.Name.Should().BeNull();

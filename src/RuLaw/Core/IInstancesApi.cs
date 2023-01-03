@@ -13,5 +13,5 @@ public interface IInstancesApi
   /// <returns>Collection of instances.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
-  IAsyncEnumerable<IInstance> Search(IInstancesApiRequest? request = null, CancellationToken cancellation = default);
+  IAsyncEnumerable<IInstance> SearchAsync(IInstancesApiRequest request = null, CancellationToken cancellation = default);
 }

@@ -8,7 +8,7 @@ public interface IResolutionTranscriptsResult : IEquatable<IResolutionTranscript
   /// <summary>
   ///   <para>Number of resolution.</para>
   /// </summary>
-  string? Number { get; }
+  string Number { get; }
 
   /// <summary>
   ///   <para>Collection of Duma's meetings.</para>

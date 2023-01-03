@@ -1,4 +1,5 @@
 ﻿using Catharsis.Commons;
+using static System.Net.WebRequestMethods;
 
 namespace RuLaw;
 
@@ -12,24 +13,25 @@ public static class IDeputiesApiExtensions
   ///   <para>Returns detailed information about specific deputy of the State Duma.</para>
   /// </summary>
   /// <param name="api">API caller instance to be used.</param>
-  /// <param name="deputy">Detailed deputy information.</param>
   /// <param name="id">Identifier of deputy.</param>
-  /// <param name="cancellation"></param>
-  /// <returns><c>true</c> if call was successful and <paramref name="deputy"/> output parameter contains deputy information, or <c>false</c> if call failed and <paramref name="deputy"/> output parameter is a <c>null</c> reference.</returns>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
-  public static bool Find(this IDeputiesApi api, out IDeputyInfo? deputy, long id, CancellationToken cancellation = default)
-  {
-    try
-    {
-      deputy = api.Find(id, cancellation).Result;
-      return true;
-    }
-    catch
-    {
-      deputy = null;
-      return false;
-    }
-  }
+  public static IDeputyInfo Find(this IDeputiesApi api, long id) => api.FindAsync(id).Result;
+
+  /// <summary>
+  ///   <para></para>
+  /// </summary>
+  /// <param name="api"></param>
+  /// <param name="request"></param>
+  /// <returns></returns>
+  public static IEnumerable<IDeputy> Search(this IDeputiesApi api, IDeputiesApiRequest request = null) => api.SearchAsync(request).ToListAsync().Result;
+
+  /// <summary>
+  ///   <para>Returns list of deputies of the State Duma and members of the Federation Council.</para>
+  /// </summary>
+  /// <param name="api">API caller instance to be used.</param>
+  /// <param name="action">Delegate to configure additional parameters of request.</param>
+  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
+  public static IEnumerable<IDeputy> Search(this IDeputiesApi api, Action<IDeputiesApiRequest> action = null) => api.SearchAsync(action).ToListAsync().Result;
 
   /// <summary>
   ///   <para>Returns list of deputies of the State Duma and members of the Federation Council.</para>
@@ -40,35 +42,12 @@ public static class IDeputiesApiExtensions
   /// <returns>Collection of deputies.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
-  public static IAsyncEnumerable<IDeputy> Search(this IDeputiesApi api, Action<IDeputiesApiRequest>? action = null, CancellationToken cancellation = default)
+  public static IAsyncEnumerable<IDeputy> SearchAsync(this IDeputiesApi api, Action<IDeputiesApiRequest> action = null, CancellationToken cancellation = default)
   {
     var request = new DeputiesApiRequest();
 
     action?.Invoke(request);
 
-    return api.Search(request, cancellation);
-  }
-
-  /// <summary>
-  ///   <para>Returns list of deputies of the State Duma and members of the Federation Council.</para>
-  /// </summary>
-  /// <param name="api">API caller instance to be used.</param>
-  /// <param name="deputies">Collection of deputies.</param>
-  /// <param name="action">Delegate to configure additional parameters of request.</param>
-  /// <param name="cancellation"></param>
-  /// <returns><c>true</c> if call was successful and <paramref name="deputies"/> output parameter contains list of deputies, or <c>false</c> if call failed and <paramref name="deputies"/> output parameter is a <c>null</c> reference.</returns>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
-  public static bool Search(this IDeputiesApi api, out IEnumerable<IDeputy>? deputies, Action<IDeputiesApiRequest>? action = null, CancellationToken cancellation = default)
-  {
-    try
-    {
-      deputies = Search(api, action, cancellation).ToList(cancellation).Result;
-      return true;
-    }
-    catch
-    {
-      deputies = null;
-      return false;
-    }
+    return api.SearchAsync(request, cancellation);
   }
 }

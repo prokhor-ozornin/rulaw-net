@@ -2,23 +2,23 @@
 
 internal sealed class DeputiesApiRequest : ApiRequest, IDeputiesApiRequest
 {
-  public IDeputiesApiRequest Name(string? name)
+  public IDeputiesApiRequest Name(string name)
   {
-    Parameters["begin"] = name;
+    WithParameter("begin", name);
 
     return this;
   }
 
-  public IDeputiesApiRequest Position(string? position)
+  public IDeputiesApiRequest Position(string position)
   {
-    Parameters["position"] = position;
+    WithParameter("position", position);
 
     return this;
   }
 
   public IDeputiesApiRequest Current(bool? current = true)
   {
-    Parameters["current"] = current?.ToString().ToLowerInvariant();
+    WithParameter("current", current?.ToString().ToLowerInvariant());
 
     return this;
   }

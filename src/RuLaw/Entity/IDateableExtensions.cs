@@ -14,7 +14,7 @@ public static class IDateableExtensions
   /// <param name="from">Lower bound of date and time range.</param>
   /// <param name="to">Upper bound of date and time range.</param>
   /// <returns>Filtered sequence of entities with creation date and time ranging inclusively from <paramref name="from"/> to <paramref name="to"/>.</returns>
-  public static IEnumerable<TEntity?> Date<TEntity>(this IEnumerable<TEntity?> entities, DateTimeOffset? from = null, DateTimeOffset? to = null) where TEntity : IDateable
+  public static IEnumerable<TEntity> Date<TEntity>(this IEnumerable<TEntity> entities, DateTimeOffset? from = null, DateTimeOffset? to = null) where TEntity : IDateable
   {
     if (from != null)
     {

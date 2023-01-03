@@ -8,5 +8,5 @@ public interface IDeputy : IEntity, INameable, IActive, IComparable<IDeputy>, IE
   /// <summary>
   ///   <para>Work position of deputy.</para>
   /// </summary>
-  string? Position { get; }
+  string Position { get; }
 }

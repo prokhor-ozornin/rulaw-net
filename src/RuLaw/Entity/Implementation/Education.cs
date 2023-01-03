@@ -11,7 +11,7 @@ public sealed class Education : IEducation
   /// <summary>
   ///   <para>Name of education institution.</para>
   /// </summary>
-  public string? Institution { get; }
+  public string Institution { get; }
 
   /// <summary>
   ///   <para>Year of graduation.</para>
@@ -23,7 +23,7 @@ public sealed class Education : IEducation
   /// </summary>
   /// <param name="institution"></param>
   /// <param name="year"></param>
-  public Education(string? institution = null,
+  public Education(string institution = null,
                    short? year = null)
   {
     Institution = institution;
@@ -44,28 +44,28 @@ public sealed class Education : IEducation
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public Education(object info) : this(new Info().Properties(info)) {}
+  public Education(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Compares the current <see cref="IEducation"/> instance with another.</para>
   /// </summary>
   /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IEducation"/> to compare with this instance.</param>
-  public int CompareTo(IEducation? other) => Nullable.Compare(Year, other?.Year);
+  public int CompareTo(IEducation other) => Nullable.Compare(Year, other?.Year);
 
   /// <summary>
   ///   <para>Determines whether two <see cref="IEducation"/> instances are equal.</para>
   /// </summary>
   /// <param name="other">The instance to compare with the current one.</param>
   /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
-  public bool Equals(IEducation? other) => this.Equality(other, nameof(Institution), nameof(Year));
+  public bool Equals(IEducation other) => this.Equality(other, nameof(Institution), nameof(Year));
 
   /// <summary>
   ///   <para>Determines whether the specified <see cref="object"/> is equal to the current <see cref="object"/>.</para>
   /// </summary>
   /// <param name="other">The object to compare with the current object.</param>
   /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
-  public override bool Equals(object? other) => Equals(other as IEducation);
+  public override bool Equals(object other) => Equals(other as IEducation);
 
   /// <summary>
   ///   <para>Returns hash code for the current object.</para>
@@ -89,7 +89,7 @@ public sealed class Education : IEducation
     ///   <para>Name of education institution.</para>
     /// </summary>
     [DataMember(Name = "institution", IsRequired = true)]
-    public string? Institution { get; init; }
+    public string Institution { get; init; }
 
     /// <summary>
     ///   <para>Year of graduation.</para>
@@ -101,6 +101,6 @@ public sealed class Education : IEducation
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IEducation Result() => new Education(this);
+    public IEducation ToResult() => new Education(this);
   }
 }

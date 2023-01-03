@@ -8,5 +8,5 @@ public interface ILawEventDocument : INameable, IComparable<ILawEventDocument>, 
   /// <summary>
   ///   <para>Type of document.</para>
   /// </summary>
-  string? Type { get; }
+  string Type { get; }
 }

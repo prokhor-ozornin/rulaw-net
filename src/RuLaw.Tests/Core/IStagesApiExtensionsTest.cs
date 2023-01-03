@@ -11,18 +11,15 @@ public sealed class IStagesApiExtensionsTest : IDisposable
 {
   private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
 
-  private CancellationToken Cancellation { get; } = new(true);
-
   /// <summary>
-  ///   <para>Performs testing of <see cref="IStagesApiExtensions.All(IStagesApi, out IEnumerable{IPhaseStage}?, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IStagesApiExtensions.All(IStagesApi)"/> method.</para>
   /// </summary>
   [Fact]
   public void All_Method()
   {
-    AssertionExtensions.Should(() => IStagesApiExtensions.All(null!, out _)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Api.Stages.All(out _, Cancellation)).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => IStagesApiExtensions.All(null)).ThrowExactly<ArgumentNullException>();
 
-    Api.Stages.All(out var stages).Should().BeTrue();
+    var stages = Api.Stages.All();
 
     stages.Should().NotBeNullOrEmpty().And.BeOfType<List<PhaseStage>>();
     

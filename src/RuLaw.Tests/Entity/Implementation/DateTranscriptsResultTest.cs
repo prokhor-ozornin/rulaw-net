@@ -116,12 +116,12 @@ public sealed class DateTranscriptsResultInfoTests : UnitTest<DateTranscriptsRes
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new DateTranscriptsResult.Info().Result();
+    var result = new DateTranscriptsResult.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<DateTranscriptsResult>();
     result.Date.Should().BeNull();
     result.Meetings.Should().BeEmpty();

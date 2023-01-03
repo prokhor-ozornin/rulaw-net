@@ -21,17 +21,17 @@ public sealed class DeputyInfo : IDeputyInfo
   /// <summary>
   ///   <para>First name of deputy.</para>
   /// </summary>
-  public string? FirstName { get; }
+  public string FirstName { get; }
 
   /// <summary>
   ///   <para>Last name of deputy.</para>
   /// </summary>
-  public string? LastName { get; }
+  public string LastName { get; }
 
   /// <summary>
   ///   <para>Middle name of deputy.</para>
   /// </summary>
-  public string? MiddleName { get; }
+  public string MiddleName { get; }
 
   /// <summary>
   ///   <para>Birth date of deputy.</para>
@@ -56,17 +56,17 @@ public sealed class DeputyInfo : IDeputyInfo
   /// <summary>
   ///   <para>Name of deputy's political faction.</para>
   /// </summary>
-  public string? FactionName { get; }
+  public string FactionName { get; }
 
   /// <summary>
   ///   <para>Association of deputy's political faction with a region.</para>
   /// </summary>
-  public string? FactionRegion { get; }
+  public string FactionRegion { get; }
 
   /// <summary>
   ///   <para>Role of deputy's in his political faction.</para>
   /// </summary>
-  public string? FactionRole { get; }
+  public string FactionRole { get; }
 
   /// <summary>
   ///   <para>Number of laws which have been initiated by the deputy.</para>
@@ -81,12 +81,12 @@ public sealed class DeputyInfo : IDeputyInfo
   /// <summary>
   ///   <para>URL link for transcripts of deputy's speaches.</para>
   /// </summary>
-  public string? TranscriptLink { get; }
+  public string TranscriptLink { get; }
 
   /// <summary>
   ///   <para>URL link for deputy's votes.</para>
   /// </summary>
-  public string? VoteLink { get; }
+  public string VoteLink { get; }
 
   /// <summary>
   ///   <para>Collection of deputy's activities in committees.</para>
@@ -139,25 +139,25 @@ public sealed class DeputyInfo : IDeputyInfo
   /// <param name="regions"></param>
   public DeputyInfo(long? id = null,
                     bool? active = null,
-                    string? firstName = null,
-                    string? lastName = null,
-                    string? middleName = null,
+                    string firstName = null,
+                    string lastName = null,
+                    string middleName = null,
                     DateTimeOffset? birthDate = null,
                     DateTimeOffset? workStartDate = null,
                     DateTimeOffset? workEndDate = null,
                     long? factionId = null,
-                    string? factionName = null,
-                    string? factionRegion = null,
-                    string? factionRole = null,
+                    string factionName = null,
+                    string factionRegion = null,
+                    string factionRole = null,
                     int? lawsCount = null,
                     int? speechesCount = null,
-                    string? transcriptLink = null,
-                    string? voteLink = null,
-                    IEnumerable<IDeputyActivity>? activities = null,
-                    IEnumerable<string>? degrees = null,
-                    IEnumerable<IEducation>? educations = null,
-                    IEnumerable<string>? ranks = null,
-                    IEnumerable<string>? regions = null)
+                    string transcriptLink = null,
+                    string voteLink = null,
+                    IEnumerable<IDeputyActivity> activities = null,
+                    IEnumerable<string> degrees = null,
+                    IEnumerable<IEducation> educations = null,
+                    IEnumerable<string> ranks = null,
+                    IEnumerable<string> regions = null)
   {
     Id = id;
     Active = active;
@@ -215,28 +215,28 @@ public sealed class DeputyInfo : IDeputyInfo
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public DeputyInfo(object info) : this(new Info().Properties(info)) {}
+  public DeputyInfo(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Compares the current <see cref="IDeputyInfo"/> instance with another.</para>
   /// </summary>
   /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IDeputyInfo"/> to compare with this instance.</param>
-  public int CompareTo(IDeputyInfo? other) => string.Compare((this as IDeputyInfo).FullName, other?.FullName, StringComparison.InvariantCultureIgnoreCase);
+  public int CompareTo(IDeputyInfo other) => string.Compare((this as IDeputyInfo).FullName, other?.FullName, StringComparison.InvariantCultureIgnoreCase);
 
   /// <summary>
   ///   <para>Determines whether two <see cref="IDeputyInfo"/> instances are equal.</para>
   /// </summary>
   /// <param name="other">The instance to compare with the current one.</param>
   /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
-  public bool Equals(IDeputyInfo? other) => this.Equality(other, nameof(Id));
+  public bool Equals(IDeputyInfo other) => this.Equality(other, nameof(Id));
 
   /// <summary>
   ///   <para>Determines whether the specified <see cref="object"/> is equal to the current <see cref="object"/>.</para>
   /// </summary>
   /// <param name="other">The object to compare with the current object.</param>
   /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
-  public override bool Equals(object? other) => Equals(other as IDeputyInfo);
+  public override bool Equals(object other) => Equals(other as IDeputyInfo);
 
   /// <summary>
   ///   <para>Returns hash code for the current object.</para>
@@ -272,37 +272,37 @@ public sealed class DeputyInfo : IDeputyInfo
     ///   <para>First name of deputy.</para>
     /// </summary>
     [DataMember(Name = "name", IsRequired = true)]
-    public string? FirstName { get; init; }
+    public string FirstName { get; init; }
 
     /// <summary>
     ///   <para>Last name of deputy.</para>
     /// </summary>
     [DataMember(Name = "family", IsRequired = true)]
-    public string? LastName { get; init; }
+    public string LastName { get; init; }
 
     /// <summary>
     ///   <para>Middle name of deputy.</para>
     /// </summary>
     [DataMember(Name = "patronymic", IsRequired = true)]
-    public string? MiddleName { get; init; }
+    public string MiddleName { get; init; }
 
     /// <summary>
     ///   <para>Birth date of deputy.</para>
     /// </summary>
     [DataMember(Name = "birthdate", IsRequired = true)]
-    public string? BirthDate { get; init; }
+    public string BirthDate { get; init; }
 
     /// <summary>
     ///   <para>Start date of deputy's authorities in last convocation.</para>
     /// </summary>
     [DataMember(Name = "credentialsStart", IsRequired = true)]
-    public string? WorkStartDate { get; init; }
+    public string WorkStartDate { get; init; }
 
     /// <summary>
     ///   <para>End date of deputy's authorities in last convocation.</para>
     /// </summary>
     [DataMember(Name = "credentialsEnd", IsRequired = true)]
-    public string? WorkEndDate { get; init; }
+    public string WorkEndDate { get; init; }
 
     /// <summary>
     ///   <para>Identifier of deputy's political faction.</para>
@@ -314,19 +314,19 @@ public sealed class DeputyInfo : IDeputyInfo
     ///   <para>Name of deputy's political faction.</para>
     /// </summary>
     [DataMember(Name = "factionName", IsRequired = true)]
-    public string? FactionName { get; init; }
+    public string FactionName { get; init; }
 
     /// <summary>
     ///   <para>Association of deputy's political faction with a region.</para>
     /// </summary>
     [DataMember(Name = "factionRegion", IsRequired = true)]
-    public string? FactionRegion { get; init; }
+    public string FactionRegion { get; init; }
 
     /// <summary>
     ///   <para>Role of deputy's in his political faction.</para>
     /// </summary>
     [DataMember(Name = "factionRole", IsRequired = true)]
-    public string? FactionRole { get; init; }
+    public string FactionRole { get; init; }
 
     /// <summary>
     ///   <para>Number of laws which have been initiated by the deputy.</para>
@@ -344,48 +344,48 @@ public sealed class DeputyInfo : IDeputyInfo
     ///   <para>URL link for transcripts of deputy's speaches.</para>
     /// </summary>
     [DataMember(Name = "transcriptLink", IsRequired = true)]
-    public string? TranscriptLink { get; init; }
+    public string TranscriptLink { get; init; }
 
     /// <summary>
     ///   <para>URL link for deputy's votes.</para>
     /// </summary>
     [DataMember(Name = "voteLink", IsRequired = true)]
-    public string? VoteLink { get; init; }
+    public string VoteLink { get; init; }
 
     /// <summary>
     ///   <para>Collection of deputy's activities in committees.</para>
     /// </summary>
     [DataMember(Name = "activity", IsRequired = true)]
-    public List<DeputyActivity>? Activities { get; init; }
+    public List<DeputyActivity> Activities { get; init; }
 
     /// <summary>
     ///   <para>Scientific degrees of deputy.</para>
     /// </summary>
     [DataMember(Name = "degrees", IsRequired = true)]
-    public List<string>? Degrees { get; init; }
+    public List<string> Degrees { get; init; }
 
     /// <summary>
     ///   <para>Higher educations of deputy.</para>
     /// </summary>
     [DataMember(Name = "educations", IsRequired = true)]
-    public List<Education>? Educations { get; init; }
+    public List<Education> Educations { get; init; }
 
     /// <summary>
     ///   <para>Scientific ranks of deputy.</para>
     /// </summary>
     [DataMember(Name = "ranks", IsRequired = true)]
-    public List<string>? Ranks { get; init; }
+    public List<string> Ranks { get; init; }
 
     /// <summary>
     ///   <para>Association of deputy's with regions.</para>
     /// </summary>
     [DataMember(Name = "regions", IsRequired = true)]
-    public List<string>? Regions { get; init; }
+    public List<string> Regions { get; init; }
 
     /// <summary>
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IDeputyInfo Result() => new DeputyInfo(this);
+    public IDeputyInfo ToResult() => new DeputyInfo(this);
   }
 }

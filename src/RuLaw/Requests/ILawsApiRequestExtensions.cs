@@ -20,7 +20,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="topic">Instance of topic.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest Topic(this ILawsApiRequest request, ITopic? topic) => request.Topic(topic?.Id);
+  public static ILawsApiRequest Topic(this ILawsApiRequest request, ITopic topic) => request.Topic(topic?.Id);
 
   /// <summary>
   ///   <para>Specifies law's status.</para>
@@ -36,7 +36,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="branch">Instance of law branch.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest Branch(this ILawsApiRequest request, ILawBranch? branch) => request.Branch(branch?.Id);
+  public static ILawsApiRequest Branch(this ILawsApiRequest request, ILawBranch branch) => request.Branch(branch?.Id);
 
   /// <summary>
   ///   <para>Specifies deputy.</para>
@@ -44,7 +44,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="deputy">Instance of deputy.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest Deputy(this ILawsApiRequest request, IDeputy? deputy) => request.Deputy(deputy?.Id);
+  public static ILawsApiRequest Deputy(this ILawsApiRequest request, IDeputy deputy) => request.Deputy(deputy?.Id);
 
   /// <summary>
   ///   <para>Specifies federal authority.</para>
@@ -52,7 +52,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="authority">Instance of authority.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest FederalAuthority(this ILawsApiRequest request, IAuthority? authority) => request.FederalAuthority(authority?.Id);
+  public static ILawsApiRequest FederalAuthority(this ILawsApiRequest request, IAuthority authority) => request.FederalAuthority(authority?.Id);
 
   /// <summary>
   ///   <para>Specifies regional authority.</para>
@@ -60,7 +60,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="authority">Instance of authority.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest RegionalAuthority(this ILawsApiRequest request, IAuthority? authority) => request.RegionalAuthority(authority?.Id);
+  public static ILawsApiRequest RegionalAuthority(this ILawsApiRequest request, IAuthority authority) => request.RegionalAuthority(authority?.Id);
 
   /// <summary>
   ///   <para>Specifies profile committee.</para>
@@ -68,7 +68,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="committee">Instance of committee.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest ProfileCommittee(this ILawsApiRequest request, ICommittee? committee) => request.ProfileCommittee(committee?.Id);
+  public static ILawsApiRequest ProfileCommittee(this ILawsApiRequest request, ICommittee committee) => request.ProfileCommittee(committee?.Id);
 
   /// <summary>
   ///   <para>Specifies responsible committee.</para>
@@ -76,7 +76,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="committee">Instance of committee.</param>
   /// <param name="request">API call instance to use.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest ResponsibleCommittee(this ILawsApiRequest request, ICommittee? committee) => request.ResponsibleCommittee(committee?.Id);
+  public static ILawsApiRequest ResponsibleCommittee(this ILawsApiRequest request, ICommittee committee) => request.ResponsibleCommittee(committee?.Id);
 
   /// <summary>
   ///   <para>Specifies so-executor committee.</para>
@@ -84,7 +84,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="committee">Instance of committee.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest SoExecutorCommittee(this ILawsApiRequest request, ICommittee? committee) => request.SoExecutorCommittee(committee?.Id);
+  public static ILawsApiRequest SoExecutorCommittee(this ILawsApiRequest request, ICommittee committee) => request.SoExecutorCommittee(committee?.Id);
 
   /// <summary>
   ///   <para>Specifies type of laws sorting.</para>

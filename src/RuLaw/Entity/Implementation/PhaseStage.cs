@@ -16,7 +16,7 @@ public sealed class PhaseStage : IPhaseStage
   /// <summary>
   ///   <para>Name of entity.</para>
   /// </summary>
-  public string? Name { get; }
+  public string Name { get; }
 
   /// <summary>
   ///   <para>Workflow events that are part of the stage.</para>
@@ -30,8 +30,8 @@ public sealed class PhaseStage : IPhaseStage
   /// <param name="name"></param>
   /// <param name="phases"></param>
   public PhaseStage(long? id = null,
-                    string? name = null,
-                    IEnumerable<IStagePhase>? phases = null)
+                    string name = null,
+                    IEnumerable<IStagePhase> phases = null)
   {
     Id = id;
     Name = name;
@@ -53,28 +53,28 @@ public sealed class PhaseStage : IPhaseStage
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public PhaseStage(object info) : this(new Info().Properties(info)) {}
+  public PhaseStage(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
   /// </summary>
   /// <returns>A value that indicates the relative order of the objects being compared.</returns>
   /// <param name="other">The <see cref="IPhaseStage"/> to compare with this instance.</param>
-  public int CompareTo(IPhaseStage? other) => Name.Compare(other?.Name);
+  public int CompareTo(IPhaseStage other) => Name.Compare(other?.Name);
 
   /// <summary>
   ///   <para>Determines whether two entities instances are equal.</para>
   /// </summary>
   /// <param name="other">The entity to compare with the current one.</param>
   /// <returns><c>true</c> if specified entity is equal to the current, <c>false</c> otherwise.</returns>
-  public bool Equals(IPhaseStage? other) => this.Equality(other, nameof(Id));
+  public bool Equals(IPhaseStage other) => this.Equality(other, nameof(Id));
 
   /// <summary>
   ///   <para>Determines whether the specified <see cref="object"/> is equal to the current <see cref="object"/>.</para>
   /// </summary>
   /// <param name="other">The object to compare with the current object.</param>
   /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
-  public override bool Equals(object? other) => Equals(other as IPhaseStage);
+  public override bool Equals(object other) => Equals(other as IPhaseStage);
 
   /// <summary>
   ///   <para>Returns hash code for the current object.</para>
@@ -104,18 +104,18 @@ public sealed class PhaseStage : IPhaseStage
     ///   <para>Name of entity.</para>
     /// </summary>
     [DataMember(Name = "name", IsRequired = true)]
-    public string? Name { get; init; }
+    public string Name { get; init; }
 
     /// <summary>
     ///   <para>Workflow events that are part of the stage.</para>
     /// </summary>
     [DataMember(Name = "phases", IsRequired = true)]
-    public List<StagePhase>? Phases { get; init; }
+    public List<StagePhase> Phases { get; init; }
 
     /// <summary>
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IPhaseStage Result() => new PhaseStage(this);
+    public IPhaseStage ToResult() => new PhaseStage(this);
   }
 }

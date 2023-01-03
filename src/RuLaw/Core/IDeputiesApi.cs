@@ -13,7 +13,7 @@ public interface IDeputiesApi
   /// <returns>Detailed deputy information.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
-  Task<IDeputyInfo> Find(long id, CancellationToken cancellation = default);
+  Task<IDeputyInfo> FindAsync(long id, CancellationToken cancellation = default);
 
   /// <summary>
   ///   <para>Returns list of deputies of the State Duma and members of the Federation Council.</para>
@@ -23,5 +23,5 @@ public interface IDeputiesApi
   /// <returns>Collection of deputies.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
-  IAsyncEnumerable<IDeputy> Search(IDeputiesApiRequest? request = null, CancellationToken cancellation = default);
+  IAsyncEnumerable<IDeputy> SearchAsync(IDeputiesApiRequest request = null, CancellationToken cancellation = default);
 }

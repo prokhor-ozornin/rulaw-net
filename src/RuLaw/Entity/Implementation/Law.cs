@@ -16,7 +16,7 @@ public sealed class Law : ILaw
   /// <summary>
   ///   <para>Name of law.</para>
   /// </summary>
-  public string? Name { get; }
+  public string Name { get; }
 
   /// <summary>
   ///   <para>Date when law was suggested for review.</para>
@@ -26,42 +26,42 @@ public sealed class Law : ILaw
   /// <summary>
   ///   <para>Number of law.</para>
   /// </summary>
-  public string? Number { get; }
+  public string Number { get; }
 
   /// <summary>
   ///   <para>Subject of law.</para>
   /// </summary>
-  public ILawSubject? Subject { get; }
+  public ILawSubject Subject { get; }
 
   /// <summary>
   ///   <para>Type of law.</para>
   /// </summary>
-  public ILawType? Type { get; }
+  public ILawType Type { get; }
 
   /// <summary>
   ///   <para>URL address of law in ASOZD system.</para>
   /// </summary>
-  public string? Url { get; }
+  public string Url { get; }
 
   /// <summary>
   ///   <para>URL address of law's transcript.</para>
   /// </summary>
-  public string? TranscriptUrl { get; }
+  public string TranscriptUrl { get; }
 
   /// <summary>
   ///   <para>Law comments.</para>
   /// </summary>
-  public string? Comments { get; }
+  public string Comments { get; }
 
   /// <summary>
   ///   <para>Last event, associated with a law.</para>
   /// </summary>
-  public ILawEvent? LastEvent { get; }
+  public ILawEvent LastEvent { get; }
 
   /// <summary>
   ///   <para>Committees, associated with a law.</para>
   /// </summary>
-  public ILawCommittees? Committees { get; }
+  public ILawCommittees Committees { get; }
 
   /// <summary>
   ///   <para></para>
@@ -78,16 +78,16 @@ public sealed class Law : ILaw
   /// <param name="lastEvent"></param>
   /// <param name="committees"></param>
   public Law(long? id = null,
-             string? name = null,
+             string name = null,
              DateTimeOffset? date = null,
-             string? number = null,
-             ILawSubject? subject = null,
-             ILawType? type = null,
-             string? url = null,
-             string? transcriptUrl = null,
-             string? comments = null,
-             ILawEvent? lastEvent = null,
-             ILawCommittees? committees = null)
+             string number = null,
+             ILawSubject subject = null,
+             ILawType type = null,
+             string url = null,
+             string transcriptUrl = null,
+             string comments = null,
+             ILawEvent lastEvent = null,
+             ILawCommittees committees = null)
   {
     Id = id;
     Name = name;
@@ -125,28 +125,28 @@ public sealed class Law : ILaw
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public Law(object info) : this(new Info().Properties(info)) {}
+  public Law(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Compares the current <see cref="ILaw"/> instance with another.</para>
   /// </summary>
   /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="ILaw"/> to compare with this instance.</param>
-  public int CompareTo(ILaw? other) => Nullable.Compare(Date, other?.Date);
+  public int CompareTo(ILaw other) => Nullable.Compare(Date, other?.Date);
 
   /// <summary>
   ///   <para>Determines whether two <see cref="ILaw"/> instances are equal.</para>
   /// </summary>
   /// <param name="other">The instance to compare with the current one.</param>
   /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
-  public bool Equals(ILaw? other) => this.Equality(other, nameof(Id));
+  public bool Equals(ILaw other) => this.Equality(other, nameof(Id));
 
   /// <summary>
   ///   <para>Determines whether the specified <see cref="object"/> is equal to the current <see cref="object"/>.</para>
   /// </summary>
   /// <param name="other">The object to compare with the current object.</param>
   /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
-  public override bool Equals(object? other) => Equals(other as ILaw);
+  public override bool Equals(object other) => Equals(other as ILaw);
 
   /// <summary>
   ///   <para>Returns hash code for the current object.</para>
@@ -176,66 +176,66 @@ public sealed class Law : ILaw
     ///   <para>Name of law.</para>
     /// </summary>
     [DataMember(Name = "name", IsRequired = true)]
-    public string? Name { get; init; }
+    public string Name { get; init; }
 
     /// <summary>
     ///   <para>Date when law was suggested for review.</para>
     /// </summary>
     [DataMember(Name = "introductionDate", IsRequired = true)]
-    public string? Date { get; init; }
+    public string Date { get; init; }
 
     /// <summary>
     ///   <para>Number of law.</para>
     /// </summary>
     [DataMember(Name = "number", IsRequired = true)]
-    public string? Number { get; init; }
+    public string Number { get; init; }
 
     /// <summary>
     ///   <para>Subject of law.</para>
     /// </summary>
     [DataMember(Name = "subject", IsRequired = true)]
-    public LawSubject? Subject { get; init; }
+    public LawSubject Subject { get; init; }
 
     /// <summary>
     ///   <para>Type of law.</para>
     /// </summary>
     [DataMember(Name = "type", IsRequired = true)]
-    public LawType? Type { get; init; }
+    public LawType Type { get; init; }
 
     /// <summary>
     ///   <para>URL address of law in ASOZD system.</para>
     /// </summary>
     [DataMember(Name = "url", IsRequired = true)]
-    public string? Url { get; init; }
+    public string Url { get; init; }
 
     /// <summary>
     ///   <para>URL address of law's transcript.</para>
     /// </summary>
     [DataMember(Name = "transcriptUrl", IsRequired = true)]
-    public string? TranscriptUrl { get; init; }
+    public string TranscriptUrl { get; init; }
 
     /// <summary>
     ///   <para>Law comments.</para>
     /// </summary>
     [DataMember(Name = "comments", IsRequired = true)]
-    public string? Comments { get; init; }
+    public string Comments { get; init; }
 
     /// <summary>
     ///   <para>Last event, associated with a law.</para>
     /// </summary>
     [DataMember(Name = "lastEvent", IsRequired = true)]
-    public LawEvent? LastEvent { get; init; }
+    public LawEvent LastEvent { get; init; }
 
     /// <summary>
     ///   <para>Committees, associated with a law.</para>
     /// </summary>
     [DataMember(Name = "committees", IsRequired = true)]
-    public LawCommittees? Committees { get; init; }
+    public LawCommittees Committees { get; init; }
 
     /// <summary>
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public ILaw Result() => new Law(this);
+    public ILaw ToResult() => new Law(this);
   }
 }

@@ -13,5 +13,5 @@ public static class ITranscriptMeetingQuestionExtensions
   /// <param name="questions">Source sequence of questions for filtering.</param>
   /// <param name="stage">Stage to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of questions that contain specified stage.</returns>
-  public static IEnumerable<TEntity?> Stage<TEntity>(this IEnumerable<TEntity?> questions, string stage) where TEntity : ITranscriptMeetingQuestion => questions.Where(question => question != null && string.Equals(question.Stage, stage, StringComparison.InvariantCultureIgnoreCase));
+  public static IEnumerable<TEntity> Stage<TEntity>(this IEnumerable<TEntity> questions, string stage) where TEntity : ITranscriptMeetingQuestion => questions.Where(question => question != null && string.Equals(question.Stage, stage, StringComparison.InvariantCultureIgnoreCase));
 }

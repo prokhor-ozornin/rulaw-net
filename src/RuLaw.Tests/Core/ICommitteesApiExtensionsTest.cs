@@ -14,19 +14,18 @@ public sealed class ICommitteesApiExtensionsTest : IDisposable
   private CancellationToken Cancellation { get; } = new(true);
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ICommitteesApiExtensions.All(ICommitteesApi, out IEnumerable{ICommittee}?, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ICommitteesApiExtensions.All(ICommitteesApi)"/> method.</para>
   /// </summary>
   [Fact]
   public void All_Method()
   {
-    AssertionExtensions.Should(() => ICommitteesApiExtensions.All(null!, out _)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Api.Committees.All(out _, Cancellation)).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => ICommitteesApiExtensions.All(null)).ThrowExactly<ArgumentNullException>();
 
-    Api.Committees.All(out var committees).Should().BeTrue();
+    var committees = Api.Committees.All();
 
     committees.Should().NotBeNullOrEmpty().And.BeOfType<List<Committee>>();
     
-    var committee = committees!.Single(committee => committee.Id == 6274200);
+    var committee = committees.Single(committee => committee.Id == 6274200);
     committee.Name.Should().Be("Комитет ГД по аграрным вопросам");
     committee.FromDate.Should().HaveYear(1994).And.HaveMonth(1).And.HaveDay(20).And.HaveOffset(TimeSpan.Zero);
   }

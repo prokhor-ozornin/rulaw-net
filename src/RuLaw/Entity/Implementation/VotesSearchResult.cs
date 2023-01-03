@@ -26,7 +26,7 @@ public sealed class VotesSearchResult : IVotesSearchResult
   /// <summary>
   ///   <para>Text query formulation.</para>
   /// </summary>
-  public string? Wording { get; }
+  public string Wording { get; }
 
   /// <summary>
   ///   <para>List of resulting votes.</para>
@@ -44,8 +44,8 @@ public sealed class VotesSearchResult : IVotesSearchResult
   public VotesSearchResult(int? page = null,
                            int? pageSize = null,
                            int? count = null,
-                           string? wording = null,
-                           IEnumerable<IVote>? votes = null)
+                           string wording = null,
+                           IEnumerable<IVote> votes = null)
   {
     Page = page;
     PageSize = pageSize;
@@ -71,14 +71,14 @@ public sealed class VotesSearchResult : IVotesSearchResult
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public VotesSearchResult(object info) : this(new Info().Properties(info)) {}
+  public VotesSearchResult(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Compares the current <see cref="IVotesSearchResult"/> instance with another.</para>
   /// </summary>
   /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IVotesSearchResult"/> to compare with this instance.</param>
-  public int CompareTo(IVotesSearchResult? other) => Nullable.Compare(Count, other?.Count);
+  public int CompareTo(IVotesSearchResult other) => Nullable.Compare(Count, other?.Count);
 
   /// <summary>
   ///   <para>Returns a <see cref="string"/> that represents the current <see cref="VotesSearchResult"/> instance.</para>
@@ -114,18 +114,18 @@ public sealed class VotesSearchResult : IVotesSearchResult
     ///   <para>Text query formulation.</para>
     /// </summary>
     [DataMember(Name = "wording", IsRequired = true)]
-    public string? Wording { get; init; }
+    public string Wording { get; init; }
 
     /// <summary>
     ///   <para>List of resulting votes.</para>
     /// </summary>
     [DataMember(Name = "votes", IsRequired = true)]
-    public List<Vote>? Votes { get; init; }
+    public List<Vote> Votes { get; init; }
 
     /// <summary>
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IVotesSearchResult Result() => new VotesSearchResult(this);
+    public IVotesSearchResult ToResult() => new VotesSearchResult(this);
   }
 }

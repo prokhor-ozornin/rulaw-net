@@ -8,40 +8,40 @@ public interface ILaw : IEntity, IDateable, INameable, IComparable<ILaw>, IEquat
   /// <summary>
   ///   <para>Number of law.</para>
   /// </summary>
-  string? Number { get; }
+  string Number { get; }
 
   /// <summary>
   ///   <para>Subject of law.</para>
   /// </summary>
-  ILawSubject? Subject { get; }
+  ILawSubject Subject { get; }
 
   /// <summary>
   ///   <para>Type of law.</para>
   /// </summary>
-  ILawType? Type { get; }
+  ILawType Type { get; }
 
   /// <summary>
   ///   <para>URL address of law in ASOZD system.</para>
   /// </summary>
-  string? Url { get; }
+  string Url { get; }
 
   /// <summary>
   ///   <para>URL address of law's transcript.</para>
   /// </summary>
-  string? TranscriptUrl { get; }
+  string TranscriptUrl { get; }
 
   /// <summary>
   ///   <para>Law comments.</para>
   /// </summary>
-  string? Comments { get; }
+  string Comments { get; }
 
   /// <summary>
   ///   <para>Last event, associated with a law.</para>
   /// </summary>
-  ILawEvent? LastEvent { get; }
+  ILawEvent LastEvent { get; }
 
   /// <summary>
   ///   <para>Committees, associated with a law.</para>
   /// </summary>
-  ILawCommittees? Committees { get; }
+  ILawCommittees Committees { get; }
 }

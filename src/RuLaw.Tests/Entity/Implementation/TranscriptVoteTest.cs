@@ -104,12 +104,12 @@ public sealed class TranscriptVoteInfoTests : UnitTest<TranscriptVote.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptVote.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="TranscriptVote.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new TranscriptVote.Info().Result();
+    var result = new TranscriptVote.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<TranscriptVote>();
     result.Date.Should().BeNull();
     result.Line.Should().BeNull();

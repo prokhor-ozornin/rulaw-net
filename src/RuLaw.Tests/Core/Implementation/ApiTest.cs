@@ -31,7 +31,7 @@ public sealed class ApiTest : IDisposable
       api.ApiToken.Should().Be("apiToken");
       api.AppToken.Should().Be("appToken");
 
-      var client = api.Field("restClient").To<RestClient>();
+      var client = api.GetFieldValue("restClient").To<RestClient>();
       //client.BaseUrl.ToString().Should().Be("http://api.duma.gov.ru/api");
       var token = client.DefaultParameters.FirstOrDefault(parameter => parameter.Name == "app_token");
       token.Should().NotBeNull();
@@ -56,14 +56,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IBranchesApi.All(CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IBranchesApi.AllAsync(CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void BranchesApi_All_Method()
+  public void BranchesApi_AllAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Branches.All(Cancellation).ToList()).ThrowExactlyAsync<TaskCanceledException>();
+    AssertionExtensions.Should(() => Api.Branches.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>();
 
-    var branches = Api.Branches.All().ToList().Await();
+    var branches = Api.Branches.AllAsync().ToListAsync().Await();
     branches.Should().NotBeNullOrEmpty().And.BeOfType<List<LawBranch>>();
       
     var branch = branches.Single(branch => branch.Id == 68252);
@@ -71,14 +71,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ICommitteesApi.All(CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ICommitteesApi.AllAsync(CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CommitteesApi_All_Method()
+  public void CommitteesApi_AllAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Committees.All(Cancellation).ToList()).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Committees.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-    var committees = Api.Committees.All().ToList().Await();
+    var committees = Api.Committees.AllAsync().ToListAsync().Await();
     
     committees.Should().NotBeNullOrEmpty().And.BeOfType<List<Committee>>();
     
@@ -88,14 +88,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IDeputiesApi.Find(long, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IDeputiesApi.FindAsync(long, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void DeputiesApi_Find_Method()
+  public void DeputiesApi_FindAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Deputies.Find(0, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Deputies.FindAsync(0, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-    var deputy = Api.Deputies.Find(99100142).Await();
+    var deputy = Api.Deputies.FindAsync(99100142).Await();
     
     deputy.Should().NotBeNull().And.BeOfType<Deputy>();
 
@@ -120,14 +120,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IDeputiesApi.Search(IDeputiesApiRequest?, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IDeputiesApi.SearchAsync(IDeputiesApiRequest, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void DeputiesApi_Search_Method()
+  public void DeputiesApi_SearchAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Deputies.Search(null, Cancellation).ToList()).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Deputies.SearchAsync(null, Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-    var deputies = Api.Deputies.Search(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToList().Await();
+    var deputies = Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToListAsync().Await();
 
     deputies.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
 
@@ -138,14 +138,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IAuthoritiesApi.Federal(IAuthoritiesApiRequest?, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IAuthoritiesApi.FederalAsync(IAuthoritiesApiRequest, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void AuthoritiesApi_Federal_Method()
+  public void AuthoritiesApi_FederalAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Authorities.Federal(null, Cancellation).ToList()).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Authorities.FederalAsync(null, Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-    var authorities = Api.Authorities.Federal(request => request.Current()).ToList().Await();
+    var authorities = Api.Authorities.FederalAsync(request => request.Current()).ToListAsync().Await();
 
     authorities.Should().NotBeNullOrEmpty().And.BeOfType<List<FederalAuthority>>();
 
@@ -157,14 +157,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IAuthoritiesApi.Regional(IAuthoritiesApiRequest?, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IAuthoritiesApi.RegionalAsync(IAuthoritiesApiRequest, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void AuthoritiesApi_Regional_Method()
+  public void AuthoritiesApi_RegionalAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Authorities.Regional(null, Cancellation).ToList()).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Authorities.RegionalAsync(null, Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-    var authorities = Api.Authorities.Regional(request => request.Current(false)).ToList().Await();
+    var authorities = Api.Authorities.RegionalAsync(request => request.Current(false)).ToListAsync().Await();
 
     authorities.Should().NotBeNullOrEmpty().And.BeOfType<List<RegionalAuthority>>();
 
@@ -176,20 +176,20 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IInstancesApi.Search(IInstancesApiRequest?, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IInstancesApi.SearchAsync(IInstancesApiRequest, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void InstancesApi_Search_Method()
+  public void InstancesApi_SearchAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Instances.Search(null, Cancellation).ToList()).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Instances.SearchAsync(null, Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-    var instances = Api.Instances.Search().ToList().Await();
+    var instances = Api.Instances.SearchAsync().ToListAsync().Await();
     instances.Should().NotBeNullOrEmpty().And.BeOfType<List<Instance>>();
     var instance = instances.Single(instance => instance.Id == 177);
     instance.Name.Should().Be("ГД (Пленарное заседание)");
     instance.Active.Should().BeTrue();
 
-    instances = Api.Instances.Search(new InstancesApiRequest().Current()).ToList().Await();
+    instances = Api.Instances.SearchAsync(new InstancesApiRequest().Current()).ToListAsync().Await();
     instances.Should().NotBeNullOrEmpty().And.BeOfType<List<Instance>>();
     instance = instances.Single(instance => instance.Id == 177);
     instance.Name.Should().Be("ГД (Пленарное заседание)");
@@ -197,16 +197,16 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ILawsApi.Search(ILawsApiRequest, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ILawsApi.SearchAsync(ILawsApiRequest, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void LawsApi_Search_Method()
+  public void LawsApi_SearchAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Laws.Search(null!, Cancellation)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Api.Laws.SearchAsync(null, Cancellation)).ThrowExactlyAsync<ArgumentNullException>().Await();
 
-    var result = Api.Laws.Search(new LawsApiRequest().Name("курение").Sorting(LawsSorting.DateDescending)).Await();
+    var result = Api.Laws.SearchAsync(new LawsApiRequest().Name("курение").Sorting(LawsSorting.DateDescending)).Await();
 
-    result!.Count.Should().BePositive();
+    result.Count.Should().BePositive();
     result.Page.Should().Be(1);
     result.Wording.Should().Contain("Законопроекты, где наименование или комментарий содержит \"курение\", отсортированные по дате внесения в ГД (по убыванию)");
 
@@ -272,14 +272,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IConvocationsApi.All(CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IConvocationsApi.AllAsync(CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void ConvocationsApi_All_Method()
+  public void ConvocationsApi_AllAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Convocations.All(Cancellation).ToList()).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Api.Convocations.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<ArgumentNullException>().Await();
     
-    var convocations = Api.Convocations.All().ToList().Await();
+    var convocations = Api.Convocations.AllAsync().ToListAsync().Await();
 
     convocations.Should().NotBeNullOrEmpty().And.BeOfType<List<Convocation>>();
     
@@ -303,14 +303,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IQuestionsApi.Search(IQuestionsApiRequest?, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IQuestionsApi.SearchAsync(IQuestionsApiRequest, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void QuestionsApi_Search_Method()
+  public void QuestionsApi_SearchAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Questions.Search(null, Cancellation).Await()).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => Api.Questions.SearchAsync(null, Cancellation).Await()).ThrowExactly<TaskCanceledException>();
 
-    var result = Api.Questions.Search(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)).Await();
+    var result = Api.Questions.SearchAsync(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)).Await();
 
     result.Count.Should().Be(44);
     result.Page.Should().Be(2);
@@ -360,14 +360,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IRequestsApi.All(CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IRequestsApi.AllAsync(CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void RequestsApi_All_Method()
+  public void RequestsApi_AllAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Questions.Search(null, Cancellation).Await()).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => Api.Questions.SearchAsync(null, Cancellation).Await()).ThrowExactly<TaskCanceledException>();
 
-    var requests = Api.Requests.All().ToList().Await();
+    var requests = Api.Requests.AllAsync().ToListAsync().Await();
 
     requests.Should().NotBeNullOrEmpty().And.BeOfType<List<DeputyRequest>>();
 
@@ -391,14 +391,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IStagesApi.All(CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IStagesApi.AllAsync(CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void StagesApi_All_Method()
+  public void StagesApi_AllAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Stages.All(Cancellation).ToList()).ThrowExactlyAsync<TaskCanceledException>();
+    AssertionExtensions.Should(() => Api.Stages.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>();
 
-    var stages = Api.Stages.All().ToList().Await();
+    var stages = Api.Stages.AllAsync().ToListAsync().Await();
 
     stages.Should().NotBeNullOrEmpty().And.BeOfType<List<PhaseStage>>();
 
@@ -433,14 +433,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ITopicsApi.All(CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ITopicsApi.AllAsync(CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void TopicsApi_All_Method()
+  public void TopicsApi_AllAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Topics.All(Cancellation).ToList()).ThrowExactlyAsync<TaskCanceledException>();
+    AssertionExtensions.Should(() => Api.Topics.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>();
 
-    var topics = Api.Topics.All().ToList().Await();
+    var topics = Api.Topics.AllAsync().ToListAsync().Await();
 
     topics.Should().NotBeNullOrEmpty().And.BeOfType<List<Topic>>();
     
@@ -450,14 +450,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ITranscriptsApi.Date(DateTimeOffset, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ITranscriptsApi.DateAsync(DateTimeOffset, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void TranscriptsApi_Date_Method()
+  public void TranscriptsApi_DateAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Topics.All(Cancellation).ToList()).ThrowExactlyAsync<TaskCanceledException>();
+    AssertionExtensions.Should(() => Api.Topics.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>();
 
-    var result = Api.Transcripts.Date(new DateTimeOffset(year: 2013, month: 5, day: 14, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Await();
+    var result = Api.Transcripts.DateAsync(new DateTimeOffset(year: 2013, month: 5, day: 14, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Await();
 
     result.Should().NotBeNull().And.BeOfType<DateTranscriptsResult>();
 
@@ -478,15 +478,15 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ITranscriptsApi.Deputy(IDeputyTranscriptApiRequest, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ITranscriptsApi.DeputyAsync(IDeputyTranscriptApiRequest, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void TranscriptsApi_Deputy_Method()
+  public void TranscriptsApi_DeputyAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Transcripts.Deputy(null!)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => Api.Transcripts.Deputy(new DeputyTranscriptApiRequest(), Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync(new DeputyTranscriptApiRequest(), Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-    var result = Api.Transcripts.Deputy(new DeputyTranscriptApiRequest().Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)).Await();
+    var result = Api.Transcripts.DeputyAsync(new DeputyTranscriptApiRequest().Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)).Await();
 
     result.Should().NotBeNull().And.BeOfType<DeputyTranscriptsResult>();
 
@@ -506,20 +506,20 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ITranscriptsApi.Law(string, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ITranscriptsApi.LawAsync(string, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void TranscriptsApi_Law_Method()
+  public void TranscriptsApi_LawAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Transcripts.Law(null!)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => Api.Transcripts.Law(string.Empty)).ThrowExactlyAsync<ArgumentException>().Await();
-    AssertionExtensions.Should(() => Api.Transcripts.Law(Randomizer.Letters(25), Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.LawAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.LawAsync(string.Empty)).ThrowExactlyAsync<ArgumentException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.LawAsync(Randomizer.Letters(25), Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-    var result = Api.Transcripts.Law("140513-6").Await();
+    var result = Api.Transcripts.LawAsync("140513-6").Await();
 
     result.Should().NotBeNull().And.BeOfType<LawTranscriptsResult>();
 
-    result!.Number.Should().Be("140513-6");
+    result.Number.Should().Be("140513-6");
     result.Name.Should().Be("О внесении изменений в главы 23 и 26 части второй Налогового кодекса Российской Федерации");
     result.Comments.Should().Be("в части уточнения видов доходов, полученных от использования в Российской Федерации авторских или  смежных прав");
 
@@ -565,14 +565,14 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ITranscriptsApi.Question(long, long, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ITranscriptsApi.QuestionAsync(long, long, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void TranscriptsApi_Question_Method()
+  public void TranscriptsApi_QuestionAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Transcripts.Question(0, 0, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.QuestionAsync(0, 0, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-    var result = Api.Transcripts.Question(80, 13).Await();
+    var result = Api.Transcripts.QuestionAsync(80, 13).Await();
 
     result.Should().NotBeNull().And.BeOfType<QuestionTranscriptsResult>();
 
@@ -599,16 +599,16 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ITranscriptsApi.Resolution(string, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ITranscriptsApi.ResolutionAsync(string, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void TranscriptsApi_Resolution_Method()
+  public void TranscriptsApi_ResolutionAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Transcripts.Resolution(null!)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => Api.Transcripts.Resolution(string.Empty)).ThrowExactlyAsync<ArgumentException>().Await();
-    AssertionExtensions.Should(() => Api.Transcripts.Resolution(Randomizer.Letters(25), Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(string.Empty)).ThrowExactlyAsync<ArgumentException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(Randomizer.Letters(25), Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-    var result = Api.Transcripts.Resolution("276569-6").Await();
+    var result = Api.Transcripts.ResolutionAsync("276569-6").Await();
 
     result.Should().NotBeNull().And.BeOfType<ResolutionTranscriptsResult>();
 
@@ -646,15 +646,15 @@ public sealed class ApiTest : IDisposable
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IVotesApi.Search(IVotesSearchApiRequest, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IVotesApi.SearchAsync(IVotesSearchApiRequest, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void VotesApi_Search_Method()
+  public void VotesApi_SearchAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Votes.Search(null!)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => Api.Votes.Search(_ => {}, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Votes.SearchAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Api.Votes.SearchAsync(_ => {}, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-    var result = Api.Votes.Search(request => request.FromDate(DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(180))).ToDate(DateTimeOffset.UtcNow)).Await();
+    var result = Api.Votes.SearchAsync(request => request.FromDate(DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(180))).ToDate(DateTimeOffset.UtcNow)).Await();
 
     result.Count.Should().BePositive();
     result.PageSize.Should().Be(20);

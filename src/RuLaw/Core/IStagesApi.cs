@@ -12,5 +12,5 @@ public interface IStagesApi
   /// <returns>Collection of stages.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-stadiy-rassmotreniya"/>
-  IAsyncEnumerable<IPhaseStage> All(CancellationToken cancellation = default);
+  IAsyncEnumerable<IPhaseStage> AllAsync(CancellationToken cancellation = default);
 }

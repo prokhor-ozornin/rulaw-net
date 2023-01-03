@@ -9,6 +9,22 @@ namespace RuLaw;
 public static class IInstancesApiExtensions
 {
   /// <summary>
+  ///   <para></para>
+  /// </summary>
+  /// <param name="api"></param>
+  /// <param name="request"></param>
+  /// <returns></returns>
+  public static IEnumerable<IInstance> Search(this IInstancesApi api, IInstancesApiRequest request = null) => api.SearchAsync(request).ToListAsync().Result;
+
+  /// <summary>
+  ///   <para>Returns list of instances.</para>
+  /// </summary>
+  /// <param name="api">API caller instance to be used.</param>
+  /// <param name="action">Delegate to configure additional parameters of request.</param>
+  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
+  public static IEnumerable<IInstance> Search(this IInstancesApi api, Action<IInstancesApiRequest> action = null) => api.SearchAsync(action).ToListAsync().Result;
+
+  /// <summary>
   ///   <para>Returns list of instances.</para>
   /// </summary>
   /// <param name="api">API caller instance to be used.</param>
@@ -17,35 +33,12 @@ public static class IInstancesApiExtensions
   /// <returns>Collection of instances.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
-  public static IAsyncEnumerable<IInstance> Search(this IInstancesApi api, Action<IInstancesApiRequest>? action = null, CancellationToken cancellation = default)
+  public static IAsyncEnumerable<IInstance> SearchAsync(this IInstancesApi api, Action<IInstancesApiRequest> action = null, CancellationToken cancellation = default)
   {
     var request = new InstancesApiRequest();
 
     action?.Invoke(request);
 
-    return api.Search(request, cancellation);
-  }
-
-  /// <summary>
-  ///   <para>Returns list of instances.</para>
-  /// </summary>
-  /// <param name="api">API caller instance to be used.</param>
-  /// <param name="instances">Collection of instances.</param>
-  /// <param name="action">Delegate to configure additional parameters of request.</param>
-  /// <param name="cancellation"></param>
-  /// <returns><c>true</c> if call was successful and <paramref name="instances"/> output parameter contains list of instances, or <c>false</c> if call failed and <paramref name="instances"/> output parameter is a <c>null</c> reference.</returns>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
-  public static bool Search(this IInstancesApi api, out IEnumerable<IInstance>? instances, Action<IInstancesApiRequest>? action = null, CancellationToken cancellation = default)
-  {
-    try
-    {
-      instances = api.Search(action, cancellation).ToList(cancellation).Result;
-      return true;
-    }
-    catch
-    {
-      instances = null;
-      return false;
-    }
+    return api.SearchAsync(request, cancellation);
   }
 }

@@ -74,12 +74,12 @@ public sealed class QuestionTranscriptsResultInfoTests : UnitTest<QuestionTransc
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionTranscriptsResult.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="QuestionTranscriptsResult.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new QuestionTranscriptsResult.Info().Result();
+    var result = new QuestionTranscriptsResult.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<QuestionTranscriptsResult>();
     result.Meetings.Should().BeEmpty();
   }

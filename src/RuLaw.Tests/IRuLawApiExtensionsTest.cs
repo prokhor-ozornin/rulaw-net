@@ -15,13 +15,13 @@ public sealed class IRuLawApiExtensionsTest
   [Fact]
   public void Configure_Method()
   {
-    AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(null!, _ => {})).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(RuLaw.Api, null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(null, _ => {})).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(RuLaw.Api, null)).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => RuLaw.Api.Configure(_ => {})).ThrowExactly<InvalidOperationException>();
 
     var api = RuLaw.Api.Configure(configurator => configurator.ApiKey("apiKey").AppKey("appKey"));
     api.Should().NotBeNull().And.BeOfType<Api>();
-    api.Property("ApiToken").Should().Be("apiKey");
-    api.Property("AppToken").Should().Be("appKey");
+    api.GetPropertyValue("ApiToken").Should().Be("apiKey");
+    api.GetPropertyValue("AppToken").Should().Be("appKey");
   }
 }

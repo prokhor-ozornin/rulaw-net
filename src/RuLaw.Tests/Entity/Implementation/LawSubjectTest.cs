@@ -108,12 +108,12 @@ public sealed class LawSubjectInfoTests : UnitTest<LawSubject.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawSubject.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="LawSubject.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new LawSubject.Info().Result();
+    var result = new LawSubject.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<LawSubject>();
     result.Departments.Should().BeEmpty();
     result.Deputies.Should().BeEmpty();

@@ -15,13 +15,13 @@ public sealed class IVotesSearchApiRequestExtensionsTest
   [Fact]
   public void Deputy_Method()
   {
-    AssertionExtensions.Should(() => IVotesSearchApiRequestExtensions.Deputy(null!, new Deputy())).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IVotesSearchApiRequestExtensions.Deputy(null, new Deputy())).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => new VotesSearchApiRequest().Deputy(null)).ThrowExactly<ArgumentNullException>();
 
     var request = new VotesSearchApiRequest();
     request.Parameters.Should().BeEmpty();
     
-    request.Deputy((IDeputy) null!).Should().NotBeNull().And.BeSameAs(request);
+    request.Deputy((IDeputy) null).Should().NotBeNull().And.BeSameAs(request);
     request.Parameters["deputy"].Should().BeNull();
 
     request.Deputy(new Deputy(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
@@ -34,14 +34,14 @@ public sealed class IVotesSearchApiRequestExtensionsTest
   [Fact]
   public void Convocation_Method()
   {
-    AssertionExtensions.Should(() => IVotesSearchApiRequestExtensions.Convocation(null!, new Convocation())).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IVotesSearchApiRequestExtensions.Convocation(null, new Convocation())).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => new VotesSearchApiRequest().Convocation(null)).ThrowExactly<ArgumentNullException>();
 
     var request = new VotesSearchApiRequest();
     
     request.Parameters.Should().BeEmpty();
 
-    request.Convocation((IConvocation) null!).Should().NotBeNull().And.BeSameAs(request);
+    request.Convocation((IConvocation) null).Should().NotBeNull().And.BeSameAs(request);
     request.Parameters["convocation"].Should().BeNull();
 
     request.Convocation(new Convocation(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);

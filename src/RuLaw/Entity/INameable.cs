@@ -8,5 +8,5 @@ public interface INameable
   /// <summary>
   ///   <para>Name of the entity.</para>
   /// </summary>
-  string? Name { get; }
+  string Name { get; }
 }

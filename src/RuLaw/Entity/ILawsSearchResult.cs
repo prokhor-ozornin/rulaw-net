@@ -18,7 +18,7 @@ public interface ILawsSearchResult : IComparable<ILawsSearchResult>
   /// <summary>
   ///   <para>Text query formulation.</para>
   /// </summary>
-  string? Wording { get; }
+  string Wording { get; }
 
   /// <summary>
   ///   <para>List of result laws.</para>

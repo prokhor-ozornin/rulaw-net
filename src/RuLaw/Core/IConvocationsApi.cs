@@ -12,5 +12,5 @@ public interface IConvocationsApi
   /// <returns>Collection of convocations.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-sozivov-i-sessiy"/>
-  IAsyncEnumerable<IConvocation> All(CancellationToken cancellation = default);
+  IAsyncEnumerable<IConvocation> AllAsync(CancellationToken cancellation = default);
 }

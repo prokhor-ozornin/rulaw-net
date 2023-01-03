@@ -10,7 +10,7 @@ public interface ITranscriptMeetingQuestion : INameable, IComparable<ITranscript
   /// <summary>
   ///   <para>Question's review stage.</para>
   /// </summary>
-  string? Stage { get; }
+  string Stage { get; }
 
   /// <summary>
   ///   <para>List of transcript's fragments.</para>

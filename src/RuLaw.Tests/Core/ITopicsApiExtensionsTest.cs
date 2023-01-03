@@ -11,18 +11,15 @@ public sealed class ITopicsApiExtensionsTest : IDisposable
 {
   private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
 
-  private CancellationToken Cancellation { get; } = new(true);
-
-    /// <summary>
-  ///   <para>Performs testing of <see cref="ITopicsApiExtensions.All(ITopicsApi, out IEnumerable{ITopic}?, CancellationToken)"/> method.</para>
+  /// <summary>
+  ///   <para>Performs testing of <see cref="ITopicsApiExtensions.All(ITopicsApi)"/> method.</para>
   /// </summary>
   [Fact]
   public void All_Method()
   {
-    AssertionExtensions.Should(() => ITopicsApiExtensions.All(null!, out _)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Api.Topics.All(out _, Cancellation)).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => ITopicsApiExtensions.All(null)).ThrowExactly<ArgumentNullException>();
 
-    Api.Topics.All(out var topics).Should().BeTrue();
+    var topics = Api.Topics.All();
     topics.Should().NotBeNullOrEmpty().And.BeOfType<List<Topic>>().And.ContainSingle(topic => topic.Id == 62701).Which.Name.Should().Be("Бюджетное, налоговое, финансовое законодательство");
   }
 

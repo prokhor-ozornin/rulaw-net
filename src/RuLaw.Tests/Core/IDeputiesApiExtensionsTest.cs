@@ -1,8 +1,8 @@
 ﻿using System.Configuration;
+using Catharsis.Commons;
 using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
 
 namespace RuLaw.Tests.Core;
 
@@ -16,15 +16,14 @@ public sealed class IDeputiesApiExtensionsTest : IDisposable
   private CancellationToken Cancellation { get; } = new(true);
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IDeputiesApiExtensions.Find(IDeputiesApi, out IDeputyInfo?, long, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IDeputiesApiExtensions.Find(IDeputiesApi, long)"/> method.</para>
   /// </summary>
   [Fact]
   public void Find_Method()
   {
-    AssertionExtensions.Should(() => IDeputiesApiExtensions.Find(null!, out _, 1)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Api.Deputies.Find(out _, 1, Cancellation)).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => IDeputiesApiExtensions.Find(null, 1)).ThrowExactly<ArgumentNullException>();
 
-    Api.Deputies.Find(out var deputy, 99100142).Should().BeTrue();
+    var deputy = Api.Deputies.Find(99100142);
 
     deputy.Should().NotBeNull().And.BeOfType<DeputyInfo>();
     
@@ -51,23 +50,18 @@ public sealed class IDeputiesApiExtensionsTest : IDisposable
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
   ///   <list type="bullet">
-  ///     <item><description><see cref="IDeputiesApiExtensions.Search(IDeputiesApi, Action{IDeputiesApiRequest}?, CancellationToken)"/></description></item>
-  ///     <item><description><see cref="IDeputiesApiExtensions.Search(IDeputiesApi, out IEnumerable{IDeputy}?, Action{IDeputiesApiRequest}?, CancellationToken)"/></description></item>
+  ///     <item><description><see cref="IDeputiesApiExtensions.Search(IDeputiesApi, IDeputiesApiRequest)"/></description></item>
+  ///     <item><description><see cref="IDeputiesApiExtensions.Search(IDeputiesApi, Action{IDeputiesApiRequest})"/></description></item>
   ///   </list>
   /// </summary>
   [Fact]
   public void Search_Methods()
   {
-    using (new AssertionScope())
+    static void Validate(IEnumerable<IDeputy> sequence)
     {
-      AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null!)).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(Api.Deputies, null, Cancellation)).ThrowExactly<TaskCanceledException>();
+      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
 
-      var deputies = Api.Deputies.Search(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToList().Await();
-      
-      deputies.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
-      
-      var deputy = deputies.Single(deputy => deputy.Id == 99100491);
+      var deputy = sequence.Single(deputy => deputy.Id == 99100491);
       deputy.Should().NotBeNull().And.BeOfType<Deputy>();
       deputy.Name.Should().Be("Абдулатипов Рамазан Гаджимурадович");
       deputy.Position.Should().Be("Депутат ГД");
@@ -76,14 +70,39 @@ public sealed class IDeputiesApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null!, out _)).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null!, out _, null, Cancellation)).ThrowExactly<TaskCanceledException>();
+      AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null, new DeputiesApiRequest())).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => Api.Deputies.Search((IDeputiesApiRequest) null)).ThrowExactly<TaskCanceledException>();
 
-      Api.Deputies.Search(out var deputies, request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).Should().BeTrue();
-      
+      var deputies = Api.Deputies.Search(new DeputiesApiRequest().Position(DeputyPosition.DumaDeputy).Current(false).Name("А"));
+      Validate(deputies);
+    }
+
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => Api.Deputies.Search((Action<IDeputiesApiRequest>) null)).ThrowExactly<TaskCanceledException>();
+
+      var deputies = Api.Deputies.Search(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А"));
+      Validate(deputies);
+    }
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="IDeputiesApiExtensions.SearchAsync(IDeputiesApi, Action{IDeputiesApiRequest}, CancellationToken)"/> method.</para>
+  /// </summary>
+  [Fact]
+  public void SearchAsync_Method()
+  {
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(null, _ => {})).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(Api.Deputies, null, Cancellation)).ThrowExactly<TaskCanceledException>();
+
+      var deputies = Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToListAsync().Await();
+
       deputies.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
-      
-      var deputy = deputies!.Single(deputy => deputy.Id == 99100491);
+
+      var deputy = deputies.Single(deputy => deputy.Id == 99100491);
       deputy.Name.Should().Be("Абдулатипов Рамазан Гаджимурадович");
       deputy.Position.Should().Be("Депутат ГД");
       deputy.Active.Should().BeFalse();

@@ -38,7 +38,7 @@ public sealed class QuestionsSearchResult : IQuestionsSearchResult
   public QuestionsSearchResult(int? page = null,
                                int? pageSize = null,
                                int? count = null,
-                               IEnumerable<IQuestion>? questions = null)
+                               IEnumerable<IQuestion> questions = null)
   {
     Page = page;
     PageSize = pageSize;
@@ -62,14 +62,14 @@ public sealed class QuestionsSearchResult : IQuestionsSearchResult
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public QuestionsSearchResult(object info) : this(new Info().Properties(info)) {}
+  public QuestionsSearchResult(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Compares the current <see cref="IQuestionsSearchResult"/> instance with another.</para>
   /// </summary>
   /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IQuestionsSearchResult"/> to compare with this instance.</param>
-  public int CompareTo(IQuestionsSearchResult? other) => Nullable.Compare(Count, other?.Count);
+  public int CompareTo(IQuestionsSearchResult other) => Nullable.Compare(Count, other?.Count);
 
   /// <summary>
   ///   <para></para>
@@ -99,12 +99,12 @@ public sealed class QuestionsSearchResult : IQuestionsSearchResult
     ///   <para>List of questions.</para>
     /// </summary>
     [DataMember(Name = "questions", IsRequired = true)]
-    public List<Question>? Questions { get; init; }
+    public List<Question> Questions { get; init; }
 
     /// <summary>
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IQuestionsSearchResult Result() => new QuestionsSearchResult(this);
+    public IQuestionsSearchResult ToResult() => new QuestionsSearchResult(this);
   }
 }

@@ -14,7 +14,7 @@ public sealed class IDateableExtensionsTest
   [Fact]
   public void Period_Method()
   {
-    AssertionExtensions.Should(() => ((IEnumerable<DateableEntity>) null!).Date()).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => ((IEnumerable<DateableEntity>) null).Date()).ThrowExactly<ArgumentNullException>();
 
     Enumerable.Empty<DateableEntity>().Date().Should().NotBeNull().And.BeEmpty();
 

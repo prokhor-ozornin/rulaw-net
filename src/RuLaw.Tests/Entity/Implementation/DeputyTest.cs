@@ -134,12 +134,12 @@ public sealed class DeputyInfoTests : UnitTest<Deputy.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="Deputy.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new Deputy.Info().Result();
+    var result = new Deputy.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<Deputy>();
     result.Id.Should().BeNull();
     result.Name.Should().BeNull();

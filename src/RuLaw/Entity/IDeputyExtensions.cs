@@ -28,5 +28,5 @@ public static class IDeputyExtensions
   /// <param name="deputies">Source sequence of deputies to filter.</param>
   /// <param name="position">Position to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of deputies with specified position.</returns>
-  public static IEnumerable<TEntity?> Position<TEntity>(this IEnumerable<TEntity?> deputies, string? position) where TEntity : IDeputy => deputies.Where(deputy => deputy != null && (deputy.Position ?? string.Empty).ToLowerInvariant().Contains((position ?? string.Empty).ToLowerInvariant()));
+  public static IEnumerable<TEntity> Position<TEntity>(this IEnumerable<TEntity> deputies, string position) where TEntity : IDeputy => deputies.Where(deputy => deputy != null && (deputy.Position ?? string.Empty).ToLowerInvariant().Contains((position ?? string.Empty).ToLowerInvariant()));
 }

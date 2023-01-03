@@ -10,14 +10,14 @@ public interface IDeputiesApiRequest : IApiRequest
   /// </summary>
   /// <param name="name">Name or name part of deputies.</param>
   /// <returns>Back reference to the current request.</returns>
-  IDeputiesApiRequest Name(string? name);
+  IDeputiesApiRequest Name(string name);
 
   /// <summary>
   ///   <para>Specifies position of deputies to lookup.</para>
   /// </summary>
   /// <param name="position">Position of deputies.</param>
   /// <returns>Back reference to the current request.</returns>
-  IDeputiesApiRequest Position(string? position);
+  IDeputiesApiRequest Position(string position);
 
   /// <summary>
   ///   <para>Specifies whether to lookup currently active or inactive deputies.</para>

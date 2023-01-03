@@ -133,12 +133,12 @@ public sealed class LawCommitteesInfoTests : UnitTest<LawCommittees.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawCommittees.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="LawCommittees.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new LawCommittees.Info().Result();
+    var result = new LawCommittees.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<LawCommittees>();
     result.Responsible.Should().BeNull();
     result.Profile.Should().BeNull();

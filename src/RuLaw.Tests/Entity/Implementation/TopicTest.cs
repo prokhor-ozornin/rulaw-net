@@ -102,12 +102,12 @@ public sealed class TopicInfoTests : UnitTest<Topic.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="Topic.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="Topic.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new Topic.Info().Result();
+    var result = new Topic.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<Topic>();
     result.Id.Should().BeNull();
     result.Name.Should().BeNull();

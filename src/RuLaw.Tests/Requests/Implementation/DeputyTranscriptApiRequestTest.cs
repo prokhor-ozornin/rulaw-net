@@ -44,7 +44,7 @@ public sealed class DeputyTranscriptApiRequestTest
   [Fact]
   public void PageSize_Method()
   {
-    void Validate(PageSize? size)
+    static void Validate(PageSize? size)
     {
       var request = new DeputyTranscriptApiRequest();
 
@@ -101,7 +101,7 @@ public sealed class DeputyTranscriptApiRequestTest
   [Fact]
   public void FromDate_Method()
   {
-    void Validate(DateTimeOffset? date)
+    static void Validate(DateTimeOffset? date)
     {
       var request = new DeputyTranscriptApiRequest();
 
@@ -127,7 +127,7 @@ public sealed class DeputyTranscriptApiRequestTest
   [Fact]
   public void ToDate_Method()
   {
-    void Validate(DateTimeOffset? date)
+    static void Validate(DateTimeOffset? date)
     {
       var request = new DeputyTranscriptApiRequest();
 

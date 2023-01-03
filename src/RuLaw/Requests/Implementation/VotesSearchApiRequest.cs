@@ -2,72 +2,72 @@
 
 internal sealed class VotesSearchApiRequest : ApiRequest, IVotesSearchApiRequest
 {
-  public IVotesSearchApiRequest Number(string? number)
+  public IVotesSearchApiRequest Number(string number)
   {
-    Parameters["number"] = number;
+    WithParameter("number", number);
 
     return this;
   }
 
   public IVotesSearchApiRequest Faction(long? id)
   {
-    Parameters["faction"] = id;
+    WithParameter("faction", id);
 
     return this;
   }
 
   public IVotesSearchApiRequest Deputy(long? id)
   {
-    Parameters["deputy"] = id;
+    WithParameter("deputy", id);
 
     return this;
   }
 
   public IVotesSearchApiRequest Convocation(long? id)
   {
-    Parameters["convocation"] = id;
+    WithParameter("convocation", id);
 
     return this;
   }
 
   public IVotesSearchApiRequest FromDate(DateTimeOffset? date)
   {
-    Parameters["from"] = date?.AsString();
+    WithParameter("from", date?.AsString());
 
     return this;
   }
 
   public IVotesSearchApiRequest ToDate(DateTimeOffset? date)
   {
-    Parameters["to"] = date?.AsString();
+    WithParameter("to", date?.AsString());
 
     return this;
   }
 
-  public IVotesSearchApiRequest Keywords(string? keywords)
+  public IVotesSearchApiRequest Keywords(string keywords)
   {
-    Parameters["keywords"] = keywords;
+    WithParameter("keywords", keywords);
 
     return this;
   }
 
   public IVotesSearchApiRequest Page(int? page)
   {
-    Parameters["page"] = page;
+    WithParameter("page", page);
 
     return this;
   }
 
   public IVotesSearchApiRequest Sorting(VotesSorting? sorting)
   {
-    Parameters["sort"] = sorting?.AsString();
+    WithParameter("sort", sorting?.AsString());
 
     return this;
   }
 
   public IVotesSearchApiRequest Limit(PageSize? limit)
   {
-    Parameters["limit"] = (int?) limit;
+    WithParameter("limit", (int?) limit);
 
     return this;
   }

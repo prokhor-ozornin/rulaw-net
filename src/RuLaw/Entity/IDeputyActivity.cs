@@ -13,5 +13,5 @@ public interface IDeputyActivity : INameable, IComparable<IDeputyActivity>, IEqu
   /// <summary>
   ///   <para>Genitive name of committee.</para>
   /// </summary>
-  string? CommitteeNameGenitive { get; }
+  string CommitteeNameGenitive { get; }
 }

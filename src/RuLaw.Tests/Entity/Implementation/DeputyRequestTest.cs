@@ -262,12 +262,12 @@ public sealed class DeputyRequestInfoTests : UnitTest<DeputyRequest.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="DeputyRequest.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new DeputyRequest.Info().Result();
+    var result = new DeputyRequest.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<DeputyRequest>();
     result.Id.Should().BeNull();
     result.Name.Should().BeNull();

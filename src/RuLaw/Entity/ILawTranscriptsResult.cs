@@ -8,12 +8,12 @@ public interface ILawTranscriptsResult : INameable, IComparable<ILawTranscriptsR
   /// <summary>
   ///   <para>Number of law.</para>
   /// </summary>
-  string? Number { get; }
+  string Number { get; }
 
   /// <summary>
   ///   <para>Law's comments.</para>
   /// </summary>
-  string? Comments { get; }
+  string Comments { get; }
 
   /// <summary>
   ///   <para>List of law's associated meetings.</para>

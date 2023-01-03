@@ -13,7 +13,7 @@ public interface IVotesSearchResult : IPageable, IComparable<IVotesSearchResult>
   /// <summary>
   ///   <para>Text query formulation.</para>
   /// </summary>
-  string? Wording { get; }
+  string Wording { get; }
 
   /// <summary>
   ///   <para>List of resulting votes.</para>

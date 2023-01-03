@@ -150,12 +150,12 @@ public sealed class LawTranscriptsResultInfoTests : UnitTest<LawTranscriptsResul
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new LawTranscriptsResult.Info().Result();
+    var result = new LawTranscriptsResult.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<LawTranscriptsResult>();
     result.Name.Should().BeNull();
     result.Number.Should().BeNull();

@@ -33,7 +33,7 @@ public sealed class Error : IError
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public Error(object info) : this(new Info().Properties(info)) {}
+  public Error(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Numeric code of error.</para>
@@ -50,21 +50,21 @@ public sealed class Error : IError
   /// </summary>
   /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IError"/> to compare with this instance.</param>
-  public int CompareTo(IError? other) => Code.CompareTo(other?.Code);
+  public int CompareTo(IError other) => Code.CompareTo(other?.Code);
 
   /// <summary>
   ///   <para>Determines whether two errors instances are equal.</para>
   /// </summary>
   /// <param name="other">The error to compare with the current one.</param>
   /// <returns><c>true</c> if specified error is equal to the current, <c>false</c> otherwise.</returns>
-  public bool Equals(IError? other) => this.Equality(other, nameof(Code));
+  public bool Equals(IError other) => this.Equality(other, nameof(Code));
 
   /// <summary>
   ///   <para>Determines whether the specified <see cref="object"/> is equal to the current <see cref="object"/>.</para>
   /// </summary>
   /// <param name="other">The object to compare with the current object.</param>
   /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
-  public override bool Equals(object? other) => Equals(other as IError);
+  public override bool Equals(object other) => Equals(other as IError);
 
   /// <summary>
   ///   <para>Returns hash code for the current object.</para>
@@ -100,6 +100,6 @@ public sealed class Error : IError
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IError Result() => new Error(this);
+    public IError ToResult() => new Error(this);
   }
 }

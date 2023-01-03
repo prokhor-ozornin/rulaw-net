@@ -14,15 +14,15 @@ public sealed class INameableExtensionsTest
   [Fact]
   public void Name_Method()
   {
-    AssertionExtensions.Should(() => ((IEnumerable<NameableEntity>) null!).Name("currency")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => ((IEnumerable<NameableEntity>) null).Name("currency")).ThrowExactly<ArgumentNullException>();
 
-    Enumerable.Empty<NameableEntity>().Name(null!).Should().NotBeNull().And.BeEmpty();
+    Enumerable.Empty<NameableEntity>().Name(null).Should().NotBeNull().And.BeEmpty();
 
     new[] {null, new NameableEntity {Name = "first"}, null, new NameableEntity {Name = "second"}}.Name("first").Should().NotBeNullOrEmpty().And.ContainSingle();
   }
 
   private sealed class NameableEntity : INameable
   {
-    public string? Name { get; init; }
+    public string Name { get; init; }
   }
 }

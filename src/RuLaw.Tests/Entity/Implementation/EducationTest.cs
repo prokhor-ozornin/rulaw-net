@@ -110,12 +110,12 @@ public sealed class EducationInfoTests : UnitTest<Education.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="Education.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="Education.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new Education.Info().Result();
+    var result = new Education.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<Education>();
     result.Institution.Should().BeNull();
     result.Year.Should().BeNull();

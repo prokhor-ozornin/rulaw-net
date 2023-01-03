@@ -14,7 +14,7 @@ public sealed class IVoteExtensionsTest
   [Fact]
   public void Personal_Method()
   {
-    AssertionExtensions.Should(() => IVoteExtensions.Personal(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IVoteExtensions.Personal(null)).ThrowExactly<ArgumentNullException>();
 
     new Vote().Personal().Should().BeFalse();
     new Vote(new {PersonResult = string.Empty}).Personal().Should().BeFalse();
@@ -27,7 +27,7 @@ public sealed class IVoteExtensionsTest
   [Fact]
   public void PersonResult_Method()
   {
-    AssertionExtensions.Should(() => IVoteExtensions.PersonResult(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IVoteExtensions.PersonResult(null)).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => new Vote(new { PersonResult = "result" }).PersonResult()).ThrowExactly<InvalidOperationException>();
 
     new Vote(new {}).PersonResult().Should().BeNull();
@@ -44,7 +44,7 @@ public sealed class IVoteExtensionsTest
   [Fact]
   public void ResultType_Method()
   {
-    AssertionExtensions.Should(() => IVoteExtensions.ResultType(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IVoteExtensions.ResultType(null)).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => new Vote(new { ResultType = "type" }).ResultType()).ThrowExactly<InvalidOperationException>();
 
     new Vote().ResultType().Should().BeNull();
@@ -60,8 +60,8 @@ public sealed class IVoteExtensionsTest
   [Fact]
   public void Subject_Method()
   {
-    AssertionExtensions.Should(() => IVoteExtensions.Subject<IVote>(null!, "subject")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IVote>().Subject(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IVoteExtensions.Subject<IVote>(null, "subject")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Enumerable.Empty<IVote>().Subject(null)).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => Enumerable.Empty<IVote>().Subject(string.Empty)).ThrowExactly<ArgumentException>();
 
     Enumerable.Empty<IVote>().Subject("subject").Should().NotBeNull().And.BeEmpty();
@@ -79,7 +79,7 @@ public sealed class IVoteExtensionsTest
   [Fact]
   public void Successful_Method()
   {
-    AssertionExtensions.Should(() => IVoteExtensions.Successful<IVote>(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IVoteExtensions.Successful<IVote>(null)).ThrowExactly<ArgumentNullException>();
 
     Enumerable.Empty<IVote>().Successful().Should().NotBeNull().And.BeEmpty();
 
@@ -95,7 +95,7 @@ public sealed class IVoteExtensionsTest
   [Fact]
   public void Unsuccessful_Method()
   {
-    AssertionExtensions.Should(() => IVoteExtensions.Unsuccessful<IVote>(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IVoteExtensions.Unsuccessful<IVote>(null)).ThrowExactly<ArgumentNullException>();
 
     Enumerable.Empty<IVote>().Unsuccessful().Should().NotBeNull().And.BeEmpty();
 

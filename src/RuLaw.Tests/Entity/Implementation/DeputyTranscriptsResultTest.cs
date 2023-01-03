@@ -151,12 +151,12 @@ public sealed class DeputyTranscriptsResultInfoTests : UnitTest<DeputyTranscript
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new DeputyTranscriptsResult.Info().Result();
+    var result = new DeputyTranscriptsResult.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<DeputyTranscriptsResult>();
     result.Name.Should().BeNull();
     result.Page.Should().BeNull();

@@ -1,8 +1,8 @@
 ﻿using System.Configuration;
+using Catharsis.Commons;
 using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
 
 namespace RuLaw.Tests.Core;
 
@@ -18,40 +18,53 @@ public sealed class IInstancesApiExtensionsTest : IDisposable
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
   ///   <list type="bullet">
-  ///     <item><description><see cref="IInstancesApiExtensions.Search(IInstancesApi, Action{IInstancesApiRequest}?, CancellationToken)"/></description></item>
-  ///     <item><description><see cref="IInstancesApiExtensions.Search(IInstancesApi, out IEnumerable{IInstance}?, Action{IInstancesApiRequest}?, CancellationToken)"/></description></item>
+  ///     <item><description><see cref="IInstancesApiExtensions.Search(IInstancesApi, IInstancesApiRequest)"/></description></item>
+  ///     <item><description><see cref="IInstancesApiExtensions.Search(IInstancesApi, Action{IInstancesApiRequest})"/></description></item>
   ///   </list>
   /// </summary>
   [Fact]
   public void Search_Methods()
   {
-    using (new AssertionScope())
+    static void Validate(IEnumerable<IInstance> sequence)
     {
-      AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null!)).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => IInstancesApiExtensions.Search(Api.Instances, null, Cancellation)).ThrowExactly<TaskCanceledException>();
+      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<Instance>>();
 
-      var instances = Api.Instances.Search(request => request.Current()).ToList().Await();
-
-      instances.Should().NotBeNullOrEmpty().And.BeOfType<List<Instance>>();
-      
-      var instance = instances.Single(instance => instance.Id == 177);
+      var instance = sequence.Single(instance => instance.Id == 177);
       instance.Name.Should().Be("ГД (Пленарное заседание)");
       instance.Active.Should().BeTrue();
     }
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null!, out _)).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => Api.Instances.Search(out _, null, Cancellation)).ThrowExactly<TaskCanceledException>();
+      AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null, new InstancesApiRequest())).ThrowExactly<ArgumentNullException>();
 
-      Api.Instances.Search(out var instances).Should().BeTrue();
-      
-      instances.Should().NotBeNullOrEmpty().And.BeOfType<List<Instance>>();
-      
-      var instance = instances.Single(instance => instance.Id == 177);
-      instance.Name.Should().Be("ГД (Пленарное заседание)");
-      instance.Active.Should().BeTrue();
+      var instances = Api.Instances.Search(new InstancesApiRequest().Current());
+      Validate(instances);
     }
+
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>();
+
+      var instances = Api.Instances.Search(request => request.Current());
+      Validate(instances);
+    }
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="IInstancesApiExtensions.SearchAsync(IInstancesApi, Action{IInstancesApiRequest}, CancellationToken)"/> method.</para>
+  /// </summary>
+  [Fact]
+  public void SearchAsync_Method()
+  {
+    AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(Api.Instances, null, Cancellation)).ThrowExactly<TaskCanceledException>();
+
+    var instances = Api.Instances.SearchAsync(request => request.Current()).ToListAsync().Await();
+
+    var instance = instances.Single(instance => instance.Id == 177);
+    instance.Name.Should().Be("ГД (Пленарное заседание)");
+    instance.Active.Should().BeTrue();
   }
 
   /// <summary>

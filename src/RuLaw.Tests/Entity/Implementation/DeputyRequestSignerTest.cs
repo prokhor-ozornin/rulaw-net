@@ -102,12 +102,12 @@ public sealed class DeputyRequestSignerInfoTests : UnitTest<DeputyRequestSigner.
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new DeputyRequestSigner.Info().Result();
+    var result = new DeputyRequestSigner.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<DeputyRequestSigner>();
     result.Id.Should().BeNull();
     result.Name.Should().BeNull();

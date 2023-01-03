@@ -246,12 +246,12 @@ public sealed class VoteInfoTests : UnitTest<Vote.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="Vote.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="Vote.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new Vote.Info().Result();
+    var result = new Vote.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<Vote>();
     result.Id.Should().BeNull();
     result.Date.Should().BeNull();

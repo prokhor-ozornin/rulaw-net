@@ -12,5 +12,5 @@ public interface ITopicsApi
   /// <returns>Collection of topics.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-tematicheskih-blokov"/>
-  IAsyncEnumerable<ITopic> All(CancellationToken cancellation = default);
+  IAsyncEnumerable<ITopic> AllAsync(CancellationToken cancellation = default);
 }

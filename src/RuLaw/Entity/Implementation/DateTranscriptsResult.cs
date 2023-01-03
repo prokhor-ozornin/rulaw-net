@@ -24,7 +24,7 @@ public sealed class DateTranscriptsResult : IDateTranscriptsResult
   /// <param name="date"></param>
   /// <param name="meetings"></param>
   public DateTranscriptsResult(DateTimeOffset? date = null,
-                               IEnumerable<IDateTranscriptMeeting>? meetings = null)
+                               IEnumerable<IDateTranscriptMeeting> meetings = null)
   {
     Date = date;
     Meetings = meetings ?? new List<IDateTranscriptMeeting>();
@@ -44,28 +44,28 @@ public sealed class DateTranscriptsResult : IDateTranscriptsResult
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public DateTranscriptsResult(object info) : this(new Info().Properties(info)) {}
+  public DateTranscriptsResult(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Compares the current <see cref="DateTranscriptsResult"/> instance with another.</para>
   /// </summary>
   /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="DateTranscriptsResult"/> to compare with this instance.</param>
-  public int CompareTo(IDateTranscriptsResult? other) => Nullable.Compare(Date, other?.Date);
+  public int CompareTo(IDateTranscriptsResult other) => Nullable.Compare(Date, other?.Date);
 
   /// <summary>
   ///   <para>Determines whether two <see cref="IDateTranscriptsResult"/> instances are equal.</para>
   /// </summary>
   /// <param name="other">The instance to compare with the current one.</param>
   /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
-  public bool Equals(IDateTranscriptsResult? other) => this.Equality(other, nameof(Date));
+  public bool Equals(IDateTranscriptsResult other) => this.Equality(other, nameof(Date));
 
   /// <summary>
   ///   <para>Determines whether the specified <see cref="object"/> is equal to the current <see cref="object"/>.</para>
   /// </summary>
   /// <param name="other">The object to compare with the current object.</param>
   /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
-  public override bool Equals(object? other) => Equals(other as IDateTranscriptsResult);
+  public override bool Equals(object other) => Equals(other as IDateTranscriptsResult);
 
   /// <summary>
   ///   <para>Returns hash code for the current object.</para>
@@ -89,18 +89,18 @@ public sealed class DateTranscriptsResult : IDateTranscriptsResult
     ///   <para>Date of meetings.</para>
     /// </summary>
     [DataMember(Name = "date", IsRequired = true)]
-    public string? Date { get; init; }
+    public string Date { get; init; }
 
     /// <summary>
     ///   <para>List of meetings transcripts.</para>
     /// </summary>
     [DataMember(Name = "meetings", IsRequired = true)]
-    public List<DateTranscriptMeeting>? Meetings { get; init; }
+    public List<DateTranscriptMeeting> Meetings { get; init; }
 
     /// <summary>
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IDateTranscriptsResult Result() => new DateTranscriptsResult(this);
+    public IDateTranscriptsResult ToResult() => new DateTranscriptsResult(this);
   }
 }

@@ -8,20 +8,20 @@ public interface ILawEvent : IDateable, IComparable<ILawEvent>
   /// <summary>
   ///   <para>Accepted decision (formulation).</para>
   /// </summary>
-  string? Solution { get; }
+  string Solution { get; }
 
   /// <summary>
   ///   <para>Document, associated with a law's event.</para>
   /// </summary>
-  ILawEventDocument? Document { get; }
+  ILawEventDocument Document { get; }
 
   /// <summary>
   ///   <para>Phase of law's review process.</para>
   /// </summary>
-  ILawEventPhase? Phase { get; }
+  ILawEventPhase Phase { get; }
 
   /// <summary>
   ///   <para>Stage of law's review process.</para>
   /// </summary>
-  ILawEventStage? Stage { get; }
+  ILawEventStage Stage { get; }
 }

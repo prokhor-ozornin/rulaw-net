@@ -14,8 +14,8 @@ public sealed class ITranscriptMeetingQuestionExtensionsTest
   [Fact]
   public void Stage_Method()
   {
-    AssertionExtensions.Should(() => ITranscriptMeetingQuestionExtensions.Stage<ITranscriptMeetingQuestion>(null!, "stage")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<ITranscriptMeetingQuestion>().Stage(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => ITranscriptMeetingQuestionExtensions.Stage<ITranscriptMeetingQuestion>(null, "stage")).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Enumerable.Empty<ITranscriptMeetingQuestion>().Stage(null)).ThrowExactly<ArgumentNullException>();
     AssertionExtensions.Should(() => Enumerable.Empty<ITranscriptMeetingQuestion>().Stage(string.Empty)).ThrowExactly<ArgumentException>();
 
     Enumerable.Empty<ITranscriptMeetingQuestion>().Stage("stage").Should().NotBeNull().And.BeEmpty();

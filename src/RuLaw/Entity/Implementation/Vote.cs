@@ -21,7 +21,7 @@ public sealed class Vote : IVote
   /// <summary>
   ///   <para>Subject of convocation.</para>
   /// </summary>
-  public string? Subject { get; }
+  public string Subject { get; }
 
   /// <summary>
   ///   <para>Whether the law passed (true) or not (false) according to voting.</para>
@@ -31,12 +31,12 @@ public sealed class Vote : IVote
   /// <summary>
   ///   <para>Type of voting result.</para>
   /// </summary>
-  public string? ResultType { get; }
+  public string ResultType { get; }
 
   /// <summary>
   ///   <para>Result of deputy voting.</para>
   /// </summary>
-  public string? PersonResult { get; }
+  public string PersonResult { get; }
 
   /// <summary>
   ///   <para>Number of voted deputies in faction.</para>
@@ -79,10 +79,10 @@ public sealed class Vote : IVote
   /// <param name="absentVotesCount"></param>
   public Vote(long? id = null,
               DateTimeOffset? date = null,
-              string? subject = null,
+              string subject = null,
               bool? successful = null,
-              string? resultType = null,
-              string? personResult = null,
+              string resultType = null,
+              string personResult = null,
               int? totalVotesCount = null,
               int? forVotesCount = null,
               int? againstVotesCount = null,
@@ -125,28 +125,28 @@ public sealed class Vote : IVote
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public Vote(object info) : this(new Info().Properties(info)) {}
+  public Vote(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Compares the current <see cref="IVote"/> instance with another.</para>
   /// </summary>
   /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IVote"/> to compare with this instance.</param>
-  public int CompareTo(IVote? other) => Nullable.Compare(Date, other?.Date);
+  public int CompareTo(IVote other) => Nullable.Compare(Date, other?.Date);
 
   /// <summary>
   ///   <para>Determines whether two <see cref="IVote"/> instances are equal.</para>
   /// </summary>
   /// <param name="other">The instance to compare with the current one.</param>
   /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
-  public bool Equals(IVote? other) => this.Equality(other, nameof(Id));
+  public bool Equals(IVote other) => this.Equality(other, nameof(Id));
 
   /// <summary>
   ///   <para>Determines whether the specified <see cref="object"/> is equal to the current <see cref="object"/>.</para>
   /// </summary>
   /// <param name="other">The object to compare with the current object.</param>
   /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
-  public override bool Equals(object? other) => Equals(other as IVote);
+  public override bool Equals(object other) => Equals(other as IVote);
 
   /// <summary>
   ///   <para>Returns hash code for the current object.</para>
@@ -170,7 +170,7 @@ public sealed class Vote : IVote
     ///   <para>Date of voting.</para>
     /// </summary>
     [DataMember(Name = "voteDate", IsRequired = true)]
-    public string? Date { get; init; }
+    public string Date { get; init; }
 
     /// <summary>
     ///   <para>Identifier of vote.</para>
@@ -182,7 +182,7 @@ public sealed class Vote : IVote
     ///   <para>Subject of convocation.</para>
     /// </summary>
     [DataMember(Name = "subject", IsRequired = true)]
-    public string? Subject { get; init; }
+    public string Subject { get; init; }
 
     /// <summary>
     ///   <para>Whether the law passed (true) or not (false) according to voting.</para>
@@ -194,13 +194,13 @@ public sealed class Vote : IVote
     ///   <para>Type of voting result.</para>
     /// </summary>
     [DataMember(Name = "resultType", IsRequired = true)]
-    public string? ResultType { get; init; }
+    public string ResultType { get; init; }
 
     /// <summary>
     ///   <para>Result of deputy voting.</para>
     /// </summary>
     [DataMember(Name = "personResult", IsRequired = true)]
-    public string? PersonResult { get; init; }
+    public string PersonResult { get; init; }
 
     /// <summary>
     ///   <para>Number of voted deputies in faction.</para>
@@ -236,6 +236,6 @@ public sealed class Vote : IVote
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IVote Result() => new Vote(this);
+    public IVote ToResult() => new Vote(this);
   }
 }

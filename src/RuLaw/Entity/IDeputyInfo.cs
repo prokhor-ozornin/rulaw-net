@@ -8,17 +8,17 @@ public interface IDeputyInfo : IEntity, IActive, IComparable<IDeputyInfo>, IEqua
   /// <summary>
   ///   <para>First name of deputy.</para>
   /// </summary>
-  string? FirstName { get; }
+  string FirstName { get; }
 
   /// <summary>
   ///   <para>Last name of deputy.</para>
   /// </summary>
-  string? LastName { get; }
+  string LastName { get; }
 
   /// <summary>
   ///   <para>Middle name of deputy.</para>
   /// </summary>
-  string? MiddleName { get; }
+  string MiddleName { get; }
 
   /// <summary>
   ///   <para>Birth date of deputy.</para>
@@ -43,17 +43,17 @@ public interface IDeputyInfo : IEntity, IActive, IComparable<IDeputyInfo>, IEqua
   /// <summary>
   ///   <para>Name of deputy's political faction.</para>
   /// </summary>
-  string? FactionName { get; }
+  string FactionName { get; }
 
   /// <summary>
   ///   <para>Association of deputy's political faction with a region.</para>
   /// </summary>
-  string? FactionRegion { get; }
+  string FactionRegion { get; }
 
   /// <summary>
   ///   <para>Role of deputy's in his political faction.</para>
   /// </summary>
-  string? FactionRole { get; }
+  string FactionRole { get; }
 
   /// <summary>
   ///   <para>Number of laws which have been initiated by the deputy.</para>
@@ -68,12 +68,12 @@ public interface IDeputyInfo : IEntity, IActive, IComparable<IDeputyInfo>, IEqua
   /// <summary>
   ///   <para>URL link for transcripts of deputy's speaches.</para>
   /// </summary>
-  string? TranscriptLink { get; }
+  string TranscriptLink { get; }
 
   /// <summary>
   ///   <para>URL link for deputy's votes.</para>
   /// </summary>
-  string? VoteLink { get; }
+  string VoteLink { get; }
 
   /// <summary>
   ///   <para>Collection of deputy's activities in committees.</para>

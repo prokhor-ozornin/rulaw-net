@@ -4,133 +4,133 @@ internal sealed class LawsApiRequest : ApiRequest, ILawsApiRequest
 {
   public ILawsApiRequest Page(int? page)
   {
-    Parameters["page"] = page;
+    WithParameter("page", page);
 
     return this;
   }
 
   public ILawsApiRequest PageSize(PageSize? size)
   {
-    Parameters["limit"] = (int?) size;
+    WithParameter("limit", (int?) size);
 
     return this;
   }
 
-  public ILawsApiRequest Name(string? name)
+  public ILawsApiRequest Name(string name)
   {
-    Parameters["name"] = name;
+    WithParameter("name", name);
 
     return this;
   }
 
   public ILawsApiRequest Type(int? type)
   {
-    Parameters["law_type"] = type;
+    WithParameter("law_type", type);
 
     return this;
   }
 
   public ILawsApiRequest Topic(long? id)
   {
-    Parameters["topic"] = id;
+    WithParameter("topic", id);
 
     return this;
   }
 
-  public ILawsApiRequest Number(string? number)
+  public ILawsApiRequest Number(string number)
   {
-    Parameters["number"] = number;
+    WithParameter("number", number);
 
     return this;
   }
 
-  public ILawsApiRequest DocumentNumber(string? number)
+  public ILawsApiRequest DocumentNumber(string number)
   {
-    Parameters["document_number"] = number;
+    WithParameter("document_number", number);
 
     return this;
   }
 
   public ILawsApiRequest Status(int? status)
   {
-    Parameters["status"] = status;
+    WithParameter("status", status);
 
     return this;
   }
 
   public ILawsApiRequest Branch(long? id)
   {
-    Parameters["class"] = id;
+    WithParameter("class", id);
 
     return this;
   }
 
   public ILawsApiRequest RegistrationStart(DateTimeOffset? date)
   {
-    Parameters["registration_start"] = date?.AsString();
+    WithParameter("registration_start", date?.AsString());
 
     return this;
   }
 
   public ILawsApiRequest RegistrationEnd(DateTimeOffset? date)
   {
-    Parameters["registration_end"] = date?.AsString();
+    WithParameter("registration_end", date?.AsString());
 
     return this;
   }
 
   public ILawsApiRequest Deputy(long? id)
   {
-    Parameters["deputy"] = id;
+    WithParameter("deputy", id);
 
     return this;
   }
 
   public ILawsApiRequest FederalAuthority(long? id)
   {
-    Parameters["federal_subject"] = id;
+    WithParameter("federal_subject", id);
 
     return this;
   }
 
   public ILawsApiRequest RegionalAuthority(long? id)
   {
-    Parameters["regional_subject"] = id;
+    WithParameter("regional_subject", id);
 
     return this;
   }
 
   public ILawsApiRequest ProfileCommittee(long? id)
   {
-    Parameters["profile_committee"] = id;
+    WithParameter("profile_committee", id);
 
     return this;
   }
 
   public ILawsApiRequest ResponsibleCommittee(long? id)
   {
-    Parameters["responsible_committee"] = id;
+    WithParameter("responsible_committee", id);
 
     return this;
   }
 
   public ILawsApiRequest SoExecutorCommittee(long? id)
   {
-    Parameters["soexecutor_committee"] = id;
+    WithParameter("soexecutor_committee", id);
 
     return this;
   }
 
-  public ILawsApiRequest Sorting(string? sort)
+  public ILawsApiRequest Sorting(string sort)
   {
-    Parameters["sort"] = sort;
+    WithParameter("sort", sort);
 
     return this;
   }
 
   public ILawsApiRequest EventsSearchMode(int? mode)
   {
-    Parameters["search_mode"] = mode;
+    WithParameter("search_mode", mode);
 
     return this;
   }

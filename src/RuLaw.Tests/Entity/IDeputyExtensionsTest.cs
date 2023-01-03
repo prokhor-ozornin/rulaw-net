@@ -21,7 +21,7 @@ public sealed class IDeputyExtensionsTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IDeputyExtensions.Position(null!)).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IDeputyExtensions.Position(null)).ThrowExactly<ArgumentNullException>();
       AssertionExtensions.Should(() => new Deputy(new { Position = "position" }).Position()).ThrowExactly<InvalidOperationException>();
 
       new Deputy().Position().Should().BeNull();
@@ -31,7 +31,7 @@ public sealed class IDeputyExtensionsTest
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IDeputyExtensions.Position<IDeputy>(null!, "position")).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IDeputyExtensions.Position<IDeputy>(null, "position")).ThrowExactly<ArgumentNullException>();
       AssertionExtensions.Should(() => Enumerable.Empty<IDeputy>().Position(null)).ThrowExactly<ArgumentNullException>();
       AssertionExtensions.Should(() => Enumerable.Empty<IDeputy>().Position(string.Empty)).ThrowExactly<ArgumentException>();
 
