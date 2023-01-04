@@ -21,7 +21,7 @@ public sealed class IRuLawApiExtensionsTest
 
     var api = RuLaw.Api.Configure(configurator => configurator.ApiKey("apiKey").AppKey("appKey"));
     api.Should().NotBeNull().And.BeOfType<Api>();
-    api.GetPropertyValue("ApiToken").Should().Be("apiKey");
-    api.GetPropertyValue("AppToken").Should().Be("appKey");
+    api.GetPropertyValue<string>("ApiToken").Should().Be("apiKey");
+    api.GetPropertyValue<string>("AppToken").Should().Be("appKey");
   }
 }

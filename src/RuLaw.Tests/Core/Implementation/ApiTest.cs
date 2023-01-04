@@ -20,7 +20,7 @@ public sealed class ApiTest : IDisposable
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="RuLaw.Api(string, string?)"/>
+  /// <seealso cref="RuLaw.Api()"/>
   [Fact]
   public void Constructors()
   {
@@ -31,7 +31,7 @@ public sealed class ApiTest : IDisposable
       api.ApiToken.Should().Be("apiToken");
       api.AppToken.Should().Be("appToken");
 
-      var client = api.GetFieldValue("restClient").To<RestClient>();
+      var client = api.GetFieldValue< RestClient>("restClient");
       //client.BaseUrl.ToString().Should().Be("http://api.duma.gov.ru/api");
       var token = client.DefaultParameters.FirstOrDefault(parameter => parameter.Name == "app_token");
       token.Should().NotBeNull();
