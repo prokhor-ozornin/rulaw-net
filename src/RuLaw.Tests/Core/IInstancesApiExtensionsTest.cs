@@ -1,5 +1,5 @@
 ﻿using System.Configuration;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
@@ -9,11 +9,9 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="IInstancesApiExtensions"/>.</para>
 /// </summary>
-public sealed class IInstancesApiExtensionsTest : IDisposable
+public sealed class IInstancesApiExtensionsTest : UnitTest
 {
   private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
-  private CancellationToken Cancellation { get; } = new(true);
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -36,7 +34,7 @@ public sealed class IInstancesApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null, new InstancesApiRequest())).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null, new InstancesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
       var instances = Api.Instances.Search(new InstancesApiRequest().Current());
       Validate(instances);
@@ -44,7 +42,7 @@ public sealed class IInstancesApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
       var instances = Api.Instances.Search(request => request.Current());
       Validate(instances);
@@ -57,8 +55,8 @@ public sealed class IInstancesApiExtensionsTest : IDisposable
   [Fact]
   public void SearchAsync_Method()
   {
-    AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(null)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(Api.Instances, null, Cancellation)).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+    AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(Api.Instances, null, Cancellation)).ThrowExactly<OperationCanceledException>();
 
     var instances = Api.Instances.SearchAsync(request => request.Current()).ToListAsync().Await();
 
@@ -70,7 +68,7 @@ public sealed class IInstancesApiExtensionsTest : IDisposable
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public void Dispose()
+  public override void Dispose()
   {
     Api.Dispose();
   }

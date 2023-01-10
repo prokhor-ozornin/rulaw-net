@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using Catharsis.Extensions;
 
 namespace RuLaw;
 
@@ -14,7 +14,7 @@ public static class IAuthoritiesApiExtensions
   /// <param name="api"></param>
   /// <param name="request"></param>
   /// <returns></returns>
-  public static IEnumerable<IAuthority> Federal(this IAuthoritiesApi api, IAuthoritiesApiRequest request = null) => api.FederalAsync(request).ToListAsync().Result;
+  public static IEnumerable<IAuthority> Federal(this IAuthoritiesApi api, IAuthoritiesApiRequest request = null) => api is not null ? api.FederalAsync(request).ToListAsync().Result : throw new ArgumentNullException(nameof(api));
 
   /// <summary>
   ///   <para></para>
@@ -22,7 +22,7 @@ public static class IAuthoritiesApiExtensions
   /// <param name="api"></param>
   /// <param name="action"></param>
   /// <returns></returns>
-  public static IEnumerable<IAuthority> Federal(this IAuthoritiesApi api, Action<IAuthoritiesApiRequest> action = null) => api.FederalAsync(action).ToListAsync().Result;
+  public static IEnumerable<IAuthority> Federal(this IAuthoritiesApi api, Action<IAuthoritiesApiRequest> action = null) => api is not null ? api.FederalAsync(action).ToListAsync().Result : throw new ArgumentNullException(nameof(api));
 
   /// <summary>
   ///   <para></para>
@@ -30,7 +30,7 @@ public static class IAuthoritiesApiExtensions
   /// <param name="api"></param>
   /// <param name="request"></param>
   /// <returns></returns>
-  public static IEnumerable<IAuthority> Regional(this IAuthoritiesApi api, IAuthoritiesApiRequest request = null) => api.RegionalAsync(request).ToListAsync().Result;
+  public static IEnumerable<IAuthority> Regional(this IAuthoritiesApi api, IAuthoritiesApiRequest request = null) => api is not null ? api.RegionalAsync(request).ToListAsync().Result : throw new ArgumentNullException(nameof(api));
 
   /// <summary>
   ///   <para></para>
@@ -38,7 +38,7 @@ public static class IAuthoritiesApiExtensions
   /// <param name="api"></param>
   /// <param name="action"></param>
   /// <returns></returns>
-  public static IEnumerable<IAuthority> Regional(this IAuthoritiesApi api, Action<IAuthoritiesApiRequest> action = null) => api.RegionalAsync(action).ToListAsync().Result;
+  public static IEnumerable<IAuthority> Regional(this IAuthoritiesApi api, Action<IAuthoritiesApiRequest> action = null) => api is not null ? api.RegionalAsync(action).ToListAsync().Result : throw new ArgumentNullException(nameof(api));
 
   /// <summary>
   ///   <para>Returns list of federal law authorities.</para>
@@ -51,6 +51,8 @@ public static class IAuthoritiesApiExtensions
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-federalnih-organov-vlasti"/>
   public static IAsyncEnumerable<IAuthority> FederalAsync(this IAuthoritiesApi api, Action<IAuthoritiesApiRequest> action = null, CancellationToken cancellation = default)
   {
+    if (api is null) throw new ArgumentNullException(nameof(api));
+
     var request = new AuthoritiesApiRequest();
 
     action?.Invoke(request);
@@ -69,6 +71,8 @@ public static class IAuthoritiesApiExtensions
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-regionalnih-organov-vlasti"/>
   public static IAsyncEnumerable<IAuthority> RegionalAsync(this IAuthoritiesApi api, Action<IAuthoritiesApiRequest> action = null, CancellationToken cancellation = default)
   {
+    if (api is null) throw new ArgumentNullException(nameof(api));
+
     var request = new AuthoritiesApiRequest();
 
     action?.Invoke(request);

@@ -12,7 +12,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="type">Type of laws.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest Type(this ILawsApiRequest request, LawTypes? type) => request.Type((int?) type);
+  public static ILawsApiRequest Type(this ILawsApiRequest request, LawTypes? type) => request is not null ? request.Type((int?) type) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies topic.</para>
@@ -20,7 +20,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="topic">Instance of topic.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest Topic(this ILawsApiRequest request, ITopic topic) => request.Topic(topic?.Id);
+  public static ILawsApiRequest Topic(this ILawsApiRequest request, ITopic topic) => request is not null ? request.Topic(topic?.Id) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies law's status.</para>
@@ -28,7 +28,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="status">Status of laws.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest Status(this ILawsApiRequest request, LawStatus? status) => request.Status((int?) status);
+  public static ILawsApiRequest Status(this ILawsApiRequest request, LawStatus? status) => request is not null ? request.Status((int?) status) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies law branch.</para>
@@ -36,7 +36,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="branch">Instance of law branch.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest Branch(this ILawsApiRequest request, ILawBranch branch) => request.Branch(branch?.Id);
+  public static ILawsApiRequest Branch(this ILawsApiRequest request, ILawBranch branch) => request is not null ? request.Branch(branch?.Id) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies deputy.</para>
@@ -44,7 +44,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="deputy">Instance of deputy.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest Deputy(this ILawsApiRequest request, IDeputy deputy) => request.Deputy(deputy?.Id);
+  public static ILawsApiRequest Deputy(this ILawsApiRequest request, IDeputy deputy) => request is not null ? request.Deputy(deputy?.Id) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies federal authority.</para>
@@ -52,7 +52,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="authority">Instance of authority.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest FederalAuthority(this ILawsApiRequest request, IAuthority authority) => request.FederalAuthority(authority?.Id);
+  public static ILawsApiRequest FederalAuthority(this ILawsApiRequest request, IAuthority authority) => request is not null ? request.FederalAuthority(authority?.Id) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies regional authority.</para>
@@ -60,7 +60,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="authority">Instance of authority.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest RegionalAuthority(this ILawsApiRequest request, IAuthority authority) => request.RegionalAuthority(authority?.Id);
+  public static ILawsApiRequest RegionalAuthority(this ILawsApiRequest request, IAuthority authority) => request is not null ? request.RegionalAuthority(authority?.Id) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies profile committee.</para>
@@ -68,7 +68,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="committee">Instance of committee.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest ProfileCommittee(this ILawsApiRequest request, ICommittee committee) => request.ProfileCommittee(committee?.Id);
+  public static ILawsApiRequest ProfileCommittee(this ILawsApiRequest request, ICommittee committee) => request is not null ? request.ProfileCommittee(committee?.Id) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies responsible committee.</para>
@@ -76,7 +76,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="committee">Instance of committee.</param>
   /// <param name="request">API call instance to use.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest ResponsibleCommittee(this ILawsApiRequest request, ICommittee committee) => request.ResponsibleCommittee(committee?.Id);
+  public static ILawsApiRequest ResponsibleCommittee(this ILawsApiRequest request, ICommittee committee) => request is not null ? request.ResponsibleCommittee(committee?.Id) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies so-executor committee.</para>
@@ -84,7 +84,7 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="committee">Instance of committee.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest SoExecutorCommittee(this ILawsApiRequest request, ICommittee committee) => request.SoExecutorCommittee(committee?.Id);
+  public static ILawsApiRequest SoExecutorCommittee(this ILawsApiRequest request, ICommittee committee) => request is not null ? request.SoExecutorCommittee(committee?.Id) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies type of laws sorting.</para>
@@ -94,6 +94,8 @@ public static class ILawsApiRequestExtensions
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
   public static ILawsApiRequest Sorting(this ILawsApiRequest request, LawsSorting? sort)
   {
+    if (request is null) throw new ArgumentNullException(nameof(request));
+
     return sort switch
     {
       LawsSorting.DateAscending => request.Sorting("date_asc"),
@@ -112,5 +114,5 @@ public static class ILawsApiRequestExtensions
   /// <param name="request">API call instance to use.</param>
   /// <param name="mode">Events search mode.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static ILawsApiRequest EventsSearchMode(this ILawsApiRequest request, LawsEventsSearchMode? mode) => request.EventsSearchMode((int?) mode);
+  public static ILawsApiRequest EventsSearchMode(this ILawsApiRequest request, LawsEventsSearchMode? mode) => request is not null ? request.EventsSearchMode((int?) mode) : throw new ArgumentNullException(nameof(request));
 }

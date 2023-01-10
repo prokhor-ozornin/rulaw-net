@@ -6,7 +6,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="IPeriodableExtensions"/>.</para>
 /// </summary>
-public sealed class IPeriodableExtensionsTest
+public sealed class IPeriodableExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IPeriodableExtensions.Period{T}(IEnumerable{T}, DateTimeOffset?, DateTimeOffset?)"/> method.</para>
@@ -14,7 +14,7 @@ public sealed class IPeriodableExtensionsTest
   [Fact]
   public void Period_Method()
   {
-    AssertionExtensions.Should(() => IPeriodableExtensions.Period<IPeriodable>(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IPeriodableExtensions.Period<IPeriodable>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
     Enumerable.Empty<PeriodableEntity>().Period().Should().NotBeNull().And.BeEmpty();
 

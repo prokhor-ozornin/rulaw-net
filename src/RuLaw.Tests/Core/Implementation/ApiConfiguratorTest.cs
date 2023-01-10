@@ -6,7 +6,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="ApiConfigurator"/>.</para>
 /// </summary>
-public sealed class ApiConfiguratorTest
+public sealed class ApiConfiguratorTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -26,8 +26,8 @@ public sealed class ApiConfiguratorTest
   [Fact]
   public void ApiKey_Method()
   {
-    AssertionExtensions.Should(() => new ApiConfigurator().ApiKey(null)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => new ApiConfigurator().ApiKey(string.Empty)).ThrowExactly<ArgumentException>();
+    AssertionExtensions.Should(() => new ApiConfigurator().ApiKey(null)).ThrowExactly<ArgumentNullException>().WithParameterName("key");
+    AssertionExtensions.Should(() => new ApiConfigurator().ApiKey(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("key");
 
     var configurator = new ApiConfigurator();
     configurator.ApiKey("apiKey").Should().NotBeNull().And.BeSameAs(configurator);
@@ -40,8 +40,8 @@ public sealed class ApiConfiguratorTest
   [Fact]
   public void AppKey_Method()
   {
-    AssertionExtensions.Should(() => new ApiConfigurator().AppKey(null)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => new ApiConfigurator().AppKey(string.Empty)).ThrowExactly<ArgumentException>();
+    AssertionExtensions.Should(() => new ApiConfigurator().AppKey(null)).ThrowExactly<ArgumentNullException>().WithParameterName("key");
+    AssertionExtensions.Should(() => new ApiConfigurator().AppKey(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("key");
 
     var configurator = new ApiConfigurator();
     configurator.AppKey("appKey").Should().NotBeNull().And.BeSameAs(configurator);

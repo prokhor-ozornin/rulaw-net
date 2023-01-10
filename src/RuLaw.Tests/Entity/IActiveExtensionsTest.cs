@@ -6,7 +6,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="IActiveExtensions"/>.</para>
 /// </summary>
-public sealed class IActiveExtensionsTest
+public sealed class IActiveExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IActiveExtensions.Active{TEntity}(IEnumerable{TEntity})"/> method.</para>
@@ -14,7 +14,7 @@ public sealed class IActiveExtensionsTest
   [Fact]
   public void Active_Method()
   {
-    AssertionExtensions.Should(() => IActiveExtensions.Active<IActive>(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IActiveExtensions.Active<IActive>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
     Enumerable.Empty<IActive>().Active().Should().NotBeNull().And.BeEmpty();
     new[] {null, new ActiveEntity {Active = true}, null, new ActiveEntity {Active = false}}.Active().Should().NotBeNullOrEmpty().And.ContainSingle();
@@ -26,7 +26,7 @@ public sealed class IActiveExtensionsTest
   [Fact]
   public void Inactive_Method()
   {
-    AssertionExtensions.Should(() => IActiveExtensions.Inactive<IActive>(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IActiveExtensions.Inactive<IActive>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
     Enumerable.Empty<IActive>().Inactive().Should().NotBeNull().And.BeEmpty();
     new[] {null, new ActiveEntity {Active = true}, null, new ActiveEntity {Active = false}}.Inactive().Should().NotBeNullOrEmpty().And.ContainSingle();

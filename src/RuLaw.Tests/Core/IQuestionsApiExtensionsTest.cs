@@ -2,18 +2,16 @@
 using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 
 namespace RuLaw.Tests.Core;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="IQuestionsApiExtensions"/>.</para>
 /// </summary>
-public sealed class IQuestionsApiExtensionsTest : IDisposable
+public sealed class IQuestionsApiExtensionsTest : UnitTest
 {
   private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
-  private CancellationToken Cancellation { get; } = new(true);
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -150,17 +148,20 @@ public sealed class IQuestionsApiExtensionsTest : IDisposable
       question.EndLine.Should().Be(6278);
     }
 
-    AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(Api.Questions, null, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
+      AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(Api.Questions, null, Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
 
-    var result = Api.Questions.SearchAsync(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)).Await();
-    Validate(result);
+      var result = Api.Questions.SearchAsync(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)).Await();
+      Validate(result);
+    }
   }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public void Dispose()
+  public override void Dispose()
   {
     Api.Dispose();
   }

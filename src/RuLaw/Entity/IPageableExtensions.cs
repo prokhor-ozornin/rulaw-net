@@ -1,6 +1,4 @@
-﻿using Catharsis.Commons;
-
-namespace RuLaw;
+﻿namespace RuLaw;
 
 /// <summary>
 ///   <para>Set of extension methods for interface <see cref="IPageable"/>.</para>
@@ -18,6 +16,8 @@ public static class IPageableExtensions
   /// <returns></returns>
   public static IEnumerable<TEntity> Page<TEntity>(this IEnumerable<TEntity> entities, int? from = null, int? to = null) where TEntity : IPageable
   {
+    if (entities is null) throw new ArgumentNullException(nameof(entities));
+
     if (from != null)
     {
       entities = entities.Where(entity => entity != null && entity.Page >= from);
@@ -41,6 +41,8 @@ public static class IPageableExtensions
   /// <returns></returns>
   public static IEnumerable<TEntity> PageSize<TEntity>(this IEnumerable<TEntity> entities, int? from = null, int? to = null) where TEntity : IPageable
   {
+    if (entities is null) throw new ArgumentNullException(nameof(entities));
+
     if (from != null)
     {
       entities = entities.Where(entity => entity != null && entity.PageSize >= from);

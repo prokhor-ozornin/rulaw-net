@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using Catharsis.Extensions;
 
 namespace RuLaw;
 
@@ -13,5 +13,5 @@ public static class ITopicsApiExtensions
   /// </summary>
   /// <param name="api">API caller instance to be used.</param>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-tematicheskih-blokov"/>
-  public static IEnumerable<ITopic> All(this ITopicsApi api) => api.AllAsync().ToListAsync().Result;
+  public static IEnumerable<ITopic> All(this ITopicsApi api) => api is not null ? api.AllAsync().ToListAsync().Result : throw new ArgumentNullException(nameof(api));
 }

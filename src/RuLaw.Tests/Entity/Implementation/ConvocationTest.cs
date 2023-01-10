@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Json;
 using Xunit;
@@ -8,7 +8,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Convocation"/>.</para>
 /// </summary>
-public sealed class ConvocationTest : UnitTest<Convocation>
+public sealed class ConvocationTest : EntityTest<Convocation>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Convocation.Id"/> property.</para>
@@ -114,7 +114,7 @@ public sealed class ConvocationTest : UnitTest<Convocation>
 /// <summary>
 ///   <para>Tests set for class <see cref="Convocation.Info"/>.</para>
 /// </summary>
-public sealed class ConvocationInfoTests : UnitTest<Convocation.Info>
+public sealed class ConvocationInfoTests : EntityTest<Convocation.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Convocation.Info.Id"/> property.</para>

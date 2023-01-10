@@ -6,7 +6,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="InstancesApiRequest"/>.</para>
 /// </summary>
-public sealed class InstancesApiRequestTest
+public sealed class InstancesApiRequestTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>

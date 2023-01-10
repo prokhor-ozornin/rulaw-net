@@ -20,7 +20,13 @@ public static class IVotesApiExtensions
   /// <param name="api">API caller instance to be used.</param>
   /// <param name="action">Delegate to configure additional parameters of request.</param>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
-  public static IVotesSearchResult Search(this IVotesApi api, Action<IVotesSearchApiRequest> action) => api.SearchAsync(action).Result;
+  public static IVotesSearchResult Search(this IVotesApi api, Action<IVotesSearchApiRequest> action)
+  {
+    if (api is null) throw new ArgumentNullException(nameof(api));
+    if (action is null) throw new ArgumentNullException(nameof(action));
+
+    return api.SearchAsync(action).Result;
+  }
 
   /// <summary>
   ///   <para>Returns results of votes search.</para>
@@ -33,6 +39,9 @@ public static class IVotesApiExtensions
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
   public static Task<IVotesSearchResult> SearchAsync(this IVotesApi api, Action<IVotesSearchApiRequest> action, CancellationToken cancellation = default)
   {
+    if (api is null) throw new ArgumentNullException(nameof(api));
+    if (action is null) throw new ArgumentNullException(nameof(action));
+
     var request = new VotesSearchApiRequest();
 
     action(request);

@@ -7,7 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyRequest"/>.</para>
 /// </summary>
-public sealed class DeputyRequestTest : UnitTest<DeputyRequest>
+public sealed class DeputyRequestTest : EntityTest<DeputyRequest>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.Id"/> property.</para>
@@ -164,7 +164,7 @@ public sealed class DeputyRequestTest : UnitTest<DeputyRequest>
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyRequest.Info"/>.</para>
 /// </summary>
-public sealed class DeputyRequestInfoTests : UnitTest<DeputyRequest.Info>
+public sealed class DeputyRequestInfoTests : EntityTest<DeputyRequest.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.Info.Id"/> property.</para>

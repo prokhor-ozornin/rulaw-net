@@ -6,7 +6,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="IDeputyRequestExtensions"/>.</para>
 /// </summary>
-public sealed class IDeputyRequestExtensionsTest
+public sealed class IDeputyRequestExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IDeputyRequestExtensions.Initiator{TEntity}(IEnumerable{TEntity}, string)"/> method.</para>
@@ -14,9 +14,9 @@ public sealed class IDeputyRequestExtensionsTest
   [Fact]
   public void Initiator_Method()
   {
-    AssertionExtensions.Should(() => IDeputyRequestExtensions.Initiator<IDeputyRequest>(null, "initiator")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyRequest>().Initiator(null)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyRequest>().Initiator(string.Empty)).ThrowExactly<ArgumentException>();
+    AssertionExtensions.Should(() => IDeputyRequestExtensions.Initiator<IDeputyRequest>(null, "initiator")).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
+    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyRequest>().Initiator(null)).ThrowExactly<ArgumentNullException>().WithParameterName("text");
+    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyRequest>().Initiator(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("text");
 
     Enumerable.Empty<IDeputyRequest>().Initiator("initiator").Should().NotBeNull().And.BeEmpty();
 
@@ -33,9 +33,9 @@ public sealed class IDeputyRequestExtensionsTest
   [Fact]
   public void Answer_Method()
   {
-    AssertionExtensions.Should(() => IDeputyRequestExtensions.Answer<IDeputyRequest>(null, "text")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyRequest>().Answer(null)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyRequest>().Answer(string.Empty)).ThrowExactly<ArgumentException>();
+    AssertionExtensions.Should(() => IDeputyRequestExtensions.Answer<IDeputyRequest>(null, "text")).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
+    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyRequest>().Answer(null)).ThrowExactly<ArgumentNullException>().WithParameterName("text");
+    AssertionExtensions.Should(() => Enumerable.Empty<IDeputyRequest>().Answer(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("text");
 
     Enumerable.Empty<IDeputyRequest>().Answer("answer").Should().NotBeNull().And.BeEmpty();
 
@@ -52,7 +52,7 @@ public sealed class IDeputyRequestExtensionsTest
   [Fact]
   public void SignDate_Method()
   {
-    AssertionExtensions.Should(() => IDeputyRequestExtensions.SignDate<IDeputyRequest>(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputyRequestExtensions.SignDate<IDeputyRequest>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
 
     var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
@@ -72,7 +72,7 @@ public sealed class IDeputyRequestExtensionsTest
   [Fact]
   public void ControlDate_Method()
   {
-    AssertionExtensions.Should(() => IDeputyRequestExtensions.ControlDate<IDeputyRequest>(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputyRequestExtensions.ControlDate<IDeputyRequest>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
 
     Enumerable.Empty<IDeputyRequest>().ControlDate().Should().NotBeNull().And.BeEmpty();
 

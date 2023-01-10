@@ -1,5 +1,5 @@
 ﻿using System.Configuration;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
@@ -9,11 +9,9 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="IVotesApiExtensions"/>.</para>
 /// </summary>
-public sealed class IVotesApiExtensionsTest : IDisposable
+public sealed class IVotesApiExtensionsTest : UnitTest
 {
   private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
-  private CancellationToken Cancellation { get; } = new(true);
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -37,8 +35,8 @@ public sealed class IVotesApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IVotesApiExtensions.Search(null, new VotesSearchApiRequest())).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => Api.Votes.Search((IVotesSearchApiRequest) null)).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IVotesApiExtensions.Search(null, new VotesSearchApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+      AssertionExtensions.Should(() => Api.Votes.Search((IVotesSearchApiRequest) null)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
       var result = Api.Votes.Search(new VotesSearchApiRequest().FromDate(DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(180))).ToDate(DateTimeOffset.UtcNow).Deputy(99111987));
       Validate(result);
@@ -46,8 +44,8 @@ public sealed class IVotesApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IVotesApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => Api.Votes.Search((Action<IVotesSearchApiRequest>) null)).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IVotesApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+      AssertionExtensions.Should(() => Api.Votes.Search((Action<IVotesSearchApiRequest>) null)).ThrowExactly<ArgumentNullException>().WithParameterName("action");
 
       var result = Api.Votes.Search(request => request.FromDate(DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(180))).ToDate(DateTimeOffset.UtcNow).Deputy(99111987));
       Validate(result);
@@ -70,18 +68,21 @@ public sealed class IVotesApiExtensionsTest : IDisposable
       vote.TotalVotesCount.Should().BePositive();
     }
 
-    AssertionExtensions.Should(() => IVotesApiExtensions.SearchAsync(null, _ => {})).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => IVotesApiExtensions.SearchAsync(Api.Votes, null)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => Api.Votes.SearchAsync(_ => { }, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IVotesApiExtensions.SearchAsync(null, _ => { })).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("api").Await();
+      AssertionExtensions.Should(() => IVotesApiExtensions.SearchAsync(Api.Votes, null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("action").Await();
+      AssertionExtensions.Should(() => Api.Votes.SearchAsync(_ => { }, Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
 
-    var result = Api.Votes.SearchAsync(request => request.FromDate(DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(180))).ToDate(DateTimeOffset.UtcNow).Deputy(99111987)).Await();
-    Validate(result);
+      var result = Api.Votes.SearchAsync(request => request.FromDate(DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(180))).ToDate(DateTimeOffset.UtcNow).Deputy(99111987)).Await();
+      Validate(result);
+    }
   }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public void Dispose()
+  public override void Dispose()
   {
     Api.Dispose();
   }

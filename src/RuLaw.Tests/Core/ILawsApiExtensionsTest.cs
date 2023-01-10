@@ -2,24 +2,22 @@
 using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 
 namespace RuLaw.Tests.Core;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="ILawsApiExtensions"/>.</para>
 /// </summary>
-public sealed class ILawsApiExtensionsTest : IDisposable
+public sealed class ILawsApiExtensionsTest : UnitTest
 {
   private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
-  private CancellationToken Cancellation { get; } = new(true);
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
   ///   <list type="bullet">
-  ///     <item><description><see cref="ILawsApiExtensions.SearchAsync"/></description></item>
-  ///     <item><description><see cref="ILawsApiExtensions.Search(ILawsApi, out ILawsSearchResult?, Action{ILawsApiRequest}, CancellationToken)"/></description></item>
+  ///     <item><description><see cref="ILawsApiExtensions.Search(ILawsApi, ILawsApiRequest)"/></description></item>
+  ///     <item><description><see cref="ILawsApiExtensions.Search(ILawsApi, Action{ILawsApiRequest})"/></description></item>
   ///   </list>
   /// </summary>
   [Fact]
@@ -96,8 +94,8 @@ public sealed class ILawsApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => ILawsApiExtensions.Search(null, new LawsApiRequest())).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => Api.Laws.Search((ILawsApiRequest) null)).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => ILawsApiExtensions.Search(null, new LawsApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+      AssertionExtensions.Should(() => Api.Laws.Search((ILawsApiRequest) null)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
       var result = Api.Laws.Search(new LawsApiRequest().Name("курение").Sorting(LawsSorting.DateDescending));
       Validate(result);
@@ -105,8 +103,8 @@ public sealed class ILawsApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => ILawsApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => Api.Laws.Search((Action<ILawsApiRequest>) null)).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => ILawsApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+      AssertionExtensions.Should(() => Api.Laws.Search((Action<ILawsApiRequest>) null)).ThrowExactly<ArgumentNullException>().WithParameterName("action");
 
       var result = Api.Laws.Search(request => request.Name("курение").Sorting(LawsSorting.DateDescending));
       Validate(result);
@@ -188,18 +186,21 @@ public sealed class ILawsApiExtensionsTest : IDisposable
       law.Url.Should().Be("http://sozd.parlament.gov.ru/bill/170826-6");
     }
 
-    AssertionExtensions.Should(() => ILawsApiExtensions.SearchAsync(null, _ => { })).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => ILawsApiExtensions.SearchAsync(Api.Laws, null)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => Api.Laws.SearchAsync(_ => { }, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ILawsApiExtensions.SearchAsync(null, _ => { })).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("api").Await();
+      AssertionExtensions.Should(() => ILawsApiExtensions.SearchAsync(Api.Laws, null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("action").Await();
+      AssertionExtensions.Should(() => Api.Laws.SearchAsync(_ => { }, Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
 
-    var result = Api.Laws.SearchAsync(request => request.Name("курение").Sorting(LawsSorting.DateDescending)).Await();
-    Validate(result);
+      var result = Api.Laws.SearchAsync(request => request.Name("курение").Sorting(LawsSorting.DateDescending)).Await();
+      Validate(result);
+    }
   }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public void Dispose()
+  public override void Dispose()
   {
     Api.Dispose();
   }

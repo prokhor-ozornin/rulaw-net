@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using Catharsis.Extensions;
 
 namespace RuLaw;
 
@@ -13,5 +13,5 @@ public static class IStagesApiExtensions
   /// </summary>
   /// <param name="api">API caller instance to be used.</param>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-stadiy-rassmotreniya"/>
-  public static IEnumerable<IPhaseStage> All(this IStagesApi api) => api.AllAsync().ToListAsync().Result;
+  public static IEnumerable<IPhaseStage> All(this IStagesApi api) => api is not null ? api.AllAsync().ToListAsync().Result : throw new ArgumentNullException(nameof(api));
 }

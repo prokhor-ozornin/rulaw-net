@@ -1,11 +1,11 @@
 ﻿using Xunit;
 
-namespace RuLaw;
+namespace RuLaw.Tests;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="JsonRestSerializer"/>.</para>
 /// </summary>
-public sealed class JsonRestSerializerTest
+public sealed class JsonRestSerializerTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of following methods :</para>

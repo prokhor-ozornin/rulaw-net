@@ -7,7 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="TranscriptVote"/>.</para>
 /// </summary>
-public sealed class TranscriptVoteTest : UnitTest<TranscriptVote>
+public sealed class TranscriptVoteTest : EntityTest<TranscriptVote>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="TranscriptVote.Date"/> property.</para>
@@ -77,7 +77,7 @@ public sealed class TranscriptVoteTest : UnitTest<TranscriptVote>
 /// <summary>
 ///   <para>Tests set for class <see cref="TranscriptVote.Info"/>.</para>
 /// </summary>
-public sealed class TranscriptVoteInfoTests : UnitTest<TranscriptVote.Info>
+public sealed class TranscriptVoteInfoTests : EntityTest<TranscriptVote.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="TranscriptVote.Info.Date"/> property.</para>

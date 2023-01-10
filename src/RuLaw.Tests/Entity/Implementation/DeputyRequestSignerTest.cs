@@ -7,7 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyRequestSigner"/>.</para>
 /// </summary>
-public sealed class DeputyRequestSignerTest : UnitTest<DeputyRequestSigner>
+public sealed class DeputyRequestSignerTest : EntityTest<DeputyRequestSigner>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestSigner.Id"/> property.</para>
@@ -75,7 +75,7 @@ public sealed class DeputyRequestSignerTest : UnitTest<DeputyRequestSigner>
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyRequestSigner.Info"/>.</para>
 /// </summary>
-public sealed class DeputyRequestSignerInfoTests : UnitTest<DeputyRequestSigner.Info>
+public sealed class DeputyRequestSignerInfoTests : EntityTest<DeputyRequestSigner.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestSigner.Info.Id"/> property.</para>

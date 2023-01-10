@@ -14,6 +14,8 @@ public static class IDeputiesApiRequestExtensions
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
   public static IDeputiesApiRequest Position(this IDeputiesApiRequest request, DeputyPosition? position)
   {
+    if (request is null) throw new ArgumentNullException(nameof(request));
+
     return position switch
     {
       DeputyPosition.DumaDeputy => request.Position("Депутат ГД"),

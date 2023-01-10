@@ -1,5 +1,5 @@
 ﻿using System.Configuration;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
@@ -9,11 +9,9 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="IAuthoritiesApiExtensions"/>.</para>
 /// </summary>
-public sealed class IAuthoritiesApiExtensionsTest : IDisposable
+public sealed class IAuthoritiesApiExtensionsTest : UnitTest
 {
-  private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-  
-  private CancellationToken Cancellation { get; } = new(true);
+  private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(/*ConfigurationManager.AppSettings["ApiKey"]*/"api").AppKey(ConfigurationManager.AppSettings["AppKey"]));
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -38,7 +36,7 @@ public sealed class IAuthoritiesApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Federal(null, new AuthoritiesApiRequest())).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Federal(null, new AuthoritiesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
       var authorities = Api.Authorities.Federal(new AuthoritiesApiRequest().Current());
       Validate(authorities);
@@ -46,7 +44,7 @@ public sealed class IAuthoritiesApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Federal(null, _ => {})).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Federal(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
       var authorities = Api.Authorities.Federal(request => request.Current());
       Validate(authorities);
@@ -76,7 +74,7 @@ public sealed class IAuthoritiesApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Regional(null, new AuthoritiesApiRequest())).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Regional(null, new AuthoritiesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
       var authorities = Api.Authorities.Regional(new AuthoritiesApiRequest().Current(false));
       Validate(authorities);
@@ -84,7 +82,7 @@ public sealed class IAuthoritiesApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Regional(null, _ => { })).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Regional(null, _ => { })).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
       var authorities = Api.Authorities.Regional(request => request.Current(false));
       Validate(authorities);
@@ -110,11 +108,14 @@ public sealed class IAuthoritiesApiExtensionsTest : IDisposable
       authority.ToDate.Should().BeNull();
     }
 
-    AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(null)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(Api.Authorities, null, Cancellation)).ThrowExactly<TaskCanceledException>();
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(Api.Authorities, null, Cancellation)).ThrowExactly<OperationCanceledException>();
 
-    var authorities = Api.Authorities.FederalAsync(new AuthoritiesApiRequest().Current());
-    Validate(authorities);
+      var authorities = Api.Authorities.FederalAsync(new AuthoritiesApiRequest().Current());
+      Validate(authorities);
+    }
   }
 
   /// <summary>
@@ -136,17 +137,20 @@ public sealed class IAuthoritiesApiExtensionsTest : IDisposable
       authority.ToDate.Should().HaveYear(2008).And.HaveMonth(10).And.HaveDay(12).And.HaveOffset(TimeSpan.Zero);
     }
 
-    AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(null)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(Api.Authorities, null, Cancellation)).ThrowExactly<TaskCanceledException>();
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(Api.Authorities, null, Cancellation)).ThrowExactly<OperationCanceledException>();
 
-    var authorities = Api.Authorities.RegionalAsync(new AuthoritiesApiRequest().Current(false));
-    Validate(authorities);
+      var authorities = Api.Authorities.RegionalAsync(new AuthoritiesApiRequest().Current(false));
+      Validate(authorities);
+    }
   }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public void Dispose()
+  public override void Dispose()
   {
     Api.Dispose();
   }

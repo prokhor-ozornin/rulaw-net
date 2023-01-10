@@ -12,7 +12,7 @@ public static class IQuestionsApiExtensions
   /// <param name="api"></param>
   /// <param name="request"></param>
   /// <returns></returns>
-  public static IQuestionsSearchResult Search(this IQuestionsApi api, IQuestionsApiRequest request = null) => api.SearchAsync(request).Result;
+  public static IQuestionsSearchResult Search(this IQuestionsApi api, IQuestionsApiRequest request = null) => api is not null ? api.SearchAsync(request).Result : throw new ArgumentNullException(nameof(api));
 
   /// <summary>
   ///   <para>Returns list of questions of the meetings agenda of the State Duma.</para>
@@ -20,7 +20,7 @@ public static class IQuestionsApiExtensions
   /// <param name="api">API caller instance to be used.</param>
   /// <param name="action">Delegate to configure additional parameters of request.</param>
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
-  public static IQuestionsSearchResult Search(this IQuestionsApi api, Action<IQuestionsApiRequest> action = null) => api.SearchAsync(action).Result;
+  public static IQuestionsSearchResult Search(this IQuestionsApi api, Action<IQuestionsApiRequest> action = null) => api is not null ? api.SearchAsync(action).Result : throw new ArgumentNullException(nameof(api));
 
   /// <summary>
   ///   <para>Returns list of questions of the meetings agenda of the State Duma.</para>
@@ -33,6 +33,8 @@ public static class IQuestionsApiExtensions
   /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
   public static Task<IQuestionsSearchResult> SearchAsync(this IQuestionsApi api, Action<IQuestionsApiRequest> action = null, CancellationToken cancellation = default)
   {
+    if (api is null) throw new ArgumentNullException(nameof(api));
+
     var request = new QuestionsApiRequest();
 
     action?.Invoke(request);

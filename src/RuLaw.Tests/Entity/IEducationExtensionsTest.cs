@@ -6,7 +6,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="IEducationExtensions"/>.</para>
 /// </summary>
-public sealed class IEducationExtensionsTest
+public sealed class IEducationExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IEducationExtensions.Institution{TEntity}(IEnumerable{TEntity}, string)"/> method.</para>
@@ -14,9 +14,9 @@ public sealed class IEducationExtensionsTest
   [Fact]
   public void Institution_Method()
   {
-    AssertionExtensions.Should(() => IEducationExtensions.Institution<IEducation>(null, "institution")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IEducation>().Institution(null)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<IEducation>().Institution(string.Empty)).ThrowExactly<ArgumentException>();
+    AssertionExtensions.Should(() => IEducationExtensions.Institution<IEducation>(null, "institution")).ThrowExactly<ArgumentNullException>().WithParameterName("educations");
+    AssertionExtensions.Should(() => Enumerable.Empty<IEducation>().Institution(null)).ThrowExactly<ArgumentNullException>().WithParameterName("institution");
+    AssertionExtensions.Should(() => Enumerable.Empty<IEducation>().Institution(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("institution");
 
     Enumerable.Empty<IEducation>().Institution("institution").Should().NotBeNull().And.BeEmpty();
 

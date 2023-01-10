@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using Catharsis.Extensions;
 using RestSharp;
 using FluentAssertions;
 using Xunit;
@@ -9,13 +9,9 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Api"/>.</para>
 /// </summary>
-public sealed class ApiTest : IDisposable
+public sealed class ApiTest : UnitTest
 {
   private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
-  private CancellationToken Cancellation { get; } = new(true);
-
-  private Random Randomizer { get; } = new();
 
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -24,12 +20,12 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void Constructors()
   {
-    var api = new Api("apiToken", "appToken");
+    var api = new Api("{apiToken}", "{appToken}");
 
     using (api)
     {
-      api.ApiToken.Should().Be("apiToken");
-      api.AppToken.Should().Be("appToken");
+      api.GetFieldValue<string>("apiToken").Should().Be("{apiToken}");
+      api.GetFieldValue<string>("appToken").Should().Be("{appToken}");
 
       var client = api.GetFieldValue< RestClient>("restClient");
       //client.BaseUrl.ToString().Should().Be("http://api.duma.gov.ru/api");
@@ -61,7 +57,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void BranchesApi_AllAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Branches.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>();
+    AssertionExtensions.Should(() => Api.Branches.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
 
     var branches = Api.Branches.AllAsync().ToListAsync().Await();
     branches.Should().NotBeNullOrEmpty().And.BeOfType<List<LawBranch>>();
@@ -76,7 +72,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void CommitteesApi_AllAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Committees.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Committees.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var committees = Api.Committees.AllAsync().ToListAsync().Await();
     
@@ -93,7 +89,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void DeputiesApi_FindAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Deputies.FindAsync(0, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Deputies.FindAsync(0, Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var deputy = Api.Deputies.FindAsync(99100142).Await();
     
@@ -125,7 +121,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void DeputiesApi_SearchAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Deputies.SearchAsync(null, Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Deputies.SearchAsync(null, Cancellation).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var deputies = Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToListAsync().Await();
 
@@ -143,7 +139,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void AuthoritiesApi_FederalAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Authorities.FederalAsync(null, Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Authorities.FederalAsync(null, Cancellation).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var authorities = Api.Authorities.FederalAsync(request => request.Current()).ToListAsync().Await();
 
@@ -162,7 +158,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void AuthoritiesApi_RegionalAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Authorities.RegionalAsync(null, Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Authorities.RegionalAsync(null, Cancellation).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var authorities = Api.Authorities.RegionalAsync(request => request.Current(false)).ToListAsync().Await();
 
@@ -181,7 +177,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void InstancesApi_SearchAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Instances.SearchAsync(null, Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Instances.SearchAsync(null, Cancellation).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var instances = Api.Instances.SearchAsync().ToListAsync().Await();
     instances.Should().NotBeNullOrEmpty().And.BeOfType<List<Instance>>();
@@ -202,7 +198,8 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void LawsApi_SearchAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Laws.SearchAsync(null, Cancellation)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Api.Laws.SearchAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Api.Laws.SearchAsync(new LawsApiRequest(), Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var result = Api.Laws.SearchAsync(new LawsApiRequest().Name("курение").Sorting(LawsSorting.DateDescending)).Await();
 
@@ -277,7 +274,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void ConvocationsApi_AllAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Convocations.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Api.Convocations.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
     
     var convocations = Api.Convocations.AllAsync().ToListAsync().Await();
 
@@ -308,7 +305,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void QuestionsApi_SearchAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Questions.SearchAsync(null, Cancellation).Await()).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => Api.Questions.SearchAsync(null, Cancellation).Await()).ThrowExactly<OperationCanceledException>();
 
     var result = Api.Questions.SearchAsync(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)).Await();
 
@@ -365,7 +362,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void RequestsApi_AllAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Questions.SearchAsync(null, Cancellation).Await()).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => Api.Questions.SearchAsync(null, Cancellation).Await()).ThrowExactly<OperationCanceledException>();
 
     var requests = Api.Requests.AllAsync().ToListAsync().Await();
 
@@ -396,7 +393,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void StagesApi_AllAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Stages.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>();
+    AssertionExtensions.Should(() => Api.Stages.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
 
     var stages = Api.Stages.AllAsync().ToListAsync().Await();
 
@@ -438,7 +435,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void TopicsApi_AllAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Topics.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>();
+    AssertionExtensions.Should(() => Api.Topics.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
 
     var topics = Api.Topics.AllAsync().ToListAsync().Await();
 
@@ -455,7 +452,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void TranscriptsApi_DateAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Topics.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<TaskCanceledException>();
+    AssertionExtensions.Should(() => Api.Topics.AllAsync(Cancellation).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
 
     var result = Api.Transcripts.DateAsync(new DateTimeOffset(year: 2013, month: 5, day: 14, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Await();
 
@@ -484,7 +481,7 @@ public sealed class ApiTest : IDisposable
   public void TranscriptsApi_DeputyAsync_Method()
   {
     AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync(new DeputyTranscriptApiRequest(), Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync(new DeputyTranscriptApiRequest(), Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var result = Api.Transcripts.DeputyAsync(new DeputyTranscriptApiRequest().Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)).Await();
 
@@ -513,7 +510,7 @@ public sealed class ApiTest : IDisposable
   {
     AssertionExtensions.Should(() => Api.Transcripts.LawAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
     AssertionExtensions.Should(() => Api.Transcripts.LawAsync(string.Empty)).ThrowExactlyAsync<ArgumentException>().Await();
-    AssertionExtensions.Should(() => Api.Transcripts.LawAsync(Randomizer.Letters(25), Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.LawAsync(Randomizer.Letters(25), Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var result = Api.Transcripts.LawAsync("140513-6").Await();
 
@@ -570,7 +567,7 @@ public sealed class ApiTest : IDisposable
   [Fact]
   public void TranscriptsApi_QuestionAsync_Method()
   {
-    AssertionExtensions.Should(() => Api.Transcripts.QuestionAsync(0, 0, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.QuestionAsync(0, 0, Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var result = Api.Transcripts.QuestionAsync(80, 13).Await();
 
@@ -606,7 +603,7 @@ public sealed class ApiTest : IDisposable
   {
     AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
     AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(string.Empty)).ThrowExactlyAsync<ArgumentException>().Await();
-    AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(Randomizer.Letters(25), Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(Randomizer.Letters(25), Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var result = Api.Transcripts.ResolutionAsync("276569-6").Await();
 
@@ -652,7 +649,7 @@ public sealed class ApiTest : IDisposable
   public void VotesApi_SearchAsync_Method()
   {
     AssertionExtensions.Should(() => Api.Votes.SearchAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => Api.Votes.SearchAsync(_ => {}, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Api.Votes.SearchAsync(_ => {}, Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var result = Api.Votes.SearchAsync(request => request.FromDate(DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(180))).ToDate(DateTimeOffset.UtcNow)).Await();
 
@@ -664,7 +661,7 @@ public sealed class ApiTest : IDisposable
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public void Dispose()
+  public override void Dispose()
   {
     Api.Dispose();
   }

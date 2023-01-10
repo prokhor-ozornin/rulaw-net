@@ -7,7 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Committee"/>.</para>
 /// </summary>
-public sealed class CommitteeTest : UnitTest<Committee>
+public sealed class CommitteeTest : EntityTest<Committee>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Committee.Id"/> property.</para>
@@ -102,7 +102,7 @@ public sealed class CommitteeTest : UnitTest<Committee>
 /// <summary>
 ///   <para>Tests set for class <see cref="Committee.Info"/>.</para>
 /// </summary>
-public sealed class CommitteeInfoTests : UnitTest<Committee.Info>
+public sealed class CommitteeInfoTests : EntityTest<Committee.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Committee.Info.Id"/> property.</para>

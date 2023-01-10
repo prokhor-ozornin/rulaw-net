@@ -13,6 +13,9 @@ public static class IRuLawApiExtensions
   /// <param name="action">Delegate to perform API setup process.</param>
   public static IApi Configure(this IRuLawApi api, Action<IApiConfigurator> action)
   {
+    if (api is null) throw new ArgumentNullException(nameof(api));
+    if (action is null) throw new ArgumentNullException(nameof(action));
+
     var configurator = new ApiConfigurator();
 
     action(configurator);

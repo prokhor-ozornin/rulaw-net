@@ -7,7 +7,7 @@ namespace RuLaw.Tests;
 ///   <para>Tests set for class <see cref="IVotesSearchApiRequestExtensions"/>.</para>
 /// </summary>
 /// <seealso cref="IVotesSearchApiRequestExtensions"/>
-public sealed class IVotesSearchApiRequestExtensionsTest
+public sealed class IVotesSearchApiRequestExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IVotesSearchApiRequestExtensions.Deputy(IVotesSearchApiRequest, IDeputy)"/> method.</para>
@@ -15,8 +15,7 @@ public sealed class IVotesSearchApiRequestExtensionsTest
   [Fact]
   public void Deputy_Method()
   {
-    AssertionExtensions.Should(() => IVotesSearchApiRequestExtensions.Deputy(null, new Deputy())).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => new VotesSearchApiRequest().Deputy(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IVotesSearchApiRequestExtensions.Deputy(null, new Deputy())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
     var request = new VotesSearchApiRequest();
     request.Parameters.Should().BeEmpty();
@@ -34,8 +33,7 @@ public sealed class IVotesSearchApiRequestExtensionsTest
   [Fact]
   public void Convocation_Method()
   {
-    AssertionExtensions.Should(() => IVotesSearchApiRequestExtensions.Convocation(null, new Convocation())).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => new VotesSearchApiRequest().Convocation(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IVotesSearchApiRequestExtensions.Convocation(null, new Convocation())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
     var request = new VotesSearchApiRequest();
     

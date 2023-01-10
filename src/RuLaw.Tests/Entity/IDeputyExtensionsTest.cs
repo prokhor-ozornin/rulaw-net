@@ -7,7 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="IDeputyExtensions"/>.</para>
 /// </summary>
-public sealed class IDeputyExtensionsTest
+public sealed class IDeputyExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -21,7 +21,7 @@ public sealed class IDeputyExtensionsTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IDeputyExtensions.Position(null)).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IDeputyExtensions.Position(null)).ThrowExactly<ArgumentNullException>().WithParameterName("deputy");
       AssertionExtensions.Should(() => new Deputy(new { Position = "position" }).Position()).ThrowExactly<InvalidOperationException>();
 
       new Deputy().Position().Should().BeNull();
@@ -31,9 +31,9 @@ public sealed class IDeputyExtensionsTest
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IDeputyExtensions.Position<IDeputy>(null, "position")).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputy>().Position(null)).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputy>().Position(string.Empty)).ThrowExactly<ArgumentException>();
+      AssertionExtensions.Should(() => IDeputyExtensions.Position<IDeputy>(null, "position")).ThrowExactly<ArgumentNullException>().WithParameterName("deputies");
+      AssertionExtensions.Should(() => Enumerable.Empty<IDeputy>().Position(null)).ThrowExactly<ArgumentNullException>().WithParameterName("position");
+      AssertionExtensions.Should(() => Enumerable.Empty<IDeputy>().Position(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("position");
 
       Enumerable.Empty<IDeputy>().Position("position").Should().NotBeNull().And.BeEmpty();
       var first = new Deputy(new {Position = "First"});

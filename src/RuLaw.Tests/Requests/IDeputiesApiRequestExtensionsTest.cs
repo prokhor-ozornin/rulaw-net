@@ -6,7 +6,7 @@ namespace RuLaw.Tests.Calls;
 /// <summary>
 ///   <para>Tests set for class <see cref="IDeputiesApiRequestExtensions"/>.</para>
 /// </summary>
-public sealed class IDeputiesLawApiCallExtensionsTests
+public sealed class IDeputiesLawApiCallExtensionsTests : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IDeputiesApiRequestExtensions.Position(IDeputiesApiRequest, DeputyPosition?)"/> method.</para>
@@ -14,7 +14,7 @@ public sealed class IDeputiesLawApiCallExtensionsTests
   [Fact]
   public void Position_Method()
   {
-    AssertionExtensions.Should(() => IDeputiesApiRequestExtensions.Position(null, DeputyPosition.DumaDeputy)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputiesApiRequestExtensions.Position(null, DeputyPosition.DumaDeputy)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
     var request = new DeputiesApiRequest();
 

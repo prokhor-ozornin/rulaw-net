@@ -7,7 +7,7 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="IRequestsApiExtensions"/>.</para>
 /// </summary>
-public sealed class IRequestsApiExtensionsTest : IDisposable
+public sealed class IRequestsApiExtensionsTest : UnitTest
 {
   private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
 
@@ -17,7 +17,7 @@ public sealed class IRequestsApiExtensionsTest : IDisposable
   [Fact]
   public void All_Method()
   {
-    AssertionExtensions.Should(() => IRequestsApiExtensions.All(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IRequestsApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
     var requests = Api.Requests.All();
 
@@ -45,7 +45,7 @@ public sealed class IRequestsApiExtensionsTest : IDisposable
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public void Dispose()
+  public override void Dispose()
   {
     Api.Dispose();
   }

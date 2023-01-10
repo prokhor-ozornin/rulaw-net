@@ -16,6 +16,8 @@ public static class IPeriodableExtensions
   /// <returns>Filters sequence of entities.</returns>
   public static IEnumerable<TEntity> Period<TEntity>(this IEnumerable<TEntity> entities, DateTimeOffset? from = null, DateTimeOffset? to = null) where TEntity : IPeriodable
   {
+    if (entities is null) throw new ArgumentNullException(nameof(entities));
+
     if (from != null)
     {
       entities = entities.Where(entity => entity != null && entity.FromDate >= from);

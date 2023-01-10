@@ -6,7 +6,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="IDeputyTranscriptApiRequestExtensions"/>.</para>
 /// </summary>
-public sealed class IDeputyTranscriptApiRequestExtensionsTest
+public sealed class IDeputyTranscriptApiRequestExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IDeputyTranscriptApiRequestExtensions.Deputy(IDeputyTranscriptApiRequest, IDeputy?)"/> method.</para>
@@ -14,8 +14,8 @@ public sealed class IDeputyTranscriptApiRequestExtensionsTest
   [Fact]
   public void Deputy_Method()
   {
-    AssertionExtensions.Should(() => IDeputyTranscriptApiRequestExtensions.Deputy(null, new Deputy(new Deputy.Info()))).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => new DeputyTranscriptApiRequest().Deputy(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputyTranscriptApiRequestExtensions.Deputy(null, new Deputy(new Deputy.Info()))).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+    AssertionExtensions.Should(() => new DeputyTranscriptApiRequest().Deputy(null)).ThrowExactly<ArgumentNullException>().WithParameterName("deputy");
 
     var request = new DeputyTranscriptApiRequest();
 

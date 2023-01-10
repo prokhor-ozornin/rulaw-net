@@ -7,7 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="LawEvent"/>.</para>
 /// </summary>
-public sealed class LawEventTest : UnitTest<LawEvent>
+public sealed class LawEventTest : EntityTest<LawEvent>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEvent.Date"/> property.</para>
@@ -98,7 +98,7 @@ public sealed class LawEventTest : UnitTest<LawEvent>
 /// <summary>
 ///   <para>Tests set for class <see cref="LawEvent.Info"/>.</para>
 /// </summary>
-public sealed class LawEventInfoTests : UnitTest<LawEvent.Info>
+public sealed class LawEventInfoTests : EntityTest<LawEvent.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEvent.Info.Date"/> property.</para>

@@ -7,7 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="StagePhase"/>.</para>
 /// </summary>
-public sealed class StagePhaseTest : UnitTest<StagePhase>
+public sealed class StagePhaseTest : EntityTest<StagePhase>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="StagePhase.Id"/> property.</para>
@@ -88,7 +88,7 @@ public sealed class StagePhaseTest : UnitTest<StagePhase>
 /// <summary>
 ///   <para>Tests set for class <see cref="StagePhase.Info"/>.</para>
 /// </summary>
-public sealed class StagePhaseInfoTests : UnitTest<StagePhase.Info>
+public sealed class StagePhaseInfoTests : EntityTest<StagePhase.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="StagePhase.Info.Id"/> property.</para>

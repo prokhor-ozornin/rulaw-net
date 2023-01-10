@@ -1,5 +1,5 @@
 ﻿using System.Configuration;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
@@ -9,11 +9,9 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="IDeputiesApiExtensions"/>.</para>
 /// </summary>
-public sealed class IDeputiesApiExtensionsTest : IDisposable
+public sealed class IDeputiesApiExtensionsTest : UnitTest
 {
   private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
-  private CancellationToken Cancellation { get; } = new(true);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="IDeputiesApiExtensions.Find(IDeputiesApi, long)"/> method.</para>
@@ -21,7 +19,7 @@ public sealed class IDeputiesApiExtensionsTest : IDisposable
   [Fact]
   public void Find_Method()
   {
-    AssertionExtensions.Should(() => IDeputiesApiExtensions.Find(null, 1)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IDeputiesApiExtensions.Find(null, 1)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
     var deputy = Api.Deputies.Find(99100142);
 
@@ -70,7 +68,7 @@ public sealed class IDeputiesApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null, new DeputiesApiRequest())).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null, new DeputiesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => Api.Deputies.Search((IDeputiesApiRequest) null)).ThrowExactly<TaskCanceledException>();
 
       var deputies = Api.Deputies.Search(new DeputiesApiRequest().Position(DeputyPosition.DumaDeputy).Current(false).Name("А"));
@@ -79,7 +77,7 @@ public sealed class IDeputiesApiExtensionsTest : IDisposable
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => Api.Deputies.Search((Action<IDeputiesApiRequest>) null)).ThrowExactly<TaskCanceledException>();
 
       var deputies = Api.Deputies.Search(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А"));
@@ -93,26 +91,23 @@ public sealed class IDeputiesApiExtensionsTest : IDisposable
   [Fact]
   public void SearchAsync_Method()
   {
-    using (new AssertionScope())
-    {
-      AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(null, _ => {})).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(Api.Deputies, null, Cancellation)).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+    AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(Api.Deputies, null, Cancellation)).ThrowExactly<OperationCanceledException>();
 
-      var deputies = Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToListAsync().Await();
+    var deputies = Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToListAsync().Await();
 
-      deputies.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
+    deputies.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
 
-      var deputy = deputies.Single(deputy => deputy.Id == 99100491);
-      deputy.Name.Should().Be("Абдулатипов Рамазан Гаджимурадович");
-      deputy.Position.Should().Be("Депутат ГД");
-      deputy.Active.Should().BeFalse();
-    }
+    var deputy = deputies.Single(deputy => deputy.Id == 99100491);
+    deputy.Name.Should().Be("Абдулатипов Рамазан Гаджимурадович");
+    deputy.Position.Should().Be("Депутат ГД");
+    deputy.Active.Should().BeFalse();
   }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public void Dispose()
+  public override void Dispose()
   {
     Api.Dispose();
   }

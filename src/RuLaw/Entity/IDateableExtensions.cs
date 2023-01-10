@@ -16,6 +16,8 @@ public static class IDateableExtensions
   /// <returns>Filtered sequence of entities with creation date and time ranging inclusively from <paramref name="from"/> to <paramref name="to"/>.</returns>
   public static IEnumerable<TEntity> Date<TEntity>(this IEnumerable<TEntity> entities, DateTimeOffset? from = null, DateTimeOffset? to = null) where TEntity : IDateable
   {
+    if (entities is null) throw new ArgumentNullException(nameof(entities));
+
     if (from != null)
     {
       entities = entities.Where(entity => entity != null && entity.Date >= from.Value);

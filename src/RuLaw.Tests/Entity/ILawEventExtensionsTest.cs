@@ -6,7 +6,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="ILawEventExtensions"/>.</para>
 /// </summary>
-public sealed class ILawEventExtensionsTest
+public sealed class ILawEventExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="ILawEventExtensions.Solution{TEntity}(IEnumerable{TEntity}, string)"/> method.</para>
@@ -14,9 +14,9 @@ public sealed class ILawEventExtensionsTest
   [Fact]
   public void Solution_Method()
   {
-    AssertionExtensions.Should(() => ILawEventExtensions.Solution<ILawEvent>(null, "solution")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<ILawEvent>().Solution(null)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Enumerable.Empty<ILawEvent>().Solution(string.Empty)).ThrowExactly<ArgumentException>();
+    AssertionExtensions.Should(() => ILawEventExtensions.Solution<ILawEvent>(null, "solution")).ThrowExactly<ArgumentNullException>().WithParameterName("events");
+    AssertionExtensions.Should(() => Enumerable.Empty<ILawEvent>().Solution(null)).ThrowExactly<ArgumentNullException>().WithParameterName("solution");
+    AssertionExtensions.Should(() => Enumerable.Empty<ILawEvent>().Solution(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("solution");
 
     Enumerable.Empty<ILawEvent>().Solution("solution").Should().NotBeNull().And.BeEmpty();
 

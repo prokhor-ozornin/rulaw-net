@@ -7,7 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Session"/>.</para>
 /// </summary>
-public sealed class SessionTest : UnitTest<Session>
+public sealed class SessionTest : EntityTest<Session>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Session.Id"/> property.</para>
@@ -93,7 +93,7 @@ public sealed class SessionTest : UnitTest<Session>
 /// <summary>
 ///   <para>Tests set for class <see cref="Session.Info"/>.</para>
 /// </summary>
-public sealed class SessionInfoTests : UnitTest<Session.Info>
+public sealed class SessionInfoTests : EntityTest<Session.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Session.Info.Id"/> property.</para>
