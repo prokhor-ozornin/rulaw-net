@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Xunit;
+using Catharsis.Extensions;
 
 namespace RuLaw.Tests;
 
@@ -23,7 +24,7 @@ public sealed class IPeriodableExtensionsTest : UnitTest
     var first = new PeriodableEntity {FromDate = DateTimeOffset.MinValue};
     var second = new PeriodableEntity {FromDate = date};
     var third = new PeriodableEntity {FromDate = DateTimeOffset.MaxValue};
-    var entities = new[] {null, first, second, third};
+    var entities = first.ToSequence(second, third, null);
     entities.Period(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
     entities.Period(null, date).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
     entities.Period(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
@@ -31,7 +32,7 @@ public sealed class IPeriodableExtensionsTest : UnitTest
     first = new PeriodableEntity {FromDate = DateTimeOffset.MinValue, ToDate = DateTimeOffset.MaxValue};
     second = new PeriodableEntity {FromDate = date, ToDate = date};
     third = new PeriodableEntity {FromDate = DateTimeOffset.MaxValue, ToDate = DateTimeOffset.MaxValue};
-    entities = new[] {null, first, second, third};
+    entities = first.ToSequence(second, third, null);
     entities.Period(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
     entities.Period(null, date).Should().NotBeNullOrEmpty().And.Equal(second);
     entities.Period(date, date).Should().NotBeNullOrEmpty().And.Equal(second);

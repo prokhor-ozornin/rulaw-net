@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Xunit;
+using Catharsis.Extensions;
 
 namespace RuLaw.Tests;
 
@@ -22,7 +23,7 @@ public sealed class IEducationExtensionsTest : UnitTest
 
     var first = new Education(new {Institution = "FIRST"});
     var second = new Education(new {Institution = "Second"});
-    var educations = new[] {null, first, second};
+    var educations = first.ToSequence(second, null);
     educations.Institution("first").Should().NotBeNullOrEmpty().And.Equal(first);
     educations.Institution("second").Should().NotBeNullOrEmpty().And.Equal(second);
   }
@@ -41,7 +42,7 @@ public sealed class IEducationExtensionsTest : UnitTest
     var second = new Education(new {Year = 1});
     var third = new Education(new {Year = 2});
 
-    var educations = new[] {null, first, second, third};
+    var educations = first.ToSequence(second, third, null);
     educations.Year(1).Should().NotBeNullOrEmpty().And.Equal(second, third);
     educations.Year(null, 1).Should().NotBeNullOrEmpty().And.Equal(first, second);
     educations.Year(0, 2).Should().NotBeNullOrEmpty().And.Equal(first, second, third);

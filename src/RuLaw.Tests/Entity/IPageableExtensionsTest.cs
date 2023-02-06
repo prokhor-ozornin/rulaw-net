@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Xunit;
+using Catharsis.Extensions;
 
 namespace RuLaw.Tests;
 
@@ -22,7 +23,7 @@ public sealed class IPageableExtensionsTest : UnitTest
     var second = new DeputyRequest(new {SignDate = date});
     var third = new DeputyRequest(new {SignDate = DateTimeOffset.MaxValue});
 
-    var requests = new[] {null, first, second, third};
+    var requests = first.ToSequence(second, third, null);
     requests.SignDate(date).Should().NotBeNullOrEmpty().And.Equal(first, second);
     requests.SignDate(null, date).Should().NotBeNullOrEmpty().And.Equal(first, second);
     requests.SignDate(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
@@ -38,7 +39,7 @@ public sealed class IPageableExtensionsTest : UnitTest
 
     Enumerable.Empty<PageableEntity>().Page().Should().BeEmpty();
 
-    new[] {null, new PageableEntity {Page = 1}, null, new PageableEntity {Page = 2}}.Page(1).Should().NotBeNullOrEmpty().And.ContainSingle();
+    new PageableEntity { Page = 1 }.ToSequence(new PageableEntity { Page = 2 }, null).Page(1).Should().NotBeNullOrEmpty().And.ContainSingle();
   }
 
   private sealed class PageableEntity : IPageable

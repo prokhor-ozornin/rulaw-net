@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Xunit;
+using Catharsis.Extensions;
 
 namespace RuLaw.Tests;
 
@@ -17,7 +18,7 @@ public sealed class IActiveExtensionsTest : UnitTest
     AssertionExtensions.Should(() => IActiveExtensions.Active<IActive>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
     Enumerable.Empty<IActive>().Active().Should().NotBeNull().And.BeEmpty();
-    new[] {null, new ActiveEntity {Active = true}, null, new ActiveEntity {Active = false}}.Active().Should().NotBeNullOrEmpty().And.ContainSingle();
+    new ActiveEntity { Active = true }.ToSequence(new ActiveEntity { Active = false }, null).Active().Should().NotBeNullOrEmpty().And.ContainSingle();
   }
 
   /// <summary>
@@ -29,7 +30,7 @@ public sealed class IActiveExtensionsTest : UnitTest
     AssertionExtensions.Should(() => IActiveExtensions.Inactive<IActive>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
     Enumerable.Empty<IActive>().Inactive().Should().NotBeNull().And.BeEmpty();
-    new[] {null, new ActiveEntity {Active = true}, null, new ActiveEntity {Active = false}}.Inactive().Should().NotBeNullOrEmpty().And.ContainSingle();
+    new ActiveEntity { Active = true }.ToSequence(new ActiveEntity { Active = true }, null).Inactive().Should().NotBeNullOrEmpty().And.ContainSingle();
   }
 
   private sealed class ActiveEntity : IActive

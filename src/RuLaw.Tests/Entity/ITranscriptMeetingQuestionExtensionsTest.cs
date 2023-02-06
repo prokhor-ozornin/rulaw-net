@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Xunit;
+using Catharsis.Extensions;
 
 namespace RuLaw.Tests;
 
@@ -22,7 +23,7 @@ public sealed class ITranscriptMeetingQuestionExtensionsTest : UnitTest
 
     var first = new TranscriptMeetingQuestion(new {Stage = "FIRST"});
     var second = new TranscriptMeetingQuestion(new {Stage = "Second"});
-    var questions = new[] {null, first, second};
+    var questions = first.ToSequence(second, null);
     questions.Stage("first").Should().NotBeNullOrEmpty().And.Equal(first);
     questions.Stage("second").Should().NotBeNullOrEmpty().And.Equal(second);
   }

@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Xunit;
+using Catharsis.Extensions;
 
 namespace RuLaw.Tests;
 
@@ -22,7 +23,7 @@ public sealed class IDeputyRequestExtensionsTest : UnitTest
 
     var first = new DeputyRequest(new {Initiator = "FIRST"});
     var second = new DeputyRequest(new {Initiator = "Second"});
-    var requests = new[] {null, first, second};
+    var requests = first.ToSequence(second, null);
     requests.Initiator("first").Should().NotBeNullOrEmpty().And.Equal(first);
     requests.Initiator("second").Should().NotBeNullOrEmpty().And.Equal(second);
   }
@@ -41,7 +42,7 @@ public sealed class IDeputyRequestExtensionsTest : UnitTest
 
     var first = new DeputyRequest(new {Answer = "FIRST"});
     var second = new DeputyRequest(new {Answer = "Second"});
-    var requests = new[] {null, first, second};
+    var requests = first.ToSequence(second, null);
     requests.Answer("first").Should().NotBeNullOrEmpty().And.Equal(first);
     requests.Answer("second").Should().NotBeNullOrEmpty().And.Equal(second);
   }
@@ -60,7 +61,7 @@ public sealed class IDeputyRequestExtensionsTest : UnitTest
     var second = new DeputyRequest(new {SignDate = date});
     var third = new DeputyRequest(new {SignDate = DateTimeOffset.MaxValue});
 
-    var requests = new[] {null, first, second, third};
+    var requests = first.ToSequence(second, third, null);
     requests.SignDate(date).Should().NotBeNullOrEmpty().And.Equal(first, second);
     requests.SignDate(null, date).Should().NotBeNullOrEmpty().And.Equal(first, second);
     requests.SignDate(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
@@ -82,7 +83,7 @@ public sealed class IDeputyRequestExtensionsTest : UnitTest
     var second = new DeputyRequest(new {ControlDate = date});
     var third = new DeputyRequest(new {ControlDate = DateTimeOffset.MaxValue});
 
-    var requests = new[] {null, first, second, third};
+    var requests = first.ToSequence(second, third, null);
     requests.ControlDate(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
     requests.ControlDate(null, date).Should().NotBeNullOrEmpty().And.Equal(first, second);
     requests.ControlDate(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.Equal(first, second, third);

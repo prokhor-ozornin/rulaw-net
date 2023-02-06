@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Xunit;
+using Catharsis.Extensions;
 
 namespace RuLaw.Tests;
 
@@ -21,7 +22,7 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     Enumerable.Empty<IDeputyInfo>().FullName("name").Should().NotBeNull().And.BeEmpty();
     var first = new DeputyInfo(new {FirstName = "Vladimir", LastName = "Putin"});
     var second = new DeputyInfo(new {FirstName = "Dmitry", LastName = "Medvedev"});
-    var deputies = new[] {null, first, second};
+    var deputies = first.ToSequence(second, null);
     deputies.FullName("PUTIN").Should().NotBeNullOrEmpty().And.Equal(first);
     deputies.FullName("putin vladimir").Should().NotBeNullOrEmpty().And.Equal(first);
     deputies.FullName("MEDVEDEV").Should().NotBeNullOrEmpty().And.Equal(second);
@@ -44,7 +45,7 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     var second = new DeputyInfo(new {BirthDate = date});
     var third = new DeputyInfo(new {BirthDate = DateTimeOffset.MaxValue});
 
-    var deputies = new[] {null, first, second, third};
+    var deputies = first.ToSequence(second, third, null);
     deputies.BirthDate(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
     deputies.BirthDate(null, date).Should().NotBeNullOrEmpty().And.Equal(first, second);
     deputies.BirthDate(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
@@ -65,7 +66,7 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     var first = new DeputyInfo(new {WorkStartDate = DateTimeOffset.MinValue});
     var second = new DeputyInfo(new {WorkStartDate = date});
     var third = new DeputyInfo(new {WorkStartDate = DateTimeOffset.MaxValue});
-    var deputies = new[] {null, first, second, third};
+    var deputies = first.ToSequence(second, third, null);
     deputies.WorkDate(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
     deputies.WorkDate(null, date).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
     deputies.WorkDate(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
@@ -73,7 +74,7 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     first = new DeputyInfo(new {WorkStartDate = DateTimeOffset.MinValue, WorkEndDate = DateTimeOffset.MaxValue});
     second = new DeputyInfo(new {WorkStartDate = date, WorkEndDate = date});
     third = new DeputyInfo(new {WorkStartDate = DateTimeOffset.MaxValue, WorkEndDate = DateTimeOffset.MaxValue});
-    deputies = new[] {null, first, second, third};
+    deputies = first.ToSequence(second, third, null);
     deputies.WorkDate(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
     deputies.WorkDate(null, date).Should().NotBeNullOrEmpty().And.Equal(second);
     deputies.WorkDate(date, date).Should().NotBeNullOrEmpty().And.Equal(second);
@@ -93,7 +94,7 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
 
     var first = new DeputyInfo(new {FactionName = "FIRST"});
     var second = new DeputyInfo(new {FactionName = "Second"});
-    var deputies = new[] {null, first, second};
+    var deputies = first.ToSequence(second, null);
     deputies.Faction("first").Should().NotBeNullOrEmpty().And.Equal(first);
     deputies.Faction("second").Should().NotBeNullOrEmpty().And.Equal(second);
   }
@@ -112,7 +113,7 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
 
     var first = new DeputyInfo(new {DegreesOriginal = new List<string> {"FIRST", "SECOND"}});
     var second = new DeputyInfo(new {DegreesOriginal = new List<string> {"First", "Third"}});
-    var deputies = new[] {null, first, second};
+    var deputies = first.ToSequence(second, null);
     deputies.Degree("first").Should().NotBeNullOrEmpty().And.Equal(first, second);
     deputies.Degree("second").Should().NotBeNullOrEmpty().And.Equal(first);
     deputies.Degree("third").Should().NotBeNullOrEmpty().And.Equal(second);
@@ -133,7 +134,7 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     var first = new DeputyInfo(new {RanksOriginal = new List<string> {"FIRST", "SECOND"}});
     var second = new DeputyInfo(new {RanksOriginal = new List<string> {"First", "Third"}});
 
-    var deputies = new[] {null, first, second};
+    var deputies = first.ToSequence(second, null);
     deputies.Rank("first").Should().NotBeNullOrEmpty().And.Equal(first, second);
     deputies.Rank("second").Should().NotBeNullOrEmpty().And.Equal(first);
     deputies.Rank("third").Should().NotBeNullOrEmpty().And.Equal(second);
@@ -154,7 +155,7 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     var first = new DeputyInfo(new {RegionsOriginal = new List<string> {"FIRST", "SECOND"}});
     var second = new DeputyInfo(new {RegionsOriginal = new List<string> {"First", "Third"}});
 
-    var deputies = new[] {null, first, second};
+    var deputies = first.ToSequence(second, null);
     deputies.Region("first").Should().NotBeNullOrEmpty().And.Equal(first, second);
     deputies.Region("second").Should().NotBeNullOrEmpty().And.Equal(first);
     deputies.Region("third").Should().NotBeNullOrEmpty().And.Equal(second);

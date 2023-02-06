@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Xunit;
+using Catharsis.Extensions;
 
 namespace RuLaw.Tests;
 
@@ -18,7 +19,7 @@ public sealed class INameableExtensionsTest : UnitTest
 
     Enumerable.Empty<NameableEntity>().Name(null).Should().NotBeNull().And.BeEmpty();
 
-    new[] {null, new NameableEntity {Name = "first"}, null, new NameableEntity {Name = "second"}}.Name("first").Should().NotBeNullOrEmpty().And.ContainSingle();
+    new NameableEntity { Name = "first" }.ToSequence(new NameableEntity { Name = "second" }, null).Name("first").Should().NotBeNullOrEmpty().And.ContainSingle();
   }
 
   private sealed class NameableEntity : INameable

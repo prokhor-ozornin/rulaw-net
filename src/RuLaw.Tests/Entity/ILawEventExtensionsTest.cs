@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Xunit;
+using Catharsis.Extensions;
 
 namespace RuLaw.Tests;
 
@@ -22,7 +23,7 @@ public sealed class ILawEventExtensionsTest : UnitTest
 
     var first = new LawEvent(new {Solution = "FIRST"});
     var second = new LawEvent(new {Solution = "Second"});
-    var events = new[] {null, first, second};
+    var events = first.ToSequence(second, null);
     events.Solution("first").Should().NotBeNullOrEmpty().And.Equal(first);
     events.Solution("second").Should().NotBeNullOrEmpty().And.Equal(second);
   }

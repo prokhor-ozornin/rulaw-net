@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Xunit;
+using Catharsis.Extensions;
 
 namespace RuLaw.Tests;
 
@@ -68,7 +69,7 @@ public sealed class IVoteExtensionsTest : UnitTest
 
     var first = new Vote(new {Subject = "FIRST"});
     var second = new Vote(new {Subject = "Second"});
-    var votes = new[] {null, first, second};
+    var votes = first.ToSequence(second, null);
     votes.Subject("first").Should().NotBeNullOrEmpty().And.Equal(first);
     votes.Subject("second").Should().NotBeNullOrEmpty().And.Equal(second);
   }
@@ -85,7 +86,7 @@ public sealed class IVoteExtensionsTest : UnitTest
 
     var first = new Vote(new {Successful = true});
     var second = new Vote(new {Successful = false});
-    var votes = new[] {null, first, second};
+    var votes = first.ToSequence(second, null);
     votes.Successful().Should().NotBeNullOrEmpty().And.Equal(first);
   }
 
@@ -101,7 +102,7 @@ public sealed class IVoteExtensionsTest : UnitTest
 
     var first = new Vote(new {Successful = true});
     var second = new Vote(new {Successful = false});
-    var votes = new[] {null, first, second};
+    var votes = first.ToSequence(second, null);
     votes.Unsuccessful().Should().NotBeNullOrEmpty().And.Equal(second);
   }
 }

@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using Catharsis.Extensions;
+using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
 
@@ -38,7 +39,7 @@ public sealed class IDeputyExtensionsTest : UnitTest
       Enumerable.Empty<IDeputy>().Position("position").Should().NotBeNull().And.BeEmpty();
       var first = new Deputy(new {Position = "First"});
       var second = new Deputy(new {Position = "Second"});
-      var deputies = new[] { null, first, second };
+      var deputies = first.ToSequence(second, null);
       deputies.Position("first").Should().NotBeNullOrEmpty().And.Equal(first);
     }
   }
