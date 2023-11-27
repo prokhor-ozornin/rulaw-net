@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AssemblyName>RuLaw</AssemblyName>
     <RootNamespace>RuLaw</RootNamespace>
     <LangVersion>latest</LangVersion>
@@ -198,8 +198,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-    <PackageReference Include="RestSharp" Version="108.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="RestSharp" Version="110.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -215,7 +215,7 @@
 
   <ItemGroup>
     <Reference Include="Catharsis.Extensions">
-      <HintPath>..\..\..\Catharsis\Catharsis.Extensions\src\Catharsis.Extensions.Core\bin\Release\net7.0\Catharsis.Extensions.dll</HintPath>
+      <HintPath>..\..\..\Catharsis\Catharsis.Extensions\src\Catharsis.Extensions.Core\bin\Release\net8.0\Catharsis.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
 
