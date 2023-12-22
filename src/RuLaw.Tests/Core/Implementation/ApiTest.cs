@@ -112,7 +112,7 @@ public sealed class ApiTest : UnitTest
     deputy.TranscriptLink.Should().Be("http://www.cir.ru/duma/servlet/is4.wwwmain?FormName=ProcessQuery&Action=RunQuery&PDCList=*&QueryString=%2FGD_%C4%C5%CF%D3%D2%C0%D2%3D%22%C6%C8%D0%C8%CD%CE%C2%D1%CA%C8%C9+%C2.%C2.%22");
     deputy.Educations.Should().NotBeNullOrEmpty().And.Contain(education => education.Institution == "Московский государственный университет имени М.В.Ломоносова (институт восточных языков)" && education.Year == 1970);
     deputy.Degrees.Should().NotBeNullOrEmpty().And.Contain("Доктор философских наук");
-    deputy.Ranks.Should().NotBeNullOrEmpty().And.Contain(new[] {"Профессор", "Действительный член (академик) Международной Академии экологии и природопользования (МАЭП)", "Почетный академик Академии естествознания", "Действительный член Международной Академии информатизации", "Действительный член (академик) Академии социальных наук"});
+    deputy.Ranks.Should().NotBeNullOrEmpty().And.Contain(["Профессор", "Действительный член (академик) Международной Академии экологии и природопользования (МАЭП)", "Почетный академик Академии естествознания", "Действительный член Международной Академии информатизации", "Действительный член (академик) Академии социальных наук"]);
   }
 
   /// <summary>
