@@ -55,17 +55,6 @@ public sealed class IDeputiesApiExtensionsTest : UnitTest
   [Fact]
   public void Search_Methods()
   {
-    static void Validate(IEnumerable<IDeputy> sequence)
-    {
-      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
-
-      var deputy = sequence.Single(deputy => deputy.Id == 99100491);
-      deputy.Should().NotBeNull().And.BeOfType<Deputy>();
-      deputy.Name.Should().Be("Абдулатипов Рамазан Гаджимурадович");
-      deputy.Position.Should().Be("Депутат ГД");
-      deputy.Active.Should().BeFalse();
-    }
-
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null, new DeputiesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
@@ -82,6 +71,19 @@ public sealed class IDeputiesApiExtensionsTest : UnitTest
 
       var deputies = Api.Deputies.Search(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А"));
       Validate(deputies);
+    }
+
+    return;
+
+    static void Validate(IEnumerable<IDeputy> sequence)
+    {
+      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
+
+      var deputy = sequence.Single(deputy => deputy.Id == 99100491);
+      deputy.Should().NotBeNull().And.BeOfType<Deputy>();
+      deputy.Name.Should().Be("Абдулатипов Рамазан Гаджимурадович");
+      deputy.Position.Should().Be("Депутат ГД");
+      deputy.Active.Should().BeFalse();
     }
   }
 

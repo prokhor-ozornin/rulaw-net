@@ -44,6 +44,14 @@ public sealed class QuestionsApiRequestTest : UnitTest
   [Fact]
   public void PageSize_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      Enum.GetValues<PageSize>().ForEach(size => Validate(size));
+    }
+
+    return;
+
     static void Validate(PageSize? size)
     {
       var request = new QuestionsApiRequest();
@@ -52,12 +60,6 @@ public sealed class QuestionsApiRequestTest : UnitTest
 
       request.PageSize(size).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["limit"].Should().Be((int?) size);
-    }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      Enum.GetValues<PageSize>().ForEach(size => Validate(size));
     }
   }
 

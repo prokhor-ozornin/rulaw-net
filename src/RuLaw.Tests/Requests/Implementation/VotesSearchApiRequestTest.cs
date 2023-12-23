@@ -95,6 +95,14 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   [Fact]
   public void FromDate_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow}.ForEach(date => Validate(date));
+    }
+
+    return;
+
     static void Validate(DateTimeOffset? date)
     {
       var request = new VotesSearchApiRequest();
@@ -107,12 +115,6 @@ public sealed class VotesSearchApiRequestTest : UnitTest
       request.FromDate(date).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["from"].Should().Be(date?.AsString());
     }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow}.ForEach(date => Validate(date));
-    }
   }
 
   /// <summary>
@@ -121,6 +123,14 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   [Fact]
   public void ToDate_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow }.ForEach(date => Validate(date));
+    }
+
+    return;
+
     static void Validate(DateTimeOffset? date)
     {
       var request = new VotesSearchApiRequest();
@@ -132,12 +142,6 @@ public sealed class VotesSearchApiRequestTest : UnitTest
 
       request.ToDate(date).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["to"].Should().Be(date?.AsString());
-    }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow }.ForEach(date => Validate(date));
     }
   }
 
@@ -210,6 +214,14 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   [Fact]
   public void Limit_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      Enum.GetValues<PageSize>().ForEach(size => Validate(size));
+    }
+
+    return;
+
     static void Validate(PageSize? size)
     {
       var request = new VotesSearchApiRequest();
@@ -218,12 +230,6 @@ public sealed class VotesSearchApiRequestTest : UnitTest
 
       request.Limit(size).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["limit"].Should().Be((int?) size);
-    }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      Enum.GetValues<PageSize>().ForEach(size => Validate(size));
     }
   }
 }

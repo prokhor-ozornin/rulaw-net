@@ -44,6 +44,14 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   [Fact]
   public void PageSize_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      Enum.GetValues<PageSize>().ForEach(size => Validate(size));
+    }
+
+    return;
+
     static void Validate(PageSize? size)
     {
       var request = new DeputyTranscriptApiRequest();
@@ -52,12 +60,6 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
 
       request.PageSize(size).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["limit"].Should().Be((int?) size);
-    }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      Enum.GetValues<PageSize>().ForEach(size => Validate(size));
     }
   }
 
@@ -101,6 +103,14 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   [Fact]
   public void FromDate_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow }.ForEach(date => Validate(date));
+    }
+
+    return;
+
     static void Validate(DateTimeOffset? date)
     {
       var request = new DeputyTranscriptApiRequest();
@@ -113,12 +123,6 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
       request.FromDate(date).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["dateFrom"].Should().Be(date?.AsString());
     }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow }.ForEach(date => Validate(date));
-    }
   }
 
   /// <summary>
@@ -127,6 +131,14 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   [Fact]
   public void ToDate_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow }.ForEach(date => Validate(date));
+    }
+
+    return;
+
     static void Validate(DateTimeOffset? date)
     {
       var request = new DeputyTranscriptApiRequest();
@@ -138,12 +150,6 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
 
       request.ToDate(date).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["dateTo"].Should().Be(date?.AsString());
-    }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow }.ForEach(date => Validate(date));
     }
   }
 }

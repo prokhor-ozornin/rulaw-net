@@ -44,6 +44,14 @@ public sealed class LawsApiRequestTest : UnitTest
   [Fact]
   public void PageSize_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      Enum.GetValues<PageSize>().ForEach(size => Validate(size));
+    }
+
+    return;
+
     static void Validate(PageSize? size)
     {
       var request = new LawsApiRequest();
@@ -52,12 +60,6 @@ public sealed class LawsApiRequestTest : UnitTest
 
       request.PageSize(size).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["limit"].Should().Be((int?) size);
-    }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      Enum.GetValues<PageSize>().ForEach(size => Validate(size));
     }
   }
 
@@ -186,6 +188,14 @@ public sealed class LawsApiRequestTest : UnitTest
   [Fact]
   public void RegistrationStart_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow}.ForEach(date => Validate(date));
+    }
+
+    return;
+
     static void Validate(DateTimeOffset? date)
     {
       var request = new LawsApiRequest();
@@ -195,12 +205,6 @@ public sealed class LawsApiRequestTest : UnitTest
       request.RegistrationStart(date).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["registration_start"].Should().Be(date?.AsString());
     }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow}.ForEach(date => Validate(date));
-    }
   }
 
   /// <summary>
@@ -209,6 +213,14 @@ public sealed class LawsApiRequestTest : UnitTest
   [Fact]
   public void RegistrationEnd_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow }.ForEach(date => Validate(date));
+    }
+
+    return;
+
     static void Validate(DateTimeOffset? date)
     {
       var request = new LawsApiRequest();
@@ -217,12 +229,6 @@ public sealed class LawsApiRequestTest : UnitTest
 
       request.RegistrationStart(date).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["registration_end"].Should().Be(date?.AsString());
-    }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow }.ForEach(date => Validate(date));
     }
   }
 

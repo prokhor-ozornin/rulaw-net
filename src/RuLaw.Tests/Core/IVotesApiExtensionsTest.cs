@@ -23,16 +23,6 @@ public sealed class IVotesApiExtensionsTest : UnitTest
   [Fact]
   public void Search_Methods()
   {
-    static void Validate(IVotesSearchResult result)
-    {
-      result.Votes.Should().NotBeNullOrEmpty().And.BeOfType<List<Vote>>();
-
-      var vote = result.Votes.First();
-      vote.Subject.Should().NotBeNullOrEmpty();
-      vote.Date.Should().BeOnOrBefore(DateTimeOffset.UtcNow);
-      vote.TotalVotesCount.Should().BePositive();
-    }
-
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IVotesApiExtensions.Search(null, new VotesSearchApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
@@ -50,14 +40,9 @@ public sealed class IVotesApiExtensionsTest : UnitTest
       var result = Api.Votes.Search(request => request.FromDate(DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(180))).ToDate(DateTimeOffset.UtcNow).Deputy(99111987));
       Validate(result);
     }
-  }
 
-  /// <summary>
-  ///   <para>Performs testing of <see cref="IQuestionsApiExtensions.SearchAsync(IQuestionsApi, Action{IQuestionsApiRequest}, CancellationToken)"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void SearchAsync_Method()
-  {
+    return;
+
     static void Validate(IVotesSearchResult result)
     {
       result.Votes.Should().NotBeNullOrEmpty().And.BeOfType<List<Vote>>();
@@ -67,7 +52,14 @@ public sealed class IVotesApiExtensionsTest : UnitTest
       vote.Date.Should().BeOnOrBefore(DateTimeOffset.UtcNow);
       vote.TotalVotesCount.Should().BePositive();
     }
+  }
 
+  /// <summary>
+  ///   <para>Performs testing of <see cref="IQuestionsApiExtensions.SearchAsync(IQuestionsApi, Action{IQuestionsApiRequest}, CancellationToken)"/> method.</para>
+  /// </summary>
+  [Fact]
+  public void SearchAsync_Method()
+  {
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IVotesApiExtensions.SearchAsync(null, _ => { })).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("api").Await();
@@ -76,6 +68,18 @@ public sealed class IVotesApiExtensionsTest : UnitTest
 
       var result = Api.Votes.SearchAsync(request => request.FromDate(DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(180))).ToDate(DateTimeOffset.UtcNow).Deputy(99111987)).Await();
       Validate(result);
+    }
+
+    return;
+
+    static void Validate(IVotesSearchResult result)
+    {
+      result.Votes.Should().NotBeNullOrEmpty().And.BeOfType<List<Vote>>();
+
+      var vote = result.Votes.First();
+      vote.Subject.Should().NotBeNullOrEmpty();
+      vote.Date.Should().BeOnOrBefore(DateTimeOffset.UtcNow);
+      vote.TotalVotesCount.Should().BePositive();
     }
   }
 

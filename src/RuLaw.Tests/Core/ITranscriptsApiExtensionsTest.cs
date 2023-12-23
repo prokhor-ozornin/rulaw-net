@@ -51,25 +51,6 @@ public sealed class ITranscriptsApiExtensionsTest : UnitTest
   [Fact]
   public void Deputy_Methods()
   {
-    static void Validate(IDeputyTranscriptsResult result)
-    {
-      result.Should().NotBeNull().And.BeOfType<DeputyTranscriptsResult>();
-
-      result.Name.Should().Be("Жириновский Владимир Вольфович");
-      result.PageSize.Should().Be((int) PageSize.Twenty);
-      result.Page.Should().Be(1);
-      result.Count.Should().BePositive();
-
-      var meetings = result.Meetings;
-      meetings.Should().NotBeNullOrEmpty().And.BeOfType<List<TranscriptMeeting>>();
-
-      var meeting = meetings.First();
-      meeting.Date.Should().BeOnOrBefore(DateTimeOffset.UtcNow);
-      meeting.LinesCount.Should().BePositive();
-      meeting.Number.Should().BePositive();
-      meeting.Questions.Should().NotBeNullOrEmpty().And.BeOfType<Question>();
-    }
-
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => ITranscriptsApiExtensions.Deputy(null, new DeputyTranscriptApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
@@ -87,14 +68,9 @@ public sealed class ITranscriptsApiExtensionsTest : UnitTest
       var result = Api.Transcripts.Deputy(request => request.Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten));
       Validate(result);
     }
-  }
 
-  /// <summary>
-  ///   <para>Performs testing of <see cref="ITranscriptsApiExtensions.DeputyAsync(ITranscriptsApi, Action{IDeputyTranscriptApiRequest})"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void DeputyAsync_Method()
-  {
+    return;
+
     static void Validate(IDeputyTranscriptsResult result)
     {
       result.Should().NotBeNull().And.BeOfType<DeputyTranscriptsResult>();
@@ -113,7 +89,14 @@ public sealed class ITranscriptsApiExtensionsTest : UnitTest
       meeting.Number.Should().BePositive();
       meeting.Questions.Should().NotBeNullOrEmpty().And.BeOfType<Question>();
     }
+  }
 
+  /// <summary>
+  ///   <para>Performs testing of <see cref="ITranscriptsApiExtensions.DeputyAsync(ITranscriptsApi, Action{IDeputyTranscriptApiRequest})"/> method.</para>
+  /// </summary>
+  [Fact]
+  public void DeputyAsync_Method()
+  {
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => ITranscriptsApiExtensions.DeputyAsync(null, _ => { })).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("api").Await();
@@ -122,6 +105,27 @@ public sealed class ITranscriptsApiExtensionsTest : UnitTest
 
       var result = Api.Transcripts.DeputyAsync(request => request.Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)).Await();
       Validate(result);
+    }
+
+    return;
+
+    static void Validate(IDeputyTranscriptsResult result)
+    {
+      result.Should().NotBeNull().And.BeOfType<DeputyTranscriptsResult>();
+
+      result.Name.Should().Be("Жириновский Владимир Вольфович");
+      result.PageSize.Should().Be((int) PageSize.Twenty);
+      result.Page.Should().Be(1);
+      result.Count.Should().BePositive();
+
+      var meetings = result.Meetings;
+      meetings.Should().NotBeNullOrEmpty().And.BeOfType<List<TranscriptMeeting>>();
+
+      var meeting = meetings.First();
+      meeting.Date.Should().BeOnOrBefore(DateTimeOffset.UtcNow);
+      meeting.LinesCount.Should().BePositive();
+      meeting.Number.Should().BePositive();
+      meeting.Questions.Should().NotBeNullOrEmpty().And.BeOfType<Question>();
     }
   }
 

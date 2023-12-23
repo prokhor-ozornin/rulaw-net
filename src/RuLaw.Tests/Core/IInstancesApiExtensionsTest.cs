@@ -23,15 +23,6 @@ public sealed class IInstancesApiExtensionsTest : UnitTest
   [Fact]
   public void Search_Methods()
   {
-    static void Validate(IEnumerable<IInstance> sequence)
-    {
-      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<Instance>>();
-
-      var instance = sequence.Single(instance => instance.Id == 177);
-      instance.Name.Should().Be("ГД (Пленарное заседание)");
-      instance.Active.Should().BeTrue();
-    }
-
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null, new InstancesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
@@ -46,6 +37,17 @@ public sealed class IInstancesApiExtensionsTest : UnitTest
 
       var instances = Api.Instances.Search(request => request.Current());
       Validate(instances);
+    }
+
+    return;
+
+    static void Validate(IEnumerable<IInstance> sequence)
+    {
+      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<Instance>>();
+
+      var instance = sequence.Single(instance => instance.Id == 177);
+      instance.Name.Should().Be("ГД (Пленарное заседание)");
+      instance.Active.Should().BeTrue();
     }
   }
 

@@ -23,17 +23,6 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
   [Fact]
   public void Federal_Methods()
   {
-    static void Validate(IEnumerable<IAuthority> sequence)
-    {
-      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<FederalAuthority>>();
-
-      var authority = sequence.Single(authority => authority.Id == 6231000);
-      authority.Name.Should().Be("Верховный Суд РФ");
-      authority.Active.Should().BeTrue();
-      authority.FromDate.Should().HaveYear(1994).And.HaveMonth(1).And.HaveDay(1).And.HaveOffset(TimeSpan.Zero);
-      authority.ToDate.Should().BeNull();
-    }
-
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Federal(null, new AuthoritiesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
@@ -49,6 +38,19 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
       var authorities = Api.Authorities.Federal(request => request.Current());
       Validate(authorities);
     }
+
+    return;
+
+    static void Validate(IEnumerable<IAuthority> sequence)
+    {
+      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<FederalAuthority>>();
+
+      var authority = sequence.Single(authority => authority.Id == 6231000);
+      authority.Name.Should().Be("Верховный Суд РФ");
+      authority.Active.Should().BeTrue();
+      authority.FromDate.Should().HaveYear(1994).And.HaveMonth(1).And.HaveDay(1).And.HaveOffset(TimeSpan.Zero);
+      authority.ToDate.Should().BeNull();
+    }
   }
 
   /// <summary>
@@ -61,17 +63,6 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
   [Fact]
   public void Regional_Methods()
   {
-    static void Validate(IEnumerable<IAuthority> sequence)
-    {
-      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<RegionalAuthority>>();
-
-      var authority = sequence.Single(authority => authority.Id == 6217700);
-      authority.Name.Should().Be("Агинская Бурятская окружная Дума");
-      authority.Active.Should().BeFalse();
-      authority.FromDate.Should().HaveYear(1994).And.HaveMonth(1).And.HaveDay(1).And.HaveOffset(TimeSpan.Zero);
-      authority.ToDate.Should().HaveYear(2008).And.HaveMonth(10).And.HaveDay(12).And.HaveOffset(TimeSpan.Zero);
-    }
-
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Regional(null, new AuthoritiesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
@@ -87,6 +78,19 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
       var authorities = Api.Authorities.Regional(request => request.Current(false));
       Validate(authorities);
     }
+
+    return;
+
+    static void Validate(IEnumerable<IAuthority> sequence)
+    {
+      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<RegionalAuthority>>();
+
+      var authority = sequence.Single(authority => authority.Id == 6217700);
+      authority.Name.Should().Be("Агинская Бурятская окружная Дума");
+      authority.Active.Should().BeFalse();
+      authority.FromDate.Should().HaveYear(1994).And.HaveMonth(1).And.HaveDay(1).And.HaveOffset(TimeSpan.Zero);
+      authority.ToDate.Should().HaveYear(2008).And.HaveMonth(10).And.HaveDay(12).And.HaveOffset(TimeSpan.Zero);
+    }
   }
 
   /// <summary>
@@ -95,6 +99,17 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
   [Fact]
   public void FederalAsync_Method()
   {
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(Api.Authorities, null, Cancellation)).ThrowExactly<OperationCanceledException>();
+
+      var authorities = Api.Authorities.FederalAsync(new AuthoritiesApiRequest().Current());
+      Validate(authorities);
+    }
+
+    return;
+
     static void Validate(IAsyncEnumerable<IAuthority> sequence)
     {
       var authorities = sequence.ToListAsync().Await();
@@ -107,15 +122,6 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
       authority.FromDate.Should().HaveYear(1994).And.HaveMonth(1).And.HaveDay(1).And.HaveOffset(TimeSpan.Zero);
       authority.ToDate.Should().BeNull();
     }
-
-    using (new AssertionScope())
-    {
-      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
-      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(Api.Authorities, null, Cancellation)).ThrowExactly<OperationCanceledException>();
-
-      var authorities = Api.Authorities.FederalAsync(new AuthoritiesApiRequest().Current());
-      Validate(authorities);
-    }
   }
 
   /// <summary>
@@ -124,6 +130,17 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
   [Fact]
   public void RegionalAsync_Method()
   {
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(Api.Authorities, null, Cancellation)).ThrowExactly<OperationCanceledException>();
+
+      var authorities = Api.Authorities.RegionalAsync(new AuthoritiesApiRequest().Current(false));
+      Validate(authorities);
+    }
+
+    return;
+
     static void Validate(IAsyncEnumerable<IAuthority> sequence)
     {
       var authorities = sequence.ToListAsync().Await();
@@ -135,15 +152,6 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
       authority.Active.Should().BeFalse();
       authority.FromDate.Should().HaveYear(1994).And.HaveMonth(1).And.HaveDay(1).And.HaveOffset(TimeSpan.Zero);
       authority.ToDate.Should().HaveYear(2008).And.HaveMonth(10).And.HaveDay(12).And.HaveOffset(TimeSpan.Zero);
-    }
-
-    using (new AssertionScope())
-    {
-      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
-      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(Api.Authorities, null, Cancellation)).ThrowExactly<OperationCanceledException>();
-
-      var authorities = Api.Authorities.RegionalAsync(new AuthoritiesApiRequest().Current(false));
-      Validate(authorities);
     }
   }
 

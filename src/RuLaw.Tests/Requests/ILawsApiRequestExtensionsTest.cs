@@ -16,6 +16,14 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   [Fact]
   public void Type_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      Enum.GetValues<LawTypes>().ForEach(type => Validate(type));
+    }
+
+    return;
+
     static void Validate(LawTypes? type)
     {
       var request = new LawsApiRequest();
@@ -24,12 +32,6 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
 
       request.Type(type).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["law_type"].Should().Be((int?) type);
-    }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      Enum.GetValues<LawTypes>().ForEach(type => Validate(type));
     }
   }
 
@@ -58,6 +60,14 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   [Fact]
   public void Status_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      Enum.GetValues<LawStatus>().ForEach(type => Validate(type));
+    }
+
+    return;
+
     static void Validate(LawStatus? status)
     {
       var request = new LawsApiRequest();
@@ -66,12 +76,6 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
 
       request.Status(status).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["status"].Should().Be((int?) status);
-    }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      Enum.GetValues<LawStatus>().ForEach(type => Validate(type));
     }
   }
 
@@ -244,6 +248,14 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   [Fact]
   public void EventsSearchMode_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      Enum.GetValues<LawsEventsSearchMode>().ForEach(mode => Validate(mode));
+    }
+
+    return;
+
     static void Validate(LawsEventsSearchMode? mode)
     {
       var request = new LawsApiRequest();
@@ -252,12 +264,6 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
 
       request.EventsSearchMode(LawsEventsSearchMode.All).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["search_mode"].Should().Be((int?) mode);
-    }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      Enum.GetValues<LawsEventsSearchMode>().ForEach(mode => Validate(mode));
     }
   }
 }
