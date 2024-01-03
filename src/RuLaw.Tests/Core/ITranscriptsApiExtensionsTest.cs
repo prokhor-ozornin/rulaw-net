@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -101,7 +102,7 @@ public sealed class ITranscriptsApiExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ITranscriptsApiExtensions.DeputyAsync(null, _ => { })).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("api").Await();
       AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync((Action<IDeputyTranscriptApiRequest>) null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("action").Await();
-      AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync(_ => { }, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync(_ => { }, Attributes.CancellationToken())).ThrowExactlyAsync<TaskCanceledException>().Await();
 
       var result = Api.Transcripts.DeputyAsync(request => request.Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)).Await();
       Validate(result);

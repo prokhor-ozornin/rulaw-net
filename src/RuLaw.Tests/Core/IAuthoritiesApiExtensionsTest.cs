@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -102,7 +103,7 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
-      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(Api.Authorities, null, Cancellation)).ThrowExactly<OperationCanceledException>();
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(Api.Authorities, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
 
       var authorities = Api.Authorities.FederalAsync(new AuthoritiesApiRequest().Current());
       Validate(authorities);
@@ -133,7 +134,7 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
-      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(Api.Authorities, null, Cancellation)).ThrowExactly<OperationCanceledException>();
+      AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(Api.Authorities, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
 
       var authorities = Api.Authorities.RegionalAsync(new AuthoritiesApiRequest().Current(false));
       Validate(authorities);

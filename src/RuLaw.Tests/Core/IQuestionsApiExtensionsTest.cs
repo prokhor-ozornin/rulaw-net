@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using Catharsis.Commons;
 using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
@@ -102,7 +103,7 @@ public sealed class IQuestionsApiExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
-      AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(Api.Questions, null, Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(Api.Questions, null, Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var result = Api.Questions.SearchAsync(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)).Await();
       Validate(result);

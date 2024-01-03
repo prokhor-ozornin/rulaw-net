@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using Catharsis.Commons;
+using FluentAssertions;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -7,7 +8,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Education"/>.</para>
 /// </summary>
-public sealed class EducationTest : EntityTest<Education>
+public sealed class EducationTest : ClassTest<Education>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Education.Institution"/> property.</para>
@@ -83,7 +84,7 @@ public sealed class EducationTest : EntityTest<Education>
 /// <summary>
 ///   <para>Tests set for class <see cref="Education.Info"/>.</para>
 /// </summary>
-public sealed class EducationInfoTests : EntityTest<Education.Info>
+public sealed class EducationInfoTests : ClassTest<Education.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Education.Info.Institution"/> property.</para>

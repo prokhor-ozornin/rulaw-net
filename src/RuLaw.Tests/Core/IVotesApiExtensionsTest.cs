@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -64,7 +65,7 @@ public sealed class IVotesApiExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IVotesApiExtensions.SearchAsync(null, _ => { })).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("api").Await();
       AssertionExtensions.Should(() => IVotesApiExtensions.SearchAsync(Api.Votes, null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("action").Await();
-      AssertionExtensions.Should(() => Api.Votes.SearchAsync(_ => { }, Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Votes.SearchAsync(_ => { }, Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var result = Api.Votes.SearchAsync(request => request.FromDate(DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(180))).ToDate(DateTimeOffset.UtcNow).Deputy(99111987)).Await();
       Validate(result);

@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions.Execution;
 using FluentAssertions;
@@ -58,7 +59,7 @@ public sealed class IInstancesApiExtensionsTest : UnitTest
   public void SearchAsync_Method()
   {
     AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
-    AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(Api.Instances, null, Cancellation)).ThrowExactly<OperationCanceledException>();
+    AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(Api.Instances, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
 
     var instances = Api.Instances.SearchAsync(request => request.Current()).ToListAsync().Await();
 

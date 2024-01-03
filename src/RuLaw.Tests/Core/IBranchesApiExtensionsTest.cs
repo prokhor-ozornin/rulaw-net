@@ -1,5 +1,6 @@
 ﻿using Xunit;
 using System.Configuration;
+using Catharsis.Commons;
 using FluentAssertions;
 
 namespace RuLaw.Tests.Core;

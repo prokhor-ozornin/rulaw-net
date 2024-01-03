@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using Catharsis.Commons;
 using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
@@ -123,7 +124,7 @@ public sealed class ILawsApiExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ILawsApiExtensions.SearchAsync(null, _ => { })).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("api").Await();
       AssertionExtensions.Should(() => ILawsApiExtensions.SearchAsync(Api.Laws, null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("action").Await();
-      AssertionExtensions.Should(() => Api.Laws.SearchAsync(_ => { }, Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Laws.SearchAsync(_ => { }, Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var result = Api.Laws.SearchAsync(request => request.Name("курение").Sorting(LawsSorting.DateDescending)).Await();
       Validate(result);

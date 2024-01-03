@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions.Execution;
 using FluentAssertions;
@@ -94,7 +95,7 @@ public sealed class IDeputiesApiExtensionsTest : UnitTest
   public void SearchAsync_Method()
   {
     AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
-    AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(Api.Deputies, null, Cancellation)).ThrowExactly<OperationCanceledException>();
+    AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(Api.Deputies, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
 
     var deputies = Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToListAsync().Await();
 

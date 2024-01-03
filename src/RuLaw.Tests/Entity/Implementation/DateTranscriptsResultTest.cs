@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using Catharsis.Commons;
+using FluentAssertions;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -7,7 +8,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DateTranscriptsResult"/>.</para>
 /// </summary>
-public sealed class DateTranscriptsResultTest : EntityTest<DateTranscriptsResult>
+public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="DateTranscriptsResult.Date"/> property.</para>
@@ -85,7 +86,7 @@ public sealed class DateTranscriptsResultTest : EntityTest<DateTranscriptsResult
 /// <summary>
 ///   <para>Tests set for class <see cref="DateTranscriptsResult.Info"/>.</para>
 /// </summary>
-public sealed class DateTranscriptsResultInfoTests : EntityTest<DateTranscriptsResult.Info>
+public sealed class DateTranscriptsResultInfoTests : ClassTest<DateTranscriptsResult.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="DateTranscriptsResult.Info.Date"/> property.</para>

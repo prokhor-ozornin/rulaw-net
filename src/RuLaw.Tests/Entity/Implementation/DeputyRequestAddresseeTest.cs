@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using Catharsis.Commons;
+using FluentAssertions;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -7,7 +8,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyRequestAddressee"/>.</para>
 /// </summary>
-public sealed class DeputyRequestAddresseeTest : EntityTest<DeputyRequestAddressee>
+public sealed class DeputyRequestAddresseeTest : ClassTest<DeputyRequestAddressee>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Id"/> property.</para>
@@ -75,7 +76,7 @@ public sealed class DeputyRequestAddresseeTest : EntityTest<DeputyRequestAddress
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyRequestAddressee.Info"/>.</para>
 /// </summary>
-public sealed class DeputyRequestAddresseeInfoTests : EntityTest<DeputyRequestAddressee.Info>
+public sealed class DeputyRequestAddresseeInfoTests : ClassTest<DeputyRequestAddressee.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Info.Id"/> property.</para>
