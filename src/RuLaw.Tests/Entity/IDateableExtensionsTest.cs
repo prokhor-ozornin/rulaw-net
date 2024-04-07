@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace RuLaw.Tests;
@@ -15,16 +16,26 @@ public sealed class IDateableExtensionsTest : UnitTest
   [Fact]
   public void Period_Method()
   {
-    AssertionExtensions.Should(() => ((IEnumerable<DateableEntity>) null).Date()).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ((IEnumerable<DateableEntity>) null).Date()).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-    Enumerable.Empty<DateableEntity>().Date().Should().NotBeNull().And.BeEmpty();
+      Enumerable.Empty<DateableEntity>().Date().Should().NotBeNull().And.BeEmpty();
 
-    new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.HaveCount(2);
-    new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(DateTimeOffset.MinValue).Should().NotBeNullOrEmpty().And.HaveCount(2);
-    new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(null, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.HaveCount(2);
-    new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(DateTimeOffset.MinValue.AddDays(1), DateTimeOffset.MaxValue.AddDays(-1)).Should().NotBeNull().And.BeEmpty();
-    new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MinValue}}.Date(DateTimeOffset.MaxValue.AddDays(-1)).Should().NotBeNull().And.BeEmpty();
-    new[] {new DateableEntity {Date = DateTimeOffset.MaxValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(null, DateTimeOffset.MaxValue.AddDays(-1)).Should().NotBeNull().And.BeEmpty();
+      new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.HaveCount(2);
+      new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(DateTimeOffset.MinValue).Should().NotBeNullOrEmpty().And.HaveCount(2);
+      new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(null, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.HaveCount(2);
+      new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(DateTimeOffset.MinValue.AddDays(1), DateTimeOffset.MaxValue.AddDays(-1)).Should().NotBeNull().And.BeEmpty();
+      new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MinValue}}.Date(DateTimeOffset.MaxValue.AddDays(-1)).Should().NotBeNull().And.BeEmpty();
+      new[] {new DateableEntity {Date = DateTimeOffset.MaxValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(null, DateTimeOffset.MaxValue.AddDays(-1)).Should().NotBeNull().And.BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   private sealed class DateableEntity : IDateable

@@ -36,7 +36,7 @@ public sealed class TranscriptVote : ITranscriptVote
   /// <param name="info"></param>
   public TranscriptVote(Info info)
   {
-    Date = info.Date != null ? DateTimeOffset.Parse(info.Date) : null;
+    Date = info.Date is not null ? DateTimeOffset.Parse(info.Date) : null;
     Line = info.Line;
   }
 

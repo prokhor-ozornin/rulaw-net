@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -94,7 +95,10 @@ public sealed class DeputyTranscriptsResultTest : ClassTest<DeputyTranscriptsRes
   ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new DeputyTranscriptsResult(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new DeputyTranscriptsResult(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -157,13 +161,23 @@ public sealed class DeputyTranscriptsResultInfoTests : ClassTest<DeputyTranscrip
   [Fact]
   public void ToResult_Method()
   {
-    var result = new DeputyTranscriptsResult.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<DeputyTranscriptsResult>();
-    result.Name.Should().BeNull();
-    result.Page.Should().BeNull();
-    result.PageSize.Should().BeNull();
-    result.Count.Should().BeNull();
-    result.Meetings.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new DeputyTranscriptsResult.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<DeputyTranscriptsResult>();
+      result.Name.Should().BeNull();
+      result.Page.Should().BeNull();
+      result.PageSize.Should().BeNull();
+      result.Count.Should().BeNull();
+      result.Meetings.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -172,7 +186,13 @@ public sealed class DeputyTranscriptsResultInfoTests : ClassTest<DeputyTranscrip
   [Fact]
   public void Serialization()
   {
-    var info = new DeputyTranscriptsResult.Info();
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    using (new AssertionScope())
+    {
+      Validate(new DeputyTranscriptsResult.Info());
+    }
+
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

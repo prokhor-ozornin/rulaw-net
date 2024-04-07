@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -80,7 +81,10 @@ public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
   ///   <para>Performs testing of <see cref="DateTranscriptsResult.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new DateTranscriptsResult(new {Date = DateTimeOffset.MaxValue}).ToString().Should().Be(DateTimeOffset.MaxValue.AsString()); }
+  public void ToString_Method()
+  {
+    new DateTranscriptsResult(new {Date = DateTimeOffset.MaxValue}).ToString().Should().Be(DateTimeOffset.MaxValue.AsString());
+  }
 }
 
 /// <summary>
@@ -122,10 +126,20 @@ public sealed class DateTranscriptsResultInfoTests : ClassTest<DateTranscriptsRe
   [Fact]
   public void ToResult_Method()
   {
-    var result = new DateTranscriptsResult.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<DateTranscriptsResult>();
-    result.Date.Should().BeNull();
-    result.Meetings.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new DateTranscriptsResult.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<DateTranscriptsResult>();
+      result.Date.Should().BeNull();
+      result.Meetings.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -134,7 +148,13 @@ public sealed class DateTranscriptsResultInfoTests : ClassTest<DateTranscriptsRe
   [Fact]
   public void Serialization()
   {
-    var info = new DateTranscriptsResult.Info();
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    using (new AssertionScope())
+    {
+      Validate(new DateTranscriptsResult.Info());
+    }
+
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

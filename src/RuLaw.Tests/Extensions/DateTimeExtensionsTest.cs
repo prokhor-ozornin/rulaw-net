@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace RuLaw.Tests;
@@ -15,9 +16,15 @@ public sealed class DateTimeOffsetExtensionsTest : UnitTest
   [Fact]
   public void DateTimeOffset_AsString_Method()
   {
-    foreach (var date in new[] {DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow})
+    using (new AssertionScope())
     {
-      date.ToString("yyyy-MM-dd").Should().NotBeNullOrEmpty().And.Be(date.AsString());
+      Validate(DateTimeOffset.MinValue);
+      Validate(DateTimeOffset.MaxValue);
+      Validate(DateTimeOffset.Now);
     }
+
+    return;
+
+    static void Validate(DateTimeOffset date) => date.AsString().Should().BeOfType<string>().And.Be(date.ToString("yyyy-MM-dd"));
   }
 }

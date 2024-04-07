@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -70,7 +71,10 @@ public sealed class TopicTest : ClassTest<Topic>
   ///   <para>Performs testing of <see cref="Topic.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Topic(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new Topic(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -108,10 +112,20 @@ public sealed class TopicInfoTests : ClassTest<Topic.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Topic.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Topic>();
-    result.Id.Should().BeNull();
-    result.Name.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new Topic.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Topic>();
+      result.Id.Should().BeNull();
+      result.Name.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -120,12 +134,17 @@ public sealed class TopicInfoTests : ClassTest<Topic.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new Topic.Info
+    using (new AssertionScope())
     {
-      Id = 1,
-      Name = "name"
-    };
+      Validate(new Topic.Info
+      {
+        Id = 1,
+        Name = "name"
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

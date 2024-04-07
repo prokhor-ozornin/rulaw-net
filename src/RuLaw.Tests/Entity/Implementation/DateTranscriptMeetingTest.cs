@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -111,7 +112,10 @@ public sealed class DateTranscriptMeetingTest : ClassTest<DateTranscriptMeeting>
   ///   <para>Performs testing of <see cref="DateTranscriptMeeting.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new DateTranscriptMeeting(new {Lines = new List<string> {"first", "second"}}).ToString().Should().Be($"first{Environment.NewLine}second"); }
+  public void ToString_Method()
+  {
+    new DateTranscriptMeeting(new {Lines = new List<string> {"first", "second"}}).ToString().Should().Be($"first{Environment.NewLine}second");
+  }
 }
 
 /// <summary>
@@ -171,12 +175,22 @@ public sealed class DateTranscriptMeetingInfoTests : ClassTest<DateTranscriptMee
   [Fact]
   public void ToResult_Method()
   {
-    var result = new DateTranscriptMeeting.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<DateTranscriptMeeting>();
-    result.Date.Should().BeNull();
-    result.Number.Should().BeNull();
-    result.Lines.Should().BeEmpty();
-    result.Votes.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new DateTranscriptMeeting.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<DateTranscriptMeeting>();
+      result.Date.Should().BeNull();
+      result.Number.Should().BeNull();
+      result.Lines.Should().BeEmpty();
+      result.Votes.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -185,14 +199,19 @@ public sealed class DateTranscriptMeetingInfoTests : ClassTest<DateTranscriptMee
   [Fact]
   public void Serialization()
   {
-    var info = new DateTranscriptMeeting.Info
+    using (new AssertionScope())
     {
-      Date = DateTimeOffset.MinValue,
-      Lines = new List<string> {"line"},
-      Number = 1,
-      Votes = new List<TranscriptVote> {new(new {Date = DateTimeOffset.MinValue, Line = 2})}
-    };
+      Validate(new DateTranscriptMeeting.Info
+      {
+        Date = DateTimeOffset.MinValue,
+        Lines = new List<string> { "line" },
+        Number = 1,
+        Votes = new List<TranscriptVote> { new(new { Date = DateTimeOffset.MinValue, Line = 2 }) }
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

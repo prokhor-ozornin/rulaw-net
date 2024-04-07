@@ -109,7 +109,7 @@ public sealed class Vote : IVote
   public Vote(Info info)
   {
     Id = info.Id;
-    Date = info.Date != null ? DateTimeOffset.Parse(info.Date) : null;
+    Date = info.Date is not null ? DateTimeOffset.Parse(info.Date) : null;
     Subject = info.Subject;
     Successful = info.Successful;
     ResultType = info.ResultType;

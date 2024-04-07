@@ -21,6 +21,6 @@ public static class ILawEventExtensions
     if (solution is null) throw new ArgumentNullException(nameof(solution));
     if (solution.IsEmpty()) throw new ArgumentException(nameof(solution));
 
-    return events.Where(lawEvent => lawEvent != null && (lawEvent.Solution ?? string.Empty).ToLowerInvariant().Contains(solution.ToLowerInvariant()));
+    return events.Where(lawEvent => lawEvent is not null && (lawEvent.Solution ?? string.Empty).ToLowerInvariant().Contains(solution.ToLowerInvariant()));
   }
 }

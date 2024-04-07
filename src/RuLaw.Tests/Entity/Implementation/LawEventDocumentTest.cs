@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -70,7 +71,10 @@ public sealed class LawEventDocumentTest : ClassTest<LawEventDocument>
   ///   <para>Performs testing of <see cref="LawEventDocument.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new LawEventDocument(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new LawEventDocument(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -108,10 +112,20 @@ public sealed class LawEventDocumentInfoTests : ClassTest<LawEventDocument.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new LawEventDocument.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<LawEventDocument>();
-    result.Name.Should().BeNull();
-    result.Type.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new LawEventDocument.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<LawEventDocument>();
+      result.Name.Should().BeNull();
+      result.Type.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -120,12 +134,17 @@ public sealed class LawEventDocumentInfoTests : ClassTest<LawEventDocument.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new LawEventDocument.Info
+    using (new AssertionScope())
     {
-      Name = "name",
-      Type = "type"
-    };
+      Validate(new LawEventDocument.Info
+      {
+        Name = "name",
+        Type = "type"
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

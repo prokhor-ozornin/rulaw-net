@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -109,7 +110,10 @@ public sealed class TranscriptMeetingTest : ClassTest<TranscriptMeeting>
   ///   <para>Performs testing of <see cref="TranscriptMeeting.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new TranscriptMeeting(new {Date = DateTimeOffset.MaxValue}).ToString().Should().Be(DateTimeOffset.MaxValue.ToIsoString()); }
+  public void ToString_Method()
+  {
+    new TranscriptMeeting(new {Date = DateTimeOffset.MaxValue}).ToString().Should().Be(DateTimeOffset.MaxValue.ToIsoString());
+  }
 }
 
 /// <summary>
@@ -165,12 +169,22 @@ public sealed class TranscriptMeetingInfoTests : ClassTest<TranscriptMeeting.Inf
   [Fact]
   public void ToResult_Method()
   {
-    var result = new TranscriptMeeting.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<TranscriptMeeting>();
-    result.Date.Should().BeNull();
-    result.Number.Should().BeNull();
-    result.LinesCount.Should().BeNull();
-    result.Questions.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new TranscriptMeeting.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<TranscriptMeeting>();
+      result.Date.Should().BeNull();
+      result.Number.Should().BeNull();
+      result.LinesCount.Should().BeNull();
+      result.Questions.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -179,14 +193,19 @@ public sealed class TranscriptMeetingInfoTests : ClassTest<TranscriptMeeting.Inf
   [Fact]
   public void Serialization()
   {
-    var info = new TranscriptMeeting.Info
+    using (new AssertionScope())
     {
-      Date = DateTimeOffset.MinValue,
-      LinesCount = 1,
-      Number = 2,
-      Questions = new List<TranscriptMeetingQuestion> {new(new {})}
-    };
+      Validate(new TranscriptMeeting.Info
+      {
+        Date = DateTimeOffset.MinValue,
+        LinesCount = 1,
+        Number = 2,
+        Questions = [new TranscriptMeetingQuestion(new { })]
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

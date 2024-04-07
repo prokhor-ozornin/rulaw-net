@@ -36,7 +36,7 @@ public sealed class DateTranscriptsResult : IDateTranscriptsResult
   /// <param name="info"></param>
   public DateTranscriptsResult(Info info)
   {
-    Date = info.Date != null ? DateTimeOffset.Parse(info.Date) : null;
+    Date = info.Date is not null ? DateTimeOffset.Parse(info.Date) : null;
     Meetings = info.Meetings ?? new List<DateTranscriptMeeting>();
   }
 
@@ -77,7 +77,7 @@ public sealed class DateTranscriptsResult : IDateTranscriptsResult
   ///   <para>Returns a <see cref="string"/> that represents the current <see cref="DateTranscriptsResult"/> instance.</para>
   /// </summary>
   /// <returns>A string that represents the current <see cref="DateTranscriptsResult"/>.</returns>
-  public override string ToString() => Date != null ? Date.Value.AsString() : string.Empty;
+  public override string ToString() => Date is not null ? Date.Value.AsString() : string.Empty;
 
   /// <summary>
   ///   <para></para>

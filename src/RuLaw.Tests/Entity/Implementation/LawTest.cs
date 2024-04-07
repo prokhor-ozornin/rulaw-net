@@ -1,5 +1,7 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
+using FluentAssertions.Json;
 using Xunit;
 
 namespace RuLaw.Tests;
@@ -166,7 +168,10 @@ public sealed class LawTest : ClassTest<Law>
   ///   <para>Performs testing of <see cref="Law.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Law(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new Law(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -283,19 +288,29 @@ public sealed class LawInfoTests : ClassTest<Law.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Law.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Law>();
-    result.Id.Should().BeNull();
-    result.Name.Should().BeNull();
-    result.Date.Should().BeNull();
-    result.Number.Should().BeNull();
-    result.Subject.Should().BeNull();
-    result.Type.Should().BeNull();
-    result.Url.Should().BeNull();
-    result.TranscriptUrl.Should().BeNull();
-    result.Comments.Should().BeNull();
-    result.LastEvent.Should().BeNull();
-    result.Committees.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new Law.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Law>();
+      result.Id.Should().BeNull();
+      result.Name.Should().BeNull();
+      result.Date.Should().BeNull();
+      result.Number.Should().BeNull();
+      result.Subject.Should().BeNull();
+      result.Type.Should().BeNull();
+      result.Url.Should().BeNull();
+      result.TranscriptUrl.Should().BeNull();
+      result.Comments.Should().BeNull();
+      result.LastEvent.Should().BeNull();
+      result.Committees.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -304,6 +319,13 @@ public sealed class LawInfoTests : ClassTest<Law.Info>
   [Fact]
   public void Serialization()
   {
-    throw new NotImplementedException();
+    using (new AssertionScope())
+    {
+      Validate(new Law());
+    }
+
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

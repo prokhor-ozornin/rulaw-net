@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
+using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
 
@@ -16,12 +17,22 @@ public sealed class ILawExtensionsTest : UnitTest
   [Fact]
   public void Number_Method()
   {
-    AssertionExtensions.Should(() => ((IEnumerable<ILaw>) null).Number("number")).ThrowExactly<ArgumentNullException>().WithParameterName("laws");
-    AssertionExtensions.Should(() => Enumerable.Empty<ILaw>().Number(null)).ThrowExactly<ArgumentNullException>().WithParameterName("number");
-    AssertionExtensions.Should(() => Enumerable.Empty<ILaw>().Number(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("number");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ((IEnumerable<ILaw>) null).Number("number")).ThrowExactly<ArgumentNullException>().WithParameterName("laws");
+      AssertionExtensions.Should(() => Enumerable.Empty<ILaw>().Number(null)).ThrowExactly<ArgumentNullException>().WithParameterName("number");
+      AssertionExtensions.Should(() => Enumerable.Empty<ILaw>().Number(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("number");
 
-    var laws = new Law(new {Number = "first"}).ToSequence(new Law(new {Number = "second"}), null);
-    new Law(new {Number = "first"}).ToSequence(new Law(new {Number = "second"}), null).Number("first").Should().NotBeNull();
-    laws.Number("third").Should().BeNull();
+      var laws = new Law(new {Number = "first"}).ToSequence(new Law(new {Number = "second"}), null);
+      new Law(new {Number = "first"}).ToSequence(new Law(new {Number = "second"}), null).Number("first").Should().NotBeNull();
+      laws.Number("third").Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 }

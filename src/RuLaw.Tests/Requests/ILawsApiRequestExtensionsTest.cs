@@ -42,17 +42,27 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   [Fact]
   public void Topic_Method()
   {
-    AssertionExtensions.Should(() => ILawsApiRequestExtensions.Topic(null, new Topic())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ILawsApiRequestExtensions.Topic(null, new Topic())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-    var request = new LawsApiRequest();
-    
-    request.Parameters.Should().BeEmpty();
+      var request = new LawsApiRequest();
+      
+      request.Parameters.Should().BeEmpty();
 
-    request.Topic((ITopic) null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["topic"].Should().BeNull();
+      request.Topic((ITopic) null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["topic"].Should().BeNull();
 
-    request.Topic(new Topic(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["topic"].Should().Be(1L);
+      request.Topic(new Topic(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["topic"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -86,17 +96,27 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   [Fact]
   public void Branch_Method()
   {
-    AssertionExtensions.Should(() => ILawsApiRequestExtensions.Branch(null, new LawBranch())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ILawsApiRequestExtensions.Branch(null, new LawBranch())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-    var request = new LawsApiRequest();
+      var request = new LawsApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Branch((ILawBranch) null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["class"].Should().BeNull();
+      request.Branch((ILawBranch) null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["class"].Should().BeNull();
 
-    request.Branch(new LawBranch(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["class"].Should().Be(1L);
+      request.Branch(new LawBranch(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["class"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -105,17 +125,27 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   [Fact]
   public void Deputy_Method()
   {
-    AssertionExtensions.Should(() => ILawsApiRequestExtensions.Deputy(null, new Deputy())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ILawsApiRequestExtensions.Deputy(null, new Deputy())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-    var request = new LawsApiRequest();
+      var request = new LawsApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Deputy((IDeputy) null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["deputy"].Should().BeNull();
+      request.Deputy((IDeputy)null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["deputy"].Should().BeNull();
 
-    request.Deputy(new Deputy(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["deputy"].Should().Be(1L);
+      request.Deputy(new Deputy(new { Id = 1 })).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["deputy"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -124,17 +154,27 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   [Fact]
   public void FederalAuthority_Method()
   {
-    AssertionExtensions.Should(() => ILawsApiRequestExtensions.FederalAuthority(null, new FederalAuthority())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ILawsApiRequestExtensions.FederalAuthority(null, new FederalAuthority())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-    var request = new LawsApiRequest();
+      var request = new LawsApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.FederalAuthority((IAuthority) null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["federal_subject"].Should().BeNull();
+      request.FederalAuthority((IAuthority) null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["federal_subject"].Should().BeNull();
 
-    request.FederalAuthority(new FederalAuthority(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["federal_subject"].Should().Be(1L);
+      request.FederalAuthority(new FederalAuthority(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["federal_subject"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -143,17 +183,27 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   [Fact]
   public void RegionalAuthority_Method()
   {
-    AssertionExtensions.Should(() => ILawsApiRequestExtensions.RegionalAuthority(null, new RegionalAuthority(new {}))).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ILawsApiRequestExtensions.RegionalAuthority(null, new RegionalAuthority(new {}))).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-    var request = new LawsApiRequest();
+      var request = new LawsApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.RegionalAuthority((IAuthority) null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["regional_subject"].Should().BeNull();
+      request.RegionalAuthority((IAuthority) null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["regional_subject"].Should().BeNull();
 
-    request.RegionalAuthority(new RegionalAuthority(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["regional_subject"].Should().Be(1L);
+      request.RegionalAuthority(new RegionalAuthority(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["regional_subject"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -162,17 +212,27 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   [Fact]
   public void ProfileCommittee_Method()
   {
-    AssertionExtensions.Should(() => ILawsApiRequestExtensions.ProfileCommittee(null, new Committee(new {}))).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ILawsApiRequestExtensions.ProfileCommittee(null, new Committee(new {}))).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-    var request = new LawsApiRequest();
+      var request = new LawsApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.ProfileCommittee((ICommittee) null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["profile_committee"].Should().BeNull();
+      request.ProfileCommittee((ICommittee) null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["profile_committee"].Should().BeNull();
 
-    request.ProfileCommittee(new Committee(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["profile_committee"].Should().Be(1L);
+      request.ProfileCommittee(new Committee(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["profile_committee"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -181,17 +241,27 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   [Fact]
   public void ResponsibleCommittee_Method()
   {
-    AssertionExtensions.Should(() => ILawsApiRequestExtensions.ResponsibleCommittee(null, new Committee(new {}))).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ILawsApiRequestExtensions.ResponsibleCommittee(null, new Committee(new {}))).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-    var request = new LawsApiRequest();
+      var request = new LawsApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.ResponsibleCommittee((ICommittee) null).Should().NotBeNull().And.NotBeNull().And.BeSameAs(request);
-    request.Parameters["responsible_committee"].Should().BeNull();
+      request.ResponsibleCommittee((ICommittee) null).Should().NotBeNull().And.NotBeNull().And.BeSameAs(request);
+      request.Parameters["responsible_committee"].Should().BeNull();
 
-    request.ResponsibleCommittee(new Committee(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["responsible_committee"].Should().Be(1L);
+      request.ResponsibleCommittee(new Committee(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["responsible_committee"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -200,17 +270,27 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   [Fact]
   public void SoExecutorCommittee_Method()
   {
-    AssertionExtensions.Should(() => ILawsApiRequestExtensions.SoExecutorCommittee(null, new Committee(new {}))).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ILawsApiRequestExtensions.SoExecutorCommittee(null, new Committee(new {}))).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-    var request = new LawsApiRequest();
+      var request = new LawsApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.SoExecutorCommittee((ICommittee) null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["soexecutor_committee"].Should().BeNull();
+      request.SoExecutorCommittee((ICommittee) null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["soexecutor_committee"].Should().BeNull();
 
-    request.SoExecutorCommittee(new Committee(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["soexecutor_committee"].Should().Be(1);
+      request.SoExecutorCommittee(new Committee(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["soexecutor_committee"].Should().Be(1);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -219,28 +299,38 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   [Fact]
   public void Sorting_Method()
   {
-    var request = new LawsApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new LawsApiRequest();
 
-    request.Sorting(LawsSorting.DateAscending).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().Be("date_asc");
+      request.Sorting(LawsSorting.DateAscending).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().Be("date_asc");
 
-    request.Sorting(LawsSorting.DateDescending).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().Be("date");
+      request.Sorting(LawsSorting.DateDescending).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().Be("date");
 
-    request.Sorting(LawsSorting.LastEventDateAscending).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().Be("last_event_date_asc");
+      request.Sorting(LawsSorting.LastEventDateAscending).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().Be("last_event_date_asc");
 
-    request.Sorting(LawsSorting.LastEventDateDescending).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().Be("last_event_date");
+      request.Sorting(LawsSorting.LastEventDateDescending).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().Be("last_event_date");
 
-    request.Sorting(LawsSorting.Name).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().Be("name");
+      request.Sorting(LawsSorting.Name).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().Be("name");
 
-    request.Sorting(LawsSorting.Number).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().Be("number");
+      request.Sorting(LawsSorting.Number).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().Be("number");
 
-    request.Sorting(LawsSorting.ResponsibleCommittee).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().Be("responsible_committee");
+      request.Sorting(LawsSorting.ResponsibleCommittee).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().Be("responsible_committee");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>

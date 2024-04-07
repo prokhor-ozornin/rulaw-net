@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
+using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
 
@@ -16,10 +17,20 @@ public sealed class IActiveExtensionsTest : UnitTest
   [Fact]
   public void Active_Method()
   {
-    AssertionExtensions.Should(() => IActiveExtensions.Active<IActive>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IActiveExtensions.Active<IActive>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-    Enumerable.Empty<IActive>().Active().Should().NotBeNull().And.BeEmpty();
-    new ActiveEntity { Active = true }.ToSequence(new ActiveEntity { Active = false }, null).Active().Should().NotBeNullOrEmpty().And.ContainSingle();
+      Enumerable.Empty<IActive>().Active().Should().NotBeNull().And.BeEmpty();
+      new ActiveEntity { Active = true }.ToSequence(new ActiveEntity { Active = false }, null).Active().Should().NotBeNullOrEmpty().And.ContainSingle();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -28,10 +39,20 @@ public sealed class IActiveExtensionsTest : UnitTest
   [Fact]
   public void Inactive_Method()
   {
-    AssertionExtensions.Should(() => IActiveExtensions.Inactive<IActive>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IActiveExtensions.Inactive<IActive>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-    Enumerable.Empty<IActive>().Inactive().Should().NotBeNull().And.BeEmpty();
-    new ActiveEntity { Active = true }.ToSequence(new ActiveEntity { Active = true }, null).Inactive().Should().NotBeNullOrEmpty().And.ContainSingle();
+      Enumerable.Empty<IActive>().Inactive().Should().NotBeNull().And.BeEmpty();
+      new ActiveEntity { Active = true }.ToSequence(new ActiveEntity { Active = true }, null).Inactive().Should().NotBeNullOrEmpty().And.ContainSingle();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   private sealed class ActiveEntity : IActive

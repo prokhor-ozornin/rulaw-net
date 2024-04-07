@@ -18,14 +18,14 @@ public static class IDateableExtensions
   {
     if (entities is null) throw new ArgumentNullException(nameof(entities));
 
-    if (from != null)
+    if (from is not null)
     {
-      entities = entities.Where(entity => entity != null && entity.Date >= from.Value);
+      entities = entities.Where(entity => entity is not null && entity.Date >= from.Value);
     }
 
-    if (to != null)
+    if (to is not null)
     {
-      entities = entities.Where(entity => entity != null && entity.Date <= to.Value);
+      entities = entities.Where(entity => entity is not null && entity.Date <= to.Value);
     }
 
     return entities;

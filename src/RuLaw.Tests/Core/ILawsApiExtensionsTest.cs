@@ -205,8 +205,5 @@ public sealed class ILawsApiExtensionsTest : UnitTest
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public override void Dispose()
-  {
-    Api.Dispose();
-  }
+  public override void Dispose() => Api.Dispose();
 }

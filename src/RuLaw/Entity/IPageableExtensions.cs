@@ -18,14 +18,14 @@ public static class IPageableExtensions
   {
     if (entities is null) throw new ArgumentNullException(nameof(entities));
 
-    if (from != null)
+    if (from is not null)
     {
-      entities = entities.Where(entity => entity != null && entity.Page >= from);
+      entities = entities.Where(entity => entity is not null && entity.Page >= from);
     }
 
-    if (to != null)
+    if (to is not null)
     {
-      entities = entities.Where(entity => entity != null && ((entity.Page != null && entity.Page <= to) || entity.Page == null));
+      entities = entities.Where(entity => entity is not null && ((entity.Page is not null && entity.Page <= to) || entity.Page is null));
     }
 
     return entities;
@@ -43,14 +43,14 @@ public static class IPageableExtensions
   {
     if (entities is null) throw new ArgumentNullException(nameof(entities));
 
-    if (from != null)
+    if (from is not null)
     {
-      entities = entities.Where(entity => entity != null && entity.PageSize >= from);
+      entities = entities.Where(entity => entity is not null && entity.PageSize >= from);
     }
 
-    if (to != null)
+    if (to is not null)
     {
-      entities = entities.Where(entity => entity != null && ((entity.PageSize != null && entity.PageSize <= to) || entity.PageSize == null));
+      entities = entities.Where(entity => entity is not null && ((entity.PageSize is not null && entity.PageSize <= to) || entity.PageSize is null));
     }
 
     return entities;

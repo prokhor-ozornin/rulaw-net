@@ -54,8 +54,8 @@ public sealed class Session : ISession
   {
     Id = info.Id;
     Name = info.Name;
-    FromDate = info.FromDate != null ? DateTimeOffset.Parse(info.FromDate) : null;
-    ToDate = info.ToDate != null ? DateTimeOffset.Parse(info.ToDate) : null;
+    FromDate = info.FromDate is not null ? DateTimeOffset.Parse(info.FromDate) : null;
+    ToDate = info.ToDate is not null ? DateTimeOffset.Parse(info.ToDate) : null;
   }
 
   /// <summary>

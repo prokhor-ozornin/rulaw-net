@@ -1,6 +1,8 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
+using FluentAssertions.Json;
 using Xunit;
 
 namespace RuLaw.Tests;
@@ -80,14 +82,34 @@ public sealed class QuestionTranscriptsResultInfoTests : ClassTest<QuestionTrans
   [Fact]
   public void ToResult_Method()
   {
-    var result = new QuestionTranscriptsResult.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<QuestionTranscriptsResult>();
-    result.Meetings.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new QuestionTranscriptsResult.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<QuestionTranscriptsResult>();
+      result.Meetings.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
   ///   <para>Performs testing of serialization/deserialization process.</para>
   /// </summary>
   [Fact]
-  public void Serialization() { throw new NotImplementedException(); }
+  public void Serialization()
+  {
+    using (new AssertionScope())
+    {
+      Validate(new QuestionTranscriptsResult());
+    }
+
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+  }
 }

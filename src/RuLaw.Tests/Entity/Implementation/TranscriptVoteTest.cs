@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -110,10 +111,20 @@ public sealed class TranscriptVoteInfoTests : ClassTest<TranscriptVote.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new TranscriptVote.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<TranscriptVote>();
-    result.Date.Should().BeNull();
-    result.Line.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new TranscriptVote.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<TranscriptVote>();
+      result.Date.Should().BeNull();
+      result.Line.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -122,12 +133,17 @@ public sealed class TranscriptVoteInfoTests : ClassTest<TranscriptVote.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new TranscriptVote.Info
+    using (new AssertionScope())
     {
-      Date = DateTimeOffset.MinValue.AsString(),
-      Line = 1
-    };
+      Validate(new TranscriptVote.Info
+      {
+        Date = DateTimeOffset.MinValue.AsString(),
+        Line = 1
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

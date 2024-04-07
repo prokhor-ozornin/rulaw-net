@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -70,7 +71,10 @@ public sealed class LawTypeTest : ClassTest<LawType>
   ///   <para>Performs testing of <see cref="LawType.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new LawType(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new LawType(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -120,12 +124,17 @@ public sealed class LawTypeInfoTests : ClassTest<LawType.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new LawType.Info
+    using (new AssertionScope())
     {
-      Id = 1,
-      Name = "name"
-    };
+      Validate(new LawType.Info
+      {
+        Id = 1,
+        Name = "name"
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

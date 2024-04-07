@@ -87,8 +87,5 @@ public sealed class IVotesApiExtensionsTest : UnitTest
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public override void Dispose()
-  {
-    Api.Dispose();
-  }
+  public override void Dispose() => Api.Dispose();
 }

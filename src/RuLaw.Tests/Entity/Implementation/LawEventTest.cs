@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -93,7 +94,10 @@ public sealed class LawEventTest : ClassTest<LawEvent>
   ///   <para>Performs testing of <see cref="LawEvent.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new LawEvent(new {Solution = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new LawEvent(new {Solution = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -164,13 +168,23 @@ public sealed class LawEventInfoTests : ClassTest<LawEvent.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new LawEvent.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<LawEvent>();
-    result.Date.Should().BeNull();
-    result.Solution.Should().BeNull();
-    result.Document.Should().BeNull();
-    result.Phase.Should().BeNull();
-    result.Stage.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new LawEvent.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<LawEvent>();
+      result.Date.Should().BeNull();
+      result.Solution.Should().BeNull();
+      result.Document.Should().BeNull();
+      result.Phase.Should().BeNull();
+      result.Stage.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -179,15 +193,20 @@ public sealed class LawEventInfoTests : ClassTest<LawEvent.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new LawEvent.Info
+    using (new AssertionScope())
     {
-      Date = DateTimeOffset.MinValue.AsString(),
-      Document = new LawEventDocument(new {Name = "document.name", Type = "document.type"}),
-      Phase = new LawEventPhase(new {Id = 2, Name = "phase.name"}),
-      Solution = "solution",
-      Stage = new LawEventStage(new {Id = 3, Name = "stage.name"})
-    };
+      Validate(new LawEvent.Info
+      {
+        Date = DateTimeOffset.MinValue.AsString(),
+        Document = new LawEventDocument(new { Name = "document.name", Type = "document.type" }),
+        Phase = new LawEventPhase(new { Id = 2, Name = "phase.name" }),
+        Solution = "solution",
+        Stage = new LawEventStage(new { Id = 3, Name = "stage.name" })
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

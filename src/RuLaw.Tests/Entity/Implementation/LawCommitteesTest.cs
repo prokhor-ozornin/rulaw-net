@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -139,11 +140,21 @@ public sealed class LawCommitteesInfoTests : ClassTest<LawCommittees.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new LawCommittees.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<LawCommittees>();
-    result.Responsible.Should().BeNull();
-    result.Profile.Should().BeNull();
-    result.SoExecutor.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new LawCommittees.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<LawCommittees>();
+      result.Responsible.Should().BeNull();
+      result.Profile.Should().BeNull();
+      result.SoExecutor.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>

@@ -2,6 +2,7 @@
 using Xunit;
 using System.Configuration;
 using Catharsis.Commons;
+using FluentAssertions.Execution;
 
 namespace RuLaw.Tests.Core;
 
@@ -18,22 +19,22 @@ public sealed class ICommitteesApiExtensionsTest : UnitTest
   [Fact]
   public void All_Method()
   {
-    AssertionExtensions.Should(() => ICommitteesApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ICommitteesApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-    var committees = Api.Committees.All();
+      var committees = Api.Committees.All();
 
-    committees.Should().NotBeNullOrEmpty().And.BeOfType<List<Committee>>();
-    
-    var committee = committees.Single(committee => committee.Id == 6274200);
-    committee.Name.Should().Be("Комитет ГД по аграрным вопросам");
-    committee.FromDate.Should().HaveYear(1994).And.HaveMonth(1).And.HaveDay(20).And.HaveOffset(TimeSpan.Zero);
+      committees.Should().NotBeNullOrEmpty().And.BeOfType<List<Committee>>();
+      
+      var committee = committees.Single(committee => committee.Id == 6274200);
+      committee.Name.Should().Be("Комитет ГД по аграрным вопросам");
+      committee.FromDate.Should().HaveYear(1994).And.HaveMonth(1).And.HaveDay(20).And.HaveOffset(TimeSpan.Zero);
+    }
   }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public override void Dispose()
-  {
-    Api.Dispose();
-  }
+  public override void Dispose() => Api.Dispose();
 }

@@ -28,15 +28,25 @@ public sealed class QuestionsApiRequestTest : UnitTest
   [Fact]
   public void Page_Method()
   {
-    var request = new QuestionsApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new QuestionsApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Page(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["page"].Should().BeNull();
+      request.Page(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["page"].Should().BeNull();
 
-    request.Page(1).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["page"].Should().Be(1);
+      request.Page(1).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["page"].Should().Be(1);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -70,15 +80,25 @@ public sealed class QuestionsApiRequestTest : UnitTest
   [Fact]
   public void Name_Method()
   {
-    var request = new QuestionsApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new QuestionsApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Name(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["name"].Should().Be("name");
+      request.Name(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["name"].Should().Be("name");
 
-    request.Name("name").Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["name"].Should().Be("name");
+      request.Name("name").Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["name"].Should().Be("name");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -87,17 +107,27 @@ public sealed class QuestionsApiRequestTest : UnitTest
   [Fact]
   public void FromDate_Method()
   {
-    var request = new QuestionsApiRequest();
-    
-    request.Parameters.Should().BeEmpty();
-
-    request.FromDate(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["dateFrom"].Should().BeNull();
-
-    foreach (var date in new[] {DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow})
+    using (new AssertionScope())
     {
-      request.FromDate(date).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["dateFrom"].Should().Be(date.AsString());
+      var request = new QuestionsApiRequest();
+
+      request.Parameters.Should().BeEmpty();
+
+      request.FromDate(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["dateFrom"].Should().BeNull();
+
+      foreach (var date in new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow })
+      {
+        request.FromDate(date).Should().NotBeNull().And.BeSameAs(request);
+        request.Parameters["dateFrom"].Should().Be(date.AsString());
+      }
+    }
+
+    return;
+
+    static void Validate()
+    {
+
     }
   }
 
@@ -107,17 +137,27 @@ public sealed class QuestionsApiRequestTest : UnitTest
   [Fact]
   public void ToDate_Method()
   {
-    var request = new QuestionsApiRequest();
-
-    request.Parameters.Should().BeEmpty();
-
-    request.ToDate(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["dateTo"].Should().BeNull();
-
-    foreach (var date in new[] {DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow})
+    using (new AssertionScope())
     {
-      request.ToDate(date).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["dateTo"].Should().Be(date.AsString());
+      var request = new QuestionsApiRequest();
+
+      request.Parameters.Should().BeEmpty();
+
+      request.ToDate(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["dateTo"].Should().BeNull();
+
+      foreach (var date in new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow })
+      {
+        request.ToDate(date).Should().NotBeNull().And.BeSameAs(request);
+        request.Parameters["dateTo"].Should().Be(date.AsString());
+      }
+    }
+
+    return;
+
+    static void Validate()
+    {
+
     }
   }
 }

@@ -21,7 +21,7 @@ public static class IDeputyInfoExtensions
     if (name is null) throw new ArgumentNullException(nameof(name));
     if (name.IsEmpty()) throw new ArgumentException(nameof(name));
 
-    return deputies.Where(deputy => deputy != null && deputy.FullName.ToLowerInvariant().Contains(name.ToLowerInvariant()));
+    return deputies.Where(deputy => deputy is not null && deputy.FullName.ToLowerInvariant().Contains(name.ToLowerInvariant()));
   }
 
   /// <summary>
@@ -36,14 +36,14 @@ public static class IDeputyInfoExtensions
   {
     if (deputies is null) throw new ArgumentNullException(nameof(deputies));
 
-    if (from != null)
+    if (from is not null)
     {
-      deputies = deputies.Where(deputy => deputy != null && deputy.BirthDate >= from.Value);
+      deputies = deputies.Where(deputy => deputy is not null && deputy.BirthDate >= from.Value);
     }
 
-    if (to != null)
+    if (to is not null)
     {
-      deputies = deputies.Where(deputy => deputy != null && deputy.BirthDate <= to.Value);
+      deputies = deputies.Where(deputy => deputy is not null && deputy.BirthDate <= to.Value);
     }
 
     return deputies;
@@ -61,14 +61,14 @@ public static class IDeputyInfoExtensions
   {
     if (deputies is null) throw new ArgumentNullException(nameof(deputies));
 
-    if (from != null)
+    if (from is not null)
     {
-      deputies = deputies.Where(deputy => deputy != null && deputy.WorkStartDate >= from.Value);
+      deputies = deputies.Where(deputy => deputy is not null && deputy.WorkStartDate >= from.Value);
     }
 
-    if (to != null)
+    if (to is not null)
     {
-      deputies = deputies.Where(deputy => deputy != null && ((deputy.WorkEndDate.HasValue && deputy.WorkEndDate <= to.Value) || deputy.WorkEndDate == null));
+      deputies = deputies.Where(deputy => deputy is not null && ((deputy.WorkEndDate.HasValue && deputy.WorkEndDate <= to.Value) || deputy.WorkEndDate is null));
     }
 
     return deputies;
@@ -85,9 +85,9 @@ public static class IDeputyInfoExtensions
   {
     if (deputies is null) throw new ArgumentNullException(nameof(deputies));
     if (faction is null) throw new ArgumentNullException(nameof(faction));
-    if (faction.IsEmpty()) throw  new ArgumentException(nameof(faction));
+    if (faction.IsEmpty()) throw new ArgumentException(nameof(faction));
 
-    return deputies.Where(deputy => deputy != null && string.Equals(deputy.FactionName, faction, StringComparison.InvariantCultureIgnoreCase));
+    return deputies.Where(deputy => deputy is not null && string.Equals(deputy.FactionName, faction, StringComparison.InvariantCultureIgnoreCase));
   }
 
   /// <summary>
@@ -103,7 +103,7 @@ public static class IDeputyInfoExtensions
     if (degree is null) throw new ArgumentNullException(nameof(degree));
     if (degree.IsEmpty()) throw new ArgumentException(nameof(degree));
 
-    return deputies.Where(deputy => deputy != null && deputy.Degrees.Any(x => string.Equals(x, degree, StringComparison.InvariantCultureIgnoreCase)));
+    return deputies.Where(deputy => deputy is not null && deputy.Degrees.Any(x => string.Equals(x, degree, StringComparison.InvariantCultureIgnoreCase)));
   }
 
   /// <summary>
@@ -119,7 +119,7 @@ public static class IDeputyInfoExtensions
     if (rank is null) throw new ArgumentNullException(nameof(rank));
     if (rank.IsEmpty()) throw new ArgumentException(nameof(rank));
 
-    return deputies.Where(deputy => deputy != null && deputy.Ranks.Any(x => string.Equals(x, rank, StringComparison.InvariantCultureIgnoreCase)));
+    return deputies.Where(deputy => deputy is not null && deputy.Ranks.Any(x => string.Equals(x, rank, StringComparison.InvariantCultureIgnoreCase)));
   }
 
   /// <summary>
@@ -135,6 +135,6 @@ public static class IDeputyInfoExtensions
     if (region is null) throw new ArgumentNullException(nameof(region));
     if (region.IsEmpty()) throw new ArgumentException(nameof(region));
 
-    return deputies.Where(deputy => deputy != null && deputy.Regions.Any(x => string.Equals(x, region, StringComparison.InvariantCultureIgnoreCase)));
+    return deputies.Where(deputy => deputy is not null && deputy.Regions.Any(x => string.Equals(x, region, StringComparison.InvariantCultureIgnoreCase)));
   }
 }

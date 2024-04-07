@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -97,7 +98,10 @@ public sealed class CommitteeTest : ClassTest<Committee>
   ///   <para>Performs testing of <see cref="Committee.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Committee(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new Committee(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -156,13 +160,23 @@ public sealed class CommitteeInfoTests : ClassTest<Committee.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Committee.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Committee>();
-    result.Id.Should().NotBeNull();
-    result.Name.Should().NotBeNull();
-    result.Active.Should().NotBeNull();
-    result.FromDate.Should().NotBeNull();
-    result.ToDate.Should().NotBeNull();
+    using (new AssertionScope())
+    {
+      var result = new Committee.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Committee>();
+      result.Id.Should().NotBeNull();
+      result.Name.Should().NotBeNull();
+      result.Active.Should().NotBeNull();
+      result.FromDate.Should().NotBeNull();
+      result.ToDate.Should().NotBeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -171,15 +185,20 @@ public sealed class CommitteeInfoTests : ClassTest<Committee.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new Committee.Info
+    using (new AssertionScope())
     {
-      Id = 1,
-      Active = true,
-      FromDate = DateTimeOffset.MinValue.AsString(),
-      Name = "name",
-      ToDate = DateTimeOffset.MaxValue.AsString()
-    };
+      Validate(new Committee.Info
+      {
+        Id = 1,
+        Active = true,
+        FromDate = DateTimeOffset.MinValue.AsString(),
+        Name = "name",
+        ToDate = DateTimeOffset.MaxValue.AsString()
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

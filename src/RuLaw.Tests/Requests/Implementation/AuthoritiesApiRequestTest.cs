@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace RuLaw.Tests;
@@ -26,17 +27,27 @@ public sealed class AuthoritiesApiRequestTest : UnitTest
   [Fact]
   public void Current_Method()
   {
-    var request = new AuthoritiesApiRequest();
-    
-    request.Parameters.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var request = new AuthoritiesApiRequest();
+      
+      request.Parameters.Should().BeEmpty();
 
-    request.Current(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["current"].Should().BeNull();
+      request.Current(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["current"].Should().BeNull();
 
-    request.Current().Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["current"].Should().Be(true.ToString());
+      request.Current().Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["current"].Should().Be(true.ToString());
 
-    request.Current(false).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["current"].Should().Be(false.ToString());
+      request.Current(false).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["current"].Should().Be(false.ToString());
+    }
+
+    return;
+
+    static void Validate(string result, bool? current)
+    {
+
+    }
   }
 }

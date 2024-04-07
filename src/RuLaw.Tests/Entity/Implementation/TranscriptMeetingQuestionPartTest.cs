@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -121,7 +122,10 @@ public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeet
   ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new TranscriptMeetingQuestionPart(new {Lines = new List<string> {"first", "second"}}).ToString().Should().Be($"first{Environment.NewLine}second"); }
+  public void ToString_Method()
+  {
+    new TranscriptMeetingQuestionPart(new {Lines = new List<string> {"first", "second"}}).ToString().Should().Be($"first{Environment.NewLine}second");
+  }
 }
 
 /// <summary>
@@ -179,12 +183,22 @@ public sealed class TranscriptMeetingQuestionPartInfoTests : ClassTest<Transcrip
   [Fact]
   public void ToResult_Method()
   {
-    var result = new TranscriptMeetingQuestionPart.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<TranscriptMeetingQuestionPart>();
-    result.StartLine.Should().BeNull();
-    result.EndLine.Should().BeNull();
-    result.Lines.Should().BeEmpty();
-    result.Votes.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new TranscriptMeetingQuestionPart.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<TranscriptMeetingQuestionPart>();
+      result.StartLine.Should().BeNull();
+      result.EndLine.Should().BeNull();
+      result.Lines.Should().BeEmpty();
+      result.Votes.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -193,14 +207,19 @@ public sealed class TranscriptMeetingQuestionPartInfoTests : ClassTest<Transcrip
   [Fact]
   public void Serialization()
   {
-    var info = new TranscriptMeetingQuestionPart.Info
+    using (new AssertionScope())
     {
-      EndLine = 2,
-      Lines = new List<string> {"line"},
-      StartLine = 1,
-      Votes = new List<TranscriptVote> {new(new {Date = DateTimeOffset.MinValue, Line = 3})}
-    };
+      Validate(new TranscriptMeetingQuestionPart.Info
+      {
+        EndLine = 2,
+        Lines = ["line"],
+        StartLine = 1,
+        Votes = [new TranscriptVote(new { Date = DateTimeOffset.MinValue, Line = 3 })]
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

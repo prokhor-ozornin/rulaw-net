@@ -28,15 +28,25 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   [Fact]
   public void Number_Method()
   {
-    var request = new VotesSearchApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new VotesSearchApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Number(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["number"].Should().BeNull();
+      request.Number(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["number"].Should().BeNull();
 
-    request.Number("number").Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["number"].Should().Be("number");
+      request.Number("number").Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["number"].Should().Be("number");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -45,15 +55,25 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   [Fact]
   public void Faction_Method()
   {
-    var request = new VotesSearchApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new VotesSearchApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Faction(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["faction"].Should().BeNull();
+      request.Faction(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["faction"].Should().BeNull();
 
-    request.Faction(1).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["faction"].Should().Be(1L);
+      request.Faction(1).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["faction"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -62,15 +82,25 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   [Fact]
   public void Deputy_Method()
   {
-    var request = new VotesSearchApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new VotesSearchApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Deputy(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["deputy"].Should().BeNull();
+      request.Deputy(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["deputy"].Should().BeNull();
 
-    request.Deputy(1).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["deputy"].Should().Be(1L);
+      request.Deputy(1).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["deputy"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -79,15 +109,25 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   [Fact]
   public void Convocation_Method()
   {
-    var request = new VotesSearchApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new VotesSearchApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Convocation(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["convocation"].Should().BeNull();
+      request.Convocation(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["convocation"].Should().BeNull();
 
-    request.Convocation(1).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["convocation"].Should().Be(1L);
+      request.Convocation(1).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["convocation"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -152,15 +192,25 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   [Fact]
   public void Keywords_Method()
   {
-    var request = new VotesSearchApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new VotesSearchApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Keywords(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["keywords"].Should().BeNull();
+      request.Keywords(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["keywords"].Should().BeNull();
 
-    request.Keywords("key").Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["keywords"].Should().Be("key");
+      request.Keywords("key").Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["keywords"].Should().Be("key");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -169,15 +219,25 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   [Fact]
   public void Page_Method()
   {
-    var request = new VotesSearchApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new VotesSearchApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Page(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["page"].Should().BeNull();
+      request.Page(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["page"].Should().BeNull();
 
-    request.Page(1).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["page"].Should().Be(1);
+      request.Page(1).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["page"].Should().Be(1);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -186,27 +246,37 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   [Fact]
   public void Sorting_Method()
   {
-    var request = new VotesSearchApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new VotesSearchApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Sorting(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().BeNull();
+      request.Sorting(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().BeNull();
 
-    request.Sorting(VotesSorting.DateAscending).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().Be("date_asc");
+      request.Sorting(VotesSorting.DateAscending).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().Be("date_asc");
 
-    request.Sorting(VotesSorting.DateDescending).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().Be("date_desc_true");
+      request.Sorting(VotesSorting.DateDescending).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().Be("date_desc_true");
 
-    request.Sorting(VotesSorting.DateDescendingByDay).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().Be("date_desc");
+      request.Sorting(VotesSorting.DateDescendingByDay).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().Be("date_desc");
 
-    request.Sorting(VotesSorting.ResultAscending).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().Be("result_asc");
+      request.Sorting(VotesSorting.ResultAscending).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().Be("result_asc");
 
-    request.Sorting(VotesSorting.ResultDescending).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["sort"].Should().Be("result_desc");
+      request.Sorting(VotesSorting.ResultDescending).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["sort"].Should().Be("result_desc");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>

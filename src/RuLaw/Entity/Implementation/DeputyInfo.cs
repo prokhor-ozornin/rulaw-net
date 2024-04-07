@@ -193,9 +193,9 @@ public sealed class DeputyInfo : IDeputyInfo
     FirstName = info.FirstName;
     LastName = info.LastName;
     MiddleName = info.MiddleName;
-    BirthDate = info.BirthDate != null ? DateTimeOffset.Parse(info.BirthDate) : null;
-    WorkStartDate = info.WorkStartDate != null ? DateTimeOffset.Parse(info.WorkStartDate) : null;
-    WorkEndDate = info.WorkEndDate != null ? DateTimeOffset.Parse(info.WorkEndDate) : null;
+    BirthDate = info.BirthDate is not null ? DateTimeOffset.Parse(info.BirthDate) : null;
+    WorkStartDate = info.WorkStartDate is not null ? DateTimeOffset.Parse(info.WorkStartDate) : null;
+    WorkEndDate = info.WorkEndDate is not null ? DateTimeOffset.Parse(info.WorkEndDate) : null;
     FactionId = info.FactionId;
     FactionName = info.FactionName;
     FactionRegion = info.FactionRegion;

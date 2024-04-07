@@ -95,7 +95,7 @@ public sealed class TranscriptMeeting : ITranscriptMeeting
   ///   <para>Returns a <see cref="string"/> that represents the current <see cref="TranscriptMeeting"/> instance.</para>
   /// </summary>
   /// <returns>A string that represents the current <see cref="TranscriptMeeting"/>.</returns>
-  public override string ToString() => Date != null ? Date.Value.ToIsoString() : string.Empty;
+  public override string ToString() => Date is not null ? Date.Value.ToIsoString() : string.Empty;
 
   /// <summary>
   ///   <para></para>

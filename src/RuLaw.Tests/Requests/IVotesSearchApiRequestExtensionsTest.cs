@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace RuLaw.Tests;
@@ -16,16 +17,26 @@ public sealed class IVotesSearchApiRequestExtensionsTest : UnitTest
   [Fact]
   public void Deputy_Method()
   {
-    AssertionExtensions.Should(() => IVotesSearchApiRequestExtensions.Deputy(null, new Deputy())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IVotesSearchApiRequestExtensions.Deputy(null, new Deputy())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-    var request = new VotesSearchApiRequest();
-    request.Parameters.Should().BeEmpty();
-    
-    request.Deputy((IDeputy) null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["deputy"].Should().BeNull();
+      var request = new VotesSearchApiRequest();
+      request.Parameters.Should().BeEmpty();
 
-    request.Deputy(new Deputy(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["deputy"].Should().Be(1L);
+      request.Deputy((IDeputy)null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["deputy"].Should().BeNull();
+
+      request.Deputy(new Deputy(new { Id = 1 })).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["deputy"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -34,16 +45,26 @@ public sealed class IVotesSearchApiRequestExtensionsTest : UnitTest
   [Fact]
   public void Convocation_Method()
   {
-    AssertionExtensions.Should(() => IVotesSearchApiRequestExtensions.Convocation(null, new Convocation())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IVotesSearchApiRequestExtensions.Convocation(null, new Convocation())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-    var request = new VotesSearchApiRequest();
-    
-    request.Parameters.Should().BeEmpty();
+      var request = new VotesSearchApiRequest();
+      
+      request.Parameters.Should().BeEmpty();
 
-    request.Convocation((IConvocation) null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["convocation"].Should().BeNull();
+      request.Convocation((IConvocation) null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["convocation"].Should().BeNull();
 
-    request.Convocation(new Convocation(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["convocation"].Should().Be(1L);
+      request.Convocation(new Convocation(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["convocation"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 }

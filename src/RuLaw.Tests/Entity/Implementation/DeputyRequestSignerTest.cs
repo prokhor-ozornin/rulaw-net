@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -70,7 +71,10 @@ public sealed class DeputyRequestSignerTest : ClassTest<DeputyRequestSigner>
   ///   <para>Performs testing of <see cref="DeputyRequestSigner.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new DeputyRequestSigner(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new DeputyRequestSigner(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -108,10 +112,20 @@ public sealed class DeputyRequestSignerInfoTests : ClassTest<DeputyRequestSigner
   [Fact]
   public void ToResult_Method()
   {
-    var result = new DeputyRequestSigner.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<DeputyRequestSigner>();
-    result.Id.Should().BeNull();
-    result.Name.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new DeputyRequestSigner.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<DeputyRequestSigner>();
+      result.Id.Should().BeNull();
+      result.Name.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -120,12 +134,17 @@ public sealed class DeputyRequestSignerInfoTests : ClassTest<DeputyRequestSigner
   [Fact]
   public void Serialization()
   {
-    var info = new DeputyRequestSigner.Info
+    using (new AssertionScope())
     {
-      Id = 1,
-      Name = "name"
-    };
+      Validate(new DeputyRequestSigner.Info
+      {
+        Id = 1,
+        Name = "name"
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

@@ -21,6 +21,6 @@ public static class ITranscriptMeetingQuestionExtensions
     if (stage is null) throw new ArgumentNullException(nameof(stage));
     if (stage.IsEmpty()) throw new ArgumentException(nameof(stage));
 
-    return questions.Where(question => question != null && string.Equals(question.Stage, stage, StringComparison.InvariantCultureIgnoreCase));
+    return questions.Where(question => question is not null && string.Equals(question.Stage, stage, StringComparison.InvariantCultureIgnoreCase));
   }
 }

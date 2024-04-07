@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace RuLaw.Tests;
@@ -27,12 +28,22 @@ public sealed class ApiConfiguratorTest : UnitTest
   [Fact]
   public void ApiKey_Method()
   {
-    AssertionExtensions.Should(() => new ApiConfigurator().ApiKey(null)).ThrowExactly<ArgumentNullException>().WithParameterName("key");
-    AssertionExtensions.Should(() => new ApiConfigurator().ApiKey(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("key");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => new ApiConfigurator().ApiKey(null)).ThrowExactly<ArgumentNullException>().WithParameterName("key");
+      AssertionExtensions.Should(() => new ApiConfigurator().ApiKey(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("key");
 
-    var configurator = new ApiConfigurator();
-    configurator.ApiKey("apiKey").Should().NotBeNull().And.BeSameAs(configurator);
-    configurator.ApiKeyValue.Should().Be("apiKey");
+      var configurator = new ApiConfigurator();
+      configurator.ApiKey("apiKey").Should().NotBeNull().And.BeSameAs(configurator);
+      configurator.ApiKeyValue.Should().Be("apiKey");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -41,11 +52,21 @@ public sealed class ApiConfiguratorTest : UnitTest
   [Fact]
   public void AppKey_Method()
   {
-    AssertionExtensions.Should(() => new ApiConfigurator().AppKey(null)).ThrowExactly<ArgumentNullException>().WithParameterName("key");
-    AssertionExtensions.Should(() => new ApiConfigurator().AppKey(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("key");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => new ApiConfigurator().AppKey(null)).ThrowExactly<ArgumentNullException>().WithParameterName("key");
+      AssertionExtensions.Should(() => new ApiConfigurator().AppKey(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("key");
 
-    var configurator = new ApiConfigurator();
-    configurator.AppKey("appKey").Should().NotBeNull().And.BeSameAs(configurator);
-    configurator.AppKeyValue.Should().Be("appKey");
+      var configurator = new ApiConfigurator();
+      configurator.AppKey("appKey").Should().NotBeNull().And.BeSameAs(configurator);
+      configurator.AppKeyValue.Should().Be("appKey");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 }

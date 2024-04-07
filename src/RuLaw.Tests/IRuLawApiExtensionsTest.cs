@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
+using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
 
@@ -16,13 +17,23 @@ public sealed class IRuLawApiExtensionsTest : UnitTest
   [Fact]
   public void Configure_Method()
   {
-    AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
-    AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(RuLaw.Api, null)).ThrowExactly<ArgumentNullException>().WithParameterName("action");
-    AssertionExtensions.Should(() => RuLaw.Api.Configure(_ => {})).ThrowExactly<InvalidOperationException>();
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+      AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(RuLaw.Api, null)).ThrowExactly<ArgumentNullException>().WithParameterName("action");
+      AssertionExtensions.Should(() => RuLaw.Api.Configure(_ => {})).ThrowExactly<InvalidOperationException>();
 
-    var api = RuLaw.Api.Configure(configurator => configurator.ApiKey("apiKey").AppKey("appKey"));
-    api.Should().NotBeNull().And.BeOfType<Api>();
-    api.GetPropertyValue<string>("ApiToken").Should().Be("apiKey");
-    api.GetPropertyValue<string>("AppToken").Should().Be("appKey");
+      var api = RuLaw.Api.Configure(configurator => configurator.ApiKey("apiKey").AppKey("appKey"));
+      api.Should().NotBeNull().And.BeOfType<Api>();
+      api.GetPropertyValue<string>("ApiToken").Should().Be("apiKey");
+      api.GetPropertyValue<string>("AppToken").Should().Be("appKey");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 }

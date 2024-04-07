@@ -1,5 +1,7 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -97,7 +99,10 @@ public sealed class AuthorityTest : ClassTest<Authority>
   ///   <para>Performs testing of <see cref="Authority.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Authority(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new Authority(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -142,6 +147,8 @@ public sealed class AuthorityInfoTests : ClassTest<Authority.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(Weapon).Should().BeDerivedFrom<Entity>().And.Implement<IWeapon>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new Authority.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();
@@ -156,13 +163,23 @@ public sealed class AuthorityInfoTests : ClassTest<Authority.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Authority.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Authority>();
-    result.Id.Should().BeNull();
-    result.Name.Should().BeNull();
-    result.Active.Should().BeNull();
-    result.FromDate.Should().BeNull();
-    result.ToDate.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new Authority.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Authority>();
+      result.Id.Should().BeNull();
+      result.Name.Should().BeNull();
+      result.Active.Should().BeNull();
+      result.FromDate.Should().BeNull();
+      result.ToDate.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+      
+    }
   }
 
   /// <summary>
@@ -171,15 +188,20 @@ public sealed class AuthorityInfoTests : ClassTest<Authority.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new Authority.Info
+    using (new AssertionScope())
     {
-      Id = 1,
-      Name = "name",
-      Active = true,
-      FromDate = DateTimeOffset.MinValue.AsString(),
-      ToDate = DateTimeOffset.MaxValue.AsString()
-    };
+      Validate(new Authority.Info
+      {
+        Id = 1,
+        Name = "name",
+        Active = true,
+        FromDate = DateTimeOffset.MinValue.AsString(),
+        ToDate = DateTimeOffset.MaxValue.AsString()
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

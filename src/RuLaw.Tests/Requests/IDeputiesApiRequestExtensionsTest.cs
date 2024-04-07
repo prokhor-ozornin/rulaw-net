@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace RuLaw.Tests.Calls;
@@ -15,19 +16,29 @@ public sealed class IDeputiesLawApiCallExtensionsTests : UnitTest
   [Fact]
   public void Position_Method()
   {
-    AssertionExtensions.Should(() => IDeputiesApiRequestExtensions.Position(null, DeputyPosition.DumaDeputy)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IDeputiesApiRequestExtensions.Position(null, DeputyPosition.DumaDeputy)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-    var request = new DeputiesApiRequest();
+      var request = new DeputiesApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Position(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["position"].Should().BeNull();
+      request.Position(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["position"].Should().BeNull();
 
-    request.Position(DeputyPosition.DumaDeputy).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["position"].Should().Be("Депутат ГД");
+      request.Position(DeputyPosition.DumaDeputy).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["position"].Should().Be("Депутат ГД");
 
-    request.Position(DeputyPosition.FederationCouncilMember).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["position"].Should().Be("Член СФ");
+      request.Position(DeputyPosition.FederationCouncilMember).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["position"].Should().Be("Член СФ");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 }

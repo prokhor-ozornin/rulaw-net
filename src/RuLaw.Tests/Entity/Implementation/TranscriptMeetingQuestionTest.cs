@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -100,7 +101,10 @@ public sealed class TranscriptMeetingQuestionTest : ClassTest<TranscriptMeetingQ
   ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new TranscriptMeetingQuestion(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new TranscriptMeetingQuestion(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -149,11 +153,21 @@ public sealed class TranscriptMeetingQuestionInfoTests : ClassTest<TranscriptMee
   [Fact]
   public void ToResult_Method()
   {
-    var result = new TranscriptMeetingQuestion.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<TranscriptMeetingQuestion>();
-    result.Name.Should().BeNull();
-    result.Stage.Should().BeNull();
-    result.Parts.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new TranscriptMeetingQuestion.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<TranscriptMeetingQuestion>();
+      result.Name.Should().BeNull();
+      result.Stage.Should().BeNull();
+      result.Parts.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -162,13 +176,18 @@ public sealed class TranscriptMeetingQuestionInfoTests : ClassTest<TranscriptMee
   [Fact]
   public void Serialization()
   {
-    var info = new TranscriptMeetingQuestion.Info
+    using (new AssertionScope())
     {
-      Name = "name",
-      Parts = new List<TranscriptMeetingQuestionPart> {new(new {})},
-      Stage = "stage"
-    };
+      Validate(new TranscriptMeetingQuestion.Info
+      {
+        Name = "name",
+        Parts = [new TranscriptMeetingQuestionPart(new { })],
+        Stage = "stage"
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

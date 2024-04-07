@@ -9,17 +9,17 @@ internal sealed class JsonRestSerializer : IRestSerializer, ISerializer, IDeseri
 
   public string Serialize(Parameter parameter) => Serialize(parameter.Value);
 
-  public T Deserialize<T>(RestResponse response) => response.Content != null ? response.Content.AsJson<T>() : default;
+  public ContentType ContentType { get; set; }
+
+  public T Deserialize<T>(RestResponse response) => response.Content is not null ? response.Content.AsJson<T>() : default;
 
   public ISerializer Serializer => this;
 
   public IDeserializer Deserializer => this;
 
+  public string[] AcceptedContentTypes => ContentType.JsonAccept;
+
+  public SupportsContentType SupportsContentType => contentType => contentType.Equals(ContentType.Json);
+
   public DataFormat DataFormat => DataFormat.Json;
-
-  public string ContentType { get; set; } = "application/json";
-
-  public string[] AcceptedContentTypes => RestSharp.Serializers.ContentType.JsonAccept;
-
-  public SupportsContentType SupportsContentType => contentType => contentType.EndsWith("json", StringComparison.InvariantCultureIgnoreCase);
 }

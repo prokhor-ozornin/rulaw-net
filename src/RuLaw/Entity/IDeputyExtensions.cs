@@ -36,6 +36,6 @@ public static class IDeputyExtensions
   {
     if (deputies is null) throw new ArgumentNullException(nameof(deputies));
 
-    return deputies.Where(deputy => deputy != null && (deputy.Position ?? string.Empty).ToLowerInvariant().Contains((position ?? string.Empty).ToLowerInvariant()));
+    return deputies.Where(deputy => deputy is not null && (deputy.Position ?? string.Empty).ToLowerInvariant().Contains((position ?? string.Empty).ToLowerInvariant()));
   }
 }

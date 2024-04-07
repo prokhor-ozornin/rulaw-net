@@ -28,15 +28,25 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   [Fact]
   public void Page_Method()
   {
-    var request = new DeputyTranscriptApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new DeputyTranscriptApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Page(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["page"].Should().BeNull();
+      request.Page(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["page"].Should().BeNull();
 
-    request.Page(1).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["page"].Should().Be(1);
+      request.Page(1).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["page"].Should().Be(1);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -70,15 +80,25 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   [Fact]
   public void Name_Method()
   {
-    var request = new DeputyTranscriptApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new DeputyTranscriptApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Name(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["name"].Should().BeNull();
+      request.Name(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["name"].Should().BeNull();
 
-    request.Name("name").Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["name"].Should().Be("name");
+      request.Name("name").Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["name"].Should().Be("name");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -87,15 +107,25 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   [Fact]
   public void Deputy_Method()
   {
-    var request = new DeputyTranscriptApiRequest();
+    using (new AssertionScope())
+    {
+      var request = new DeputyTranscriptApiRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Deputy(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["deputy"].Should().BeNull();
+      request.Deputy(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["deputy"].Should().BeNull();
 
-    request.Deputy(1).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["deputy"].Should().Be(1L);
+      request.Deputy(1).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["deputy"].Should().Be(1L);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>

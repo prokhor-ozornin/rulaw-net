@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
+using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
 
@@ -16,11 +17,21 @@ public sealed class INameableExtensionsTest : UnitTest
   [Fact]
   public void Name_Method()
   {
-    AssertionExtensions.Should(() => ((IEnumerable<NameableEntity>) null).Name("currency")).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ((IEnumerable<NameableEntity>) null).Name("currency")).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-    Enumerable.Empty<NameableEntity>().Name(null).Should().NotBeNull().And.BeEmpty();
+      Enumerable.Empty<NameableEntity>().Name(null).Should().NotBeNull().And.BeEmpty();
 
-    new NameableEntity { Name = "first" }.ToSequence(new NameableEntity { Name = "second" }, null).Name("first").Should().NotBeNullOrEmpty().And.ContainSingle();
+      new NameableEntity { Name = "first" }.ToSequence(new NameableEntity { Name = "second" }, null).Name("first").Should().NotBeNullOrEmpty().And.ContainSingle();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   private sealed class NameableEntity : INameable

@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -77,7 +78,10 @@ public sealed class ResolutionTranscriptsResultTest : ClassTest<ResolutionTransc
   ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new ResolutionTranscriptsResult(new {Number = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new ResolutionTranscriptsResult(new {Number = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -119,10 +123,20 @@ public sealed class ResolutionTranscriptsResultInfoTests : ClassTest<ResolutionT
   [Fact]
   public void ToResult_Method()
   {
-    var result = new ResolutionTranscriptsResult.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<ResolutionTranscriptsResult>();
-    result.Number.Should().BeNull();
-    result.Meetings.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new ResolutionTranscriptsResult.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<ResolutionTranscriptsResult>();
+      result.Number.Should().BeNull();
+      result.Meetings.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>

@@ -58,21 +58,28 @@ public sealed class IInstancesApiExtensionsTest : UnitTest
   [Fact]
   public void SearchAsync_Method()
   {
-    AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
-    AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(Api.Instances, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+      AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(Api.Instances, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
 
-    var instances = Api.Instances.SearchAsync(request => request.Current()).ToListAsync().Await();
+      var instances = Api.Instances.SearchAsync(request => request.Current()).ToListAsync().Await();
 
-    var instance = instances.Single(instance => instance.Id == 177);
-    instance.Name.Should().Be("ГД (Пленарное заседание)");
-    instance.Active.Should().BeTrue();
+      var instance = instances.Single(instance => instance.Id == 177);
+      instance.Name.Should().Be("ГД (Пленарное заседание)");
+      instance.Active.Should().BeTrue();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public override void Dispose()
-  {
-    Api.Dispose();
-  }
+  public override void Dispose() => Api.Dispose();
 }

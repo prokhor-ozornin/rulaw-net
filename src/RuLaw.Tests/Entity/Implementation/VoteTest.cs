@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -151,7 +152,10 @@ public sealed class VoteTest : ClassTest<Vote>
   ///   <para>Performs testing of <see cref="Vote.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Vote(new {Subject = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new Vote(new {Subject = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -252,19 +256,29 @@ public sealed class VoteInfoTests : ClassTest<Vote.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Vote.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Vote>();
-    result.Id.Should().BeNull();
-    result.Date.Should().BeNull();
-    result.Subject.Should().BeNull();
-    result.Successful.Should().BeNull();
-    result.ResultType.Should().BeNull();
-    result.PersonResult.Should().BeNull();
-    result.TotalVotesCount.Should().BeNull();
-    result.ForVotesCount.Should().BeNull();
-    result.AgainstVotesCount.Should().BeNull();
-    result.AbstainVotesCount.Should().BeNull();
-    result.AbsentVotesCount.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new Vote.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Vote>();
+      result.Id.Should().BeNull();
+      result.Date.Should().BeNull();
+      result.Subject.Should().BeNull();
+      result.Successful.Should().BeNull();
+      result.ResultType.Should().BeNull();
+      result.PersonResult.Should().BeNull();
+      result.TotalVotesCount.Should().BeNull();
+      result.ForVotesCount.Should().BeNull();
+      result.AgainstVotesCount.Should().BeNull();
+      result.AbstainVotesCount.Should().BeNull();
+      result.AbsentVotesCount.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -273,21 +287,26 @@ public sealed class VoteInfoTests : ClassTest<Vote.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new Vote.Info
+    using (new AssertionScope())
     {
-      Id = 1,
-      AbsentVotesCount = 1,
-      AbstainVotesCount = 2,
-      AgainstVotesCount = 3,
-      Date = DateTimeOffset.MinValue.AsString(),
-      ForVotesCount = 4,
-      PersonResult = "personResult",
-      Subject = "subject",
-      Successful = true,
-      TotalVotesCount = 5,
-      ResultType = "type"
-    };
+      Validate(new Vote.Info
+      {
+        Id = 1,
+        AbsentVotesCount = 1,
+        AbstainVotesCount = 2,
+        AgainstVotesCount = 3,
+        Date = DateTimeOffset.MinValue.AsString(),
+        ForVotesCount = 4,
+        PersonResult = "personResult",
+        Subject = "subject",
+        Successful = true,
+        TotalVotesCount = 5,
+        ResultType = "type"
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

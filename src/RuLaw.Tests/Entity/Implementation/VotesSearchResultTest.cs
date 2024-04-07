@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -93,7 +94,10 @@ public sealed class VotesSearchResultTest : ClassTest<VotesSearchResult>
   ///   <para>Performs testing of <see cref="VotesSearchResult.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new VotesSearchResult(new {Wording = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new VotesSearchResult(new {Wording = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -156,13 +160,23 @@ public sealed class VotesSearchResultInfoTests : ClassTest<VotesSearchResult.Inf
   [Fact]
   public void ToResult_Method()
   {
-    var result = new VotesSearchResult.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<VotesSearchResult>();
-    result.Page.Should().BeNull();
-    result.PageSize.Should().BeNull();
-    result.Count.Should().BeNull();
-    result.Wording.Should().BeNull();
-    result.Votes.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new VotesSearchResult.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<VotesSearchResult>();
+      result.Page.Should().BeNull();
+      result.PageSize.Should().BeNull();
+      result.Count.Should().BeNull();
+      result.Wording.Should().BeNull();
+      result.Votes.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>

@@ -29,6 +29,11 @@ public sealed class IDeputyExtensionsTest : UnitTest
       new Deputy().Position().Should().BeNull();
       new Deputy(new {Position = "Депутат ГД"}).Position().Should().NotBeNull().And.Be(DeputyPosition.DumaDeputy);
       new Deputy(new {Position = "Член СФ"}).Position().Should().NotBeNull().And.Be(DeputyPosition.FederationCouncilMember);
+
+      static void Validate()
+      {
+
+      }
     }
 
     using (new AssertionScope())
@@ -42,6 +47,11 @@ public sealed class IDeputyExtensionsTest : UnitTest
       var second = new Deputy(new {Position = "Second"});
       var deputies = first.ToSequence(second, null);
       deputies.Position("first").Should().NotBeNullOrEmpty().And.Equal(first);
+
+      static void Validate()
+      {
+
+      }
     }
   }
 }

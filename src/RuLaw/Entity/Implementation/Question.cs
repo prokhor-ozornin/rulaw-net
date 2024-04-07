@@ -69,7 +69,7 @@ public sealed class Question : IQuestion
   public Question(Info info)
   {
     Name = info.Name;
-    Date = info.Date != null ? DateTimeOffset.Parse(info.Date) : null;
+    Date = info.Date is not null ? DateTimeOffset.Parse(info.Date) : null;
     Code = info.Code;
     SessionCode = info.SessionCode;
     StartLine = info.StartLine;

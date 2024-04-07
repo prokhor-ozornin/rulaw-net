@@ -2,6 +2,7 @@
 using System.Configuration;
 using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 
 namespace RuLaw.Tests.Core;
 
@@ -18,21 +19,28 @@ public sealed class IBranchesApiExtensionsTest : UnitTest
   [Fact]
   public void All_Method()
   {
-    AssertionExtensions.Should(() => IBranchesApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IBranchesApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-    var branches = Api.Branches.All();
+      var branches = Api.Branches.All();
 
-    branches.Should().NotBeNullOrEmpty().And.BeOfType<List<LawBranch>>();
+      branches.Should().NotBeNullOrEmpty().And.BeOfType<List<LawBranch>>();
 
-    var branch = branches.Single(branch => branch.Id == 68252);
-    branch.Name.Should().Be("Безопасность и охрана правопорядка");
+      var branch = branches.Single(branch => branch.Id == 68252);
+      branch.Name.Should().Be("Безопасность и охрана правопорядка");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public override void Dispose()
-  {
-    Api.Dispose();
-  }
+  public override void Dispose() => Api.Dispose();
 }

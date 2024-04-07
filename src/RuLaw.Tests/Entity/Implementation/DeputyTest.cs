@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -88,7 +89,10 @@ public sealed class DeputyTest : ClassTest<Deputy>
   ///   <para>Performs testing of <see cref="Deputy.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Deputy(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new Deputy(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -140,12 +144,22 @@ public sealed class DeputyInfoTests : ClassTest<Deputy.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Deputy.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Deputy>();
-    result.Id.Should().BeNull();
-    result.Name.Should().BeNull();
-    result.Active.Should().BeNull();
-    result.Position.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new Deputy.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Deputy>();
+      result.Id.Should().BeNull();
+      result.Name.Should().BeNull();
+      result.Active.Should().BeNull();
+      result.Position.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -154,14 +168,19 @@ public sealed class DeputyInfoTests : ClassTest<Deputy.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new Deputy.Info
+    using (new AssertionScope())
     {
-      Id = 1,
-      Active = true,
-      Name = "name",
-      Position = "position"
-    };
+      Validate(new Deputy.Info
+      {
+        Id = 1,
+        Active = true,
+        Name = "name",
+        Position = "position"
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

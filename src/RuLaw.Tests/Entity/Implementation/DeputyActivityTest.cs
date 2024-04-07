@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -79,7 +80,10 @@ public sealed class DeputyActivityTest : ClassTest<DeputyActivity>
   ///   <para>Performs testing of <see cref="DeputyActivity.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new DeputyActivity(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new DeputyActivity(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -124,11 +128,21 @@ public sealed class DeputyActivityInfoTests : ClassTest<DeputyActivity.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new DeputyActivity.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<DeputyActivity>();
-    result.Name.Should().BeNull();
-    result.CommitteeId.Should().BeNull();
-    result.CommitteeNameGenitive.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new DeputyActivity.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<DeputyActivity>();
+      result.Name.Should().BeNull();
+      result.CommitteeId.Should().BeNull();
+      result.CommitteeNameGenitive.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -137,13 +151,18 @@ public sealed class DeputyActivityInfoTests : ClassTest<DeputyActivity.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new DeputyActivity.Info
+    using (new AssertionScope())
     {
-      CommitteeId = 1,
-      CommitteeNameGenitive = "committeeNameGenitive",
-      Name = "name"
-    };
+      Validate(new DeputyActivity.Info
+      {
+        CommitteeId = 1,
+        CommitteeNameGenitive = "committeeNameGenitive",
+        Name = "name"
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

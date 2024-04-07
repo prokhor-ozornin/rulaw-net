@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -159,7 +160,10 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   ///   <para>Performs testing of <see cref="DeputyRequest.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new DeputyRequest(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new DeputyRequest(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -268,19 +272,29 @@ public sealed class DeputyRequestInfoTests : ClassTest<DeputyRequest.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new DeputyRequest.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<DeputyRequest>();
-    result.Id.Should().BeNull();
-    result.Name.Should().BeNull();
-    result.Date.Should().BeNull();
-    result.DocumentNumber.Should().BeNull();
-    result.Initiator.Should().BeNull();
-    result.Addressee.Should().BeNull();
-    result.Answer.Should().BeNull();
-    result.Signer.Should().BeNull();
-    result.SignDate.Should().BeNull();
-    result.ControlDate.Should().BeNull();
-    result.ResolutionNumber.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new DeputyRequest.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<DeputyRequest>();
+      result.Id.Should().BeNull();
+      result.Name.Should().BeNull();
+      result.Date.Should().BeNull();
+      result.DocumentNumber.Should().BeNull();
+      result.Initiator.Should().BeNull();
+      result.Addressee.Should().BeNull();
+      result.Answer.Should().BeNull();
+      result.Signer.Should().BeNull();
+      result.SignDate.Should().BeNull();
+      result.ControlDate.Should().BeNull();
+      result.ResolutionNumber.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -289,21 +303,26 @@ public sealed class DeputyRequestInfoTests : ClassTest<DeputyRequest.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new DeputyRequest.Info
+    using (new AssertionScope())
     {
-      Id = 1,
-      Addressee = new DeputyRequestAddressee(),
-      Answer = "answer",
-      ControlDate = DateTimeOffset.MinValue.AsString(),
-      Date = DateTimeOffset.MinValue,
-      DocumentNumber = "documentNumber",
-      Initiator = "initiator",
-      Name = "name",
-      ResolutionNumber = "resolutionNumber",
-      SignDate = DateTimeOffset.MinValue.AsString(),
-      Signer = new DeputyRequestSigner()
-    };
+      Validate(new DeputyRequest.Info
+      {
+        Id = 1,
+        Addressee = new DeputyRequestAddressee(),
+        Answer = "answer",
+        ControlDate = DateTimeOffset.MinValue.AsString(),
+        Date = DateTimeOffset.MinValue,
+        DocumentNumber = "documentNumber",
+        Initiator = "initiator",
+        Name = "name",
+        ResolutionNumber = "resolutionNumber",
+        SignDate = DateTimeOffset.MinValue.AsString(),
+        Signer = new DeputyRequestSigner()
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

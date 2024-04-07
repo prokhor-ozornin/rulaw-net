@@ -116,8 +116,8 @@ public sealed class DeputyRequest : IDeputyRequest
     Addressee = info.Addressee;
     Answer = info.Answer;
     Signer = info.Signer;
-    SignDate = info.SignDate != null ? DateTimeOffset.Parse(info.SignDate) : null;
-    ControlDate = info.ControlDate != null ? DateTimeOffset.Parse(info.ControlDate) : null;
+    SignDate = info.SignDate is not null ? DateTimeOffset.Parse(info.SignDate) : null;
+    ControlDate = info.ControlDate is not null ? DateTimeOffset.Parse(info.ControlDate) : null;
     ResolutionNumber = info.ResolutionNumber;
   }
 

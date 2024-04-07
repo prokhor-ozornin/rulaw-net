@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -85,7 +86,10 @@ public sealed class LawsSearchResultTest : ClassTest<LawsSearchResult>
   ///   <para>Performs testing of <see cref="LawsSearchResult.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new LawsSearchResult(new {Wording = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new LawsSearchResult(new {Wording = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -141,12 +145,22 @@ public sealed class LawsSearchResultInfoTests : ClassTest<LawsSearchResult.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new LawsSearchResult.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<LawsSearchResult>();
-    result.Page.Should().BeNull();
-    result.Count.Should().BeNull();
-    result.Wording.Should().BeNull();
-    result.Laws.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new LawsSearchResult.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<LawsSearchResult>();
+      result.Page.Should().BeNull();
+      result.Count.Should().BeNull();
+      result.Wording.Should().BeNull();
+      result.Laws.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -155,14 +169,19 @@ public sealed class LawsSearchResultInfoTests : ClassTest<LawsSearchResult.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new LawsSearchResult.Info
+    using (new AssertionScope())
     {
-      Page = 3,
-      Count = 2,
-      Wording = "wording",
-      Laws = new List<Law> {new(new {Id = 1})}
-    };
+      Validate(new LawsSearchResult.Info
+      {
+        Page = 3,
+        Count = 2,
+        Wording = "wording",
+        Laws = new List<Law> { new(new { Id = 1 }) }
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

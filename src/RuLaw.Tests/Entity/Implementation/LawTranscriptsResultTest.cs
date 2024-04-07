@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -100,7 +101,10 @@ public sealed class LawTranscriptsResultTest : ClassTest<LawTranscriptsResult>
   ///   <para>Performs testing of <see cref="LawTranscriptsResult.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new LawTranscriptsResult(new {Number = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new LawTranscriptsResult(new {Number = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -156,12 +160,22 @@ public sealed class LawTranscriptsResultInfoTests : ClassTest<LawTranscriptsResu
   [Fact]
   public void ToResult_Method()
   {
-    var result = new LawTranscriptsResult.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<LawTranscriptsResult>();
-    result.Name.Should().BeNull();
-    result.Number.Should().BeNull();
-    result.Comments.Should().BeNull();
-    result.Meetings.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new LawTranscriptsResult.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<LawTranscriptsResult>();
+      result.Name.Should().BeNull();
+      result.Number.Should().BeNull();
+      result.Comments.Should().BeNull();
+      result.Meetings.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -170,14 +184,19 @@ public sealed class LawTranscriptsResultInfoTests : ClassTest<LawTranscriptsResu
   [Fact]
   public void Serialization()
   {
-    var info = new LawTranscriptsResult.Info
+    using (new AssertionScope())
     {
-      Name = "name",
-      Number = "number",
-      Comments = "comments",
-      Meetings = new List<TranscriptMeeting> {new(new {})}
-    };
+      Validate(new LawTranscriptsResult.Info
+      {
+        Name = "name",
+        Number = "number",
+        Comments = "comments",
+        Meetings = new List<TranscriptMeeting> { new(new { }) }
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

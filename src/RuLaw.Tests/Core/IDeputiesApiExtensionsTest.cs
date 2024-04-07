@@ -20,30 +20,40 @@ public sealed class IDeputiesApiExtensionsTest : UnitTest
   [Fact]
   public void Find_Method()
   {
-    AssertionExtensions.Should(() => IDeputiesApiExtensions.Find(null, 1)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IDeputiesApiExtensions.Find(null, 1)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-    var deputy = Api.Deputies.Find(99100142);
+      var deputy = Api.Deputies.Find(99100142);
 
-    deputy.Should().NotBeNull().And.BeOfType<DeputyInfo>();
-    
-    deputy.LastName.Should().Be("Жириновский");
-    deputy.FirstName.Should().Be("Владимир");
-    deputy.MiddleName.Should().Be("Вольфович");
-    deputy.BirthDate.Should().HaveYear(1946).And.HaveMonth(4).And.HaveDay(25).And.HaveOffset(TimeSpan.Zero);
-    deputy.WorkStartDate.Should().HaveYear(2016).And.HaveMonth(9).And.HaveDay(18).And.HaveOffset(TimeSpan.Zero);
-    deputy.FactionId.Should().Be(72100005);
-    deputy.FactionName.Should().Be("Фракция Политической партии ЛДПР - Либерально-демократической партии России");
-    deputy.FactionRole.Trim().Should().Be("00020 Руководитель фракции");
-    deputy.Active.Should().BeFalse();
-    deputy.FactionRegion.Should().Be("(Общефедеральная часть федерального списка кандидатов).");
-    deputy.LawsCount.Should().BePositive();
-    deputy.Regions.Should().NotBeNullOrEmpty().And.Contain("все субъекты Российской Федерации");
-    deputy.SpeechesCount.Should().BePositive();
-    deputy.VoteLink.Should().Be("http://vote.duma.gov.ru/?convocation=AAAAAAA7&deputy=99100142&sort=date_desc");
-    deputy.TranscriptLink.Should().Be("http://www.cir.ru/duma/servlet/is4.wwwmain?FormName=ProcessQuery&Action=RunQuery&PDCList=*&QueryString=%2FGD_%C4%C5%CF%D3%D2%C0%D2%3D%22%C6%C8%D0%C8%CD%CE%C2%D1%CA%C8%C9+%C2.%C2.%22");
-    deputy.Educations.Should().NotBeNullOrEmpty().And.Contain(education => education.Institution == "Московский государственный университет имени М.В.Ломоносова (институт восточных языков)" && education.Year == 1970);
-    deputy.Degrees.Should().NotBeNullOrEmpty().And.Contain("Доктор философских наук");
-    deputy.Ranks.Should().NotBeNullOrEmpty().And.Contain(["Профессор", "Действительный член (академик) Международной Академии экологии и природопользования (МАЭП)", "Почетный академик Академии естествознания", "Действительный член Международной Академии информатизации", "Действительный член (академик) Академии социальных наук"]);
+      deputy.Should().NotBeNull().And.BeOfType<DeputyInfo>();
+      
+      deputy.LastName.Should().Be("Жириновский");
+      deputy.FirstName.Should().Be("Владимир");
+      deputy.MiddleName.Should().Be("Вольфович");
+      deputy.BirthDate.Should().HaveYear(1946).And.HaveMonth(4).And.HaveDay(25).And.HaveOffset(TimeSpan.Zero);
+      deputy.WorkStartDate.Should().HaveYear(2016).And.HaveMonth(9).And.HaveDay(18).And.HaveOffset(TimeSpan.Zero);
+      deputy.FactionId.Should().Be(72100005);
+      deputy.FactionName.Should().Be("Фракция Политической партии ЛДПР - Либерально-демократической партии России");
+      deputy.FactionRole.Trim().Should().Be("00020 Руководитель фракции");
+      deputy.Active.Should().BeFalse();
+      deputy.FactionRegion.Should().Be("(Общефедеральная часть федерального списка кандидатов).");
+      deputy.LawsCount.Should().BePositive();
+      deputy.Regions.Should().NotBeNullOrEmpty().And.Contain("все субъекты Российской Федерации");
+      deputy.SpeechesCount.Should().BePositive();
+      deputy.VoteLink.Should().Be("http://vote.duma.gov.ru/?convocation=AAAAAAA7&deputy=99100142&sort=date_desc");
+      deputy.TranscriptLink.Should().Be("http://www.cir.ru/duma/servlet/is4.wwwmain?FormName=ProcessQuery&Action=RunQuery&PDCList=*&QueryString=%2FGD_%C4%C5%CF%D3%D2%C0%D2%3D%22%C6%C8%D0%C8%CD%CE%C2%D1%CA%C8%C9+%C2.%C2.%22");
+      deputy.Educations.Should().NotBeNullOrEmpty().And.Contain(education => education.Institution == "Московский государственный университет имени М.В.Ломоносова (институт восточных языков)" && education.Year == 1970);
+      deputy.Degrees.Should().NotBeNullOrEmpty().And.Contain("Доктор философских наук");
+      deputy.Ranks.Should().NotBeNullOrEmpty().And.Contain(["Профессор", "Действительный член (академик) Международной Академии экологии и природопользования (МАЭП)", "Почетный академик Академии естествознания", "Действительный член Международной Академии информатизации", "Действительный член (академик) Академии социальных наук"]);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -94,24 +104,31 @@ public sealed class IDeputiesApiExtensionsTest : UnitTest
   [Fact]
   public void SearchAsync_Method()
   {
-    AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
-    AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(Api.Deputies, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+      AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(Api.Deputies, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
 
-    var deputies = Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToListAsync().Await();
+      var deputies = Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToListAsync().Await();
 
-    deputies.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
+      deputies.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
 
-    var deputy = deputies.Single(deputy => deputy.Id == 99100491);
-    deputy.Name.Should().Be("Абдулатипов Рамазан Гаджимурадович");
-    deputy.Position.Should().Be("Депутат ГД");
-    deputy.Active.Should().BeFalse();
+      var deputy = deputies.Single(deputy => deputy.Id == 99100491);
+      deputy.Name.Should().Be("Абдулатипов Рамазан Гаджимурадович");
+      deputy.Position.Should().Be("Депутат ГД");
+      deputy.Active.Should().BeFalse();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public override void Dispose()
-  {
-    Api.Dispose();
-  }
+  public override void Dispose() => Api.Dispose();
 }

@@ -21,6 +21,6 @@ public static class INameableExtensions
     if (name is null) throw new ArgumentNullException(nameof(name));
     if (name.IsEmpty()) throw new ArgumentException(nameof(name));
 
-    return entities.Where(entity => entity != null && entity.Name == name);
+    return entities.Where(entity => entity is not null && entity.Name == name);
   }
 }

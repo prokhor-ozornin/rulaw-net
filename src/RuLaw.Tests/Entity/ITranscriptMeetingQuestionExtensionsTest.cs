@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
+using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
 
@@ -16,16 +17,26 @@ public sealed class ITranscriptMeetingQuestionExtensionsTest : UnitTest
   [Fact]
   public void Stage_Method()
   {
-    AssertionExtensions.Should(() => ITranscriptMeetingQuestionExtensions.Stage<ITranscriptMeetingQuestion>(null, "stage")).ThrowExactly<ArgumentNullException>().WithParameterName("questions");
-    AssertionExtensions.Should(() => Enumerable.Empty<ITranscriptMeetingQuestion>().Stage(null)).ThrowExactly<ArgumentNullException>().WithParameterName("stage");
-    AssertionExtensions.Should(() => Enumerable.Empty<ITranscriptMeetingQuestion>().Stage(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("stage");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ITranscriptMeetingQuestionExtensions.Stage<ITranscriptMeetingQuestion>(null, "stage")).ThrowExactly<ArgumentNullException>().WithParameterName("questions");
+      AssertionExtensions.Should(() => Enumerable.Empty<ITranscriptMeetingQuestion>().Stage(null)).ThrowExactly<ArgumentNullException>().WithParameterName("stage");
+      AssertionExtensions.Should(() => Enumerable.Empty<ITranscriptMeetingQuestion>().Stage(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("stage");
 
-    Enumerable.Empty<ITranscriptMeetingQuestion>().Stage("stage").Should().NotBeNull().And.BeEmpty();
+      Enumerable.Empty<ITranscriptMeetingQuestion>().Stage("stage").Should().NotBeNull().And.BeEmpty();
 
-    var first = new TranscriptMeetingQuestion(new {Stage = "FIRST"});
-    var second = new TranscriptMeetingQuestion(new {Stage = "Second"});
-    var questions = first.ToSequence(second, null);
-    questions.Stage("first").Should().NotBeNullOrEmpty().And.Equal(first);
-    questions.Stage("second").Should().NotBeNullOrEmpty().And.Equal(second);
+      var first = new TranscriptMeetingQuestion(new {Stage = "FIRST"});
+      var second = new TranscriptMeetingQuestion(new {Stage = "Second"});
+      var questions = first.ToSequence(second, null);
+      questions.Stage("first").Should().NotBeNullOrEmpty().And.Equal(first);
+      questions.Stage("second").Should().NotBeNullOrEmpty().And.Equal(second);
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 }

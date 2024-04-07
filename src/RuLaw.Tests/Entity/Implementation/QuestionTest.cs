@@ -1,5 +1,7 @@
-﻿using Catharsis.Commons;
+﻿using System.Reflection.PortableExecutable;
+using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -114,7 +116,10 @@ public sealed class QuestionTest : ClassTest<Question>
   ///   <para>Performs testing of <see cref="Question.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Question(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new Question(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -180,14 +185,24 @@ public sealed class QuestionInfoTests : ClassTest<Question.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Question.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Question>();
-    result.Name.Should().BeNull();
-    result.Date.Should().BeNull();
-    result.Code.Should().BeNull();
-    result.SessionCode.Should().BeNull();
-    result.StartLine.Should().BeNull();
-    result.EndLine.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new Question.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Question>();
+      result.Name.Should().BeNull();
+      result.Date.Should().BeNull();
+      result.Code.Should().BeNull();
+      result.SessionCode.Should().BeNull();
+      result.StartLine.Should().BeNull();
+      result.EndLine.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -196,16 +211,21 @@ public sealed class QuestionInfoTests : ClassTest<Question.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new Question.Info
+    using (new AssertionScope())
     {
-      Code = 1,
-      Date = DateTimeOffset.MinValue.AsString(),
-      EndLine = 2,
-      Name = "name",
-      SessionCode = 1,
-      StartLine = 1
-    };
+      Validate(new Question.Info
+      {
+        Code = 1,
+        Date = DateTimeOffset.MinValue.AsString(),
+        EndLine = 2,
+        Name = "name",
+        SessionCode = 1,
+        StartLine = 1
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

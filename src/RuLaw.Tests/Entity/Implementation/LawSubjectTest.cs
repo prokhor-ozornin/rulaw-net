@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -114,10 +115,20 @@ public sealed class LawSubjectInfoTests : ClassTest<LawSubject.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new LawSubject.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<LawSubject>();
-    result.Departments.Should().BeEmpty();
-    result.Deputies.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new LawSubject.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<LawSubject>();
+      result.Departments.Should().BeEmpty();
+      result.Deputies.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -126,12 +137,17 @@ public sealed class LawSubjectInfoTests : ClassTest<LawSubject.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new LawSubject.Info
+    using (new AssertionScope())
     {
-      Departments = new List<Authority> {new(new {Id = 1})},
-      Deputies = new List<Deputy> {new(new {Id = 2})}
-    };
+      Validate(new LawSubject.Info
+      {
+        Departments = new List<Authority> { new(new { Id = 1 }) },
+        Deputies = new List<Deputy> { new(new { Id = 2 }) }
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

@@ -21,7 +21,7 @@ public static class IEducationExtensions
     if (institution is null) throw new ArgumentNullException(nameof(institution));
     if (institution.IsEmpty()) throw new ArgumentException(nameof(institution));
 
-    return educations.Where(education => education != null && education.Institution.ToLowerInvariant().Contains(institution.ToLowerInvariant()));
+    return educations.Where(education => education is not null && education.Institution.ToLowerInvariant().Contains(institution.ToLowerInvariant()));
   }
 
   /// <summary>
@@ -36,14 +36,14 @@ public static class IEducationExtensions
   {
     if (educations is null) throw new ArgumentNullException(nameof(educations));
 
-    if (from != null)
+    if (from is not null)
     {
-      educations = educations.Where(education => education != null && education.Year >= from.Value);
+      educations = educations.Where(education => education is not null && education.Year >= from.Value);
     }
 
-    if (to != null)
+    if (to is not null)
     {
-      educations = educations.Where(education => education != null && education.Year <= to.Value);
+      educations = educations.Where(education => education is not null && education.Year <= to.Value);
     }
 
     return educations;

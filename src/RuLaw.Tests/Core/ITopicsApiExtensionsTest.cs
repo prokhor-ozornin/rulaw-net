@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace RuLaw.Tests.Core;
@@ -18,17 +19,24 @@ public sealed class ITopicsApiExtensionsTest : UnitTest
   [Fact]
   public void All_Method()
   {
-    AssertionExtensions.Should(() => ITopicsApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+    using (new AssertionScope())
+    {
+      AssertionExtensions.Should(() => ITopicsApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-    var topics = Api.Topics.All();
-    topics.Should().NotBeNullOrEmpty().And.BeOfType<List<Topic>>().And.ContainSingle(topic => topic.Id == 62701).Which.Name.Should().Be("Бюджетное, налоговое, финансовое законодательство");
+      var topics = Api.Topics.All();
+      topics.Should().NotBeNullOrEmpty().And.BeOfType<List<Topic>>().And.ContainSingle(topic => topic.Id == 62701).Which.Name.Should().Be("Бюджетное, налоговое, финансовое законодательство");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
-  public override void Dispose()
-  {
-    Api.Dispose();
-  }
+  public override void Dispose() => Api.Dispose();
 }

@@ -110,7 +110,7 @@ public sealed class Law : ILaw
   {
     Id = info.Id;
     Name = info.Name;
-    Date = info.Date != null ? DateTimeOffset.Parse(info.Date) : null;
+    Date = info.Date is not null ? DateTimeOffset.Parse(info.Date) : null;
     Number = info.Number;
     Subject = info.Subject;
     Type = info.Type;

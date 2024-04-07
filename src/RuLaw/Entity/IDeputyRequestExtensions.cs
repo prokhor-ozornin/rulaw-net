@@ -21,7 +21,7 @@ public static class IDeputyRequestExtensions
     if (initiator is null) throw new ArgumentNullException(nameof(initiator));
     if (initiator.IsEmpty()) throw new ArgumentException(nameof(initiator));
 
-    return requests.Where(request => request != null && request.Initiator.ToLowerInvariant().Contains(initiator.ToLowerInvariant()));
+    return requests.Where(request => request is not null && request.Initiator.ToLowerInvariant().Contains(initiator.ToLowerInvariant()));
   }
 
   /// <summary>
@@ -37,7 +37,7 @@ public static class IDeputyRequestExtensions
     if (text is null) throw new ArgumentNullException(nameof(text));
     if (text.IsEmpty()) throw new ArgumentException(nameof(text));
 
-    return requests.Where(quest => quest != null && quest.Answer.ToLowerInvariant().Contains(text.ToLowerInvariant()));
+    return requests.Where(quest => quest is not null && quest.Answer.ToLowerInvariant().Contains(text.ToLowerInvariant()));
   }
 
   /// <summary>
@@ -52,14 +52,14 @@ public static class IDeputyRequestExtensions
   {
     if (requests is null) throw new ArgumentNullException(nameof(requests));
 
-    if (from != null)
+    if (from is not null)
     {
-      requests = requests.Where(request => request != null && request.SignDate >= from.Value);
+      requests = requests.Where(request => request is not null && request.SignDate >= from.Value);
     }
 
-    if (to != null)
+    if (to is not null)
     {
-      requests = requests.Where(request => request != null && request.SignDate <= to.Value);
+      requests = requests.Where(request => request is not null && request.SignDate <= to.Value);
     }
 
     return requests;
@@ -77,14 +77,14 @@ public static class IDeputyRequestExtensions
   {
     if (requests is null) throw new ArgumentNullException(nameof(requests));
 
-    if (from != null)
+    if (from is not null)
     {
-      requests = requests.Where(request => request != null && request.ControlDate >= from.Value);
+      requests = requests.Where(request => request is not null && request.ControlDate >= from.Value);
     }
 
-    if (to != null)
+    if (to is not null)
     {
-      requests = requests.Where(request => request != null && request.ControlDate <= to.Value);
+      requests = requests.Where(request => request is not null && request.ControlDate <= to.Value);
     }
 
     return requests;

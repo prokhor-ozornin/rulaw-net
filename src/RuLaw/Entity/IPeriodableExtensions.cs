@@ -18,14 +18,14 @@ public static class IPeriodableExtensions
   {
     if (entities is null) throw new ArgumentNullException(nameof(entities));
 
-    if (from != null)
+    if (from is not null)
     {
-      entities = entities.Where(entity => entity != null && entity.FromDate >= from);
+      entities = entities.Where(entity => entity is not null && entity.FromDate >= from);
     }
 
-    if (to != null)
+    if (to is not null)
     {
-      entities = entities.Where(entity => entity != null && ((entity.ToDate != null && entity.ToDate <= to) || entity.ToDate == null));
+      entities = entities.Where(entity => entity is not null && ((entity.ToDate is not null && entity.ToDate <= to) || entity.ToDate is null));
     }
 
     return entities;

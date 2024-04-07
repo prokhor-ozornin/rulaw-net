@@ -62,7 +62,7 @@ public static class IVoteExtensions
     if (subject is null) throw new ArgumentNullException(nameof(subject));
     if (subject.IsEmpty()) throw new ArgumentException(nameof(subject));
 
-    return votes.Where(vote => vote?.Subject != null && vote.Subject.ToLowerInvariant().Contains(subject.ToLowerInvariant()));
+    return votes.Where(vote => vote?.Subject is not null && vote.Subject.ToLowerInvariant().Contains(subject.ToLowerInvariant()));
   }
 
   /// <summary>
@@ -71,7 +71,7 @@ public static class IVoteExtensions
   /// <typeparam name="TEntity">Type of entities.</typeparam>
   /// <param name="votes">Source sequence of votes for filtering.</param>
   /// <returns>Filtered sequence of successful votes.</returns>
-  public static IEnumerable<TEntity> Successful<TEntity>(this IEnumerable<TEntity> votes) where TEntity : IVote => votes is not null ? votes.Where(vote => vote != null && vote.Successful.GetValueOrDefault()) : throw new ArgumentNullException(nameof(votes));
+  public static IEnumerable<TEntity> Successful<TEntity>(this IEnumerable<TEntity> votes) where TEntity : IVote => votes is not null ? votes.Where(vote => vote is not null && vote.Successful.GetValueOrDefault()) : throw new ArgumentNullException(nameof(votes));
 
   /// <summary>
   ///   <para>Filters sequence of votes, leaving those that were unsuccessful.</para>
@@ -79,5 +79,5 @@ public static class IVoteExtensions
   /// <typeparam name="TEntity">Type of entities.</typeparam>
   /// <param name="votes">Source sequence of votes for filtering.</param>
   /// <returns>Filtered sequence of unsuccessful votes.</returns>
-  public static IEnumerable<TEntity> Unsuccessful<TEntity>(this IEnumerable<TEntity> votes) where TEntity : IVote => votes is not null ? votes.Where(vote => vote != null && !vote.Successful.GetValueOrDefault()) : throw new ArgumentNullException(nameof(votes));
+  public static IEnumerable<TEntity> Unsuccessful<TEntity>(this IEnumerable<TEntity> votes) where TEntity : IVote => votes is not null ? votes.Where(vote => vote is not null && !vote.Successful.GetValueOrDefault()) : throw new ArgumentNullException(nameof(votes));
 }

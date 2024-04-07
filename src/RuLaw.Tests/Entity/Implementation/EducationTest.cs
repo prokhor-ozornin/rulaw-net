@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -78,7 +79,10 @@ public sealed class EducationTest : ClassTest<Education>
   ///   <para>Performs testing of <see cref="Education.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Education(new {Institution = Guid.Empty.ToString(), Year = 1}).ToString().Should().Be($"{Guid.Empty} (1)"); }
+  public void ToString_Method()
+  {
+    new Education(new {Institution = Guid.Empty.ToString(), Year = 1}).ToString().Should().Be($"{Guid.Empty} (1)");
+  }
 }
 
 /// <summary>
@@ -116,10 +120,20 @@ public sealed class EducationInfoTests : ClassTest<Education.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Education.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Education>();
-    result.Institution.Should().BeNull();
-    result.Year.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new Education.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Education>();
+      result.Institution.Should().BeNull();
+      result.Year.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -128,12 +142,17 @@ public sealed class EducationInfoTests : ClassTest<Education.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new Education.Info
+    using (new AssertionScope())
     {
-      Institution = "institution",
-      Year = 1
-    };
+      Validate(new Education.Info
+      {
+        Institution = "institution",
+        Year = 1
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

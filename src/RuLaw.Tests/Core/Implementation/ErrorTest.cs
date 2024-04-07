@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -70,7 +71,10 @@ public sealed class ErrorTest : ClassTest<Error>
   ///   <para>Performs testing of <see cref="Error.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Error(1, Guid.Empty.ToString()).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new Error(1, Guid.Empty.ToString()).ToString().Should().Be(Guid.Empty.ToString());
+  }
 
   /// <summary>
   ///   <para>Tests set for class <see cref="Error.Info"/>.</para>
@@ -125,13 +129,18 @@ public sealed class ErrorTest : ClassTest<Error>
     [Fact]
     public void Serialization()
     {
-      var info = new Error.Info
+      using (new AssertionScope())
       {
-        Code = 1,
-        Text = "text"
-      };
+        Validate(new Error.Info
+        {
+          Code = 1,
+          Text = "text"
+        });
+      }
 
-      info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+      return;
+
+      static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
     }
   }
 }

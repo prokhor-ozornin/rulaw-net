@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -79,7 +80,10 @@ public sealed class InstanceTest : ClassTest<Instance>
   ///   <para>Performs testing of <see cref="Instance.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Instance(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new Instance(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -124,11 +128,21 @@ public sealed class InstanceInfoTests : ClassTest<Instance.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Instance.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Instance>();
-    result.Id.Should().BeNull();
-    result.Name.Should().BeNull();
-    result.Active.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new Instance.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Instance>();
+      result.Id.Should().BeNull();
+      result.Name.Should().BeNull();
+      result.Active.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -137,13 +151,18 @@ public sealed class InstanceInfoTests : ClassTest<Instance.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new Instance.Info
+    using (new AssertionScope())
     {
-      Id = 1,
-      Active = true,
-      Name = "name"
-    };
+      Validate(new Instance.Info
+      {
+        Id = 1,
+        Active = true,
+        Name = "name"
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

@@ -60,7 +60,7 @@ public sealed class LawEvent : ILawEvent
   /// <param name="info"></param>
   public LawEvent(Info info)
   {
-    Date = info.Date != null ? DateTimeOffset.Parse(info.Date) : null;
+    Date = info.Date is not null ? DateTimeOffset.Parse(info.Date) : null;
     Solution = info.Solution;
     Document = info.Document;
     Phase = info.Phase;

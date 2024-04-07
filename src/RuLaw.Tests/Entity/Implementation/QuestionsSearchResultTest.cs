@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -134,12 +135,22 @@ public sealed class QuestionsSearchResultInfoTests : ClassTest<QuestionsSearchRe
   [Fact]
   public void ToResult_Method()
   {
-    var result = new LawsSearchResult.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<LawsSearchResult>();
-    result.Page.Should().BeNull();
-    result.Count.Should().BeNull();
-    result.Wording.Should().BeNull();
-    result.Laws.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new LawsSearchResult.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<LawsSearchResult>();
+      result.Page.Should().BeNull();
+      result.Count.Should().BeNull();
+      result.Wording.Should().BeNull();
+      result.Laws.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -148,14 +159,19 @@ public sealed class QuestionsSearchResultInfoTests : ClassTest<QuestionsSearchRe
   [Fact]
   public void Serialization()
   {
-    var info = new QuestionsSearchResult.Info
+    using (new AssertionScope())
     {
-      Count = 1,
-      Page = 2,
-      PageSize = 3,
-      Questions = new List<Question> {new(new {})}
-    };
+      Validate(new QuestionsSearchResult.Info
+      {
+        Count = 1,
+        Page = 2,
+        PageSize = 3,
+        Questions = new List<Question> { new(new { }) }
+      });
+    }
 
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }
