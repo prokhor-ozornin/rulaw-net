@@ -18,6 +18,8 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(VotesSearchApiRequest).Should().BeDerivedFrom<ApiRequest>().And.Implement<IVotesSearchApiRequest>();
+
     var request = new VotesSearchApiRequest();
     request.Parameters.Should().BeEmpty();
   }

@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -63,6 +64,8 @@ public sealed class DeputyTranscriptsResultTest : ClassTest<DeputyTranscriptsRes
   [Fact]
   public void Constructors()
   {
+    typeof(DeputyTranscriptsResult).Should().BeDerivedFrom<object>().And.Implement<IDeputyTranscriptsResult>();
+
     var transcript = new DeputyTranscriptsResult();
     transcript.Name.Should().BeNull();
     transcript.Page.Should().BeNull();
@@ -147,6 +150,8 @@ public sealed class DeputyTranscriptsResultInfoTests : ClassTest<DeputyTranscrip
   [Fact]
   public void Constructors()
   {
+    typeof(DeputyTranscriptsResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IDeputyTranscriptsResult>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new DeputyTranscriptsResult.Info();
     info.Name.Should().BeNull();
     info.Page.Should().BeNull();

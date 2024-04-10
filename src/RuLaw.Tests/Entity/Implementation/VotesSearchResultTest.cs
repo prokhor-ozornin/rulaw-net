@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -62,6 +63,8 @@ public sealed class VotesSearchResultTest : ClassTest<VotesSearchResult>
   [Fact]
   public void Constructors()
   {
+    typeof(VotesSearchResult).Should().BeDerivedFrom<object>().And.Implement<IVotesSearchResult>();
+
     var result = new VotesSearchResult();
     result.Page.Should().BeNull();
     result.PageSize.Should().BeNull();
@@ -146,6 +149,8 @@ public sealed class VotesSearchResultInfoTests : ClassTest<VotesSearchResult.Inf
   [Fact]
   public void Constructors()
   {
+    typeof(VotesSearchResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IVotesSearchResult>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new VotesSearchResult.Info();
     info.Page.Should().BeNull();
     info.PageSize.Should().BeNull();
@@ -191,7 +196,7 @@ public sealed class VotesSearchResultInfoTests : ClassTest<VotesSearchResult.Inf
       PageSize = 2,
       Count = 3,
       Wording = "wording",
-      Votes = new List<Vote> {new(new {})}
+      Votes = [new Vote(new { })]
     };
 
     info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();

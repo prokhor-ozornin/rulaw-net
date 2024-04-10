@@ -27,7 +27,7 @@ public sealed class ResolutionTranscriptsResult : IResolutionTranscriptsResult
                                      IEnumerable<ITranscriptMeeting> meetings = null)
   {
     Number = number;
-    Meetings = meetings ?? new List<ITranscriptMeeting>();
+    Meetings = meetings ?? [];
   }
 
   /// <summary>
@@ -37,7 +37,7 @@ public sealed class ResolutionTranscriptsResult : IResolutionTranscriptsResult
   public ResolutionTranscriptsResult(Info info)
   {
     Number = info.Number;
-    Meetings = info.Meetings ?? new List<TranscriptMeeting>();
+    Meetings = info.Meetings ?? [];
   }
 
   /// <summary>

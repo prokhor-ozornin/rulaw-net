@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -38,6 +39,8 @@ public sealed class DeputyActivityTest : ClassTest<DeputyActivity>
   [Fact]
   public void Constructors()
   {
+    typeof(DeputyActivity).Should().BeDerivedFrom<object>().And.Implement<IDeputyActivity>();
+
     var activity = new DeputyActivity();
     activity.Name.Should().BeNull();
     activity.CommitteeId.Should().BeNull();
@@ -116,6 +119,8 @@ public sealed class DeputyActivityInfoTests : ClassTest<DeputyActivity.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(DeputyActivity.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IDeputyActivity>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new DeputyActivity.Info();
     info.Name.Should().BeNull();
     info.CommitteeId.Should().BeNull();

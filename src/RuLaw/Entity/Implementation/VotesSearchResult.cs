@@ -51,7 +51,7 @@ public sealed class VotesSearchResult : IVotesSearchResult
     PageSize = pageSize;
     Count = count;
     Wording = wording;
-    Votes = votes ?? new List<IVote>();
+    Votes = votes ?? [];
   }
 
   /// <summary>
@@ -64,7 +64,7 @@ public sealed class VotesSearchResult : IVotesSearchResult
     PageSize = info.PageSize;
     Count = info.Count;
     Wording = info.Wording;
-    Votes = info.Votes ?? new List<Vote>();
+    Votes = info.Votes ?? [];
   }
 
   /// <summary>

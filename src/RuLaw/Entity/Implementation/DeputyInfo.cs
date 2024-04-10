@@ -175,11 +175,11 @@ public sealed class DeputyInfo : IDeputyInfo
     SpeechesCount = speechesCount;
     TranscriptLink = transcriptLink;
     VoteLink = voteLink;
-    Activities = activities ?? new List<IDeputyActivity>();
-    Degrees = degrees ?? new List<string>();
-    Educations = educations ?? new List<IEducation>();
-    Ranks = ranks ?? new List<string>();
-    Regions = regions ?? new List<string>();
+    Activities = activities ?? [];
+    Degrees = degrees ?? [];
+    Educations = educations ?? [];
+    Ranks = ranks ?? [];
+    Regions = regions ?? [];
   }
 
   /// <summary>
@@ -204,11 +204,11 @@ public sealed class DeputyInfo : IDeputyInfo
     SpeechesCount = info.SpeechesCount;
     TranscriptLink = info.TranscriptLink;
     VoteLink = info.VoteLink;
-    Activities = info.Activities ?? new List<DeputyActivity>();
-    Degrees = info.Degrees ?? new List<string>();
-    Educations = info.Educations ?? new List<Education>();
-    Ranks = info.Ranks ?? new List<string>();
-    Regions = info.Regions ?? new List<string>();
+    Activities = info.Activities ?? [];
+    Degrees = info.Degrees ?? [];
+    Educations = info.Educations ?? [];
+    Ranks = info.Ranks ?? [];
+    Regions = info.Regions ?? [];
   }
 
   /// <summary>

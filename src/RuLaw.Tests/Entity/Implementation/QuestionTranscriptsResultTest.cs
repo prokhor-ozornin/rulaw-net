@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -39,6 +40,8 @@ public sealed class QuestionTranscriptsResultTest : ClassTest<QuestionTranscript
   [Fact]
   public void Constructors()
   {
+    typeof(QuestionTranscriptsResult).Should().BeDerivedFrom<object>().And.Implement<IQuestionTranscriptsResult>();
+
     var result = new QuestionTranscriptsResult();
     result.Meetings.Should().BeEmpty();
 
@@ -72,6 +75,8 @@ public sealed class QuestionTranscriptsResultInfoTests : ClassTest<QuestionTrans
   [Fact]
   public void Constructors()
   {
+    typeof(QuestionTranscriptsResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IQuestionTranscriptsResult>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new QuestionTranscriptsResult.Info();
     info.Meetings.Should().BeNull();
   }

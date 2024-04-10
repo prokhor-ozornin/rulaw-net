@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -57,6 +58,8 @@ public sealed class LawsSearchResultTest : ClassTest<LawsSearchResult>
   [Fact]
   public void Constructors()
   {
+    typeof(LawsSearchResult).Should().BeDerivedFrom<object>().And.Implement<ILawsSearchResult>();
+
     var result = new LawsSearchResult();
     result.Page.Should().BeNull();
     result.Count.Should().BeNull();
@@ -132,6 +135,8 @@ public sealed class LawsSearchResultInfoTests : ClassTest<LawsSearchResult.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(LawsSearchResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ILawsSearchResult>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new LawsSearchResult.Info();
     info.Page.Should().BeNull();
     info.Count.Should().BeNull();
@@ -176,7 +181,7 @@ public sealed class LawsSearchResultInfoTests : ClassTest<LawsSearchResult.Info>
         Page = 3,
         Count = 2,
         Wording = "wording",
-        Laws = new List<Law> { new(new { Id = 1 }) }
+        Laws = [new Law(new { Id = 1 })]
       });
     }
 

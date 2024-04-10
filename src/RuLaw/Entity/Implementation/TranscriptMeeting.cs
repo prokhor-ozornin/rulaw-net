@@ -43,7 +43,7 @@ public sealed class TranscriptMeeting : ITranscriptMeeting
     Date = date;
     Number = number;
     LinesCount = linesCount;
-    Questions = questions ?? new List<ITranscriptMeetingQuestion>();
+    Questions = questions ?? [];
   }
 
   /// <summary>
@@ -55,7 +55,7 @@ public sealed class TranscriptMeeting : ITranscriptMeeting
     Date = info.Date;
     Number = info.Number;
     LinesCount = info.LinesCount;
-    Questions = info.Questions ?? new List<TranscriptMeetingQuestion>();
+    Questions = info.Questions ?? [];
   }
 
   /// <summary>

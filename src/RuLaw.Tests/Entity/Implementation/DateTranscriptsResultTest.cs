@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -42,6 +43,8 @@ public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
   [Fact]
   public void Constructors()
   {
+    typeof(DateTranscriptsResult).Should().BeDerivedFrom<object>().And.Implement<IDateTranscriptsResult>();
+
     var result = new DateTranscriptsResult();
     result.Date.Should().BeNull();
     result.Meetings.Should().BeEmpty();
@@ -115,6 +118,8 @@ public sealed class DateTranscriptsResultInfoTests : ClassTest<DateTranscriptsRe
   [Fact]
   public void Constructors()
   {
+    typeof(DateTranscriptsResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IDateTranscriptsResult>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new DateTranscriptsResult.Info();
     info.Date.Should().BeNull();
     info.Meetings.Should().BeNull();

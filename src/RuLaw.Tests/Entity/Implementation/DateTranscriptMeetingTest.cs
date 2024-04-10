@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -67,6 +68,8 @@ public sealed class DateTranscriptMeetingTest : ClassTest<DateTranscriptMeeting>
   [Fact]
   public void Constructors()
   {
+    typeof(DateTranscriptMeeting).Should().BeDerivedFrom<object>().And.Implement<IDateTranscriptMeeting>();
+
     var meeting = new DateTranscriptMeeting();
     meeting.Date.Should().BeNull();
     meeting.Number.Should().BeNull();
@@ -162,6 +165,8 @@ public sealed class DateTranscriptMeetingInfoTests : ClassTest<DateTranscriptMee
   [Fact]
   public void Constructors()
   {
+    typeof(DateTranscriptMeeting.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IDateTranscriptMeeting>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new DateTranscriptMeeting.Info();
     info.Should().BeNull();
     info.Number.Should().BeNull();
@@ -204,9 +209,9 @@ public sealed class DateTranscriptMeetingInfoTests : ClassTest<DateTranscriptMee
       Validate(new DateTranscriptMeeting.Info
       {
         Date = DateTimeOffset.MinValue,
-        Lines = new List<string> { "line" },
+        Lines = ["line"],
         Number = 1,
-        Votes = new List<TranscriptVote> { new(new { Date = DateTimeOffset.MinValue, Line = 2 }) }
+        Votes = [new TranscriptVote(new { Date = DateTimeOffset.MinValue, Line = 2 })]
       });
     }
 

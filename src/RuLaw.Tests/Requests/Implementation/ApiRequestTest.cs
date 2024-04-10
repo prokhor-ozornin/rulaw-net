@@ -16,6 +16,8 @@ public sealed class ApiRequestTest : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(ApiRequest).Should().BeDerivedFrom<object>().And.Implement<IApiRequest>();
+
     var request = new TestApiRequest();
     request.Parameters.Should().BeEmpty();
   }

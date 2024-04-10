@@ -35,7 +35,7 @@ public sealed class PhaseStage : IPhaseStage
   {
     Id = id;
     Name = name;
-    Phases = phases ?? new List<IStagePhase>();
+    Phases = phases ?? [];
   }
 
   /// <summary>
@@ -46,7 +46,7 @@ public sealed class PhaseStage : IPhaseStage
   {
     Id = info.Id;
     Name = info.Name;
-    Phases = info.Phases ?? new List<StagePhase>();
+    Phases = info.Phases ?? [];
   }
 
   /// <summary>

@@ -51,6 +51,8 @@ public sealed class AuthorityTest : ClassTest<Authority>
   [Fact]
   public void Constructors()
   {
+    typeof(Authority).Should().BeDerivedFrom<object>().And.Implement<IAuthority>();
+
     var authority = new Authority();
     authority.Id.Should().BeNull();
     authority.Name.Should().BeNull();
@@ -147,7 +149,7 @@ public sealed class AuthorityInfoTests : ClassTest<Authority.Info>
   [Fact]
   public void Constructors()
   {
-    typeof(Weapon).Should().BeDerivedFrom<Entity>().And.Implement<IWeapon>().And.BeDecoratedWith<DataContractAttribute>();
+    typeof(Authority.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IAuthority>>();
 
     var info = new Authority.Info();
     info.Id.Should().BeNull();

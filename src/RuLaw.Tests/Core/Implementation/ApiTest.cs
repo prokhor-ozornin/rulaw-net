@@ -22,6 +22,8 @@ public sealed class ApiTest : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(Api).Should().BeDerivedFrom<object>().And.Implement<IApi>();
+
     var api = new Api("{apiToken}", "{appToken}");
 
     using (api)

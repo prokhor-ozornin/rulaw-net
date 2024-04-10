@@ -18,6 +18,8 @@ public sealed class LawsApiRequestTest : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(LawsApiRequest).Should().BeDerivedFrom<ApiRequest>().And.Implement<ILawsApiRequest>();
+
     var request = new LawsApiRequest();
     request.Parameters.Should().BeEmpty();
   }

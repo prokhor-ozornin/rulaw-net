@@ -27,7 +27,7 @@ public sealed class DateTranscriptsResult : IDateTranscriptsResult
                                IEnumerable<IDateTranscriptMeeting> meetings = null)
   {
     Date = date;
-    Meetings = meetings ?? new List<IDateTranscriptMeeting>();
+    Meetings = meetings ?? [];
   }
 
   /// <summary>
@@ -37,7 +37,7 @@ public sealed class DateTranscriptsResult : IDateTranscriptsResult
   public DateTranscriptsResult(Info info)
   {
     Date = info.Date is not null ? DateTimeOffset.Parse(info.Date) : null;
-    Meetings = info.Meetings ?? new List<DateTranscriptMeeting>();
+    Meetings = info.Meetings ?? [];
   }
 
   /// <summary>

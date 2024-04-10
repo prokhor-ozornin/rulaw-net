@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -58,6 +59,8 @@ public sealed class LawSubjectTest : ClassTest<LawSubject>
   [Fact]
   public void Constructors()
   {
+    typeof(LawSubject).Should().BeDerivedFrom<object>().And.Implement<ILawSubject>();
+
     var subject = new LawSubject();
     subject.Departments.Should().BeEmpty();
     subject.Deputies.Should().BeEmpty();
@@ -104,6 +107,8 @@ public sealed class LawSubjectInfoTests : ClassTest<LawSubject.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(LawSubject.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ILawSubject>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new LawSubject.Info();
     info.Departments.Should().BeNull();
     info.Deputies.Should().BeNull();
@@ -141,8 +146,8 @@ public sealed class LawSubjectInfoTests : ClassTest<LawSubject.Info>
     {
       Validate(new LawSubject.Info
       {
-        Departments = new List<Authority> { new(new { Id = 1 }) },
-        Deputies = new List<Deputy> { new(new { Id = 2 }) }
+        Departments = [new Authority(new { Id = 1 })],
+        Deputies = [new Deputy(new { Id = 2 })]
       });
     }
 

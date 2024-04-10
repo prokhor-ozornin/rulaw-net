@@ -17,6 +17,8 @@ public sealed class ApiConfiguratorTest : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(ApiConfigurator).Should().BeDerivedFrom<object>().And.Implement<IApiConfigurator>();
+
     var configurator = new ApiConfigurator();
     configurator.ApiKeyValue.Should().BeNull();
     configurator.AppKeyValue.Should().BeNull();

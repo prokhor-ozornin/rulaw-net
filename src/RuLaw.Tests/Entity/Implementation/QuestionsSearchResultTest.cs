@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -56,6 +57,8 @@ public sealed class QuestionsSearchResultTest : ClassTest<QuestionsSearchResult>
   [Fact]
   public void Constructors()
   {
+    typeof(QuestionsSearchResult).Should().BeDerivedFrom<object>().And.Implement<IQuestionsSearchResult>();
+
     var result = new QuestionsSearchResult();
     result.Page.Should().BeNull();
     result.PageSize.Should().BeNull();
@@ -122,6 +125,8 @@ public sealed class QuestionsSearchResultInfoTests : ClassTest<QuestionsSearchRe
   [Fact]
   public void Constructors()
   {
+    typeof(QuestionsSearchResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IQuestionsSearchResult>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new QuestionsSearchResult.Info();
     info.Page.Should().BeNull();
     info.PageSize.Should().BeNull();
@@ -166,7 +171,7 @@ public sealed class QuestionsSearchResultInfoTests : ClassTest<QuestionsSearchRe
         Count = 1,
         Page = 2,
         PageSize = 3,
-        Questions = new List<Question> { new(new { }) }
+        Questions = [new Question(new { })]
       });
     }
 

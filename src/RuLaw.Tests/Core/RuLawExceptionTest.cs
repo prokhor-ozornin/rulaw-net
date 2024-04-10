@@ -1,8 +1,8 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
 using Xunit;
-
 namespace RuLaw.Tests;
+
 
 /// <summary>
 ///   <para>Tests set for class <see cref="RuLawException"/>.</para>
@@ -16,6 +16,8 @@ public sealed class RuLawExceptionTest : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(Error).Should().BeDerivedFrom<object>().And.Implement<IError>();
+
     var exception = new RuLawException();
     exception.InnerException.Should().BeNull();
     exception.Message.Should().BeNull();

@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -56,6 +57,8 @@ public sealed class LawTranscriptsResultTest : ClassTest<LawTranscriptsResult>
   [Fact]
   public void Constructors()
   {
+    typeof(LawTranscriptsResult).Should().BeDerivedFrom<object>().And.Implement<ILawTranscriptsResult>();
+
     var transcript = new LawTranscriptsResult();
     transcript.Name.Should().BeNull();
     transcript.Number.Should().BeNull();
@@ -147,6 +150,8 @@ public sealed class LawTranscriptsResultInfoTests : ClassTest<LawTranscriptsResu
   [Fact]
   public void Constructors()
   {
+    typeof(LawTranscriptsResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ILawTranscriptsResult>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new LawTranscriptsResult.Info();
     info.Name.Should().BeNull();
     info.Number.Should().BeNull();
@@ -191,7 +196,7 @@ public sealed class LawTranscriptsResultInfoTests : ClassTest<LawTranscriptsResu
         Name = "name",
         Number = "number",
         Comments = "comments",
-        Meetings = new List<TranscriptMeeting> { new(new { }) }
+        Meetings = [new TranscriptMeeting(new { })]
       });
     }
 

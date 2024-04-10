@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -32,6 +33,8 @@ public sealed class TopicTest : ClassTest<Topic>
   [Fact]
   public void Constructors()
   {
+    typeof(Topic).Should().BeDerivedFrom<object>().And.Implement<ITopic>();
+
     var topic = new Topic();
     topic.Id.Should().BeNull();
     topic.Name.Should().BeNull();
@@ -101,6 +104,8 @@ public sealed class TopicInfoTests : ClassTest<Topic.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(Topic.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ITopic>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new Topic.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();

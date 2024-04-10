@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -50,6 +51,8 @@ public sealed class FederalAuthorityTest : ClassTest<FederalAuthority>
   [Fact]
   public void Constructors()
   {
+    typeof(FederalAuthority).Should().BeDerivedFrom<Authority>();
+
     var authority = new FederalAuthority();
     authority.Id.Should().BeNull();
     authority.Name.Should().BeNull();
@@ -146,6 +149,8 @@ public sealed class FederalAuthorityInfoTests : ClassTest<FederalAuthority.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(FederalAuthority.Info).Should().BeDerivedFrom<Authority.Info>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new FederalAuthority.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();

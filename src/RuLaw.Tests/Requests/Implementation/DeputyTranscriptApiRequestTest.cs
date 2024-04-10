@@ -18,6 +18,8 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(DeputyTranscriptApiRequest).Should().BeDerivedFrom<ApiRequest>().And.Implement<IDeputyTranscriptApiRequest>();
+
     var request = new DeputyTranscriptApiRequest();
     request.Parameters.Should().BeEmpty();
   }

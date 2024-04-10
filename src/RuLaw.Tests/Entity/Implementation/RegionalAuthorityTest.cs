@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -50,6 +51,8 @@ public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
   [Fact]
   public void Constructors()
   {
+    typeof(RegionalAuthority).Should().BeDerivedFrom<Authority>();
+
     var authority = new RegionalAuthority();
     authority.Id.Should().BeNull();
     authority.Name.Should().BeNull();
@@ -146,6 +149,8 @@ public sealed class RegionalAuthorityInfoTests : ClassTest<RegionalAuthority.Inf
   [Fact]
   public void Constructors()
   {
+    typeof(RegionalAuthority).Should().BeDerivedFrom<Authority>();
+
     var info = new RegionalAuthority.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();

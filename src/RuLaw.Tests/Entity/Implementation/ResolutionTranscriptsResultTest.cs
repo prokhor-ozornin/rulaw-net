@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -45,6 +46,8 @@ public sealed class ResolutionTranscriptsResultTest : ClassTest<ResolutionTransc
   [Fact]
   public void Constructors()
   {
+    typeof(ResolutionTranscriptsResult).Should().BeDerivedFrom<object>().And.Implement<IResolutionTranscriptsResult>();
+
     var result = new ResolutionTranscriptsResult();
     result.Number.Should().BeNull();
     result.Meetings.Should().BeEmpty();
@@ -112,6 +115,8 @@ public sealed class ResolutionTranscriptsResultInfoTests : ClassTest<ResolutionT
   [Fact]
   public void Constructors()
   {
+    typeof(ResolutionTranscriptsResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IResolutionTranscriptsResult>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new ResolutionTranscriptsResult.Info();
     info.Number.Should().BeNull();
     info.Meetings.Should().BeNull();
@@ -147,7 +152,7 @@ public sealed class ResolutionTranscriptsResultInfoTests : ClassTest<ResolutionT
   {
     var info = new ResolutionTranscriptsResult.Info
     {
-      Meetings = new List<TranscriptMeeting> {new(new {})},
+      Meetings = [new TranscriptMeeting(new { })],
       Number = "number"
     };
 

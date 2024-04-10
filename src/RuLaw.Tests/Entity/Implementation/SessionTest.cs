@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -44,6 +45,8 @@ public sealed class SessionTest : ClassTest<Session>
   [Fact]
   public void Constructors()
   {
+    typeof(Session).Should().BeDerivedFrom<object>().And.Implement<ISession>();
+
     var session = new Session();
     session.Id.Should().BeNull();
     session.Name.Should().BeNull();
@@ -131,6 +134,8 @@ public sealed class SessionInfoTests : ClassTest<Session.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(Session.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ISession>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new Session.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();

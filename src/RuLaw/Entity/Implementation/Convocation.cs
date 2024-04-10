@@ -51,7 +51,7 @@ public sealed class Convocation : IConvocation
     Name = name;
     FromDate = fromDate;
     ToDate = toDate;
-    Sessions = sessions ?? new List<ISession>();
+    Sessions = sessions ?? [];
   }
 
   /// <summary>
@@ -64,7 +64,7 @@ public sealed class Convocation : IConvocation
     Name = info.Name;
     FromDate = info.FromDate is not null ? DateTimeOffset.Parse(info.FromDate) : null;
     ToDate = info.ToDate is not null ? DateTimeOffset.Parse(info.ToDate) : null;
-    Sessions = info.Sessions ?? new List<Session>();
+    Sessions = info.Sessions ?? [];
   }
 
   /// <summary>

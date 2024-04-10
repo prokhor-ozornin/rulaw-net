@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -32,6 +33,8 @@ public sealed class TranscriptVoteTest : ClassTest<TranscriptVote>
   [Fact]
   public void Constructors()
   {
+    typeof(TranscriptVote).Should().BeDerivedFrom<object>().And.Implement<ITranscriptVote>();
+
     var vote = new TranscriptVote();
     vote.Date.Should().BeNull();
     vote.Line.Should().BeNull();
@@ -100,6 +103,8 @@ public sealed class TranscriptVoteInfoTests : ClassTest<TranscriptVote.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(TranscriptVote.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ITranscriptVote>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new TranscriptVote.Info();
     info.Date.Should().BeNull();
     info.Line.Should().BeNull();

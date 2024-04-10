@@ -1,4 +1,5 @@
 ﻿using System.Reflection.PortableExecutable;
+using System.Runtime.Serialization;
 using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -57,6 +58,8 @@ public sealed class QuestionTest : ClassTest<Question>
   [Fact]
   public void Constructors()
   {
+    typeof(Question).Should().BeDerivedFrom<object>().And.Implement<IQuestion>();
+
     var question = new Question();
     question.Name.Should().BeNull();
     question.Date.Should().BeNull();
@@ -170,6 +173,8 @@ public sealed class QuestionInfoTests : ClassTest<Question.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(Question.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IQuestion>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new Question.Info();
     info.Name.Should().BeNull();
     info.Date.Should().BeNull();

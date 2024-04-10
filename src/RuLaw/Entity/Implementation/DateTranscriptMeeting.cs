@@ -42,8 +42,8 @@ public sealed class DateTranscriptMeeting : IDateTranscriptMeeting
   {
     Date = date;
     Number = number;
-    Lines = lines ?? new List<string>();
-    Votes = votes ?? new List<ITranscriptVote>();
+    Lines = lines ?? [];
+    Votes = votes ?? [];
   }
 
   /// <summary>
@@ -54,8 +54,8 @@ public sealed class DateTranscriptMeeting : IDateTranscriptMeeting
   {
     Date = info.Date;
     Number = info.Number;
-    Lines = info.Lines ?? new List<string>();
-    Votes = info.Votes ?? new List<TranscriptVote>();
+    Lines = info.Lines ?? [];
+    Votes = info.Votes ?? [];
   }
 
   /// <summary>

@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -32,6 +33,8 @@ public sealed class LawEventStageTest : ClassTest<LawEventStage>
   [Fact]
   public void Constructors()
   {
+    typeof(LawEventStage).Should().BeDerivedFrom<object>().And.Implement<ILawEventStage>();
+
     var stage = new LawEventStage();
     stage.Id.Should().BeNull();
     stage.Name.Should().BeNull();
@@ -101,6 +104,8 @@ public sealed class LawEventStageInfoTests : ClassTest<LawEventStage.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(LawEventStage.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ILawEventStage>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new LawEventStage.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();

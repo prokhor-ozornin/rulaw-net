@@ -51,7 +51,7 @@ public sealed class DeputyTranscriptsResult : IDeputyTranscriptsResult
     Page = page;
     PageSize = pageSize;
     Count = count;
-    Meetings = meetings ?? new List<ITranscriptMeeting>();
+    Meetings = meetings ?? [];
   }
 
   /// <summary>
@@ -64,7 +64,7 @@ public sealed class DeputyTranscriptsResult : IDeputyTranscriptsResult
     Page = info.Page;
     PageSize = info.PageSize;
     Count = info.Count;
-    Meetings = info.Meetings ?? new List<TranscriptMeeting>();
+    Meetings = info.Meetings ?? [];
   }
 
   /// <summary>

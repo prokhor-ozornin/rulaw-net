@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -62,6 +63,8 @@ public sealed class ConvocationTest : ClassTest<Convocation>
   [Fact]
   public void Constructors()
   {
+    typeof(Convocation).Should().BeDerivedFrom<object>().And.Implement<IConvocation>();
+
     var convocation = new Convocation();
     convocation.Id.Should().BeNull();
     convocation.Name.Should().BeNull();
@@ -162,6 +165,8 @@ public sealed class ConvocationInfoTests : ClassTest<Convocation.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(Convocation.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IConvocation>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new Convocation.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();

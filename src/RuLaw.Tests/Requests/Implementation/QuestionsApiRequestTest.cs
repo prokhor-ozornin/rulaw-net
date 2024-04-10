@@ -18,6 +18,8 @@ public sealed class QuestionsApiRequestTest : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(QuestionsApiRequest).Should().BeDerivedFrom<ApiRequest>().And.Implement<IQuestionsApiRequest>();
+
     var request = new QuestionsApiRequest();
     request.Parameters.Should().BeEmpty();
   }

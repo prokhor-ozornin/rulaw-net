@@ -26,8 +26,8 @@ public sealed class LawSubject : ILawSubject
   public LawSubject(IEnumerable<IAuthority> departments = null,
                     IEnumerable<IDeputy> deputies = null)
   {
-    Departments = departments ?? new List<IAuthority>();
-    Deputies = deputies ?? new List<IDeputy>();
+    Departments = departments ?? [];
+    Deputies = deputies ?? [];
   }
 
   /// <summary>
@@ -36,8 +36,8 @@ public sealed class LawSubject : ILawSubject
   /// <param name="info"></param>
   public LawSubject(Info info)
   {
-    Departments = info.Departments ?? new List<Authority>();
-    Deputies = info.Deputies ?? new List<Deputy>();
+    Departments = info.Departments ?? [];
+    Deputies = info.Deputies ?? [];
   }
 
   /// <summary>

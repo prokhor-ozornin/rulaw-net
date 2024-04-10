@@ -17,13 +17,13 @@ public sealed class QuestionTranscriptsResult : IQuestionTranscriptsResult
   ///   <para></para>
   /// </summary>
   /// <param name="meetings"></param>
-  public QuestionTranscriptsResult(IEnumerable<ITranscriptMeeting> meetings = null) => Meetings = meetings ?? new List<ITranscriptMeeting>();
+  public QuestionTranscriptsResult(IEnumerable<ITranscriptMeeting> meetings = null) => Meetings = meetings ?? [];
 
   /// <summary>
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public QuestionTranscriptsResult(Info info) => Meetings = info.Meetings ?? new List<TranscriptMeeting>();
+  public QuestionTranscriptsResult(Info info) => Meetings = info.Meetings ?? [];
 
   /// <summary>
   ///   <para></para>

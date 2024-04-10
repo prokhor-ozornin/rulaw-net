@@ -35,7 +35,7 @@ public sealed class TranscriptMeetingQuestion : ITranscriptMeetingQuestion
   {
     Name = name;
     Stage = stage;
-    Parts = parts ?? new List<ITranscriptMeetingQuestionPart>();
+    Parts = parts ?? [];
   }
 
   /// <summary>
@@ -46,7 +46,7 @@ public sealed class TranscriptMeetingQuestion : ITranscriptMeetingQuestion
   {
     Name = info.Name;
     Stage = info.Stage;
-    Parts = info.Parts ?? new List<TranscriptMeetingQuestionPart>();
+    Parts = info.Parts ?? [];
   }
 
   /// <summary>

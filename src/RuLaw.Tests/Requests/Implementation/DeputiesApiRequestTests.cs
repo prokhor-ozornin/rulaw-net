@@ -17,6 +17,8 @@ public sealed class DeputiesApiRequestTests : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(DeputiesApiRequest).Should().BeDerivedFrom<ApiRequest>().And.Implement<IDeputiesApiRequest>();
+
     var request = new DeputiesApiRequest();
     request.Parameters.Should().BeEmpty();
   }

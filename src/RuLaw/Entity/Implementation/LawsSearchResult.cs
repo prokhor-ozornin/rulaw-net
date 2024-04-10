@@ -43,7 +43,7 @@ public sealed class LawsSearchResult : ILawsSearchResult
     Page = page;
     Count = count;
     Wording = wording;
-    Laws = laws ?? new List<ILaw>();
+    Laws = laws ?? [];
   }
 
   /// <summary>
@@ -55,7 +55,7 @@ public sealed class LawsSearchResult : ILawsSearchResult
     Page = info.Page;
     Count = info.Count;
     Wording = info.Wording;
-    Laws = info.Laws ?? new List<Law>();
+    Laws = info.Laws ?? [];
   }
 
   /// <summary>

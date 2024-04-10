@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -32,6 +33,8 @@ public sealed class ErrorTest : ClassTest<Error>
   [Fact]
   public void Constructors()
   {
+    typeof(Error).Should().BeDerivedFrom<object>().And.Implement<IError>();
+
     var error = new Error(1, "text");
     error.Code.Should().Be(1);
     error.Text.Should().Be("text");
@@ -106,6 +109,8 @@ public sealed class ErrorTest : ClassTest<Error>
     [Fact]
     public void Constructors()
     {
+      typeof(Error.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IError>>();
+
       var info = new Error.Info();
       info.Code.Should().Be(0);
       info.Text.Should().BeNull();
@@ -117,10 +122,20 @@ public sealed class ErrorTest : ClassTest<Error>
     [Fact]
     public void ToResult_Method()
     {
-      var result = new Error.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<Error>();
-      result.Code.Should().Be(0);
-      result.Text.Should().BeNull();
+      using (new AssertionScope())
+      {
+        var result = new Error.Info().ToResult();
+        result.Should().NotBeNull().And.BeOfType<Error>();
+        result.Code.Should().Be(0);
+        result.Text.Should().BeNull();
+      }
+
+      return;
+
+      static void Validate()
+      {
+
+      }
     }
 
     /// <summary>

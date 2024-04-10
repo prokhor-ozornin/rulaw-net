@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -32,6 +33,8 @@ public sealed class DeputyRequestSignerTest : ClassTest<DeputyRequestSigner>
   [Fact]
   public void Constructors()
   {
+    typeof(DeputyRequestSigner).Should().BeDerivedFrom<object>().And.Implement<IDeputyRequestSigner>();
+
     var signer = new DeputyRequestSigner();
     signer.Id.Should().BeNull();
     signer.Name.Should().BeNull();
@@ -101,6 +104,8 @@ public sealed class DeputyRequestSignerInfoTests : ClassTest<DeputyRequestSigner
   [Fact]
   public void Constructors()
   {
+    typeof(DeputyRequestSigner.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IDeputyRequestSigner>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new DeputyRequestSigner.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();

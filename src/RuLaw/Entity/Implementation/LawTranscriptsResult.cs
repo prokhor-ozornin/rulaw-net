@@ -43,7 +43,7 @@ public sealed class LawTranscriptsResult : ILawTranscriptsResult
     Name = name;
     Number = number;
     Comments = comments;
-    Meetings = meetings ?? new List<ITranscriptMeeting>();
+    Meetings = meetings ?? [];
   }
 
   /// <summary>
@@ -55,7 +55,7 @@ public sealed class LawTranscriptsResult : ILawTranscriptsResult
     Name = info.Name;
     Number = info.Number;
     Comments = info.Comments;
-    Meetings = info.Meetings ?? new List<TranscriptMeeting>();
+    Meetings = info.Meetings ?? [];
   }
 
   /// <summary>

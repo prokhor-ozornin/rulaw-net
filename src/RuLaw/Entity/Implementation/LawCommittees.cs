@@ -34,8 +34,8 @@ public sealed class LawCommittees : ILawCommittees
                        IEnumerable<ICommittee> soExecutor = null)
   {
     Responsible = responsible;
-    Profile = profile ?? new List<ICommittee>();
-    SoExecutor = soExecutor ?? new List<ICommittee>();
+    Profile = profile ?? [];
+    SoExecutor = soExecutor ?? [];
   }
 
   /// <summary>
@@ -45,8 +45,8 @@ public sealed class LawCommittees : ILawCommittees
   public LawCommittees(Info info)
   {
     Responsible = info.Responsible;
-    Profile = info.Profile ?? new List<Committee>();
-    SoExecutor = info.SoExecutor ?? new List<Committee>();
+    Profile = info.Profile ?? [];
+    SoExecutor = info.SoExecutor ?? [];
   }
 
   /// <summary>

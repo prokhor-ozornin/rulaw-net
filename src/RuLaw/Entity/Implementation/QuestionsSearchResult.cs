@@ -43,7 +43,7 @@ public sealed class QuestionsSearchResult : IQuestionsSearchResult
     Page = page;
     PageSize = pageSize;
     Count = count;
-    Questions = questions ?? new List<Question>();
+    Questions = questions ?? [];
   }
 
   /// <summary>
@@ -55,7 +55,7 @@ public sealed class QuestionsSearchResult : IQuestionsSearchResult
     Page = info.Page;
     PageSize = info.PageSize;
     Count = info.Count;
-    Questions = info.Questions ?? new List<Question>();
+    Questions = info.Questions ?? [];
   }
 
   /// <summary>

@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -69,6 +70,8 @@ public sealed class LawCommitteesTest : ClassTest<LawCommittees>
   [Fact]
   public void Constructors()
   {
+    typeof(LawCommittees).Should().BeDerivedFrom<object>().And.Implement<ILawCommittees>();
+
     var committees = new LawCommittees();
     committees.Responsible.Should().BeNull();
     committees.Profile.Should().BeEmpty();
@@ -128,6 +131,8 @@ public sealed class LawCommitteesInfoTests : ClassTest<LawCommittees.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(LawCommittees.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ILawCommittees>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new LawCommittees.Info();
     info.Responsible.Should().BeNull();
     info.Profile.Should().BeNull();
@@ -166,8 +171,8 @@ public sealed class LawCommitteesInfoTests : ClassTest<LawCommittees.Info>
     var info = new LawCommittees.Info
     {
       Responsible = new Committee(new {Id = 1}),
-      Profile = new List<Committee> {new(new {Id = 2})},
-      SoExecutor = new List<Committee> {new(new {Id = 3})}
+      Profile = [new Committee(new { Id = 2 })],
+      SoExecutor = [new Committee(new { Id = 3 })]
     };
 
     info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();

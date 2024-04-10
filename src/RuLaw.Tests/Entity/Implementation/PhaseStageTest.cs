@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -51,6 +52,8 @@ public sealed class PhaseStageTest : ClassTest<PhaseStage>
   [Fact]
   public void Constructors()
   {
+    typeof(PhaseStage).Should().BeDerivedFrom<object>().And.Implement<IPhaseStage>();
+
     var stage = new PhaseStage();
     stage.Id.Should().BeNull();
     stage.Name.Should().BeNull();
@@ -133,6 +136,8 @@ public sealed class PhaseStageInfoTests : ClassTest<PhaseStage.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(PhaseStage.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IPhaseStage>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new PhaseStage.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();
@@ -174,7 +179,7 @@ public sealed class PhaseStageInfoTests : ClassTest<PhaseStage.Info>
       {
         Id = 1,
         Name = "name",
-        Phases = new List<StagePhase> { new(new { Id = 2 }) }
+        Phases = [new StagePhase(new { Id = 2 })]
       });
     }
 

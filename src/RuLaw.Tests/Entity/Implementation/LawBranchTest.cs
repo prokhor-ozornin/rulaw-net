@@ -1,4 +1,5 @@
-﻿using Catharsis.Commons;
+﻿using System.Runtime.Serialization;
+using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -32,6 +33,8 @@ public sealed class LawBranchTest : ClassTest<LawBranch>
   [Fact]
   public void Constructors()
   {
+    typeof(LawBranch).Should().BeDerivedFrom<object>().And.Implement<ILawBranch>();
+
     var topic = new LawBranch();
     topic.Id.Should().BeNull();
     topic.Name.Should().BeNull();
@@ -101,6 +104,8 @@ public sealed class LawBranchInfoTests : ClassTest<LawBranch.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(LawBranch.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ILawBranch>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new LawBranch.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();
