@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-using Catharsis.Commons;
-using FluentAssertions;
+﻿using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
 
@@ -9,10 +7,8 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="IConvocationsApiExtensions"/>.</para>
 /// </summary>
-public sealed class IConvocationsApiExtensionsTest : UnitTest
+public sealed class IConvocationsApiExtensionsTest : IntegrationTest
 {
-  private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
   /// <summary>
   ///   <para>Performs testing of <see cref="IConvocationsApiExtensions.All(IConvocationsApi)"/> method.</para>
   /// </summary>
@@ -23,9 +19,14 @@ public sealed class IConvocationsApiExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IConvocationsApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      var convocations = Api.Convocations.All();
+      Validate(Api.Convocations.All());
+    }
 
-      convocations.Should().NotBeNullOrEmpty().And.BeOfType<List<Convocation>>();
+    return;
+
+    static void Validate(IEnumerable<IConvocation> convocations)
+    {
+      convocations.Should().BeOfType<List<Convocation>>().And.NotBeEmpty();
 
       var convocation = convocations.Single(convocation => convocation.Id == 82100004);
       convocation.Name.Should().Be("4-ый созыв");
@@ -45,17 +46,5 @@ public sealed class IConvocationsApiExtensionsTest : UnitTest
       session.FromDate.Should().HaveYear(2004).And.HaveMonth(9).And.HaveDay(1).And.HaveOffset(TimeSpan.Zero);
       session.ToDate.Should().HaveYear(2004).And.HaveMonth(12).And.HaveDay(31).And.HaveOffset(TimeSpan.Zero);
     }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
   }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  public override void Dispose() => Api.Dispose();
 }

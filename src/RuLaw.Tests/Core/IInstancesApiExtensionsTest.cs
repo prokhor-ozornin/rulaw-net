@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions.Execution;
 using FluentAssertions;
@@ -10,10 +9,8 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="IInstancesApiExtensions"/>.</para>
 /// </summary>
-public sealed class IInstancesApiExtensionsTest : UnitTest
+public sealed class IInstancesApiExtensionsTest : IntegrationTest
 {
-  private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
   ///   <list type="bullet">
@@ -28,25 +25,23 @@ public sealed class IInstancesApiExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null, new InstancesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      var instances = Api.Instances.Search(new InstancesApiRequest().Current());
-      Validate(instances);
+      Validate(Api.Instances.Search(new InstancesApiRequest().Current()));
     }
 
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      var instances = Api.Instances.Search(request => request.Current());
-      Validate(instances);
+      Validate(Api.Instances.Search(request => request.Current()));
     }
 
     return;
 
-    static void Validate(IEnumerable<IInstance> sequence)
+    static void Validate(IEnumerable<IInstance> instances)
     {
-      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<Instance>>();
+      instances.Should().BeOfType<List<Instance>>().And.NotBeEmpty();
 
-      var instance = sequence.Single(instance => instance.Id == 177);
+      var instance = instances.Single(instance => instance.Id == 177);
       instance.Name.Should().Be("ГД (Пленарное заседание)");
       instance.Active.Should().BeTrue();
     }
@@ -63,23 +58,18 @@ public sealed class IInstancesApiExtensionsTest : UnitTest
       AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(Api.Instances, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
 
-      var instances = Api.Instances.SearchAsync(request => request.Current()).ToListAsync().Await();
+      Validate(Api.Instances.SearchAsync(request => request.Current()).ToArray());
+    }
+
+    return;
+
+    static void Validate(IEnumerable<IInstance> instances)
+    {
+      instances.Should().BeOfType<List<Instance>>().And.NotBeEmpty();
 
       var instance = instances.Single(instance => instance.Id == 177);
       instance.Name.Should().Be("ГД (Пленарное заседание)");
       instance.Active.Should().BeTrue();
     }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
   }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  public override void Dispose() => Api.Dispose();
 }

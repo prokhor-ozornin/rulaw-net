@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-using Catharsis.Commons;
-using FluentAssertions;
+﻿using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
 
@@ -9,10 +7,8 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="IStagesApiExtensions"/>.</para>
 /// </summary>
-public sealed class IStagesApiExtensionsTest : UnitTest
+public sealed class IStagesApiExtensionsTest : IntegrationTest
 {
-  private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
   /// <summary>
   ///   <para>Performs testing of <see cref="IStagesApiExtensions.All(IStagesApi)"/> method.</para>
   /// </summary>
@@ -23,19 +19,24 @@ public sealed class IStagesApiExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IStagesApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      var stages = Api.Stages.All();
+      Validate(Api.Stages.All());
+    }
 
-      stages.Should().NotBeNullOrEmpty().And.BeOfType<List<PhaseStage>>();
-      
+    return;
+
+    static void Validate(IEnumerable<IPhaseStage> stages)
+    {
+      stages.Should().BeOfType<List<PhaseStage>>().And.NotBeEmpty();
+
       var stage = stages.Single(stage => stage.Id == 1);
       stage.Name.Should().Be("Внесение законопроекта в Государственную Думу");
-      stage.Phases.Should().NotBeNullOrEmpty().And.HaveCount(3).And.BeOfType<List<StagePhase>>();
+      stage.Phases.Should().BeOfType<List<StagePhase>>().And.HaveCount(3);
 
       var phase = stage.Phases.ElementAt(0);
       phase.Id.Should().Be(1);
       phase.Name.Should().Be("Регистрация законопроекта и материалов к нему в САДД Государственной Думы");
 
-      phase.Instance.Should().NotBeNull().And.BeOfType<Instance>();
+      phase.Instance.Should().BeOfType<Instance>();
       phase.Instance.Id.Should().Be(173);
       phase.Instance.Name.Should().Be("УДИО ГД");
       phase.Instance.Active.Should().BeTrue();
@@ -43,7 +44,7 @@ public sealed class IStagesApiExtensionsTest : UnitTest
       phase = stage.Phases.ElementAt(1);
       phase.Id.Should().Be(2);
       phase.Name.Should().Be("Прохождение законопроекта у Председателя Государственной Думы");
-      phase.Instance.Should().NotBeNull().And.BeOfType<Instance>();
+      phase.Instance.Should().BeOfType<Instance>();
       phase.Instance.Id.Should().Be(174);
       phase.Instance.Name.Should().Be("Секретариат Председателя ГД");
       phase.Instance.Active.Should().BeTrue();
@@ -51,22 +52,10 @@ public sealed class IStagesApiExtensionsTest : UnitTest
       phase = stage.Phases.ElementAt(2);
       phase.Id.Should().Be(3);
       phase.Name.Should().Be("Регистрация законопроекта в Секретариате Совета Государственной Думы");
-      phase.Instance.Should().NotBeNull().And.BeOfType<Instance>();
+      phase.Instance.Should().BeOfType<Instance>();
       phase.Instance.Id.Should().Be(175);
       phase.Instance.Name.Should().Be("Секретариат Совета ГД");
       phase.Instance.Active.Should().BeTrue();
     }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
   }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  public override void Dispose() => Api.Dispose();
 }

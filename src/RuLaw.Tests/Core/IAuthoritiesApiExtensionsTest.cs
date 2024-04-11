@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -10,10 +9,8 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="IAuthoritiesApiExtensions"/>.</para>
 /// </summary>
-public sealed class IAuthoritiesApiExtensionsTest : UnitTest
+public sealed class IAuthoritiesApiExtensionsTest : IntegrationTest
 {
-  private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(/*ConfigurationManager.AppSettings["ApiKey"]*/"api").AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
   ///   <list type="bullet">
@@ -28,25 +25,23 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Federal(null, new AuthoritiesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      var authorities = Api.Authorities.Federal(new AuthoritiesApiRequest().Current());
-      Validate(authorities);
+      Validate(Api.Authorities.Federal(new AuthoritiesApiRequest().Current()));
     }
 
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Federal(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      var authorities = Api.Authorities.Federal(request => request.Current());
-      Validate(authorities);
+      Validate(Api.Authorities.Federal(request => request.Current()));
     }
 
     return;
 
-    static void Validate(IEnumerable<IAuthority> sequence)
+    static void Validate(IEnumerable<IAuthority> authorities)
     {
-      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<FederalAuthority>>();
+      authorities.Should().BeOfType<List<FederalAuthority>>().And.NotBeEmpty();
 
-      var authority = sequence.Single(authority => authority.Id == 6231000);
+      var authority = authorities.Single(authority => authority.Id == 6231000);
       authority.Name.Should().Be("Верховный Суд РФ");
       authority.Active.Should().BeTrue();
       authority.FromDate.Should().HaveYear(1994).And.HaveMonth(1).And.HaveDay(1).And.HaveOffset(TimeSpan.Zero);
@@ -68,25 +63,23 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Regional(null, new AuthoritiesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      var authorities = Api.Authorities.Regional(new AuthoritiesApiRequest().Current(false));
-      Validate(authorities);
+      Validate(Api.Authorities.Regional(new AuthoritiesApiRequest().Current(false)));
     }
 
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Regional(null, _ => { })).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      var authorities = Api.Authorities.Regional(request => request.Current(false));
-      Validate(authorities);
+      Validate(Api.Authorities.Regional(request => request.Current(false)));
     }
 
     return;
 
-    static void Validate(IEnumerable<IAuthority> sequence)
+    static void Validate(IEnumerable<IAuthority> authorities)
     {
-      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<RegionalAuthority>>();
+      authorities.Should().BeOfType<List<RegionalAuthority>>().And.NotBeEmpty();
 
-      var authority = sequence.Single(authority => authority.Id == 6217700);
+      var authority = authorities.Single(authority => authority.Id == 6217700);
       authority.Name.Should().Be("Агинская Бурятская окружная Дума");
       authority.Active.Should().BeFalse();
       authority.FromDate.Should().HaveYear(1994).And.HaveMonth(1).And.HaveDay(1).And.HaveOffset(TimeSpan.Zero);
@@ -105,17 +98,14 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(Api.Authorities, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
 
-      var authorities = Api.Authorities.FederalAsync(new AuthoritiesApiRequest().Current());
-      Validate(authorities);
+      Validate(Api.Authorities.FederalAsync(new AuthoritiesApiRequest().Current()).ToArray());
     }
 
     return;
 
-    static void Validate(IAsyncEnumerable<IAuthority> sequence)
+    static void Validate(IEnumerable<IAuthority> authorities)
     {
-      var authorities = sequence.ToListAsync().Await();
-
-      authorities.Should().NotBeNullOrEmpty().And.BeOfType<List<FederalAuthority>>();
+      authorities.Should().BeOfType<List<FederalAuthority>>().And.NotBeEmpty();
 
       var authority = authorities.Single(authority => authority.Id == 6231000);
       authority.Name.Should().Be("Верховный Суд РФ");
@@ -136,17 +126,14 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(Api.Authorities, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
 
-      var authorities = Api.Authorities.RegionalAsync(new AuthoritiesApiRequest().Current(false));
-      Validate(authorities);
+      Validate(Api.Authorities.RegionalAsync(new AuthoritiesApiRequest().Current(false)).ToArray());
     }
 
     return;
 
-    static void Validate(IAsyncEnumerable<IAuthority> sequence)
+    static void Validate(IEnumerable<IAuthority> authorities)
     {
-      var authorities = sequence.ToListAsync().Await();
-
-      authorities.Should().NotBeNullOrEmpty().And.BeOfType<List<RegionalAuthority>>();
+      authorities.Should().BeOfType<List<RegionalAuthority>>().And.NotBeEmpty();
 
       var authority = authorities.Single(authority => authority.Id == 6217700);
       authority.Name.Should().Be("Агинская Бурятская окружная Дума");
@@ -155,9 +142,4 @@ public sealed class IAuthoritiesApiExtensionsTest : UnitTest
       authority.ToDate.Should().HaveYear(2008).And.HaveMonth(10).And.HaveDay(12).And.HaveOffset(TimeSpan.Zero);
     }
   }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  public override void Dispose() => Api.Dispose();
 }

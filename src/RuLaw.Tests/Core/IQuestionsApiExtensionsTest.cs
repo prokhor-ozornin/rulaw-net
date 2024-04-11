@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
@@ -10,10 +9,8 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="IQuestionsApiExtensions"/>.</para>
 /// </summary>
-public sealed class IQuestionsApiExtensionsTest : UnitTest
+public sealed class IQuestionsApiExtensionsTest : IntegrationTest
 {
-  private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
   ///   <list type="bullet">
@@ -28,29 +25,27 @@ public sealed class IQuestionsApiExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IQuestionsApiExtensions.Search(null, new QuestionsApiRequest())).ThrowExactly<ArgumentNullException>();
 
-      var result = Api.Questions.Search(new QuestionsApiRequest().FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2));
-      Validate(result);
+      Validate(Api.Questions.Search(new QuestionsApiRequest().FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)));
     }
 
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IQuestionsApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>();
 
-      var result = Api.Questions.Search(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2));
-      Validate(result);
+      Validate(Api.Questions.Search(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)));
     }
 
     return;
 
     static void Validate(IQuestionsSearchResult result)
     {
-      result.Should().NotBeNull().And.BeOfType<QuestionsSearchResult>();
+      result.Should().BeOfType<QuestionsSearchResult>();
 
       result.Count.Should().Be(44);
       result.Page.Should().Be(2);
       result.PageSize.Should().Be((int) PageSize.Five);
 
-      result.Questions.Should().NotBeNullOrEmpty().And.BeOfType<IList<Question>>().And.HaveCount(5);
+      result.Questions.Should().BeOfType<IList<Question>>().And.HaveCount(5);
 
       var question = result.Questions.ElementAt(0);
       question.Name.Should().Be(@"О проекте федерального закона № 641168-5 ""Об образовании постоянных судебных присутствий в составе некоторых районных судов Ростовской области"".");
@@ -105,21 +100,24 @@ public sealed class IQuestionsApiExtensionsTest : UnitTest
       AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
       AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(Api.Questions, null, Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
-      var result = Api.Questions.SearchAsync(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)).Await();
-      Validate(result);
+      Validate(Api.Questions.SearchAsync(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)));
     }
 
     return;
 
-    static void Validate(IQuestionsSearchResult result)
+    static void Validate(Task<IQuestionsSearchResult> task)
     {
-      result.Should().NotBeNull().And.BeOfType<QuestionsSearchResult>();
+      task.Should().BeAssignableTo<Task<IQuestionsSearchResult>>();
+
+      var result = task.Await();
+
+      result.Should().BeOfType<QuestionsSearchResult>();
 
       result.Count.Should().Be(44);
       result.Page.Should().Be(2);
       result.PageSize.Should().Be((int) PageSize.Five);
 
-      result.Questions.Should().NotBeNullOrEmpty().And.BeOfType<IList<Question>>().And.HaveCount(5);
+      result.Questions.Should().BeOfType<IList<Question>>().And.HaveCount(5);
 
       var question = result.Questions.ElementAt(0);
       question.Name.Should().Be(@"О проекте федерального закона № 641168-5 ""Об образовании постоянных судебных присутствий в составе некоторых районных судов Ростовской области"".");
@@ -162,9 +160,4 @@ public sealed class IQuestionsApiExtensionsTest : UnitTest
       question.EndLine.Should().Be(6278);
     }
   }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  public override void Dispose() => Api.Dispose();
 }

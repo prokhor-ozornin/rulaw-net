@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-using Catharsis.Commons;
-using FluentAssertions;
+﻿using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
 
@@ -9,10 +7,8 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="IRequestsApiExtensions"/>.</para>
 /// </summary>
-public sealed class IRequestsApiExtensionsTest : UnitTest
+public sealed class IRequestsApiExtensionsTest : IntegrationTest
 {
-  private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
   /// <summary>
   ///   <para>Performs testing of <see cref="IRequestsApiExtensions.All(IRequestsApi)"/> method.</para>
   /// </summary>
@@ -23,9 +19,14 @@ public sealed class IRequestsApiExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IRequestsApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      var requests = Api.Requests.All();
+      Validate(Api.Requests.All());
+    }
 
-      requests.Should().NotBeNullOrEmpty().And.BeOfType<List<DeputyRequest>>();
+    return;
+
+    static void Validate(IEnumerable<IDeputyRequest> requests)
+    {
+      requests.Should().BeOfType<List<DeputyRequest>>().And.NotBeEmpty();
 
       var request = requests.First(request => request.Id == 14);
       request.Initiator.Should().Be("Герасименко Н.Ф.");
@@ -37,25 +38,13 @@ public sealed class IRequestsApiExtensionsTest : UnitTest
       request.ResolutionNumber.Should().Be("1103-IV ГД");
       request.Answer.Should().NotBeNull();
 
-      request.Signer.Should().NotBeNull().And.BeOfType<DeputyRequestSigner>();
+      request.Signer.Should().BeOfType<DeputyRequestSigner>();
       request.Signer.Id.Should().Be(99100416);
       request.Signer.Name.Should().Be("Чилингаров Артур Николаевич");
-      
-      request.Addressee.Should().NotBeNull().And.BeOfType<DeputyRequestAddressee>();
+
+      request.Addressee.Should().BeOfType<DeputyRequestAddressee>();
       request.Addressee.Id.Should().Be(3);
       request.Addressee.Name.Should().Be(@"Председателю Правительства РФ\М.Е. Фрадкову");
     }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
   }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  public override void Dispose() => Api.Dispose();
 }

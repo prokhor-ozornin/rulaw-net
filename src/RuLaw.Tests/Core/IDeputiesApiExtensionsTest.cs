@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions.Execution;
 using FluentAssertions;
@@ -10,10 +9,8 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="IDeputiesApiExtensions"/>.</para>
 /// </summary>
-public sealed class IDeputiesApiExtensionsTest : UnitTest
+public sealed class IDeputiesApiExtensionsTest : IntegrationTest
 {
-  private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
   /// <summary>
   ///   <para>Performs testing of <see cref="IDeputiesApiExtensions.Find(IDeputiesApi, long)"/> method.</para>
   /// </summary>
@@ -24,10 +21,15 @@ public sealed class IDeputiesApiExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IDeputiesApiExtensions.Find(null, 1)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      var deputy = Api.Deputies.Find(99100142);
+      Validate(Api.Deputies.Find(99100142));
+    }
 
-      deputy.Should().NotBeNull().And.BeOfType<DeputyInfo>();
-      
+    return;
+
+    static void Validate(IDeputyInfo deputy)
+    {
+      deputy.Should().BeOfType<DeputyInfo>();
+
       deputy.LastName.Should().Be("Жириновский");
       deputy.FirstName.Should().Be("Владимир");
       deputy.MiddleName.Should().Be("Вольфович");
@@ -47,13 +49,6 @@ public sealed class IDeputiesApiExtensionsTest : UnitTest
       deputy.Degrees.Should().NotBeNullOrEmpty().And.Contain("Доктор философских наук");
       deputy.Ranks.Should().NotBeNullOrEmpty().And.Contain(["Профессор", "Действительный член (академик) Международной Академии экологии и природопользования (МАЭП)", "Почетный академик Академии естествознания", "Действительный член Международной Академии информатизации", "Действительный член (академик) Академии социальных наук"]);
     }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
   }
 
   /// <summary>
@@ -71,8 +66,7 @@ public sealed class IDeputiesApiExtensionsTest : UnitTest
       AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null, new DeputiesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => Api.Deputies.Search((IDeputiesApiRequest) null)).ThrowExactly<TaskCanceledException>();
 
-      var deputies = Api.Deputies.Search(new DeputiesApiRequest().Position(DeputyPosition.DumaDeputy).Current(false).Name("А"));
-      Validate(deputies);
+      Validate(Api.Deputies.Search(new DeputiesApiRequest().Position(DeputyPosition.DumaDeputy).Current(false).Name("А")));
     }
 
     using (new AssertionScope())
@@ -80,18 +74,17 @@ public sealed class IDeputiesApiExtensionsTest : UnitTest
       AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => Api.Deputies.Search((Action<IDeputiesApiRequest>) null)).ThrowExactly<TaskCanceledException>();
 
-      var deputies = Api.Deputies.Search(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А"));
-      Validate(deputies);
+      Validate(Api.Deputies.Search(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")));
     }
 
     return;
 
-    static void Validate(IEnumerable<IDeputy> sequence)
+    static void Validate(IEnumerable<IDeputy> deputies)
     {
-      sequence.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
+      deputies.Should().BeOfType<List<Deputy>>().And.NotBeEmpty();
 
-      var deputy = sequence.Single(deputy => deputy.Id == 99100491);
-      deputy.Should().NotBeNull().And.BeOfType<Deputy>();
+      var deputy = deputies.Single(deputy => deputy.Id == 99100491);
+      deputy.Should().BeOfType<Deputy>();
       deputy.Name.Should().Be("Абдулатипов Рамазан Гаджимурадович");
       deputy.Position.Should().Be("Депутат ГД");
       deputy.Active.Should().BeFalse();
@@ -109,26 +102,19 @@ public sealed class IDeputiesApiExtensionsTest : UnitTest
       AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(Api.Deputies, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
 
-      var deputies = Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToListAsync().Await();
+      Validate(Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToArray());
+    }
 
-      deputies.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
+    return;
+
+    static void Validate(IEnumerable<IDeputy> deputies)
+    {
+      deputies.Should().BeOfType<List<Deputy>>().And.NotBeEmpty();
 
       var deputy = deputies.Single(deputy => deputy.Id == 99100491);
       deputy.Name.Should().Be("Абдулатипов Рамазан Гаджимурадович");
       deputy.Position.Should().Be("Депутат ГД");
       deputy.Active.Should().BeFalse();
     }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
   }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  public override void Dispose() => Api.Dispose();
 }

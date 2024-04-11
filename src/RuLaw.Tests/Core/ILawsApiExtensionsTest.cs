@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
@@ -10,10 +9,8 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="ILawsApiExtensions"/>.</para>
 /// </summary>
-public sealed class ILawsApiExtensionsTest : UnitTest
+public sealed class ILawsApiExtensionsTest : IntegrationTest
 {
-  private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
-
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
   ///   <list type="bullet">
@@ -29,8 +26,7 @@ public sealed class ILawsApiExtensionsTest : UnitTest
       AssertionExtensions.Should(() => ILawsApiExtensions.Search(null, new LawsApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => Api.Laws.Search((ILawsApiRequest) null)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      var result = Api.Laws.Search(new LawsApiRequest().Name("курение").Sorting(LawsSorting.DateDescending));
-      Validate(result);
+      Validate(Api.Laws.Search(new LawsApiRequest().Name("курение").Sorting(LawsSorting.DateDescending)));
     }
 
     using (new AssertionScope())
@@ -38,56 +34,55 @@ public sealed class ILawsApiExtensionsTest : UnitTest
       AssertionExtensions.Should(() => ILawsApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => Api.Laws.Search((Action<ILawsApiRequest>) null)).ThrowExactly<ArgumentNullException>().WithParameterName("action");
 
-      var result = Api.Laws.Search(request => request.Name("курение").Sorting(LawsSorting.DateDescending));
-      Validate(result);
+      Validate(Api.Laws.Search(request => request.Name("курение").Sorting(LawsSorting.DateDescending)));
     }
 
     return;
 
     static void Validate(ILawsSearchResult result)
     {
-      result.Should().NotBeNull().And.BeOfType<LawsSearchResult>();
+      result.Should().BeOfType<LawsSearchResult>();
 
       result.Count.Should().BePositive();
       result.Page.Should().Be(1);
       result.Wording.Should().Contain("Законопроекты, где наименование или комментарий содержит \"курение\", отсортированные по дате внесения в ГД (по убыванию)");
 
       var laws = result.Laws;
-      laws.Should().NotBeNullOrEmpty().And.BeOfType<List<Law>>();
+      laws.Should().BeOfType<List<Law>>().And.NotBeEmpty();
 
       var law = laws.Number("170826-6");
 
       law.Comments.Should().BeNull();
 
-      law.Committees.Should().NotBeNull().And.BeOfType<LawCommittees>();
-      law.Committees.Profile.Should().NotBeNullOrEmpty().And.BeOfType<List<Committee>>();
+      law.Committees.Should().BeOfType<LawCommittees>();
+      law.Committees.Profile.Should().BeOfType<List<Committee>>().And.ContainSingle();
 
       var committee = law.Committees.Profile.Single();
       committee.Active.Should().BeTrue();
       committee.FromDate.Should().HaveYear(2003).And.HaveMonth(12).And.HaveDay(29).And.HaveOffset(TimeSpan.Zero);
       committee.ToDate.Should().BeNull();
-      law.Committees.Responsible.Should().BeNull().And.BeOfType<Committee>();
-      law.Committees.SoExecutor.Should().NotBeNull().And.BeEmpty();
+      law.Committees.Responsible.Should().BeNull();
+      law.Committees.SoExecutor.Should().BeEmpty();
 
       law.Date.Should().HaveYear(2012).And.HaveMonth(11).And.HaveDay(13).And.HaveOffset(TimeSpan.Zero);
 
       law.Id.Should().Be(19135);
 
-      law.LastEvent.Should().NotBeNull().And.BeOfType<LawEvent>();
+      law.LastEvent.Should().BeOfType<LawEvent>();
 
       law.LastEvent.Date.Should().HaveYear(2012).And.HaveMonth(12).And.HaveDay(20).And.HaveOffset(TimeSpan.Zero);
 
       law.LastEvent.Document.Name.Should().Be("68");
       law.LastEvent.Document.Type.Should().Be("Протокол заседания Совета ГД");
-      law.LastEvent.Document.Should().NotBeNull().And.BeOfType<LawEventDocument>();
+      law.LastEvent.Document.Should().BeOfType<LawEventDocument>();
 
       law.LastEvent.Phase.Id.Should().Be(5);
       law.LastEvent.Phase.Name.Should().Be("Рассмотрение Советом Государственной Думы законопроекта, внесенного в Государственную Думу");
-      law.LastEvent.Phase.Should().NotBeNull().And.BeOfType<LawEventPhase>();
+      law.LastEvent.Phase.Should().BeOfType<LawEventPhase>();
 
       law.LastEvent.Solution.Should().Be("снять законопроект с рассмотрения Государственной Думы в связи с отзывом субъектом права законодательной инициативы");
 
-      law.LastEvent.Stage.Should().NotBeNull().And.BeOfType<LawEventStage>();
+      law.LastEvent.Stage.Should().BeOfType<LawEventStage>();
       law.LastEvent.Stage.Id.Should().Be(2);
       law.LastEvent.Stage.Name.Should().Be("Предварительное рассмотрение законопроекта, внесенного в Государственную Думу");
 
@@ -95,10 +90,10 @@ public sealed class ILawsApiExtensionsTest : UnitTest
 
       law.Number.Should().Be("170826-6");
 
-      law.Subject.Should().NotBeNull().And.BeOfType<LawSubject>();
-      law.Subject.Departments.Should().NotBeNull().And.BeEmpty();
+      law.Subject.Should().BeOfType<LawSubject>();
+      law.Subject.Departments.Should().BeEmpty();
 
-      law.Subject.Deputies.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
+      law.Subject.Deputies.Should().BeOfType<List<Deputy>>().And.ContainSingle();
       var deputy = law.Subject.Deputies.Single();
       deputy.Id.Should().Be(99100270);
       deputy.Position().Should().Be(DeputyPosition.DumaDeputy);
@@ -106,7 +101,7 @@ public sealed class ILawsApiExtensionsTest : UnitTest
 
       law.TranscriptUrl.Should().BeNull();
 
-      law.Type.Should().NotBeNull().And.BeOfType<LawType>();
+      law.Type.Should().BeOfType<LawType>();
       law.Type.Id.Should().Be((int) LawTypes.Federal);
       law.Type.Name.Should().Be("Федеральный закон");
 
@@ -126,56 +121,59 @@ public sealed class ILawsApiExtensionsTest : UnitTest
       AssertionExtensions.Should(() => ILawsApiExtensions.SearchAsync(Api.Laws, null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("action").Await();
       AssertionExtensions.Should(() => Api.Laws.SearchAsync(_ => { }, Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
-      var result = Api.Laws.SearchAsync(request => request.Name("курение").Sorting(LawsSorting.DateDescending)).Await();
-      Validate(result);
+      Validate(Api.Laws.SearchAsync(request => request.Name("курение").Sorting(LawsSorting.DateDescending)));
     }
 
     return;
 
-    static void Validate(ILawsSearchResult result)
+    static void Validate(Task<ILawsSearchResult> task)
     {
-      result.Should().NotBeNull().And.BeOfType<LawsSearchResult>();
+      task.Should().BeAssignableTo<Task<ILawsSearchResult>>();
+
+      var result = task.Await();
+
+      result.Should().BeOfType<LawsSearchResult>();
 
       result.Count.Should().BePositive();
       result.Page.Should().Be(1);
       result.Wording.Should().Contain("Законопроекты, где наименование или комментарий содержит \"курение\", отсортированные по дате внесения в ГД (по убыванию)");
 
       var laws = result.Laws;
-      laws.Should().NotBeNullOrEmpty().And.BeOfType<List<Law>>();
+      laws.Should().BeOfType<List<Law>>().And.NotBeEmpty();
 
       var law = laws.Number("170826-6");
 
       law.Comments.Should().BeNull();
 
-      law.Committees.Should().NotBeNull().And.BeOfType<LawCommittees>();
-      law.Committees.Profile.Should().NotBeNullOrEmpty().And.BeOfType<List<Committee>>();
+      law.Committees.Should().BeOfType<LawCommittees>();
+      law.Committees.Profile.Should().BeOfType<List<Committee>>().And.ContainSingle();
 
       var committee = law.Committees.Profile.Single();
       committee.Active.Should().BeTrue();
       committee.FromDate.Should().HaveYear(2003).And.HaveMonth(12).And.HaveDay(29).And.HaveOffset(TimeSpan.Zero);
       committee.ToDate.Should().BeNull();
-      law.Committees.Responsible.Should().BeNull().And.BeOfType<Committee>();
-      law.Committees.SoExecutor.Should().NotBeNull().And.BeEmpty();
+      law.Committees.Responsible.Should().BeNull();
+      law.Committees.SoExecutor.Should().BeEmpty();
 
       law.Date.Should().HaveYear(2012).And.HaveMonth(11).And.HaveDay(13).And.HaveOffset(TimeSpan.Zero);
 
       law.Id.Should().Be(19135);
 
-      law.LastEvent.Should().NotBeNull().And.BeOfType<LawEvent>();
+      law.LastEvent.Should().BeOfType<LawEvent>();
 
       law.LastEvent.Date.Should().HaveYear(2012).And.HaveMonth(12).And.HaveDay(20).And.HaveOffset(TimeSpan.Zero);
 
       law.LastEvent.Document.Name.Should().Be("68");
       law.LastEvent.Document.Type.Should().Be("Протокол заседания Совета ГД");
-      law.LastEvent.Document.Should().NotBeNull().And.BeOfType<LawEventDocument>();
+      law.LastEvent.Document.Should().BeOfType<LawEventDocument>();
 
       law.LastEvent.Phase.Id.Should().Be(5);
       law.LastEvent.Phase.Name.Should().Be("Рассмотрение Советом Государственной Думы законопроекта, внесенного в Государственную Думу");
-      law.LastEvent.Phase.Should().NotBeNull().And.BeOfType<LawEventPhase>();
+      law.LastEvent.Phase.Should().BeOfType<LawEventPhase>();
 
       law.LastEvent.Solution.Should().Be("снять законопроект с рассмотрения Государственной Думы в связи с отзывом субъектом права законодательной инициативы");
 
-      law.LastEvent.Stage.Should().NotBeNull().And.BeOfType<LawEventStage>();
+      law.LastEvent.Stage.Should().BeOfType<LawEventStage>();
       law.LastEvent.Stage.Id.Should().Be(2);
       law.LastEvent.Stage.Name.Should().Be("Предварительное рассмотрение законопроекта, внесенного в Государственную Думу");
 
@@ -183,10 +181,10 @@ public sealed class ILawsApiExtensionsTest : UnitTest
 
       law.Number.Should().Be("170826-6");
 
-      law.Subject.Should().NotBeNull().And.BeOfType<LawSubject>();
-      law.Subject.Departments.Should().NotBeNull().And.BeEmpty();
+      law.Subject.Should().BeOfType<LawSubject>();
+      law.Subject.Departments.Should().BeEmpty();
 
-      law.Subject.Deputies.Should().NotBeNullOrEmpty().And.BeOfType<List<Deputy>>();
+      law.Subject.Deputies.Should().BeOfType<List<Deputy>>().And.ContainSingle();
       var deputy = law.Subject.Deputies.Single();
       deputy.Id.Should().Be(99100270);
       deputy.Position().Should().Be(DeputyPosition.DumaDeputy);
@@ -194,16 +192,11 @@ public sealed class ILawsApiExtensionsTest : UnitTest
 
       law.TranscriptUrl.Should().BeNull();
 
-      law.Type.Should().NotBeNull().And.BeOfType<LawType>();
+      law.Type.Should().BeOfType<LawType>();
       law.Type.Id.Should().Be((int) LawTypes.Federal);
       law.Type.Name.Should().Be("Федеральный закон");
 
       law.Url.Should().Be("http://sozd.parlament.gov.ru/bill/170826-6");
     }
   }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  public override void Dispose() => Api.Dispose();
 }
