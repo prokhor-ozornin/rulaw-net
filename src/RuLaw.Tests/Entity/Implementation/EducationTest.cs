@@ -13,18 +13,6 @@ namespace RuLaw.Tests;
 public sealed class EducationTest : ClassTest<Education>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Education.Institution"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Institution_Property() { new Education(new {Institution = Guid.Empty.ToString()}).Institution.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Education.Year"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Year_Property() { new Education(new {Year = short.MaxValue}).Year.Should().Be(short.MaxValue); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Education(string?, short?)"/>
@@ -46,6 +34,30 @@ public sealed class EducationTest : ClassTest<Education>
     education = new Education(new {});
     education.Institution.Should().BeNull();
     education.Year.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Education.Institution"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Institution_Property()
+  {
+    new Education(new
+    {
+      Institution = Guid.Empty.ToString()
+    }).Institution.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Education.Year"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Year_Property()
+  {
+    new Education(new
+    {
+      Year = short.MaxValue
+    }).Year.Should().Be(short.MaxValue);
   }
 
   /// <summary>
@@ -94,18 +106,6 @@ public sealed class EducationTest : ClassTest<Education>
 public sealed class EducationInfoTests : ClassTest<Education.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Education.Info.Institution"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Institution_Property() { new Education.Info {Institution = Guid.Empty.ToString()}.Institution.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Education.Info.Year"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Year_Property() { new Education.Info {Year = short.MaxValue}.Year.Should().Be(short.MaxValue); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Education.Info()"/>
@@ -117,6 +117,24 @@ public sealed class EducationInfoTests : ClassTest<Education.Info>
     var info = new Education.Info();
     info.Institution.Should().BeNull();
     info.Year.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Education.Info.Institution"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Institution_Property()
+  {
+    new Education.Info { Institution = Guid.Empty.ToString() }.Institution.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Education.Info.Year"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Year_Property()
+  {
+    new Education.Info { Year = short.MaxValue }.Year.Should().Be(short.MaxValue);
   }
 
   /// <summary>

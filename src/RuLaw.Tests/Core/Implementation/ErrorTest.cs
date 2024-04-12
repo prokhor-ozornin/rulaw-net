@@ -13,18 +13,6 @@ namespace RuLaw.Tests;
 public sealed class ErrorTest : ClassTest<Error>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Code"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Code_Property() { new Error(new {Code = int.MaxValue}).Code.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Text"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Text_Property() { new Error(new {Text = Guid.Empty.ToString()}).Text.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Error(int, string)"/>
@@ -46,6 +34,30 @@ public sealed class ErrorTest : ClassTest<Error>
     error = new Error(new {});
     error.Code.Should().Be(0);
     error.Text.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Code"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Code_Property()
+  {
+    new Error(new
+    {
+      Code = int.MaxValue
+    }).Code.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Text"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Text_Property()
+  {
+    new Error(new
+    {
+      Text = Guid.Empty.ToString()
+    }).Text.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -85,24 +97,6 @@ public sealed class ErrorTest : ClassTest<Error>
   public sealed class ErrorInfoTests : ClassTest<Error.Info>
   {
     /// <summary>
-    ///   <para>Performs testing of <see cref="Error.Info.Code"/> property.</para>
-    /// </summary>
-    [Fact]
-    public void Code_Property()
-    {
-      new Error.Info {Code = int.MaxValue}.Code.Should().Be(int.MaxValue);
-    }
-
-    /// <summary>
-    ///   <para>Performs testing of <see cref="Error.Info.Text"/> property.</para>
-    /// </summary>
-    [Fact]
-    public void Text_Property()
-    {
-      new Error.Info {Text = Guid.Empty.ToString()}.Text.Should().Be(Guid.Empty.ToString());
-    }
-
-    /// <summary>
     ///   <para>Performs testing of class constructor(s).</para>
     /// </summary>
     /// <seealso cref="Error.Info()"/>
@@ -114,6 +108,24 @@ public sealed class ErrorTest : ClassTest<Error>
       var info = new Error.Info();
       info.Code.Should().Be(0);
       info.Text.Should().BeNull();
+    }
+
+    /// <summary>
+    ///   <para>Performs testing of <see cref="Error.Info.Code"/> property.</para>
+    /// </summary>
+    [Fact]
+    public void Code_Property()
+    {
+      new Error.Info { Code = int.MaxValue }.Code.Should().Be(int.MaxValue);
+    }
+
+    /// <summary>
+    ///   <para>Performs testing of <see cref="Error.Info.Text"/> property.</para>
+    /// </summary>
+    [Fact]
+    public void Text_Property()
+    {
+      new Error.Info { Text = Guid.Empty.ToString() }.Text.Should().Be(Guid.Empty.ToString());
     }
 
     /// <summary>

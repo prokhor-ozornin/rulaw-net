@@ -13,46 +13,6 @@ namespace RuLaw.Tests;
 public sealed class InstanceTest : ClassTest<Instance>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Instance.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Instance(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Instance.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Instance(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Instance.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property() { new Instance(new {Active = true}).Active.Should().BeTrue(); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Instance.CompareTo(IInstance)"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(Instance.Name), "first", "second"); }
-
-  /// <summary>
-  ///   <para>Performs testing of following methods :</para>
-  ///   <list type="bullet">
-  ///     <item><description><see cref="Instance.Equals(IInstance)"/></description></item>
-  ///     <item><description><see cref="Instance.Equals(object)"/></description></item>
-  ///   </list>
-  /// </summary>
-  [Fact]
-  public void Equals_Methods() { TestEquality(nameof(Instance.Id), 1, 2); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Instance.GetHashCode()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(Instance.Id), 1, 2); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Instance(long?, string?, bool?)"/>
@@ -80,6 +40,73 @@ public sealed class InstanceTest : ClassTest<Instance>
   }
 
   /// <summary>
+  ///   <para>Performs testing of <see cref="Instance.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Instance(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Instance.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Instance(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Instance.Active"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Active_Property()
+  {
+    new Instance(new
+    {
+      Active = true
+    }).Active.Should().BeTrue();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Instance.CompareTo(IInstance)"/> method.</para>
+  /// </summary>
+  [Fact]
+  public void CompareTo_Method()
+  {
+    TestCompareTo(nameof(Instance.Name), "first", "second");
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of following methods :</para>
+  ///   <list type="bullet">
+  ///     <item><description><see cref="Instance.Equals(IInstance)"/></description></item>
+  ///     <item><description><see cref="Instance.Equals(object)"/></description></item>
+  ///   </list>
+  /// </summary>
+  [Fact]
+  public void Equals_Methods()
+  {
+    TestEquality(nameof(Instance.Id), 1, 2);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Instance.GetHashCode()"/> method.</para>
+  /// </summary>
+  [Fact]
+  public void GetHashCode_Method()
+  {
+    TestHashCode(nameof(Instance.Id), 1, 2);
+  }
+
+  /// <summary>
   ///   <para>Performs testing of <see cref="Instance.ToString()"/> method.</para>
   /// </summary>
   [Fact]
@@ -95,24 +122,6 @@ public sealed class InstanceTest : ClassTest<Instance>
 public sealed class InstanceInfoTests : ClassTest<Instance.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Instance.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Instance.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Instance.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Instance.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Instance.Info.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property() { new Instance.Info {Active = true}.Active.Should().BeTrue(); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Instance.Info()"/>
@@ -125,6 +134,33 @@ public sealed class InstanceInfoTests : ClassTest<Instance.Info>
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();
     info.Active.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Instance.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Instance.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Instance.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Instance.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Instance.Info.Active"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Active_Property()
+  {
+    new Instance.Info { Active = true }.Active.Should().BeTrue();
   }
 
   /// <summary>

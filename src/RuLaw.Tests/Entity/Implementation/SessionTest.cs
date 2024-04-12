@@ -13,30 +13,6 @@ namespace RuLaw.Tests;
 public sealed class SessionTest : ClassTest<Session>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Session.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Session(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Session.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Session(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Session.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void From_Property() { new Session(new {FromDate = DateTimeOffset.MaxValue}).FromDate.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Session.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property() { new Session(new {ToDate = DateTimeOffset.MaxValue}).ToDate.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Session(long?, string?, DateTimeOffset?, DateTimeOffset?)"/>
@@ -64,6 +40,54 @@ public sealed class SessionTest : ClassTest<Session>
     session.Name.Should().BeNull();
     session.FromDate.Should().BeNull();
     session.ToDate.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Session.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Session(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Session.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Session(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Session.FromDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void From_Property()
+  {
+    new Session(new
+    {
+      FromDate = DateTimeOffset.MaxValue
+    }).FromDate.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Session.ToDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ToDate_Property()
+  {
+    new Session(new
+    {
+      ToDate = DateTimeOffset.MaxValue
+    }).ToDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -104,30 +128,6 @@ public sealed class SessionTest : ClassTest<Session>
 public sealed class SessionInfoTests : ClassTest<Session.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Session.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Session.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Session.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Session.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Session.Info.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void From_Property() { new Session.Info {FromDate = Guid.Empty.ToString()}.FromDate.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Session.Info.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property() { new Session.Info {ToDate = Guid.Empty.ToString()}.ToDate.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Session.Info()"/>
@@ -141,6 +141,42 @@ public sealed class SessionInfoTests : ClassTest<Session.Info>
     info.Name.Should().BeNull();
     info.FromDate.Should().BeNull();
     info.ToDate.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Session.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Session.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Session.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Session.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Session.Info.FromDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void From_Property()
+  {
+    new Session.Info { FromDate = Guid.Empty.ToString() }.FromDate.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Session.Info.ToDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ToDate_Property()
+  {
+    new Session.Info { ToDate = Guid.Empty.ToString() }.ToDate.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

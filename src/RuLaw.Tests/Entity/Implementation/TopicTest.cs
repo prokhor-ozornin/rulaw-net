@@ -13,18 +13,6 @@ namespace RuLaw.Tests;
 public sealed class TopicTest : ClassTest<Topic>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Topic.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Topic(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Topic.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Topic(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Topic(long?, string?)"/>
@@ -46,6 +34,30 @@ public sealed class TopicTest : ClassTest<Topic>
     topic = new Topic(new {});
     topic.Id.Should().BeNull();
     topic.Name.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Topic.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Topic(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Topic.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Topic(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -86,18 +98,6 @@ public sealed class TopicTest : ClassTest<Topic>
 public sealed class TopicInfoTests : ClassTest<Topic.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Topic.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Topic.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Topic.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Topic.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Topic.Info()"/>
@@ -109,6 +109,24 @@ public sealed class TopicInfoTests : ClassTest<Topic.Info>
     var info = new Topic.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Topic.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Topic.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Topic.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Topic.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

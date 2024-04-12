@@ -14,36 +14,6 @@ namespace RuLaw.Tests;
 public sealed class TranscriptMeetingQuestionTest : ClassTest<TranscriptMeetingQuestion>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new TranscriptMeetingQuestion(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Stage"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Stage_Property() { new TranscriptMeetingQuestion(new {Stage = Guid.Empty.ToString()}).Stage.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Parts"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Parts_Property()
-  {
-    var question = new TranscriptMeetingQuestion(new {});
-
-    var part = new TranscriptMeetingQuestionPart(new {});
-    var parts = question.Parts.To<List<TranscriptMeetingQuestionPart>>();
-
-    parts.Add(part);
-    question.Parts.Should().ContainSingle().Which.Should().BeSameAs(part);
-
-    parts.Remove(part);
-    question.Parts.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="TranscriptMeetingQuestion(string?, string?, IEnumerable{ITranscriptMeetingQuestionPart}?)"/>
@@ -67,6 +37,52 @@ public sealed class TranscriptMeetingQuestionTest : ClassTest<TranscriptMeetingQ
     question = new TranscriptMeetingQuestion(new {});
     question.Name.Should().BeNull();
     question.Stage.Should().BeNull();
+    question.Parts.Should().BeEmpty();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new TranscriptMeetingQuestion(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Stage"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Stage_Property()
+  {
+    new TranscriptMeetingQuestion(new
+    {
+      Stage = Guid.Empty.ToString()
+    }).Stage.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Parts"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Parts_Property()
+  {
+    var question = new TranscriptMeetingQuestion(new
+    {
+    });
+
+    var part = new TranscriptMeetingQuestionPart(new
+    {
+    });
+    var parts = question.Parts.To<List<TranscriptMeetingQuestionPart>>();
+
+    parts.Add(part);
+    question.Parts.Should().ContainSingle().Which.Should().BeSameAs(part);
+
+    parts.Remove(part);
     question.Parts.Should().BeEmpty();
   }
 
@@ -116,28 +132,6 @@ public sealed class TranscriptMeetingQuestionTest : ClassTest<TranscriptMeetingQ
 public sealed class TranscriptMeetingQuestionInfoTests : ClassTest<TranscriptMeetingQuestion.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new TranscriptMeetingQuestion.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Info.Stage"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Stage_Property() { new TranscriptMeetingQuestion.Info {Stage = Guid.Empty.ToString()}.Stage.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Info.Parts"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Parts_Property()
-  {
-    var parts = new List<TranscriptMeetingQuestionPart>();
-    new TranscriptMeetingQuestion.Info {Parts = parts}.Parts.Should().BeSameAs(parts);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="TranscriptMeetingQuestion.Info()"/>
@@ -150,6 +144,34 @@ public sealed class TranscriptMeetingQuestionInfoTests : ClassTest<TranscriptMee
     info.Name.Should().BeNull();
     info.Stage.Should().BeNull();
     info.Parts.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new TranscriptMeetingQuestion.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Info.Stage"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Stage_Property()
+  {
+    new TranscriptMeetingQuestion.Info { Stage = Guid.Empty.ToString() }.Stage.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Info.Parts"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Parts_Property()
+  {
+    var parts = new List<TranscriptMeetingQuestionPart>();
+    new TranscriptMeetingQuestion.Info { Parts = parts }.Parts.Should().BeSameAs(parts);
   }
 
   /// <summary>

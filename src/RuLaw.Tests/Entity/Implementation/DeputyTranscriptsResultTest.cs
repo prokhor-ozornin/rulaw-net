@@ -14,48 +14,6 @@ namespace RuLaw.Tests;
 public sealed class DeputyTranscriptsResultTest : ClassTest<DeputyTranscriptsResult>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new DeputyTranscriptsResult(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Page"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Page_Property() { new DeputyTranscriptsResult(new {Page = int.MaxValue}).Page.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.PageSize"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void PageSize_Property() { new DeputyTranscriptsResult(new {PageSize = int.MaxValue}).PageSize.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Count"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Count_Property() { new DeputyTranscriptsResult(new {Count = int.MaxValue}).Count.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Meetings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Meetings_Property()
-  {
-    var transcript = new DeputyTranscriptsResult(new {});
-    var meeting = new TranscriptMeeting(new {});
-
-    var meetings = transcript.Meetings.To<List<TranscriptMeeting>>();
-
-    meetings.Add(meeting);
-    transcript.Meetings.Should().ContainSingle().Which.Should().BeSameAs(meeting);
-
-    meetings.Remove(meeting);
-    transcript.Meetings.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="DeputyTranscriptsResult(string?, int?, int?, int?, IEnumerable{ITranscriptMeeting}?)"/>
@@ -89,6 +47,76 @@ public sealed class DeputyTranscriptsResultTest : ClassTest<DeputyTranscriptsRes
   }
 
   /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new DeputyTranscriptsResult(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Page"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Page_Property()
+  {
+    new DeputyTranscriptsResult(new
+    {
+      Page = int.MaxValue
+    }).Page.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.PageSize"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void PageSize_Property()
+  {
+    new DeputyTranscriptsResult(new
+    {
+      PageSize = int.MaxValue
+    }).PageSize.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Count"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Count_Property()
+  {
+    new DeputyTranscriptsResult(new
+    {
+      Count = int.MaxValue
+    }).Count.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Meetings"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Meetings_Property()
+  {
+    var transcript = new DeputyTranscriptsResult(new
+    {
+    });
+    var meeting = new TranscriptMeeting(new
+    {
+    });
+
+    var meetings = transcript.Meetings.To<List<TranscriptMeeting>>();
+
+    meetings.Add(meeting);
+    transcript.Meetings.Should().ContainSingle().Which.Should().BeSameAs(meeting);
+
+    meetings.Remove(meeting);
+    transcript.Meetings.Should().BeEmpty();
+  }
+
+  /// <summary>
   ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.CompareTo(IDeputyTranscriptsResult)"/> method.</para>
   /// </summary>
   [Fact]
@@ -110,40 +138,6 @@ public sealed class DeputyTranscriptsResultTest : ClassTest<DeputyTranscriptsRes
 public sealed class DeputyTranscriptsResultInfoTests : ClassTest<DeputyTranscriptsResult.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new DeputyTranscriptsResult.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Info.Page"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Page_Property() { new DeputyTranscriptsResult.Info {Page = int.MaxValue}.Page.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Info.PageSize"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void PageSize_Property() { new DeputyTranscriptsResult.Info {PageSize = int.MaxValue}.PageSize.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Info.Count"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Count_Property() { new DeputyTranscriptsResult.Info {Count = int.MaxValue}.Count.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Info.Meetings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Meetings_Property()
-  {
-    var meetings = new List<TranscriptMeeting>();
-    new DeputyTranscriptsResult.Info {Meetings = meetings}.Meetings.Should().BeSameAs(meetings);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="DeputyTranscriptsResult.Info()"/>
@@ -158,6 +152,52 @@ public sealed class DeputyTranscriptsResultInfoTests : ClassTest<DeputyTranscrip
     info.PageSize.Should().BeNull();
     info.Count.Should().BeNull();
     info.Meetings.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new DeputyTranscriptsResult.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Info.Page"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Page_Property()
+  {
+    new DeputyTranscriptsResult.Info { Page = int.MaxValue }.Page.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Info.PageSize"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void PageSize_Property()
+  {
+    new DeputyTranscriptsResult.Info { PageSize = int.MaxValue }.PageSize.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Info.Count"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Count_Property()
+  {
+    new DeputyTranscriptsResult.Info { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Info.Meetings"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Meetings_Property()
+  {
+    var meetings = new List<TranscriptMeeting>();
+    new DeputyTranscriptsResult.Info { Meetings = meetings }.Meetings.Should().BeSameAs(meetings);
   }
 
   /// <summary>

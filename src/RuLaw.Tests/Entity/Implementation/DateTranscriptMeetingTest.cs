@@ -14,16 +14,58 @@ namespace RuLaw.Tests;
 public sealed class DateTranscriptMeetingTest : ClassTest<DateTranscriptMeeting>
 {
   /// <summary>
+  ///   <para>Performs testing of class constructor(s).</para>
+  /// </summary>
+  /// <seealso cref="DateTranscriptMeeting(DateTimeOffset?, int?, IEnumerable{string}?, IEnumerable{ITranscriptVote}?)"/>
+  /// <seealso cref="DateTranscriptMeeting(DateTranscriptMeeting.Info)"/>
+  /// <seealso cref="DateTranscriptMeeting(object)"/>
+  [Fact]
+  public void Constructors()
+  {
+    typeof(DateTranscriptMeeting).Should().BeDerivedFrom<object>().And.Implement<IDateTranscriptMeeting>();
+
+    var meeting = new DateTranscriptMeeting();
+    meeting.Date.Should().BeNull();
+    meeting.Number.Should().BeNull();
+    meeting.Lines.Should().BeEmpty();
+    meeting.Votes.Should().BeEmpty();
+
+    meeting = new DateTranscriptMeeting(new DateTranscriptMeeting.Info());
+    meeting.Date.Should().BeNull();
+    meeting.Number.Should().BeNull();
+    meeting.Lines.Should().BeEmpty();
+    meeting.Votes.Should().BeEmpty();
+
+    meeting = new DateTranscriptMeeting(new {});
+    meeting.Date.Should().BeNull();
+    meeting.Number.Should().BeNull();
+    meeting.Lines.Should().BeEmpty();
+    meeting.Votes.Should().BeEmpty();
+  }
+
+  /// <summary>
   ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Date"/> property.</para>
   /// </summary>
   [Fact]
-  public void Date_Property() { new DateTranscriptMeeting(new {Date = DateTimeOffset.MaxValue}).Date.Should().Be(DateTimeOffset.MaxValue); }
+  public void Date_Property()
+  {
+    new DateTranscriptMeeting(new
+    {
+      Date = DateTimeOffset.MaxValue
+    }).Date.Should().Be(DateTimeOffset.MaxValue);
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Number"/> property.</para>
   /// </summary>
   [Fact]
-  public void Number_Property() { new DateTranscriptMeeting(new {Number = int.MaxValue}).Number.Should().Be(int.MaxValue); }
+  public void Number_Property()
+  {
+    new DateTranscriptMeeting(new
+    {
+      Number = int.MaxValue
+    }).Number.Should().Be(int.MaxValue);
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Lines"/> property.</para>
@@ -56,36 +98,6 @@ public sealed class DateTranscriptMeetingTest : ClassTest<DateTranscriptMeeting>
     votes.Add(vote);
     meeting.Votes.Should().ContainSingle().Which.Should().BeSameAs(vote);
     votes.Remove(vote);
-    meeting.Votes.Should().BeEmpty();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="DateTranscriptMeeting(DateTimeOffset?, int?, IEnumerable{string}?, IEnumerable{ITranscriptVote}?)"/>
-  /// <seealso cref="DateTranscriptMeeting(DateTranscriptMeeting.Info)"/>
-  /// <seealso cref="DateTranscriptMeeting(object)"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(DateTranscriptMeeting).Should().BeDerivedFrom<object>().And.Implement<IDateTranscriptMeeting>();
-
-    var meeting = new DateTranscriptMeeting();
-    meeting.Date.Should().BeNull();
-    meeting.Number.Should().BeNull();
-    meeting.Lines.Should().BeEmpty();
-    meeting.Votes.Should().BeEmpty();
-
-    meeting = new DateTranscriptMeeting(new DateTranscriptMeeting.Info());
-    meeting.Date.Should().BeNull();
-    meeting.Number.Should().BeNull();
-    meeting.Lines.Should().BeEmpty();
-    meeting.Votes.Should().BeEmpty();
-
-    meeting = new DateTranscriptMeeting(new {});
-    meeting.Date.Should().BeNull();
-    meeting.Number.Should().BeNull();
-    meeting.Lines.Should().BeEmpty();
     meeting.Votes.Should().BeEmpty();
   }
 
@@ -127,38 +139,6 @@ public sealed class DateTranscriptMeetingTest : ClassTest<DateTranscriptMeeting>
 public sealed class DateTranscriptMeetingInfoTests : ClassTest<DateTranscriptMeeting.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new DateTranscriptMeeting.Info {Date = DateTimeOffset.MaxValue}.Date.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.Number"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Number_Property() { new DateTranscriptMeeting.Info {Number = int.MaxValue}.Number.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.Lines"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Lines_Property()
-  {
-    var lines = new List<string>();
-    new DateTranscriptMeeting.Info {Lines = lines}.Lines.Should().BeSameAs(lines);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.Votes"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Votes_Property()
-  {
-    var votes = new List<TranscriptVote>();
-    new DateTranscriptMeeting.Info {Votes = votes}.Votes.Should().BeSameAs(votes);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="DateTranscriptMeeting.Info()"/>
@@ -172,6 +152,44 @@ public sealed class DateTranscriptMeetingInfoTests : ClassTest<DateTranscriptMee
     info.Number.Should().BeNull();
     info.Lines.Should().BeNull();
     info.Votes.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new DateTranscriptMeeting.Info { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.Number"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Number_Property()
+  {
+    new DateTranscriptMeeting.Info { Number = int.MaxValue }.Number.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.Lines"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Lines_Property()
+  {
+    var lines = new List<string>();
+    new DateTranscriptMeeting.Info { Lines = lines }.Lines.Should().BeSameAs(lines);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.Votes"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Votes_Property()
+  {
+    var votes = new List<TranscriptVote>();
+    new DateTranscriptMeeting.Info { Votes = votes }.Votes.Should().BeSameAs(votes);
   }
 
   /// <summary>

@@ -14,47 +14,6 @@ namespace RuLaw.Tests;
 public sealed class VotesSearchResultTest : ClassTest<VotesSearchResult>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchResult.Page"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Page_Property() { new VotesSearchResult(new {Page = int.MaxValue}).Page.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchResult.PageSize"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void PageSize_Property() { new VotesSearchResult(new {PageSize = int.MaxValue}).PageSize.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchResult.Count"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Count_Property() { new VotesSearchResult(new {Count = int.MaxValue}).Count.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchResult.Wording"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Wording_Property() { new VotesSearchResult(new {Wording = Guid.Empty.ToString()}).Wording.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchResult.Votes"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Votes_Property()
-  {
-    var search = new VotesSearchResult(new {});
-    var vote = new Vote(new {});
-
-    var votes = search.Votes.To<List<Vote>>();
-    votes.Add(vote);
-    search.Votes.Should().ContainSingle().Which.Should().BeSameAs(vote);
-
-    votes.Remove(vote);
-    search.Votes.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="VotesSearchResult(int?, int?, int?, string?, IEnumerable{IVote}?)"/>
@@ -88,6 +47,75 @@ public sealed class VotesSearchResultTest : ClassTest<VotesSearchResult>
   }
 
   /// <summary>
+  ///   <para>Performs testing of <see cref="VotesSearchResult.Page"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Page_Property()
+  {
+    new VotesSearchResult(new
+    {
+      Page = int.MaxValue
+    }).Page.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="VotesSearchResult.PageSize"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void PageSize_Property()
+  {
+    new VotesSearchResult(new
+    {
+      PageSize = int.MaxValue
+    }).PageSize.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="VotesSearchResult.Count"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Count_Property()
+  {
+    new VotesSearchResult(new
+    {
+      Count = int.MaxValue
+    }).Count.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="VotesSearchResult.Wording"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Wording_Property()
+  {
+    new VotesSearchResult(new
+    {
+      Wording = Guid.Empty.ToString()
+    }).Wording.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="VotesSearchResult.Votes"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Votes_Property()
+  {
+    var search = new VotesSearchResult(new
+    {
+    });
+    var vote = new Vote(new
+    {
+    });
+
+    var votes = search.Votes.To<List<Vote>>();
+    votes.Add(vote);
+    search.Votes.Should().ContainSingle().Which.Should().BeSameAs(vote);
+
+    votes.Remove(vote);
+    search.Votes.Should().BeEmpty();
+  }
+
+  /// <summary>
   ///   <para>Performs testing of <see cref="VotesSearchResult.CompareTo(IVotesSearchResult)"/> method.</para>
   /// </summary>
   [Fact]
@@ -109,40 +137,6 @@ public sealed class VotesSearchResultTest : ClassTest<VotesSearchResult>
 public sealed class VotesSearchResultInfoTests : ClassTest<VotesSearchResult.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchResult.Info.Page"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Page_Property() { new VotesSearchResult.Info {Page = int.MaxValue}.Page.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchResult.Info.PageSize"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void PageSize_Property() { new VotesSearchResult.Info {PageSize = int.MaxValue}.PageSize.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchResult.Info.Count"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Count_Property() { new VotesSearchResult.Info {Count = int.MaxValue}.Count.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchResult.Info.Wording"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Wording_Property() { new VotesSearchResult.Info {Wording = Guid.Empty.ToString()}.Wording.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchResult.Votes"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Votes_Property()
-  {
-    var votes = new List<Vote>();
-    new VotesSearchResult.Info {Votes = votes}.Votes.Should().BeSameAs(votes);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="VotesSearchResult.Info()"/>
@@ -157,6 +151,52 @@ public sealed class VotesSearchResultInfoTests : ClassTest<VotesSearchResult.Inf
     info.Count.Should().BeNull();
     info.Wording.Should().BeNull();
     info.Votes.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="VotesSearchResult.Info.Page"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Page_Property()
+  {
+    new VotesSearchResult.Info { Page = int.MaxValue }.Page.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="VotesSearchResult.Info.PageSize"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void PageSize_Property()
+  {
+    new VotesSearchResult.Info { PageSize = int.MaxValue }.PageSize.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="VotesSearchResult.Info.Count"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Count_Property()
+  {
+    new VotesSearchResult.Info { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="VotesSearchResult.Info.Wording"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Wording_Property()
+  {
+    new VotesSearchResult.Info { Wording = Guid.Empty.ToString() }.Wording.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="VotesSearchResult.Votes"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Votes_Property()
+  {
+    var votes = new List<Vote>();
+    new VotesSearchResult.Info { Votes = votes }.Votes.Should().BeSameAs(votes);
   }
 
   /// <summary>

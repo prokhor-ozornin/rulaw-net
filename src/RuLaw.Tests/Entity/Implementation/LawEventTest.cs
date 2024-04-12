@@ -13,48 +13,6 @@ namespace RuLaw.Tests;
 public sealed class LawEventTest : ClassTest<LawEvent>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawEvent.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new LawEvent(new {Date = DateTimeOffset.MaxValue}).Date.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEvent.Solution"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Solution_Property() { new LawEvent(new {Solution = Guid.Empty.ToString()}).Solution.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEvent.Document"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Document_Property()
-  {
-    var document = new LawEventDocument(new {});
-    new LawEvent(new {Document = document}).Document.Should().BeSameAs(document);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEvent.Phase"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Phase_Property()
-  {
-    var phase = new LawEventPhase(new {});
-    new LawEvent(new {Phase = phase}).Phase.Should().BeSameAs(phase);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEvent.Stage"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Stage_Property()
-  {
-    var stage = new LawEventStage(new {});
-    new LawEvent(new {Stage = stage}).Stage.Should().BeSameAs(stage);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawEvent(DateTimeOffset?, string?, ILawEventDocument?, ILawEventPhase?, ILawEventStage?)"/>
@@ -88,6 +46,75 @@ public sealed class LawEventTest : ClassTest<LawEvent>
   }
 
   /// <summary>
+  ///   <para>Performs testing of <see cref="LawEvent.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new LawEvent(new
+    {
+      Date = DateTimeOffset.MaxValue
+    }).Date.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEvent.Solution"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Solution_Property()
+  {
+    new LawEvent(new
+    {
+      Solution = Guid.Empty.ToString()
+    }).Solution.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEvent.Document"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Document_Property()
+  {
+    var document = new LawEventDocument(new
+    {
+    });
+    new LawEvent(new
+    {
+      Document = document
+    }).Document.Should().BeSameAs(document);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEvent.Phase"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Phase_Property()
+  {
+    var phase = new LawEventPhase(new
+    {
+    });
+    new LawEvent(new
+    {
+      Phase = phase
+    }).Phase.Should().BeSameAs(phase);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEvent.Stage"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Stage_Property()
+  {
+    var stage = new LawEventStage(new
+    {
+    });
+    new LawEvent(new
+    {
+      Stage = stage
+    }).Stage.Should().BeSameAs(stage);
+  }
+
+  /// <summary>
   ///   <para>Performs testing of <see cref="LawEvent.CompareTo(ILawEvent)"/> method.</para>
   /// </summary>
   [Fact]
@@ -109,48 +136,6 @@ public sealed class LawEventTest : ClassTest<LawEvent>
 public sealed class LawEventInfoTests : ClassTest<LawEvent.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawEvent.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new LawEvent.Info {Date = Guid.Empty.ToString()}.Date.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEvent.Info.Solution"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Solution_Property() { new LawEvent.Info {Solution = Guid.Empty.ToString()}.Solution.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEvent.Info.Document"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Document_Property()
-  {
-    var document = new LawEventDocument(new {});
-    new LawEvent.Info {Document = document}.Document.Should().BeSameAs(document);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEvent.Info.Phase"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Phase_Property()
-  {
-    var phase = new LawEventPhase(new {});
-    new LawEvent.Info {Phase = phase}.Phase.Should().BeSameAs(phase);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEvent.Info.Stage"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Stage_Property()
-  {
-    var stage = new LawEventStage(new {});
-    new LawEvent.Info {Stage = stage}.Stage.Should().BeSameAs(stage);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawEvent.Info()"/>
@@ -165,6 +150,60 @@ public sealed class LawEventInfoTests : ClassTest<LawEvent.Info>
     info.Document.Should().BeNull();
     info.Phase.Should().BeNull();
     info.Stage.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEvent.Info.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new LawEvent.Info { Date = Guid.Empty.ToString() }.Date.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEvent.Info.Solution"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Solution_Property()
+  {
+    new LawEvent.Info { Solution = Guid.Empty.ToString() }.Solution.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEvent.Info.Document"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Document_Property()
+  {
+    var document = new LawEventDocument(new
+    {
+    });
+    new LawEvent.Info { Document = document }.Document.Should().BeSameAs(document);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEvent.Info.Phase"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Phase_Property()
+  {
+    var phase = new LawEventPhase(new
+    {
+    });
+    new LawEvent.Info { Phase = phase }.Phase.Should().BeSameAs(phase);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEvent.Info.Stage"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Stage_Property()
+  {
+    var stage = new LawEventStage(new
+    {
+    });
+    new LawEvent.Info { Stage = stage }.Stage.Should().BeSameAs(stage);
   }
 
   /// <summary>

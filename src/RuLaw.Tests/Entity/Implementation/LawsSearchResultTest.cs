@@ -14,42 +14,6 @@ namespace RuLaw.Tests;
 public sealed class LawsSearchResultTest : ClassTest<LawsSearchResult>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Page"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Page_Property() { new LawsSearchResult(new {Page = int.MaxValue}).Page.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Count"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Count_Property() { new LawsSearchResult(new {Count = int.MaxValue}).Count.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Wording"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Wording_Property() { new LawsSearchResult(new {Wording = Guid.Empty.ToString()}).Wording.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Laws"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Laws_Property()
-  {
-    var result = new LawsSearchResult(new {});
-    var law = new Law(new {});
-
-    var laws = result.Laws.To<List<ILaw>>();
-
-    laws.Add(law);
-    result.Laws.Should().ContainSingle().Which.Should().BeSameAs(law);
-
-    laws.Remove(law);
-    result.Laws.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawsSearchResult(int?, int?, string?, IEnumerable{ILaw}?)"/>
@@ -80,6 +44,64 @@ public sealed class LawsSearchResultTest : ClassTest<LawsSearchResult>
   }
 
   /// <summary>
+  ///   <para>Performs testing of <see cref="LawsSearchResult.Page"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Page_Property()
+  {
+    new LawsSearchResult(new
+    {
+      Page = int.MaxValue
+    }).Page.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawsSearchResult.Count"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Count_Property()
+  {
+    new LawsSearchResult(new
+    {
+      Count = int.MaxValue
+    }).Count.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawsSearchResult.Wording"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Wording_Property()
+  {
+    new LawsSearchResult(new
+    {
+      Wording = Guid.Empty.ToString()
+    }).Wording.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawsSearchResult.Laws"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Laws_Property()
+  {
+    var result = new LawsSearchResult(new
+    {
+    });
+    var law = new Law(new
+    {
+    });
+
+    var laws = result.Laws.To<List<ILaw>>();
+
+    laws.Add(law);
+    result.Laws.Should().ContainSingle().Which.Should().BeSameAs(law);
+
+    laws.Remove(law);
+    result.Laws.Should().BeEmpty();
+  }
+
+  /// <summary>
   ///   <para>Performs testing of <see cref="LawsSearchResult.CompareTo(ILawsSearchResult)"/> method.</para>
   /// </summary>
   [Fact]
@@ -101,34 +123,6 @@ public sealed class LawsSearchResultTest : ClassTest<LawsSearchResult>
 public sealed class LawsSearchResultInfoTests : ClassTest<LawsSearchResult.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Page"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Page_Property() { new LawsSearchResult.Info {Page = int.MaxValue}.Page.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Count"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Count_Property() { new LawsSearchResult.Info {Count = int.MaxValue}.Count.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Wording"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Wording_Property() { new LawsSearchResult.Info {Wording = Guid.Empty.ToString()}.Wording.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Laws"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Laws_Property()
-  {
-    var laws = new List<Law>();
-    new LawsSearchResult.Info {Laws = laws}.Laws.Should().BeSameAs(laws);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawsSearchResult.Info()"/>
@@ -142,6 +136,43 @@ public sealed class LawsSearchResultInfoTests : ClassTest<LawsSearchResult.Info>
     info.Count.Should().BeNull();
     info.Wording.Should().BeNull();
     info.Laws.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Page"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Page_Property()
+  {
+    new LawsSearchResult.Info { Page = int.MaxValue }.Page.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Count"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Count_Property()
+  {
+    new LawsSearchResult.Info { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Wording"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Wording_Property()
+  {
+    new LawsSearchResult.Info { Wording = Guid.Empty.ToString() }.Wording.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Laws"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Laws_Property()
+  {
+    var laws = new List<Law>();
+    new LawsSearchResult.Info { Laws = laws }.Laws.Should().BeSameAs(laws);
   }
 
   /// <summary>

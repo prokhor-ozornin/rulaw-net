@@ -13,36 +13,6 @@ namespace RuLaw.Tests;
 public sealed class FederalAuthorityTest : ClassTest<FederalAuthority>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new RegionalAuthority(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new FederalAuthority(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property() { new FederalAuthority(new {Active = true}).Active.Should().BeTrue(); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void FromDate_Property() { new FederalAuthority(new {FromDate = DateTimeOffset.MaxValue}).FromDate.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property() { new FederalAuthority(new {ToDate = DateTimeOffset.MaxValue}).ToDate.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="FederalAuthority(long?, string?, bool?, DateTimeOffset?, DateTimeOffset?)"/>
@@ -73,6 +43,66 @@ public sealed class FederalAuthorityTest : ClassTest<FederalAuthority>
     authority.Active.Should().BeNull();
     authority.FromDate.Should().BeNull();
     authority.ToDate.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="FederalAuthority.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new RegionalAuthority(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="FederalAuthority.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new FederalAuthority(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="FederalAuthority.Active"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Active_Property()
+  {
+    new FederalAuthority(new
+    {
+      Active = true
+    }).Active.Should().BeTrue();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="FederalAuthority.FromDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void FromDate_Property()
+  {
+    new FederalAuthority(new
+    {
+      FromDate = DateTimeOffset.MaxValue
+    }).FromDate.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="FederalAuthority.ToDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ToDate_Property()
+  {
+    new FederalAuthority(new
+    {
+      ToDate = DateTimeOffset.MaxValue
+    }).ToDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -113,36 +143,6 @@ public sealed class FederalAuthorityTest : ClassTest<FederalAuthority>
 public sealed class FederalAuthorityInfoTests : ClassTest<FederalAuthority.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new RegionalAuthority.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new FederalAuthority.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Info.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property() { new FederalAuthority.Info {Active = true}.Active.Should().BeTrue(); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Info.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void FromDate_Property() { new FederalAuthority.Info {FromDate = Guid.Empty.ToString()}.FromDate.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Info.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property() { new FederalAuthority.Info {ToDate = Guid.Empty.ToString()}.ToDate.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="FederalAuthority.Info()"/>
@@ -157,6 +157,51 @@ public sealed class FederalAuthorityInfoTests : ClassTest<FederalAuthority.Info>
     info.Active.Should().BeNull();
     info.FromDate.Should().BeNull();
     info.ToDate.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="FederalAuthority.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new RegionalAuthority.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="FederalAuthority.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new FederalAuthority.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="FederalAuthority.Info.Active"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Active_Property()
+  {
+    new FederalAuthority.Info { Active = true }.Active.Should().BeTrue();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="FederalAuthority.Info.FromDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void FromDate_Property()
+  {
+    new FederalAuthority.Info { FromDate = Guid.Empty.ToString() }.FromDate.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="FederalAuthority.Info.ToDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ToDate_Property()
+  {
+    new FederalAuthority.Info { ToDate = Guid.Empty.ToString() }.ToDate.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

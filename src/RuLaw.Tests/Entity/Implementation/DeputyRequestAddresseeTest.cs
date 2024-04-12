@@ -13,18 +13,6 @@ namespace RuLaw.Tests;
 public sealed class DeputyRequestAddresseeTest : ClassTest<DeputyRequestAddressee>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new DeputyRequestAddressee(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new DeputyRequestAddressee(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="DeputyRequestAddressee(long?, string?)"/>
@@ -46,6 +34,30 @@ public sealed class DeputyRequestAddresseeTest : ClassTest<DeputyRequestAddresse
     addressee = new DeputyRequestAddressee(new {});
     addressee.Id.Should().BeNull();
     addressee.Name.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new DeputyRequestAddressee(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new DeputyRequestAddressee(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -86,18 +98,6 @@ public sealed class DeputyRequestAddresseeTest : ClassTest<DeputyRequestAddresse
 public sealed class DeputyRequestAddresseeInfoTests : ClassTest<DeputyRequestAddressee.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new DeputyRequestAddressee.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new DeputyRequestAddressee.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="DeputyRequestAddressee.Info()"/>
@@ -109,6 +109,24 @@ public sealed class DeputyRequestAddresseeInfoTests : ClassTest<DeputyRequestAdd
     var info = new DeputyRequestAddressee.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new DeputyRequestAddressee.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new DeputyRequestAddressee.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

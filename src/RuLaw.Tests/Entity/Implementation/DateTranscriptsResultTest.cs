@@ -13,28 +13,6 @@ namespace RuLaw.Tests;
 public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new DateTranscriptsResult(new {Date = DateTimeOffset.MaxValue}).Date.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Meetings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Meetings_Property()
-  {
-    var result = new DateTranscriptsResult(new {});
-    var meeting = new DateTranscriptMeeting(new {});
-
-    (result.Meetings as ICollection<IDateTranscriptMeeting>)?.Add(meeting);
-    result.Meetings.Should().ContainSingle().Which.Should().BeSameAs(meeting);
-
-    (result.Meetings as ICollection<IDateTranscriptMeeting>)?.Remove(meeting);
-    result.Meetings.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="DateTranscriptsResult(DateTimeOffset?, IEnumerable{IDateTranscriptMeeting})"/>
@@ -55,6 +33,38 @@ public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
 
     result = new DateTranscriptsResult(new {});
     result.Date.Should().BeNull();
+    result.Meetings.Should().BeEmpty();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new DateTranscriptsResult(new
+    {
+      Date = DateTimeOffset.MaxValue
+    }).Date.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Meetings"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Meetings_Property()
+  {
+    var result = new DateTranscriptsResult(new
+    {
+    });
+    var meeting = new DateTranscriptMeeting(new
+    {
+    });
+
+    (result.Meetings as ICollection<IDateTranscriptMeeting>)?.Add(meeting);
+    result.Meetings.Should().ContainSingle().Which.Should().BeSameAs(meeting);
+
+    (result.Meetings as ICollection<IDateTranscriptMeeting>)?.Remove(meeting);
     result.Meetings.Should().BeEmpty();
   }
 
@@ -96,22 +106,6 @@ public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
 public sealed class DateTranscriptsResultInfoTests : ClassTest<DateTranscriptsResult.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new DateTranscriptsResult.Info {Date = Guid.Empty.ToString()}.Date.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Info.Meetings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Meetings_Property()
-  {
-    var meetings = new List<DateTranscriptMeeting>();
-    new DateTranscriptsResult.Info {Meetings = meetings}.Meetings.Should().BeSameAs(meetings);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="DateTranscriptsResult.Info()"/>
@@ -123,6 +117,25 @@ public sealed class DateTranscriptsResultInfoTests : ClassTest<DateTranscriptsRe
     var info = new DateTranscriptsResult.Info();
     info.Date.Should().BeNull();
     info.Meetings.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Info.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new DateTranscriptsResult.Info { Date = Guid.Empty.ToString() }.Date.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Info.Meetings"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Meetings_Property()
+  {
+    var meetings = new List<DateTranscriptMeeting>();
+    new DateTranscriptsResult.Info { Meetings = meetings }.Meetings.Should().BeSameAs(meetings);
   }
 
   /// <summary>

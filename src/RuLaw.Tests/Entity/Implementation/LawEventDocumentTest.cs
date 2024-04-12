@@ -13,18 +13,6 @@ namespace RuLaw.Tests;
 public sealed class LawEventDocumentTest : ClassTest<LawEventDocument>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventDocument.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new LawEventDocument(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventDocument.Type"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Type_Property() { new LawEventDocument(new {Type = Guid.Empty.ToString()}).Type.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawEventDocument(string?, string?)"/>
@@ -46,6 +34,30 @@ public sealed class LawEventDocumentTest : ClassTest<LawEventDocument>
     document = new LawEventDocument(new {});
     document.Name.Should().BeNull();
     document.Type.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEventDocument.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new LawEventDocument(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEventDocument.Type"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Type_Property()
+  {
+    new LawEventDocument(new
+    {
+      Type = Guid.Empty.ToString()
+    }).Type.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -86,18 +98,6 @@ public sealed class LawEventDocumentTest : ClassTest<LawEventDocument>
 public sealed class LawEventDocumentInfoTests : ClassTest<LawEventDocument.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventDocument.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new LawEventDocument.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventDocument.Info.Type"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Type_Property() { new LawEventDocument.Info {Type = Guid.Empty.ToString()}.Type.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawEventDocument.Info()"/>
@@ -109,6 +109,24 @@ public sealed class LawEventDocumentInfoTests : ClassTest<LawEventDocument.Info>
     var info = new LawEventDocument.Info();
     info.Name.Should().BeNull();
     info.Type.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEventDocument.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new LawEventDocument.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEventDocument.Info.Type"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Type_Property()
+  {
+    new LawEventDocument.Info { Type = Guid.Empty.ToString() }.Type.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

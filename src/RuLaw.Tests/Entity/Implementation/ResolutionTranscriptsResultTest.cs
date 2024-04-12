@@ -14,30 +14,6 @@ namespace RuLaw.Tests;
 public sealed class ResolutionTranscriptsResultTest : ClassTest<ResolutionTranscriptsResult>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.Number"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Number_Property() { new ResolutionTranscriptsResult(new {Number = Guid.Empty.ToString()}).Number.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.Meetings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Meetings_Property()
-  {
-    var result = new ResolutionTranscriptsResult(new {});
-    result.Meetings.Should().BeEmpty();
-    var meeting = new TranscriptMeeting(new {});
-
-    var meetings = result.Meetings.To<List<TranscriptMeeting>>();
-    meetings.Add(meeting);
-    result.Meetings.Should().ContainSingle().Which.Should().BeSameAs(meeting);
-
-    meetings.Remove(meeting);
-    result.Meetings.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="ResolutionTranscriptsResult(string?, IEnumerable{ITranscriptMeeting}?)"/>
@@ -58,6 +34,40 @@ public sealed class ResolutionTranscriptsResultTest : ClassTest<ResolutionTransc
 
     result = new ResolutionTranscriptsResult(new {});
     result.Number.Should().BeNull();
+    result.Meetings.Should().BeEmpty();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.Number"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Number_Property()
+  {
+    new ResolutionTranscriptsResult(new
+    {
+      Number = Guid.Empty.ToString()
+    }).Number.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.Meetings"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Meetings_Property()
+  {
+    var result = new ResolutionTranscriptsResult(new
+    {
+    });
+    result.Meetings.Should().BeEmpty();
+    var meeting = new TranscriptMeeting(new
+    {
+    });
+
+    var meetings = result.Meetings.To<List<TranscriptMeeting>>();
+    meetings.Add(meeting);
+    result.Meetings.Should().ContainSingle().Which.Should().BeSameAs(meeting);
+
+    meetings.Remove(meeting);
     result.Meetings.Should().BeEmpty();
   }
 
@@ -93,22 +103,6 @@ public sealed class ResolutionTranscriptsResultTest : ClassTest<ResolutionTransc
 public sealed class ResolutionTranscriptsResultInfoTests : ClassTest<ResolutionTranscriptsResult.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.Info.Number"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Number_Property() { new ResolutionTranscriptsResult.Info {Number = Guid.Empty.ToString()}.Number.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.Info.Meetings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Meetings_Property()
-  {
-    var meetings = new List<TranscriptMeeting>();
-    new ResolutionTranscriptsResult.Info {Meetings = meetings}.Meetings.Should().BeSameAs(meetings);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="ResolutionTranscriptsResult.Info()"/>
@@ -120,6 +114,25 @@ public sealed class ResolutionTranscriptsResultInfoTests : ClassTest<ResolutionT
     var info = new ResolutionTranscriptsResult.Info();
     info.Number.Should().BeNull();
     info.Meetings.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.Info.Number"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Number_Property()
+  {
+    new ResolutionTranscriptsResult.Info { Number = Guid.Empty.ToString() }.Number.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.Info.Meetings"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Meetings_Property()
+  {
+    var meetings = new List<TranscriptMeeting>();
+    new ResolutionTranscriptsResult.Info { Meetings = meetings }.Meetings.Should().BeSameAs(meetings);
   }
 
   /// <summary>

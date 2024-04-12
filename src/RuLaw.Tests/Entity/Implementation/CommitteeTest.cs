@@ -13,36 +13,6 @@ namespace RuLaw.Tests;
 public sealed class CommitteeTest : ClassTest<Committee>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Committee.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Committee(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Committee.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Committee(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Committee.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property() { new Committee(new {Active = true}).Active.Should().BeTrue(); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Committee.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void FromDate_Property() { new Committee(new {FromDate = DateTimeOffset.MaxValue}).FromDate.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Committee.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property() { new Committee(new {ToDate = DateTimeOffset.MaxValue}).ToDate.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Committee(long?, string?, bool?, DateTimeOffset?, DateTimeOffset?)"/>
@@ -73,6 +43,66 @@ public sealed class CommitteeTest : ClassTest<Committee>
     committee.Active.Should().BeNull();
     committee.FromDate.Should().BeNull();
     committee.ToDate.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Committee.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Committee(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Committee.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Committee(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Committee.Active"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Active_Property()
+  {
+    new Committee(new
+    {
+      Active = true
+    }).Active.Should().BeTrue();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Committee.FromDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void FromDate_Property()
+  {
+    new Committee(new
+    {
+      FromDate = DateTimeOffset.MaxValue
+    }).FromDate.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Committee.ToDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ToDate_Property()
+  {
+    new Committee(new
+    {
+      ToDate = DateTimeOffset.MaxValue
+    }).ToDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -113,36 +143,6 @@ public sealed class CommitteeTest : ClassTest<Committee>
 public sealed class CommitteeInfoTests : ClassTest<Committee.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Committee.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Committee.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Committee.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Committee.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Committee.Info.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property() { new Committee.Info {Active = true}.Active.Should().BeTrue(); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Committee.Info.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void FromDate_Property() { new Committee.Info {FromDate = Guid.Empty.ToString()}.FromDate.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Committee.Info.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property() { new Committee.Info {ToDate = Guid.Empty.ToString()}.ToDate.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Committee.Info()"/>
@@ -157,6 +157,51 @@ public sealed class CommitteeInfoTests : ClassTest<Committee.Info>
     info.Active.Should().BeNull();
     info.FromDate.Should().BeNull();
     info.ToDate.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Committee.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Committee.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Committee.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Committee.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Committee.Info.Active"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Active_Property()
+  {
+    new Committee.Info { Active = true }.Active.Should().BeTrue();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Committee.Info.FromDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void FromDate_Property()
+  {
+    new Committee.Info { FromDate = Guid.Empty.ToString() }.FromDate.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Committee.Info.ToDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ToDate_Property()
+  {
+    new Committee.Info { ToDate = Guid.Empty.ToString() }.ToDate.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

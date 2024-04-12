@@ -14,47 +14,6 @@ namespace RuLaw.Tests;
 public sealed class ConvocationTest : ClassTest<Convocation>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Convocation(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Convocation(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void FromDate_Property() { new Convocation(new {FromDate = DateTimeOffset.MaxValue}).FromDate.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property() { new Convocation(new {ToDate = DateTimeOffset.MaxValue}).ToDate.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Sessions"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Sessions_Property()
-  {
-    var convocation = new Convocation();
-    var session = new Session();
-
-    var sessions = convocation.Sessions.To<List<Session>>();
-    sessions.Add(session);
-    convocation.Sessions.Should().ContainSingle().Which.Should().BeSameAs(session);
-
-    sessions.Remove(session);
-    convocation.Sessions.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Convocation(long?, string?, DateTimeOffset?, DateTimeOffset?, IEnumerable{ISession}?)"/>
@@ -84,6 +43,71 @@ public sealed class ConvocationTest : ClassTest<Convocation>
     convocation.Name.Should().BeNull();
     convocation.FromDate.Should().BeNull();
     convocation.ToDate.Should().BeNull();
+    convocation.Sessions.Should().BeEmpty();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Convocation.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Convocation(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Convocation.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Convocation(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Convocation.FromDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void FromDate_Property()
+  {
+    new Convocation(new
+    {
+      FromDate = DateTimeOffset.MaxValue
+    }).FromDate.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Convocation.ToDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ToDate_Property()
+  {
+    new Convocation(new
+    {
+      ToDate = DateTimeOffset.MaxValue
+    }).ToDate.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Convocation.Sessions"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Sessions_Property()
+  {
+    var convocation = new Convocation();
+    var session = new Session();
+
+    var sessions = convocation.Sessions.To<List<Session>>();
+    sessions.Add(session);
+    convocation.Sessions.Should().ContainSingle().Which.Should().BeSameAs(session);
+
+    sessions.Remove(session);
     convocation.Sessions.Should().BeEmpty();
   }
 
@@ -125,40 +149,6 @@ public sealed class ConvocationTest : ClassTest<Convocation>
 public sealed class ConvocationInfoTests : ClassTest<Convocation.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Convocation.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Convocation.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Info.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void FromDate_Property() { new Convocation.Info {FromDate = Guid.Empty.ToString()}.FromDate.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Info.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property() { new Convocation.Info {ToDate = Guid.Empty.ToString()}.ToDate.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Info.Sessions"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Sessions_Property()
-  {
-    var sessions = new List<Session>();
-    new Convocation.Info {Sessions = sessions}.Sessions.Should().BeSameAs(sessions);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Convocation.Info()"/>
@@ -173,6 +163,52 @@ public sealed class ConvocationInfoTests : ClassTest<Convocation.Info>
     info.FromDate.Should().BeNull();
     info.ToDate.Should().BeNull();
     info.Sessions.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Convocation.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Convocation.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Convocation.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Convocation.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Convocation.Info.FromDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void FromDate_Property()
+  {
+    new Convocation.Info { FromDate = Guid.Empty.ToString() }.FromDate.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Convocation.Info.ToDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ToDate_Property()
+  {
+    new Convocation.Info { ToDate = Guid.Empty.ToString() }.ToDate.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Convocation.Info.Sessions"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Sessions_Property()
+  {
+    var sessions = new List<Session>();
+    new Convocation.Info { Sessions = sessions }.Sessions.Should().BeSameAs(sessions);
   }
 
   /// <summary>

@@ -13,18 +13,6 @@ namespace RuLaw.Tests;
 public sealed class LawEventStageTest : ClassTest<LawEventStage>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventStage.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new LawEventStage(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventStage.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new LawEventStage(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawEventStage(long?, string?)"/>
@@ -46,6 +34,30 @@ public sealed class LawEventStageTest : ClassTest<LawEventStage>
     stage = new LawEventStage(new {});
     stage.Id.Should().BeNull();
     stage.Name.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEventStage.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new LawEventStage(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEventStage.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new LawEventStage(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -86,18 +98,6 @@ public sealed class LawEventStageTest : ClassTest<LawEventStage>
 public sealed class LawEventStageInfoTests : ClassTest<LawEventStage.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventStage.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new LawEventStage.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventStage.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new LawEventStage.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawEventStage.Info()"/>
@@ -109,6 +109,24 @@ public sealed class LawEventStageInfoTests : ClassTest<LawEventStage.Info>
     var info = new LawEventStage.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEventStage.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new LawEventStage.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawEventStage.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new LawEventStage.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

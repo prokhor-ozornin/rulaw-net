@@ -13,18 +13,6 @@ namespace RuLaw.Tests;
 public sealed class TranscriptVoteTest : ClassTest<TranscriptVote>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptVote.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new TranscriptVote(new {Date = DateTimeOffset.MaxValue}).Date.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptVote.Line"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Line_Property() { new TranscriptVote(new {Line = int.MaxValue}).Line.Should().Be(int.MaxValue); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="TranscriptVote(DateTimeOffset?, int?)"/>
@@ -46,6 +34,30 @@ public sealed class TranscriptVoteTest : ClassTest<TranscriptVote>
     vote = new TranscriptVote(new {});
     vote.Date.Should().BeNull();
     vote.Line.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptVote.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new TranscriptVote(new
+    {
+      Date = DateTimeOffset.MaxValue
+    }).Date.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptVote.Line"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Line_Property()
+  {
+    new TranscriptVote(new
+    {
+      Line = int.MaxValue
+    }).Line.Should().Be(int.MaxValue);
   }
 
   /// <summary>
@@ -85,18 +97,6 @@ public sealed class TranscriptVoteTest : ClassTest<TranscriptVote>
 public sealed class TranscriptVoteInfoTests : ClassTest<TranscriptVote.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptVote.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new TranscriptVote(new {Date = DateTimeOffset.MaxValue}).Date.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptVote.Info.Line"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Line_Property() { new TranscriptVote.Info {Line = int.MaxValue}.Line.Should().Be(int.MaxValue); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="TranscriptVote.Info()"/>
@@ -108,6 +108,27 @@ public sealed class TranscriptVoteInfoTests : ClassTest<TranscriptVote.Info>
     var info = new TranscriptVote.Info();
     info.Date.Should().BeNull();
     info.Line.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptVote.Info.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new TranscriptVote(new
+    {
+      Date = DateTimeOffset.MaxValue
+    }).Date.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptVote.Info.Line"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Line_Property()
+  {
+    new TranscriptVote.Info { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
   }
 
   /// <summary>

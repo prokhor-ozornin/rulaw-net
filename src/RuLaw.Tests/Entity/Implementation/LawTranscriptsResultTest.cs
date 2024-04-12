@@ -14,41 +14,6 @@ namespace RuLaw.Tests;
 public sealed class LawTranscriptsResultTest : ClassTest<LawTranscriptsResult>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new LawTranscriptsResult(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Number"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Number_Property() { new LawTranscriptsResult(new {Number = Guid.Empty.ToString()}).Number.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Comments"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Comments_Property() { new LawTranscriptsResult(new {Comments = Guid.Empty.ToString()}).Comments.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Meetings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Meetings_Property()
-  {
-    var transcript = new LawTranscriptsResult(new {});
-    var meeting = new TranscriptMeeting(new {});
-
-    var meetings = transcript.Meetings.To<List<TranscriptMeeting>>();
-    meetings.Add(meeting);
-    transcript.Meetings.Should().ContainSingle().Which.Should().BeSameAs(meeting);
-
-    meetings.Remove(meeting);
-    transcript.Meetings.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawTranscriptsResult(string?, string?, string?, IEnumerable{ITranscriptMeeting}?)"/>
@@ -75,6 +40,63 @@ public sealed class LawTranscriptsResultTest : ClassTest<LawTranscriptsResult>
     transcript.Name.Should().BeNull();
     transcript.Number.Should().BeNull();
     transcript.Comments.Should().BeNull();
+    transcript.Meetings.Should().BeEmpty();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new LawTranscriptsResult(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Number"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Number_Property()
+  {
+    new LawTranscriptsResult(new
+    {
+      Number = Guid.Empty.ToString()
+    }).Number.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Comments"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Comments_Property()
+  {
+    new LawTranscriptsResult(new
+    {
+      Comments = Guid.Empty.ToString()
+    }).Comments.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Meetings"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Meetings_Property()
+  {
+    var transcript = new LawTranscriptsResult(new
+    {
+    });
+    var meeting = new TranscriptMeeting(new
+    {
+    });
+
+    var meetings = transcript.Meetings.To<List<TranscriptMeeting>>();
+    meetings.Add(meeting);
+    transcript.Meetings.Should().ContainSingle().Which.Should().BeSameAs(meeting);
+
+    meetings.Remove(meeting);
     transcript.Meetings.Should().BeEmpty();
   }
 
@@ -116,34 +138,6 @@ public sealed class LawTranscriptsResultTest : ClassTest<LawTranscriptsResult>
 public sealed class LawTranscriptsResultInfoTests : ClassTest<LawTranscriptsResult.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new LawTranscriptsResult.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Info.Number"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Number_Property() { new LawTranscriptsResult.Info {Number = Guid.Empty.ToString()}.Number.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Info.Comments"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Comments_Property() { new LawTranscriptsResult.Info {Comments = Guid.Empty.ToString()}.Comments.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Info.Meetings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Meetings_Property()
-  {
-    var meetings = new List<TranscriptMeeting>();
-    new LawTranscriptsResult.Info {Meetings = meetings}.Meetings.Should().BeSameAs(meetings);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawTranscriptsResult.Info()"/>
@@ -157,6 +151,43 @@ public sealed class LawTranscriptsResultInfoTests : ClassTest<LawTranscriptsResu
     info.Number.Should().BeNull();
     info.Comments.Should().BeNull();
     info.Meetings.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new LawTranscriptsResult.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Info.Number"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Number_Property()
+  {
+    new LawTranscriptsResult.Info { Number = Guid.Empty.ToString() }.Number.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Info.Comments"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Comments_Property()
+  {
+    new LawTranscriptsResult.Info { Comments = Guid.Empty.ToString() }.Comments.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawTranscriptsResult.Info.Meetings"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Meetings_Property()
+  {
+    var meetings = new List<TranscriptMeeting>();
+    new LawTranscriptsResult.Info { Meetings = meetings }.Meetings.Should().BeSameAs(meetings);
   }
 
   /// <summary>

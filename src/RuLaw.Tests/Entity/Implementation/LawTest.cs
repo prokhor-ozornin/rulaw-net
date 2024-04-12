@@ -13,88 +13,6 @@ namespace RuLaw.Tests;
 public sealed class LawTest : ClassTest<Law>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Law(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Law(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new Law(new {Date = DateTimeOffset.MaxValue}).Date.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Number"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Number_Property() { new Law(new {Number = Guid.Empty.ToString()}).Number.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Subject"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Subject_Property()
-  {
-    var subject = new LawSubject();
-    new Law(new {Subject = subject}).Subject.Should().BeSameAs(subject);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Type"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Type_Property()
-  {
-    var type = new LawType();
-    new Law(new {Type = type}).Type.Should().BeSameAs(type);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Url"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Url_Property() { new Law(new {Url = "http://yandex.ru"}).Url.Should().Be("http://yandex.ru"); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.TranscriptUrl"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void TranscriptUrl_Property() { new Law(new {TranscriptUrl = "http://yandex.ru"}).TranscriptUrl.Should().Be("http://yandex.ru"); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Comments"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Comments_Property() { new Law(new {Comments = Guid.Empty.ToString()}).Comments.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.LastEvent"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void LastEvent_Property()
-  {
-    var lawEvent = new LawEvent();
-    new Law(new {LastEvent = lawEvent}).LastEvent.Should().BeSameAs(lawEvent);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Committees"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Committees_Property()
-  {
-    var committees = new LawCommittees();
-    new Law(new {Committees = committees}).Committees.Should().BeSameAs(committees);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Law(long?, string?, DateTimeOffset?, string?, ILawSubject?, ILawType?, string?, string?, string?, ILawEvent?, ILawCommittees?)"/>
@@ -146,6 +64,142 @@ public sealed class LawTest : ClassTest<Law>
   }
 
   /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Law(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Law(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new Law(new
+    {
+      Date = DateTimeOffset.MaxValue
+    }).Date.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Number"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Number_Property()
+  {
+    new Law(new
+    {
+      Number = Guid.Empty.ToString()
+    }).Number.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Subject"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Subject_Property()
+  {
+    var subject = new LawSubject();
+    new Law(new
+    {
+      Subject = subject
+    }).Subject.Should().BeSameAs(subject);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Type"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Type_Property()
+  {
+    var type = new LawType();
+    new Law(new
+    {
+      Type = type
+    }).Type.Should().BeSameAs(type);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Url"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Url_Property()
+  {
+    new Law(new
+    {
+      Url = "http://yandex.ru"
+    }).Url.Should().Be("http://yandex.ru");
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.TranscriptUrl"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void TranscriptUrl_Property()
+  {
+    new Law(new
+    {
+      TranscriptUrl = "http://yandex.ru"
+    }).TranscriptUrl.Should().Be("http://yandex.ru");
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Comments"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Comments_Property()
+  {
+    new Law(new
+    {
+      Comments = Guid.Empty.ToString()
+    }).Comments.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.LastEvent"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void LastEvent_Property()
+  {
+    var lawEvent = new LawEvent();
+    new Law(new
+    {
+      LastEvent = lawEvent
+    }).LastEvent.Should().BeSameAs(lawEvent);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Committees"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Committees_Property()
+  {
+    var committees = new LawCommittees();
+    new Law(new
+    {
+      Committees = committees
+    }).Committees.Should().BeSameAs(committees);
+  }
+
+  /// <summary>
   ///   <para>Performs testing of <see cref="Law.CompareTo(ILaw)"/> method.</para>
   /// </summary>
   [Fact]
@@ -183,88 +237,6 @@ public sealed class LawTest : ClassTest<Law>
 public sealed class LawInfoTests : ClassTest<Law.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Law.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Law.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new Law.Info {Date = Guid.Empty.ToString()}.Date.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Info.Number"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Number_Property() { new Law.Info {Number = Guid.Empty.ToString()}.Number.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Info.Subject"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Subject_Property()
-  {
-    var subject = new LawSubject(new {});
-    new Law.Info {Subject = subject}.Subject.Should().BeSameAs(subject);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Info.Type"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Type_Property()
-  {
-    var type = new LawType();
-    new Law.Info {Type = type}.Type.Should().BeSameAs(type);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Info.Url"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Url_Property() { new Law.Info {Url = "http://yandex.ru"}.Url.Should().Be("http://yandex.ru"); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Info.TranscriptUrl"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void TranscriptUrl_Property() { new Law.Info {TranscriptUrl = "http://yandex.ru"}.TranscriptUrl.Should().Be("http://yandex.ru"); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Info.Comments"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Comments_Property() { new Law.Info {Comments = Guid.Empty.ToString()}.Comments.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Info.LastEvent"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void LastEvent_Property()
-  {
-    var lawEvent = new LawEvent();
-    new Law.Info {LastEvent = lawEvent}.LastEvent.Should().BeSameAs(lawEvent);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Law.Info.Committees"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Committees_Property()
-  {
-    var committees = new LawCommittees();
-    var law = new Law.Info {Committees = committees}.Committees.Should().BeSameAs(committees);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Law.Info()"/>
@@ -285,6 +257,111 @@ public sealed class LawInfoTests : ClassTest<Law.Info>
     info.Comments.Should().BeNull();
     info.LastEvent.Should().BeNull();
     info.Committees.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Law.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Law.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Info.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new Law.Info { Date = Guid.Empty.ToString() }.Date.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Info.Number"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Number_Property()
+  {
+    new Law.Info { Number = Guid.Empty.ToString() }.Number.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Info.Subject"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Subject_Property()
+  {
+    var subject = new LawSubject(new
+    {
+    });
+    new Law.Info { Subject = subject }.Subject.Should().BeSameAs(subject);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Info.Type"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Type_Property()
+  {
+    var type = new LawType();
+    new Law.Info { Type = type }.Type.Should().BeSameAs(type);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Info.Url"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Url_Property()
+  {
+    new Law.Info { Url = "http://yandex.ru" }.Url.Should().Be("http://yandex.ru");
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Info.TranscriptUrl"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void TranscriptUrl_Property()
+  {
+    new Law.Info { TranscriptUrl = "http://yandex.ru" }.TranscriptUrl.Should().Be("http://yandex.ru");
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Info.Comments"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Comments_Property()
+  {
+    new Law.Info { Comments = Guid.Empty.ToString() }.Comments.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Info.LastEvent"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void LastEvent_Property()
+  {
+    var lawEvent = new LawEvent();
+    new Law.Info { LastEvent = lawEvent }.LastEvent.Should().BeSameAs(lawEvent);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Law.Info.Committees"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Committees_Property()
+  {
+    var committees = new LawCommittees();
+    var law = new Law.Info { Committees = committees }.Committees.Should().BeSameAs(committees);
   }
 
   /// <summary>

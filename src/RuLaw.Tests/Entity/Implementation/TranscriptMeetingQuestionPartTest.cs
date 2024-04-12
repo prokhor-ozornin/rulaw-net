@@ -14,54 +14,6 @@ namespace RuLaw.Tests;
 public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeetingQuestionPart>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.StartLine"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void StartLine_Property() { new TranscriptMeetingQuestionPart(new {StartLine = int.MaxValue}).StartLine.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.EndLine"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void EndLine_Property() { new TranscriptMeetingQuestionPart(new {EndLine = int.MaxValue}).EndLine.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Lines"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Lines_Property()
-  {
-    var part = new TranscriptMeetingQuestionPart(new {});
-
-    var lines = part.Lines.To<List<string>>();
-
-    lines.Add("line");
-    part.Lines.Should().ContainSingle().Which.Should().Be("line");
-
-    lines.Remove("line");
-    part.Lines.Should().BeEmpty();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Votes"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Votes_Property()
-  {
-    var part = new TranscriptMeetingQuestionPart(new {});
-
-    var vote = new TranscriptVote(new {});
-
-    var votes = part.Votes.To<List<TranscriptVote>>();
-
-    votes.Add(vote);
-    part.Votes.Should().ContainSingle().Which.Should().BeSameAs(vote);
-
-    votes.Remove(vote);
-    part.Votes.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Education(string?, short?)"/>
@@ -88,6 +40,72 @@ public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeet
     part.StartLine.Should().BeNull();
     part.EndLine.Should().BeNull();
     part.Lines.Should().BeEmpty();
+    part.Votes.Should().BeEmpty();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.StartLine"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void StartLine_Property()
+  {
+    new TranscriptMeetingQuestionPart(new
+    {
+      StartLine = int.MaxValue
+    }).StartLine.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.EndLine"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void EndLine_Property()
+  {
+    new TranscriptMeetingQuestionPart(new
+    {
+      EndLine = int.MaxValue
+    }).EndLine.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Lines"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Lines_Property()
+  {
+    var part = new TranscriptMeetingQuestionPart(new
+    {
+    });
+
+    var lines = part.Lines.To<List<string>>();
+
+    lines.Add("line");
+    part.Lines.Should().ContainSingle().Which.Should().Be("line");
+
+    lines.Remove("line");
+    part.Lines.Should().BeEmpty();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Votes"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Votes_Property()
+  {
+    var part = new TranscriptMeetingQuestionPart(new
+    {
+    });
+
+    var vote = new TranscriptVote(new
+    {
+    });
+
+    var votes = part.Votes.To<List<TranscriptVote>>();
+
+    votes.Add(vote);
+    part.Votes.Should().ContainSingle().Which.Should().BeSameAs(vote);
+
+    votes.Remove(vote);
     part.Votes.Should().BeEmpty();
   }
 
@@ -137,38 +155,6 @@ public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeet
 public sealed class TranscriptMeetingQuestionPartInfoTests : ClassTest<TranscriptMeetingQuestionPart.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.StartLine"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void StartLine_Property() { new TranscriptMeetingQuestionPart.Info {StartLine = int.MaxValue}.StartLine.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.EndLine"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void EndLine_Property() { new TranscriptMeetingQuestionPart.Info {EndLine = int.MaxValue}.EndLine.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.Lines"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Lines_Property()
-  {
-    var lines = new List<string>();
-    new TranscriptMeetingQuestionPart.Info {Lines = lines}.Lines.Should().BeSameAs(lines);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.Votes"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Votes_Property()
-  {
-    var votes = new List<TranscriptVote>();
-    new TranscriptMeetingQuestionPart.Info {Votes = votes}.Votes.Should().BeSameAs(votes);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Education.Info()"/>
@@ -180,6 +166,44 @@ public sealed class TranscriptMeetingQuestionPartInfoTests : ClassTest<Transcrip
     var info = new Education.Info();
     info.Institution.Should().BeNull();
     info.Year.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.StartLine"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void StartLine_Property()
+  {
+    new TranscriptMeetingQuestionPart.Info { StartLine = int.MaxValue }.StartLine.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.EndLine"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void EndLine_Property()
+  {
+    new TranscriptMeetingQuestionPart.Info { EndLine = int.MaxValue }.EndLine.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.Lines"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Lines_Property()
+  {
+    var lines = new List<string>();
+    new TranscriptMeetingQuestionPart.Info { Lines = lines }.Lines.Should().BeSameAs(lines);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.Votes"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Votes_Property()
+  {
+    var votes = new List<TranscriptVote>();
+    new TranscriptMeetingQuestionPart.Info { Votes = votes }.Votes.Should().BeSameAs(votes);
   }
 
   /// <summary>

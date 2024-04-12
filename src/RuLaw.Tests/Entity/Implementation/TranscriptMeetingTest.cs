@@ -14,42 +14,6 @@ namespace RuLaw.Tests;
 public sealed class TranscriptMeetingTest : ClassTest<TranscriptMeeting>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeeting.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new TranscriptMeeting(new {Date = DateTimeOffset.MaxValue}).Date.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeeting.Number"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Number_Property() { new TranscriptMeeting(new {Number = int.MaxValue}).Number.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeeting.LinesCount"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void LinesCount_Property() { new TranscriptMeeting(new {LinesCount = int.MaxValue}).LinesCount.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeeting.Questions"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Questions_Property()
-  {
-    var meeting = new TranscriptMeeting(new {});
-    var question = new TranscriptMeetingQuestion(new {});
-
-    var questions = meeting.Questions.To<List<TranscriptMeetingQuestion>>();
-
-    questions.Add(question);
-    meeting.Questions.Should().ContainSingle().Which.Should().BeSameAs(question);
-
-    questions.Remove(question);
-    meeting.Questions.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="TranscriptMeeting(DateTimeOffset?, int?, int?, IEnumerable{ITranscriptMeetingQuestion}?)"/>
@@ -76,6 +40,64 @@ public sealed class TranscriptMeetingTest : ClassTest<TranscriptMeeting>
     meeting.Date.Should().BeNull();
     meeting.Number.Should().BeNull();
     meeting.LinesCount.Should().BeNull();
+    meeting.Questions.Should().BeEmpty();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeeting.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new TranscriptMeeting(new
+    {
+      Date = DateTimeOffset.MaxValue
+    }).Date.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeeting.Number"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Number_Property()
+  {
+    new TranscriptMeeting(new
+    {
+      Number = int.MaxValue
+    }).Number.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeeting.LinesCount"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void LinesCount_Property()
+  {
+    new TranscriptMeeting(new
+    {
+      LinesCount = int.MaxValue
+    }).LinesCount.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeeting.Questions"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Questions_Property()
+  {
+    var meeting = new TranscriptMeeting(new
+    {
+    });
+    var question = new TranscriptMeetingQuestion(new
+    {
+    });
+
+    var questions = meeting.Questions.To<List<TranscriptMeetingQuestion>>();
+
+    questions.Add(question);
+    meeting.Questions.Should().ContainSingle().Which.Should().BeSameAs(question);
+
+    questions.Remove(question);
     meeting.Questions.Should().BeEmpty();
   }
 
@@ -125,34 +147,6 @@ public sealed class TranscriptMeetingTest : ClassTest<TranscriptMeeting>
 public sealed class TranscriptMeetingInfoTests : ClassTest<TranscriptMeeting.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeeting.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new TranscriptMeeting.Info {Date = DateTimeOffset.MaxValue}.Date.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeeting.Info.Number"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Number_Property() { new TranscriptMeeting.Info {Number = int.MaxValue}.Number.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeeting.Info.LinesCount"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void LinesCount_Property() { new TranscriptMeeting.Info {LinesCount = int.MaxValue}.LinesCount.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeeting.Info.Questions"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Questions_Property()
-  {
-    var questions = new List<TranscriptMeetingQuestion>();
-    new TranscriptMeeting.Info {Questions = questions}.Questions.Should().BeSameAs(questions);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="TranscriptMeeting.Info()"/>
@@ -166,6 +160,43 @@ public sealed class TranscriptMeetingInfoTests : ClassTest<TranscriptMeeting.Inf
     info.Number.Should().BeNull();
     info.LinesCount.Should().BeNull();
     info.Questions.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeeting.Info.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new TranscriptMeeting.Info { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeeting.Info.Number"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Number_Property()
+  {
+    new TranscriptMeeting.Info { Number = int.MaxValue }.Number.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeeting.Info.LinesCount"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void LinesCount_Property()
+  {
+    new TranscriptMeeting.Info { LinesCount = int.MaxValue }.LinesCount.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="TranscriptMeeting.Info.Questions"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Questions_Property()
+  {
+    var questions = new List<TranscriptMeetingQuestion>();
+    new TranscriptMeeting.Info { Questions = questions }.Questions.Should().BeSameAs(questions);
   }
 
   /// <summary>

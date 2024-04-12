@@ -14,41 +14,6 @@ namespace RuLaw.Tests;
 public sealed class QuestionsSearchResultTest : ClassTest<QuestionsSearchResult>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Page"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Page_Property() { new QuestionsSearchResult(new {Page = int.MaxValue}).Page.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionsSearchResult.PageSize"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void PageSize_Property() { new QuestionsSearchResult(new {PageSize = int.MaxValue}).PageSize.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Count"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Count_Property() { new QuestionsSearchResult(new {Count = int.MaxValue}).Count.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Questions"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Questions_Property()
-  {
-    var result = new QuestionsSearchResult(new {});
-    var question = new Question(new {});
-
-    var questions = result.Questions.To<List<Question>>();
-    questions.Add(question);
-    result.Questions.Should().ContainSingle().Which.Should().BeSameAs(question);
-
-    questions.Remove(question);
-    result.Questions.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="QuestionsSearchResult(int?, int?, int?, IEnumerable{IQuestion}?)"/>
@@ -79,6 +44,63 @@ public sealed class QuestionsSearchResultTest : ClassTest<QuestionsSearchResult>
   }
 
   /// <summary>
+  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Page"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Page_Property()
+  {
+    new QuestionsSearchResult(new
+    {
+      Page = int.MaxValue
+    }).Page.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="QuestionsSearchResult.PageSize"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void PageSize_Property()
+  {
+    new QuestionsSearchResult(new
+    {
+      PageSize = int.MaxValue
+    }).PageSize.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Count"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Count_Property()
+  {
+    new QuestionsSearchResult(new
+    {
+      Count = int.MaxValue
+    }).Count.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Questions"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Questions_Property()
+  {
+    var result = new QuestionsSearchResult(new
+    {
+    });
+    var question = new Question(new
+    {
+    });
+
+    var questions = result.Questions.To<List<Question>>();
+    questions.Add(question);
+    result.Questions.Should().ContainSingle().Which.Should().BeSameAs(question);
+
+    questions.Remove(question);
+    result.Questions.Should().BeEmpty();
+  }
+
+  /// <summary>
   ///   <para>Performs testing of <see cref="LawsSearchResult.CompareTo(ILawsSearchResult)"/> method.</para>
   /// </summary>
   [Fact]
@@ -90,34 +112,6 @@ public sealed class QuestionsSearchResultTest : ClassTest<QuestionsSearchResult>
 /// </summary>
 public sealed class QuestionsSearchResultInfoTests : ClassTest<QuestionsSearchResult.Info>
 {
-  /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Info.Page"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Page_Property() { new QuestionsSearchResult.Info {Page = int.MaxValue}.Page.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Info.PageSize"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void PageSize_Property() { new QuestionsSearchResult.Info {PageSize = int.MaxValue}.PageSize.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Info.Count"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Count_Property() { new QuestionsSearchResult.Info {Count = int.MaxValue}.Count.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Info.Questions"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Questions_Property()
-  {
-    var questions = new List<Question>();
-    new QuestionsSearchResult.Info {Questions = questions}.Questions.Should().BeSameAs(questions);
-  }
-
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
@@ -132,6 +126,43 @@ public sealed class QuestionsSearchResultInfoTests : ClassTest<QuestionsSearchRe
     info.PageSize.Should().BeNull();
     info.Count.Should().BeNull();
     info.Questions.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Info.Page"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Page_Property()
+  {
+    new QuestionsSearchResult.Info { Page = int.MaxValue }.Page.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Info.PageSize"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void PageSize_Property()
+  {
+    new QuestionsSearchResult.Info { PageSize = int.MaxValue }.PageSize.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Info.Count"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Count_Property()
+  {
+    new QuestionsSearchResult.Info { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="QuestionsSearchResult.Info.Questions"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Questions_Property()
+  {
+    var questions = new List<Question>();
+    new QuestionsSearchResult.Info { Questions = questions }.Questions.Should().BeSameAs(questions);
   }
 
   /// <summary>

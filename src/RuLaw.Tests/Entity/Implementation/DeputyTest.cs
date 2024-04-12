@@ -13,30 +13,6 @@ namespace RuLaw.Tests;
 public sealed class DeputyTest : ClassTest<Deputy>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Deputy(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Deputy(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property() { new Deputy(new {Active = true}).Active.Should().BeTrue(); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Position"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Position_Property() { new Deputy(new {Position = Guid.Empty.ToString()}).Position.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Deputy(long?, string?, bool?, string?)"/>
@@ -64,6 +40,54 @@ public sealed class DeputyTest : ClassTest<Deputy>
     deputy.Name.Should().BeNull();
     deputy.Active.Should().BeNull();
     deputy.Position.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Deputy.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Deputy(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Deputy.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Deputy(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Deputy.Active"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Active_Property()
+  {
+    new Deputy(new
+    {
+      Active = true
+    }).Active.Should().BeTrue();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Deputy.Position"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Position_Property()
+  {
+    new Deputy(new
+    {
+      Position = Guid.Empty.ToString()
+    }).Position.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -104,30 +128,6 @@ public sealed class DeputyTest : ClassTest<Deputy>
 public sealed class DeputyInfoTests : ClassTest<Deputy.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new Deputy.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Deputy.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Info.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property() { new Deputy.Info {Active = true}.Active.Should().BeTrue(); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Info.Position"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Position_Property() { new Deputy.Info {Position = Guid.Empty.ToString()}.Position.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Deputy.Info()"/>
@@ -141,6 +141,42 @@ public sealed class DeputyInfoTests : ClassTest<Deputy.Info>
     deputy.Name.Should().BeNull();
     deputy.Active.Should().BeNull();
     deputy.Position.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Deputy.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new Deputy.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Deputy.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Deputy.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Deputy.Info.Active"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Active_Property()
+  {
+    new Deputy.Info { Active = true }.Active.Should().BeTrue();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Deputy.Info.Position"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Position_Property()
+  {
+    new Deputy.Info { Position = Guid.Empty.ToString() }.Position.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

@@ -14,42 +14,6 @@ namespace RuLaw.Tests;
 public sealed class QuestionTest : ClassTest<Question>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Question.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Question(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Question.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new Question(new {Date = DateTimeOffset.MaxValue}).Date.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Question.Code"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Code_Property() { new Question(new {Code = int.MaxValue}).Code.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Question.SessionCode"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void SessionCode_Property() { new Question(new {SessionCode = int.MaxValue}).SessionCode.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Question.StartLine"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void StartLine_Property() { new Question(new {StartLine = int.MaxValue}).StartLine.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Question.EndLine"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void EndLine_Property() { new Question(new {EndLine = int.MaxValue}).EndLine.Should().Be(int.MaxValue); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Question(string?, DateTimeOffset?, int?, int?, int?, int?)"/>
@@ -83,6 +47,78 @@ public sealed class QuestionTest : ClassTest<Question>
     question.SessionCode.Should().BeNull();
     question.StartLine.Should().BeNull();
     question.EndLine.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Question.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Question(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Question.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new Question(new
+    {
+      Date = DateTimeOffset.MaxValue
+    }).Date.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Question.Code"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Code_Property()
+  {
+    new Question(new
+    {
+      Code = int.MaxValue
+    }).Code.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Question.SessionCode"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void SessionCode_Property()
+  {
+    new Question(new
+    {
+      SessionCode = int.MaxValue
+    }).SessionCode.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Question.StartLine"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void StartLine_Property()
+  {
+    new Question(new
+    {
+      StartLine = int.MaxValue
+    }).StartLine.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Question.EndLine"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void EndLine_Property()
+  {
+    new Question(new
+    {
+      EndLine = int.MaxValue
+    }).EndLine.Should().Be(int.MaxValue);
   }
 
   /// <summary>
@@ -131,42 +167,6 @@ public sealed class QuestionTest : ClassTest<Question>
 public sealed class QuestionInfoTests : ClassTest<Question.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Question.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Question.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Question.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new Question.Info {Date = Guid.Empty.ToString()}.Date.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Question.Info.Code"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Code_Property() { new Question.Info {Code = int.MaxValue}.Code.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Question.Info.SessionCode"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void SessionCode_Property() { new Question.Info {SessionCode = int.MaxValue}.SessionCode.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Question.Info.StartLine"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void StartLine_Property() { new Question.Info {StartLine = int.MaxValue}.StartLine.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Question.Info.EndLine"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void EndLine_Property() { new Question.Info {EndLine = int.MaxValue}.EndLine.Should().Be(int.MaxValue); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Question.Info()"/>
@@ -182,6 +182,60 @@ public sealed class QuestionInfoTests : ClassTest<Question.Info>
     info.SessionCode.Should().BeNull();
     info.StartLine.Should().BeNull();
     info.EndLine.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Question.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Question.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Question.Info.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new Question.Info { Date = Guid.Empty.ToString() }.Date.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Question.Info.Code"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Code_Property()
+  {
+    new Question.Info { Code = int.MaxValue }.Code.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Question.Info.SessionCode"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void SessionCode_Property()
+  {
+    new Question.Info { SessionCode = int.MaxValue }.SessionCode.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Question.Info.StartLine"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void StartLine_Property()
+  {
+    new Question.Info { StartLine = int.MaxValue }.StartLine.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Question.Info.EndLine"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void EndLine_Property()
+  {
+    new Question.Info { EndLine = int.MaxValue }.EndLine.Should().Be(int.MaxValue);
   }
 
   /// <summary>

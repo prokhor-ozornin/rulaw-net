@@ -13,18 +13,6 @@ namespace RuLaw.Tests;
 public sealed class DeputyRequestSignerTest : ClassTest<DeputyRequestSigner>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new DeputyRequestSigner(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new DeputyRequestSigner(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="DeputyRequestSigner(long?, string?)"/>
@@ -46,6 +34,30 @@ public sealed class DeputyRequestSignerTest : ClassTest<DeputyRequestSigner>
     signer = new DeputyRequestSigner(new {});
     signer.Id.Should().BeNull();
     signer.Name.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new DeputyRequestSigner(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new DeputyRequestSigner(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -86,18 +98,6 @@ public sealed class DeputyRequestSignerTest : ClassTest<DeputyRequestSigner>
 public sealed class DeputyRequestSignerInfoTests : ClassTest<DeputyRequestSigner.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new DeputyRequestSigner.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new DeputyRequestSigner.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="DeputyRequestSigner.Info()"/>
@@ -109,6 +109,24 @@ public sealed class DeputyRequestSignerInfoTests : ClassTest<DeputyRequestSigner
     var info = new DeputyRequestSigner.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new DeputyRequestSigner.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new DeputyRequestSigner.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

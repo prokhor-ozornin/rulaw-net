@@ -13,18 +13,6 @@ namespace RuLaw.Tests;
 public sealed class LawTypeTest : ClassTest<LawType>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawType.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new LawType(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawType.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new LawType(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawType(long?, string?)"/>
@@ -46,6 +34,30 @@ public sealed class LawTypeTest : ClassTest<LawType>
     type = new LawType(new {});
     type.Id.Should().BeNull();
     type.Name.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawType.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new LawType(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawType.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new LawType(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -86,18 +98,6 @@ public sealed class LawTypeTest : ClassTest<LawType>
 public sealed class LawTypeInfoTests : ClassTest<LawType.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawType.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new LawType.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawType.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new LawType.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawType.Info()"/>
@@ -109,6 +109,24 @@ public sealed class LawTypeInfoTests : ClassTest<LawType.Info>
     var info = new LawType.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawType.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new LawType.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawType.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new LawType.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

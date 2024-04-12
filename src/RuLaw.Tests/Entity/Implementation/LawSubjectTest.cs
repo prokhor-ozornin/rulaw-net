@@ -14,43 +14,6 @@ namespace RuLaw.Tests;
 public sealed class LawSubjectTest : ClassTest<LawSubject>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawSubject.Departments"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Departments_Property()
-  {
-    var subject = new LawSubject(new {});
-    subject.Departments.Should().BeEmpty();
-
-    var department = new Authority(new {});
-
-    var departments = subject.Departments.To<List<Authority>>();
-    departments.Add(department);
-    subject.Departments.Should().ContainSingle().Which.Should().BeSameAs(department);
-    departments.Remove(department);
-    subject.Departments.Should().BeEmpty();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawSubject.Deputies"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Deputies_Property()
-  {
-    var subject = new LawSubject(new {});
-    subject.Deputies.Should().BeEmpty();
-
-    var deputy = new Deputy(new {});
-
-    var deputies = subject.Deputies.To<List<Deputy>>();
-
-    deputies.Add(deputy);
-    subject.Deputies.Should().ContainSingle().Which.Should().BeSameAs(deputy);
-    deputies.Remove(deputy);
-    subject.Deputies.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawSubject(IEnumerable{IAuthority}?, IEnumerable{IDeputy}?)"/>
@@ -73,6 +36,51 @@ public sealed class LawSubjectTest : ClassTest<LawSubject>
     subject.Departments.Should().BeEmpty();
     subject.Deputies.Should().BeEmpty();
   }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawSubject.Departments"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Departments_Property()
+  {
+    var subject = new LawSubject(new
+    {
+    });
+    subject.Departments.Should().BeEmpty();
+
+    var department = new Authority(new
+    {
+    });
+
+    var departments = subject.Departments.To<List<Authority>>();
+    departments.Add(department);
+    subject.Departments.Should().ContainSingle().Which.Should().BeSameAs(department);
+    departments.Remove(department);
+    subject.Departments.Should().BeEmpty();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawSubject.Deputies"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Deputies_Property()
+  {
+    var subject = new LawSubject(new
+    {
+    });
+    subject.Deputies.Should().BeEmpty();
+
+    var deputy = new Deputy(new
+    {
+    });
+
+    var deputies = subject.Deputies.To<List<Deputy>>();
+
+    deputies.Add(deputy);
+    subject.Deputies.Should().ContainSingle().Which.Should().BeSameAs(deputy);
+    deputies.Remove(deputy);
+    subject.Deputies.Should().BeEmpty();
+  }
 }
 
 /// <summary>
@@ -80,26 +88,6 @@ public sealed class LawSubjectTest : ClassTest<LawSubject>
 /// </summary>
 public sealed class LawSubjectInfoTests : ClassTest<LawSubject.Info>
 {
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawSubject.Info.Departments"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Departments_Property()
-  {
-    var departments = new List<Authority>();
-    new LawSubject.Info {Departments = departments}.Departments.Should().BeSameAs(departments);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawSubject.Info.Deputies"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Deputies_Property()
-  {
-    var deputies = new List<Deputy>();
-    new LawSubject.Info {Deputies = deputies}.Deputies.Should().BeSameAs(deputies);
-  }
-
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
@@ -112,6 +100,26 @@ public sealed class LawSubjectInfoTests : ClassTest<LawSubject.Info>
     var info = new LawSubject.Info();
     info.Departments.Should().BeNull();
     info.Deputies.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawSubject.Info.Departments"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Departments_Property()
+  {
+    var departments = new List<Authority>();
+    new LawSubject.Info { Departments = departments }.Departments.Should().BeSameAs(departments);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawSubject.Info.Deputies"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Deputies_Property()
+  {
+    var deputies = new List<Deputy>();
+    new LawSubject.Info { Deputies = deputies }.Deputies.Should().BeSameAs(deputies);
   }
 
   /// <summary>

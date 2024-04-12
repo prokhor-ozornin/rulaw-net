@@ -13,36 +13,6 @@ namespace RuLaw.Tests;
 public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new RegionalAuthority(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new RegionalAuthority(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property() { new RegionalAuthority(new {Active = true}).Active.Should().BeTrue(); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void FromDate_Property() { new RegionalAuthority(new {FromDate = DateTimeOffset.MaxValue}).FromDate.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property() { new RegionalAuthority(new {ToDate = DateTimeOffset.MaxValue}).ToDate.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="RegionalAuthority(long?, string?, bool?, DateTimeOffset?, DateTimeOffset?)"/>
@@ -73,6 +43,66 @@ public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
     authority.Active.Should().BeNull();
     authority.FromDate.Should().BeNull();
     authority.ToDate.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="RegionalAuthority.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new RegionalAuthority(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="RegionalAuthority.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new RegionalAuthority(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="RegionalAuthority.Active"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Active_Property()
+  {
+    new RegionalAuthority(new
+    {
+      Active = true
+    }).Active.Should().BeTrue();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="RegionalAuthority.FromDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void FromDate_Property()
+  {
+    new RegionalAuthority(new
+    {
+      FromDate = DateTimeOffset.MaxValue
+    }).FromDate.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="RegionalAuthority.ToDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ToDate_Property()
+  {
+    new RegionalAuthority(new
+    {
+      ToDate = DateTimeOffset.MaxValue
+    }).ToDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -113,36 +143,6 @@ public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
 public sealed class RegionalAuthorityInfoTests : ClassTest<RegionalAuthority.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new RegionalAuthority.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new RegionalAuthority.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property() { new RegionalAuthority.Info {Active = true}.Active.Should().BeTrue(); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void FromDate_Property() { new RegionalAuthority.Info {FromDate = Guid.Empty.ToString()}.FromDate.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property() { new RegionalAuthority.Info {ToDate = Guid.Empty.ToString()}.ToDate.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="RegionalAuthority.Info()"/>
@@ -157,6 +157,51 @@ public sealed class RegionalAuthorityInfoTests : ClassTest<RegionalAuthority.Inf
     info.Active.Should().BeNull();
     info.FromDate.Should().BeNull();
     info.ToDate.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new RegionalAuthority.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new RegionalAuthority.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.Active"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Active_Property()
+  {
+    new RegionalAuthority.Info { Active = true }.Active.Should().BeTrue();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.FromDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void FromDate_Property()
+  {
+    new RegionalAuthority.Info { FromDate = Guid.Empty.ToString() }.FromDate.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.ToDate"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ToDate_Property()
+  {
+    new RegionalAuthority.Info { ToDate = Guid.Empty.ToString() }.ToDate.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

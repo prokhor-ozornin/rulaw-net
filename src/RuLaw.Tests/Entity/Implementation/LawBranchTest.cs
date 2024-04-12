@@ -13,18 +13,6 @@ namespace RuLaw.Tests;
 public sealed class LawBranchTest : ClassTest<LawBranch>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawBranch.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new LawBranch(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawBranch.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new LawBranch(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawBranch(long?, string?)"/>
@@ -46,6 +34,30 @@ public sealed class LawBranchTest : ClassTest<LawBranch>
     topic = new LawBranch(new {});
     topic.Id.Should().BeNull();
     topic.Name.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawBranch.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new LawBranch(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawBranch.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new LawBranch(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -86,18 +98,6 @@ public sealed class LawBranchTest : ClassTest<LawBranch>
 public sealed class LawBranchInfoTests : ClassTest<LawBranch.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawBranch.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new LawBranch.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawBranch.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new LawBranch.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="LawBranch.Info()"/>
@@ -109,6 +109,24 @@ public sealed class LawBranchInfoTests : ClassTest<LawBranch.Info>
     var info = new LawBranch.Info();
     info.Id.Should().BeNull();
     info.Name.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawBranch.Info.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new LawBranch.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="LawBranch.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new LawBranch.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

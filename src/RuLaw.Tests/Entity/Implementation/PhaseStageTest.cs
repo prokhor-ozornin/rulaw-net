@@ -14,36 +14,6 @@ namespace RuLaw.Tests;
 public sealed class PhaseStageTest : ClassTest<PhaseStage>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="PhaseStage.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new PhaseStage(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="PhaseStage.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new PhaseStage(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="PhaseStage.Phases"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Phases_Property()
-  {
-    var stage = new PhaseStage(new PhaseStage.Info());
-    stage.Phases.Should().BeEmpty();
-
-    var phase = new StagePhase(new {});
-
-    var phases = stage.Phases.To<List<StagePhase>>();
-    phases.Add(phase);
-    stage.Phases.Should().ContainSingle().Which.Should().BeSameAs(phase);
-    phases.Remove(phase);
-    stage.Phases.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="PhaseStage(long?, string?, IEnumerable{IStagePhase}?)"/>
@@ -67,6 +37,50 @@ public sealed class PhaseStageTest : ClassTest<PhaseStage>
     stage = new PhaseStage(new {});
     stage.Id.Should().BeNull();
     stage.Name.Should().BeNull();
+    stage.Phases.Should().BeEmpty();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="PhaseStage.Id"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Id_Property()
+  {
+    new PhaseStage(new
+    {
+      Id = long.MaxValue
+    }).Id.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="PhaseStage.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new PhaseStage(new
+    {
+      Name = Guid.Empty.ToString()
+    }).Name.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="PhaseStage.Phases"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Phases_Property()
+  {
+    var stage = new PhaseStage(new PhaseStage.Info());
+    stage.Phases.Should().BeEmpty();
+
+    var phase = new StagePhase(new
+    {
+    });
+
+    var phases = stage.Phases.To<List<StagePhase>>();
+    phases.Add(phase);
+    stage.Phases.Should().ContainSingle().Which.Should().BeSameAs(phase);
+    phases.Remove(phase);
     stage.Phases.Should().BeEmpty();
   }
 
@@ -108,28 +122,6 @@ public sealed class PhaseStageTest : ClassTest<PhaseStage>
 public sealed class PhaseStageInfoTests : ClassTest<PhaseStage.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="PhaseStage.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property() { new PhaseStage.Info {Id = long.MaxValue}.Id.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="PhaseStage.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new PhaseStage.Info {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="PhaseStage.Info.Phases"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Phases_Property()
-  {
-    var phases = new List<StagePhase>();
-    new PhaseStage.Info {Phases = phases}.Phases.Should().BeSameAs(phases);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="PhaseStage.Info()"/>
@@ -143,6 +135,8 @@ public sealed class PhaseStageInfoTests : ClassTest<PhaseStage.Info>
     info.Name.Should().BeNull();
     info.Phases.Should().BeNull();
   }
+
+
 
   /// <summary>
   ///   <para>Performs testing of <see cref="PhaseStage.Info.ToResult()"/> method.</para>

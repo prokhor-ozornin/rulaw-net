@@ -14,24 +14,6 @@ namespace RuLaw.Tests;
 public sealed class QuestionTranscriptsResultTest : ClassTest<QuestionTranscriptsResult>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionTranscriptsResult.Meetings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Meetings_Property()
-  {
-    var result = new QuestionTranscriptsResult(new {});
-    result.Meetings.Should().BeEmpty();
-
-    var meetings = result.Meetings.To<List<TranscriptMeeting>>();
-    var meeting = new TranscriptMeeting(new {});
-    meetings.Add(meeting);
-    result.Meetings.Should().ContainSingle().Which.Should().BeSameAs(meeting);
-
-    meetings.Remove(meeting);
-    result.Meetings.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="QuestionTranscriptsResult(IEnumerable{ITranscriptMeeting}?)"/>
@@ -51,6 +33,28 @@ public sealed class QuestionTranscriptsResultTest : ClassTest<QuestionTranscript
     result = new QuestionTranscriptsResult(new {});
     result.Meetings.Should().BeEmpty();
   }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="QuestionTranscriptsResult.Meetings"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Meetings_Property()
+  {
+    var result = new QuestionTranscriptsResult(new
+    {
+    });
+    result.Meetings.Should().BeEmpty();
+
+    var meetings = result.Meetings.To<List<TranscriptMeeting>>();
+    var meeting = new TranscriptMeeting(new
+    {
+    });
+    meetings.Add(meeting);
+    result.Meetings.Should().ContainSingle().Which.Should().BeSameAs(meeting);
+
+    meetings.Remove(meeting);
+    result.Meetings.Should().BeEmpty();
+  }
 }
 
 /// <summary>
@@ -58,16 +62,6 @@ public sealed class QuestionTranscriptsResultTest : ClassTest<QuestionTranscript
 /// </summary>
 public sealed class QuestionTranscriptsResultInfoTests : ClassTest<QuestionTranscriptsResult.Info>
 {
-  /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionTranscriptsResult.Info.Meetings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Meetings_Property()
-  {
-    var meetings = new List<TranscriptMeeting>();
-    new QuestionTranscriptsResult.Info {Meetings = meetings}.Meetings.Should().BeSameAs(meetings);
-  }
-
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
@@ -79,6 +73,16 @@ public sealed class QuestionTranscriptsResultInfoTests : ClassTest<QuestionTrans
 
     var info = new QuestionTranscriptsResult.Info();
     info.Meetings.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="QuestionTranscriptsResult.Info.Meetings"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Meetings_Property()
+  {
+    var meetings = new List<TranscriptMeeting>();
+    new QuestionTranscriptsResult.Info { Meetings = meetings }.Meetings.Should().BeSameAs(meetings);
   }
 
   /// <summary>

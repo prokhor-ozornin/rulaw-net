@@ -13,24 +13,6 @@ namespace RuLaw.Tests;
 public sealed class DeputyActivityTest : ClassTest<DeputyActivity>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyActivity.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Education(new {Institution = Guid.Empty.ToString()}).Institution.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyActivity.CommitteeId"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void CommitteeId_Property() { new DeputyActivity(new {CommitteeId = long.MaxValue}).CommitteeId.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyActivity.CommitteeNameGenitive"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void CommitteeNameGenitive_Property() { new DeputyActivity(new {CommitteeNameGenitive = Guid.Empty.ToString()}).CommitteeNameGenitive.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="DeputyActivity(string?, long?, string?)"/>
@@ -55,6 +37,42 @@ public sealed class DeputyActivityTest : ClassTest<DeputyActivity>
     activity.Name.Should().BeNull();
     activity.CommitteeId.Should().BeNull();
     activity.CommitteeNameGenitive.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyActivity.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Education(new
+    {
+      Institution = Guid.Empty.ToString()
+    }).Institution.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyActivity.CommitteeId"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void CommitteeId_Property()
+  {
+    new DeputyActivity(new
+    {
+      CommitteeId = long.MaxValue
+    }).CommitteeId.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyActivity.CommitteeNameGenitive"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void CommitteeNameGenitive_Property()
+  {
+    new DeputyActivity(new
+    {
+      CommitteeNameGenitive = Guid.Empty.ToString()
+    }).CommitteeNameGenitive.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -95,24 +113,6 @@ public sealed class DeputyActivityTest : ClassTest<DeputyActivity>
 public sealed class DeputyActivityInfoTests : ClassTest<DeputyActivity.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyActivity.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property() { new Education.Info {Institution = Guid.Empty.ToString()}.Institution.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyActivity.Info.CommitteeId"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void CommitteeId_Property() { new DeputyActivity.Info {CommitteeId = long.MaxValue}.CommitteeId.Should().Be(long.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyActivity.Info.CommitteeNameGenitive"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void CommitteeNameGenitive_Property() { new DeputyActivity.Info {CommitteeNameGenitive = Guid.Empty.ToString()}.CommitteeNameGenitive.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="DeputyActivity.Info()"/>
@@ -125,6 +125,33 @@ public sealed class DeputyActivityInfoTests : ClassTest<DeputyActivity.Info>
     info.Name.Should().BeNull();
     info.CommitteeId.Should().BeNull();
     info.CommitteeNameGenitive.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyActivity.Info.Name"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Name_Property()
+  {
+    new Education.Info { Institution = Guid.Empty.ToString() }.Institution.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyActivity.Info.CommitteeId"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void CommitteeId_Property()
+  {
+    new DeputyActivity.Info { CommitteeId = long.MaxValue }.CommitteeId.Should().Be(long.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="DeputyActivity.Info.CommitteeNameGenitive"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void CommitteeNameGenitive_Property()
+  {
+    new DeputyActivity.Info { CommitteeNameGenitive = Guid.Empty.ToString() }.CommitteeNameGenitive.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
