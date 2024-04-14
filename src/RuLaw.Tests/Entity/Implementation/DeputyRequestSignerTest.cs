@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,23 +14,13 @@ public sealed class DeputyRequestSignerTest : ClassTest<DeputyRequestSigner>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="DeputyRequestSigner(long?, string?)"/>
-  /// <seealso cref="DeputyRequestSigner(DeputyRequestSigner.Info)"/>
-  /// <seealso cref="DeputyRequestSigner(object)"/>
+  /// <seealso cref="DeputyRequestSigner()"/>
   [Fact]
   public void Constructors()
   {
     typeof(DeputyRequestSigner).Should().BeDerivedFrom<object>().And.Implement<IDeputyRequestSigner>();
 
     var signer = new DeputyRequestSigner();
-    signer.Id.Should().BeNull();
-    signer.Name.Should().BeNull();
-
-    signer = new DeputyRequestSigner(new DeputyRequestSigner.Info());
-    signer.Id.Should().BeNull();
-    signer.Name.Should().BeNull();
-
-    signer = new DeputyRequestSigner(new {});
     signer.Id.Should().BeNull();
     signer.Name.Should().BeNull();
   }
@@ -42,10 +31,7 @@ public sealed class DeputyRequestSignerTest : ClassTest<DeputyRequestSigner>
   [Fact]
   public void Id_Property()
   {
-    new DeputyRequestSigner(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new DeputyRequestSigner { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -54,10 +40,7 @@ public sealed class DeputyRequestSignerTest : ClassTest<DeputyRequestSigner>
   [Fact]
   public void Name_Property()
   {
-    new DeputyRequestSigner(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new DeputyRequestSigner { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -88,67 +71,7 @@ public sealed class DeputyRequestSignerTest : ClassTest<DeputyRequestSigner>
   [Fact]
   public void ToString_Method()
   {
-    new DeputyRequestSigner(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="DeputyRequestSigner.Info"/>.</para>
-/// </summary>
-public sealed class DeputyRequestSignerInfoTests : ClassTest<DeputyRequestSigner.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="DeputyRequestSigner.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(DeputyRequestSigner.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IDeputyRequestSigner>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new DeputyRequestSigner.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new DeputyRequestSigner.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new DeputyRequestSigner.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestSigner.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new DeputyRequestSigner.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<DeputyRequestSigner>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new DeputyRequestSigner {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -159,7 +82,7 @@ public sealed class DeputyRequestSignerInfoTests : ClassTest<DeputyRequestSigner
   {
     using (new AssertionScope())
     {
-      Validate(new DeputyRequestSigner.Info
+      Validate(new DeputyRequestSigner
       {
         Id = 1,
         Name = "name"

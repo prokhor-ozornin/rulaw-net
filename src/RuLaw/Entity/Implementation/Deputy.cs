@@ -12,58 +12,26 @@ public sealed class Deputy : IDeputy
   /// <summary>
   ///   <para>Unique identifier of entity.</para>
   /// </summary>
-  public long? Id { get; }
+  [DataMember(Name = "id", IsRequired = true)]
+  public long? Id { get; set; }
 
   /// <summary>
   ///   <para>Name of entity.</para>
   /// </summary>
-  public string Name { get; }
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Whether the deputy is working at present or not.</para>
   /// </summary>
-  public bool? Active { get; }
+  [DataMember(Name = "isCurrent", IsRequired = true)]
+  public bool? Active { get; set; }
 
   /// <summary>
   ///   <para>Work position of deputy.</para>
   /// </summary>
-  public string Position { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="id"></param>
-  /// <param name="name"></param>
-  /// <param name="active"></param>
-  /// <param name="position"></param>
-  public Deputy(long? id = null,
-                string name = null,
-                bool? active = null,
-                string position = null)
-  {
-    Id = id;
-    Name = name;
-    Active = active;
-    Position = position;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Deputy(Info info)
-  {
-    Id = info.Id;
-    Name = info.Name;
-    Active = info.Active;
-    Position = info.Position;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Deputy(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "position", IsRequired = true)]
+  public string Position { get; set; }
 
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
@@ -97,41 +65,4 @@ public sealed class Deputy : IDeputy
   /// </summary>
   /// <returns>A string that represents the current entity.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "department")]
-  public sealed record Info : IResultable<IDeputy>
-  {
-    /// <summary>
-    ///   <para>Unique identifier of entity.</para>
-    /// </summary>
-    [DataMember(Name = "id", IsRequired = true)]
-    public long? Id { get; init; }
-
-    /// <summary>
-    ///   <para>Name of entity.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para>Whether the deputy is working at present or not.</para>
-    /// </summary>
-    [DataMember(Name = "isCurrent", IsRequired = true)]
-    public bool? Active { get; init; }
-
-    /// <summary>
-    ///   <para>Work position of deputy.</para>
-    /// </summary>
-    [DataMember(Name = "position", IsRequired = true)]
-    public string Position { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IDeputy ToResult() => new Deputy(this);
-  }
 }

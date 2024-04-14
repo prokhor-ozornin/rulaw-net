@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -16,29 +15,13 @@ public sealed class ConvocationTest : ClassTest<Convocation>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="Convocation(long?, string?, DateTimeOffset?, DateTimeOffset?, IEnumerable{ISession}?)"/>
-  /// <seealso cref="Convocation(Convocation.Info)"/>
-  /// <seealso cref="Convocation(object)"/>
+  /// <seealso cref="Convocation()"/>
   [Fact]
   public void Constructors()
   {
     typeof(Convocation).Should().BeDerivedFrom<object>().And.Implement<IConvocation>();
 
     var convocation = new Convocation();
-    convocation.Id.Should().BeNull();
-    convocation.Name.Should().BeNull();
-    convocation.FromDate.Should().BeNull();
-    convocation.ToDate.Should().BeNull();
-    convocation.Sessions.Should().BeEmpty();
-
-    convocation = new Convocation(new Convocation.Info());
-    convocation.Id.Should().BeNull();
-    convocation.Name.Should().BeNull();
-    convocation.FromDate.Should().BeNull();
-    convocation.ToDate.Should().BeNull();
-    convocation.Sessions.Should().BeEmpty();
-
-    convocation = new Convocation();
     convocation.Id.Should().BeNull();
     convocation.Name.Should().BeNull();
     convocation.FromDate.Should().BeNull();
@@ -52,10 +35,7 @@ public sealed class ConvocationTest : ClassTest<Convocation>
   [Fact]
   public void Id_Property()
   {
-    new Convocation(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new Convocation { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -64,10 +44,7 @@ public sealed class ConvocationTest : ClassTest<Convocation>
   [Fact]
   public void Name_Property()
   {
-    new Convocation(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new Convocation { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -76,10 +53,7 @@ public sealed class ConvocationTest : ClassTest<Convocation>
   [Fact]
   public void FromDate_Property()
   {
-    new Convocation(new
-    {
-      FromDate = DateTimeOffset.MaxValue
-    }).FromDate.Should().Be(DateTimeOffset.MaxValue);
+    new Convocation { FromDate = DateTimeOffset.MaxValue }.FromDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -88,10 +62,7 @@ public sealed class ConvocationTest : ClassTest<Convocation>
   [Fact]
   public void ToDate_Property()
   {
-    new Convocation(new
-    {
-      ToDate = DateTimeOffset.MaxValue
-    }).ToDate.Should().Be(DateTimeOffset.MaxValue);
+    new Convocation { ToDate = DateTimeOffset.MaxValue }.ToDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -139,101 +110,7 @@ public sealed class ConvocationTest : ClassTest<Convocation>
   [Fact]
   public void ToString_Method()
   {
-    new Convocation(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="Convocation.Info"/>.</para>
-/// </summary>
-public sealed class ConvocationInfoTests : ClassTest<Convocation.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="Convocation.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(Convocation.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IConvocation>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new Convocation.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-    info.FromDate.Should().BeNull();
-    info.ToDate.Should().BeNull();
-    info.Sessions.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new Convocation.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new Convocation.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Info.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void FromDate_Property()
-  {
-    new Convocation.Info { FromDate = Guid.Empty.ToString() }.FromDate.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Info.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property()
-  {
-    new Convocation.Info { ToDate = Guid.Empty.ToString() }.ToDate.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Info.Sessions"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Sessions_Property()
-  {
-    var sessions = new List<Session>();
-    new Convocation.Info { Sessions = sessions }.Sessions.Should().BeSameAs(sessions);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Convocation.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new Convocation.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<Convocation>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-      result.FromDate.Should().BeNull();
-      result.ToDate.Should().BeNull();
-      result.Sessions.Should().BeEmpty();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new Convocation {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -244,13 +121,13 @@ public sealed class ConvocationInfoTests : ClassTest<Convocation.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new Convocation.Info
+      Validate(new Convocation
       {
         Id = 1,
-        FromDate = DateTimeOffset.MinValue.AsString(),
+        FromDate = DateTimeOffset.MinValue,
         Name = "name",
-        Sessions = new List<Session> { new(new { Id = 2 }) },
-        ToDate = DateTimeOffset.MaxValue.AsString()
+        Sessions = new List<Session> { new() { Id = 2 } },
+        ToDate = DateTimeOffset.MaxValue
       });
     }
 

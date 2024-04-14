@@ -88,6 +88,19 @@ public sealed class ErrorTest : ClassTest<Error>
   [Fact]
   public void ToString_Method()
   {
+    using (new AssertionScope())
+    using (new AssertionScope())
+    {
+      Validate(string.Empty, new Error(new {}));
+      Validate(string.Empty, new Error(new { Text = string.Empty }));
+      Validate("text", new Error(new { Text = "text" }));
+    }
+
+    return;
+
+    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
+
+
     new Error(1, Guid.Empty.ToString()).ToString().Should().Be(Guid.Empty.ToString());
   }
 
@@ -144,9 +157,11 @@ public sealed class ErrorTest : ClassTest<Error>
 
       return;
 
-      static void Validate()
+      static void Validate(Error.Info info)
       {
+        var result = info.ToResult();
 
+        result.Should().BeOfType<Error>();
       }
     }
 

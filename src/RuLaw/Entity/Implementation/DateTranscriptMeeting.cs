@@ -6,63 +6,32 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Transcript of Duma's meeting.</para>
 /// </summary>
+[DataContract(Name = "meeting")]
 public sealed class DateTranscriptMeeting : IDateTranscriptMeeting
 {
   /// <summary>
   ///   <para>Date of meeting.</para>
   /// </summary>
-  public DateTimeOffset? Date { get; }
+  [DataMember(Name = "date", IsRequired = true)]
+  public DateTimeOffset? Date { get; set; }
 
   /// <summary>
   ///   <para>Number of meeting.</para>
   /// </summary>
-  public int? Number { get; }
+  [DataMember(Name = "number", IsRequired = true)]
+  public int? Number { get; set; }
 
   /// <summary>
   ///   <para>Transcript's text lines.</para>
   /// </summary>
-  public IEnumerable<string> Lines { get; }
+  [DataMember(Name = "lines", IsRequired = true)]
+  public IEnumerable<string> Lines { get; set; }
 
   /// <summary>
   ///   <para>Meeting's votes.</para>
   /// </summary>
-  public IEnumerable<ITranscriptVote> Votes { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="date"></param>
-  /// <param name="number"></param>
-  /// <param name="lines"></param>
-  /// <param name="votes"></param>
-  public DateTranscriptMeeting(DateTimeOffset? date = null,
-                               int? number = null,
-                               IEnumerable<string> lines = null,
-                               IEnumerable<ITranscriptVote> votes = null)
-  {
-    Date = date;
-    Number = number;
-    Lines = lines ?? [];
-    Votes = votes ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public DateTranscriptMeeting(Info info)
-  {
-    Date = info.Date;
-    Number = info.Number;
-    Lines = info.Lines ?? [];
-    Votes = info.Votes ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public DateTranscriptMeeting(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "votes", IsRequired = true)]
+  public IEnumerable<ITranscriptVote> Votes { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="IDateTranscriptMeeting"/> instance with another.</para>
@@ -96,41 +65,4 @@ public sealed class DateTranscriptMeeting : IDateTranscriptMeeting
   /// </summary>
   /// <returns>A string that represents the current <see cref="DateTranscriptMeeting"/>.</returns>
   public override string ToString() => (this as IDateTranscriptMeeting).Text;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "meeting")]
-  public sealed record Info : IResultable<IDateTranscriptMeeting>
-  {
-    /// <summary>
-    ///   <para>Date of meeting.</para>
-    /// </summary>
-    [DataMember(Name = "date", IsRequired = true)]
-    public DateTimeOffset? Date { get; init; }
-
-    /// <summary>
-    ///   <para>Number of meeting.</para>
-    /// </summary>
-    [DataMember(Name = "number", IsRequired = true)]
-    public int? Number { get; init; }
-
-    /// <summary>
-    ///   <para>Transcript's text lines.</para>
-    /// </summary>
-    [DataMember(Name = "lines", IsRequired = true)]
-    public List<string> Lines { get; init; }
-
-    /// <summary>
-    ///   <para>Meeting's votes.</para>
-    /// </summary>
-    [DataMember(Name = "votes", IsRequired = true)]
-    public List<TranscriptVote> Votes { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IDateTranscriptMeeting ToResult() => new DateTranscriptMeeting(this);
-  }
 }

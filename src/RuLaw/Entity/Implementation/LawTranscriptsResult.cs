@@ -6,63 +6,32 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Transcript of Duma's law.</para>
 /// </summary>
+[DataContract(Name = "result")]
 public sealed class LawTranscriptsResult : ILawTranscriptsResult
 {
   /// <summary>
   ///   <para>Name of law.</para>
   /// </summary>
-  public string Name { get; }
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Number of law.</para>
   /// </summary>
-  public string Number { get; }
+  [DataMember(Name = "number", IsRequired = true)]
+  public string Number { get; set; }
 
   /// <summary>
   ///   <para>Law's comments.</para>
   /// </summary>
-  public string Comments { get; }
+  [DataMember(Name = "comments", IsRequired = true)]
+  public string Comments { get; set; }
 
   /// <summary>
   ///   <para>List of law's associated meetings.</para>
   /// </summary>
-  public IEnumerable<ITranscriptMeeting> Meetings { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="name"></param>
-  /// <param name="number"></param>
-  /// <param name="comments"></param>
-  /// <param name="meetings"></param>
-  public LawTranscriptsResult(string name = null,
-                              string number = null,
-                              string comments = null,
-                              IEnumerable<ITranscriptMeeting> meetings = null)
-  {
-    Name = name;
-    Number = number;
-    Comments = comments;
-    Meetings = meetings ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public LawTranscriptsResult(Info info)
-  {
-    Name = info.Name;
-    Number = info.Number;
-    Comments = info.Comments;
-    Meetings = info.Meetings ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public LawTranscriptsResult(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "meetings", IsRequired = true)]
+  public IEnumerable<ITranscriptMeeting> Meetings { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="ILawTranscriptsResult"/> instance with another.</para>
@@ -96,41 +65,4 @@ public sealed class LawTranscriptsResult : ILawTranscriptsResult
   /// </summary>
   /// <returns>A string that represents the current <see cref="LawTranscriptsResult"/>.</returns>
   public override string ToString() => Number ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "result")]
-  public sealed record Info : IResultable<ILawTranscriptsResult>
-  {
-    /// <summary>
-    ///   <para>Name of law.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para>Number of law.</para>
-    /// </summary>
-    [DataMember(Name = "number", IsRequired = true)]
-    public string Number { get; init; }
-
-    /// <summary>
-    ///   <para>Law's comments.</para>
-    /// </summary>
-    [DataMember(Name = "comments", IsRequired = true)]
-    public string Comments { get; init; }
-
-    /// <summary>
-    ///   <para>List of law's associated meetings.</para>
-    /// </summary>
-    [DataMember(Name = "meetings", IsRequired = true)]
-    public List<TranscriptMeeting> Meetings { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public ILawTranscriptsResult ToResult() => new LawTranscriptsResult(this);
-  }
 }

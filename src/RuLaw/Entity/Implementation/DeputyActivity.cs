@@ -6,54 +6,26 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Deputy's activity record.</para>
 /// </summary>
+[DataContract(Name = "activity")]
 public sealed class DeputyActivity : IDeputyActivity
 {
   /// <summary>
   ///   <para>Name of entity.</para>
   /// </summary>
-  public string Name { get; }
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Identifier of committee.</para>
   /// </summary>
-  public long? CommitteeId { get; }
+  [DataMember(Name = "subdivisionId", IsRequired = true)]
+  public long? CommitteeId { get; set; }
 
   /// <summary>
   ///   <para>Genitive name of committee.</para>
   /// </summary>
-  public string CommitteeNameGenitive { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="name"></param>
-  /// <param name="committeeId"></param>
-  /// <param name="committeeNameGenitive"></param>
-  public DeputyActivity(string name = null,
-                        long? committeeId = null,
-                        string committeeNameGenitive = null)
-  {
-    Name = name;
-    CommitteeId = committeeId;
-    CommitteeNameGenitive = committeeNameGenitive;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public DeputyActivity(Info info)
-  {
-    Name = info.Name;
-    CommitteeId = info.CommitteeId;
-    CommitteeNameGenitive = info.CommitteeNameGenitive;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public DeputyActivity(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "subdivisionNameGenitive", IsRequired = true)]
+  public string CommitteeNameGenitive { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="IDeputyActivity"/> instance with another.</para>
@@ -87,35 +59,4 @@ public sealed class DeputyActivity : IDeputyActivity
   /// </summary>
   /// <returns>A string that represents the current <see cref="DeputyActivity"/>.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "activity")]
-  public sealed record Info : IResultable<IDeputyActivity>
-  {
-    /// <summary>
-    ///   <para>Name of entity.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para>Identifier of committee.</para>
-    /// </summary>
-    [DataMember(Name = "subdivisionId", IsRequired = true)]
-    public long? CommitteeId { get; init; }
-
-    /// <summary>
-    ///   <para>Genitive name of committee.</para>
-    /// </summary>
-    [DataMember(Name = "subdivisionNameGenitive", IsRequired = true)]
-    public string CommitteeNameGenitive { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IDeputyActivity ToResult() => new DeputyActivity(this);
-  }
 }

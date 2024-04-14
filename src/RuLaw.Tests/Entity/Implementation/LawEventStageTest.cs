@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,23 +14,13 @@ public sealed class LawEventStageTest : ClassTest<LawEventStage>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="LawEventStage(long?, string?)"/>
-  /// <seealso cref="LawEventStage(LawEventStage.Info)"/>
-  /// <seealso cref="LawEventStage(object)"/>
+  /// <seealso cref="LawEventStage()"/>
   [Fact]
   public void Constructors()
   {
     typeof(LawEventStage).Should().BeDerivedFrom<object>().And.Implement<ILawEventStage>();
 
     var stage = new LawEventStage();
-    stage.Id.Should().BeNull();
-    stage.Name.Should().BeNull();
-
-    stage = new LawEventStage(new LawEventStage.Info());
-    stage.Id.Should().BeNull();
-    stage.Name.Should().BeNull();
-
-    stage = new LawEventStage(new {});
     stage.Id.Should().BeNull();
     stage.Name.Should().BeNull();
   }
@@ -42,10 +31,7 @@ public sealed class LawEventStageTest : ClassTest<LawEventStage>
   [Fact]
   public void Id_Property()
   {
-    new LawEventStage(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new LawEventStage { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -54,10 +40,7 @@ public sealed class LawEventStageTest : ClassTest<LawEventStage>
   [Fact]
   public void Name_Property()
   {
-    new LawEventStage(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new LawEventStage { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -88,67 +71,7 @@ public sealed class LawEventStageTest : ClassTest<LawEventStage>
   [Fact]
   public void ToString_Method()
   {
-    new LawEventStage(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="LawEventStage.Info"/>.</para>
-/// </summary>
-public sealed class LawEventStageInfoTests : ClassTest<LawEventStage.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="LawEventStage.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(LawEventStage.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ILawEventStage>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new LawEventStage.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventStage.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new LawEventStage.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventStage.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new LawEventStage.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventStage.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new LawEventStage.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<LawEventStage>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new LawEventStage {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -159,7 +82,7 @@ public sealed class LawEventStageInfoTests : ClassTest<LawEventStage.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new LawEventStage.Info
+      Validate(new LawEventStage
       {
         Id = 1,
         Name = "name"

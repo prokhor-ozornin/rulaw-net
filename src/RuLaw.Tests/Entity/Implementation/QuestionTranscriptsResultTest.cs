@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -16,21 +15,13 @@ public sealed class QuestionTranscriptsResultTest : ClassTest<QuestionTranscript
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="QuestionTranscriptsResult(IEnumerable{ITranscriptMeeting}?)"/>
-  /// <seealso cref="QuestionTranscriptsResult(QuestionTranscriptsResult.Info)"/>
-  /// <seealso cref="QuestionTranscriptsResult(object)"/>
+  /// <seealso cref="QuestionTranscriptsResult()"/>
   [Fact]
   public void Constructors()
   {
     typeof(QuestionTranscriptsResult).Should().BeDerivedFrom<object>().And.Implement<IQuestionTranscriptsResult>();
 
     var result = new QuestionTranscriptsResult();
-    result.Meetings.Should().BeEmpty();
-
-    result = new QuestionTranscriptsResult(new QuestionTranscriptsResult.Info());
-    result.Meetings.Should().BeEmpty();
-
-    result = new QuestionTranscriptsResult(new {});
     result.Meetings.Should().BeEmpty();
   }
 
@@ -40,70 +31,16 @@ public sealed class QuestionTranscriptsResultTest : ClassTest<QuestionTranscript
   [Fact]
   public void Meetings_Property()
   {
-    var result = new QuestionTranscriptsResult(new
-    {
-    });
+    var result = new QuestionTranscriptsResult();
     result.Meetings.Should().BeEmpty();
 
     var meetings = result.Meetings.To<List<TranscriptMeeting>>();
-    var meeting = new TranscriptMeeting(new
-    {
-    });
+    var meeting = new TranscriptMeeting();
     meetings.Add(meeting);
     result.Meetings.Should().ContainSingle().Which.Should().BeSameAs(meeting);
 
     meetings.Remove(meeting);
     result.Meetings.Should().BeEmpty();
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="QuestionTranscriptsResult.Info"/>.</para>
-/// </summary>
-public sealed class QuestionTranscriptsResultInfoTests : ClassTest<QuestionTranscriptsResult.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="QuestionTranscriptsResult.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(QuestionTranscriptsResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IQuestionTranscriptsResult>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new QuestionTranscriptsResult.Info();
-    info.Meetings.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionTranscriptsResult.Info.Meetings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Meetings_Property()
-  {
-    var meetings = new List<TranscriptMeeting>();
-    new QuestionTranscriptsResult.Info { Meetings = meetings }.Meetings.Should().BeSameAs(meetings);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionTranscriptsResult.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new QuestionTranscriptsResult.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<QuestionTranscriptsResult>();
-      result.Meetings.Should().BeEmpty();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
   }
 
   /// <summary>

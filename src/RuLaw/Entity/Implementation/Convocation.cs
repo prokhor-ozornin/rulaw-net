@@ -6,72 +6,38 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Duma's convocation.</para>
 /// </summary>
+[DataContract(Name = "period")]
 public sealed class Convocation : IConvocation
 {
   /// <summary>
   ///   <para>Unique identifier of entity.</para>
   /// </summary>
-  public long? Id { get; }
+  [DataMember(Name = "id", IsRequired = true)]
+  public long? Id { get; set; }
 
   /// <summary>
   ///   <para>Name of the entity.</para>
   /// </summary>
-  public string Name { get; }
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Start date of authority functioning.</para>
   /// </summary>
-  public DateTimeOffset? FromDate { get; }
+  [DataMember(Name = "startDate", IsRequired = true)]
+  public DateTimeOffset? FromDate { get; set; }
 
   /// <summary>
   ///   <para>End date of authority functioning.</para>
   /// </summary>
-  public DateTimeOffset? ToDate { get; }
+  [DataMember(Name = "stopDate")]
+  public DateTimeOffset? ToDate { get; set; }
 
   /// <summary>
   ///   <para>Collection of sessions which are part of the convocation.</para>
   /// </summary>
-  public IEnumerable<ISession> Sessions { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="id"></param>
-  /// <param name="name"></param>
-  /// <param name="fromDate"></param>
-  /// <param name="toDate"></param>
-  /// <param name="sessions"></param>
-  public Convocation(long? id = null,
-                     string name = null,
-                     DateTimeOffset? fromDate = null,
-                     DateTimeOffset? toDate = null,
-                     IEnumerable<ISession> sessions = null)
-  {
-    Id = id;
-    Name = name;
-    FromDate = fromDate;
-    ToDate = toDate;
-    Sessions = sessions ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Convocation(Info info)
-  {
-    Id = info.Id;
-    Name = info.Name;
-    FromDate = info.FromDate is not null ? DateTimeOffset.Parse(info.FromDate) : null;
-    ToDate = info.ToDate is not null ? DateTimeOffset.Parse(info.ToDate) : null;
-    Sessions = info.Sessions ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Convocation(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "sessions", IsRequired = true)]
+  public IEnumerable<ISession> Sessions { get; set; }
 
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
@@ -105,47 +71,4 @@ public sealed class Convocation : IConvocation
   /// </summary>
   /// <returns>A string that represents the current entity.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "period")]
-  public sealed record Info : IResultable<IConvocation>
-  {
-    /// <summary>
-    ///   <para>Unique identifier of entity.</para>
-    /// </summary>
-    [DataMember(Name = "id", IsRequired = true)]
-    public long? Id { get; init; }
-
-    /// <summary>
-    ///   <para>Name of entity.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para>Start date of authority functioning.</para>
-    /// </summary>
-    [DataMember(Name = "startDate", IsRequired = true)]
-    public string FromDate { get; init; }
-
-    /// <summary>
-    ///   <para>End date of authority functioning.</para>
-    /// </summary>
-    [DataMember(Name = "stopDate")]
-    public string ToDate { get; init; }
-
-    /// <summary>
-    ///   <para>Collection of sessions which are part of the convocation.</para>
-    /// </summary>
-    [DataMember(Name = "sessions", IsRequired = true)]
-    public List<Session> Sessions { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IConvocation ToResult() => new Convocation(this);
-  }
 }

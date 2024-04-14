@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,29 +14,13 @@ public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="RegionalAuthority(long?, string?, bool?, DateTimeOffset?, DateTimeOffset?)"/>
-  /// <seealso cref="RegionalAuthority(RegionalAuthority.Info)"/>
-  /// <seealso cref="RegionalAuthority(object)"/>
+  /// <seealso cref="RegionalAuthority()"/>
   [Fact]
   public void Constructors()
   {
     typeof(RegionalAuthority).Should().BeDerivedFrom<Authority>();
 
     var authority = new RegionalAuthority();
-    authority.Id.Should().BeNull();
-    authority.Name.Should().BeNull();
-    authority.Active.Should().BeNull();
-    authority.FromDate.Should().BeNull();
-    authority.ToDate.Should().BeNull();
-
-    authority = new RegionalAuthority(new RegionalAuthority.Info());
-    authority.Id.Should().BeNull();
-    authority.Name.Should().BeNull();
-    authority.Active.Should().BeNull();
-    authority.FromDate.Should().BeNull();
-    authority.ToDate.Should().BeNull();
-
-    authority = new RegionalAuthority(new {});
     authority.Id.Should().BeNull();
     authority.Name.Should().BeNull();
     authority.Active.Should().BeNull();
@@ -51,10 +34,7 @@ public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
   [Fact]
   public void Id_Property()
   {
-    new RegionalAuthority(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new RegionalAuthority { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -63,10 +43,7 @@ public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
   [Fact]
   public void Name_Property()
   {
-    new RegionalAuthority(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new RegionalAuthority { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -75,10 +52,7 @@ public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
   [Fact]
   public void Active_Property()
   {
-    new RegionalAuthority(new
-    {
-      Active = true
-    }).Active.Should().BeTrue();
+    new RegionalAuthority { Active = true }.Active.Should().BeTrue();
   }
 
   /// <summary>
@@ -87,10 +61,7 @@ public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
   [Fact]
   public void FromDate_Property()
   {
-    new RegionalAuthority(new
-    {
-      FromDate = DateTimeOffset.MaxValue
-    }).FromDate.Should().Be(DateTimeOffset.MaxValue);
+    new RegionalAuthority { FromDate = DateTimeOffset.MaxValue }.FromDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -99,10 +70,7 @@ public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
   [Fact]
   public void ToDate_Property()
   {
-    new RegionalAuthority(new
-    {
-      ToDate = DateTimeOffset.MaxValue
-    }).ToDate.Should().Be(DateTimeOffset.MaxValue);
+    new RegionalAuthority { ToDate = DateTimeOffset.MaxValue }.ToDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -133,100 +101,7 @@ public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
   [Fact]
   public void ToString_Method()
   {
-    new RegionalAuthority(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="RegionalAuthority.Info"/>.</para>
-/// </summary>
-public sealed class RegionalAuthorityInfoTests : ClassTest<RegionalAuthority.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="RegionalAuthority.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(RegionalAuthority).Should().BeDerivedFrom<Authority>();
-
-    var info = new RegionalAuthority.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-    info.Active.Should().BeNull();
-    info.FromDate.Should().BeNull();
-    info.ToDate.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new RegionalAuthority.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new RegionalAuthority.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property()
-  {
-    new RegionalAuthority.Info { Active = true }.Active.Should().BeTrue();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void FromDate_Property()
-  {
-    new RegionalAuthority.Info { FromDate = Guid.Empty.ToString() }.FromDate.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Info.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property()
-  {
-    new RegionalAuthority.Info { ToDate = Guid.Empty.ToString() }.ToDate.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Authority.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new RegionalAuthority.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<RegionalAuthority>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-      result.Active.Should().BeNull();
-      result.FromDate.Should().BeNull();
-      result.ToDate.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new RegionalAuthority {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -237,13 +112,13 @@ public sealed class RegionalAuthorityInfoTests : ClassTest<RegionalAuthority.Inf
   {
     using (new AssertionScope())
     {
-      Validate(new RegionalAuthority.Info
+      Validate(new RegionalAuthority
       {
         Id = 1,
         Active = true,
-        FromDate = DateTimeOffset.MinValue.AsString(),
+        FromDate = DateTimeOffset.MinValue,
         Name = "name",
-        ToDate = DateTimeOffset.MaxValue.AsString()
+        ToDate = DateTimeOffset.MaxValue
       });
     }
 

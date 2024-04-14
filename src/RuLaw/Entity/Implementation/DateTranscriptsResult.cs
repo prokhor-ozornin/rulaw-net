@@ -6,45 +6,20 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Transcripts search result.</para>
 /// </summary>
+[DataContract(Name = "result")]
 public sealed class DateTranscriptsResult : IDateTranscriptsResult
 {
   /// <summary>
   ///   <para>Date of meetings.</para>
   /// </summary>
-  public DateTimeOffset? Date { get; }
+  [DataMember(Name = "date", IsRequired = true)]
+  public DateTimeOffset? Date { get; set; }
 
   /// <summary>
   ///   <para>List of meetings transcripts.</para>
   /// </summary>
-  public IEnumerable<IDateTranscriptMeeting> Meetings { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="date"></param>
-  /// <param name="meetings"></param>
-  public DateTranscriptsResult(DateTimeOffset? date = null,
-                               IEnumerable<IDateTranscriptMeeting> meetings = null)
-  {
-    Date = date;
-    Meetings = meetings ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public DateTranscriptsResult(Info info)
-  {
-    Date = info.Date is not null ? DateTimeOffset.Parse(info.Date) : null;
-    Meetings = info.Meetings ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public DateTranscriptsResult(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "meetings", IsRequired = true)]
+  public IEnumerable<IDateTranscriptMeeting> Meetings { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="DateTranscriptsResult"/> instance with another.</para>
@@ -78,29 +53,4 @@ public sealed class DateTranscriptsResult : IDateTranscriptsResult
   /// </summary>
   /// <returns>A string that represents the current <see cref="DateTranscriptsResult"/>.</returns>
   public override string ToString() => Date is not null ? Date.Value.AsString() : string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "result")]
-  public sealed record Info : IResultable<IDateTranscriptsResult>
-  {
-    /// <summary>
-    ///   <para>Date of meetings.</para>
-    /// </summary>
-    [DataMember(Name = "date", IsRequired = true)]
-    public string Date { get; init; }
-
-    /// <summary>
-    ///   <para>List of meetings transcripts.</para>
-    /// </summary>
-    [DataMember(Name = "meetings", IsRequired = true)]
-    public List<DateTranscriptMeeting> Meetings { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IDateTranscriptsResult ToResult() => new DateTranscriptsResult(this);
-  }
 }

@@ -6,72 +6,38 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Law authority.</para>
 /// </summary>
+[DataContract(Name = "department")]
 public class Authority : IAuthority
 {
   /// <summary>
   ///   <para>Unique identifier of entity.</para>
   /// </summary>
-  public long? Id { get; }
+  [DataMember(Name = "id", IsRequired = true)]
+  public long? Id { get; set; }
 
   /// <summary>
   ///   <para>Name of entity.</para>
   /// </summary>
-  public string Name { get; }
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Whether the authority is active at present or not.</para>
   /// </summary>
-  public bool? Active { get; }
+  [DataMember(Name = "isCurrent", IsRequired = true)]
+  public bool? Active { get; set; }
 
   /// <summary>
   ///   <para>Start date of authority functioning.</para>
   /// </summary>
-  public DateTimeOffset? FromDate { get; }
+  [DataMember(Name = "startDate", IsRequired = true)]
+  public DateTimeOffset? FromDate { get; set; }
 
   /// <summary>
   ///   <para>End date of authority functioning.</para>
   /// </summary>
-  public DateTimeOffset? ToDate { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="id"></param>
-  /// <param name="name"></param>
-  /// <param name="active"></param>
-  /// <param name="fromDate"></param>
-  /// <param name="toDate"></param>
-  public Authority(long? id = null,
-                   string name = null,
-                   bool? active = null,
-                   DateTimeOffset? fromDate = null,
-                   DateTimeOffset? toDate = null)
-  {
-    Id = id;
-    Name = name;
-    Active = active;
-    FromDate = fromDate;
-    ToDate = toDate;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Authority(Info info)
-  {
-    Id = info.Id;
-    Name = info.Name;
-    Active = info.Active;
-    FromDate = info.FromDate is not null ? DateTimeOffset.Parse(info.FromDate) : null;
-    ToDate = info.ToDate is not null ? DateTimeOffset.Parse(info.ToDate) : null;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Authority(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "stopDate")]
+  public DateTimeOffset? ToDate { get; set; }
 
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
@@ -105,47 +71,4 @@ public class Authority : IAuthority
   /// </summary>
   /// <returns>A string that represents the current entity.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "department")]
-  public record Info : IResultable<IAuthority>
-  {
-    /// <summary>
-    ///   <para>Unique identifier of entity.</para>
-    /// </summary>
-    [DataMember(Name = "id", IsRequired = true)]
-    public long? Id { get; init; }
-
-    /// <summary>
-    ///   <para>Name of entity.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para>Whether the authority is active at present or not.</para>
-    /// </summary>
-    [DataMember(Name = "isCurrent", IsRequired = true)]
-    public bool? Active { get; init; }
-
-    /// <summary>
-    ///   <para>Start date of authority functioning.</para>
-    /// </summary>
-    [DataMember(Name = "startDate", IsRequired = true)]
-    public string FromDate { get; init; }
-
-    /// <summary>
-    ///   <para>End date of authority functioning.</para>
-    /// </summary>
-    [DataMember(Name = "stopDate")]
-    public string ToDate { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IAuthority ToResult() => new Authority(this);
-  }
 }

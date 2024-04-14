@@ -6,54 +6,26 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Law workflow stage.</para>
 /// </summary>
+[DataContract(Name = "stage")]
 public sealed class PhaseStage : IPhaseStage
 {
   /// <summary>
   ///   <para>Unique identifier of entity.</para>
   /// </summary>
-  public long? Id { get; }
+  [DataMember(Name = "id", IsRequired = true)]
+  public long? Id { get; set; }
 
   /// <summary>
   ///   <para>Name of entity.</para>
   /// </summary>
-  public string Name { get; }
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Workflow events that are part of the stage.</para>
   /// </summary>
-  public IEnumerable<IStagePhase> Phases { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="id"></param>
-  /// <param name="name"></param>
-  /// <param name="phases"></param>
-  public PhaseStage(long? id = null,
-                    string name = null,
-                    IEnumerable<IStagePhase> phases = null)
-  {
-    Id = id;
-    Name = name;
-    Phases = phases ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public PhaseStage(Info info)
-  {
-    Id = info.Id;
-    Name = info.Name;
-    Phases = info.Phases ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public PhaseStage(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "phases", IsRequired = true)]
+  public IEnumerable<IStagePhase> Phases { get; set; }
 
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
@@ -87,35 +59,4 @@ public sealed class PhaseStage : IPhaseStage
   /// </summary>
   /// <returns>A string that represents the current entity.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "stage")]
-  public record Info : IResultable<IPhaseStage>
-  {
-    /// <summary>
-    ///   <para>Unique identifier of entity.</para>
-    /// </summary>
-    [DataMember(Name = "id", IsRequired = true)]
-    public long? Id { get; init; }
-
-    /// <summary>
-    ///   <para>Name of entity.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para>Workflow events that are part of the stage.</para>
-    /// </summary>
-    [DataMember(Name = "phases", IsRequired = true)]
-    public List<StagePhase> Phases { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IPhaseStage ToResult() => new PhaseStage(this);
-  }
 }

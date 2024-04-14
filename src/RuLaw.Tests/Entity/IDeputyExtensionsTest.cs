@@ -24,11 +24,11 @@ public sealed class IDeputyExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IDeputyExtensions.Position(null)).ThrowExactly<ArgumentNullException>().WithParameterName("deputy");
-      AssertionExtensions.Should(() => new Deputy(new { Position = "position" }).Position()).ThrowExactly<InvalidOperationException>();
+      AssertionExtensions.Should(() => new Deputy { Position = "position" }.Position()).ThrowExactly<InvalidOperationException>();
 
       new Deputy().Position().Should().BeNull();
-      new Deputy(new {Position = "Депутат ГД"}).Position().Should().NotBeNull().And.Be(DeputyPosition.DumaDeputy);
-      new Deputy(new {Position = "Член СФ"}).Position().Should().NotBeNull().And.Be(DeputyPosition.FederationCouncilMember);
+      new Deputy {Position = "Депутат ГД"}.Position().Should().NotBeNull().And.Be(DeputyPosition.DumaDeputy);
+      new Deputy {Position = "Член СФ"}.Position().Should().NotBeNull().And.Be(DeputyPosition.FederationCouncilMember);
 
       static void Validate()
       {
@@ -43,8 +43,8 @@ public sealed class IDeputyExtensionsTest : UnitTest
       AssertionExtensions.Should(() => Enumerable.Empty<IDeputy>().Position(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("position");
 
       Enumerable.Empty<IDeputy>().Position("position").Should().NotBeNull().And.BeEmpty();
-      var first = new Deputy(new {Position = "First"});
-      var second = new Deputy(new {Position = "Second"});
+      var first = new Deputy {Position = "First"};
+      var second = new Deputy {Position = "Second"};
       var deputies = first.ToSequence(second, null);
       deputies.Position("first").Should().NotBeNullOrEmpty().And.Equal(first);
 

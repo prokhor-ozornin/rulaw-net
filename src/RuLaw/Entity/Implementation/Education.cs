@@ -6,45 +6,20 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Deputy's higher education information record.</para>
 /// </summary>
+[DataContract(Name = "education")]
 public sealed class Education : IEducation
 {
   /// <summary>
   ///   <para>Name of education institution.</para>
   /// </summary>
-  public string Institution { get; }
+  [DataMember(Name = "institution", IsRequired = true)]
+  public string Institution { get; set; }
 
   /// <summary>
   ///   <para>Year of graduation.</para>
   /// </summary>
-  public short? Year { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="institution"></param>
-  /// <param name="year"></param>
-  public Education(string institution = null,
-                   short? year = null)
-  {
-    Institution = institution;
-    Year = year;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Education(Info info)
-  {
-    Institution = info.Institution;
-    Year = info.Year;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Education(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "year", IsRequired = true)]
+  public short? Year { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="IEducation"/> instance with another.</para>
@@ -78,29 +53,4 @@ public sealed class Education : IEducation
   /// </summary>
   /// <returns>A string that represents the current <see cref="Education"/>.</returns>
   public override string ToString() => $"{Institution} ({Year})";
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "education")]
-  public sealed record Info : IResultable<IEducation>
-  {
-    /// <summary>
-    ///   <para>Name of education institution.</para>
-    /// </summary>
-    [DataMember(Name = "institution", IsRequired = true)]
-    public string Institution { get; init; }
-
-    /// <summary>
-    ///   <para>Year of graduation.</para>
-    /// </summary>
-    [DataMember(Name = "year", IsRequired = true)]
-    public short? Year { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IEducation ToResult() => new Education(this);
-  }
 }

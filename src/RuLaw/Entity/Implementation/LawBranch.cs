@@ -6,45 +6,20 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Branch of law.</para>
 /// </summary>
+[DataContract(Name = "class")]
 public sealed class LawBranch : ILawBranch
 {
   /// <summary>
   ///   <para>Unique identifier of entity.</para>
   /// </summary>
-  public long? Id { get; }
+  [DataMember(Name = "id", IsRequired = true)]
+  public long? Id { get; set; }
 
   /// <summary>
   ///   <para>Name of entity.</para>
   /// </summary>
-  public string Name { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="id"></param>
-  /// <param name="name"></param>
-  public LawBranch(long? id = null,
-                   string name = null)
-  {
-    Id = id;
-    Name = name;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public LawBranch(Info info)
-  {
-    Id = info.Id;
-    Name = info.Name;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public LawBranch(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
@@ -78,29 +53,4 @@ public sealed class LawBranch : ILawBranch
   /// </summary>
   /// <returns>A string that represents the current entity.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "class")]
-  public record Info : IResultable<ILawBranch>
-  {
-    /// <summary>
-    ///   <para>Unique identifier of entity.</para>
-    /// </summary>
-    [DataMember(Name = "id", IsRequired = true)]
-    public long? Id { get; init; }
-
-    /// <summary>
-    ///   <para>Name of entity.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public ILawBranch ToResult() => new LawBranch(this);
-  }
 }

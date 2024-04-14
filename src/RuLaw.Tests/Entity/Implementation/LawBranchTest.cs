@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,23 +14,13 @@ public sealed class LawBranchTest : ClassTest<LawBranch>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="LawBranch(long?, string?)"/>
-  /// <seealso cref="LawBranch(LawBranch.Info)"/>
-  /// <seealso cref="LawBranch(object)"/>
+  /// <seealso cref="LawBranch()"/>
   [Fact]
   public void Constructors()
   {
     typeof(LawBranch).Should().BeDerivedFrom<object>().And.Implement<ILawBranch>();
 
     var topic = new LawBranch();
-    topic.Id.Should().BeNull();
-    topic.Name.Should().BeNull();
-
-    topic = new LawBranch(new LawBranch.Info());
-    topic.Id.Should().BeNull();
-    topic.Name.Should().BeNull();
-
-    topic = new LawBranch(new {});
     topic.Id.Should().BeNull();
     topic.Name.Should().BeNull();
   }
@@ -42,10 +31,7 @@ public sealed class LawBranchTest : ClassTest<LawBranch>
   [Fact]
   public void Id_Property()
   {
-    new LawBranch(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new LawBranch { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -54,10 +40,7 @@ public sealed class LawBranchTest : ClassTest<LawBranch>
   [Fact]
   public void Name_Property()
   {
-    new LawBranch(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new LawBranch { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -88,67 +71,7 @@ public sealed class LawBranchTest : ClassTest<LawBranch>
   [Fact]
   public void ToString_Method()
   {
-    new LawBranch(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="LawBranch.Info"/>.</para>
-/// </summary>
-public sealed class LawBranchInfoTests : ClassTest<LawBranch.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="LawBranch.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(LawBranch.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ILawBranch>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new LawBranch.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawBranch.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new LawBranch.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawBranch.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new LawBranch.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawBranch.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new LawBranch.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<LawBranch>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-    }
-    
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new LawBranch {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -159,7 +82,7 @@ public sealed class LawBranchInfoTests : ClassTest<LawBranch.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new LawBranch.Info
+      Validate(new LawBranch
       {
         Id = 1,
         Name = "name"

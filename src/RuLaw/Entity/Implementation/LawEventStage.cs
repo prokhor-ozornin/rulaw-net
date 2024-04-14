@@ -6,45 +6,20 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Stage of law's review process.</para>
 /// </summary>
+[DataContract(Name = "stage")]
 public sealed class LawEventStage : ILawEventStage
 {
   /// <summary>
   ///   <para>Unique identifier of entity.</para>
   /// </summary>
-  public long? Id { get; }
+  [DataMember(Name = "id", IsRequired = true)]
+  public long? Id { get; set; }
 
   /// <summary>
   ///   <para>Name of entity.</para>
   /// </summary>
-  public string Name { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="id"></param>
-  /// <param name="name"></param>
-  public LawEventStage(long? id = null,
-                       string name = null)
-  {
-    Id = id;
-    Name = name;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public LawEventStage(Info info)
-  {
-    Id = info.Id;
-    Name = info.Name;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public LawEventStage(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
@@ -78,29 +53,4 @@ public sealed class LawEventStage : ILawEventStage
   /// </summary>
   /// <returns>A string that represents the current entity.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "stage")]
-  public record Info : IResultable<ILawEventStage>
-  {
-    /// <summary>
-    ///   <para>Unique identifier of entity.</para>
-    /// </summary>
-    [DataMember(Name = "id", IsRequired = true)]
-    public long? Id { get; init; }
-
-    /// <summary>
-    ///   <para>Name of entity.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public ILawEventStage ToResult() => new LawEventStage(this);
-  }
 }

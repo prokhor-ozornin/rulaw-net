@@ -114,215 +114,215 @@ internal sealed class Api : IApi
 
   private sealed class BranchesApi : IBranchesApi
   {
-    private readonly Api api;
+    private Api Api { get; }
 
-    public BranchesApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public BranchesApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
     public async IAsyncEnumerable<ILawBranch> AllAsync([EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      var result = await api.Request<List<LawBranch.Info>>($"/{api.ApiToken}/classes", null, cancellation).ConfigureAwait(false);
+      var result = await Api.Request<List<LawBranch>>($"/{Api.ApiToken}/classes", null, cancellation).ConfigureAwait(false);
 
       foreach (var branch in result.WithCancellation(cancellation))
       {
-        yield return branch.ToResult();
+        yield return branch;
       }
     }
   }
 
   private sealed class CommitteesApi : ICommitteesApi
   {
-    private readonly Api api;
+    private Api Api { get; }
 
-    public CommitteesApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public CommitteesApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
     public async IAsyncEnumerable<ICommittee> AllAsync([EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      var result = await api.Request<List<Committee.Info>>($"/{api.ApiToken}/committees", null, cancellation).ConfigureAwait(false);
+      var result = await Api.Request<List<Committee>>($"/{Api.ApiToken}/committees", null, cancellation).ConfigureAwait(false);
 
       foreach (var committee in result.WithCancellation(cancellation))
       {
-        yield return committee.ToResult();
+        yield return committee;
       }
     }
   }
 
   private sealed class DeputiesApi : IDeputiesApi
   {
-    private readonly Api api;
+    private Api Api { get; }
 
-    public DeputiesApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public DeputiesApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
-    public async Task<IDeputyInfo> FindAsync(long id, CancellationToken cancellation = default) => (await api.Request<DeputyInfo.Info>($"/{api.ApiToken}/deputy", new Dictionary<string, object> {{"id", id}}, cancellation).ConfigureAwait(false)).ToResult();
+    public async Task<IDeputyInfo> FindAsync(long id, CancellationToken cancellation = default) => (await Api.Request<DeputyInfo>($"/{Api.ApiToken}/deputy", new Dictionary<string, object> {{"id", id}}, cancellation).ConfigureAwait(false));
 
     public async IAsyncEnumerable<IDeputy> SearchAsync(IDeputiesApiRequest request = null, [EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      var result = await api.Request<List<Deputy.Info>>($"/{api.ApiToken}/deputies", request?.Parameters, cancellation).ConfigureAwait(false);
+      var result = await Api.Request<List<Deputy>>($"/{Api.ApiToken}/deputies", request?.Parameters, cancellation).ConfigureAwait(false);
 
       foreach (var deputy in result.WithCancellation(cancellation))
       {
-        yield return deputy.ToResult();
+        yield return deputy;
       }
     }
   }
 
   private sealed class AuthoritiesApi : IAuthoritiesApi
   {
-    private readonly Api api;
+    private Api Api { get; }
 
-    public AuthoritiesApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public AuthoritiesApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
     public async IAsyncEnumerable<IAuthority> FederalAsync(IAuthoritiesApiRequest request = null, [EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      var result = await api.Request<List<FederalAuthority.Info>>($"/{api.ApiToken}/federal-organs", request?.Parameters, cancellation).ConfigureAwait(false);
+      var result = await Api.Request<List<FederalAuthority>>($"/{Api.ApiToken}/federal-organs", request?.Parameters, cancellation).ConfigureAwait(false);
 
       foreach (var authority in result.WithCancellation(cancellation))
       {
-        yield return authority.ToResult();
+        yield return authority;
       }
     }
 
     public async IAsyncEnumerable<IAuthority> RegionalAsync(IAuthoritiesApiRequest request = null, [EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      var result = await api.Request<List<RegionalAuthority.Info>>($"/{api.ApiToken}/regional-organs", request?.Parameters, cancellation).ConfigureAwait(false);
+      var result = await Api.Request<List<RegionalAuthority>>($"/{Api.ApiToken}/regional-organs", request?.Parameters, cancellation).ConfigureAwait(false);
 
       foreach (var authority in result.WithCancellation(cancellation))
       {
-        yield return authority.ToResult();
+        yield return authority;
       }
     }
   }
 
   private sealed class InstancesApi : IInstancesApi
   {
-    private readonly Api api;
+    private Api Api { get; }
 
-    public InstancesApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public InstancesApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
     public async IAsyncEnumerable<IInstance> SearchAsync(IInstancesApiRequest request = null, [EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      var result = await api.Request<List<Instance.Info>>($"/{api.ApiToken}/instances", request?.Parameters, cancellation).ConfigureAwait(false);
+      var result = await Api.Request<List<Instance>>($"/{Api.ApiToken}/instances", request?.Parameters, cancellation).ConfigureAwait(false);
 
       foreach (var instance in result.WithCancellation(cancellation))
       {
-        yield return instance.ToResult();
+        yield return instance;
       }
     }
   }
 
   private sealed class LawsApi : ILawsApi
   {
-    private readonly Api api;
+    private Api Api { get; }
 
-    public LawsApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public LawsApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
     public async Task<ILawsSearchResult> SearchAsync(ILawsApiRequest request, CancellationToken cancellation = default)
     {
       if (request is null) throw new ArgumentNullException(nameof(request));
       
-      return (await api.Request<LawsSearchResult.Info>($"/{api.ApiToken}/search", request.Parameters, cancellation).ConfigureAwait(false)).ToResult();
+      return (await Api.Request<LawsSearchResult>($"/{Api.ApiToken}/search", request.Parameters, cancellation).ConfigureAwait(false));
     }
   }
 
   private sealed class ConvocationsApi : IConvocationsApi
   {
-    private readonly Api api;
+    private Api Api { get; }
 
-    public ConvocationsApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public ConvocationsApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
     public async IAsyncEnumerable<IConvocation> AllAsync([EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      var result = await api.Request<List<Convocation.Info>>($"/{api.ApiToken}/periods", null, cancellation).ConfigureAwait(false);
+      var result = await Api.Request<List<Convocation>>($"/{Api.ApiToken}/periods", null, cancellation).ConfigureAwait(false);
 
       foreach (var convocation in result.WithCancellation(cancellation))
       {
-        yield return convocation.ToResult();
+        yield return convocation;
       }
     }
   }
 
   private sealed class QuestionsApi : IQuestionsApi
   {
-    private readonly Api api;
+    private Api Api { get; }
 
-    public QuestionsApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public QuestionsApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
-    public async Task<IQuestionsSearchResult> SearchAsync(IQuestionsApiRequest request = null, CancellationToken cancellation = default) => (await api.Request<QuestionsSearchResult.Info>($"/{api.ApiToken}/questions", request?.Parameters, cancellation).ConfigureAwait(false)).ToResult();
+    public async Task<IQuestionsSearchResult> SearchAsync(IQuestionsApiRequest request = null, CancellationToken cancellation = default) => (await Api.Request<QuestionsSearchResult>($"/{Api.ApiToken}/questions", request?.Parameters, cancellation).ConfigureAwait(false));
   }
 
   private sealed class RequestsApi : IRequestsApi
   {
-    private readonly Api api;
+    private Api Api { get; }
 
-    public RequestsApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public RequestsApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
     public async IAsyncEnumerable<IDeputyRequest> AllAsync([EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      var result = await api.Request<List<DeputyRequest.Info>>($"/{api.ApiToken}/requests", null, cancellation).ConfigureAwait(false);
+      var result = await Api.Request<List<DeputyRequest>>($"/{Api.ApiToken}/requests", null, cancellation).ConfigureAwait(false);
 
       foreach (var request in result.WithCancellation(cancellation))
       {
-        yield return request.ToResult();
+        yield return request;
       }
     }
   }
 
   private sealed class StagesApi : IStagesApi
   {
-    private readonly Api api;
+    private Api Api { get; }
 
-    public StagesApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public StagesApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
     public async IAsyncEnumerable<IPhaseStage> AllAsync([EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      var result = await api.Request<List<PhaseStage.Info>>($"/{api.ApiToken}/stages", null, cancellation).ConfigureAwait(false);
+      var result = await Api.Request<List<PhaseStage>>($"/{Api.ApiToken}/stages", null, cancellation).ConfigureAwait(false);
 
       foreach (var stage in result.WithCancellation(cancellation))
       {
-        yield return stage.ToResult();
+        yield return stage;
       }
     }
   }
 
   private sealed class TopicsApi : ITopicsApi
   {
-    private Api api;
+    private Api Api { get; }
 
-    public TopicsApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public TopicsApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
     public async IAsyncEnumerable<ITopic> AllAsync([EnumeratorCancellation] CancellationToken cancellation = default)
     {
-      var result = await api.Request<List<Topic.Info>>($"/{api.ApiToken}/topics", null, cancellation).ConfigureAwait(false);
+      var result = await Api.Request<List<Topic>>($"/{Api.ApiToken}/topics", null, cancellation).ConfigureAwait(false);
 
       foreach (var topic in result.WithCancellation(cancellation))
       {
-        yield return topic.ToResult();
+        yield return topic;
       }
     }
   }
 
   private sealed class TranscriptsApi : ITranscriptsApi
   {
-    private readonly Api api;
+    private Api Api { get; }
 
-    public TranscriptsApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public TranscriptsApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
-    public async Task<IDateTranscriptsResult> DateAsync(DateTimeOffset date, CancellationToken cancellation = default) => (await api.Request<DateTranscriptsResult.Info>($"/{api.ApiToken}/transcriptFull/{date.AsString()}", null, cancellation).ConfigureAwait(false)).ToResult();
+    public async Task<IDateTranscriptsResult> DateAsync(DateTimeOffset date, CancellationToken cancellation = default) => (await Api.Request<DateTranscriptsResult>($"/{Api.ApiToken}/transcriptFull/{date.AsString()}", null, cancellation).ConfigureAwait(false));
 
-    public async Task<IDeputyTranscriptsResult> DeputyAsync(IDeputyTranscriptApiRequest request, CancellationToken cancellation = default) => (await api.Request<DeputyTranscriptsResult.Info>($"/{api.ApiToken}/transcriptDeputy/{request.Parameters["deputy"]}", request.Parameters, cancellation).ConfigureAwait(false)).ToResult();
+    public async Task<IDeputyTranscriptsResult> DeputyAsync(IDeputyTranscriptApiRequest request, CancellationToken cancellation = default) => (await Api.Request<DeputyTranscriptsResult>($"/{Api.ApiToken}/transcriptDeputy/{request.Parameters["deputy"]}", request.Parameters, cancellation).ConfigureAwait(false));
 
-    public async Task<ILawTranscriptsResult> LawAsync(string number, CancellationToken cancellation = default) => (await api.Request<LawTranscriptsResult.Info>($"/{api.ApiToken}/transcript/{number}", null, cancellation).ConfigureAwait(false)).ToResult();
+    public async Task<ILawTranscriptsResult> LawAsync(string number, CancellationToken cancellation = default) => (await Api.Request<LawTranscriptsResult>($"/{Api.ApiToken}/transcript/{number}", null, cancellation).ConfigureAwait(false));
 
-    public async Task<IQuestionTranscriptsResult> QuestionAsync(long meeting, long question, CancellationToken cancellation = default) => (await api.Request<QuestionTranscriptsResult.Info>($"/{api.ApiToken}/transcriptQuestion/{meeting}/{question}", null, cancellation).ConfigureAwait(false)).ToResult();
+    public async Task<IQuestionTranscriptsResult> QuestionAsync(long meeting, long question, CancellationToken cancellation = default) => (await Api.Request<QuestionTranscriptsResult>($"/{Api.ApiToken}/transcriptQuestion/{meeting}/{question}", null, cancellation).ConfigureAwait(false));
 
-    public async Task<IResolutionTranscriptsResult> ResolutionAsync(string number, CancellationToken cancellation = default) => (await api.Request<ResolutionTranscriptsResult.Info>($"/{api.ApiToken}/transcriptResolution/{number}", null, cancellation).ConfigureAwait(false)).ToResult();
+    public async Task<IResolutionTranscriptsResult> ResolutionAsync(string number, CancellationToken cancellation = default) => (await Api.Request<ResolutionTranscriptsResult>($"/{Api.ApiToken}/transcriptResolution/{number}", null, cancellation).ConfigureAwait(false));
   }
 
   private sealed class VotesApi : IVotesApi
   {
-    private readonly Api api;
+    private Api Api { get; }
 
-    public VotesApi(Api api) => this.api = api ?? throw new ArgumentNullException(nameof(api));
+    public VotesApi(Api api) => Api = api ?? throw new ArgumentNullException(nameof(api));
 
-    public async Task<IVotesSearchResult> SearchAsync(IVotesSearchApiRequest request, CancellationToken cancellation = default) => (await api.Request<VotesSearchResult.Info>($"/{api.ApiToken}/voteSearch", request.Parameters, cancellation).ConfigureAwait(false)).ToResult();
+    public async Task<IVotesSearchResult> SearchAsync(IVotesSearchApiRequest request, CancellationToken cancellation = default) => (await Api.Request<VotesSearchResult>($"/{Api.ApiToken}/voteSearch", request.Parameters, cancellation).ConfigureAwait(false));
   }
 }

@@ -1,7 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
@@ -20,18 +19,15 @@ public sealed class INameableExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => ((IEnumerable<NameableEntity>) null).Name("currency")).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
-
-      Enumerable.Empty<NameableEntity>().Name(null).Should().NotBeNull().And.BeEmpty();
-
-      new NameableEntity { Name = "first" }.ToSequence(new NameableEntity { Name = "second" }, null).Name("first").Should().NotBeNullOrEmpty().And.ContainSingle();
+      AssertionExtensions.Should(() => Enumerable.Empty<INameable>().Name(null)).ThrowExactly<ArgumentNullException>().WithParameterName("name");
+      AssertionExtensions.Should(() => Enumerable.Empty<INameable>().Name(string.Empty)).ThrowExactly<ArgumentException>().WithMessage("name");
+      
+      Validate(new NameableEntity[] { new() { Name = "first" }, new() { Name = "second" } }, "first", 1);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<INameable> sequence, string name, int count) => sequence.Name(name).Should().NotBeNull().And.NotBeSameAs(sequence).And.HaveCount(count);
   }
 
   private sealed class NameableEntity : INameable

@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -16,25 +15,13 @@ public sealed class PhaseStageTest : ClassTest<PhaseStage>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="PhaseStage(long?, string?, IEnumerable{IStagePhase}?)"/>
-  /// <seealso cref="PhaseStage(PhaseStage.Info)"/>
-  /// <seealso cref="PhaseStage(object)"/>
+  /// <seealso cref="PhaseStage()"/>
   [Fact]
   public void Constructors()
   {
     typeof(PhaseStage).Should().BeDerivedFrom<object>().And.Implement<IPhaseStage>();
 
     var stage = new PhaseStage();
-    stage.Id.Should().BeNull();
-    stage.Name.Should().BeNull();
-    stage.Phases.Should().BeEmpty();
-
-    stage = new PhaseStage(new PhaseStage.Info());
-    stage.Id.Should().BeNull();
-    stage.Name.Should().BeNull();
-    stage.Phases.Should().BeEmpty();
-
-    stage = new PhaseStage(new {});
     stage.Id.Should().BeNull();
     stage.Name.Should().BeNull();
     stage.Phases.Should().BeEmpty();
@@ -46,10 +33,7 @@ public sealed class PhaseStageTest : ClassTest<PhaseStage>
   [Fact]
   public void Id_Property()
   {
-    new PhaseStage(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new PhaseStage { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -58,10 +42,7 @@ public sealed class PhaseStageTest : ClassTest<PhaseStage>
   [Fact]
   public void Name_Property()
   {
-    new PhaseStage(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new PhaseStage { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -70,12 +51,10 @@ public sealed class PhaseStageTest : ClassTest<PhaseStage>
   [Fact]
   public void Phases_Property()
   {
-    var stage = new PhaseStage(new PhaseStage.Info());
+    var stage = new PhaseStage();
     stage.Phases.Should().BeEmpty();
 
-    var phase = new StagePhase(new
-    {
-    });
+    var phase = new StagePhase();
 
     var phases = stage.Phases.To<List<StagePhase>>();
     phases.Add(phase);
@@ -112,53 +91,7 @@ public sealed class PhaseStageTest : ClassTest<PhaseStage>
   [Fact]
   public void ToString_Method()
   {
-    new PhaseStage(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="PhaseStage.Info"/>.</para>
-/// </summary>
-public sealed class PhaseStageInfoTests : ClassTest<PhaseStage.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="PhaseStage.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(PhaseStage.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IPhaseStage>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new PhaseStage.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-    info.Phases.Should().BeNull();
-  }
-
-
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="PhaseStage.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new PhaseStage.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<PhaseStage>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-      result.Phases.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new PhaseStage {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -169,11 +102,11 @@ public sealed class PhaseStageInfoTests : ClassTest<PhaseStage.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new PhaseStage.Info
+      Validate(new PhaseStage
       {
         Id = 1,
         Name = "name",
-        Phases = [new StagePhase(new { Id = 2 })]
+        Phases = [new StagePhase { Id = 2 }]
       });
     }
 

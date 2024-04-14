@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,29 +14,13 @@ public sealed class FederalAuthorityTest : ClassTest<FederalAuthority>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="FederalAuthority(long?, string?, bool?, DateTimeOffset?, DateTimeOffset?)"/>
-  /// <seealso cref="FederalAuthority(FederalAuthority.Info)"/>
-  /// <seealso cref="FederalAuthority(object)"/>
+  /// <seealso cref="FederalAuthority()"/>
   [Fact]
   public void Constructors()
   {
     typeof(FederalAuthority).Should().BeDerivedFrom<Authority>();
 
     var authority = new FederalAuthority();
-    authority.Id.Should().BeNull();
-    authority.Name.Should().BeNull();
-    authority.Active.Should().BeNull();
-    authority.FromDate.Should().BeNull();
-    authority.ToDate.Should().BeNull();
-
-    authority = new FederalAuthority(new FederalAuthority.Info());
-    authority.Id.Should().BeNull();
-    authority.Name.Should().BeNull();
-    authority.Active.Should().BeNull();
-    authority.FromDate.Should().BeNull();
-    authority.ToDate.Should().BeNull();
-
-    authority = new FederalAuthority(new {});
     authority.Id.Should().BeNull();
     authority.Name.Should().BeNull();
     authority.Active.Should().BeNull();
@@ -51,10 +34,7 @@ public sealed class FederalAuthorityTest : ClassTest<FederalAuthority>
   [Fact]
   public void Id_Property()
   {
-    new RegionalAuthority(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new RegionalAuthority { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -63,10 +43,7 @@ public sealed class FederalAuthorityTest : ClassTest<FederalAuthority>
   [Fact]
   public void Name_Property()
   {
-    new FederalAuthority(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new FederalAuthority { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -75,10 +52,7 @@ public sealed class FederalAuthorityTest : ClassTest<FederalAuthority>
   [Fact]
   public void Active_Property()
   {
-    new FederalAuthority(new
-    {
-      Active = true
-    }).Active.Should().BeTrue();
+    new FederalAuthority { Active = true }.Active.Should().BeTrue();
   }
 
   /// <summary>
@@ -87,10 +61,7 @@ public sealed class FederalAuthorityTest : ClassTest<FederalAuthority>
   [Fact]
   public void FromDate_Property()
   {
-    new FederalAuthority(new
-    {
-      FromDate = DateTimeOffset.MaxValue
-    }).FromDate.Should().Be(DateTimeOffset.MaxValue);
+    new FederalAuthority { FromDate = DateTimeOffset.MaxValue }.FromDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -99,10 +70,7 @@ public sealed class FederalAuthorityTest : ClassTest<FederalAuthority>
   [Fact]
   public void ToDate_Property()
   {
-    new FederalAuthority(new
-    {
-      ToDate = DateTimeOffset.MaxValue
-    }).ToDate.Should().Be(DateTimeOffset.MaxValue);
+    new FederalAuthority { ToDate = DateTimeOffset.MaxValue }.ToDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -133,100 +101,7 @@ public sealed class FederalAuthorityTest : ClassTest<FederalAuthority>
   [Fact]
   public void ToString_Method()
   {
-    new FederalAuthority(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="FederalAuthority.Info"/>.</para>
-/// </summary>
-public sealed class FederalAuthorityInfoTests : ClassTest<FederalAuthority.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="FederalAuthority.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(FederalAuthority.Info).Should().BeDerivedFrom<Authority.Info>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new FederalAuthority.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-    info.Active.Should().BeNull();
-    info.FromDate.Should().BeNull();
-    info.ToDate.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new RegionalAuthority.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new FederalAuthority.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Info.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property()
-  {
-    new FederalAuthority.Info { Active = true }.Active.Should().BeTrue();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Info.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void FromDate_Property()
-  {
-    new FederalAuthority.Info { FromDate = Guid.Empty.ToString() }.FromDate.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="FederalAuthority.Info.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property()
-  {
-    new FederalAuthority.Info { ToDate = Guid.Empty.ToString() }.ToDate.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Authority.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new FederalAuthority.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<FederalAuthority>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-      result.Active.Should().BeNull();
-      result.FromDate.Should().BeNull();
-      result.ToDate.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new FederalAuthority {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -237,13 +112,13 @@ public sealed class FederalAuthorityInfoTests : ClassTest<FederalAuthority.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new FederalAuthority.Info
+      Validate(new FederalAuthority
       {
         Id = 1,
         Active = true,
-        FromDate = DateTimeOffset.MinValue.AsString(),
+        FromDate = DateTimeOffset.MinValue,
         Name = "name",
-        ToDate = DateTimeOffset.MaxValue.AsString()
+        ToDate = DateTimeOffset.MaxValue
       });
     }
 

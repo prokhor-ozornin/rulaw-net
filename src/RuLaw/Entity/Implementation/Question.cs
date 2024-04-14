@@ -6,81 +6,44 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Question of Duma's session.</para>
 /// </summary>
+[DataContract(Name = "question")]
 public sealed class Question : IQuestion
 {
   /// <summary>
   ///   <para>Title of question.</para>
   /// </summary>
-  public string Name { get; }
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Date of session.</para>
   /// </summary>
-  public DateTimeOffset? Date { get; }
+  [DataMember(Name = "datez", IsRequired = true)]
+  public DateTimeOffset? Date { get; set; }
 
   /// <summary>
   ///   <para>Code of question.</para>
   /// </summary>
-  public int? Code { get; }
+  [DataMember(Name = "kodvopr", IsRequired = true)]
+  public int? Code { get; set; }
 
   /// <summary>
   ///   <para>Code of session.</para>
   /// </summary>
-  public int? SessionCode { get; }
+  [DataMember(Name = "kodz", IsRequired = true)]
+  public int? SessionCode { get; set; }
 
   /// <summary>
   ///   <para>First line in question's transcript.</para>
   /// </summary>
-  public int? StartLine { get; }
+  [DataMember(Name = "nbegin", IsRequired = true)]
+  public int? StartLine { get; set; }
 
   /// <summary>
   ///   <para>Last line in question's transcript.</para>
   /// </summary>
-  public int? EndLine { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="name"></param>
-  /// <param name="date"></param>
-  /// <param name="code"></param>
-  /// <param name="sessionCode"></param>
-  /// <param name="startLine"></param>
-  /// <param name="endLine"></param>
-  public Question(string name = null,
-                  DateTimeOffset? date = null,
-                  int? code = null,
-                  int? sessionCode = null,
-                  int? startLine = null,
-                  int? endLine = null)
-  {
-    Name = name;
-    Date = date;
-    Code = code;
-    SessionCode = sessionCode;
-    StartLine = startLine;
-    EndLine = endLine;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Question(Info info)
-  {
-    Name = info.Name;
-    Date = info.Date is not null ? DateTimeOffset.Parse(info.Date) : null;
-    Code = info.Code;
-    SessionCode = info.SessionCode;
-    StartLine = info.StartLine;
-    EndLine = info.EndLine;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Question(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "nend", IsRequired = true)]
+  public int? EndLine { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="IQuestion"/> instance with another.</para>
@@ -114,53 +77,4 @@ public sealed class Question : IQuestion
   /// </summary>
   /// <returns>A string that represents the current <see cref="Question"/>.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "question")]
-  public sealed record Info : IResultable<IQuestion>
-  {
-    /// <summary>
-    ///   <para>Title of question.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para>Date of session.</para>
-    /// </summary>
-    [DataMember(Name = "datez", IsRequired = true)]
-    public string Date { get; init; }
-
-    /// <summary>
-    ///   <para>Code of question.</para>
-    /// </summary>
-    [DataMember(Name = "kodvopr", IsRequired = true)]
-    public int? Code { get; init; }
-
-    /// <summary>
-    ///   <para>Code of session.</para>
-    /// </summary>
-    [DataMember(Name = "kodz", IsRequired = true)]
-    public int? SessionCode { get; init; }
-
-    /// <summary>
-    ///   <para>First line in question's transcript.</para>
-    /// </summary>
-    [DataMember(Name = "nbegin", IsRequired = true)]
-    public int? StartLine { get; init; }
-
-    /// <summary>
-    ///   <para>Last line in question's transcript.</para>
-    /// </summary>
-    [DataMember(Name = "nend", IsRequired = true)]
-    public int? EndLine { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IQuestion ToResult() => new Question(this);
-  }
 }

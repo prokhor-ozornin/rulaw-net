@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -16,27 +15,13 @@ public sealed class LawsSearchResultTest : ClassTest<LawsSearchResult>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="LawsSearchResult(int?, int?, string?, IEnumerable{ILaw}?)"/>
-  /// <seealso cref="LawsSearchResult(LawsSearchResult.Info)"/>
-  /// <seealso cref="LawsSearchResult(object)"/>
+  /// <seealso cref="LawsSearchResult()"/>
   [Fact]
   public void Constructors()
   {
     typeof(LawsSearchResult).Should().BeDerivedFrom<object>().And.Implement<ILawsSearchResult>();
 
     var result = new LawsSearchResult();
-    result.Page.Should().BeNull();
-    result.Count.Should().BeNull();
-    result.Wording.Should().BeNull();
-    result.Laws.Should().BeEmpty();
-
-    result = new LawsSearchResult(new LawsSearchResult.Info());
-    result.Page.Should().BeNull();
-    result.Count.Should().BeNull();
-    result.Wording.Should().BeNull();
-    result.Laws.Should().BeEmpty();
-
-    result = new LawsSearchResult(new {});
     result.Page.Should().BeNull();
     result.Count.Should().BeNull();
     result.Wording.Should().BeNull();
@@ -49,10 +34,7 @@ public sealed class LawsSearchResultTest : ClassTest<LawsSearchResult>
   [Fact]
   public void Page_Property()
   {
-    new LawsSearchResult(new
-    {
-      Page = int.MaxValue
-    }).Page.Should().Be(int.MaxValue);
+    new LawsSearchResult { Page = int.MaxValue }.Page.Should().Be(int.MaxValue);
   }
 
   /// <summary>
@@ -61,10 +43,7 @@ public sealed class LawsSearchResultTest : ClassTest<LawsSearchResult>
   [Fact]
   public void Count_Property()
   {
-    new LawsSearchResult(new
-    {
-      Count = int.MaxValue
-    }).Count.Should().Be(int.MaxValue);
+    new LawsSearchResult { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
   }
 
   /// <summary>
@@ -73,10 +52,7 @@ public sealed class LawsSearchResultTest : ClassTest<LawsSearchResult>
   [Fact]
   public void Wording_Property()
   {
-    new LawsSearchResult(new
-    {
-      Wording = Guid.Empty.ToString()
-    }).Wording.Should().Be(Guid.Empty.ToString());
+    new LawsSearchResult { Wording = Guid.Empty.ToString() }.Wording.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -85,12 +61,8 @@ public sealed class LawsSearchResultTest : ClassTest<LawsSearchResult>
   [Fact]
   public void Laws_Property()
   {
-    var result = new LawsSearchResult(new
-    {
-    });
-    var law = new Law(new
-    {
-    });
+    var result = new LawsSearchResult();
+    var law = new Law();
 
     var laws = result.Laws.To<List<ILaw>>();
 
@@ -113,90 +85,7 @@ public sealed class LawsSearchResultTest : ClassTest<LawsSearchResult>
   [Fact]
   public void ToString_Method()
   {
-    new LawsSearchResult(new {Wording = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="LawsSearchResult.Info"/>.</para>
-/// </summary>
-public sealed class LawsSearchResultInfoTests : ClassTest<LawsSearchResult.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="LawsSearchResult.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(LawsSearchResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ILawsSearchResult>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new LawsSearchResult.Info();
-    info.Page.Should().BeNull();
-    info.Count.Should().BeNull();
-    info.Wording.Should().BeNull();
-    info.Laws.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Page"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Page_Property()
-  {
-    new LawsSearchResult.Info { Page = int.MaxValue }.Page.Should().Be(int.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Count"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Count_Property()
-  {
-    new LawsSearchResult.Info { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Wording"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Wording_Property()
-  {
-    new LawsSearchResult.Info { Wording = Guid.Empty.ToString() }.Wording.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.Laws"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Laws_Property()
-  {
-    var laws = new List<Law>();
-    new LawsSearchResult.Info { Laws = laws }.Laws.Should().BeSameAs(laws);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawsSearchResult.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new LawsSearchResult.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<LawsSearchResult>();
-      result.Page.Should().BeNull();
-      result.Count.Should().BeNull();
-      result.Wording.Should().BeNull();
-      result.Laws.Should().BeEmpty();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new LawsSearchResult {Wording = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -207,12 +96,12 @@ public sealed class LawsSearchResultInfoTests : ClassTest<LawsSearchResult.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new LawsSearchResult.Info
+      Validate(new LawsSearchResult
       {
         Page = 3,
         Count = 2,
         Wording = "wording",
-        Laws = [new Law(new { Id = 1 })]
+        Laws = [new Law { Id = 1 }]
       });
     }
 

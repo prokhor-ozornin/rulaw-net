@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,25 +14,13 @@ public sealed class StagePhaseTest : ClassTest<StagePhase>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="StagePhase(long?, string?, IInstance?)"/>
-  /// <seealso cref="StagePhase(StagePhase.Info)"/>
-  /// <seealso cref="StagePhase(object)"/>
+  /// <seealso cref="StagePhase()"/>
   [Fact]
   public void Constructors()
   {
     typeof(StagePhase).Should().BeDerivedFrom<object>().And.Implement<IStagePhase>();
 
     var phase = new StagePhase();
-    phase.Id.Should().BeNull();
-    phase.Name.Should().BeNull();
-    phase.Instance.Should().BeNull();
-
-    phase = new StagePhase(new StagePhase.Info());
-    phase.Id.Should().BeNull();
-    phase.Name.Should().BeNull();
-    phase.Instance.Should().BeNull();
-
-    phase = new StagePhase(new {});
     phase.Id.Should().BeNull();
     phase.Name.Should().BeNull();
     phase.Instance.Should().BeNull();
@@ -45,10 +32,7 @@ public sealed class StagePhaseTest : ClassTest<StagePhase>
   [Fact]
   public void Id_Property()
   {
-    new Topic(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new Topic { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -57,10 +41,7 @@ public sealed class StagePhaseTest : ClassTest<StagePhase>
   [Fact]
   public void Name_Property()
   {
-    new StagePhase(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new StagePhase { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -70,10 +51,7 @@ public sealed class StagePhaseTest : ClassTest<StagePhase>
   public void Instance_Property()
   {
     var instance = new Instance();
-    new StagePhase(new
-    {
-      Instance = instance
-    }).Instance.Should().BeSameAs(instance);
+    new StagePhase { Instance = instance }.Instance.Should().BeSameAs(instance);
   }
 
   /// <summary>
@@ -104,81 +82,7 @@ public sealed class StagePhaseTest : ClassTest<StagePhase>
   [Fact]
   public void ToString_Method()
   {
-    new StagePhase(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="StagePhase.Info"/>.</para>
-/// </summary>
-public sealed class StagePhaseInfoTests : ClassTest<StagePhase.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="StagePhase.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(StagePhase.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IStagePhase>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new StagePhase.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-    info.Instance.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="StagePhase.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new Topic.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="StagePhase.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new StagePhase.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="StagePhase.Info.Instance"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Instance_Property()
-  {
-    var instance = new Instance(new
-    {
-    });
-    new StagePhase.Info { Instance = instance }.Instance.Should().BeSameAs(instance);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="StagePhase.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new StagePhase.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<StagePhase>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-      result.Instance.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new StagePhase {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -189,11 +93,11 @@ public sealed class StagePhaseInfoTests : ClassTest<StagePhase.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new StagePhase.Info
+      Validate(new StagePhase
       {
         Id = 1,
         Name = "name",
-        Instance = new Instance(new { Id = 2 })
+        Instance = new Instance { Id = 2 }
       });
     }
 

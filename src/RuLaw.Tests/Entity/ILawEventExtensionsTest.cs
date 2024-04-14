@@ -25,8 +25,8 @@ public sealed class ILawEventExtensionsTest : UnitTest
 
       Enumerable.Empty<ILawEvent>().Solution("solution").Should().NotBeNull().And.BeEmpty();
 
-      var first = new LawEvent(new {Solution = "FIRST"});
-      var second = new LawEvent(new {Solution = "Second"});
+      var first = new LawEvent {Solution = "FIRST"};
+      var second = new LawEvent {Solution = "Second"};
       var events = first.ToSequence(second, null);
       events.Solution("first").Should().NotBeNullOrEmpty().And.Equal(first);
       events.Solution("second").Should().NotBeNullOrEmpty().And.Equal(second);

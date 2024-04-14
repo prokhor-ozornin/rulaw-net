@@ -18,7 +18,7 @@ public sealed class IDeputyTranscriptApiRequestExtensionsTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IDeputyTranscriptApiRequestExtensions.Deputy(null, new Deputy(new Deputy.Info()))).ThrowExactly<ArgumentNullException>().WithParameterName("request");
+      AssertionExtensions.Should(() => IDeputyTranscriptApiRequestExtensions.Deputy(null, new Deputy())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
       AssertionExtensions.Should(() => new DeputyTranscriptApiRequest().Deputy(null)).ThrowExactly<ArgumentNullException>().WithParameterName("deputy");
 
       var request = new DeputyTranscriptApiRequest();
@@ -28,7 +28,7 @@ public sealed class IDeputyTranscriptApiRequestExtensionsTest : UnitTest
       request.Deputy((IDeputy) null).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["deputy"].Should().BeNull();
 
-      request.Deputy(new Deputy(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
+      request.Deputy(new Deputy {Id = 1}).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["deputy"].Should().Be(1L);
     }
 

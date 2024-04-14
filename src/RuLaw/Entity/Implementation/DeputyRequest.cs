@@ -6,126 +6,74 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Deputy's request.</para>
 /// </summary>
+[DataContract(Name = "request")]
 public sealed class DeputyRequest : IDeputyRequest
 {
   /// <summary>
   ///   <para>Unique identifier of deputy's request.</para>
   /// </summary>
-  public long? Id { get; }
+  [DataMember(Name = "requestId", IsRequired = true)]
+  public long? Id { get; set; }
 
   /// <summary>
   ///   <para>Name of deputy request.</para>
   /// </summary>
-  public string Name { get; }
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Date when deputy's request was initiated.</para>
   /// </summary>
-  public DateTimeOffset? Date { get; }
+  [DataMember(Name = "date", IsRequired = true)]
+  public DateTimeOffset? Date { get; set; }
 
   /// <summary>
   ///   <para>Number of associated document.</para>
   /// </summary>
-  public string DocumentNumber { get; }
+  [DataMember(Name = "documentNumber", IsRequired = true)]
+  public string DocumentNumber { get; set; }
 
   /// <summary>
   ///   <para>Initiator person of deputy request.</para>
   /// </summary>
-  public string Initiator { get; }
+  [DataMember(Name = "initiator", IsRequired = true)]
+  public string Initiator { get; set; }
 
   /// <summary>
   ///   <para>Addressee of deputy's request.</para>
   /// </summary>
-  public IDeputyRequestAddressee Addressee { get; }
+  [DataMember(Name = "addressee", IsRequired = true)]
+  public IDeputyRequestAddressee Addressee { get; set; }
 
   /// <summary>
   ///   <para>Text of answer for deputy's request.</para>
   /// </summary>
-  public string Answer { get; }
+  [DataMember(Name = "answer", IsRequired = true)]
+  public string Answer { get; set; }
 
   /// <summary>
   ///   <para>Person who signed deputy's request.</para>
   /// </summary>
-  public IDeputyRequestSigner Signer { get; }
+  [DataMember(Name = "signedBy", IsRequired = true)]
+  public IDeputyRequestSigner Signer { get; set; }
 
   /// <summary>
   ///   <para>Date when deputy's request was signed.</para>
   /// </summary>
-  public DateTimeOffset? SignDate { get; }
+  [DataMember(Name = "signedDate", IsRequired = true)]
+  public DateTimeOffset? SignDate { get; set; }
 
   /// <summary>
   ///   <para>Date when deputy's request was in control stage.</para>
   /// </summary>
-  public DateTimeOffset? ControlDate { get; }
+  [DataMember(Name = "controlDate", IsRequired = true)]
+  public DateTimeOffset? ControlDate { get; set; }
 
   /// <summary>
   ///   <para>Number of associated resolution.</para>
   /// </summary>
-  public string ResolutionNumber { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="id"></param>
-  /// <param name="name"></param>
-  /// <param name="date"></param>
-  /// <param name="documentNumber"></param>
-  /// <param name="initiator"></param>
-  /// <param name="addressee"></param>
-  /// <param name="answer"></param>
-  /// <param name="signer"></param>
-  /// <param name="signDate"></param>
-  /// <param name="controlDate"></param>
-  /// <param name="resolutionNumber"></param>
-  public DeputyRequest(long? id = null,
-                       string name = null,
-                       DateTimeOffset? date = null,
-                       string documentNumber = null,
-                       string initiator = null,
-                       IDeputyRequestAddressee addressee = null,
-                       string answer = null,
-                       IDeputyRequestSigner signer = null,
-                       DateTimeOffset? signDate = null,
-                       DateTimeOffset? controlDate = null,
-                       string resolutionNumber = null)
-  {
-    Id = id;
-    Name = name;
-    Date = date;
-    DocumentNumber = documentNumber;
-    Initiator = initiator;
-    Addressee = addressee;
-    Answer = answer;
-    Signer = signer;
-    SignDate = signDate;
-    ControlDate = controlDate;
-    ResolutionNumber = resolutionNumber;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public DeputyRequest(Info info)
-  {
-    Id = info.Id;
-    Name = info.Name;
-    Date = info.Date;
-    DocumentNumber = info.DocumentNumber;
-    Initiator = info.Initiator;
-    Addressee = info.Addressee;
-    Answer = info.Answer;
-    Signer = info.Signer;
-    SignDate = info.SignDate is not null ? DateTimeOffset.Parse(info.SignDate) : null;
-    ControlDate = info.ControlDate is not null ? DateTimeOffset.Parse(info.ControlDate) : null;
-    ResolutionNumber = info.ResolutionNumber;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public DeputyRequest(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "resolution", IsRequired = true)]
+  public string ResolutionNumber { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="IDeputyRequest"/> instance with another.</para>
@@ -159,83 +107,4 @@ public sealed class DeputyRequest : IDeputyRequest
   /// </summary>
   /// <returns>A string that represents the current <see cref="DeputyRequest"/>.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "request")]
-  public sealed record Info : IResultable<IDeputyRequest>
-  {
-    /// <summary>
-    ///   <para>Unique identifier of deputy's request.</para>
-    /// </summary>
-    [DataMember(Name = "requestId", IsRequired = true)]
-    public long? Id { get; init; }
-
-    /// <summary>
-    ///   <para>Name of deputy request.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para>Date when deputy's request was initiated.</para>
-    /// </summary>
-    [DataMember(Name = "date", IsRequired = true)]
-    public DateTimeOffset? Date { get; init; }
-
-    /// <summary>
-    ///   <para>Number of associated document.</para>
-    /// </summary>
-    [DataMember(Name = "documentNumber", IsRequired = true)]
-    public string DocumentNumber { get; init; }
-
-    /// <summary>
-    ///   <para>Initiator person of deputy request.</para>
-    /// </summary>
-    [DataMember(Name = "initiator", IsRequired = true)]
-    public string Initiator { get; init; }
-
-    /// <summary>
-    ///   <para>Addressee of deputy's request.</para>
-    /// </summary>
-    [DataMember(Name = "addressee", IsRequired = true)]
-    public DeputyRequestAddressee Addressee { get; init; }
-
-    /// <summary>
-    ///   <para>Text of answer for deputy's request.</para>
-    /// </summary>
-    [DataMember(Name = "answer", IsRequired = true)]
-    public string Answer { get; init; }
-
-    /// <summary>
-    ///   <para>Person who signed deputy's request.</para>
-    /// </summary>
-    [DataMember(Name = "signedBy", IsRequired = true)]
-    public DeputyRequestSigner Signer { get; init; }
-
-    /// <summary>
-    ///   <para>Date when deputy's request was signed.</para>
-    /// </summary>
-    [DataMember(Name = "signedDate", IsRequired = true)]
-    public string SignDate { get; init; }
-
-    /// <summary>
-    ///   <para>Date when deputy's request was in control stage.</para>
-    /// </summary>
-    [DataMember(Name = "controlDate", IsRequired = true)]
-    public string ControlDate { get; init; }
-
-    /// <summary>
-    ///   <para>Number of associated resolution.</para>
-    /// </summary>
-    [DataMember(Name = "resolution", IsRequired = true)]
-    public string ResolutionNumber { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IDeputyRequest ToResult() => new DeputyRequest(this);
-  }
 }

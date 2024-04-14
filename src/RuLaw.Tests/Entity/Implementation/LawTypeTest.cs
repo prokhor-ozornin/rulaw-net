@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,23 +14,13 @@ public sealed class LawTypeTest : ClassTest<LawType>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="LawType(long?, string?)"/>
-  /// <seealso cref="LawType(LawType.Info)"/>
-  /// <seealso cref="LawType(object)"/>
+  /// <seealso cref="LawType()"/>
   [Fact]
   public void Constructors()
   {
     typeof(LawType).Should().BeDerivedFrom<object>().And.Implement<ILawType>();
 
     var type = new LawType();
-    type.Id.Should().BeNull();
-    type.Name.Should().BeNull();
-
-    type = new LawType(new LawType.Info());
-    type.Id.Should().BeNull();
-    type.Name.Should().BeNull();
-
-    type = new LawType(new {});
     type.Id.Should().BeNull();
     type.Name.Should().BeNull();
   }
@@ -42,10 +31,7 @@ public sealed class LawTypeTest : ClassTest<LawType>
   [Fact]
   public void Id_Property()
   {
-    new LawType(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new LawType { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -54,10 +40,7 @@ public sealed class LawTypeTest : ClassTest<LawType>
   [Fact]
   public void Name_Property()
   {
-    new LawType(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new LawType { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -88,57 +71,7 @@ public sealed class LawTypeTest : ClassTest<LawType>
   [Fact]
   public void ToString_Method()
   {
-    new LawType(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="LawType.Info"/>.</para>
-/// </summary>
-public sealed class LawTypeInfoTests : ClassTest<LawType.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="LawType.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(LawType.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ILawType>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new LawType.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawType.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new LawType.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawType.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new LawType.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawType.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    var result = new LawType.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<LawType>();
-    result.Id.Should().BeNull();
-    result.Name.Should().BeNull();
+    new LawType {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -149,7 +82,7 @@ public sealed class LawTypeInfoTests : ClassTest<LawType.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new LawType.Info
+      Validate(new LawType
       {
         Id = 1,
         Name = "name"

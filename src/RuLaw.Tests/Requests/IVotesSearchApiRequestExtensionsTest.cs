@@ -27,7 +27,7 @@ public sealed class IVotesSearchApiRequestExtensionsTest : UnitTest
       request.Deputy((IDeputy)null).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["deputy"].Should().BeNull();
 
-      request.Deputy(new Deputy(new { Id = 1 })).Should().NotBeNull().And.BeSameAs(request);
+      request.Deputy(new Deputy { Id = 1 }).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["deputy"].Should().Be(1L);
     }
 
@@ -56,7 +56,7 @@ public sealed class IVotesSearchApiRequestExtensionsTest : UnitTest
       request.Convocation((IConvocation) null).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["convocation"].Should().BeNull();
 
-      request.Convocation(new Convocation(new {Id = 1})).Should().NotBeNull().And.BeSameAs(request);
+      request.Convocation(new Convocation {Id = 1}).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["convocation"].Should().Be(1L);
     }
 

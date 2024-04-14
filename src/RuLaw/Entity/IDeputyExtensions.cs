@@ -1,6 +1,4 @@
-﻿using Catharsis.Extensions;
-
-namespace RuLaw;
+﻿namespace RuLaw;
 
 /// <summary>
 ///   <para>Set of extension methods for interface <see cref="IDeputy"/>.</para>
@@ -32,10 +30,5 @@ public static class IDeputyExtensions
   /// <param name="deputies">Source sequence of deputies to filter.</param>
   /// <param name="position">Position to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of deputies with specified position.</returns>
-  public static IEnumerable<TEntity> Position<TEntity>(this IEnumerable<TEntity> deputies, string position) where TEntity : IDeputy
-  {
-    if (deputies is null) throw new ArgumentNullException(nameof(deputies));
-
-    return deputies.Where(deputy => deputy is not null && (deputy.Position ?? string.Empty).ToLowerInvariant().Contains((position ?? string.Empty).ToLowerInvariant()));
-  }
+  public static IEnumerable<TEntity> Position<TEntity>(this IEnumerable<TEntity> deputies, string position) where TEntity : IDeputy => deputies is not null ? deputies.Where(deputy => deputy is not null && (deputy.Position ?? string.Empty).ToLowerInvariant().Contains((position ?? string.Empty).ToLowerInvariant())) : throw new ArgumentNullException(nameof(deputies));
 }

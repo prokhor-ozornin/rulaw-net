@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -16,27 +15,13 @@ public sealed class DateTranscriptMeetingTest : ClassTest<DateTranscriptMeeting>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="DateTranscriptMeeting(DateTimeOffset?, int?, IEnumerable{string}?, IEnumerable{ITranscriptVote}?)"/>
-  /// <seealso cref="DateTranscriptMeeting(DateTranscriptMeeting.Info)"/>
-  /// <seealso cref="DateTranscriptMeeting(object)"/>
+  /// <seealso cref="DateTranscriptMeeting()"/>
   [Fact]
   public void Constructors()
   {
     typeof(DateTranscriptMeeting).Should().BeDerivedFrom<object>().And.Implement<IDateTranscriptMeeting>();
 
     var meeting = new DateTranscriptMeeting();
-    meeting.Date.Should().BeNull();
-    meeting.Number.Should().BeNull();
-    meeting.Lines.Should().BeEmpty();
-    meeting.Votes.Should().BeEmpty();
-
-    meeting = new DateTranscriptMeeting(new DateTranscriptMeeting.Info());
-    meeting.Date.Should().BeNull();
-    meeting.Number.Should().BeNull();
-    meeting.Lines.Should().BeEmpty();
-    meeting.Votes.Should().BeEmpty();
-
-    meeting = new DateTranscriptMeeting(new {});
     meeting.Date.Should().BeNull();
     meeting.Number.Should().BeNull();
     meeting.Lines.Should().BeEmpty();
@@ -49,10 +34,7 @@ public sealed class DateTranscriptMeetingTest : ClassTest<DateTranscriptMeeting>
   [Fact]
   public void Date_Property()
   {
-    new DateTranscriptMeeting(new
-    {
-      Date = DateTimeOffset.MaxValue
-    }).Date.Should().Be(DateTimeOffset.MaxValue);
+    new DateTranscriptMeeting { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -61,10 +43,7 @@ public sealed class DateTranscriptMeetingTest : ClassTest<DateTranscriptMeeting>
   [Fact]
   public void Number_Property()
   {
-    new DateTranscriptMeeting(new
-    {
-      Number = int.MaxValue
-    }).Number.Should().Be(int.MaxValue);
+    new DateTranscriptMeeting { Number = int.MaxValue }.Number.Should().Be(int.MaxValue);
   }
 
   /// <summary>
@@ -129,91 +108,7 @@ public sealed class DateTranscriptMeetingTest : ClassTest<DateTranscriptMeeting>
   [Fact]
   public void ToString_Method()
   {
-    new DateTranscriptMeeting(new {Lines = new List<string> {"first", "second"}}).ToString().Should().Be($"first{Environment.NewLine}second");
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="DateTranscriptMeeting.Info"/>.</para>
-/// </summary>
-public sealed class DateTranscriptMeetingInfoTests : ClassTest<DateTranscriptMeeting.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="DateTranscriptMeeting.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(DateTranscriptMeeting.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IDateTranscriptMeeting>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new DateTranscriptMeeting.Info();
-    info.Should().BeNull();
-    info.Number.Should().BeNull();
-    info.Lines.Should().BeNull();
-    info.Votes.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property()
-  {
-    new DateTranscriptMeeting.Info { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.Number"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Number_Property()
-  {
-    new DateTranscriptMeeting.Info { Number = int.MaxValue }.Number.Should().Be(int.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.Lines"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Lines_Property()
-  {
-    var lines = new List<string>();
-    new DateTranscriptMeeting.Info { Lines = lines }.Lines.Should().BeSameAs(lines);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.Votes"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Votes_Property()
-  {
-    var votes = new List<TranscriptVote>();
-    new DateTranscriptMeeting.Info { Votes = votes }.Votes.Should().BeSameAs(votes);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptMeeting.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new DateTranscriptMeeting.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<DateTranscriptMeeting>();
-      result.Date.Should().BeNull();
-      result.Number.Should().BeNull();
-      result.Lines.Should().BeEmpty();
-      result.Votes.Should().BeEmpty();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new DateTranscriptMeeting {Lines = new List<string> {"first", "second"}}.ToString().Should().Be($"first{Environment.NewLine}second");
   }
 
   /// <summary>
@@ -224,12 +119,12 @@ public sealed class DateTranscriptMeetingInfoTests : ClassTest<DateTranscriptMee
   {
     using (new AssertionScope())
     {
-      Validate(new DateTranscriptMeeting.Info
+      Validate(new DateTranscriptMeeting
       {
         Date = DateTimeOffset.MinValue,
         Lines = ["line"],
         Number = 1,
-        Votes = [new TranscriptVote(new { Date = DateTimeOffset.MinValue, Line = 2 })]
+        Votes = [new TranscriptVote { Date = DateTimeOffset.MinValue, Line = 2 }]
       });
     }
 

@@ -6,54 +6,26 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Law workflow instance.</para>
 /// </summary>
+[DataContract(Name = "instance")]
 public sealed class Instance : IInstance
 {
   /// <summary>
   ///   <para>Unique identifier of entity.</para>
   /// </summary>
-  public long? Id { get; }
+  [DataMember(Name = "id", IsRequired = true)]
+  public long? Id { get; set; }
 
   /// <summary>
   ///   <para>Name of entity.</para>
   /// </summary>
-  public string Name { get; }
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Whether the instance is active at present or not.</para>
   /// </summary>
-  public bool? Active { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="id"></param>
-  /// <param name="name"></param>
-  /// <param name="active"></param>
-  public Instance(long? id = null,
-                  string name = null,
-                  bool? active = null)
-  {
-    Id = id;
-    Name = name;
-    Active = active;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Instance(Info info)
-  {
-    Id = info.Id;
-    Name = info.Name;
-    Active = info.Active;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Instance(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "isCurrent", IsRequired = true)]
+  public bool? Active { get; set; }
 
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
@@ -87,35 +59,4 @@ public sealed class Instance : IInstance
   /// </summary>
   /// <returns>A string that represents the current entity.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "instance")]
-  public record Info : IResultable<IInstance>
-  {
-    /// <summary>
-    ///   <para>Unique identifier of entity.</para>
-    /// </summary>
-    [DataMember(Name = "id", IsRequired = true)]
-    public long? Id { get; init; }
-
-    /// <summary>
-    ///   <para>Name of entity.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para>Whether the instance is active at present or not.</para>
-    /// </summary>
-    [DataMember(Name = "isCurrent", IsRequired = true)]
-    public bool? Active { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IInstance ToResult() => new Instance(this);
-  }
 }

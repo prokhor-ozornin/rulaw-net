@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,23 +14,13 @@ public sealed class LawEventDocumentTest : ClassTest<LawEventDocument>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="LawEventDocument(string?, string?)"/>
-  /// <seealso cref="LawEventDocument(LawEventDocument.Info)"/>
-  /// <seealso cref="LawEventDocument(object)"/>
+  /// <seealso cref="LawEventDocument()"/>
   [Fact]
   public void Constructors()
   {
     typeof(LawEventDocument).Should().BeDerivedFrom<object>().And.Implement<ILawEventDocument>();
 
     var document = new LawEventDocument();
-    document.Name.Should().BeNull();
-    document.Type.Should().BeNull();
-
-    document = new LawEventDocument(new LawEventDocument.Info());
-    document.Name.Should().BeNull();
-    document.Type.Should().BeNull();
-
-    document = new LawEventDocument(new {});
     document.Name.Should().BeNull();
     document.Type.Should().BeNull();
   }
@@ -42,10 +31,7 @@ public sealed class LawEventDocumentTest : ClassTest<LawEventDocument>
   [Fact]
   public void Name_Property()
   {
-    new LawEventDocument(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new LawEventDocument { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -54,10 +40,7 @@ public sealed class LawEventDocumentTest : ClassTest<LawEventDocument>
   [Fact]
   public void Type_Property()
   {
-    new LawEventDocument(new
-    {
-      Type = Guid.Empty.ToString()
-    }).Type.Should().Be(Guid.Empty.ToString());
+    new LawEventDocument { Type = Guid.Empty.ToString() }.Type.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -88,67 +71,7 @@ public sealed class LawEventDocumentTest : ClassTest<LawEventDocument>
   [Fact]
   public void ToString_Method()
   {
-    new LawEventDocument(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="LawEventDocument.Info"/>.</para>
-/// </summary>
-public sealed class LawEventDocumentInfoTests : ClassTest<LawEventDocument.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="LawEventDocument.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(LawEventDocument.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ILawEventDocument>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new LawEventDocument.Info();
-    info.Name.Should().BeNull();
-    info.Type.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventDocument.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new LawEventDocument.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventDocument.Info.Type"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Type_Property()
-  {
-    new LawEventDocument.Info { Type = Guid.Empty.ToString() }.Type.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawEventDocument.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new LawEventDocument.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<LawEventDocument>();
-      result.Name.Should().BeNull();
-      result.Type.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new LawEventDocument {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -159,7 +82,7 @@ public sealed class LawEventDocumentInfoTests : ClassTest<LawEventDocument.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new LawEventDocument.Info
+      Validate(new LawEventDocument
       {
         Name = "name",
         Type = "type"

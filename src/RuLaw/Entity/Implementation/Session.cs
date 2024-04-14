@@ -6,63 +6,32 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Duma work session.</para>
 /// </summary>
+[DataContract(Name = "session")]
 public sealed class Session : ISession
 {
   /// <summary>
   ///   <para>Unique identifier of work session.</para>
   /// </summary>
-  public long? Id { get; }
+  [DataMember(Name = "id", IsRequired = true)]
+  public long? Id { get; set; }
 
   /// <summary>
   ///   <para>Name of work session.</para>
   /// </summary>
-  public string Name { get; }
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Date when work session was started.</para>
   /// </summary>
-  public DateTimeOffset? FromDate { get; }
+  [DataMember(Name = "startDate", IsRequired = true)]
+  public DateTimeOffset? FromDate { get; set; }
 
   /// <summary>
   ///   <para>Date when work session was ended.</para>
   /// </summary>
-  public DateTimeOffset? ToDate { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="id"></param>
-  /// <param name="name"></param>
-  /// <param name="fromDate"></param>
-  /// <param name="toDate"></param>
-  public Session(long? id = null,
-                 string name = null,
-                 DateTimeOffset? fromDate = null,
-                 DateTimeOffset? toDate = null)
-  {
-    Id = id;
-    Name = name;
-    FromDate = fromDate;
-    ToDate = toDate;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Session(Info info)
-  {
-    Id = info.Id;
-    Name = info.Name;
-    FromDate = info.FromDate is not null ? DateTimeOffset.Parse(info.FromDate) : null;
-    ToDate = info.ToDate is not null ? DateTimeOffset.Parse(info.ToDate) : null;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Session(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "endDate", IsRequired = true)]
+  public DateTimeOffset? ToDate { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="ISession"/> instance with another.</para>
@@ -96,41 +65,4 @@ public sealed class Session : ISession
   /// </summary>
   /// <returns>A string that represents the current <see cref="Session"/>.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "session")]
-  public sealed record Info : IResultable<ISession>
-  {
-    /// <summary>
-    ///   <para>Unique identifier of work session.</para>
-    /// </summary>
-    [DataMember(Name = "id", IsRequired = true)]
-    public long? Id { get; init; }
-
-    /// <summary>
-    ///   <para>Name of work session.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para>Date when work session was started.</para>
-    /// </summary>
-    [DataMember(Name = "startDate", IsRequired = true)]
-    public string FromDate { get; init; }
-
-    /// <summary>
-    ///   <para>Date when work session was ended.</para>
-    /// </summary>
-    [DataMember(Name = "endDate", IsRequired = true)]
-    public string ToDate { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public ISession ToResult() => new Session(this);
-  }
 }

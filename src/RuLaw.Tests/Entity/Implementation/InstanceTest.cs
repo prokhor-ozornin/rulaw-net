@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,25 +14,13 @@ public sealed class InstanceTest : ClassTest<Instance>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="Instance(long?, string?, bool?)"/>
-  /// <seealso cref="Instance(Instance.Info)"/>
-  /// <seealso cref="Instance(object)"/>
+  /// <seealso cref="Instance()"/>
   [Fact]
   public void Constructors()
   {
     typeof(Instance).Should().BeDerivedFrom<object>().And.Implement<IInstance>();
 
     var instance = new Instance();
-    instance.Id.Should().BeNull();
-    instance.Name.Should().BeNull();
-    instance.Active.Should().BeNull();
-
-    instance = new Instance(new Instance.Info());
-    instance.Id.Should().BeNull();
-    instance.Name.Should().BeNull();
-    instance.Active.Should().BeNull();
-
-    instance = new Instance(new {});
     instance.Id.Should().BeNull();
     instance.Name.Should().BeNull();
     instance.Active.Should().BeNull();
@@ -45,10 +32,7 @@ public sealed class InstanceTest : ClassTest<Instance>
   [Fact]
   public void Id_Property()
   {
-    new Instance(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new Instance { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -57,10 +41,7 @@ public sealed class InstanceTest : ClassTest<Instance>
   [Fact]
   public void Name_Property()
   {
-    new Instance(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new Instance { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -69,10 +50,7 @@ public sealed class InstanceTest : ClassTest<Instance>
   [Fact]
   public void Active_Property()
   {
-    new Instance(new
-    {
-      Active = true
-    }).Active.Should().BeTrue();
+    new Instance { Active = true }.Active.Should().BeTrue();
   }
 
   /// <summary>
@@ -112,78 +90,7 @@ public sealed class InstanceTest : ClassTest<Instance>
   [Fact]
   public void ToString_Method()
   {
-    new Instance(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="Instance.Info"/>.</para>
-/// </summary>
-public sealed class InstanceInfoTests : ClassTest<Instance.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="Instance.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(Instance.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IInstance>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new Instance.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-    info.Active.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Instance.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new Instance.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Instance.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new Instance.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Instance.Info.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property()
-  {
-    new Instance.Info { Active = true }.Active.Should().BeTrue();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Instance.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new Instance.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<Instance>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-      result.Active.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new Instance {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -194,7 +101,7 @@ public sealed class InstanceInfoTests : ClassTest<Instance.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new Instance.Info
+      Validate(new Instance
       {
         Id = 1,
         Active = true,

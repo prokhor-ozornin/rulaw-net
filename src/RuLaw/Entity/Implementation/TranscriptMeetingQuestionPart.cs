@@ -6,63 +6,32 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Part of meeting question's transcript.</para>
 /// </summary>
+[DataContract(Name = "part")]
 public sealed class TranscriptMeetingQuestionPart : ITranscriptMeetingQuestionPart
 {
   /// <summary>
   ///   <para>Start line of transcript's text fragment.</para>
   /// </summary>
-  public int? StartLine { get; }
+  [DataMember(Name = "startLine", IsRequired = true)]
+  public int? StartLine { get; set; }
 
   /// <summary>
   ///   <para>End line of transcript's text fragment.</para>
   /// </summary>
-  public int? EndLine { get; }
+  [DataMember(Name = "endLine", IsRequired = true)]
+  public int? EndLine { get; set; }
 
   /// <summary>
   ///   <para>Lines of transcript's fragment.</para>
   /// </summary>
-  public IEnumerable<string> Lines { get; }
+  [DataMember(Name = "lines", IsRequired = true)]
+  public IEnumerable<string> Lines { get; set; }
 
   /// <summary>
   ///   <para>List of question' votes.</para>
   /// </summary>
-  public IEnumerable<ITranscriptVote> Votes { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="startLine"></param>
-  /// <param name="endLine"></param>
-  /// <param name="lines"></param>
-  /// <param name="votes"></param>
-  public TranscriptMeetingQuestionPart(int? startLine = null,
-                                       int? endLine = null,
-                                       IEnumerable<string> lines = null,
-                                       IEnumerable<ITranscriptVote> votes = null)
-  {
-    StartLine = startLine;
-    EndLine = endLine;
-    Lines = lines ?? [];
-    Votes = votes ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public TranscriptMeetingQuestionPart(Info info)
-  {
-    StartLine = info.StartLine;
-    EndLine = info.EndLine;
-    Lines = info.Lines ?? [];
-    Votes = info.Votes ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public TranscriptMeetingQuestionPart(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "votes", IsRequired = true)]
+  public IEnumerable<ITranscriptVote> Votes { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="ITranscriptMeetingQuestionPart"/> instance with another.</para>
@@ -96,41 +65,4 @@ public sealed class TranscriptMeetingQuestionPart : ITranscriptMeetingQuestionPa
   /// </summary>
   /// <returns>A string that represents the current <see cref="TranscriptMeetingQuestionPart"/>.</returns>
   public override string ToString() => (this as ITranscriptMeetingQuestionPart).Text;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "part")]
-  public sealed record Info : IResultable<ITranscriptMeetingQuestionPart>
-  {
-    /// <summary>
-    ///   <para>Start line of transcript's text fragment.</para>
-    /// </summary>
-    [DataMember(Name = "startLine", IsRequired = true)]
-    public int? StartLine { get; init; }
-
-    /// <summary>
-    ///   <para>End line of transcript's text fragment.</para>
-    /// </summary>
-    [DataMember(Name = "endLine", IsRequired = true)]
-    public int? EndLine { get; init; }
-
-    /// <summary>
-    ///   <para>Lines of transcript's fragment.</para>
-    /// </summary>
-    [DataMember(Name = "lines", IsRequired = true)]
-    public List<string> Lines { get; init; }
-
-    /// <summary>
-    ///   <para>List of question' votes.</para>
-    /// </summary>
-    [DataMember(Name = "votes", IsRequired = true)]
-    public List<TranscriptVote> Votes { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public ITranscriptMeetingQuestionPart ToResult() => new TranscriptMeetingQuestionPart(this);
-  }
 }

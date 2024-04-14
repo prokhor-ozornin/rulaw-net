@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,23 +14,13 @@ public sealed class TranscriptVoteTest : ClassTest<TranscriptVote>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="TranscriptVote(DateTimeOffset?, int?)"/>
-  /// <seealso cref="TranscriptVote(TranscriptVote.Info)"/>
-  /// <seealso cref="TranscriptVote(object)"/>
+  /// <seealso cref="TranscriptVote()"/>
   [Fact]
   public void Constructors()
   {
     typeof(TranscriptVote).Should().BeDerivedFrom<object>().And.Implement<ITranscriptVote>();
 
     var vote = new TranscriptVote();
-    vote.Date.Should().BeNull();
-    vote.Line.Should().BeNull();
-
-    vote = new TranscriptVote(new TranscriptVote.Info());
-    vote.Date.Should().BeNull();
-    vote.Line.Should().BeNull();
-
-    vote = new TranscriptVote(new {});
     vote.Date.Should().BeNull();
     vote.Line.Should().BeNull();
   }
@@ -42,10 +31,7 @@ public sealed class TranscriptVoteTest : ClassTest<TranscriptVote>
   [Fact]
   public void Date_Property()
   {
-    new TranscriptVote(new
-    {
-      Date = DateTimeOffset.MaxValue
-    }).Date.Should().Be(DateTimeOffset.MaxValue);
+    new TranscriptVote { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -54,10 +40,7 @@ public sealed class TranscriptVoteTest : ClassTest<TranscriptVote>
   [Fact]
   public void Line_Property()
   {
-    new TranscriptVote(new
-    {
-      Line = int.MaxValue
-    }).Line.Should().Be(int.MaxValue);
+    new TranscriptVote { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
   }
 
   /// <summary>
@@ -89,69 +72,6 @@ public sealed class TranscriptVoteTest : ClassTest<TranscriptVote>
     TestHashCode(nameof(TranscriptVote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
     TestHashCode(nameof(TranscriptVote.Line), 1, 2);
   }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="TranscriptVote.Info"/>.</para>
-/// </summary>
-public sealed class TranscriptVoteInfoTests : ClassTest<TranscriptVote.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="TranscriptVote.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(TranscriptVote.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ITranscriptVote>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new TranscriptVote.Info();
-    info.Date.Should().BeNull();
-    info.Line.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptVote.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property()
-  {
-    new TranscriptVote(new
-    {
-      Date = DateTimeOffset.MaxValue
-    }).Date.Should().Be(DateTimeOffset.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptVote.Info.Line"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Line_Property()
-  {
-    new TranscriptVote.Info { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptVote.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new TranscriptVote.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<TranscriptVote>();
-      result.Date.Should().BeNull();
-      result.Line.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
-  }
 
   /// <summary>
   ///   <para>Performs testing of serialization/deserialization process.</para>
@@ -161,9 +81,9 @@ public sealed class TranscriptVoteInfoTests : ClassTest<TranscriptVote.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new TranscriptVote.Info
+      Validate(new TranscriptVote
       {
-        Date = DateTimeOffset.MinValue.AsString(),
+        Date = DateTimeOffset.MinValue,
         Line = 1
       });
     }

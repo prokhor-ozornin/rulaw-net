@@ -6,45 +6,20 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Transcript of Duma law's resolution.</para>
 /// </summary>
+[DataContract(Name = "result")]
 public sealed class ResolutionTranscriptsResult : IResolutionTranscriptsResult
 {
   /// <summary>
   ///   <para>Number of resolution.</para>
   /// </summary>
-  public string Number { get; }
+  [DataMember(Name = "number", IsRequired = true)]
+  public string Number { get; set; }
 
   /// <summary>
   ///   <para>Collection of Duma's meetings.</para>
   /// </summary>
-  public IEnumerable<ITranscriptMeeting> Meetings { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="number"></param>
-  /// <param name="meetings"></param>
-  public ResolutionTranscriptsResult(string number = null,
-                                     IEnumerable<ITranscriptMeeting> meetings = null)
-  {
-    Number = number;
-    Meetings = meetings ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public ResolutionTranscriptsResult(Info info)
-  {
-    Number = info.Number;
-    Meetings = info.Meetings ?? [];
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public ResolutionTranscriptsResult(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "meetings", IsRequired = true)]
+  public IEnumerable<ITranscriptMeeting> Meetings { get; set; }
 
   /// <summary>
   ///   <para>Determines whether two <see cref="IResolutionTranscriptsResult"/> instances are equal.</para>
@@ -71,29 +46,4 @@ public sealed class ResolutionTranscriptsResult : IResolutionTranscriptsResult
   /// </summary>
   /// <returns>A string that represents the current <see cref="ResolutionTranscriptsResult"/>.</returns>
   public override string ToString() => Number ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "result")]
-  public sealed record Info : IResultable<IResolutionTranscriptsResult>
-  {
-    /// <summary>
-    ///   <para>Number of resolution.</para>
-    /// </summary>
-    [DataMember(Name = "number", IsRequired = true)]
-    public string Number { get; init; }
-
-    /// <summary>
-    ///   <para>Collection of Duma's meetings.</para>
-    /// </summary>
-    [DataMember(Name = "meetings", IsRequired = true)]
-    public List<TranscriptMeeting> Meetings { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IResolutionTranscriptsResult ToResult() => new ResolutionTranscriptsResult(this);
-  }
 }

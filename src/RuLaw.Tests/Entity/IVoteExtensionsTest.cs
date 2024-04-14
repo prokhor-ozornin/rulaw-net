@@ -22,8 +22,8 @@ public sealed class IVoteExtensionsTest : UnitTest
       AssertionExtensions.Should(() => IVoteExtensions.Personal(null)).ThrowExactly<ArgumentNullException>().WithParameterName("vote");
 
       new Vote().Personal().Should().BeFalse();
-      new Vote(new {PersonResult = string.Empty}).Personal().Should().BeFalse();
-      new Vote(new {PersonResult = "result"}).Personal().Should().BeFalse();
+      new Vote {PersonResult = string.Empty}.Personal().Should().BeFalse();
+      new Vote {PersonResult = "result"}.Personal().Should().BeFalse();
     }
 
     return;
@@ -43,14 +43,14 @@ public sealed class IVoteExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IVoteExtensions.PersonResult(null)).ThrowExactly<ArgumentNullException>().WithParameterName("vote");
-      AssertionExtensions.Should(() => new Vote(new { PersonResult = "result" }).PersonResult()).ThrowExactly<InvalidOperationException>();
+      AssertionExtensions.Should(() => new Vote { PersonResult = "result" }.PersonResult()).ThrowExactly<InvalidOperationException>();
 
-      new Vote(new {}).PersonResult().Should().BeNull();
-      new Vote(new {PersonResult = string.Empty}).PersonResult().Should().BeNull();
-      new Vote(new {PersonResult = "for"}).PersonResult().Should().Be(VotePersonResult.For);
-      new Vote(new {PersonResult = "against"}).PersonResult().Should().Be(VotePersonResult.Against);
-      new Vote(new {PersonResult = "abstain"}).PersonResult().Should().Be(VotePersonResult.Abstain);
-      new Vote(new {PersonResult = "absent"}).PersonResult().Should().Be(VotePersonResult.Absent);
+      new Vote {}.PersonResult().Should().BeNull();
+      new Vote {PersonResult = string.Empty}.PersonResult().Should().BeNull();
+      new Vote {PersonResult = "for"}.PersonResult().Should().Be(VotePersonResult.For);
+      new Vote {PersonResult = "against"}.PersonResult().Should().Be(VotePersonResult.Against);
+      new Vote {PersonResult = "abstain"}.PersonResult().Should().Be(VotePersonResult.Abstain);
+      new Vote {PersonResult = "absent"}.PersonResult().Should().Be(VotePersonResult.Absent);
     }
 
     return;
@@ -70,13 +70,13 @@ public sealed class IVoteExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IVoteExtensions.ResultType(null)).ThrowExactly<ArgumentNullException>().WithParameterName("vote");
-      AssertionExtensions.Should(() => new Vote(new { ResultType = "type" }).ResultType()).ThrowExactly<InvalidOperationException>();
+      AssertionExtensions.Should(() => new Vote { ResultType = "type" }.ResultType()).ThrowExactly<InvalidOperationException>();
 
       new Vote().ResultType().Should().BeNull();
-      new Vote(new {ResultType = "количественное"}).ResultType().Should().Be(VoteResultType.Quantitative);
-      new Vote(new {ResultType = "рейтинговое"}).ResultType().Should().Be(VoteResultType.Rating);
-      new Vote(new {ResultType = "качественное"}).ResultType().Should().Be(VoteResultType.Qualitative);
-      new Vote(new {ResultType = "альтернативное"}).ResultType().Should().Be(VoteResultType.Alternative);
+      new Vote {ResultType = "количественное"}.ResultType().Should().Be(VoteResultType.Quantitative);
+      new Vote {ResultType = "рейтинговое"}.ResultType().Should().Be(VoteResultType.Rating);
+      new Vote {ResultType = "качественное"}.ResultType().Should().Be(VoteResultType.Qualitative);
+      new Vote {ResultType = "альтернативное"}.ResultType().Should().Be(VoteResultType.Alternative);
     }
 
     return;
@@ -101,8 +101,8 @@ public sealed class IVoteExtensionsTest : UnitTest
 
       Enumerable.Empty<IVote>().Subject("subject").Should().NotBeNull().And.BeEmpty();
 
-      var first = new Vote(new {Subject = "FIRST"});
-      var second = new Vote(new {Subject = "Second"});
+      var first = new Vote {Subject = "FIRST"};
+      var second = new Vote {Subject = "Second"};
       var votes = first.ToSequence(second, null);
       votes.Subject("first").Should().NotBeNullOrEmpty().And.Equal(first);
       votes.Subject("second").Should().NotBeNullOrEmpty().And.Equal(second);
@@ -128,8 +128,8 @@ public sealed class IVoteExtensionsTest : UnitTest
 
       Enumerable.Empty<IVote>().Successful().Should().NotBeNull().And.BeEmpty();
 
-      var first = new Vote(new {Successful = true});
-      var second = new Vote(new {Successful = false});
+      var first = new Vote {Successful = true};
+      var second = new Vote {Successful = false};
       var votes = first.ToSequence(second, null);
       votes.Successful().Should().NotBeNullOrEmpty().And.Equal(first);
     }
@@ -154,8 +154,8 @@ public sealed class IVoteExtensionsTest : UnitTest
 
       Enumerable.Empty<IVote>().Unsuccessful().Should().NotBeNull().And.BeEmpty();
 
-      var first = new Vote(new {Successful = true});
-      var second = new Vote(new {Successful = false});
+      var first = new Vote {Successful = true};
+      var second = new Vote {Successful = false};
       var votes = first.ToSequence(second, null);
       votes.Unsuccessful().Should().NotBeNullOrEmpty().And.Equal(second);
     }

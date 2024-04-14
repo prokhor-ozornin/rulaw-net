@@ -23,9 +23,9 @@ public sealed class IPageableExtensionsTest : UnitTest
 
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
-      var first = new DeputyRequest(new {SignDate = DateTimeOffset.MinValue});
-      var second = new DeputyRequest(new {SignDate = date});
-      var third = new DeputyRequest(new {SignDate = DateTimeOffset.MaxValue});
+      var first = new DeputyRequest {SignDate = DateTimeOffset.MinValue};
+      var second = new DeputyRequest {SignDate = date};
+      var third = new DeputyRequest {SignDate = DateTimeOffset.MaxValue};
 
       var requests = first.ToSequence(second, third, null);
       requests.SignDate(date).Should().NotBeNullOrEmpty().And.Equal(first, second);

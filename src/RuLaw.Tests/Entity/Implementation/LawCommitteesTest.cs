@@ -1,8 +1,6 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
-using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -16,25 +14,13 @@ public sealed class LawCommitteesTest : ClassTest<LawCommittees>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="LawCommittees(ICommittee?, IEnumerable{ICommittee}?, IEnumerable{ICommittee}?)"/>
-  /// <seealso cref="LawCommittees(LawCommittees.Info)"/>
-  /// <seealso cref="LawCommittees(object)"/>
+  /// <seealso cref="LawCommittees()"/>
   [Fact]
   public void Constructors()
   {
     typeof(LawCommittees).Should().BeDerivedFrom<object>().And.Implement<ILawCommittees>();
 
     var committees = new LawCommittees();
-    committees.Responsible.Should().BeNull();
-    committees.Profile.Should().BeEmpty();
-    committees.SoExecutor.Should().BeEmpty();
-
-    committees = new LawCommittees(new LawCommittees.Info());
-    committees.Responsible.Should().BeNull();
-    committees.Profile.Should().BeEmpty();
-    committees.SoExecutor.Should().BeEmpty();
-
-    committees = new LawCommittees(new {});
     committees.Responsible.Should().BeNull();
     committees.Profile.Should().BeEmpty();
     committees.SoExecutor.Should().BeEmpty();
@@ -46,13 +32,8 @@ public sealed class LawCommitteesTest : ClassTest<LawCommittees>
   [Fact]
   public void Responsible_Property()
   {
-    var committee = new Committee(new
-    {
-    });
-    new LawCommittees(new
-    {
-      Responsible = committee
-    }).Responsible.Should().BeSameAs(committee);
+    var committee = new Committee();
+    new LawCommittees { Responsible = committee }.Responsible.Should().BeSameAs(committee);
   }
 
   /// <summary>
@@ -61,14 +42,10 @@ public sealed class LawCommitteesTest : ClassTest<LawCommittees>
   [Fact]
   public void Profile_Property()
   {
-    var lawCommittees = new LawCommittees(new
-    {
-    });
+    var lawCommittees = new LawCommittees();
     lawCommittees.Profile.Should().BeEmpty();
 
-    var committee = new Committee(new
-    {
-    });
+    var committee = new Committee();
 
     var committees = lawCommittees.Profile.To<List<Committee>>();
 
@@ -84,14 +61,10 @@ public sealed class LawCommitteesTest : ClassTest<LawCommittees>
   [Fact]
   public void SoExecutor_Property()
   {
-    var lawCommittees = new LawCommittees(new
-    {
-    });
+    var lawCommittees = new LawCommittees();
     lawCommittees.SoExecutor.Should().BeEmpty();
 
-    var committee = new Committee(new
-    {
-    });
+    var committee = new Committee();
 
     var committees = lawCommittees.SoExecutor.To<List<Committee>>();
 
@@ -100,82 +73,6 @@ public sealed class LawCommitteesTest : ClassTest<LawCommittees>
     committees.Remove(committee);
     lawCommittees.SoExecutor.Should().BeEmpty();
   }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="LawCommittees.Info"/>.</para>
-/// </summary>
-public sealed class LawCommitteesInfoTests : ClassTest<LawCommittees.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="LawCommittees.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(LawCommittees.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ILawCommittees>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new LawCommittees.Info();
-    info.Responsible.Should().BeNull();
-    info.Profile.Should().BeNull();
-    info.SoExecutor.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawCommittees.Info.Responsible"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Responsible_Property()
-  {
-    var responsible = new Committee(new
-    {
-    });
-    new LawCommittees.Info { Responsible = responsible }.Responsible.Should().BeSameAs(responsible);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawCommittees.Info.Profile"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Profile_Property()
-  {
-    var profile = new List<Committee>();
-    new LawCommittees.Info { Profile = profile }.Profile.Should().BeSameAs(profile);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawCommittees.Info.SoExecutor"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void SoExecutor_Property()
-  {
-    var soExecutor = new List<Committee>();
-    new LawCommittees.Info { SoExecutor = soExecutor }.SoExecutor.Should().BeSameAs(soExecutor);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="LawCommittees.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new LawCommittees.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<LawCommittees>();
-      result.Responsible.Should().BeNull();
-      result.Profile.Should().BeNull();
-      result.SoExecutor.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
-  }
 
   /// <summary>
   ///   <para>Performs testing of serialization/deserialization process.</para>
@@ -183,11 +80,11 @@ public sealed class LawCommitteesInfoTests : ClassTest<LawCommittees.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new LawCommittees.Info
+    var info = new LawCommittees
     {
-      Responsible = new Committee(new {Id = 1}),
-      Profile = [new Committee(new { Id = 2 })],
-      SoExecutor = [new Committee(new { Id = 3 })]
+      Responsible = new Committee { Id = 1 },
+      Profile = [new Committee { Id = 2 }],
+      SoExecutor = [new Committee { Id = 3 }]
     };
 
     info.Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();

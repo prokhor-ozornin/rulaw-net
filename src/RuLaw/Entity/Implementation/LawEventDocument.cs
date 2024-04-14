@@ -6,45 +6,20 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Document, associated with a law's event.</para>
 /// </summary>
+[DataContract(Name = "document")]
 public sealed class LawEventDocument : ILawEventDocument
 {
   /// <summary>
   ///   <para>Name of document.</para>
   /// </summary>
-  public string Name { get; }
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Type of document.</para>
   /// </summary>
-  public string Type { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="name"></param>
-  /// <param name="type"></param>
-  public LawEventDocument(string name = null,
-                          string type = null)
-  {
-    Name = name;
-    Type = type;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public LawEventDocument(Info info)
-  {
-    Name = info.Name;
-    Type = info.Type;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public LawEventDocument(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "type", IsRequired = true)]
+  public string Type { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="ILawEventDocument"/> instance with another.</para>
@@ -78,29 +53,4 @@ public sealed class LawEventDocument : ILawEventDocument
   /// </summary>
   /// <returns>A string that represents the current <see cref="LawEventDocument"/>.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "document")]
-  public sealed record Info : IResultable<ILawEventDocument>
-  {
-    /// <summary>
-    ///   <para>Name of document.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para>Type of document.</para>
-    /// </summary>
-    [DataMember(Name = "type", IsRequired = true)]
-    public string Type { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public ILawEventDocument ToResult() => new LawEventDocument(this);
-  }
 }

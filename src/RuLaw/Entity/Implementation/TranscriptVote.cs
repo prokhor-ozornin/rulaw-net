@@ -6,45 +6,20 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Transcript's vote.</para>
 /// </summary>
+[DataContract(Name = "vote")]
 public sealed class TranscriptVote : ITranscriptVote
 {
   /// <summary>
   ///   <para>Date of voting.</para>
   /// </summary>
-  public DateTimeOffset? Date { get; }
+  [DataMember(Name = "date", IsRequired = true)]
+  public DateTimeOffset? Date { get; set; }
 
   /// <summary>
   ///   <para>Transcript's line number.</para>
   /// </summary>
-  public int? Line { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="date"></param>
-  /// <param name="line"></param>
-  public TranscriptVote(DateTimeOffset? date = null,
-                        int? line = null)
-  {
-    Date = date;
-    Line = line;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public TranscriptVote(Info info)
-  {
-    Date = info.Date is not null ? DateTimeOffset.Parse(info.Date) : null;
-    Line = info.Line;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public TranscriptVote(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "line", IsRequired = true)]
+  public int? Line { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="ITranscriptVote"/> instance with another.</para>
@@ -72,29 +47,4 @@ public sealed class TranscriptVote : ITranscriptVote
   /// </summary>
   /// <returns>Hash code of current instance.</returns>
   public override int GetHashCode() => this.HashCode(nameof(Date), nameof(Line));
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "vote")]
-  public sealed record Info : IResultable<ITranscriptVote>
-  {
-    /// <summary>
-    ///   <para>Date of voting.</para>
-    /// </summary>
-    [DataMember(Name = "date", IsRequired = true)]
-    public string Date { get; init; }
-
-    /// <summary>
-    ///   <para>Transcript's line number.</para>
-    /// </summary>
-    [DataMember(Name = "line", IsRequired = true)]
-    public int? Line { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public ITranscriptVote ToResult() => new TranscriptVote(this);
-  }
 }

@@ -1,7 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
@@ -21,16 +20,13 @@ public sealed class IActiveExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IActiveExtensions.Active<IActive>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-      Enumerable.Empty<IActive>().Active().Should().NotBeNull().And.BeEmpty();
-      new ActiveEntity { Active = true }.ToSequence(new ActiveEntity { Active = false }, null).Active().Should().NotBeNullOrEmpty().And.ContainSingle();
+      Validate([], 0);
+      Validate(new ActiveEntity[] { new() { Active = true }, new() { Active = false }, null }, 1);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IActive> sequence, int count) => sequence.Active().Should().NotBeNull().And.NotBeSameAs(sequence).And.HaveCount(count);
   }
 
   /// <summary>
@@ -43,16 +39,13 @@ public sealed class IActiveExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IActiveExtensions.Inactive<IActive>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-      Enumerable.Empty<IActive>().Inactive().Should().NotBeNull().And.BeEmpty();
-      new ActiveEntity { Active = true }.ToSequence(new ActiveEntity { Active = true }, null).Inactive().Should().NotBeNullOrEmpty().And.ContainSingle();
+      Validate([], 0);
+      Validate(new ActiveEntity[] { new() { Active = true }, new() { Active = false }, null }, 1);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IActive> sequence, int count) => sequence.Inactive().Should().NotBeNull().And.NotBeSameAs(sequence).And.HaveCount(count);
   }
 
   private sealed class ActiveEntity : IActive

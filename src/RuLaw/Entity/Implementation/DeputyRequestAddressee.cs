@@ -6,45 +6,20 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Addressee of deputy's request.</para>
 /// </summary>
+[DataContract(Name = "addressee")]
 public sealed class DeputyRequestAddressee : IDeputyRequestAddressee
 {
   /// <summary>
   ///   <para>Unique identifier of entity.</para>
   /// </summary>
-  public long? Id { get; }
+  [DataMember(Name = "id", IsRequired = true)]
+  public long? Id { get; set; }
 
   /// <summary>
   ///   <para>Name of entity.</para>
   /// </summary>
-  public string Name { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="id"></param>
-  /// <param name="name"></param>
-  public DeputyRequestAddressee(long? id = default,
-                                string name = null)
-  {
-    Id = id;
-    Name = name;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public DeputyRequestAddressee(Info info)
-  {
-    Id = info.Id;
-    Name = info.Name;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public DeputyRequestAddressee(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "name", IsRequired = true)]
+  public string Name { get; set; }
 
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
@@ -78,29 +53,4 @@ public sealed class DeputyRequestAddressee : IDeputyRequestAddressee
   /// </summary>
   /// <returns>A string that represents the current entity.</returns>
   public override string ToString() => Name ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "addressee")]
-  public sealed record Info : IResultable<IDeputyRequestAddressee>
-  {
-    /// <summary>
-    ///   <para>Unique identifier of entity.</para>
-    /// </summary>
-    [DataMember(Name = "id", IsRequired = true)]
-    public long? Id { get; init; }
-
-    /// <summary>
-    ///   <para>Name of entity.</para>
-    /// </summary>
-    [DataMember(Name = "name", IsRequired = true)]
-    public string Name { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IDeputyRequestAddressee ToResult() => new DeputyRequestAddressee(this);
-  }
 }

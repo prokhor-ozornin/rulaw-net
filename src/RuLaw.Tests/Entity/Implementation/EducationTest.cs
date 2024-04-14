@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,23 +14,13 @@ public sealed class EducationTest : ClassTest<Education>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="Education(string?, short?)"/>
-  /// <seealso cref="Education(Education.Info)"/>
-  /// <seealso cref="Education(object)"/>
+  /// <seealso cref="Education()"/>
   [Fact]
   public void Constructors()
   {
     typeof(Education).Should().BeDerivedFrom<object>().And.Implement<IEducation>();
 
     var education = new Education();
-    education.Institution.Should().BeNull();
-    education.Year.Should().BeNull();
-
-    education = new Education(new Education.Info());
-    education.Institution.Should().BeNull();
-    education.Year.Should().BeNull();
-
-    education = new Education(new {});
     education.Institution.Should().BeNull();
     education.Year.Should().BeNull();
   }
@@ -42,10 +31,7 @@ public sealed class EducationTest : ClassTest<Education>
   [Fact]
   public void Institution_Property()
   {
-    new Education(new
-    {
-      Institution = Guid.Empty.ToString()
-    }).Institution.Should().Be(Guid.Empty.ToString());
+    new Education { Institution = Guid.Empty.ToString() }.Institution.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -54,10 +40,7 @@ public sealed class EducationTest : ClassTest<Education>
   [Fact]
   public void Year_Property()
   {
-    new Education(new
-    {
-      Year = short.MaxValue
-    }).Year.Should().Be(short.MaxValue);
+    new Education { Year = short.MaxValue }.Year.Should().Be(short.MaxValue);
   }
 
   /// <summary>
@@ -96,67 +79,7 @@ public sealed class EducationTest : ClassTest<Education>
   [Fact]
   public void ToString_Method()
   {
-    new Education(new {Institution = Guid.Empty.ToString(), Year = 1}).ToString().Should().Be($"{Guid.Empty} (1)");
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="Education.Info"/>.</para>
-/// </summary>
-public sealed class EducationInfoTests : ClassTest<Education.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="Education.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(Education.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IEducation>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new Education.Info();
-    info.Institution.Should().BeNull();
-    info.Year.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Education.Info.Institution"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Institution_Property()
-  {
-    new Education.Info { Institution = Guid.Empty.ToString() }.Institution.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Education.Info.Year"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Year_Property()
-  {
-    new Education.Info { Year = short.MaxValue }.Year.Should().Be(short.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Education.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new Education.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<Education>();
-      result.Institution.Should().BeNull();
-      result.Year.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new Education {Institution = Guid.Empty.ToString(), Year = 1}.ToString().Should().Be($"{Guid.Empty} (1)");
   }
 
   /// <summary>
@@ -167,7 +90,7 @@ public sealed class EducationInfoTests : ClassTest<Education.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new Education.Info
+      Validate(new Education
       {
         Institution = "institution",
         Year = 1

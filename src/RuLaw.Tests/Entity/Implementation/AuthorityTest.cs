@@ -14,32 +14,14 @@ public sealed class AuthorityTest : ClassTest<Authority>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="Authority(long?, string?, bool?, DateTimeOffset?, DateTimeOffset?)"/>
-  /// <seealso cref="Authority(Authority.Info)"/>
-  /// <seealso cref="Authority(object)"/>
+  /// <seealso cref="Authority()"/>
   [Fact]
   public void Constructors()
   {
     typeof(Authority).Should().BeDerivedFrom<object>().And.Implement<IAuthority>();
 
     var authority = new Authority();
-    authority.Id.Should().BeNull();
-    authority.Name.Should().BeNull();
-    authority.Active.Should().BeNull();
-    authority.FromDate.Should().BeNull();
-    authority.ToDate.Should().BeNull();
-
-    authority = new Authority(new Authority.Info());
-    authority.Id.Should().BeNull();
-    authority.Name.Should().BeNull();
-    authority.Active.Should().BeNull();
-    authority.FromDate.Should().BeNull();
-    authority.ToDate.Should().BeNull();
-
-    authority = new Authority(new
-    {
-    });
-    authority.Id.Should().BeNull();
+    authority.Id.Should().BeNull(); 
     authority.Name.Should().BeNull();
     authority.Active.Should().BeNull();
     authority.FromDate.Should().BeNull();
@@ -52,7 +34,7 @@ public sealed class AuthorityTest : ClassTest<Authority>
   [Fact]
   public void Id_Property()
   {
-    new Authority(new {Id = long.MaxValue}).Id.Should().Be(long.MaxValue);
+    new Authority {Id = long.MaxValue}.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -61,7 +43,7 @@ public sealed class AuthorityTest : ClassTest<Authority>
   [Fact]
   public void Name_Property()
   {
-    new Authority(new {Name = Guid.Empty.ToString()}).Name.Should().Be(Guid.Empty.ToString());
+    new Authority {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -70,7 +52,7 @@ public sealed class AuthorityTest : ClassTest<Authority>
   [Fact]
   public void Active_Property()
   {
-    new Authority(new {Active = true}).Active.Should().BeTrue();
+    new Authority {Active = true}.Active.Should().BeTrue();
   }
 
   /// <summary>
@@ -79,7 +61,7 @@ public sealed class AuthorityTest : ClassTest<Authority>
   [Fact]
   public void FromDate_Property()
   {
-    new Authority(new {FromDate = DateTimeOffset.MaxValue}).FromDate.Should().Be(DateTimeOffset.MaxValue);
+    new Authority {FromDate = DateTimeOffset.MaxValue}.FromDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -88,7 +70,7 @@ public sealed class AuthorityTest : ClassTest<Authority>
   [Fact]
   public void ToDate_Property()
   {
-    new Authority(new {ToDate = DateTimeOffset.MaxValue}).ToDate.Should().Be(DateTimeOffset.MaxValue);
+    new Authority {ToDate = DateTimeOffset.MaxValue}.ToDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -119,100 +101,18 @@ public sealed class AuthorityTest : ClassTest<Authority>
   [Fact]
   public void ToString_Method()
   {
-    new Authority(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="Authority.Info"/>.</para>
-/// </summary>
-public sealed class AuthorityInfoTests : ClassTest<Authority.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="Authority.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(Authority.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IAuthority>>();
-
-    var info = new Authority.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-    info.Active.Should().BeNull();
-    info.FromDate.Should().BeNull();
-    info.ToDate.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Authority.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new Authority.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Authority.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new Authority.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Authority.Info.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property()
-  {
-    new Authority.Info { Active = true }.Active.Should().BeTrue();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Authority.Info.FromDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void FromDate_Property()
-  {
-    new Authority.Info { FromDate = Guid.Empty.ToString() }.FromDate.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Authority.Info.ToDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ToDate_Property()
-  {
-    new Authority.Info { ToDate = Guid.Empty.ToString() }.ToDate.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Authority.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
     using (new AssertionScope())
     {
-      var result = new Authority.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<Authority>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-      result.Active.Should().BeNull();
-      result.FromDate.Should().BeNull();
-      result.ToDate.Should().BeNull();
+      Validate(string.Empty, new Authority());
+      Validate(string.Empty, new Authority { Name = string.Empty });
+      //Validate("text", new Authority { Text = "text" });
     }
 
     return;
 
-    static void Validate()
-    {
-      
-    }
+    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
+
+    //new Authority(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -223,13 +123,13 @@ public sealed class AuthorityInfoTests : ClassTest<Authority.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new Authority.Info
+      Validate(new Authority
       {
         Id = 1,
         Name = "name",
         Active = true,
-        FromDate = DateTimeOffset.MinValue.AsString(),
-        ToDate = DateTimeOffset.MaxValue.AsString()
+        FromDate = DateTimeOffset.MinValue,
+        ToDate = DateTimeOffset.MaxValue
       });
     }
 

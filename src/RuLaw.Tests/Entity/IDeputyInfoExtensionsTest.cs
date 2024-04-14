@@ -24,8 +24,8 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
       AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().FullName(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("name");
 
       Enumerable.Empty<IDeputyInfo>().FullName("name").Should().NotBeNull().And.BeEmpty();
-      var first = new DeputyInfo(new {FirstName = "Vladimir", LastName = "Putin"});
-      var second = new DeputyInfo(new {FirstName = "Dmitry", LastName = "Medvedev"});
+      var first = new DeputyInfo {FirstName = "Vladimir", LastName = "Putin"};
+      var second = new DeputyInfo {FirstName = "Dmitry", LastName = "Medvedev"};
       var deputies = first.ToSequence(second, null);
       deputies.FullName("PUTIN").Should().NotBeNullOrEmpty().And.Equal(first);
       deputies.FullName("putin vladimir").Should().NotBeNullOrEmpty().And.Equal(first);
@@ -55,9 +55,9 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
 
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
-      var first = new DeputyInfo(new {BirthDate = DateTimeOffset.MinValue});
-      var second = new DeputyInfo(new {BirthDate = date});
-      var third = new DeputyInfo(new {BirthDate = DateTimeOffset.MaxValue});
+      var first = new DeputyInfo {BirthDate = DateTimeOffset.MinValue};
+      var second = new DeputyInfo {BirthDate = date};
+      var third = new DeputyInfo {BirthDate = DateTimeOffset.MaxValue};
 
       var deputies = first.ToSequence(second, third, null);
       deputies.BirthDate(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
@@ -87,17 +87,17 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
 
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
-      var first = new DeputyInfo(new {WorkStartDate = DateTimeOffset.MinValue});
-      var second = new DeputyInfo(new {WorkStartDate = date});
-      var third = new DeputyInfo(new {WorkStartDate = DateTimeOffset.MaxValue});
+      var first = new DeputyInfo {WorkStartDate = DateTimeOffset.MinValue};
+      var second = new DeputyInfo {WorkStartDate = date};
+      var third = new DeputyInfo {WorkStartDate = DateTimeOffset.MaxValue};
       var deputies = first.ToSequence(second, third, null);
       deputies.WorkDate(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
       deputies.WorkDate(null, date).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
       deputies.WorkDate(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
 
-      first = new DeputyInfo(new {WorkStartDate = DateTimeOffset.MinValue, WorkEndDate = DateTimeOffset.MaxValue});
-      second = new DeputyInfo(new {WorkStartDate = date, WorkEndDate = date});
-      third = new DeputyInfo(new {WorkStartDate = DateTimeOffset.MaxValue, WorkEndDate = DateTimeOffset.MaxValue});
+      first = new DeputyInfo {WorkStartDate = DateTimeOffset.MinValue, WorkEndDate = DateTimeOffset.MaxValue};
+      second = new DeputyInfo {WorkStartDate = date, WorkEndDate = date};
+      third = new DeputyInfo {WorkStartDate = DateTimeOffset.MaxValue, WorkEndDate = DateTimeOffset.MaxValue};
       deputies = first.ToSequence(second, third, null);
       deputies.WorkDate(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
       deputies.WorkDate(null, date).Should().NotBeNullOrEmpty().And.Equal(second);
@@ -126,8 +126,8 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
 
       Enumerable.Empty<IDeputyInfo>().Faction("faction").Should().NotBeNull().And.BeEmpty();
 
-      var first = new DeputyInfo(new {FactionName = "FIRST"});
-      var second = new DeputyInfo(new {FactionName = "Second"});
+      var first = new DeputyInfo {FactionName = "FIRST"};
+      var second = new DeputyInfo {FactionName = "Second"};
       var deputies = first.ToSequence(second, null);
       deputies.Faction("first").Should().NotBeNullOrEmpty().And.Equal(first);
       deputies.Faction("second").Should().NotBeNullOrEmpty().And.Equal(second);
@@ -155,8 +155,8 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
 
       Enumerable.Empty<IDeputyInfo>().Degree("degree").Should().NotBeNull().And.BeEmpty();
 
-      var first = new DeputyInfo(new {DegreesOriginal = new List<string> {"FIRST", "SECOND"}});
-      var second = new DeputyInfo(new {DegreesOriginal = new List<string> {"First", "Third"}});
+      var first = new DeputyInfo {Degrees = ["FIRST", "SECOND"]};
+      var second = new DeputyInfo {Degrees = ["First", "Third"]};
       var deputies = first.ToSequence(second, null);
       deputies.Degree("first").Should().NotBeNullOrEmpty().And.Equal(first, second);
       deputies.Degree("second").Should().NotBeNullOrEmpty().And.Equal(first);
@@ -185,8 +185,8 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
 
       Enumerable.Empty<IDeputyInfo>().Rank("rank").Should().NotBeNull().And.BeEmpty();
 
-      var first = new DeputyInfo(new {RanksOriginal = new List<string> {"FIRST", "SECOND"}});
-      var second = new DeputyInfo(new {RanksOriginal = new List<string> {"First", "Third"}});
+      var first = new DeputyInfo {Ranks = ["FIRST", "SECOND"]};
+      var second = new DeputyInfo {Ranks = ["First", "Third"]};
 
       var deputies = first.ToSequence(second, null);
       deputies.Rank("first").Should().NotBeNullOrEmpty().And.Equal(first, second);
@@ -216,12 +216,13 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
 
       Enumerable.Empty<IDeputyInfo>().Region("region").Should().NotBeNull().And.BeEmpty();
 
-      var first = new DeputyInfo(new {RegionsOriginal = new List<string> {"FIRST", "SECOND"}});
-      var second = new DeputyInfo(new {RegionsOriginal = new List<string> {"First", "Third"}});
+      var first = new DeputyInfo {Regions = ["FIRST", "SECOND"]};
+      var second = new DeputyInfo {Regions = ["First", "Third"]};
 
       var deputies = first.ToSequence(second, null);
       deputies.Region("first").Should().NotBeNullOrEmpty().And.Equal(first, second);
       deputies.Region("second").Should().NotBeNullOrEmpty().And.Equal(first);
+      deputies.Region("third").Should().NotBeNullOrEmpty().And.Equal(second);
       deputies.Region("third").Should().NotBeNullOrEmpty().And.Equal(second);
     }
 

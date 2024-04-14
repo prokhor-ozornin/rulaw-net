@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,41 +14,13 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="DeputyRequest(long?, string?, DateTimeOffset?, string?, string?, IDeputyRequestAddressee?, string?, IDeputyRequestSigner?, DateTimeOffset?, DateTimeOffset?, string?)"/>
-  /// <seealso cref="DeputyRequest(DeputyRequest.Info)"/>
-  /// <seealso cref="DeputyRequest(object)"/>
+  /// <seealso cref="DeputyRequest()"/>
   [Fact]
   public void Constructors()
   {
     typeof(DeputyRequest).Should().BeDerivedFrom<object>().And.Implement<IDeputyRequest>();
 
     var request = new DeputyRequest();
-    request.Id.Should().BeNull();
-    request.Name.Should().BeNull();
-    request.Date.Should().BeNull();
-    request.DocumentNumber.Should().BeNull();
-    request.Initiator.Should().BeNull();
-    request.Addressee.Should().BeNull();
-    request.Answer.Should().BeNull();
-    request.Signer.Should().BeNull();
-    request.SignDate.Should().BeNull();
-    request.ControlDate.Should().BeNull();
-    request.ResolutionNumber.Should().BeNull();
-
-    request = new DeputyRequest(new DeputyRequest.Info());
-    request.Id.Should().BeNull();
-    request.Name.Should().BeNull();
-    request.Date.Should().BeNull();
-    request.DocumentNumber.Should().BeNull();
-    request.Initiator.Should().BeNull();
-    request.Addressee.Should().BeNull();
-    request.Answer.Should().BeNull();
-    request.Signer.Should().BeNull();
-    request.SignDate.Should().BeNull();
-    request.ControlDate.Should().BeNull();
-    request.ResolutionNumber.Should().BeNull();
-
-    request = new DeputyRequest(new {});
     request.Id.Should().BeNull();
     request.Name.Should().BeNull();
     request.Date.Should().BeNull();
@@ -69,10 +40,7 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   [Fact]
   public void Id_Property()
   {
-    new DeputyRequest(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new DeputyRequest { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -81,10 +49,7 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   [Fact]
   public void Name_Property()
   {
-    new DeputyRequest(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new DeputyRequest { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -93,10 +58,7 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   [Fact]
   public void Date_Property()
   {
-    new DeputyRequest(new
-    {
-      Date = DateTimeOffset.MaxValue
-    }).Date.Should().Be(DateTimeOffset.MaxValue);
+    new DeputyRequest { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -105,10 +67,7 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   [Fact]
   public void DocumentNumber_Property()
   {
-    new DeputyRequest(new
-    {
-      DocumentNumber = Guid.Empty.ToString()
-    }).DocumentNumber.Should().Be(Guid.Empty.ToString());
+    new DeputyRequest { DocumentNumber = Guid.Empty.ToString() }.DocumentNumber.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -117,10 +76,7 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   [Fact]
   public void Initiator_Property()
   {
-    new DeputyRequest(new
-    {
-      Initiator = Guid.Empty.ToString()
-    }).Initiator.Should().Be(Guid.Empty.ToString());
+    new DeputyRequest { Initiator = Guid.Empty.ToString() }.Initiator.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -130,10 +86,7 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   public void Addressee_Property()
   {
     var addressee = new DeputyRequestAddressee();
-    new DeputyRequest(new
-    {
-      Addressee = addressee
-    }).Addressee.Should().BeSameAs(addressee);
+    new DeputyRequest { Addressee = addressee }.Addressee.Should().BeSameAs(addressee);
   }
 
   /// <summary>
@@ -142,10 +95,7 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   [Fact]
   public void Answer_Property()
   {
-    new DeputyRequest(new
-    {
-      Answer = Guid.Empty.ToString()
-    }).Answer.Should().Be(Guid.Empty.ToString());
+    new DeputyRequest { Answer = Guid.Empty.ToString() }.Answer.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -155,10 +105,7 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   public void Signer_Property()
   {
     var signer = new DeputyRequestSigner();
-    new DeputyRequest(new
-    {
-      Signer = signer
-    }).Signer.Should().BeSameAs(signer);
+    new DeputyRequest { Signer = signer }.Signer.Should().BeSameAs(signer);
   }
 
   /// <summary>
@@ -167,10 +114,7 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   [Fact]
   public void SignDate_Property()
   {
-    new DeputyRequest(new
-    {
-      SignDate = DateTimeOffset.MaxValue
-    }).SignDate.Should().Be(DateTimeOffset.MaxValue);
+    new DeputyRequest { SignDate = DateTimeOffset.MaxValue }.SignDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -179,10 +123,7 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   [Fact]
   public void ControlDate_Property()
   {
-    new DeputyRequest(new
-    {
-      ControlDate = DateTimeOffset.MaxValue
-    }).ControlDate.Should().Be(DateTimeOffset.MaxValue);
+    new DeputyRequest { ControlDate = DateTimeOffset.MaxValue }.ControlDate.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -191,10 +132,7 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   [Fact]
   public void ResolutionNumber_Property()
   {
-    new DeputyRequest(new
-    {
-      ResolutionNumber = Guid.Empty.ToString()
-    }).ResolutionNumber.Should().Be(Guid.Empty.ToString());
+    new DeputyRequest { ResolutionNumber = Guid.Empty.ToString() }.ResolutionNumber.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -225,168 +163,7 @@ public sealed class DeputyRequestTest : ClassTest<DeputyRequest>
   [Fact]
   public void ToString_Method()
   {
-    new DeputyRequest(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="DeputyRequest.Info"/>.</para>
-/// </summary>
-public sealed class DeputyRequestInfoTests : ClassTest<DeputyRequest.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="DeputyRequest.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(DeputyRequest.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IDeputyRequest>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new DeputyRequest.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-    info.Date.Should().BeNull();
-    info.DocumentNumber.Should().BeNull();
-    info.Initiator.Should().BeNull();
-    info.Addressee.Should().BeNull();
-    info.Answer.Should().BeNull();
-    info.Signer.Should().BeNull();
-    info.SignDate.Should().BeNull();
-    info.ControlDate.Should().BeNull();
-    info.ResolutionNumber.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new DeputyRequest.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new DeputyRequest.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property()
-  {
-    new DeputyRequest.Info { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.DocumentNumber"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void DocumentNumber_Property()
-  {
-    new DeputyRequest.Info { DocumentNumber = Guid.Empty.ToString() }.DocumentNumber.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.Initiator"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Initiator_Property()
-  {
-    new DeputyRequest.Info { Initiator = Guid.Empty.ToString() }.Initiator.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.Addressee"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Addressee_Property()
-  {
-    var addressee = new DeputyRequestAddressee();
-    new DeputyRequest.Info { Addressee = addressee }.Addressee.Should().BeSameAs(addressee);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.Answer"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Answer_Property()
-  {
-    new DeputyRequest.Info { Answer = Guid.Empty.ToString() }.Answer.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.Signer"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Signer_Property()
-  {
-    var signer = new DeputyRequestSigner();
-    new DeputyRequest.Info { Signer = signer }.Signer.Should().BeSameAs(signer);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.SignDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void SignDate_Property()
-  {
-    new DeputyRequest.Info { SignDate = Guid.Empty.ToString() }.SignDate.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.ControlDate"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ControlDate_Property()
-  {
-    new DeputyRequest.Info { ControlDate = Guid.Empty.ToString() }.ControlDate.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.ResolutionNumber"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ResolutionNumber_Property()
-  {
-    new DeputyRequest.Info { ResolutionNumber = Guid.Empty.ToString() }.ResolutionNumber.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequest.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new DeputyRequest.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<DeputyRequest>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-      result.Date.Should().BeNull();
-      result.DocumentNumber.Should().BeNull();
-      result.Initiator.Should().BeNull();
-      result.Addressee.Should().BeNull();
-      result.Answer.Should().BeNull();
-      result.Signer.Should().BeNull();
-      result.SignDate.Should().BeNull();
-      result.ControlDate.Should().BeNull();
-      result.ResolutionNumber.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new DeputyRequest {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -397,18 +174,18 @@ public sealed class DeputyRequestInfoTests : ClassTest<DeputyRequest.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new DeputyRequest.Info
+      Validate(new DeputyRequest
       {
         Id = 1,
         Addressee = new DeputyRequestAddressee(),
         Answer = "answer",
-        ControlDate = DateTimeOffset.MinValue.AsString(),
+        ControlDate = DateTimeOffset.MinValue,
         Date = DateTimeOffset.MinValue,
         DocumentNumber = "documentNumber",
         Initiator = "initiator",
         Name = "name",
         ResolutionNumber = "resolutionNumber",
-        SignDate = DateTimeOffset.MinValue.AsString(),
+        SignDate = DateTimeOffset.MinValue,
         Signer = new DeputyRequestSigner()
       });
     }

@@ -6,126 +6,74 @@ namespace RuLaw;
 /// <summary>
 ///   <para>Laws voting.</para>
 /// </summary>
+[DataContract(Name = "vote")]
 public sealed class Vote : IVote
 {
   /// <summary>
   ///   <para>Identifier of vote.</para>
   /// </summary>
-  public long? Id { get; }
+  [DataMember(Name = "id", IsRequired = true)]
+  public long? Id { get; set; }
 
   /// <summary>
   ///   <para>Date of voting.</para>
   /// </summary>
-  public DateTimeOffset? Date { get; }
+  [DataMember(Name = "voteDate", IsRequired = true)]
+  public DateTimeOffset? Date { get; set; }
 
   /// <summary>
   ///   <para>Subject of convocation.</para>
   /// </summary>
-  public string Subject { get; }
+  [DataMember(Name = "subject", IsRequired = true)]
+  public string Subject { get; set; }
 
   /// <summary>
   ///   <para>Whether the law passed (true) or not (false) according to voting.</para>
   /// </summary>
-  public bool? Successful { get; }
+  [DataMember(Name = "result", IsRequired = true)]
+  public bool? Successful { get; set; }
 
   /// <summary>
   ///   <para>Type of voting result.</para>
   /// </summary>
-  public string ResultType { get; }
+  [DataMember(Name = "resultType", IsRequired = true)]
+  public string ResultType { get; set; }
 
   /// <summary>
   ///   <para>Result of deputy voting.</para>
   /// </summary>
-  public string PersonResult { get; }
+  [DataMember(Name = "personResult", IsRequired = true)]
+  public string PersonResult { get; set; }
 
   /// <summary>
   ///   <para>Number of voted deputies in faction.</para>
   /// </summary>
-  public int? TotalVotesCount { get; }
+  [DataMember(Name = "voteCount", IsRequired = true)]
+  public int? TotalVotesCount { get; set; }
 
   /// <summary>
   ///   <para>Count of deputies in a faction who have voted for.</para>
   /// </summary>
-  public int? ForVotesCount { get; }
+  [DataMember(Name = "forCount", IsRequired = true)]
+  public int? ForVotesCount { get; set; }
 
   /// <summary>
   ///   <para>Count of deputies in a faction who have voted against.</para>
   /// </summary>
-  public int? AgainstVotesCount { get; }
+  [DataMember(Name = "againstCount", IsRequired = true)]
+  public int? AgainstVotesCount { get; set; }
 
   /// <summary>
   ///   <para>Count of abstained deputies in a faction.</para>
   /// </summary>
-  public int? AbstainVotesCount { get; }
+  [DataMember(Name = "abstainCount", IsRequired = true)]
+  public int? AbstainVotesCount { get; set; }
 
   /// <summary>
   ///   <para>Count of absent (non-voted) deputies in a faction.</para>
   /// </summary>
-  public int? AbsentVotesCount { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="id"></param>
-  /// <param name="date"></param>
-  /// <param name="subject"></param>
-  /// <param name="successful"></param>
-  /// <param name="resultType"></param>
-  /// <param name="personResult"></param>
-  /// <param name="totalVotesCount"></param>
-  /// <param name="forVotesCount"></param>
-  /// <param name="againstVotesCount"></param>
-  /// <param name="abstainVotesCount"></param>
-  /// <param name="absentVotesCount"></param>
-  public Vote(long? id = null,
-              DateTimeOffset? date = null,
-              string subject = null,
-              bool? successful = null,
-              string resultType = null,
-              string personResult = null,
-              int? totalVotesCount = null,
-              int? forVotesCount = null,
-              int? againstVotesCount = null,
-              int? abstainVotesCount = null,
-              int? absentVotesCount = null)
-  {
-    Id = id;
-    Date = date;
-    Subject = subject;
-    Successful = successful;
-    ResultType = resultType;
-    PersonResult = personResult;
-    TotalVotesCount = totalVotesCount;
-    ForVotesCount = forVotesCount;
-    AgainstVotesCount = againstVotesCount;
-    AbstainVotesCount = abstainVotesCount;
-    AbsentVotesCount = absentVotesCount;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Vote(Info info)
-  {
-    Id = info.Id;
-    Date = info.Date is not null ? DateTimeOffset.Parse(info.Date) : null;
-    Subject = info.Subject;
-    Successful = info.Successful;
-    ResultType = info.ResultType;
-    PersonResult = info.PersonResult;
-    TotalVotesCount = info.TotalVotesCount;
-    ForVotesCount = info.ForVotesCount;
-    AgainstVotesCount = info.AgainstVotesCount;
-    AbstainVotesCount = info.AbstainVotesCount;
-    AbsentVotesCount = info.AbsentVotesCount;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Vote(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "absentCount", IsRequired = true)]
+  public int? AbsentVotesCount { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="IVote"/> instance with another.</para>
@@ -159,83 +107,4 @@ public sealed class Vote : IVote
   /// </summary>
   /// <returns>A string that represents the current <see cref="Vote"/>.</returns>
   public override string ToString() => Subject ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "vote")]
-  public sealed record Info : IResultable<IVote>
-  {
-    /// <summary>
-    ///   <para>Date of voting.</para>
-    /// </summary>
-    [DataMember(Name = "voteDate", IsRequired = true)]
-    public string Date { get; init; }
-
-    /// <summary>
-    ///   <para>Identifier of vote.</para>
-    /// </summary>
-    [DataMember(Name = "id", IsRequired = true)]
-    public long? Id { get; init; }
-
-    /// <summary>
-    ///   <para>Subject of convocation.</para>
-    /// </summary>
-    [DataMember(Name = "subject", IsRequired = true)]
-    public string Subject { get; init; }
-
-    /// <summary>
-    ///   <para>Whether the law passed (true) or not (false) according to voting.</para>
-    /// </summary>
-    [DataMember(Name = "result", IsRequired = true)]
-    public bool? Successful { get; init; }
-
-    /// <summary>
-    ///   <para>Type of voting result.</para>
-    /// </summary>
-    [DataMember(Name = "resultType", IsRequired = true)]
-    public string ResultType { get; init; }
-
-    /// <summary>
-    ///   <para>Result of deputy voting.</para>
-    /// </summary>
-    [DataMember(Name = "personResult", IsRequired = true)]
-    public string PersonResult { get; init; }
-
-    /// <summary>
-    ///   <para>Number of voted deputies in faction.</para>
-    /// </summary>
-    [DataMember(Name = "voteCount", IsRequired = true)]
-    public int? TotalVotesCount { get; init; }
-
-    /// <summary>
-    ///   <para>Count of deputies in a faction who have voted for.</para>
-    /// </summary>
-    [DataMember(Name = "forCount", IsRequired = true)]
-    public int? ForVotesCount { get; init; }
-
-    /// <summary>
-    ///   <para>Count of deputies in a faction who have voted against.</para>
-    /// </summary>
-    [DataMember(Name = "againstCount", IsRequired = true)]
-    public int? AgainstVotesCount { get; init; }
-
-    /// <summary>
-    ///   <para>Count of abstained deputies in a faction.</para>
-    /// </summary>
-    [DataMember(Name = "abstainCount", IsRequired = true)]
-    public int? AbstainVotesCount { get; init; }
-
-    /// <summary>
-    ///   <para>Count of absent (non-voted) deputies in a faction.</para>
-    /// </summary>
-    [DataMember(Name = "absentCount", IsRequired = true)]
-    public int? AbsentVotesCount { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IVote ToResult() => new Vote(this);
-  }
 }

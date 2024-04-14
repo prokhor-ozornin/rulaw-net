@@ -25,8 +25,8 @@ public sealed class ITranscriptMeetingQuestionExtensionsTest : UnitTest
 
       Enumerable.Empty<ITranscriptMeetingQuestion>().Stage("stage").Should().NotBeNull().And.BeEmpty();
 
-      var first = new TranscriptMeetingQuestion(new {Stage = "FIRST"});
-      var second = new TranscriptMeetingQuestion(new {Stage = "Second"});
+      var first = new TranscriptMeetingQuestion {Stage = "FIRST"};
+      var second = new TranscriptMeetingQuestion {Stage = "Second"};
       var questions = first.ToSequence(second, null);
       questions.Stage("first").Should().NotBeNullOrEmpty().And.Equal(first);
       questions.Stage("second").Should().NotBeNullOrEmpty().And.Equal(second);

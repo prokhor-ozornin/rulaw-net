@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,23 +14,13 @@ public sealed class DeputyRequestAddresseeTest : ClassTest<DeputyRequestAddresse
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="DeputyRequestAddressee(long?, string?)"/>
-  /// <seealso cref="DeputyRequestAddressee(DeputyRequestAddressee.Info)"/>
-  /// <seealso cref="DeputyRequestAddressee(object)"/>
+  /// <seealso cref="DeputyRequestAddressee()"/>
   [Fact]
   public void Constructors()
   {
     typeof(DeputyRequestAddressee).Should().BeDerivedFrom<object>().And.Implement<IDeputyRequestAddressee>();
 
     var addressee = new DeputyRequestAddressee();
-    addressee.Id.Should().BeNull();
-    addressee.Name.Should().BeNull();
-
-    addressee = new DeputyRequestAddressee(new DeputyRequestAddressee.Info());
-    addressee.Id.Should().BeNull();
-    addressee.Name.Should().BeNull();
-
-    addressee = new DeputyRequestAddressee(new {});
     addressee.Id.Should().BeNull();
     addressee.Name.Should().BeNull();
   }
@@ -42,10 +31,7 @@ public sealed class DeputyRequestAddresseeTest : ClassTest<DeputyRequestAddresse
   [Fact]
   public void Id_Property()
   {
-    new DeputyRequestAddressee(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new DeputyRequestAddressee { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -54,10 +40,7 @@ public sealed class DeputyRequestAddresseeTest : ClassTest<DeputyRequestAddresse
   [Fact]
   public void Name_Property()
   {
-    new DeputyRequestAddressee(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new DeputyRequestAddressee { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -88,67 +71,7 @@ public sealed class DeputyRequestAddresseeTest : ClassTest<DeputyRequestAddresse
   [Fact]
   public void ToString_Method()
   {
-    new DeputyRequestAddressee(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="DeputyRequestAddressee.Info"/>.</para>
-/// </summary>
-public sealed class DeputyRequestAddresseeInfoTests : ClassTest<DeputyRequestAddressee.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="DeputyRequestAddressee.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(DeputyRequestAddressee.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IDeputyRequestAddressee>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new DeputyRequestAddressee.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new DeputyRequestAddressee.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new DeputyRequestAddressee.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new DeputyRequestAddressee.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<DeputyRequestAddressee>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new DeputyRequestAddressee {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -159,7 +82,7 @@ public sealed class DeputyRequestAddresseeInfoTests : ClassTest<DeputyRequestAdd
   {
     using (new AssertionScope())
     {
-      Validate(new DeputyRequestAddressee.Info
+      Validate(new DeputyRequestAddressee
       {
         Id = 1,
         Name = "name"

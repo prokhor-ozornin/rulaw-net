@@ -25,8 +25,8 @@ public sealed class IEducationExtensionsTest : UnitTest
 
       Enumerable.Empty<IEducation>().Institution("institution").Should().NotBeNull().And.BeEmpty();
 
-      var first = new Education(new {Institution = "FIRST"});
-      var second = new Education(new {Institution = "Second"});
+      var first = new Education {Institution = "FIRST"};
+      var second = new Education {Institution = "Second"};
       var educations = first.ToSequence(second, null);
       educations.Institution("first").Should().NotBeNullOrEmpty().And.Equal(first);
       educations.Institution("second").Should().NotBeNullOrEmpty().And.Equal(second);
@@ -52,9 +52,9 @@ public sealed class IEducationExtensionsTest : UnitTest
 
       Enumerable.Empty<IEducation>().Year().Should().NotBeNull().And.BeEmpty();
 
-      var first = new Education(new {Year = 0});
-      var second = new Education(new {Year = 1});
-      var third = new Education(new {Year = 2});
+      var first = new Education {Year = 0};
+      var second = new Education {Year = 1};
+      var third = new Education {Year = 2};
 
       var educations = first.ToSequence(second, third, null);
       educations.Year(1).Should().NotBeNullOrEmpty().And.Equal(second, third);

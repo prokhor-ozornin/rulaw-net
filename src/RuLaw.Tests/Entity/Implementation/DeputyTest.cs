@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,27 +14,13 @@ public sealed class DeputyTest : ClassTest<Deputy>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="Deputy(long?, string?, bool?, string?)"/>
-  /// <seealso cref="Deputy(Deputy.Info)"/>
-  /// <seealso cref="Deputy(object)"/>
+  /// <seealso cref="Deputy()"/>
   [Fact]
   public void Constructors()
   {
     typeof(Deputy).Should().BeDerivedFrom<object>().And.Implement<IDeputy>();
 
     var deputy = new Deputy();
-    deputy.Id.Should().BeNull();
-    deputy.Name.Should().BeNull();
-    deputy.Active.Should().BeNull();
-    deputy.Position.Should().BeNull();
-
-    deputy = new Deputy(new Deputy.Info());
-    deputy.Id.Should().BeNull();
-    deputy.Name.Should().BeNull();
-    deputy.Active.Should().BeNull();
-    deputy.Position.Should().BeNull();
-
-    deputy = new Deputy(new {});
     deputy.Id.Should().BeNull();
     deputy.Name.Should().BeNull();
     deputy.Active.Should().BeNull();
@@ -48,10 +33,7 @@ public sealed class DeputyTest : ClassTest<Deputy>
   [Fact]
   public void Id_Property()
   {
-    new Deputy(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new Deputy { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -60,10 +42,7 @@ public sealed class DeputyTest : ClassTest<Deputy>
   [Fact]
   public void Name_Property()
   {
-    new Deputy(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new Deputy { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -72,10 +51,7 @@ public sealed class DeputyTest : ClassTest<Deputy>
   [Fact]
   public void Active_Property()
   {
-    new Deputy(new
-    {
-      Active = true
-    }).Active.Should().BeTrue();
+    new Deputy { Active = true }.Active.Should().BeTrue();
   }
 
   /// <summary>
@@ -84,10 +60,7 @@ public sealed class DeputyTest : ClassTest<Deputy>
   [Fact]
   public void Position_Property()
   {
-    new Deputy(new
-    {
-      Position = Guid.Empty.ToString()
-    }).Position.Should().Be(Guid.Empty.ToString());
+    new Deputy { Position = Guid.Empty.ToString() }.Position.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -118,89 +91,7 @@ public sealed class DeputyTest : ClassTest<Deputy>
   [Fact]
   public void ToString_Method()
   {
-    new Deputy(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="Deputy.Info"/>.</para>
-/// </summary>
-public sealed class DeputyInfoTests : ClassTest<Deputy.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="Deputy.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(Deputy.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IDeputy>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var deputy = new Deputy.Info();
-    deputy.Id.Should().BeNull();
-    deputy.Name.Should().BeNull();
-    deputy.Active.Should().BeNull();
-    deputy.Position.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new Deputy.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new Deputy.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Info.Active"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Active_Property()
-  {
-    new Deputy.Info { Active = true }.Active.Should().BeTrue();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Info.Position"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Position_Property()
-  {
-    new Deputy.Info { Position = Guid.Empty.ToString() }.Position.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Deputy.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new Deputy.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<Deputy>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-      result.Active.Should().BeNull();
-      result.Position.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new Deputy {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -211,7 +102,7 @@ public sealed class DeputyInfoTests : ClassTest<Deputy.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new Deputy.Info
+      Validate(new Deputy
       {
         Id = 1,
         Active = true,

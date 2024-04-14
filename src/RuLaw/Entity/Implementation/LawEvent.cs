@@ -1,77 +1,42 @@
 ﻿using System.Runtime.Serialization;
-using Catharsis.Extensions;
 
 namespace RuLaw;
 
 /// <summary>
 ///   <para>Event, associated with a law.</para>
 /// </summary>
+[DataContract(Name = "lastEvent")]
 public sealed class LawEvent : ILawEvent
 {
   /// <summary>
   ///   <para>Date of event occurrence.</para>
   /// </summary>
-  public DateTimeOffset? Date { get; }
+  [DataMember(Name = "date", IsRequired = true)]
+  public DateTimeOffset? Date { get; set; }
 
   /// <summary>
   ///   <para>Accepted decision (formulation).</para>
   /// </summary>
-  public string Solution { get; }
+  [DataMember(Name = "solution", IsRequired = true)]
+  public string Solution { get; set; }
 
   /// <summary>
   ///   <para>Document, associated with a law's event.</para>
   /// </summary>
-  public ILawEventDocument Document { get; }
+  [DataMember(Name = "document", IsRequired = true)]
+  public ILawEventDocument Document { get; set; }
 
   /// <summary>
   ///   <para>Phase of law's review process.</para>
   /// </summary>
-  public ILawEventPhase Phase { get; }
+  [DataMember(Name = "phase", IsRequired = true)]
+  public ILawEventPhase Phase { get; set; }
 
   /// <summary>
   ///   <para>Stage of law's review process.</para>
   /// </summary>
-  public ILawEventStage Stage { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="date"></param>
-  /// <param name="solution"></param>
-  /// <param name="document"></param>
-  /// <param name="phase"></param>
-  /// <param name="stage"></param>
-  public LawEvent(DateTimeOffset? date = null,
-                  string solution = null,
-                  ILawEventDocument document = null,
-                  ILawEventPhase phase = null,
-                  ILawEventStage stage = null)
-  {
-    Date = date;
-    Solution = solution;
-    Document = document;
-    Phase = phase;
-    Stage = stage;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public LawEvent(Info info)
-  {
-    Date = info.Date is not null ? DateTimeOffset.Parse(info.Date) : null;
-    Solution = info.Solution;
-    Document = info.Document;
-    Phase = info.Phase;
-    Stage = info.Stage;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public LawEvent(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "stage", IsRequired = true)]
+  public ILawEventStage Stage { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="ILawEvent"/> instance with another.</para>
@@ -85,47 +50,4 @@ public sealed class LawEvent : ILawEvent
   /// </summary>
   /// <returns>A string that represents the current <see cref="LawEvent"/>.</returns>
   public override string ToString() => Solution ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "lastEvent")]
-  public sealed record Info : IResultable<ILawEvent>
-  {
-    /// <summary>
-    ///   <para>Date of event occurrence.</para>
-    /// </summary>
-    [DataMember(Name = "date", IsRequired = true)]
-    public string Date { get; init; }
-
-    /// <summary>
-    ///   <para>Accepted decision (formulation).</para>
-    /// </summary>
-    [DataMember(Name = "solution", IsRequired = true)]
-    public string Solution { get; init; }
-
-    /// <summary>
-    ///   <para>Document, associated with a law's event.</para>
-    /// </summary>
-    [DataMember(Name = "document", IsRequired = true)]
-    public LawEventDocument Document { get; init; }
-
-    /// <summary>
-    ///   <para>Phase of law's review process.</para>
-    /// </summary>
-    [DataMember(Name = "phase", IsRequired = true)]
-    public LawEventPhase Phase { get; init; }
-
-    /// <summary>
-    ///   <para>Stage of law's review process.</para>
-    /// </summary>
-    [DataMember(Name = "stage", IsRequired = true)]
-    public LawEventStage Stage { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public ILawEvent ToResult() => new LawEvent(this);
-  }
 }

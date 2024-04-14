@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -16,27 +15,13 @@ public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeet
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="Education(string?, short?)"/>
-  /// <seealso cref="Education(Education.Info)"/>
-  /// <seealso cref="Education(object)"/>
+  /// <seealso cref="Education()"/>
   [Fact]
   public void Constructors()
   {
     typeof(Education).Should().BeDerivedFrom<object>().And.Implement<IEducation>();
 
     var part = new TranscriptMeetingQuestionPart();
-    part.StartLine.Should().BeNull();
-    part.EndLine.Should().BeNull();
-    part.Lines.Should().BeEmpty();
-    part.Votes.Should().BeEmpty();
-
-    part = new TranscriptMeetingQuestionPart(new TranscriptMeetingQuestionPart.Info());
-    part.StartLine.Should().BeNull();
-    part.EndLine.Should().BeNull();
-    part.Lines.Should().BeEmpty();
-    part.Votes.Should().BeEmpty();
-
-    part = new TranscriptMeetingQuestionPart(new {});
     part.StartLine.Should().BeNull();
     part.EndLine.Should().BeNull();
     part.Lines.Should().BeEmpty();
@@ -49,10 +34,7 @@ public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeet
   [Fact]
   public void StartLine_Property()
   {
-    new TranscriptMeetingQuestionPart(new
-    {
-      StartLine = int.MaxValue
-    }).StartLine.Should().Be(int.MaxValue);
+    new TranscriptMeetingQuestionPart { StartLine = int.MaxValue }.StartLine.Should().Be(int.MaxValue);
   }
 
   /// <summary>
@@ -61,10 +43,7 @@ public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeet
   [Fact]
   public void EndLine_Property()
   {
-    new TranscriptMeetingQuestionPart(new
-    {
-      EndLine = int.MaxValue
-    }).EndLine.Should().Be(int.MaxValue);
+    new TranscriptMeetingQuestionPart { EndLine = int.MaxValue }.EndLine.Should().Be(int.MaxValue);
   }
 
   /// <summary>
@@ -73,9 +52,7 @@ public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeet
   [Fact]
   public void Lines_Property()
   {
-    var part = new TranscriptMeetingQuestionPart(new
-    {
-    });
+    var part = new TranscriptMeetingQuestionPart();
 
     var lines = part.Lines.To<List<string>>();
 
@@ -92,13 +69,9 @@ public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeet
   [Fact]
   public void Votes_Property()
   {
-    var part = new TranscriptMeetingQuestionPart(new
-    {
-    });
+    var part = new TranscriptMeetingQuestionPart();
 
-    var vote = new TranscriptVote(new
-    {
-    });
+    var vote = new TranscriptVote();
 
     var votes = part.Votes.To<List<TranscriptVote>>();
 
@@ -145,89 +118,7 @@ public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeet
   [Fact]
   public void ToString_Method()
   {
-    new TranscriptMeetingQuestionPart(new {Lines = new List<string> {"first", "second"}}).ToString().Should().Be($"first{Environment.NewLine}second");
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="TranscriptMeetingQuestionPart.Info"/>.</para>
-/// </summary>
-public sealed class TranscriptMeetingQuestionPartInfoTests : ClassTest<TranscriptMeetingQuestionPart.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="Education.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(Education.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IEducation>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new Education.Info();
-    info.Institution.Should().BeNull();
-    info.Year.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.StartLine"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void StartLine_Property()
-  {
-    new TranscriptMeetingQuestionPart.Info { StartLine = int.MaxValue }.StartLine.Should().Be(int.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.EndLine"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void EndLine_Property()
-  {
-    new TranscriptMeetingQuestionPart.Info { EndLine = int.MaxValue }.EndLine.Should().Be(int.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.Lines"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Lines_Property()
-  {
-    var lines = new List<string>();
-    new TranscriptMeetingQuestionPart.Info { Lines = lines }.Lines.Should().BeSameAs(lines);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.Votes"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Votes_Property()
-  {
-    var votes = new List<TranscriptVote>();
-    new TranscriptMeetingQuestionPart.Info { Votes = votes }.Votes.Should().BeSameAs(votes);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new TranscriptMeetingQuestionPart.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<TranscriptMeetingQuestionPart>();
-      result.StartLine.Should().BeNull();
-      result.EndLine.Should().BeNull();
-      result.Lines.Should().BeEmpty();
-      result.Votes.Should().BeEmpty();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new TranscriptMeetingQuestionPart {Lines = new List<string> {"first", "second"}}.ToString().Should().Be($"first{Environment.NewLine}second");
   }
 
   /// <summary>
@@ -238,12 +129,12 @@ public sealed class TranscriptMeetingQuestionPartInfoTests : ClassTest<Transcrip
   {
     using (new AssertionScope())
     {
-      Validate(new TranscriptMeetingQuestionPart.Info
+      Validate(new TranscriptMeetingQuestionPart
       {
         EndLine = 2,
         Lines = ["line"],
         StartLine = 1,
-        Votes = [new TranscriptVote(new { Date = DateTimeOffset.MinValue, Line = 3 })]
+        Votes = [new TranscriptVote { Date = DateTimeOffset.MinValue, Line = 3 }]
       });
     }
 

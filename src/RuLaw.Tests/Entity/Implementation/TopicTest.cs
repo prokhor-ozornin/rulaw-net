@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,23 +14,13 @@ public sealed class TopicTest : ClassTest<Topic>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="Topic(long?, string?)"/>
-  /// <seealso cref="Topic(Topic.Info)"/>
-  /// <seealso cref="Topic(object)"/>
+  /// <seealso cref="Topic()"/>
   [Fact]
   public void Constructors()
   {
     typeof(Topic).Should().BeDerivedFrom<object>().And.Implement<ITopic>();
 
     var topic = new Topic();
-    topic.Id.Should().BeNull();
-    topic.Name.Should().BeNull();
-
-    topic = new Topic(new Topic.Info());
-    topic.Id.Should().BeNull();
-    topic.Name.Should().BeNull();
-
-    topic = new Topic(new {});
     topic.Id.Should().BeNull();
     topic.Name.Should().BeNull();
   }
@@ -42,10 +31,7 @@ public sealed class TopicTest : ClassTest<Topic>
   [Fact]
   public void Id_Property()
   {
-    new Topic(new
-    {
-      Id = long.MaxValue
-    }).Id.Should().Be(long.MaxValue);
+    new Topic { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
   }
 
   /// <summary>
@@ -54,10 +40,7 @@ public sealed class TopicTest : ClassTest<Topic>
   [Fact]
   public void Name_Property()
   {
-    new Topic(new
-    {
-      Name = Guid.Empty.ToString()
-    }).Name.Should().Be(Guid.Empty.ToString());
+    new Topic { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -88,67 +71,7 @@ public sealed class TopicTest : ClassTest<Topic>
   [Fact]
   public void ToString_Method()
   {
-    new Topic(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="Topic.Info"/>.</para>
-/// </summary>
-public sealed class TopicInfoTests : ClassTest<Topic.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="Topic.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(Topic.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ITopic>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new Topic.Info();
-    info.Id.Should().BeNull();
-    info.Name.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Topic.Info.Id"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Id_Property()
-  {
-    new Topic.Info { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Topic.Info.Name"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Name_Property()
-  {
-    new Topic.Info { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Topic.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new Topic.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<Topic>();
-      result.Id.Should().BeNull();
-      result.Name.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new Topic {Name = Guid.Empty.ToString()}.ToString().Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>
@@ -159,7 +82,7 @@ public sealed class TopicInfoTests : ClassTest<Topic.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new Topic.Info
+      Validate(new Topic
       {
         Id = 1,
         Name = "name"

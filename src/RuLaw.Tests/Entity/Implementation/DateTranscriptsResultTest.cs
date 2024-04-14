@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -15,23 +14,13 @@ public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="DateTranscriptsResult(DateTimeOffset?, IEnumerable{IDateTranscriptMeeting})"/>
-  /// <seealso cref="DateTranscriptsResult(DateTranscriptsResult.Info)"/>
-  /// <seealso cref="DateTranscriptsResult(object)"/>
+  /// <seealso cref="DateTranscriptsResult()"/>
   [Fact]
   public void Constructors()
   {
     typeof(DateTranscriptsResult).Should().BeDerivedFrom<object>().And.Implement<IDateTranscriptsResult>();
 
     var result = new DateTranscriptsResult();
-    result.Date.Should().BeNull();
-    result.Meetings.Should().BeEmpty();
-
-    result = new DateTranscriptsResult(new DateTranscriptsResult.Info());
-    result.Date.Should().BeNull();
-    result.Meetings.Should().BeEmpty();
-
-    result = new DateTranscriptsResult(new {});
     result.Date.Should().BeNull();
     result.Meetings.Should().BeEmpty();
   }
@@ -42,10 +31,7 @@ public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
   [Fact]
   public void Date_Property()
   {
-    new DateTranscriptsResult(new
-    {
-      Date = DateTimeOffset.MaxValue
-    }).Date.Should().Be(DateTimeOffset.MaxValue);
+    new DateTranscriptsResult { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -54,12 +40,8 @@ public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
   [Fact]
   public void Meetings_Property()
   {
-    var result = new DateTranscriptsResult(new
-    {
-    });
-    var meeting = new DateTranscriptMeeting(new
-    {
-    });
+    var result = new DateTranscriptsResult();
+    var meeting = new DateTranscriptMeeting();
 
     (result.Meetings as ICollection<IDateTranscriptMeeting>)?.Add(meeting);
     result.Meetings.Should().ContainSingle().Which.Should().BeSameAs(meeting);
@@ -96,68 +78,7 @@ public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
   [Fact]
   public void ToString_Method()
   {
-    new DateTranscriptsResult(new {Date = DateTimeOffset.MaxValue}).ToString().Should().Be(DateTimeOffset.MaxValue.AsString());
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="DateTranscriptsResult.Info"/>.</para>
-/// </summary>
-public sealed class DateTranscriptsResultInfoTests : ClassTest<DateTranscriptsResult.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="DateTranscriptsResult.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(DateTranscriptsResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IDateTranscriptsResult>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new DateTranscriptsResult.Info();
-    info.Date.Should().BeNull();
-    info.Meetings.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property()
-  {
-    new DateTranscriptsResult.Info { Date = Guid.Empty.ToString() }.Date.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Info.Meetings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Meetings_Property()
-  {
-    var meetings = new List<DateTranscriptMeeting>();
-    new DateTranscriptsResult.Info { Meetings = meetings }.Meetings.Should().BeSameAs(meetings);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="DateTranscriptsResult.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new DateTranscriptsResult.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<DateTranscriptsResult>();
-      result.Date.Should().BeNull();
-      result.Meetings.Should().BeEmpty();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
+    new DateTranscriptsResult {Date = DateTimeOffset.MaxValue}.ToString().Should().Be(DateTimeOffset.MaxValue.AsString());
   }
 
   /// <summary>
@@ -168,7 +89,7 @@ public sealed class DateTranscriptsResultInfoTests : ClassTest<DateTranscriptsRe
   {
     using (new AssertionScope())
     {
-      Validate(new DateTranscriptsResult.Info());
+      Validate(new DateTranscriptsResult());
     }
 
     return;

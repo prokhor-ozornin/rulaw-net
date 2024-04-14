@@ -23,8 +23,8 @@ public sealed class ILawExtensionsTest : UnitTest
       AssertionExtensions.Should(() => Enumerable.Empty<ILaw>().Number(null)).ThrowExactly<ArgumentNullException>().WithParameterName("number");
       AssertionExtensions.Should(() => Enumerable.Empty<ILaw>().Number(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("number");
 
-      var laws = new Law(new {Number = "first"}).ToSequence(new Law(new {Number = "second"}), null);
-      new Law(new {Number = "first"}).ToSequence(new Law(new {Number = "second"}), null).Number("first").Should().NotBeNull();
+      var laws = new Law {Number = "first"}.ToSequence(new Law {Number = "second"}, null);
+      new Law {Number = "first"}.ToSequence(new Law {Number = "second"}, null).Number("first").Should().NotBeNull();
       laws.Number("third").Should().BeNull();
     }
 

@@ -25,8 +25,8 @@ public sealed class IDeputyRequestExtensionsTest : UnitTest
 
       Enumerable.Empty<IDeputyRequest>().Initiator("initiator").Should().NotBeNull().And.BeEmpty();
 
-      var first = new DeputyRequest(new {Initiator = "FIRST"});
-      var second = new DeputyRequest(new {Initiator = "Second"});
+      var first = new DeputyRequest {Initiator = "FIRST"};
+      var second = new DeputyRequest {Initiator = "Second"};
       var requests = first.ToSequence(second, null);
       requests.Initiator("first").Should().NotBeNullOrEmpty().And.Equal(first);
       requests.Initiator("second").Should().NotBeNullOrEmpty().And.Equal(second);
@@ -54,8 +54,8 @@ public sealed class IDeputyRequestExtensionsTest : UnitTest
 
       Enumerable.Empty<IDeputyRequest>().Answer("answer").Should().NotBeNull().And.BeEmpty();
 
-      var first = new DeputyRequest(new {Answer = "FIRST"});
-      var second = new DeputyRequest(new {Answer = "Second"});
+      var first = new DeputyRequest {Answer = "FIRST"};
+      var second = new DeputyRequest {Answer = "Second"};
       var requests = first.ToSequence(second, null);
       requests.Answer("first").Should().NotBeNullOrEmpty().And.Equal(first);
       requests.Answer("second").Should().NotBeNullOrEmpty().And.Equal(second);
@@ -81,9 +81,9 @@ public sealed class IDeputyRequestExtensionsTest : UnitTest
 
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
-      var first = new DeputyRequest(new {SignDate = DateTimeOffset.MinValue});
-      var second = new DeputyRequest(new {SignDate = date});
-      var third = new DeputyRequest(new {SignDate = DateTimeOffset.MaxValue});
+      var first = new DeputyRequest {SignDate = DateTimeOffset.MinValue};
+      var second = new DeputyRequest {SignDate = date};
+      var third = new DeputyRequest {SignDate = DateTimeOffset.MaxValue};
 
       var requests = first.ToSequence(second, third, null);
       requests.SignDate(date).Should().NotBeNullOrEmpty().And.Equal(first, second);
@@ -113,9 +113,9 @@ public sealed class IDeputyRequestExtensionsTest : UnitTest
 
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
-      var first = new DeputyRequest(new { ControlDate = DateTimeOffset.MinValue });
-      var second = new DeputyRequest(new { ControlDate = date });
-      var third = new DeputyRequest(new { ControlDate = DateTimeOffset.MaxValue });
+      var first = new DeputyRequest { ControlDate = DateTimeOffset.MinValue };
+      var second = new DeputyRequest { ControlDate = date };
+      var third = new DeputyRequest { ControlDate = DateTimeOffset.MaxValue };
 
       var requests = first.ToSequence(second, third, null);
       requests.ControlDate(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
