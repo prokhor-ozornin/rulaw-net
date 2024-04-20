@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;

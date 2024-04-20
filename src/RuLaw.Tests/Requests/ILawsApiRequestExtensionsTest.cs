@@ -19,21 +19,13 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null);
-      Enum.GetValues<LawTypes>().ForEach(type => Validate(type));
+      Validate(null, new LawsApiRequest());
+      Enum.GetValues<LawTypes>().ForEach(type => Validate(type, new LawsApiRequest()));
     }
 
     return;
 
-    static void Validate(LawTypes? type)
-    {
-      var request = new LawsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Type(type).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["law_type"].Should().Be((int?) type);
-    }
+    static void Validate(LawTypes? type, ILawsApiRequest request) => request.Type(type).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["law_type"].Should().Be((int?) type);
   }
 
   /// <summary>
@@ -46,23 +38,14 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ILawsApiRequestExtensions.Topic(null, new Topic())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      var request = new LawsApiRequest();
-      
-      request.Parameters.Should().BeEmpty();
-
-      request.Topic((ITopic) null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["topic"].Should().BeNull();
-
-      request.Topic(new Topic {Id = 1}).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["topic"].Should().Be(1L);
+      Validate(null, new LawsApiRequest());
+      Validate(new Topic { Id = long.MinValue }, new LawsApiRequest());
+      Validate(new Topic { Id = long.MaxValue }, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(ITopic topic, ILawsApiRequest request) => request.Topic(topic).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["topic"].Should().Be(topic?.Id);
   }
 
   /// <summary>
@@ -73,21 +56,13 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null);
-      Enum.GetValues<LawStatus>().ForEach(type => Validate(type));
+      Validate(null, new LawsApiRequest());
+      Enum.GetValues<LawStatus>().ForEach(status => Validate(status, new LawsApiRequest()));
     }
 
     return;
 
-    static void Validate(LawStatus? status)
-    {
-      var request = new LawsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Status(status).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["status"].Should().Be((int?) status);
-    }
+    static void Validate(LawStatus? status, ILawsApiRequest request) => request.Status(status).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["status"].Should().Be((int?) status);
   }
 
   /// <summary>
@@ -100,23 +75,14 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ILawsApiRequestExtensions.Branch(null, new LawBranch())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      var request = new LawsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Branch((ILawBranch) null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["class"].Should().BeNull();
-
-      request.Branch(new LawBranch {Id = 1}).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["class"].Should().Be(1L);
+      Validate(null, new LawsApiRequest());
+      Validate(new LawBranch { Id = long.MinValue }, new LawsApiRequest());
+      Validate(new LawBranch { Id = long.MaxValue }, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(ILawBranch branch, ILawsApiRequest request) => request.Branch(branch).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["class"].Should().Be(branch?.Id);
   }
 
   /// <summary>
@@ -129,23 +95,14 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ILawsApiRequestExtensions.Deputy(null, new Deputy())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      var request = new LawsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Deputy((IDeputy)null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["deputy"].Should().BeNull();
-
-      request.Deputy(new Deputy { Id = 1 }).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["deputy"].Should().Be(1L);
+      Validate(null, new LawsApiRequest());
+      Validate(new Deputy { Id = long.MinValue }, new LawsApiRequest());
+      Validate(new Deputy { Id = long.MaxValue }, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IDeputy deputy, ILawsApiRequest request) => request.Deputy(deputy).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["deputy"].Should().Be(deputy?.Id);
   }
 
   /// <summary>
@@ -158,23 +115,14 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ILawsApiRequestExtensions.FederalAuthority(null, new FederalAuthority())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      var request = new LawsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.FederalAuthority((IAuthority) null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["federal_subject"].Should().BeNull();
-
-      request.FederalAuthority(new FederalAuthority {Id = 1}).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["federal_subject"].Should().Be(1L);
+      Validate(null, new LawsApiRequest());
+      Validate(new FederalAuthority { Id = long.MinValue }, new LawsApiRequest());
+      Validate(new FederalAuthority { Id = long.MaxValue }, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IAuthority authority, ILawsApiRequest request) => request.FederalAuthority(authority).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["federal_subject"].Should().Be(authority?.Id);
   }
 
   /// <summary>
@@ -187,23 +135,14 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ILawsApiRequestExtensions.RegionalAuthority(null, new RegionalAuthority())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      var request = new LawsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.RegionalAuthority((IAuthority) null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["regional_subject"].Should().BeNull();
-
-      request.RegionalAuthority(new RegionalAuthority {Id = 1}).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["regional_subject"].Should().Be(1L);
+      Validate(null, new LawsApiRequest());
+      Validate(new RegionalAuthority { Id = long.MinValue }, new LawsApiRequest());
+      Validate(new RegionalAuthority { Id = long.MaxValue }, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IAuthority authority, ILawsApiRequest request) => request.RegionalAuthority(authority).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["regional_subject"].Should().Be(authority?.Id);
   }
 
   /// <summary>
@@ -216,23 +155,14 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ILawsApiRequestExtensions.ProfileCommittee(null, new Committee())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      var request = new LawsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.ProfileCommittee((ICommittee) null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["profile_committee"].Should().BeNull();
-
-      request.ProfileCommittee(new Committee {Id = 1}).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["profile_committee"].Should().Be(1L);
+      Validate(null, new LawsApiRequest());
+      Validate(new Committee { Id = long.MinValue }, new LawsApiRequest());
+      Validate(new Committee { Id = long.MaxValue }, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(ICommittee committee, ILawsApiRequest request) => request.ProfileCommittee(committee).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["profile_committee"].Should().Be(committee?.Id);
   }
 
   /// <summary>
@@ -245,23 +175,14 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ILawsApiRequestExtensions.ResponsibleCommittee(null, new Committee())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      var request = new LawsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.ResponsibleCommittee((ICommittee) null).Should().NotBeNull().And.NotBeNull().And.BeSameAs(request);
-      request.Parameters["responsible_committee"].Should().BeNull();
-
-      request.ResponsibleCommittee(new Committee {Id = 1}).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["responsible_committee"].Should().Be(1L);
+      Validate(null, new LawsApiRequest());
+      Validate(new Committee { Id = long.MinValue }, new LawsApiRequest());
+      Validate(new Committee { Id = long.MaxValue }, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(ICommittee committee, ILawsApiRequest request) => request.ResponsibleCommittee(committee).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["responsible_committee"].Should().Be(committee?.Id);
   }
 
   /// <summary>
@@ -274,23 +195,14 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ILawsApiRequestExtensions.SoExecutorCommittee(null, new Committee())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      var request = new LawsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.SoExecutorCommittee((ICommittee) null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["soexecutor_committee"].Should().BeNull();
-
-      request.SoExecutorCommittee(new Committee {Id = 1}).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["soexecutor_committee"].Should().Be(1);
+      Validate(null, new LawsApiRequest());
+      Validate(new Committee { Id = long.MinValue }, new LawsApiRequest());
+      Validate(new Committee { Id = long.MaxValue }, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(ICommittee committee, ILawsApiRequest request) => request.SoExecutorCommittee(committee).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["soexecutor_committee"].Should().Be(committee?.Id);
   }
 
   /// <summary>
@@ -301,36 +213,19 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new LawsApiRequest();
-
-      request.Sorting(LawsSorting.DateAscending).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().Be("date_asc");
-
-      request.Sorting(LawsSorting.DateDescending).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().Be("date");
-
-      request.Sorting(LawsSorting.LastEventDateAscending).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().Be("last_event_date_asc");
-
-      request.Sorting(LawsSorting.LastEventDateDescending).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().Be("last_event_date");
-
-      request.Sorting(LawsSorting.Name).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().Be("name");
-
-      request.Sorting(LawsSorting.Number).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().Be("number");
-
-      request.Sorting(LawsSorting.ResponsibleCommittee).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().Be("responsible_committee");
+      Validate(null, null, new LawsApiRequest());
+      Validate("date_asc", LawsSorting.DateAscending, new LawsApiRequest());
+      Validate("date", LawsSorting.DateDescending, new LawsApiRequest());
+      Validate("last_event_date_asc", LawsSorting.LastEventDateAscending, new LawsApiRequest());
+      Validate("last_event_date", LawsSorting.LastEventDateDescending, new LawsApiRequest());
+      Validate("name", LawsSorting.Name, new LawsApiRequest());
+      Validate("number", LawsSorting.Number, new LawsApiRequest());
+      Validate("responsible_committee", LawsSorting.ResponsibleCommittee, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(string result, LawsSorting? sorting, ILawsApiRequest request) => request.Sorting(sorting).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["sort"].Should().Be(result);
   }
 
   /// <summary>
@@ -341,20 +236,12 @@ public sealed class ILawsApiRequestExtensionsTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null);
-      Enum.GetValues<LawsEventsSearchMode>().ForEach(mode => Validate(mode));
+      Validate(null, new LawsApiRequest());
+      Enum.GetValues<LawsEventsSearchMode>().ForEach(mode => Validate(mode, new LawsApiRequest()));
     }
 
     return;
 
-    static void Validate(LawsEventsSearchMode? mode)
-    {
-      var request = new LawsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.EventsSearchMode(LawsEventsSearchMode.All).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["search_mode"].Should().Be((int?) mode);
-    }
+    static void Validate(LawsEventsSearchMode? mode, ILawsApiRequest request) => request.EventsSearchMode(mode).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["search_mode"].Should().Be((int?) mode);
   }
 }

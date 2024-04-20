@@ -98,11 +98,12 @@ public static class ILawsApiRequestExtensions
 
     return sort switch
     {
-      LawsSorting.DateAscending => request.Sorting("date_asc"),
-      LawsSorting.DateDescending => request.Sorting("date"),
-      LawsSorting.LastEventDateAscending => request.Sorting("last_event_date_asc"),
       LawsSorting.Name => request.Sorting("name"),
       LawsSorting.Number => request.Sorting("number"),
+      LawsSorting.DateDescending => request.Sorting("date"),
+      LawsSorting.DateAscending => request.Sorting("date_asc"),
+      LawsSorting.LastEventDateDescending => request.Sorting("last_event_date"),
+      LawsSorting.LastEventDateAscending => request.Sorting("last_event_date_asc"),
       LawsSorting.ResponsibleCommittee => request.Sorting("responsible_committee"),
       _ => request.Sorting(null)
     };

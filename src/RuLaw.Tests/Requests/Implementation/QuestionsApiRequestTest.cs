@@ -32,23 +32,14 @@ public sealed class QuestionsApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new QuestionsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Page(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["page"].Should().BeNull();
-
-      request.Page(1).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["page"].Should().Be(1);
+      Validate(null, new QuestionsApiRequest());
+      Validate(int.MinValue, new QuestionsApiRequest());
+      Validate(int.MaxValue, new QuestionsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(int? page, IQuestionsApiRequest request) => request.Page(page).Should().BeSameAs(request).And.BeOfType<QuestionsApiRequest>().Which.Parameters["page"].Should().Be(page);
   }
 
   /// <summary>
@@ -59,21 +50,13 @@ public sealed class QuestionsApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null);
-      Enum.GetValues<PageSize>().ForEach(size => Validate(size));
+      Validate(null, new QuestionsApiRequest());
+      Enum.GetValues<PageSize>().ForEach(size => Validate(size, new QuestionsApiRequest()));
     }
 
     return;
 
-    static void Validate(PageSize? size)
-    {
-      var request = new QuestionsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.PageSize(size).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["limit"].Should().Be((int?) size);
-    }
+    static void Validate(PageSize? size, IQuestionsApiRequest request) => request.PageSize(size).Should().BeSameAs(request).And.BeOfType<QuestionsApiRequest>().Which.Parameters["limit"].Should().Be((int?) size);
   }
 
   /// <summary>
@@ -84,23 +67,14 @@ public sealed class QuestionsApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new QuestionsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Name(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["name"].Should().Be("name");
-
-      request.Name("name").Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["name"].Should().Be("name");
+      Validate(null, new QuestionsApiRequest());
+      Validate(string.Empty, new QuestionsApiRequest());
+      Validate("name", new QuestionsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(string name, IQuestionsApiRequest request) => request.Name(name).Should().BeSameAs(request).And.BeOfType<QuestionsApiRequest>().Which.Parameters["name"].Should().Be(name);
   }
 
   /// <summary>
@@ -111,26 +85,15 @@ public sealed class QuestionsApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new QuestionsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.FromDate(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["dateFrom"].Should().BeNull();
-
-      foreach (var date in new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow })
-      {
-        request.FromDate(date).Should().NotBeNull().And.BeSameAs(request);
-        request.Parameters["dateFrom"].Should().Be(date.AsString());
-      }
+      Validate(null, new QuestionsApiRequest());
+      Validate(DateTimeOffset.MinValue, new QuestionsApiRequest());
+      Validate(DateTimeOffset.MaxValue, new QuestionsApiRequest());
+      Validate(DateTimeOffset.Now, new QuestionsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(DateTimeOffset? date, IQuestionsApiRequest request) => request.FromDate(date).Should().BeSameAs(request).And.BeOfType<QuestionsApiRequest>().Which.Parameters["dateFrom"].Should().Be(date?.ToString("yyyy-MM-dd"));
   }
 
   /// <summary>
@@ -141,25 +104,14 @@ public sealed class QuestionsApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new QuestionsApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.ToDate(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["dateTo"].Should().BeNull();
-
-      foreach (var date in new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow })
-      {
-        request.ToDate(date).Should().NotBeNull().And.BeSameAs(request);
-        request.Parameters["dateTo"].Should().Be(date.AsString());
-      }
+      Validate(null, new QuestionsApiRequest());
+      Validate(DateTimeOffset.MinValue, new QuestionsApiRequest());
+      Validate(DateTimeOffset.MaxValue, new QuestionsApiRequest());
+      Validate(DateTimeOffset.Now, new QuestionsApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(DateTimeOffset? date, IQuestionsApiRequest request) => request.ToDate(date).Should().BeSameAs(request).And.BeOfType<QuestionsApiRequest>().Which.Parameters["dateTo"].Should().Be(date?.ToString("yyyy-MM-dd"));
   }
 }

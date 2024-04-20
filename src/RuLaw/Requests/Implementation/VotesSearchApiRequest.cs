@@ -65,9 +65,9 @@ internal sealed class VotesSearchApiRequest : ApiRequest, IVotesSearchApiRequest
     return this;
   }
 
-  public IVotesSearchApiRequest Limit(PageSize? limit)
+  public IVotesSearchApiRequest PageSize(PageSize? size)
   {
-    WithParameter("limit", (int?) limit);
+    WithParameter("limit", (int?) size);
 
     return this;
   }

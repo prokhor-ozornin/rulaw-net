@@ -31,23 +31,14 @@ public sealed class DeputiesApiRequestTests : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new DeputiesApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Name(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["begin"].Should().BeNull();
-
-      request.Name("name").Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["begin"].Should().Be("name");
+      Validate(null, new DeputiesApiRequest(), null);
+      Validate(string.Empty, new DeputiesApiRequest(), string.Empty);
+      Validate("name", new DeputiesApiRequest(), "name");
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(string result, IDeputiesApiRequest request, string name) => request.Name(name).Should().BeSameAs(request).And.BeOfType<DeputiesApiRequest>().Which.Parameters["begin"].Should().Be(name).And.Be(result);
   }
 
   /// <summary>
@@ -58,23 +49,14 @@ public sealed class DeputiesApiRequestTests : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new DeputiesApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Position(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["position"].Should().BeNull();
-
-      request.Position("first").Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["position"].Should().Be("first");
+      Validate(null, new DeputiesApiRequest(), null);
+      Validate(string.Empty, new DeputiesApiRequest(), string.Empty);
+      Validate("position", new DeputiesApiRequest(), "position");
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(string result, IDeputiesApiRequest request, string position) => request.Position(position).Should().BeSameAs(request).And.BeOfType<DeputiesApiRequest>().Which.Parameters["position"].Should().Be(position).And.Be(result);
   }
 
   /// <summary>
@@ -87,23 +69,13 @@ public sealed class DeputiesApiRequestTests : UnitTest
     {
       var request = new DeputiesApiRequest();
 
-      request.Parameters.Should().BeEmpty();
-
-      request.Current(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["current"].Should().BeNull();
-
-      request.Current().Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["current"].Should().Be(true.ToString());
-
-      request.Current(false).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["current"].Should().Be(false.ToString());
+      Validate(null, request);
+      Validate(true, request);
+      Validate(false, request);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
-  }
+    static void Validate(bool? current, IDeputiesApiRequest request) => request.Current(current).Should().BeSameAs(request).And.BeOfType<DeputiesApiRequest>().Which.Parameters["current"].Should().Be(current?.ToString().ToLowerInvariant());
+}
 }

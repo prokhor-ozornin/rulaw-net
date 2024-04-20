@@ -32,20 +32,12 @@ public sealed class ApiConfiguratorTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => new ApiConfigurator().ApiKey(null)).ThrowExactly<ArgumentNullException>().WithParameterName("key");
-      AssertionExtensions.Should(() => new ApiConfigurator().ApiKey(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("key");
-
-      var configurator = new ApiConfigurator();
-      configurator.ApiKey("apiKey").Should().NotBeNull().And.BeSameAs(configurator);
-      configurator.ApiKeyValue.Should().Be("apiKey");
+      Validate(new ApiConfigurator(), "apiKey");
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IApiConfigurator configurator, string key) => configurator.ApiKey(key).Should().BeSameAs(configurator).And.BeOfType<ApiConfigurator>().Which.ApiKeyValue.Should().Be(key);
   }
 
   /// <summary>
@@ -56,19 +48,11 @@ public sealed class ApiConfiguratorTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => new ApiConfigurator().AppKey(null)).ThrowExactly<ArgumentNullException>().WithParameterName("key");
-      AssertionExtensions.Should(() => new ApiConfigurator().AppKey(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("key");
-
-      var configurator = new ApiConfigurator();
-      configurator.AppKey("appKey").Should().NotBeNull().And.BeSameAs(configurator);
-      configurator.AppKeyValue.Should().Be("appKey");
+      Validate(new ApiConfigurator(), "appKey");
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IApiConfigurator configurator, string key) => configurator.AppKey(key).Should().BeSameAs(configurator).And.BeOfType<ApiConfigurator>().Which.AppKeyValue.Should().Be(key);
   }
 }

@@ -32,23 +32,13 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new VotesSearchApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Number(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["number"].Should().BeNull();
-
-      request.Number("number").Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["number"].Should().Be("number");
+      Validate(null, new VotesSearchApiRequest());
+      Validate("number", new VotesSearchApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(string number, IVotesSearchApiRequest request) => request.Number(number).Should().BeSameAs(request).And.BeOfType<VotesSearchApiRequest>().Which.Parameters["number"].Should().Be(number);
   }
 
   /// <summary>
@@ -59,23 +49,13 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new VotesSearchApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Faction(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["faction"].Should().BeNull();
-
-      request.Faction(1).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["faction"].Should().Be(1L);
+      Validate(null, new VotesSearchApiRequest());
+      Validate(1L, new VotesSearchApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(long? faction, IVotesSearchApiRequest request) => request.Faction(faction).Should().BeSameAs(request).And.BeOfType<VotesSearchApiRequest>().Which.Parameters["faction"].Should().Be(faction);
   }
 
   /// <summary>
@@ -86,23 +66,14 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new VotesSearchApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Deputy(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["deputy"].Should().BeNull();
-
-      request.Deputy(1).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["deputy"].Should().Be(1L);
+      Validate(null, new VotesSearchApiRequest());
+      Validate(long.MinValue, new VotesSearchApiRequest());
+      Validate(long.MaxValue, new VotesSearchApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(long? deputy, IVotesSearchApiRequest request) => request.Deputy(deputy).Should().BeSameAs(request).And.BeOfType<VotesSearchApiRequest>().Which.Parameters["deputy"].Should().Be(deputy);
   }
 
   /// <summary>
@@ -113,23 +84,14 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new VotesSearchApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Convocation(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["convocation"].Should().BeNull();
-
-      request.Convocation(1).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["convocation"].Should().Be(1L);
+      Validate(null, new VotesSearchApiRequest());
+      Validate(long.MinValue, new VotesSearchApiRequest());
+      Validate(long.MaxValue, new VotesSearchApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(long? convocation, IVotesSearchApiRequest request) => request.Convocation(convocation).Should().BeSameAs(request).And.BeOfType<VotesSearchApiRequest>().Which.Parameters["convocation"].Should().Be(convocation);
   }
 
   /// <summary>
@@ -140,24 +102,15 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null);
-      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow}.ForEach(date => Validate(date));
+      Validate(null, new VotesSearchApiRequest());
+      Validate(DateTimeOffset.MinValue, new VotesSearchApiRequest());
+      Validate(DateTimeOffset.MaxValue, new VotesSearchApiRequest());
+      Validate(DateTimeOffset.Now, new VotesSearchApiRequest());
     }
 
     return;
 
-    static void Validate(DateTimeOffset? date)
-    {
-      var request = new VotesSearchApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.FromDate(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["from"].Should().BeNull();
-
-      request.FromDate(date).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["from"].Should().Be(date?.AsString());
-    }
+    static void Validate(DateTimeOffset? date, IVotesSearchApiRequest request) => request.FromDate(date).Should().BeSameAs(request).And.BeOfType<VotesSearchApiRequest>().Which.Parameters["from"].Should().Be(date?.ToString("yyyy-MM-dd"));
   }
 
   /// <summary>
@@ -168,24 +121,15 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null);
-      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow }.ForEach(date => Validate(date));
+      Validate(null, new VotesSearchApiRequest());
+      Validate(DateTimeOffset.MinValue, new VotesSearchApiRequest());
+      Validate(DateTimeOffset.MaxValue, new VotesSearchApiRequest());
+      Validate(DateTimeOffset.Now, new VotesSearchApiRequest());
     }
 
     return;
 
-    static void Validate(DateTimeOffset? date)
-    {
-      var request = new VotesSearchApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.ToDate(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["to"].Should().BeNull();
-
-      request.ToDate(date).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["to"].Should().Be(date?.AsString());
-    }
+    static void Validate(DateTimeOffset? date, IVotesSearchApiRequest request) => request.ToDate(date).Should().BeSameAs(request).And.BeOfType<VotesSearchApiRequest>().Which.Parameters["to"].Should().Be(date?.ToString("yyyy-MM-dd"));
   }
 
   /// <summary>
@@ -196,23 +140,14 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new VotesSearchApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Keywords(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["keywords"].Should().BeNull();
-
-      request.Keywords("key").Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["keywords"].Should().Be("key");
+      Validate(null, new VotesSearchApiRequest());
+      Validate(string.Empty, new VotesSearchApiRequest());
+      Validate("keywords", new VotesSearchApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(string keywords, IVotesSearchApiRequest request) => request.Keywords(keywords).Should().BeSameAs(request).And.BeOfType<VotesSearchApiRequest>().Which.Parameters["keywords"].Should().Be(keywords);
   }
 
   /// <summary>
@@ -223,23 +158,14 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new VotesSearchApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Page(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["page"].Should().BeNull();
-
-      request.Page(1).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["page"].Should().Be(1);
+      Validate(null, new VotesSearchApiRequest());
+      Validate(int.MinValue, new VotesSearchApiRequest());
+      Validate(int.MaxValue, new VotesSearchApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(int? page, IVotesSearchApiRequest request) => request.Page(page).Should().BeSameAs(request).And.BeOfType<VotesSearchApiRequest>().Which.Parameters["page"].Should().Be(page);
   }
 
   /// <summary>
@@ -250,59 +176,33 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new VotesSearchApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Sorting(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().BeNull();
-
-      request.Sorting(VotesSorting.DateAscending).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().Be("date_asc");
-
-      request.Sorting(VotesSorting.DateDescending).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().Be("date_desc_true");
-
-      request.Sorting(VotesSorting.DateDescendingByDay).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().Be("date_desc");
-
-      request.Sorting(VotesSorting.ResultAscending).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().Be("result_asc");
-
-      request.Sorting(VotesSorting.ResultDescending).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["sort"].Should().Be("result_desc");
+      Validate(null, null, new VotesSearchApiRequest());
+      Validate("date_asc", VotesSorting.DateAscending, new VotesSearchApiRequest());
+      Validate("date_desc_true", VotesSorting.DateDescending, new VotesSearchApiRequest());
+      Validate("date_desc", VotesSorting.DateDescendingByDay, new VotesSearchApiRequest());
+      Validate("result_asc", VotesSorting.ResultAscending, new VotesSearchApiRequest());
+      Validate("result_desc", VotesSorting.ResultDescending, new VotesSearchApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(string result, VotesSorting? sorting, IVotesSearchApiRequest request) => request.Sorting(sorting).Should().BeSameAs(request).And.BeOfType<VotesSearchApiRequest>().Which.Parameters["sort"].Should().Be(result);
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchApiRequest.Limit(PageSize?)"/> method.</para>
+  ///   <para>Performs testing of <see cref="VotesSearchApiRequest.PageSize(PageSize?)"/> method.</para>
   /// </summary>
   [Fact]
-  public void Limit_Method()
+  public void PageSize_Method()
   {
     using (new AssertionScope())
     {
-      Validate(null);
-      Enum.GetValues<PageSize>().ForEach(size => Validate(size));
+      Validate(null, new VotesSearchApiRequest());
+      Enum.GetValues<PageSize>().ForEach(size => Validate(size, new VotesSearchApiRequest()));
     }
 
     return;
 
-    static void Validate(PageSize? size)
-    {
-      var request = new VotesSearchApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Limit(size).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["limit"].Should().Be((int?) size);
-    }
+    static void Validate(PageSize? size, IVotesSearchApiRequest request) => request.PageSize(size).Should().BeSameAs(request).And.BeOfType<VotesSearchApiRequest>().Which.Parameters["limit"].Should().Be((int?) size);
   }
 }

@@ -71,7 +71,7 @@ public interface IVotesSearchApiRequest : IApiRequest
   /// <summary>
   ///   <para>Specifies number of records per page. Equals to 20 by default.</para>
   /// </summary>
-  /// <param name="limit">Size of results page.</param>
+  /// <param name="size">Size of results page.</param>
   /// <returns>Back reference to the current request.</returns>
-  IVotesSearchApiRequest Limit(PageSize? limit);
+  IVotesSearchApiRequest PageSize(PageSize? size);
 }

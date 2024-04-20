@@ -32,23 +32,14 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new DeputyTranscriptApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Page(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["page"].Should().BeNull();
-
-      request.Page(1).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["page"].Should().Be(1);
+      Validate(null, new DeputyTranscriptApiRequest());
+      Validate(int.MinValue, new DeputyTranscriptApiRequest());
+      Validate(int.MaxValue, new DeputyTranscriptApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(int? page, IDeputyTranscriptApiRequest request) => request.Page(page).Should().BeSameAs(request).And.BeOfType<DeputyTranscriptApiRequest>().Which.Parameters["page"].Should().Be(page);
   }
 
   /// <summary>
@@ -59,21 +50,13 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null);
-      Enum.GetValues<PageSize>().ForEach(size => Validate(size));
+      Validate(null, new DeputyTranscriptApiRequest());
+      Enum.GetValues<PageSize>().ForEach(size => Validate(size, new DeputyTranscriptApiRequest()));
     }
 
     return;
 
-    static void Validate(PageSize? size)
-    {
-      var request = new DeputyTranscriptApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.PageSize(size).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["limit"].Should().Be((int?) size);
-    }
+    static void Validate(PageSize? size, IDeputyTranscriptApiRequest request) => request.PageSize(size).Should().BeSameAs(request).And.BeOfType<DeputyTranscriptApiRequest>().Which.Parameters["limit"].Should().Be((int?) size);
   }
 
   /// <summary>
@@ -84,23 +67,14 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new DeputyTranscriptApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Name(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["name"].Should().BeNull();
-
-      request.Name("name").Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["name"].Should().Be("name");
+      Validate(null, new DeputyTranscriptApiRequest());
+      Validate(string.Empty, new DeputyTranscriptApiRequest());
+      Validate("name", new DeputyTranscriptApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(string name, IDeputyTranscriptApiRequest request) => request.Name(name).Should().BeSameAs(request).And.BeOfType<DeputyTranscriptApiRequest>().Which.Parameters["name"].Should().Be(name);
   }
 
   /// <summary>
@@ -111,23 +85,14 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new DeputyTranscriptApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Deputy(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["deputy"].Should().BeNull();
-
-      request.Deputy(1).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["deputy"].Should().Be(1L);
+      Validate(null, new DeputyTranscriptApiRequest());
+      Validate(long.MinValue, new DeputyTranscriptApiRequest());
+      Validate(long.MaxValue, new DeputyTranscriptApiRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(long? deputy, IDeputyTranscriptApiRequest request) => request.Deputy(deputy).Should().BeSameAs(request).And.BeOfType<DeputyTranscriptApiRequest>().Which.Parameters["deputy"].Should().Be(deputy);
   }
 
   /// <summary>
@@ -138,24 +103,15 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null);
-      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow }.ForEach(date => Validate(date));
+      Validate(null, new DeputyTranscriptApiRequest());
+      Validate(DateTimeOffset.MinValue, new DeputyTranscriptApiRequest());
+      Validate(DateTimeOffset.MaxValue, new DeputyTranscriptApiRequest());
+      Validate(DateTimeOffset.Now, new DeputyTranscriptApiRequest());
     }
 
     return;
 
-    static void Validate(DateTimeOffset? date)
-    {
-      var request = new DeputyTranscriptApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.FromDate(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["dateFrom"].Should().BeNull();
-
-      request.FromDate(date).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["dateFrom"].Should().Be(date?.AsString());
-    }
+    static void Validate(DateTimeOffset? date, IDeputyTranscriptApiRequest request) => request.FromDate(date).Should().BeSameAs(request).And.BeOfType<DeputyTranscriptApiRequest>().Which.Parameters["dateFrom"].Should().Be(date?.ToString("yyyy-MM-dd"));
   }
 
   /// <summary>
@@ -166,23 +122,14 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null);
-      new[] { DateTimeOffset.MinValue, DateTimeOffset.MaxValue, DateTimeOffset.Now, DateTimeOffset.UtcNow }.ForEach(date => Validate(date));
+      Validate(null, new DeputyTranscriptApiRequest());
+      Validate(DateTimeOffset.MinValue, new DeputyTranscriptApiRequest());
+      Validate(DateTimeOffset.MaxValue, new DeputyTranscriptApiRequest());
+      Validate(DateTimeOffset.Now, new DeputyTranscriptApiRequest());
     }
 
     return;
 
-    static void Validate(DateTimeOffset? date)
-    {
-      var request = new DeputyTranscriptApiRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.ToDate(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["dateTo"].Should().BeNull();
-
-      request.ToDate(date).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["dateTo"].Should().Be(date?.AsString());
-    }
+    static void Validate(DateTimeOffset? date, IDeputyTranscriptApiRequest request) => request.ToDate(date).Should().BeSameAs(request).And.BeOfType<DeputyTranscriptApiRequest>().Which.Parameters["dateTo"].Should().Be(date?.ToString("yyyy-MM-dd"));
   }
 }

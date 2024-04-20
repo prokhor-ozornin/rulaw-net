@@ -33,23 +33,13 @@ public sealed class InstancesApiRequestTest : UnitTest
     {
       var request = new InstancesApiRequest();
 
-      request.Parameters.Should().BeEmpty();
-
-      request.Current(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["current"].Should().BeNull();
-
-      request.Current().Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["current"].Should().Be(true.ToString());
-
-      request.Current(false).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["current"].Should().Be(false.ToString());
+      Validate(null, request);
+      Validate(true, request);
+      Validate(false, request);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(bool? current, IInstancesApiRequest request) => request.Current(current).Should().BeSameAs(request).And.BeOfType<InstancesApiRequest>().Which.Parameters["current"].Should().Be(current?.ToString().ToLowerInvariant());
   }
 }
