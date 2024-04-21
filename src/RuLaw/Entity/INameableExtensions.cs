@@ -1,6 +1,4 @@
-﻿using Catharsis.Extensions;
-
-namespace RuLaw;
+﻿namespace RuLaw;
 
 /// <summary>
 ///   <para>Set of extension methods for interface <see cref="INameable"/>.</para>
@@ -15,12 +13,5 @@ public static class INameableExtensions
   /// <param name="entities">Source sequence of entities to filter.</param>
   /// <param name="name">Name to search for.</param>
   /// <returns>Filtered sequence of entities with specified name.</returns>
-  public static IEnumerable<TEntity> Name<TEntity>(this IEnumerable<TEntity> entities, string name) where TEntity : INameable
-  {
-    if (entities is null) throw new ArgumentNullException(nameof(entities));
-    if (name is null) throw new ArgumentNullException(nameof(name));
-    if (name.IsEmpty()) throw new ArgumentException(nameof(name));
-
-    return entities.Where(entity => entity is not null && entity.Name == name);
-  }
+  public static IEnumerable<TEntity> Name<TEntity>(this IEnumerable<TEntity> entities, string name) where TEntity : INameable => entities is not null ? entities.Where(entity => entity is not null && entity.Name == name) : throw new ArgumentNullException(nameof(entities));
 }

@@ -15,14 +15,7 @@ public static class IDeputyInfoExtensions
   /// <param name="deputies">Source sequence of deputies to filter.</param>
   /// <param name="name">Part or full name to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of deputies with specified name.</returns>
-  public static IEnumerable<TEntity> FullName<TEntity>(this IEnumerable<TEntity> deputies, string name) where TEntity : IDeputyInfo
-  {
-    if (deputies is null) throw new ArgumentNullException(nameof(deputies));
-    if (name is null) throw new ArgumentNullException(nameof(name));
-    if (name.IsEmpty()) throw new ArgumentException(nameof(name));
-
-    return deputies.Where(deputy => deputy is not null && deputy.FullName.ToLowerInvariant().Contains(name.ToLowerInvariant()));
-  }
+  public static IEnumerable<TEntity> FullName<TEntity>(this IEnumerable<TEntity> deputies, string name) where TEntity : IDeputyInfo => deputies is not null ? deputies.Where(deputy => deputy is not null && deputy.FullName.ToInvariantString().Contains(name.ToInvariantString())) : throw new ArgumentNullException(nameof(deputies));
 
   /// <summary>
   ///   <para>Filters sequence of deputies, leaving those that were born in specified date period.</para>
@@ -68,7 +61,7 @@ public static class IDeputyInfoExtensions
 
     if (to is not null)
     {
-      deputies = deputies.Where(deputy => deputy is not null && ((deputy.WorkEndDate.HasValue && deputy.WorkEndDate <= to.Value) || deputy.WorkEndDate is null));
+      deputies = deputies.Where(deputy => deputy is not null && (deputy.WorkEndDate is null || deputy.WorkEndDate <= to.Value));
     }
 
     return deputies;
@@ -81,14 +74,7 @@ public static class IDeputyInfoExtensions
   /// <param name="deputies">Source sequence of deputies to filter.</param>
   /// <param name="faction">Faction name to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of deputies that belong to specified faction.</returns>
-  public static IEnumerable<TEntity> Faction<TEntity>(this IEnumerable<TEntity> deputies, string faction) where TEntity : IDeputyInfo
-  {
-    if (deputies is null) throw new ArgumentNullException(nameof(deputies));
-    if (faction is null) throw new ArgumentNullException(nameof(faction));
-    if (faction.IsEmpty()) throw new ArgumentException(nameof(faction));
-
-    return deputies.Where(deputy => deputy is not null && string.Equals(deputy.FactionName, faction, StringComparison.InvariantCultureIgnoreCase));
-  }
+  public static IEnumerable<TEntity> Faction<TEntity>(this IEnumerable<TEntity> deputies, string faction) where TEntity : IDeputyInfo => deputies is not null ? deputies.Where(deputy => deputy is not null && deputy.FactionName.ToInvariantString().Equals(faction.ToInvariantString())) : throw new ArgumentNullException(nameof(deputies));
 
   /// <summary>
   ///   <para>Filters sequence of deputies, leaving those that have a specified scientific degree.</para>
@@ -97,14 +83,7 @@ public static class IDeputyInfoExtensions
   /// <param name="deputies">Source sequence of deputies to filter.</param>
   /// <param name="degree">Scientific degree to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of deputies that have a specified degree.</returns>
-  public static IEnumerable<TEntity> Degree<TEntity>(this IEnumerable<TEntity> deputies, string degree) where TEntity : IDeputyInfo
-  {
-    if (deputies is null) throw new ArgumentNullException(nameof(deputies));
-    if (degree is null) throw new ArgumentNullException(nameof(degree));
-    if (degree.IsEmpty()) throw new ArgumentException(nameof(degree));
-
-    return deputies.Where(deputy => deputy is not null && deputy.Degrees.Any(x => string.Equals(x, degree, StringComparison.InvariantCultureIgnoreCase)));
-  }
+  public static IEnumerable<TEntity> Degree<TEntity>(this IEnumerable<TEntity> deputies, string degree) where TEntity : IDeputyInfo => deputies is not null ? deputies.Where(deputy => deputy is not null && deputy.Degrees.Any(x => x.ToInvariantString().Equals(degree.ToInvariantString()))) : throw new ArgumentNullException(nameof(deputies));
 
   /// <summary>
   ///   <para>Filters sequence of deputies, leaving those having a specified rank.</para>
@@ -113,14 +92,7 @@ public static class IDeputyInfoExtensions
   /// <param name="deputies">Source sequence of deputies to filter.</param>
   /// <param name="rank">Rank to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of deputies that have a specified rank.</returns>
-  public static IEnumerable<TEntity> Rank<TEntity>(this IEnumerable<TEntity> deputies, string rank) where TEntity : IDeputyInfo
-  {
-    if (deputies is null) throw new ArgumentNullException(nameof(deputies));
-    if (rank is null) throw new ArgumentNullException(nameof(rank));
-    if (rank.IsEmpty()) throw new ArgumentException(nameof(rank));
-
-    return deputies.Where(deputy => deputy is not null && deputy.Ranks.Any(x => string.Equals(x, rank, StringComparison.InvariantCultureIgnoreCase)));
-  }
+  public static IEnumerable<TEntity> Rank<TEntity>(this IEnumerable<TEntity> deputies, string rank) where TEntity : IDeputyInfo => deputies is not null ? deputies.Where(deputy => deputy is not null && deputy.Ranks.Any(x => x.ToInvariantString().Equals(rank.ToInvariantString()))) : throw new ArgumentNullException(nameof(deputies));
 
   /// <summary>
   ///   <para>Filters sequence of deputies, leaving those linked to a specified region.</para>
@@ -129,12 +101,5 @@ public static class IDeputyInfoExtensions
   /// <param name="deputies">Source sequence of deputies to filter.</param>
   /// <param name="region">Region to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of deputies linked to a specified region.</returns>
-  public static IEnumerable<TEntity> Region<TEntity>(this IEnumerable<TEntity> deputies, string region) where TEntity : IDeputyInfo
-  {
-    if (deputies is null) throw new ArgumentNullException(nameof(deputies));
-    if (region is null) throw new ArgumentNullException(nameof(region));
-    if (region.IsEmpty()) throw new ArgumentException(nameof(region));
-
-    return deputies.Where(deputy => deputy is not null && deputy.Regions.Any(x => string.Equals(x, region, StringComparison.InvariantCultureIgnoreCase)));
-  }
+  public static IEnumerable<TEntity> Region<TEntity>(this IEnumerable<TEntity> deputies, string region) where TEntity : IDeputyInfo => deputies is not null ? deputies.Where(deputy => deputy is not null && deputy.Regions.Any(x => x.ToInvariantString().Equals(region.ToInvariantString()))) : throw new ArgumentNullException(nameof(deputies));
 }

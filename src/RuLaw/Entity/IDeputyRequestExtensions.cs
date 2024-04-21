@@ -15,14 +15,7 @@ public static class IDeputyRequestExtensions
   /// <param name="requests">Source sequence of requests to filter.</param>
   /// <param name="initiator">Full or partial name of initiator to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of requests with specified initiator.</returns>
-  public static IEnumerable<TEntity> Initiator<TEntity>(this IEnumerable<TEntity> requests, string initiator) where TEntity : IDeputyRequest
-  {
-    if (requests is null) throw new ArgumentNullException(nameof(requests));
-    if (initiator is null) throw new ArgumentNullException(nameof(initiator));
-    if (initiator.IsEmpty()) throw new ArgumentException(nameof(initiator));
-
-    return requests.Where(request => request is not null && request.Initiator.ToLowerInvariant().Contains(initiator.ToLowerInvariant()));
-  }
+  public static IEnumerable<TEntity> Initiator<TEntity>(this IEnumerable<TEntity> requests, string initiator) where TEntity : IDeputyRequest => requests is not null ? requests.Where(request => request is not null && request.Initiator.ToInvariantString().Contains(initiator.ToInvariantString())) : throw new ArgumentNullException(nameof(requests));
 
   /// <summary>
   ///   <para>Filters sequence of deputies requests, leaving those containing specified text fragment.</para>
@@ -31,14 +24,7 @@ public static class IDeputyRequestExtensions
   /// <param name="requests">Source sequence of requests to filter.</param>
   /// <param name="text">Text fragment to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of requests that contain specified text.</returns>
-  public static IEnumerable<TEntity> Answer<TEntity>(this IEnumerable<TEntity> requests, string text) where TEntity : IDeputyRequest
-  {
-    if (requests is null) throw new ArgumentNullException(nameof(requests));
-    if (text is null) throw new ArgumentNullException(nameof(text));
-    if (text.IsEmpty()) throw new ArgumentException(nameof(text));
-
-    return requests.Where(quest => quest is not null && quest.Answer.ToLowerInvariant().Contains(text.ToLowerInvariant()));
-  }
+  public static IEnumerable<TEntity> Answer<TEntity>(this IEnumerable<TEntity> requests, string text) where TEntity : IDeputyRequest => requests is not null ? requests.Where(request => request is not null && request.Answer.ToInvariantString().Contains(text.ToInvariantString())) : throw new ArgumentNullException(nameof(requests));
 
   /// <summary>
   ///   <para>Filters sequence of deputies requests, leaving those with signing date in specified borders.</para>

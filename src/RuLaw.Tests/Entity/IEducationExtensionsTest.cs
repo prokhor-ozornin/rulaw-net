@@ -1,7 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
@@ -20,24 +19,19 @@ public sealed class IEducationExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IEducationExtensions.Institution<IEducation>(null, "institution")).ThrowExactly<ArgumentNullException>().WithParameterName("educations");
-      AssertionExtensions.Should(() => Enumerable.Empty<IEducation>().Institution(null)).ThrowExactly<ArgumentNullException>().WithParameterName("institution");
-      AssertionExtensions.Should(() => Enumerable.Empty<IEducation>().Institution(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("institution");
 
-      Enumerable.Empty<IEducation>().Institution("institution").Should().NotBeNull().And.BeEmpty();
+      Validate([], [], null);
+      Validate([], [], "institution");
 
-      var first = new Education {Institution = "FIRST"};
-      var second = new Education {Institution = "Second"};
-      var educations = first.ToSequence(second, null);
-      educations.Institution("first").Should().NotBeNullOrEmpty().And.Equal(first);
-      educations.Institution("second").Should().NotBeNullOrEmpty().And.Equal(second);
+      var first = new Education { Institution = "first" };
+      var second = new Education { Institution = "second" };
+      Validate([], [null], null);
+      Validate([first], [null, first, second, null], first.Institution);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IEducation> result, IEnumerable<IEducation> educations, string institution) => educations.Institution(institution).Should().BeAssignableTo<IEnumerable<IEducation>>().And.Equal(result);
   }
 
   /// <summary>
@@ -50,23 +44,20 @@ public sealed class IEducationExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IEducationExtensions.Year<IEducation>(null)).ThrowExactly<ArgumentNullException>();
 
-      Enumerable.Empty<IEducation>().Year().Should().NotBeNull().And.BeEmpty();
+      Validate([], []);
+      
+      var first = new Education { Year = 0 };
+      var second = new Education { Year = 1 };
+      var third = new Education { Year = 2 };
 
-      var first = new Education {Year = 0};
-      var second = new Education {Year = 1};
-      var third = new Education {Year = 2};
-
-      var educations = first.ToSequence(second, third, null);
-      educations.Year(1).Should().NotBeNullOrEmpty().And.Equal(second, third);
-      educations.Year(null, 1).Should().NotBeNullOrEmpty().And.Equal(first, second);
-      educations.Year(0, 2).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
+      var educations = new List<IEducation> { null, first, second, third, null };
+      Validate([second, third], educations, 1);
+      Validate([first, second], educations, null, 1);
+      Validate([first, second, third], educations, 0, 2);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IEducation> result, IEnumerable<IEducation> educations, short? from = null, short? to = null) => educations.Year(from, to).Should().BeAssignableTo<IEnumerable<IEducation>>().And.Equal(result);
   }
 }

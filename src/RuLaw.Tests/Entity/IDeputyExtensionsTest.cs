@@ -1,5 +1,4 @@
 ﻿using Catharsis.Commons;
-using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
@@ -24,34 +23,27 @@ public sealed class IDeputyExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IDeputyExtensions.Position(null)).ThrowExactly<ArgumentNullException>().WithParameterName("deputy");
-      AssertionExtensions.Should(() => new Deputy { Position = "position" }.Position()).ThrowExactly<InvalidOperationException>();
 
-      new Deputy().Position().Should().BeNull();
-      new Deputy {Position = "Депутат ГД"}.Position().Should().NotBeNull().And.Be(DeputyPosition.DumaDeputy);
-      new Deputy {Position = "Член СФ"}.Position().Should().NotBeNull().And.Be(DeputyPosition.FederationCouncilMember);
+      Validate(null, new Deputy());
+      Validate(DeputyPosition.DumaDeputy, new Deputy { Position = "Депутат ГД" });
+      Validate(DeputyPosition.FederationCouncilMember, new Deputy { Position = "Член СФ" });
 
-      static void Validate()
-      {
-
-      }
+      static void Validate(DeputyPosition? result, IDeputy deputy) => deputy.Position().Should().Be(result);
     }
 
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IDeputyExtensions.Position<IDeputy>(null, "position")).ThrowExactly<ArgumentNullException>().WithParameterName("deputies");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputy>().Position(null)).ThrowExactly<ArgumentNullException>().WithParameterName("position");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputy>().Position(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("position");
 
-      Enumerable.Empty<IDeputy>().Position("position").Should().NotBeNull().And.BeEmpty();
-      var first = new Deputy {Position = "First"};
-      var second = new Deputy {Position = "Second"};
-      var deputies = first.ToSequence(second, null);
-      deputies.Position("first").Should().NotBeNullOrEmpty().And.Equal(first);
+      Validate([], [], null);
+      Validate([], [], "position");
+      
+      var first = new Deputy { Position = "first" };
+      var second = new Deputy { Position = "second" };
+      Validate([], [null], null);
+      Validate([first], [null, first, second, null], first.Position);
 
-      static void Validate()
-      {
-
-      }
+      static void Validate(IEnumerable<IDeputy> result, IEnumerable<IDeputy> deputies, string position) => deputies.Position(position).Should().BeAssignableTo<IEnumerable<IDeputy>>().And.Equal(result);
     }
   }
 }

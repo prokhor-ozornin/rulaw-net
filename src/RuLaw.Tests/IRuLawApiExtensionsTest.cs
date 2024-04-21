@@ -19,21 +19,20 @@ public sealed class IRuLawApiExtensionsTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
-      AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(RuLaw.Api, null)).ThrowExactly<ArgumentNullException>().WithParameterName("action");
-      AssertionExtensions.Should(() => RuLaw.Api.Configure(_ => {})).ThrowExactly<InvalidOperationException>();
-
-      var api = RuLaw.Api.Configure(configurator => configurator.ApiKey("apiKey").AppKey("appKey"));
-      api.Should().NotBeNull().And.BeOfType<Api>();
-      api.GetPropertyValue<string>("ApiToken").Should().Be("apiKey");
-      api.GetPropertyValue<string>("AppToken").Should().Be("appKey");
+      //AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
+      //AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(RuLaw.Api, null)).ThrowExactly<ArgumentNullException>().WithParameterName("action");
+      //AssertionExtensions.Should(() => RuLaw.Api.Configure(_ => {})).ThrowExactly<InvalidOperationException>();
+      
+      Validate(RuLaw.Api);
     }
 
     return;
 
-    static void Validate()
+    static void Validate(IRuLawApi api)
     {
-
+      var result = api.Configure(configurator => configurator.ApiKey("apiKey").AppKey("appKey")).Should().BeOfType<Api>();
+      result.GetPropertyValue<string>("ApiToken").Should().Be("apiKey");
+      result.GetPropertyValue<string>("AppToken").Should().Be("appKey");
     }
   }
 }

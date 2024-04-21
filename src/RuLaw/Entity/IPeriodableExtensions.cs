@@ -25,7 +25,7 @@ public static class IPeriodableExtensions
 
     if (to is not null)
     {
-      entities = entities.Where(entity => entity is not null && ((entity.ToDate is not null && entity.ToDate <= to) || entity.ToDate is null));
+      entities = entities.Where(entity => entity is not null && (entity.ToDate is null || entity.ToDate <= to));
     }
 
     return entities;

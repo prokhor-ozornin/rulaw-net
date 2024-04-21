@@ -1,7 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
@@ -20,25 +19,20 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IDeputyInfoExtensions.FullName<IDeputyInfo>(null, "name")).ThrowExactly<ArgumentNullException>().WithParameterName("deputies");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().FullName(null)).ThrowExactly<ArgumentNullException>().WithParameterName("name");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().FullName(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("name");
 
-      Enumerable.Empty<IDeputyInfo>().FullName("name").Should().NotBeNull().And.BeEmpty();
-      var first = new DeputyInfo {FirstName = "Vladimir", LastName = "Putin"};
-      var second = new DeputyInfo {FirstName = "Dmitry", LastName = "Medvedev"};
-      var deputies = first.ToSequence(second, null);
-      deputies.FullName("PUTIN").Should().NotBeNullOrEmpty().And.Equal(first);
-      deputies.FullName("putin vladimir").Should().NotBeNullOrEmpty().And.Equal(first);
-      deputies.FullName("MEDVEDEV").Should().NotBeNullOrEmpty().And.Equal(second);
-      deputies.FullName("medvedev dmitry").Should().NotBeNullOrEmpty().And.Equal(second);
+      Validate([], [], null);
+      Validate([], [], "name");
+
+      IDeputyInfo first = new DeputyInfo { FirstName = "Vladimir", LastName = "Putin" };
+      IDeputyInfo second = new DeputyInfo { FirstName = "Dmitry", LastName = "Medvedev" };
+
+      Validate([], [null], null);
+      Validate([first], [null, first, second, null], first.FullName);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IDeputyInfo> result, IEnumerable<IDeputyInfo> deputies, string name) => deputies.FullName(name).Should().BeAssignableTo<IEnumerable<IDeputyInfo>>().And.Equal(result);
   }
 
   /// <summary>
@@ -51,26 +45,23 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IDeputyInfoExtensions.BirthDate<IDeputyInfo>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("deputies");
 
-      Enumerable.Empty<IDeputyInfo>().BirthDate().Should().NotBeNull().And.BeEmpty();
+      Validate([], []);
 
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
-      var first = new DeputyInfo {BirthDate = DateTimeOffset.MinValue};
-      var second = new DeputyInfo {BirthDate = date};
-      var third = new DeputyInfo {BirthDate = DateTimeOffset.MaxValue};
+      var first = new DeputyInfo { BirthDate = DateTimeOffset.MinValue };
+      var second = new DeputyInfo { BirthDate = date };
+      var third = new DeputyInfo { BirthDate = DateTimeOffset.MaxValue} ;
+      var deputies = new List<IDeputyInfo> { null, first, second, third, null };
 
-      var deputies = first.ToSequence(second, third, null);
-      deputies.BirthDate(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
-      deputies.BirthDate(null, date).Should().NotBeNullOrEmpty().And.Equal(first, second);
-      deputies.BirthDate(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
+      Validate([first, second], deputies, date);
+      Validate([first, second], deputies, null, date);
+      Validate([first, second, third], deputies, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IDeputyInfo> result, IEnumerable<IDeputyInfo> deputies, DateTimeOffset? from = null, DateTimeOffset? to = null) => deputies.BirthDate(from, to).Should().BeAssignableTo<IEnumerable<IDeputyInfo>>().And.Equal(result);
   }
 
   /// <summary>
@@ -83,33 +74,30 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IDeputyInfoExtensions.WorkDate<IDeputyInfo>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("deputies");
 
-      Enumerable.Empty<IDeputyInfo>().WorkDate().Should().NotBeNull().And.BeEmpty();
+      Validate([], []);
 
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
-      var first = new DeputyInfo {WorkStartDate = DateTimeOffset.MinValue};
-      var second = new DeputyInfo {WorkStartDate = date};
-      var third = new DeputyInfo {WorkStartDate = DateTimeOffset.MaxValue};
-      var deputies = first.ToSequence(second, third, null);
-      deputies.WorkDate(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
-      deputies.WorkDate(null, date).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
-      deputies.WorkDate(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
+      var first = new DeputyInfo { WorkStartDate = DateTimeOffset.MinValue };
+      var second = new DeputyInfo { WorkStartDate = date };
+      var third = new DeputyInfo { WorkStartDate = DateTimeOffset.MaxValue };
+      var deputies = new List<IDeputyInfo> { null, first, second, third, null };
+      Validate([first, second], deputies, date);
+      Validate([first, second, third], deputies, null, date);
+      Validate([first, second, third], deputies, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
 
-      first = new DeputyInfo {WorkStartDate = DateTimeOffset.MinValue, WorkEndDate = DateTimeOffset.MaxValue};
-      second = new DeputyInfo {WorkStartDate = date, WorkEndDate = date};
-      third = new DeputyInfo {WorkStartDate = DateTimeOffset.MaxValue, WorkEndDate = DateTimeOffset.MaxValue};
-      deputies = first.ToSequence(second, third, null);
-      deputies.WorkDate(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
-      deputies.WorkDate(null, date).Should().NotBeNullOrEmpty().And.Equal(second);
-      deputies.WorkDate(date, date).Should().NotBeNullOrEmpty().And.Equal(second);
+      first = new DeputyInfo { WorkStartDate = DateTimeOffset.MinValue, WorkEndDate = DateTimeOffset.MaxValue };
+      second = new DeputyInfo { WorkStartDate = date, WorkEndDate = date };
+      third = new DeputyInfo { WorkStartDate = DateTimeOffset.MaxValue, WorkEndDate = DateTimeOffset.MaxValue };
+      deputies = [null, first, second, third, null];
+      Validate([second, third], deputies, date);
+      Validate([second], deputies, null, date);
+      Validate([second], deputies, date, date);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IDeputyInfo> result, IEnumerable<IDeputyInfo> deputies, DateTimeOffset? from = null, DateTimeOffset? to = null) => deputies.WorkDate(from, to).Should().BeAssignableTo<IEnumerable<IDeputyInfo>>().And.Equal(result);
   }
 
   /// <summary>
@@ -121,24 +109,20 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IDeputyInfoExtensions.Faction<IDeputyInfo>(null, "faction")).ThrowExactly<ArgumentNullException>().WithParameterName("deputies");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Faction(null)).ThrowExactly<ArgumentNullException>().WithParameterName("faction");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Faction(string.Empty)).Throw<ArgumentException>().WithParameterName("faction");
 
-      Enumerable.Empty<IDeputyInfo>().Faction("faction").Should().NotBeNull().And.BeEmpty();
+      Validate([], [], null);
+      Validate([], [], "faction");
 
-      var first = new DeputyInfo {FactionName = "FIRST"};
-      var second = new DeputyInfo {FactionName = "Second"};
-      var deputies = first.ToSequence(second, null);
-      deputies.Faction("first").Should().NotBeNullOrEmpty().And.Equal(first);
-      deputies.Faction("second").Should().NotBeNullOrEmpty().And.Equal(second);
+      var first = new DeputyInfo { FactionName = "first" };
+      var second = new DeputyInfo { FactionName = "second" };
+
+      Validate([], [null], null);
+      Validate([first], [null, first, second, null], first.FactionName);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IDeputyInfo> result, IEnumerable<IDeputyInfo> deputies, string faction) => deputies.Faction(faction).Should().BeAssignableTo<IEnumerable<IDeputyInfo>>().And.Equal(result);
   }
 
   /// <summary>
@@ -150,25 +134,23 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IDeputyInfoExtensions.Degree<IDeputyInfo>(null, "degree")).ThrowExactly<ArgumentNullException>().WithParameterName("deputies");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Degree(null)).ThrowExactly<ArgumentNullException>().WithParameterName("degree");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Degree(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("degree");
 
-      Enumerable.Empty<IDeputyInfo>().Degree("degree").Should().NotBeNull().And.BeEmpty();
+      Validate([], [], null);
+      Validate([], [], "degree");
 
-      var first = new DeputyInfo {Degrees = ["FIRST", "SECOND"]};
-      var second = new DeputyInfo {Degrees = ["First", "Third"]};
-      var deputies = first.ToSequence(second, null);
-      deputies.Degree("first").Should().NotBeNullOrEmpty().And.Equal(first, second);
-      deputies.Degree("second").Should().NotBeNullOrEmpty().And.Equal(first);
-      deputies.Degree("third").Should().NotBeNullOrEmpty().And.Equal(second);
+      var first = new DeputyInfo { Degrees = ["first", "second"] };
+      var second = new DeputyInfo { Degrees = ["first", "third"] };
+      var deputies = new List<IDeputyInfo> { null, first, second, null };
+
+      Validate([], [null], null);
+      Validate([first, second], deputies, "first");
+      Validate([first], deputies, "second");
+      Validate([second], deputies, "third");
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IDeputyInfo> result, IEnumerable<IDeputyInfo> deputies, string degree) => deputies.Degree(degree).Should().BeAssignableTo<IEnumerable<IDeputyInfo>>().And.Equal(result);
   }
 
   /// <summary>
@@ -180,26 +162,23 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IDeputyInfoExtensions.Rank<IDeputyInfo>(null, "name")).ThrowExactly<ArgumentNullException>().WithParameterName("deputies");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Rank(null)).ThrowExactly<ArgumentNullException>().WithParameterName("rank");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Rank(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("rank");
 
-      Enumerable.Empty<IDeputyInfo>().Rank("rank").Should().NotBeNull().And.BeEmpty();
+      Validate([], [], null);
+      Validate([], [], "rank");
 
-      var first = new DeputyInfo {Ranks = ["FIRST", "SECOND"]};
-      var second = new DeputyInfo {Ranks = ["First", "Third"]};
+      var first = new DeputyInfo { Ranks = ["first", "second"] };
+      var second = new DeputyInfo { Ranks = ["first", "third"] };
+      var deputies = new List<IDeputyInfo> { null, first, second, null };
 
-      var deputies = first.ToSequence(second, null);
-      deputies.Rank("first").Should().NotBeNullOrEmpty().And.Equal(first, second);
-      deputies.Rank("second").Should().NotBeNullOrEmpty().And.Equal(first);
-      deputies.Rank("third").Should().NotBeNullOrEmpty().And.Equal(second);
+      Validate([], [null], null);
+      Validate([first, second], deputies, "first");
+      Validate([first], deputies, "second");
+      Validate([second], deputies, "third");
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IDeputyInfo> result, IEnumerable<IDeputyInfo> deputies, string rank) => deputies.Rank(rank).Should().BeAssignableTo<IEnumerable<IDeputyInfo>>().And.Equal(result);
   }
 
   /// <summary>
@@ -211,26 +190,22 @@ public sealed class IDeputyInfoExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IDeputyInfoExtensions.Region<IDeputyInfo>(null, "name")).ThrowExactly<ArgumentNullException>().WithParameterName("deputies");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Region(null)).ThrowExactly<ArgumentNullException>().WithParameterName("region");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyInfo>().Region(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("region");
 
-      Enumerable.Empty<IDeputyInfo>().Region("region").Should().NotBeNull().And.BeEmpty();
+      Validate([], [], null);
+      Validate([], [], "region");
 
-      var first = new DeputyInfo {Regions = ["FIRST", "SECOND"]};
-      var second = new DeputyInfo {Regions = ["First", "Third"]};
+      var first = new DeputyInfo { Regions = ["first", "second"] };
+      var second = new DeputyInfo { Regions = ["first", "third"] };
+      var deputies = new List<IDeputyInfo> { null, first, second, null };
 
-      var deputies = first.ToSequence(second, null);
-      deputies.Region("first").Should().NotBeNullOrEmpty().And.Equal(first, second);
-      deputies.Region("second").Should().NotBeNullOrEmpty().And.Equal(first);
-      deputies.Region("third").Should().NotBeNullOrEmpty().And.Equal(second);
-      deputies.Region("third").Should().NotBeNullOrEmpty().And.Equal(second);
+      Validate([], [null], null);
+      Validate([first, second], deputies, "first");
+      Validate([first], deputies, "second");
+      Validate([second], deputies, "third");
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IDeputyInfo> result, IEnumerable<IDeputyInfo> deputies, string region) => deputies.Region(region).Should().BeAssignableTo<IEnumerable<IDeputyInfo>>().And.Equal(result);
   }
 }

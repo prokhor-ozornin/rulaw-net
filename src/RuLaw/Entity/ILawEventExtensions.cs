@@ -18,9 +18,7 @@ public static class ILawEventExtensions
   public static IEnumerable<TEntity> Solution<TEntity>(this IEnumerable<TEntity> events, string solution) where TEntity : ILawEvent
   {
     if (events is null) throw new ArgumentNullException(nameof(events));
-    if (solution is null) throw new ArgumentNullException(nameof(solution));
-    if (solution.IsEmpty()) throw new ArgumentException(nameof(solution));
 
-    return events.Where(lawEvent => lawEvent is not null && (lawEvent.Solution ?? string.Empty).ToLowerInvariant().Contains(solution.ToLowerInvariant()));
+    return events.Where(lawEvent => lawEvent is not null && lawEvent.Solution.ToInvariantString().Contains(solution.ToInvariantString()));
   }
 }

@@ -25,7 +25,7 @@ public static class IPageableExtensions
 
     if (to is not null)
     {
-      entities = entities.Where(entity => entity is not null && ((entity.Page is not null && entity.Page <= to) || entity.Page is null));
+      entities = entities.Where(entity => entity is not null && (entity.Page is null || entity.Page <= to));
     }
 
     return entities;
@@ -50,7 +50,7 @@ public static class IPageableExtensions
 
     if (to is not null)
     {
-      entities = entities.Where(entity => entity is not null && ((entity.PageSize is not null && entity.PageSize <= to) || entity.PageSize is null));
+      entities = entities.Where(entity => entity is not null && (entity.PageSize is null || entity.PageSize <= to));
     }
 
     return entities;

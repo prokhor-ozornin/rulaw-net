@@ -15,14 +15,7 @@ public static class IEducationExtensions
   /// <param name="educations">Source sequence of educations to filter.</param>
   /// <param name="institution">Full or partial name of institution to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of educations associated with given institution.</returns>
-  public static IEnumerable<TEntity> Institution<TEntity>(this IEnumerable<TEntity> educations, string institution) where TEntity : IEducation
-  {
-    if (educations is null) throw new ArgumentNullException(nameof(educations));
-    if (institution is null) throw new ArgumentNullException(nameof(institution));
-    if (institution.IsEmpty()) throw new ArgumentException(nameof(institution));
-
-    return educations.Where(education => education is not null && education.Institution.ToLowerInvariant().Contains(institution.ToLowerInvariant()));
-  }
+  public static IEnumerable<TEntity> Institution<TEntity>(this IEnumerable<TEntity> educations, string institution) where TEntity : IEducation => educations is not null ? educations.Where(education => education is not null && education.Institution.ToInvariantString().Contains(institution.ToInvariantString())) : throw new ArgumentNullException(nameof(educations));
 
   /// <summary>
   ///   <para>Filters sequence of educations, leaving those that were gained in specified date period.</para>

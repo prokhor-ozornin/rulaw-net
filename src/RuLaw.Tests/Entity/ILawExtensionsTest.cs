@@ -1,7 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
@@ -19,20 +18,24 @@ public sealed class ILawExtensionsTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => ((IEnumerable<ILaw>) null).Number("number")).ThrowExactly<ArgumentNullException>().WithParameterName("laws");
-      AssertionExtensions.Should(() => Enumerable.Empty<ILaw>().Number(null)).ThrowExactly<ArgumentNullException>().WithParameterName("number");
-      AssertionExtensions.Should(() => Enumerable.Empty<ILaw>().Number(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("number");
+      AssertionExtensions.Should(() => ((IEnumerable<ILaw>) null).Number("number")).ThrowExactly<ArgumentNullException>().WithParameterName("source");
 
-      var laws = new Law {Number = "first"}.ToSequence(new Law {Number = "second"}, null);
-      new Law {Number = "first"}.ToSequence(new Law {Number = "second"}, null).Number("first").Should().NotBeNull();
-      laws.Number("third").Should().BeNull();
+      Validate(null, [], null);
+      Validate(null, [], "solution");
+
+      var first = new Law { Number = "first" };
+      var second = new Law { Number = "second" };
+      Validate(null, [null], null);
+      Validate(first, [null, first, second, null], first.Number);
     }
-
+    
     return;
 
-    static void Validate()
+    static void Validate(ILaw result, IEnumerable<ILaw> laws, string number)
     {
+      var law = laws.Number(number);
 
+      law?.Should().BeOfType<Law>().And.BeSameAs(result);
     }
   }
 }

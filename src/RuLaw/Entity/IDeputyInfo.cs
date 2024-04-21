@@ -100,5 +100,8 @@ public interface IDeputyInfo : IEntity, IActive, IComparable<IDeputyInfo>, IEqua
   /// </summary>
   IEnumerable<string> Regions { get; }
 
+  /// <summary>
+  ///   <para></para>
+  /// </summary>
   string FullName => $"{LastName} {FirstName} {MiddleName}".Trim();
 }

@@ -1,4 +1,6 @@
-﻿namespace RuLaw;
+﻿using Catharsis.Extensions;
+
+namespace RuLaw;
 
 /// <summary>
 ///   <para>Set of extension methods for interface <see cref="ILaw"/>.</para>
@@ -13,5 +15,5 @@ public static class ILawExtensions
   /// <param name="laws">Source sequence of laws for searching.</param>
   /// <param name="number">Unique number of law to search for.</param>
   /// <returns>Law with a specified number, or a <c>null</c> reference if it could not be found.</returns>
-  public static TEntity Number<TEntity>(this IEnumerable<TEntity> laws, string number) where TEntity : ILaw => laws.FirstOrDefault(law => law is not null && string.Equals(law.Number, number, StringComparison.InvariantCultureIgnoreCase));
+  public static TEntity Number<TEntity>(this IEnumerable<TEntity> laws, string number) where TEntity : ILaw => laws.FirstOrDefault(law => law is not null && law.Number.ToInvariantString().Equals(number.ToInvariantString()));
 }

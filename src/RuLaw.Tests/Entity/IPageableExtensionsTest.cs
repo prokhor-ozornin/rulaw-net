@@ -1,7 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
@@ -19,26 +18,25 @@ public sealed class IPageableExtensionsTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IDeputyRequestExtensions.SignDate<IDeputyRequest>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
+      AssertionExtensions.Should(() => IPageableExtensions.Page<IPageable>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-      var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
+      Validate([], []);
 
-      var first = new DeputyRequest {SignDate = DateTimeOffset.MinValue};
-      var second = new DeputyRequest {SignDate = date};
-      var third = new DeputyRequest {SignDate = DateTimeOffset.MaxValue};
+      var page = 0;
 
-      var requests = first.ToSequence(second, third, null);
-      requests.SignDate(date).Should().NotBeNullOrEmpty().And.Equal(first, second);
-      requests.SignDate(null, date).Should().NotBeNullOrEmpty().And.Equal(first, second);
-      requests.SignDate(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
+      var first = new PageableEntity { Page = int.MinValue };
+      var second = new PageableEntity { Page = 0 };
+      var third = new PageableEntity { Page = int.MaxValue };
+      var entities = new List<IPageable> { null, first, second, third, null };
+
+      Validate([second, third], entities, page);
+      Validate([first, second], entities, null, page);
+      Validate([first, second, third], entities, int.MinValue, int.MaxValue);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IPageable> result, IEnumerable<IPageable> sequence, int? from = null, int? to = null) => sequence.Page(from, to).Should().BeAssignableTo<IEnumerable<IPageable>>().And.Equal(result);
   }
 
   /// <summary>
@@ -51,17 +49,23 @@ public sealed class IPageableExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ((IEnumerable<PageableEntity>) null).Page(0)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-      Enumerable.Empty<PageableEntity>().Page().Should().BeEmpty();
+      Validate([], []);
 
-      new PageableEntity { Page = 1 }.ToSequence(new PageableEntity { Page = 2 }, null).Page(1).Should().NotBeNullOrEmpty().And.ContainSingle();
+      var size = 0;
+
+      var first = new PageableEntity { PageSize = int.MinValue };
+      var second = new PageableEntity { PageSize = 0 };
+      var third = new PageableEntity { PageSize = int.MaxValue };
+      var entities = new List<IPageable> { null, first, second, third, null };
+
+      Validate([second, third], entities, size);
+      Validate([first, second], entities, null, size);
+      Validate([first, second, third], entities, int.MinValue, int.MaxValue);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IPageable> result, IEnumerable<IPageable> sequence, int? from = null, int? to = null) => sequence.PageSize(from, to).Should().BeAssignableTo<IEnumerable<IPageable>>().And.Equal(result);
   }
 
   private sealed class PageableEntity : IPageable

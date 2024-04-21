@@ -13,7 +13,7 @@ public interface IRuLawApi
   /// <param name="configurator">Configurator to perform API setup process.</param>
   public IApi Configure(IApiConfigurator configurator)
   {
-    if (configurator.ApiKeyValue.IsEmpty())
+    if (configurator.ApiKeyValue.IsUnset())
     {
       throw new InvalidOperationException("Api key was not specified when configuring API caller");
     }

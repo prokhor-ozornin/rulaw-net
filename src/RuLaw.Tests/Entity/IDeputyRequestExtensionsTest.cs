@@ -1,7 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
@@ -20,24 +19,19 @@ public sealed class IDeputyRequestExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IDeputyRequestExtensions.Initiator<IDeputyRequest>(null, "initiator")).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyRequest>().Initiator(null)).ThrowExactly<ArgumentNullException>().WithParameterName("text");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyRequest>().Initiator(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("text");
 
-      Enumerable.Empty<IDeputyRequest>().Initiator("initiator").Should().NotBeNull().And.BeEmpty();
+      Validate([], [], null);
+      Validate([], [], "initiator");
 
-      var first = new DeputyRequest {Initiator = "FIRST"};
-      var second = new DeputyRequest {Initiator = "Second"};
-      var requests = first.ToSequence(second, null);
-      requests.Initiator("first").Should().NotBeNullOrEmpty().And.Equal(first);
-      requests.Initiator("second").Should().NotBeNullOrEmpty().And.Equal(second);
+      var first = new DeputyRequest { Initiator = "first" };
+      var second = new DeputyRequest { Initiator = "second" };
+      Validate([], [null], null);
+      Validate([first], [null, first, second, null], first.Initiator);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IDeputyRequest> result, IEnumerable<IDeputyRequest> requests, string initiator) => requests.Initiator(initiator).Should().BeAssignableTo<IEnumerable<IDeputyRequest>>().And.Equal(result);
   }
 
   /// <summary>
@@ -48,25 +42,20 @@ public sealed class IDeputyRequestExtensionsTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IDeputyRequestExtensions.Answer<IDeputyRequest>(null, "text")).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyRequest>().Answer(null)).ThrowExactly<ArgumentNullException>().WithParameterName("text");
-      AssertionExtensions.Should(() => Enumerable.Empty<IDeputyRequest>().Answer(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("text");
+      AssertionExtensions.Should(() => IDeputyRequestExtensions.Answer<IDeputyRequest>(null, "answer")).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
 
-      Enumerable.Empty<IDeputyRequest>().Answer("answer").Should().NotBeNull().And.BeEmpty();
+      Validate([], [], null);
+      Validate([], [], "answer");
 
-      var first = new DeputyRequest {Answer = "FIRST"};
-      var second = new DeputyRequest {Answer = "Second"};
-      var requests = first.ToSequence(second, null);
-      requests.Answer("first").Should().NotBeNullOrEmpty().And.Equal(first);
-      requests.Answer("second").Should().NotBeNullOrEmpty().And.Equal(second);
+      var first = new DeputyRequest { Answer = "first" };
+      var second = new DeputyRequest { Answer = "second" };
+      Validate([], [null], null);
+      Validate([first], [null, first, second, null], first.Answer);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IDeputyRequest> result, IEnumerable<IDeputyRequest> requests, string answer) => requests.Answer(answer).Should().BeAssignableTo<IEnumerable<IDeputyRequest>>().And.Equal(result);
   }
 
   /// <summary>
@@ -79,24 +68,23 @@ public sealed class IDeputyRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IDeputyRequestExtensions.SignDate<IDeputyRequest>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
 
+      Validate([], []);
+
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
-      var first = new DeputyRequest {SignDate = DateTimeOffset.MinValue};
-      var second = new DeputyRequest {SignDate = date};
-      var third = new DeputyRequest {SignDate = DateTimeOffset.MaxValue};
+      var first = new DeputyRequest { SignDate = DateTimeOffset.MinValue };
+      var second = new DeputyRequest { SignDate = date };
+      var third = new DeputyRequest { SignDate = DateTimeOffset.MaxValue };
+      var requests = new List<IDeputyRequest> { null, first, second, third, null };
 
-      var requests = first.ToSequence(second, third, null);
-      requests.SignDate(date).Should().NotBeNullOrEmpty().And.Equal(first, second);
-      requests.SignDate(null, date).Should().NotBeNullOrEmpty().And.Equal(first, second);
-      requests.SignDate(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
+      Validate([first, second], requests, date);
+      Validate([first, second], requests, null, date);
+      Validate([first, second, third], requests, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IDeputyRequest> result, IEnumerable<IDeputyRequest> requests, DateTimeOffset? from = null, DateTimeOffset? to = null) => requests.SignDate(from, to).Should().BeAssignableTo<IEnumerable<IDeputyRequest>>().And.Equal(result);
   }
 
   /// <summary>
@@ -109,25 +97,22 @@ public sealed class IDeputyRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IDeputyRequestExtensions.ControlDate<IDeputyRequest>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
 
-      Enumerable.Empty<IDeputyRequest>().ControlDate().Should().NotBeNull().And.BeEmpty();
+      Validate([], []);
 
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
       var first = new DeputyRequest { ControlDate = DateTimeOffset.MinValue };
       var second = new DeputyRequest { ControlDate = date };
       var third = new DeputyRequest { ControlDate = DateTimeOffset.MaxValue };
+      var requests = new List<IDeputyRequest> { null, first, second, third, null };
 
-      var requests = first.ToSequence(second, third, null);
-      requests.ControlDate(date).Should().NotBeNullOrEmpty().And.Equal(second, third);
-      requests.ControlDate(null, date).Should().NotBeNullOrEmpty().And.Equal(first, second);
-      requests.ControlDate(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.Equal(first, second, third);
+      Validate([first, second], requests, date);
+      Validate([first, second], requests, null, date);
+      Validate([first, second, third], requests, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IDeputyRequest> result, IEnumerable<IDeputyRequest> requests, DateTimeOffset? from = null, DateTimeOffset? to = null) => requests.ControlDate(from, to).Should().BeAssignableTo<IEnumerable<IDeputyRequest>>().And.Equal(result);
   }
 }

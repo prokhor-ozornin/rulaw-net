@@ -1,7 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
@@ -20,23 +19,18 @@ public sealed class ILawEventExtensionsTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => ILawEventExtensions.Solution<ILawEvent>(null, "solution")).ThrowExactly<ArgumentNullException>().WithParameterName("events");
-      AssertionExtensions.Should(() => Enumerable.Empty<ILawEvent>().Solution(null)).ThrowExactly<ArgumentNullException>().WithParameterName("solution");
-      AssertionExtensions.Should(() => Enumerable.Empty<ILawEvent>().Solution(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("solution");
 
-      Enumerable.Empty<ILawEvent>().Solution("solution").Should().NotBeNull().And.BeEmpty();
+      Validate([], [], null);
+      Validate([], [], "solution");
 
-      var first = new LawEvent {Solution = "FIRST"};
-      var second = new LawEvent {Solution = "Second"};
-      var events = first.ToSequence(second, null);
-      events.Solution("first").Should().NotBeNullOrEmpty().And.Equal(first);
-      events.Solution("second").Should().NotBeNullOrEmpty().And.Equal(second);
+      var first = new LawEvent { Solution = "first" };
+      var second = new LawEvent { Solution = "second" };
+      Validate([], [null], null);
+      Validate([first], [null, first, second, null], first.Solution);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<ILawEvent> result, IEnumerable<ILawEvent> events, string solution) => events.Solution(solution).Should().BeAssignableTo<IEnumerable<ILawEvent>>().And.Equal(result);
   }
 }
