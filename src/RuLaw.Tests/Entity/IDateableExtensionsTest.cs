@@ -14,28 +14,29 @@ public sealed class IDateableExtensionsTest : UnitTest
   ///   <para>Performs testing of <see cref="IDateableExtensions.Date{TEntity}(IEnumerable{TEntity}, DateTimeOffset?, DateTimeOffset?)"/> method.</para>
   /// </summary>
   [Fact]
-  public void Period_Method()
+  public void Date_Method()
   {
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => ((IEnumerable<DateableEntity>) null).Date()).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-      Enumerable.Empty<DateableEntity>().Date().Should().NotBeNull().And.BeEmpty();
+      Validate([], []);
 
-      new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(DateTimeOffset.MinValue, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.HaveCount(2);
-      new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(DateTimeOffset.MinValue).Should().NotBeNullOrEmpty().And.HaveCount(2);
-      new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(null, DateTimeOffset.MaxValue).Should().NotBeNullOrEmpty().And.HaveCount(2);
-      new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(DateTimeOffset.MinValue.AddDays(1), DateTimeOffset.MaxValue.AddDays(-1)).Should().NotBeNull().And.BeEmpty();
-      new[] {new DateableEntity {Date = DateTimeOffset.MinValue}, new DateableEntity {Date = DateTimeOffset.MinValue}}.Date(DateTimeOffset.MaxValue.AddDays(-1)).Should().NotBeNull().And.BeEmpty();
-      new[] {new DateableEntity {Date = DateTimeOffset.MaxValue}, new DateableEntity {Date = DateTimeOffset.MaxValue}}.Date(null, DateTimeOffset.MaxValue.AddDays(-1)).Should().NotBeNull().And.BeEmpty();
+      var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
+
+      var first = new DateableEntity { Date = DateTimeOffset.MinValue };
+      var second = new DateableEntity { Date = date };
+      var third = new DateableEntity { Date = DateTimeOffset.MaxValue };
+      var entities = new List<IDateable> { null, first, second, third, null };
+
+      Validate([second, third], entities, date);
+      Validate([first, second], entities, null, date);
+      Validate([first, second, third], entities, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(IEnumerable<IDateable> result, IEnumerable<IDateable> entities, DateTimeOffset? from = null, DateTimeOffset? to = null) => entities.Date(from, to).Should().BeAssignableTo<IEnumerable<IDateable>>().And.Equal(result);
   }
 
   private sealed class DateableEntity : IDateable
