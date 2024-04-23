@@ -104,7 +104,7 @@ internal sealed class Api : IApi
     {
     }
 
-    if (error is not null && !error.Text.IsEmpty())
+    if (error is not null && !error.Text.IsUnset())
     {
       throw new RuLawException(error);
     }
