@@ -25,7 +25,7 @@ public sealed class VotesSearchApiRequestTest : UnitTest
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="VotesSearchApiRequest.Number(string?)"/> method.</para>
+  ///   <para>Performs testing of <see cref="VotesSearchApiRequest.Number(string)"/> method.</para>
   /// </summary>
   [Fact]
   public void Number_Method()

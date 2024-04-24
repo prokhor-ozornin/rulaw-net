@@ -60,7 +60,7 @@ public sealed class QuestionsApiRequestTest : UnitTest
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="QuestionsApiRequest.Name(string?)"/> method.</para>
+  ///   <para>Performs testing of <see cref="QuestionsApiRequest.Name(string)"/> method.</para>
   /// </summary>
   [Fact]
   public void Name_Method()

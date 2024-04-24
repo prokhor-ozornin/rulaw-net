@@ -11,7 +11,7 @@ namespace RuLaw.Tests;
 public sealed class IDeputyTranscriptApiRequestExtensionsTest : UnitTest
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="IDeputyTranscriptApiRequestExtensions.Deputy(IDeputyTranscriptApiRequest, IDeputy?)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IDeputyTranscriptApiRequestExtensions.Deputy(IDeputyTranscriptApiRequest, IDeputy)"/> method.</para>
   /// </summary>
   [Fact]
   public void Deputy_Method()

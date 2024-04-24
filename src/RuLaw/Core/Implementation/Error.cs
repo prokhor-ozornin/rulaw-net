@@ -6,8 +6,28 @@ namespace RuLaw;
 /// <summary>
 ///   <para>RuLaw API call error.</para>
 /// </summary>
+[DataContract(Name = "error")]
 public sealed class Error : IError
 {
+  /// <summary>
+  ///   <para>Numeric code of error.</para>
+  /// </summary>
+  [DataMember(Name = "code", IsRequired = true)]
+  public int Code { get; set; }
+
+  /// <summary>
+  ///   <para>Text description of error.</para>
+  /// </summary>
+  [DataMember(Name = "text", IsRequired = true)]
+  public string Text { get; set; }
+
+  /// <summary>
+  ///   <para></para>
+  /// </summary>
+  public Error()
+  {
+  }
+
   /// <summary>
   ///   <para>Creates new error.</para>
   /// </summary>
@@ -18,32 +38,6 @@ public sealed class Error : IError
     Code = code;
     Text = text;
   }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Error(Info info)
-  {
-    Code = info.Code;
-    Text = info.Text;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public Error(object info) : this(new Info().SetState(info)) {}
-
-  /// <summary>
-  ///   <para>Numeric code of error.</para>
-  /// </summary>
-  public int Code { get; }
-
-  /// <summary>
-  ///   <para>Text description of error.</para>
-  /// </summary>
-  public string Text { get; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="IError"/> instance with another.</para>
@@ -76,30 +70,5 @@ public sealed class Error : IError
   ///   <para>Returns a <see cref="string"/> that represents the current <see cref="Error"/> instance.</para>
   /// </summary>
   /// <returns>A string that represents the current <see cref="Error"/>.</returns>
-  public override string ToString() => Text;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "error")]
-  public sealed record Info : IResultable<IError>
-  {
-    /// <summary>
-    ///   <para>Numeric code of error.</para>
-    /// </summary>
-    [DataMember(Name = "code", IsRequired = true)]
-    public int Code { get; init; }
-
-    /// <summary>
-    ///   <para>Text description of error.</para>
-    /// </summary>
-    [DataMember(Name = "text", IsRequired = true)]
-    public string Text { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IError ToResult() => new Error(this);
-  }
+  public override string ToString() => Text ?? string.Empty;
 }

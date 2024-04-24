@@ -12,7 +12,7 @@ public sealed class JsonRestSerializerTest : UnitTest
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
   ///   <list type="bullet">
-  ///     <item><description><see cref="JsonRestSerializer.Serialize(object?)"/></description></item>
+  ///     <item><description><see cref="JsonRestSerializer.Serialize(object)"/></description></item>
   ///     <item><description><see cref="JsonRestSerializer.Serialize(RestSharp.Parameter)"/></description></item>
   ///   </list>
   /// </summary>

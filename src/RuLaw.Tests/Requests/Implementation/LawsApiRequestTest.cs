@@ -60,7 +60,7 @@ public sealed class LawsApiRequestTest : UnitTest
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawsApiRequest.Name(string?)"/> method.</para>
+  ///   <para>Performs testing of <see cref="LawsApiRequest.Name(string)"/> method.</para>
   /// </summary>
   [Fact]
   public void Name_Method()
@@ -114,7 +114,7 @@ public sealed class LawsApiRequestTest : UnitTest
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawsApiRequest.Number(string?)"/> method.</para>
+  ///   <para>Performs testing of <see cref="LawsApiRequest.Number(string)"/> method.</para>
   /// </summary>
   [Fact]
   public void Number_Method()
@@ -132,7 +132,7 @@ public sealed class LawsApiRequestTest : UnitTest
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="LawsApiRequest.DocumentNumber(string?)"/> method.</para>
+  ///   <para>Performs testing of <see cref="LawsApiRequest.DocumentNumber(string)"/> method.</para>
   /// </summary>
   [Fact]
   public void DocumentNumber_Method()

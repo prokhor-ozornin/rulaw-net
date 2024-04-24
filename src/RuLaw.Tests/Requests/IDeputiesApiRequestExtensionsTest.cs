@@ -8,7 +8,7 @@ namespace RuLaw.Tests.Calls;
 /// <summary>
 ///   <para>Tests set for class <see cref="IDeputiesApiRequestExtensions"/>.</para>
 /// </summary>
-public sealed class IDeputiesLawApiCallExtensionsTests : UnitTest
+public sealed class IDeputiesApiRequestExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IDeputiesApiRequestExtensions.Position(IDeputiesApiRequest, DeputyPosition?)"/> method.</para>
