@@ -1,7 +1,7 @@
 ﻿namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for structure <see cref="DateTimeOffset"/>.</para>
+///   <para>A set of extension methods for the <see cref="DateTimeOffset"/> structure.</para>
 /// </summary>
 /// <seealso cref="DateTimeOffset"/>
 public static class DateTimeOffsetExtensions

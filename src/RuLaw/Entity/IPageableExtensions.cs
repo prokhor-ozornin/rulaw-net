@@ -1,7 +1,7 @@
 ﻿namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="IPageable"/>.</para>
+///   <para>A set of extension methods for the <see cref="IPageable"/> interface.</para>
 /// </summary>
 /// <seealso cref="IPageable"/>
 public static class IPageableExtensions

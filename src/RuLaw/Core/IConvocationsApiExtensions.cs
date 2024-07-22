@@ -3,7 +3,7 @@
 namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="IConvocationsApi"/>.</para>
+///   <para>A set of extension methods for the <see cref="IConvocationsApi"/> interface.</para>
 /// </summary>
 /// <seealso cref="IConvocationsApi"/>
 public static class IConvocationsApiExtensions

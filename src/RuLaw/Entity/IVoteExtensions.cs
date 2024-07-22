@@ -3,7 +3,7 @@
 namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="IVote"/>.</para>
+///   <para>A set of extension methods for the <see cref="IVote"/> interface.</para>
 /// </summary>
 /// <seealso cref="IVote"/>
 public static class IVoteExtensions

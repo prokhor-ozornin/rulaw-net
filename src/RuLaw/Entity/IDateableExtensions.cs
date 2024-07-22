@@ -1,7 +1,7 @@
 ﻿namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="IDateable"/>.</para>
+///   <para>A set of extension methods for the <see cref="IDateable"/> interface.</para>
 /// </summary>
 /// <seealso cref="IDateable"/>
 public static class IDateableExtensions

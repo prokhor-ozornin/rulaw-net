@@ -3,7 +3,7 @@
 namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="IStagesApi"/>.</para>
+///   <para>A set of extension methods for the <see cref="IStagesApi"/> interface.</para>
 /// </summary>
 /// <seealso cref="IStagesApi"/>
 public static class IStagesApiExtensions

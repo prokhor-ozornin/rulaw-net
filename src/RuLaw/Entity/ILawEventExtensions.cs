@@ -3,7 +3,7 @@
 namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="ILawEvent"/>.</para>
+///   <para>A set of extension methods for the <see cref="ILawEvent"/> interface.</para>
 /// </summary>
 /// <seealso cref="ILawEvent"/>
 public static class ILawEventExtensions

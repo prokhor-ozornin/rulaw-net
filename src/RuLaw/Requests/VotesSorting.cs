@@ -32,7 +32,7 @@ public enum VotesSorting
 }
 
 /// <summary>
-///   <para>Set of extension methods for enumeration <see cref="VotesSorting"/>.</para>
+///   <para>A set of extension methods for the <see cref="VotesSorting"/> enumeration.</para>
 /// </summary>
 public static class VotesSortingExtensions
 {

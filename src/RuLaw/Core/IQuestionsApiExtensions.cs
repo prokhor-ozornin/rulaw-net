@@ -1,7 +1,7 @@
 ﻿namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="IQuestionsApi"/>.</para>
+///   <para>A set of extension methods for the <see cref="IQuestionsApi"/> interface.</para>
 /// </summary>
 /// <seealso cref="IQuestionsApi"/>
 public static class IQuestionsApiExtensions

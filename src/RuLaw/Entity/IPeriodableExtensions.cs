@@ -1,7 +1,7 @@
 ﻿namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="IPeriodable"/>.</para>
+///   <para>A set of extension methods for the <see cref="IPeriodable"/> interface.</para>
 /// </summary>
 /// <seealso cref="IPeriodable"/>
 public static class IPeriodableExtensions

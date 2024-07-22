@@ -3,7 +3,7 @@
 namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="IBranchesApi"/>.</para>
+///   <para>A set of extension methods for the <see cref="IBranchesApi"/> interface.</para>
 /// </summary>
 /// <seealso cref="IBranchesApi"/>
 public static class IBranchesApiExtensions

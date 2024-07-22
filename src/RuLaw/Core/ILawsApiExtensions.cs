@@ -1,7 +1,7 @@
 ﻿namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="ILawsApi"/>.</para>
+///   <para>A set of extension methods for the <see cref="ILawsApi"/> interface.</para>
 /// </summary>
 /// <seealso cref="ILawsApi"/>
 public static class ILawsApiExtensions

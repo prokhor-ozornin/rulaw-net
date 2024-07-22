@@ -3,7 +3,7 @@
 namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="IDeputiesApi"/>.</para>
+///   <para>A set of extension methods for the <see cref="IDeputiesApi"/> interface.</para>
 /// </summary>
 /// <seealso cref="IDeputiesApi"/>
 public static class IDeputiesApiExtensions

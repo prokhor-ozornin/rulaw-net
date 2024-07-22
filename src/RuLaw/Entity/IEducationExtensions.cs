@@ -3,7 +3,7 @@
 namespace RuLaw;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="IEducation"/>.</para>
+///   <para>A set of extension methods for the <see cref="IEducation"/> interface.</para>
 /// </summary>
 /// <seealso cref="IEducation"/>
 public static class IEducationExtensions
