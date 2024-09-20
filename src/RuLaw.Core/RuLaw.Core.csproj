@@ -26,6 +26,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Core\.gitignore" />
+    <None Remove="Core\Implementation\.gitignore" />
+    <None Remove="Entity\.gitignore" />
+    <None Remove="Entity\Implementation\.gitignore" />
+    <None Remove="Extensions\.gitignore" />
+    <None Remove="Requests\.gitignore" />
+    <None Remove="Requests\Implementation\.gitignore" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="..\RuLaw\Core\IApi.cs" Link="Core\IApi.cs" />
     <Compile Include="..\RuLaw\Core\IApiConfigurator.cs" Link="Core\IApiConfigurator.cs" />
     <Compile Include="..\RuLaw\Core\IAuthoritiesApi.cs" Link="Core\IAuthoritiesApi.cs" />
@@ -208,8 +218,12 @@
 
   <ItemGroup>
     <Folder Include="Core\Implementation\" />
+    <Folder Include="Core\Implementation\" />
+    <Folder Include="Entity\Implementation\" />
     <Folder Include="Entity\Implementation\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Requests\Implementation\" />
     <Folder Include="Requests\Implementation\" />
   </ItemGroup>
 
