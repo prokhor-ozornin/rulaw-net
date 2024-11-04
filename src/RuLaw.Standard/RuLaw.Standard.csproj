@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\Prokhor\Documents\GitHub\RuLaw.NET\src\RuLaw.Standard\RuLaw.xml</DocumentationFile>
+    <DocumentationFile>API.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

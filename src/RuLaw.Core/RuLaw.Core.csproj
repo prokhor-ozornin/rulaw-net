@@ -20,6 +20,10 @@
     <DocumentationFile>API.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DocumentationFile>API.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Domain\**" />
     <EmbeddedResource Remove="Domain\**" />
