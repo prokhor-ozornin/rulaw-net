@@ -1,0 +1,3369 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RuLaw.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:RuLaw.Tests.Core.IAuthoritiesApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IAuthoritiesApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IAuthoritiesApiExtensionsTest.Federal_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.IAuthoritiesApiExtensions.Federal(RuLaw.IAuthoritiesApi,RuLaw.IAuthoritiesApiRequest)"/></description></item>
+                <item><description><see cref="M:RuLaw.IAuthoritiesApiExtensions.Federal(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest})"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IAuthoritiesApiExtensionsTest.Regional_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.IAuthoritiesApiExtensions.Regional(RuLaw.IAuthoritiesApi,RuLaw.IAuthoritiesApiRequest)"/></description></item>
+                <item><description><see cref="M:RuLaw.IAuthoritiesApiExtensions.Regional(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest})"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IAuthoritiesApiExtensionsTest.FederalAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IAuthoritiesApiExtensions.FederalAsync(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest},System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IAuthoritiesApiExtensionsTest.RegionalAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IAuthoritiesApiExtensions.RegionalAsync(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest},System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.Core.IBranchesApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IBranchesApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IBranchesApiExtensionsTest.All_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IBranchesApiExtensions.All(RuLaw.IBranchesApi)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.Core.ICommitteesApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.ICommitteesApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.ICommitteesApiExtensionsTest.All_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ICommitteesApiExtensions.All(RuLaw.ICommitteesApi)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.Core.IConvocationsApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IConvocationsApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IConvocationsApiExtensionsTest.All_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IConvocationsApiExtensions.All(RuLaw.IConvocationsApi)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.Core.IDeputiesApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IDeputiesApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IDeputiesApiExtensionsTest.Find_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputiesApiExtensions.Find(RuLaw.IDeputiesApi,System.Int64)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IDeputiesApiExtensionsTest.Search_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.IDeputiesApiExtensions.Search(RuLaw.IDeputiesApi,RuLaw.IDeputiesApiRequest)"/></description></item>
+                <item><description><see cref="M:RuLaw.IDeputiesApiExtensions.Search(RuLaw.IDeputiesApi,System.Action{RuLaw.IDeputiesApiRequest})"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IDeputiesApiExtensionsTest.SearchAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputiesApiExtensions.SearchAsync(RuLaw.IDeputiesApi,System.Action{RuLaw.IDeputiesApiRequest},System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.Core.IInstancesApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IInstancesApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IInstancesApiExtensionsTest.Search_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.IInstancesApiExtensions.Search(RuLaw.IInstancesApi,RuLaw.IInstancesApiRequest)"/></description></item>
+                <item><description><see cref="M:RuLaw.IInstancesApiExtensions.Search(RuLaw.IInstancesApi,System.Action{RuLaw.IInstancesApiRequest})"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IInstancesApiExtensionsTest.SearchAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IInstancesApiExtensions.SearchAsync(RuLaw.IInstancesApi,System.Action{RuLaw.IInstancesApiRequest},System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.Core.ILawsApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.ILawsApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.ILawsApiExtensionsTest.Search_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.ILawsApiExtensions.Search(RuLaw.ILawsApi,RuLaw.ILawsApiRequest)"/></description></item>
+                <item><description><see cref="M:RuLaw.ILawsApiExtensions.Search(RuLaw.ILawsApi,System.Action{RuLaw.ILawsApiRequest})"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.ILawsApiExtensionsTest.SearchAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiExtensions.SearchAsync(RuLaw.ILawsApi,System.Action{RuLaw.ILawsApiRequest},System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.Core.IQuestionsApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IQuestionsApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IQuestionsApiExtensionsTest.Search_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.IQuestionsApiExtensions.Search(RuLaw.IQuestionsApi,RuLaw.IQuestionsApiRequest)"/></description></item>
+                <item><description><see cref="M:RuLaw.IQuestionsApiExtensions.Search(RuLaw.IQuestionsApi,System.Action{RuLaw.IQuestionsApiRequest})"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IQuestionsApiExtensionsTest.SearchAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IQuestionsApiExtensions.SearchAsync(RuLaw.IQuestionsApi,System.Action{RuLaw.IQuestionsApiRequest},System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.Core.IRequestsApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IRequestsApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IRequestsApiExtensionsTest.All_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IRequestsApiExtensions.All(RuLaw.IRequestsApi)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.Core.IStagesApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IStagesApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.IStagesApiExtensionsTest.All_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IStagesApiExtensions.All(RuLaw.IStagesApi)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.Core.ITopicsApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.ITopicsApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Core.ITopicsApiExtensionsTest.All_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITopicsApiExtensions.All(RuLaw.ITopicsApi)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.ApiConfiguratorTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.ApiConfigurator"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiConfiguratorTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.ApiConfigurator.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.ApiConfiguratorTest.ApiKey_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ApiConfigurator.ApiKey(System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiConfiguratorTest.AppKey_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ApiConfigurator.AppKey(System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.ApiTest">
+            <summary>
+              <para>Tests set for class <see cref="P:RuLaw.Tests.ApiTest.Api"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="P:RuLaw.RuLaw.Api"/>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.BranchesApi_AllAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IBranchesApi.AllAsync(System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.CommitteesApi_AllAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ICommitteesApi.AllAsync(System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.DeputiesApi_FindAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputiesApi.FindAsync(System.Int64,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.DeputiesApi_SearchAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputiesApi.SearchAsync(RuLaw.IDeputiesApiRequest,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.AuthoritiesApi_FederalAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IAuthoritiesApi.FederalAsync(RuLaw.IAuthoritiesApiRequest,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.AuthoritiesApi_RegionalAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IAuthoritiesApi.RegionalAsync(RuLaw.IAuthoritiesApiRequest,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.InstancesApi_SearchAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IInstancesApi.SearchAsync(RuLaw.IInstancesApiRequest,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.LawsApi_SearchAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApi.SearchAsync(RuLaw.ILawsApiRequest,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.ConvocationsApi_AllAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IConvocationsApi.AllAsync(System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.QuestionsApi_SearchAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IQuestionsApi.SearchAsync(RuLaw.IQuestionsApiRequest,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.RequestsApi_AllAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IRequestsApi.AllAsync(System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.StagesApi_AllAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IStagesApi.AllAsync(System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.TopicsApi_AllAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITopicsApi.AllAsync(System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.TranscriptsApi_DateAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITranscriptsApi.DateAsync(System.DateTimeOffset,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.TranscriptsApi_DeputyAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITranscriptsApi.DeputyAsync(RuLaw.IDeputyTranscriptApiRequest,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.TranscriptsApi_LawAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITranscriptsApi.LawAsync(System.String,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.TranscriptsApi_QuestionAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITranscriptsApi.QuestionAsync(System.Int64,System.Int64,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.TranscriptsApi_ResolutionAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITranscriptsApi.ResolutionAsync(System.String,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.VotesApi_SearchAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IVotesApi.SearchAsync(RuLaw.IVotesSearchApiRequest,System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiTest.Dispose">
+            <summary>
+              <para></para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.ErrorTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.Error"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ErrorTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Error.#ctor"/>
+            <seealso cref="M:RuLaw.Error.#ctor(System.Int32,System.String)"/>
+        </member>
+        <member name="M:RuLaw.Tests.ErrorTest.Code_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Error.Code"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ErrorTest.Text_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Error.Text"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ErrorTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Error.CompareTo(RuLaw.IError)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ErrorTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.Error.Equals(RuLaw.IError)"/></description></item>
+                <item><description><see cref="M:RuLaw.Error.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ErrorTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Error.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ErrorTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Error.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ErrorTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.ITranscriptsApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.ITranscriptsApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ITranscriptsApiExtensionsTest.Date_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITranscriptsApiExtensions.Date(RuLaw.ITranscriptsApi,System.DateTimeOffset)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ITranscriptsApiExtensionsTest.Deputy_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.ITranscriptsApiExtensions.Deputy(RuLaw.ITranscriptsApi,RuLaw.IDeputyTranscriptApiRequest)"/></description></item>
+                <item><description><see cref="M:RuLaw.ITranscriptsApiExtensions.Deputy(RuLaw.ITranscriptsApi,System.Action{RuLaw.IDeputyTranscriptApiRequest})"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ITranscriptsApiExtensionsTest.DeputyAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITranscriptsApiExtensions.DeputyAsync(RuLaw.ITranscriptsApi,System.Action{RuLaw.IDeputyTranscriptApiRequest},System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ITranscriptsApiExtensionsTest.Law_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITranscriptsApiExtensions.Law(RuLaw.ITranscriptsApi,System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ITranscriptsApiExtensionsTest.Question_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITranscriptsApiExtensions.Question(RuLaw.ITranscriptsApi,System.Int64,System.Int64)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ITranscriptsApiExtensionsTest.Resolution_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITranscriptsApiExtensions.Resolution(RuLaw.ITranscriptsApi,System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IVotesApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IVotesApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IVotesApiExtensionsTest.Search_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.IVotesApiExtensions.Search(RuLaw.IVotesApi,RuLaw.IVotesSearchApiRequest)"/></description></item>
+                <item><description><see cref="M:RuLaw.IVotesApiExtensions.Search(RuLaw.IVotesApi,System.Action{RuLaw.IVotesSearchApiRequest})"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IVotesApiExtensionsTest.SearchAsync_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IQuestionsApiExtensions.SearchAsync(RuLaw.IQuestionsApi,System.Action{RuLaw.IQuestionsApiRequest},System.Threading.CancellationToken)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.RuLawExceptionTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.RuLawException"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.RuLawExceptionTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.RuLawException.#ctor(RuLaw.Error,System.Exception)"/>
+        </member>
+        <member name="T:RuLaw.Tests.IActiveExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IActiveExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IActiveExtensionsTest.Active_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IActiveExtensions.Active``1(System.Collections.Generic.IEnumerable{``0})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IActiveExtensionsTest.Inactive_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IActiveExtensions.Inactive``1(System.Collections.Generic.IEnumerable{``0})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IDateableExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IDateableExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDateableExtensionsTest.Date_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDateableExtensions.Date``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IDeputyExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IDeputyExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyExtensionsTest.Position_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.IDeputyExtensions.Position(RuLaw.IDeputy)"/></description></item>
+                <item><description><see cref="M:RuLaw.IDeputyExtensions.Position``1(System.Collections.Generic.IEnumerable{``0},System.String)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IDeputyInfoExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IDeputyInfoExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyInfoExtensionsTest.FullName_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputyInfoExtensions.FullName``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyInfoExtensionsTest.BirthDate_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputyInfoExtensions.BirthDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyInfoExtensionsTest.WorkDate_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputyInfoExtensions.WorkDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyInfoExtensionsTest.Faction_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputyInfoExtensions.Faction``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyInfoExtensionsTest.Degree_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputyInfoExtensions.Degree``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyInfoExtensionsTest.Rank_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputyInfoExtensions.Rank``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyInfoExtensionsTest.Region_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputyInfoExtensions.Region``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IDeputyRequestExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IDeputyRequestExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyRequestExtensionsTest.Initiator_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputyRequestExtensions.Initiator``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyRequestExtensionsTest.Answer_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputyRequestExtensions.Answer``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyRequestExtensionsTest.SignDate_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputyRequestExtensions.SignDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyRequestExtensionsTest.ControlDate_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputyRequestExtensions.ControlDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IEducationExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IEducationExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IEducationExtensionsTest.Institution_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IEducationExtensions.Institution``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IEducationExtensionsTest.Year_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IEducationExtensions.Year``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int16},System.Nullable{System.Int16})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.ILawEventExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.ILawEventExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawEventExtensionsTest.Solution_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawEventExtensions.Solution``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.ILawExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.ILawExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawExtensionsTest.Number_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawExtensions.Number``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.AuthorityTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.Authority"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.AuthorityTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Authority.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.AuthorityTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Authority.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.AuthorityTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Authority.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.AuthorityTest.Active_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Authority.Active"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.AuthorityTest.FromDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Authority.FromDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.AuthorityTest.ToDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Authority.ToDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.AuthorityTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Authority.CompareTo(RuLaw.IAuthority)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.AuthorityTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.Authority.Equals(RuLaw.IAuthority)"/></description></item>
+                <item><description><see cref="M:RuLaw.Authority.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.AuthorityTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Authority.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.AuthorityTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Authority.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.AuthorityTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.CommitteeTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.Committee"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.CommitteeTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Committee.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.CommitteeTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Committee.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.CommitteeTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Committee.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.CommitteeTest.Active_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Committee.Active"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.CommitteeTest.FromDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Committee.FromDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.CommitteeTest.ToDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Committee.ToDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.CommitteeTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Committee.CompareTo(RuLaw.ICommittee)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.CommitteeTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.Committee.Equals(RuLaw.ICommittee)"/></description></item>
+                <item><description><see cref="M:RuLaw.Committee.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.CommitteeTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Committee.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.CommitteeTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Committee.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.CommitteeTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.ConvocationTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.Convocation"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ConvocationTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Convocation.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.ConvocationTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Convocation.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ConvocationTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Convocation.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ConvocationTest.FromDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Convocation.FromDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ConvocationTest.ToDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Convocation.ToDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ConvocationTest.Sessions_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Convocation.Sessions"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ConvocationTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Convocation.CompareTo(RuLaw.IConvocation)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ConvocationTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.Convocation.Equals(RuLaw.IConvocation)"/></description></item>
+                <item><description><see cref="M:RuLaw.Convocation.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ConvocationTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Convocation.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ConvocationTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Convocation.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ConvocationTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.DateTranscriptMeetingTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.DateTranscriptMeeting"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptMeetingTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.DateTranscriptMeeting.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptMeetingTest.Date_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DateTranscriptMeeting.Date"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptMeetingTest.Number_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DateTranscriptMeeting.Number"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptMeetingTest.Lines_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DateTranscriptMeeting.Lines"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptMeetingTest.Votes_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DateTranscriptMeeting.Votes"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptMeetingTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DateTranscriptMeeting.CompareTo(RuLaw.IDateTranscriptMeeting)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptMeetingTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.DateTranscriptMeeting.Equals(RuLaw.IDateTranscriptMeeting)"/></description></item>
+                <item><description><see cref="M:RuLaw.DateTranscriptMeeting.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptMeetingTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DateTranscriptMeeting.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptMeetingTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DateTranscriptMeeting.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptMeetingTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.DateTranscriptsResultTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.DateTranscriptsResult"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptsResultTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.DateTranscriptsResult.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptsResultTest.Date_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DateTranscriptsResult.Date"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptsResultTest.Meetings_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DateTranscriptsResult.Meetings"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptsResultTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DateTranscriptsResult.CompareTo(RuLaw.IDateTranscriptsResult)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptsResultTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.DateTranscriptsResult.Equals(RuLaw.IDateTranscriptsResult)"/></description></item>
+                <item><description><see cref="M:RuLaw.DateTranscriptsResult.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptsResultTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DateTranscriptsResult.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptsResultTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DateTranscriptsResult.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTranscriptsResultTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.DeputyActivityTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.DeputyActivity"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyActivityTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.DeputyActivity.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyActivityTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyActivity.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyActivityTest.CommitteeId_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyActivity.CommitteeId"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyActivityTest.CommitteeNameGenitive_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyActivity.CommitteeNameGenitive"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyActivityTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyActivity.CompareTo(RuLaw.IDeputyActivity)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyActivityTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.DeputyActivity.Equals(RuLaw.IDeputyActivity)"/></description></item>
+                <item><description><see cref="M:RuLaw.DeputyActivity.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyActivityTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyActivity.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyActivityTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyActivity.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyActivityTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.DeputyRequestAddresseeTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.DeputyRequestAddressee"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestAddresseeTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.DeputyRequestAddressee.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestAddresseeTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequestAddressee.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestAddresseeTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequestAddressee.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestAddresseeTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyRequestAddressee.CompareTo(RuLaw.IDeputyRequestAddressee)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestAddresseeTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.DeputyRequestAddressee.Equals(RuLaw.IDeputyRequestAddressee)"/></description></item>
+                <item><description><see cref="M:RuLaw.DeputyRequestAddressee.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestAddresseeTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyRequestAddressee.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestAddresseeTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyRequestAddressee.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestAddresseeTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.DeputyRequestSignerTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.DeputyRequestSigner"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestSignerTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.DeputyRequestSigner.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestSignerTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequestSigner.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestSignerTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequestSigner.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestSignerTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyRequestSigner.CompareTo(RuLaw.IDeputyRequestSigner)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestSignerTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.DeputyRequestSigner.Equals(RuLaw.IDeputyRequestSigner)"/></description></item>
+                <item><description><see cref="M:RuLaw.DeputyRequestSigner.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestSignerTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyRequestSigner.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestSignerTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyRequestSigner.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestSignerTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.DeputyRequestTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.DeputyRequest"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.DeputyRequest.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequest.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequest.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.Date_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequest.Date"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.DocumentNumber_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequest.DocumentNumber"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.Initiator_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequest.Initiator"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.Addressee_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequest.Addressee"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.Answer_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequest.Answer"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.Signer_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequest.Signer"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.SignDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequest.SignDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.ControlDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequest.ControlDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.ResolutionNumber_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyRequest.ResolutionNumber"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyRequest.CompareTo(RuLaw.IDeputyRequest)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.DeputyRequest.Equals(RuLaw.IDeputyRequest)"/></description></item>
+                <item><description><see cref="M:RuLaw.DeputyRequest.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyRequest.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyRequest.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyRequestTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.DeputyTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.Deputy"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Deputy.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Deputy.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Deputy.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTest.Active_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Deputy.Active"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTest.Position_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Deputy.Position"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Deputy.CompareTo(RuLaw.IDeputy)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.Deputy.Equals(RuLaw.IDeputy)"/></description></item>
+                <item><description><see cref="M:RuLaw.Deputy.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Deputy.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Deputy.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.DeputyTranscriptsResultTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.DeputyTranscriptsResult"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptsResultTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.DeputyTranscriptsResult.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptsResultTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyTranscriptsResult.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptsResultTest.Page_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyTranscriptsResult.Page"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptsResultTest.PageSize_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyTranscriptsResult.PageSize"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptsResultTest.Count_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyTranscriptsResult.Count"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptsResultTest.Meetings_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.DeputyTranscriptsResult.Meetings"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptsResultTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyTranscriptsResult.CompareTo(RuLaw.IDeputyTranscriptsResult)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptsResultTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyTranscriptsResult.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptsResultTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.EducationTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.Education"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.EducationTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Education.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.EducationTest.Institution_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Education.Institution"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.EducationTest.Year_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Education.Year"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.EducationTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Education.CompareTo(RuLaw.IEducation)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.EducationTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.Education.Equals(RuLaw.IEducation)"/></description></item>
+                <item><description><see cref="M:RuLaw.Education.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.EducationTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Education.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.EducationTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Education.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.EducationTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.FederalAuthorityTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.FederalAuthority"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.FederalAuthorityTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.FederalAuthority.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.FederalAuthorityTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="!:FederalAuthority.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.FederalAuthorityTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="!:FederalAuthority.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.FederalAuthorityTest.Active_Property">
+            <summary>
+              <para>Performs testing of <see cref="!:FederalAuthority.Active"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.FederalAuthorityTest.FromDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="!:FederalAuthority.FromDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.FederalAuthorityTest.ToDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="!:FederalAuthority.ToDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.FederalAuthorityTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="!:FederalAuthority.CompareTo(IAuthority)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.FederalAuthorityTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="!:FederalAuthority.Equals(IAuthority)"/></description></item>
+                <item><description><see cref="!:FederalAuthority.Equals(object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.FederalAuthorityTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="!:FederalAuthority.GetHashCode()"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.FederalAuthorityTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="!:FederalAuthority.ToString()"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.FederalAuthorityTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.InstanceTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.Instance"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.InstanceTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Instance.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.InstanceTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Instance.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.InstanceTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Instance.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.InstanceTest.Active_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Instance.Active"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.InstanceTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Instance.CompareTo(RuLaw.IInstance)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.InstanceTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.Instance.Equals(RuLaw.IInstance)"/></description></item>
+                <item><description><see cref="M:RuLaw.Instance.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.InstanceTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Instance.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.InstanceTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Instance.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.InstanceTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.LawBranchTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.LawBranch"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawBranchTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.LawBranch.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.LawBranchTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawBranch.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawBranchTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawBranch.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawBranchTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawBranch.CompareTo(RuLaw.ILawBranch)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawBranchTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.LawBranch.Equals(RuLaw.ILawBranch)"/></description></item>
+                <item><description><see cref="M:RuLaw.LawBranch.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawBranchTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawBranch.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawBranchTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawBranch.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawBranchTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.LawCommitteesTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.LawCommittees"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawCommitteesTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.LawCommittees.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.LawCommitteesTest.Responsible_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawCommittees.Responsible"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawCommitteesTest.Profile_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawCommittees.Profile"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawCommitteesTest.SoExecutor_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawCommittees.SoExecutor"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawCommitteesTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.LawEventDocumentTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.LawEventDocument"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventDocumentTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.LawEventDocument.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventDocumentTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawEventDocument.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventDocumentTest.Type_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawEventDocument.Type"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventDocumentTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawEventDocument.CompareTo(RuLaw.ILawEventDocument)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventDocumentTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.LawEventDocument.Equals(RuLaw.ILawEventDocument)"/></description></item>
+                <item><description><see cref="M:RuLaw.LawEventDocument.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventDocumentTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawEventDocument.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventDocumentTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawEventDocument.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventDocumentTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.LawEventPhaseTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.LawEventPhase"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventPhaseTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.LawEventPhase.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventPhaseTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawEventPhase.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventPhaseTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawEventPhase.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventPhaseTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawEventPhase.CompareTo(RuLaw.ILawEventPhase)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventPhaseTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.LawEventPhase.Equals(RuLaw.ILawEventPhase)"/></description></item>
+                <item><description><see cref="M:RuLaw.LawEventPhase.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventPhaseTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawEventPhase.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventPhaseTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawEventPhase.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventPhaseTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.LawEventStageTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.LawEventStage"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventStageTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.LawEventStage.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventStageTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawEventStage.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventStageTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawEventStage.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventStageTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawEventStage.CompareTo(RuLaw.ILawEventStage)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventStageTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.LawEventStage.Equals(RuLaw.ILawEventStage)"/></description></item>
+                <item><description><see cref="M:RuLaw.LawEventStage.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventStageTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawEventStage.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventStageTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawEventStage.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventStageTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.LawEventTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.LawEvent"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.LawEvent.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventTest.Date_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawEvent.Date"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventTest.Solution_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawEvent.Solution"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventTest.Document_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawEvent.Document"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventTest.Phase_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawEvent.Phase"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventTest.Stage_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawEvent.Stage"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawEvent.CompareTo(RuLaw.ILawEvent)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawEvent.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawEventTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.LawsSearchResultTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.LawsSearchResult"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsSearchResultTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.LawsSearchResult.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.LawsSearchResultTest.Page_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawsSearchResult.Page"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsSearchResultTest.Count_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawsSearchResult.Count"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsSearchResultTest.Wording_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawsSearchResult.Wording"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsSearchResultTest.Laws_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawsSearchResult.Laws"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsSearchResultTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsSearchResult.CompareTo(RuLaw.ILawsSearchResult)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsSearchResultTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsSearchResult.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsSearchResultTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.LawSubjectTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.LawSubject"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawSubjectTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.LawSubject.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.LawSubjectTest.Departments_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawSubject.Departments"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawSubjectTest.Deputies_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawSubject.Deputies"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawSubjectTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.LawTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.Law"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Law.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Law.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Law.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.Date_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Law.Date"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.Number_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Law.Number"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.Subject_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Law.Subject"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.Type_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Law.Type"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.Url_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Law.Url"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.TranscriptUrl_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Law.TranscriptUrl"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.Comments_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Law.Comments"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.LastEvent_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Law.LastEvent"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.Committees_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Law.Committees"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Law.CompareTo(RuLaw.ILaw)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.Law.Equals(RuLaw.ILaw)"/></description></item>
+                <item><description><see cref="M:RuLaw.Law.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Law.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Law.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.LawTranscriptsResultTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.LawTranscriptsResult"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTranscriptsResultTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.LawTranscriptsResult.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.LawTranscriptsResultTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawTranscriptsResult.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTranscriptsResultTest.Number_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawTranscriptsResult.Number"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTranscriptsResultTest.Comments_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawTranscriptsResult.Comments"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTranscriptsResultTest.Meetings_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawTranscriptsResult.Meetings"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTranscriptsResultTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawTranscriptsResult.CompareTo(RuLaw.ILawTranscriptsResult)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTranscriptsResultTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.LawTranscriptsResult.Equals(RuLaw.ILawTranscriptsResult)"/></description></item>
+                <item><description><see cref="M:RuLaw.LawTranscriptsResult.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTranscriptsResultTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawTranscriptsResult.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTranscriptsResultTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawTranscriptsResult.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTranscriptsResultTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.LawTypeTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.LawType"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTypeTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.LawType.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.LawTypeTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawType.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTypeTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.LawType.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTypeTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawType.CompareTo(RuLaw.ILawType)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTypeTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.LawType.Equals(RuLaw.ILawType)"/></description></item>
+                <item><description><see cref="M:RuLaw.LawType.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTypeTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawType.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTypeTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawType.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawTypeTest.Serialization">
+            <summary>
+              <para>Performs testing of JSON serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.PhaseStageTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.PhaseStage"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.PhaseStageTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.PhaseStage.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.PhaseStageTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.PhaseStage.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.PhaseStageTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.PhaseStage.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.PhaseStageTest.Phases_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.PhaseStage.Phases"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.PhaseStageTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="!:PhaseStage.CompareTo(IStage)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.PhaseStageTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.PhaseStage.Equals(RuLaw.IPhaseStage)"/></description></item>
+                <item><description><see cref="M:RuLaw.PhaseStage.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.PhaseStageTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.PhaseStage.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.PhaseStageTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.PhaseStage.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.PhaseStageTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.QuestionsSearchResultTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.QuestionsSearchResult"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsSearchResultTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.QuestionsSearchResult.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsSearchResultTest.Page_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.QuestionsSearchResult.Page"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsSearchResultTest.PageSize_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.QuestionsSearchResult.PageSize"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsSearchResultTest.Count_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.QuestionsSearchResult.Count"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsSearchResultTest.Questions_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.QuestionsSearchResult.Questions"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsSearchResultTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsSearchResult.CompareTo(RuLaw.ILawsSearchResult)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsSearchResultTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.QuestionTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.Question"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Question.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Question.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTest.Date_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Question.Date"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTest.Code_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Question.Code"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTest.SessionCode_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Question.SessionCode"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTest.StartLine_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Question.StartLine"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTest.EndLine_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Question.EndLine"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Question.CompareTo(RuLaw.IQuestion)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.Question.Equals(RuLaw.IQuestion)"/></description></item>
+                <item><description><see cref="M:RuLaw.Question.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Question.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Question.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.QuestionTranscriptsResultTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.QuestionTranscriptsResult"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTranscriptsResultTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.QuestionTranscriptsResult.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTranscriptsResultTest.Meetings_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.QuestionTranscriptsResult.Meetings"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionTranscriptsResultTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.RegionalAuthorityTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.RegionalAuthority"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.RegionalAuthorityTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.RegionalAuthority.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.RegionalAuthorityTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="!:RegionalAuthority.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.RegionalAuthorityTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="!:RegionalAuthority.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.RegionalAuthorityTest.Active_Property">
+            <summary>
+              <para>Performs testing of <see cref="!:RegionalAuthority.Active"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.RegionalAuthorityTest.FromDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="!:RegionalAuthority.FromDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.RegionalAuthorityTest.ToDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="!:RegionalAuthority.ToDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.RegionalAuthorityTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="!:RegionalAuthority.CompareTo(IAuthority)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.RegionalAuthorityTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="!:RegionalAuthority.Equals(IAuthority)"/></description></item>
+                <item><description><see cref="!:RegionalAuthority.Equals(object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.RegionalAuthorityTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="!:RegionalAuthority.GetHashCode()"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.RegionalAuthorityTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="!:RegionalAuthority.ToString()"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.RegionalAuthorityTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.ResolutionTranscriptsResultTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.ResolutionTranscriptsResult"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ResolutionTranscriptsResultTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.ResolutionTranscriptsResult.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.ResolutionTranscriptsResultTest.Number_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.ResolutionTranscriptsResult.Number"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ResolutionTranscriptsResultTest.Meetings_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.ResolutionTranscriptsResult.Meetings"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ResolutionTranscriptsResultTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.ResolutionTranscriptsResult.Equals(RuLaw.IResolutionTranscriptsResult)"/></description></item>
+                <item><description><see cref="M:RuLaw.ResolutionTranscriptsResult.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ResolutionTranscriptsResultTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ResolutionTranscriptsResult.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ResolutionTranscriptsResultTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ResolutionTranscriptsResult.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ResolutionTranscriptsResultTest.Serialization">
+            <summary>
+              <para>Performs testing of JSON serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.SessionTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.Session"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.SessionTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Session.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.SessionTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Session.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.SessionTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Session.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.SessionTest.From_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Session.FromDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.SessionTest.ToDate_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Session.ToDate"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.SessionTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Session.CompareTo(RuLaw.ISession)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.SessionTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.Session.Equals(RuLaw.ISession)"/></description></item>
+                <item><description><see cref="M:RuLaw.Session.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.SessionTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Session.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.SessionTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Session.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.SessionTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.StagePhaseTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.StagePhase"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.StagePhaseTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.StagePhase.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.StagePhaseTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.StagePhase.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.StagePhaseTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.StagePhase.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.StagePhaseTest.Instance_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.StagePhase.Instance"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.StagePhaseTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.StagePhase.CompareTo(RuLaw.IStagePhase)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.StagePhaseTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.StagePhase.Equals(RuLaw.IStagePhase)"/></description></item>
+                <item><description><see cref="M:RuLaw.StagePhase.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.StagePhaseTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.StagePhase.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.StagePhaseTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.StagePhase.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.StagePhaseTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.TopicTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.Topic"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TopicTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Topic.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.TopicTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Topic.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TopicTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Topic.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TopicTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Topic.CompareTo(RuLaw.ITopic)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TopicTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.Topic.Equals(RuLaw.ITopic)"/></description></item>
+                <item><description><see cref="M:RuLaw.Topic.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TopicTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Topic.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TopicTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Topic.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TopicTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.TranscriptMeetingQuestionPartTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.TranscriptMeetingQuestionPart"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionPartTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Education.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionPartTest.StartLine_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptMeetingQuestionPart.StartLine"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionPartTest.EndLine_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptMeetingQuestionPart.EndLine"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionPartTest.Lines_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptMeetingQuestionPart.Lines"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionPartTest.Votes_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptMeetingQuestionPart.Votes"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionPartTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.TranscriptMeetingQuestionPart.CompareTo(RuLaw.ITranscriptMeetingQuestionPart)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionPartTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.TranscriptMeetingQuestionPart.Equals(RuLaw.ITranscriptMeetingQuestionPart)"/></description></item>
+                <item><description><see cref="M:RuLaw.TranscriptMeetingQuestionPart.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionPartTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.TranscriptMeetingQuestionPart.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionPartTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.TranscriptMeetingQuestionPart.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionPartTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.TranscriptMeetingQuestionTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.TranscriptMeetingQuestion"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.TranscriptMeetingQuestion.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionTest.Name_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptMeetingQuestion.Name"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionTest.Stage_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptMeetingQuestion.Stage"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionTest.Parts_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptMeetingQuestion.Parts"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.TranscriptMeetingQuestion.CompareTo(RuLaw.ITranscriptMeetingQuestion)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.TranscriptMeetingQuestion.Equals(RuLaw.ITranscriptMeetingQuestion)"/></description></item>
+                <item><description><see cref="M:RuLaw.TranscriptMeetingQuestion.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.TranscriptMeetingQuestion.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.TranscriptMeetingQuestion.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.TranscriptMeetingTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.TranscriptMeeting"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.TranscriptMeeting.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingTest.Date_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptMeeting.Date"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingTest.Number_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptMeeting.Number"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingTest.LinesCount_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptMeeting.LinesCount"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingTest.Questions_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptMeeting.Questions"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.TranscriptMeeting.CompareTo(RuLaw.ITranscriptMeeting)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.TranscriptMeeting.Equals(RuLaw.ITranscriptMeeting)"/></description></item>
+                <item><description><see cref="M:RuLaw.TranscriptMeeting.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.TranscriptMeeting.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.TranscriptMeeting.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptMeetingTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.TranscriptVoteTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.TranscriptVote"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptVoteTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.TranscriptVote.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptVoteTest.Date_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptVote.Date"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptVoteTest.Line_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.TranscriptVote.Line"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptVoteTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.TranscriptVote.CompareTo(RuLaw.ITranscriptVote)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptVoteTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.TranscriptVote.Equals(RuLaw.ITranscriptVote)"/></description></item>
+                <item><description><see cref="M:RuLaw.TranscriptVote.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptVoteTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.TranscriptVote.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.TranscriptVoteTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.VotesSearchResultTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.VotesSearchResult"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchResultTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.VotesSearchResult.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchResultTest.Page_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.VotesSearchResult.Page"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchResultTest.PageSize_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.VotesSearchResult.PageSize"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchResultTest.Count_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.VotesSearchResult.Count"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchResultTest.Wording_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.VotesSearchResult.Wording"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchResultTest.Votes_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.VotesSearchResult.Votes"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchResultTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.VotesSearchResult.CompareTo(RuLaw.IVotesSearchResult)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchResultTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.VotesSearchResult.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchResultTest.Serialization_Json">
+            <summary>
+              <para>Performs testing of JSON serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.VoteTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.Vote"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.Vote.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.Id_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Vote.Id"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.Date_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Vote.Date"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.Subject_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Vote.Subject"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.Successfull_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Vote.Successful"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.ResultType_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Vote.ResultType"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.PersonResult_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Vote.PersonResult"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.TotalVotesCount_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Vote.TotalVotesCount"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.ForVotesCount_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Vote.ForVotesCount"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.AgainstVotesCount_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Vote.AgainstVotesCount"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.AbstainVotesCount_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Vote.AbstainVotesCount"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.AbsentVotesCount_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.Vote.AbsentVotesCount"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.CompareTo_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Vote.CompareTo(RuLaw.IVote)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.Equals_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.Vote.Equals(RuLaw.IVote)"/></description></item>
+                <item><description><see cref="M:RuLaw.Vote.Equals(System.Object)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.GetHashCode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Vote.GetHashCode"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.ToString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.Vote.ToString"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VoteTest.Serialization">
+            <summary>
+              <para>Performs testing of serialization/deserialization process.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.INameableExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.INameableExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.INameableExtensionsTest.Name_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.INameableExtensions.Name``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IPageableExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IPageableExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IPageableExtensionsTest.Page_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IPageableExtensions.Page``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IPageableExtensionsTest.PageSize_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IPageableExtensions.Page``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IPeriodableExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IPeriodableExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IPeriodableExtensionsTest.Period_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IPeriodableExtensions.Period``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.ITranscriptMeetingQuestionExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.ITranscriptMeetingQuestionExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ITranscriptMeetingQuestionExtensionsTest.Stage_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ITranscriptMeetingQuestionExtensions.Stage``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IVoteExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IVoteExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IVoteExtensionsTest.Personal_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.Personal(RuLaw.IVote)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IVoteExtensionsTest.PersonResult_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.PersonResult(RuLaw.IVote)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IVoteExtensionsTest.ResultType_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.ResultType(RuLaw.IVote)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IVoteExtensionsTest.Subject_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.Subject``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IVoteExtensionsTest.Successful_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.Successful``1(System.Collections.Generic.IEnumerable{``0})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IVoteExtensionsTest.Unsuccessful_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.Unsuccessful``1(System.Collections.Generic.IEnumerable{``0})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.DateTimeOffsetExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.DateTimeOffsetExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DateTimeOffsetExtensionsTest.DateTimeOffset_AsString_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DateTimeOffsetExtensions.AsString(System.DateTimeOffset)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.JsonRestSerializerTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.JsonRestSerializer"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.JsonRestSerializerTest.Serialize_Methods">
+            <summary>
+              <para>Performs testing of following methods :</para>
+              <list type="bullet">
+                <item><description><see cref="M:RuLaw.JsonRestSerializer.Serialize(System.Object)"/></description></item>
+                <item><description><see cref="M:RuLaw.JsonRestSerializer.Serialize(RestSharp.Parameter)"/></description></item>
+              </list>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.JsonRestSerializerTest.Deserialize_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.JsonRestSerializer.Deserialize``1(RestSharp.RestResponse)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.JsonRestSerializerTest.Serializer_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.JsonRestSerializer.Serializer"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.JsonRestSerializerTest.Deserializer_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.JsonRestSerializer.Deserializer"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.JsonRestSerializerTest.DataFormat_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.JsonRestSerializer.DataFormat"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.JsonRestSerializerTest.ContentType_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.JsonRestSerializer.ContentType"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.JsonRestSerializerTest.AcceptedContentTypes_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.JsonRestSerializer.AcceptedContentTypes"/> property.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.JsonRestSerializerTest.SupportsContentType_Delegate">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.JsonRestSerializer.SupportsContentType"/> delegate.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IRuLawApiExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IRuLawApiExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IRuLawApiExtensionsTest.Configure_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IRuLawApiExtensions.Configure(RuLaw.IRuLawApi,System.Action{RuLaw.IApiConfigurator})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.Calls.IDeputiesApiRequestExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IDeputiesApiRequestExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Calls.IDeputiesApiRequestExtensionsTest.Position_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputiesApiRequestExtensions.Position(RuLaw.IDeputiesApiRequest,System.Nullable{RuLaw.DeputyPosition})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IDeputyTranscriptApiRequestExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IDeputyTranscriptApiRequestExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IDeputyTranscriptApiRequestExtensionsTest.Deputy_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IDeputyTranscriptApiRequestExtensions.Deputy(RuLaw.IDeputyTranscriptApiRequest,RuLaw.IDeputy)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.ILawsApiRequestExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.ILawsApiRequestExtensions"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.Type_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiRequestExtensions.Type(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawTypes})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.Topic_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiRequestExtensions.Topic(RuLaw.ILawsApiRequest,RuLaw.ITopic)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.Status_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiRequestExtensions.Status(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawStatus})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.Branch_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiRequestExtensions.Branch(RuLaw.ILawsApiRequest,RuLaw.ILawBranch)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.Deputy_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiRequestExtensions.Deputy(RuLaw.ILawsApiRequest,RuLaw.IDeputy)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.FederalAuthority_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiRequestExtensions.FederalAuthority(RuLaw.ILawsApiRequest,RuLaw.IAuthority)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.RegionalAuthority_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiRequestExtensions.RegionalAuthority(RuLaw.ILawsApiRequest,RuLaw.IAuthority)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.ProfileCommittee_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiRequestExtensions.ProfileCommittee(RuLaw.ILawsApiRequest,RuLaw.ICommittee)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.ResponsibleCommittee_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiRequestExtensions.ResponsibleCommittee(RuLaw.ILawsApiRequest,RuLaw.ICommittee)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.SoExecutorCommittee_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiRequestExtensions.SoExecutorCommittee(RuLaw.ILawsApiRequest,RuLaw.ICommittee)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.Sorting_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiRequestExtensions.Sorting(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawsSorting})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.EventsSearchMode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.ILawsApiRequestExtensions.EventsSearchMode(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawsEventsSearchMode})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.ApiRequestTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.ApiRequest"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.ApiRequestTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.ApiRequest.#ctor"/>
+        </member>
+        <member name="T:RuLaw.Tests.AuthoritiesApiRequestTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.AuthoritiesApiRequest"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.AuthoritiesApiRequestTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.DeputiesApiRequest.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.AuthoritiesApiRequestTest.Current_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.AuthoritiesApiRequest.Current(System.Nullable{System.Boolean})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.DeputiesApiRequestTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.DeputiesApiRequest"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputiesApiRequestTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.DeputiesApiRequest.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.DeputiesApiRequestTest.Name_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputiesApiRequest.Name(System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputiesApiRequestTest.Position_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputiesApiRequest.Position(System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputiesApiRequestTest.Current_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputiesApiRequest.Current(System.Nullable{System.Boolean})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.DeputyTranscriptApiRequestTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.DeputyTranscriptApiRequest"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptApiRequestTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.DeputyTranscriptApiRequest.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptApiRequestTest.Page_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyTranscriptApiRequest.Page(System.Nullable{System.Int32})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptApiRequestTest.PageSize_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyTranscriptApiRequest.PageSize(System.Nullable{RuLaw.PageSize})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptApiRequestTest.Name_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyTranscriptApiRequest.Name(System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptApiRequestTest.Deputy_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyTranscriptApiRequest.Deputy(System.Nullable{System.Int64})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptApiRequestTest.FromDate_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyTranscriptApiRequest.FromDate(System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.DeputyTranscriptApiRequestTest.ToDate_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.DeputyTranscriptApiRequest.ToDate(System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.InstancesApiRequestTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.InstancesApiRequest"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.InstancesApiRequestTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.InstancesApiRequest.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.InstancesApiRequestTest.Current_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.InstancesApiRequest.Current(System.Nullable{System.Boolean})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.LawsApiRequestTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.LawsApiRequest"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.LawsApiRequest.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.Page_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.Page(System.Nullable{System.Int32})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.PageSize_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.PageSize(System.Nullable{RuLaw.PageSize})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.Name_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.Name(System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.Type_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.Type(System.Nullable{System.Int32})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.Topic_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.Topic(System.Nullable{System.Int64})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.Number_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.Number(System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.DocumentNumber_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.DocumentNumber(System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.Status_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.Status(System.Nullable{System.Int32})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.Branch_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.Branch(System.Nullable{System.Int64})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.RegistrationStart_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.RegistrationStart(System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.RegistrationEnd_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.RegistrationEnd(System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.Deputy_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.Deputy(System.Nullable{System.Int64})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.FederalAuthority_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.FederalAuthority(System.Nullable{System.Int64})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.RegionalAuthority_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.RegionalAuthority(System.Nullable{System.Int64})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.ProfileCommittee_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.ProfileCommittee(System.Nullable{System.Int64})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.ResponsibleCommittee_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.ResponsibleCommittee(System.Nullable{System.Int64})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.SoExecutorCommittee_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.SoExecutorCommittee(System.Nullable{System.Int64})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.Sorting_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.Sorting(System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.LawsApiRequestTest.EventsSearchMode_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.LawsApiRequest.EventsSearchMode(System.Nullable{System.Int32})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.QuestionsApiRequestTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.QuestionsApiRequest"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsApiRequestTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.QuestionsApiRequest.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsApiRequestTest.Page_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.QuestionsApiRequest.Page(System.Nullable{System.Int32})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsApiRequestTest.PageSize_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.QuestionsApiRequest.PageSize(System.Nullable{RuLaw.PageSize})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsApiRequestTest.Name_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.QuestionsApiRequest.Name(System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsApiRequestTest.FromDate_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.QuestionsApiRequest.FromDate(System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.QuestionsApiRequestTest.ToDate_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.QuestionsApiRequest.ToDate(System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.VotesSearchApiRequestTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.VotesSearchApiRequest"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchApiRequestTest.Constructors">
+            <summary>
+              <para>Performs testing of class constructor(s).</para>
+            </summary>
+            <seealso cref="M:RuLaw.VotesSearchApiRequest.#ctor"/>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchApiRequestTest.Number_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.VotesSearchApiRequest.Number(System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchApiRequestTest.Faction_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.VotesSearchApiRequest.Faction(System.Nullable{System.Int64})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchApiRequestTest.Deputy_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.VotesSearchApiRequest.Deputy(System.Nullable{System.Int64})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchApiRequestTest.Convocation_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.VotesSearchApiRequest.Convocation(System.Nullable{System.Int64})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchApiRequestTest.FromDate_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.VotesSearchApiRequest.FromDate(System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchApiRequestTest.ToDate_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.VotesSearchApiRequest.ToDate(System.Nullable{System.DateTimeOffset})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchApiRequestTest.Keywords_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.VotesSearchApiRequest.Keywords(System.String)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchApiRequestTest.Page_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.VotesSearchApiRequest.Page(System.Nullable{System.Int32})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchApiRequestTest.Sorting_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.VotesSearchApiRequest.Sorting(System.Nullable{RuLaw.VotesSorting})"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.VotesSearchApiRequestTest.PageSize_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.VotesSearchApiRequest.PageSize(System.Nullable{RuLaw.PageSize})"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IVotesSearchApiRequestExtensionsTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.IVotesSearchApiRequestExtensions"/>.</para>
+            </summary>
+            <seealso cref="T:RuLaw.IVotesSearchApiRequestExtensions"/>
+        </member>
+        <member name="M:RuLaw.Tests.IVotesSearchApiRequestExtensionsTest.Deputy_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IVotesSearchApiRequestExtensions.Deputy(RuLaw.IVotesSearchApiRequest,RuLaw.IDeputy)"/> method.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IVotesSearchApiRequestExtensionsTest.Convocation_Method">
+            <summary>
+              <para>Performs testing of <see cref="M:RuLaw.IVotesSearchApiRequestExtensions.Convocation(RuLaw.IVotesSearchApiRequest,RuLaw.IConvocation)"/> method.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.RuLawTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.RuLaw"/>.</para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.RuLawTest.Api_Property">
+            <summary>
+              <para>Performs testing of <see cref="P:RuLaw.RuLaw.Api"/> property.</para>
+            </summary>
+        </member>
+    </members>
+</doc>
