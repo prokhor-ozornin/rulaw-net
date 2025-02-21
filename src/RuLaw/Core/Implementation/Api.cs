@@ -24,7 +24,7 @@ internal sealed class Api : IApi
   public ITranscriptsApi Transcripts { get; }
   public IVotesApi Votes { get; }
 
-  private bool disposed;
+  private bool _disposed;
 
   public Api(string apiToken, string appToken = null)
   {
@@ -58,14 +58,14 @@ internal sealed class Api : IApi
 
   private void Dispose(bool disposing)
   {
-    if (!disposing || disposed)
+    if (!disposing || _disposed)
     {
       return;
     }
 
     RestClient.Dispose();
 
-    disposed = true;
+    _disposed = true;
   }
 
   private async Task<T> Request<T>(string resource, IReadOnlyDictionary<string, object> parameters = null, CancellationToken cancellation = default) where T : new()
