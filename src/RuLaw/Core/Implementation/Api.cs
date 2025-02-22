@@ -9,6 +9,7 @@ internal sealed class Api : IApi
 {
   private RestClient RestClient { get; } = new("http://api.duma.gov.ru/api".ToUri(), configureSerialization: config => config.UseSerializer<JsonRestSerializer>());
   private string ApiToken { get; }
+  private bool Disposed { get; set; }
 
   public IBranchesApi Branches { get; }
   public ICommitteesApi Committees { get; }
@@ -23,8 +24,6 @@ internal sealed class Api : IApi
   public ITopicsApi Topics { get; }
   public ITranscriptsApi Transcripts { get; }
   public IVotesApi Votes { get; }
-
-  private bool _disposed;
 
   public Api(string apiToken, string appToken = null)
   {
@@ -58,14 +57,14 @@ internal sealed class Api : IApi
 
   private void Dispose(bool disposing)
   {
-    if (!disposing || _disposed)
+    if (!disposing || Disposed)
     {
       return;
     }
 
     RestClient.Dispose();
 
-    _disposed = true;
+    Disposed = true;
   }
 
   private async Task<T> Request<T>(string resource, IReadOnlyDictionary<string, object> parameters = null, CancellationToken cancellation = default) where T : new()

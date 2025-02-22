@@ -13,7 +13,7 @@ namespace RuLaw.Tests;
 /// </summary>
 public sealed class ApiTest : UnitTest
 {
-  private IApi Api { get; } = RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
+  private IApi Api { get; } = null; //RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
 
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
