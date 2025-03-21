@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DateTranscriptsResult"/>.</para>
 /// </summary>
-public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
+public sealed class DateTranscriptsResultTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -54,7 +54,10 @@ public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
   ///   <para>Performs testing of <see cref="DateTranscriptsResult.CompareTo(IDateTranscriptsResult)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(DateTranscriptsResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<DateTranscriptsResult, DateTimeOffset>(nameof(DateTranscriptsResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -64,13 +67,19 @@ public sealed class DateTranscriptsResultTest : ClassTest<DateTranscriptsResult>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(DateTranscriptsResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); }
+  public void Equals_Methods() 
+  {
+    TestEquality<DateTranscriptsResult, DateTimeOffset>(nameof(DateTranscriptsResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DateTranscriptsResult.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(DateTranscriptsResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); }
+  public void GetHashCode_Method() 
+  {
+    TestHashCode<DateTranscriptsResult, DateTimeOffset>(nameof(DateTranscriptsResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DateTranscriptsResult.ToString()"/> method.</para>

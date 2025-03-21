@@ -10,7 +10,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Convocation"/>.</para>
 /// </summary>
-public sealed class ConvocationTest : ClassTest<Convocation>
+public sealed class ConvocationTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -86,7 +86,10 @@ public sealed class ConvocationTest : ClassTest<Convocation>
   ///   <para>Performs testing of <see cref="Convocation.CompareTo(IConvocation)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(Convocation.Name), "first", "second"); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<Convocation, string>(nameof(Convocation.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -96,13 +99,19 @@ public sealed class ConvocationTest : ClassTest<Convocation>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(Convocation.Id), 1, 2); }
+  public void Equals_Methods() 
+  {
+    TestEquality<Convocation, long>(nameof(Convocation.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Convocation.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(Convocation.Id), 1, 2); }
+  public void GetHashCode_Method()
+  {
+    TestHashCode<Convocation, long>(nameof(Convocation.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Convocation.ToString()"/> method.</para>

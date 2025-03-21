@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Topic"/>.</para>
 /// </summary>
-public sealed class TopicTest : ClassTest<Topic>
+public sealed class TopicTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -47,7 +47,10 @@ public sealed class TopicTest : ClassTest<Topic>
   ///   <para>Performs testing of <see cref="Topic.CompareTo(ITopic)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(Topic.Name), "first", "second"); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<Topic, string>(nameof(Topic.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -57,13 +60,19 @@ public sealed class TopicTest : ClassTest<Topic>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(Topic.Id), 1, 2); }
+  public void Equals_Methods() 
+  {
+    TestEquality<Topic, long>(nameof(Topic.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Topic.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(Topic.Id), 1, 2); }
+  public void GetHashCode_Method()
+  {
+    TestHashCode<Topic, long>(nameof(Topic.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Topic.ToString()"/> method.</para>

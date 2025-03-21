@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Question"/>.</para>
 /// </summary>
-public sealed class QuestionTest : ClassTest<Question>
+public sealed class QuestionTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -87,7 +87,10 @@ public sealed class QuestionTest : ClassTest<Question>
   ///   <para>Performs testing of <see cref="Question.CompareTo(IQuestion)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(Question.Name), "first", "second"); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<Question, string>(nameof(Question.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -99,8 +102,8 @@ public sealed class QuestionTest : ClassTest<Question>
   [Fact]
   public void Equals_Methods()
   {
-    TestEquality(nameof(Question.Code), 1, 2);
-    TestEquality(nameof(Question.SessionCode), 1, 2);
+    TestEquality<Question, int>(nameof(Question.Code), 1, 2);
+    TestEquality<Question, int>(nameof(Question.SessionCode), 1, 2);
   }
 
   /// <summary>
@@ -109,8 +112,8 @@ public sealed class QuestionTest : ClassTest<Question>
   [Fact]
   public void GetHashCode_Method()
   {
-    TestHashCode(nameof(Question.Code), 1, 2);
-    TestHashCode(nameof(Question.SessionCode), 1, 2);
+    TestHashCode<Question, int>(nameof(Question.Code), 1, 2);
+    TestHashCode<Question, int>(nameof(Question.SessionCode), 1, 2);
   }
 
   /// <summary>

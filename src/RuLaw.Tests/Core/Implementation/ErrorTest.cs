@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Error"/>.</para>
 /// </summary>
-public sealed class ErrorTest : ClassTest<Error>
+public sealed class ErrorTest :UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -52,7 +52,10 @@ public sealed class ErrorTest : ClassTest<Error>
   ///   <para>Performs testing of <see cref="Error.CompareTo(IError)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(Error.Code), 1, 2); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<Error, long>(nameof(Error.Code), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -62,13 +65,19 @@ public sealed class ErrorTest : ClassTest<Error>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(Error.Code), 1, 2); }
+  public void Equals_Methods() 
+  {
+    TestEquality<Error, long>(nameof(Error.Code), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Error.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(Error.Code), 1, 2); }
+  public void GetHashCode_Method() 
+  {
+    TestHashCode<Error, long>(nameof(Error.Code), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Error.ToString()"/> method.</para>

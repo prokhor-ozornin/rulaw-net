@@ -10,7 +10,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="TranscriptMeetingQuestionPart"/>.</para>
 /// </summary>
-public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeetingQuestionPart>
+public sealed class TranscriptMeetingQuestionPartTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -86,7 +86,10 @@ public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeet
   ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.CompareTo(ITranscriptMeetingQuestionPart)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo("StartLine", 1, 2); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<TranscriptMeetingQuestionPart, int>("StartLine", 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -98,8 +101,8 @@ public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeet
   [Fact]
   public void Equals_Methods()
   {
-    TestEquality(nameof(TranscriptMeetingQuestionPart.StartLine), 1, 2);
-    TestEquality(nameof(TranscriptMeetingQuestionPart.EndLine), 1, 2);
+    TestEquality<TranscriptMeetingQuestionPart, int>(nameof(TranscriptMeetingQuestionPart.StartLine), 1, 2);
+    TestEquality<TranscriptMeetingQuestionPart, int>(nameof(TranscriptMeetingQuestionPart.EndLine), 1, 2);
   }
 
   /// <summary>
@@ -108,8 +111,8 @@ public sealed class TranscriptMeetingQuestionPartTest : ClassTest<TranscriptMeet
   [Fact]
   public void GetHashCode_Method()
   {
-    TestHashCode(nameof(TranscriptMeetingQuestionPart.StartLine), 1, 2);
-    TestHashCode(nameof(TranscriptMeetingQuestionPart.EndLine), 1, 2);
+    TestHashCode<TranscriptMeetingQuestionPart, int>(nameof(TranscriptMeetingQuestionPart.StartLine), 1, 2);
+    TestHashCode<TranscriptMeetingQuestionPart, int>(nameof(TranscriptMeetingQuestionPart.EndLine), 1, 2);
   }
 
   /// <summary>

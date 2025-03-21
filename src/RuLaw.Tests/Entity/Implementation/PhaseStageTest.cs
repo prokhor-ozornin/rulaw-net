@@ -10,7 +10,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="PhaseStage"/>.</para>
 /// </summary>
-public sealed class PhaseStageTest : ClassTest<PhaseStage>
+public sealed class PhaseStageTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -67,7 +67,10 @@ public sealed class PhaseStageTest : ClassTest<PhaseStage>
   ///   <para>Performs testing of <see cref="PhaseStage.CompareTo(IStage)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(PhaseStage.Name), "first", "second"); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<PhaseStage, string>(nameof(PhaseStage.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -77,13 +80,19 @@ public sealed class PhaseStageTest : ClassTest<PhaseStage>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(PhaseStage.Id), 1, 2); }
+  public void Equals_Methods() 
+  {
+    TestEquality<PhaseStage, long>(nameof(PhaseStage.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="PhaseStage.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(PhaseStage.Id), 1, 2); }
+  public void GetHashCode_Method() 
+  {
+    TestHashCode<PhaseStage, long>(nameof(PhaseStage.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="PhaseStage.ToString()"/> method.</para>

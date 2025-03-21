@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Authority"/>.</para>
 /// </summary>
-public sealed class AuthorityTest : ClassTest<Authority>
+public sealed class AuthorityTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -77,7 +77,10 @@ public sealed class AuthorityTest : ClassTest<Authority>
   ///   <para>Performs testing of <see cref="Authority.CompareTo(IAuthority)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(Authority.Name), "first", "second"); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<Authority, string>(nameof(Authority.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -87,13 +90,19 @@ public sealed class AuthorityTest : ClassTest<Authority>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(Authority.Id), 1, 2); }
+  public void Equals_Methods() 
+  {
+    TestEquality<Authority, long>(nameof(Authority.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Authority.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(Authority.Id), 1, 2); }
+  public void GetHashCode_Method()
+  {
+    TestHashCode<Authority, long>(nameof(Authority.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Authority.ToString()"/> method.</para>

@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyRequestSigner"/>.</para>
 /// </summary>
-public sealed class DeputyRequestSignerTest : ClassTest<DeputyRequestSigner>
+public sealed class DeputyRequestSignerTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -47,7 +47,10 @@ public sealed class DeputyRequestSignerTest : ClassTest<DeputyRequestSigner>
   ///   <para>Performs testing of <see cref="DeputyRequestSigner.CompareTo(IDeputyRequestSigner)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(DeputyRequestSigner.Name), "first", "second"); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<DeputyRequestSigner, string>(nameof(DeputyRequestSigner.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -57,13 +60,19 @@ public sealed class DeputyRequestSignerTest : ClassTest<DeputyRequestSigner>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(DeputyRequestSigner.Id), 1, 2); }
+  public void Equals_Methods()
+  {
+    TestEquality<DeputyRequestSigner, long>(nameof(DeputyRequestSigner.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestSigner.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(DeputyRequestSigner.Id), 1, 2); }
+  public void GetHashCode_Method() 
+  {
+    TestHashCode<DeputyRequestSigner, long>(nameof(DeputyRequestSigner.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestSigner.ToString()"/> method.</para>

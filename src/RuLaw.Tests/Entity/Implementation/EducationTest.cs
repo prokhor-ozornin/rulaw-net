@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Education"/>.</para>
 /// </summary>
-public sealed class EducationTest : ClassTest<Education>
+public sealed class EducationTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -47,7 +47,10 @@ public sealed class EducationTest : ClassTest<Education>
   ///   <para>Performs testing of <see cref="Education.CompareTo(IEducation)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(Education.Year), (short) 1, (short) 2); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<Education, short>(nameof(Education.Year), (short) 1, (short) 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -59,8 +62,8 @@ public sealed class EducationTest : ClassTest<Education>
   [Fact]
   public void Equals_Methods()
   {
-    TestEquality(nameof(Education.Institution), "first", "second");
-    TestEquality(nameof(Education.Year), (short) 1, (short) 2);
+    TestEquality<Education, string>(nameof(Education.Institution), "first", "second");
+    TestEquality<Education, short>(nameof(Education.Year), (short) 1, (short) 2);
   }
 
   /// <summary>
@@ -69,8 +72,8 @@ public sealed class EducationTest : ClassTest<Education>
   [Fact]
   public void GetHashCode_Method()
   {
-    TestHashCode(nameof(Education.Institution), "first", "second");
-    TestHashCode(nameof(Education.Year), (short) 1, (short) 2);
+    TestHashCode<Education, string>(nameof(Education.Institution), "first", "second");
+    TestHashCode<Education, short>(nameof(Education.Year), (short) 1, (short) 2);
   }
 
   /// <summary>

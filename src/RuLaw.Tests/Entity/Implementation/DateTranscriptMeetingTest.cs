@@ -10,7 +10,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DateTranscriptMeeting"/>.</para>
 /// </summary>
-public sealed class DateTranscriptMeetingTest : ClassTest<DateTranscriptMeeting>
+public sealed class DateTranscriptMeetingTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -84,7 +84,10 @@ public sealed class DateTranscriptMeetingTest : ClassTest<DateTranscriptMeeting>
   ///   <para>Performs testing of <see cref="DateTranscriptMeeting.CompareTo(IDateTranscriptMeeting)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(DateTranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<DateTranscriptMeeting, DateTimeOffset>(nameof(DateTranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -94,13 +97,19 @@ public sealed class DateTranscriptMeetingTest : ClassTest<DateTranscriptMeeting>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(DateTranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); }
+  public void Equals_Methods()
+  {
+    TestEquality<DateTranscriptMeeting, DateTimeOffset>(nameof(DateTranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DateTranscriptMeeting.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(DateTranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); }
+  public void GetHashCode_Method()
+  {
+    TestHashCode<DateTranscriptMeeting, DateTimeOffset>(nameof(DateTranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DateTranscriptMeeting.ToString()"/> method.</para>

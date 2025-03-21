@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Session"/>.</para>
 /// </summary>
-public sealed class SessionTest : ClassTest<Session>
+public sealed class SessionTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -67,7 +67,10 @@ public sealed class SessionTest : ClassTest<Session>
   ///   <para>Performs testing of <see cref="Session.CompareTo(ISession)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(Session.FromDate), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<Session, DateTimeOffset>(nameof(Session.FromDate), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -77,13 +80,19 @@ public sealed class SessionTest : ClassTest<Session>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(Session.Id), 1, 2); }
+  public void Equals_Methods() 
+  {
+    TestEquality<Session, long>(nameof(Session.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Session.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(Session.Id), 1, 2); }
+  public void GetHashCode_Method()
+  {
+    TestHashCode<Session, long>(nameof(Session.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Session.ToString()"/> method.</para>

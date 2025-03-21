@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="ResolutionTranscriptsResult"/>.</para>
 /// </summary>
-public sealed class ResolutionTranscriptsResultTest : ClassTest<ResolutionTranscriptsResult>
+public sealed class ResolutionTranscriptsResultTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -60,13 +60,19 @@ public sealed class ResolutionTranscriptsResultTest : ClassTest<ResolutionTransc
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(ResolutionTranscriptsResult.Number), "first", "second"); }
+  public void Equals_Methods() 
+  {
+    TestEquality<ResolutionTranscriptsResult, string>(nameof(ResolutionTranscriptsResult.Number), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(ResolutionTranscriptsResult.Number), "first", "second"); }
+  public void GetHashCode_Method() 
+  {
+    TestHashCode<ResolutionTranscriptsResult, string>(nameof(ResolutionTranscriptsResult.Number), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.ToString()"/> method.</para>

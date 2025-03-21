@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Vote"/>.</para>
 /// </summary>
-public sealed class VoteTest : ClassTest<Vote>
+public sealed class VoteTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -137,7 +137,10 @@ public sealed class VoteTest : ClassTest<Vote>
   ///   <para>Performs testing of <see cref="Vote.CompareTo(IVote)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(Vote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<Vote, DateTimeOffset>(nameof(Vote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -147,13 +150,19 @@ public sealed class VoteTest : ClassTest<Vote>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(Vote.Id), 1, 2); }
+  public void Equals_Methods() 
+  {
+    TestEquality<Vote, long>(nameof(Vote.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(Vote.Id), 1, 2); }
+  public void GetHashCode_Method()
+  {
+    TestHashCode<Vote, long>(nameof(Vote.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.ToString()"/> method.</para>

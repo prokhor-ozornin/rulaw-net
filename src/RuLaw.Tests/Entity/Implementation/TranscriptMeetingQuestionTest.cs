@@ -10,7 +10,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="TranscriptMeetingQuestion"/>.</para>
 /// </summary>
-public sealed class TranscriptMeetingQuestionTest : ClassTest<TranscriptMeetingQuestion>
+public sealed class TranscriptMeetingQuestionTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -67,7 +67,10 @@ public sealed class TranscriptMeetingQuestionTest : ClassTest<TranscriptMeetingQ
   ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.CompareTo(ITranscriptMeetingQuestion)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(TranscriptMeetingQuestion.Name), "first", "second"); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<TranscriptMeetingQuestion, string>(nameof(TranscriptMeetingQuestion.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -79,8 +82,8 @@ public sealed class TranscriptMeetingQuestionTest : ClassTest<TranscriptMeetingQ
   [Fact]
   public void Equals_Methods()
   {
-    TestEquality(nameof(TranscriptMeetingQuestion.Name), "first", "second");
-    TestEquality(nameof(TranscriptMeetingQuestion.Stage), "first", "second");
+    TestEquality<TranscriptMeetingQuestion, string>(nameof(TranscriptMeetingQuestion.Name), "first", "second");
+    TestEquality<TranscriptMeetingQuestion, string>(nameof(TranscriptMeetingQuestion.Stage), "first", "second");
   }
 
   /// <summary>
@@ -89,8 +92,8 @@ public sealed class TranscriptMeetingQuestionTest : ClassTest<TranscriptMeetingQ
   [Fact]
   public void GetHashCode_Method()
   {
-    TestHashCode(nameof(TranscriptMeetingQuestion.Name), "first", "second");
-    TestHashCode(nameof(TranscriptMeetingQuestion.Stage), "first", "second");
+    TestHashCode<TranscriptMeetingQuestion, string>(nameof(TranscriptMeetingQuestion.Name), "first", "second");
+    TestHashCode<TranscriptMeetingQuestion, string>(nameof(TranscriptMeetingQuestion.Stage), "first", "second");
   }
 
   /// <summary>

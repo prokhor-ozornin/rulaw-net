@@ -10,7 +10,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="LawTranscriptsResult"/>.</para>
 /// </summary>
-public sealed class LawTranscriptsResultTest : ClassTest<LawTranscriptsResult>
+public sealed class LawTranscriptsResultTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -76,7 +76,10 @@ public sealed class LawTranscriptsResultTest : ClassTest<LawTranscriptsResult>
   ///   <para>Performs testing of <see cref="LawTranscriptsResult.CompareTo(ILawTranscriptsResult)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(LawTranscriptsResult.Number), "first", "second"); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo< LawTranscriptsResult, string>(nameof(LawTranscriptsResult.Number), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -86,13 +89,19 @@ public sealed class LawTranscriptsResultTest : ClassTest<LawTranscriptsResult>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(LawTranscriptsResult.Number), "first", "second"); }
+  public void Equals_Methods() 
+  {
+    TestEquality<LawTranscriptsResult, string>(nameof(LawTranscriptsResult.Number), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawTranscriptsResult.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(LawTranscriptsResult.Number), "first", "second"); }
+  public void GetHashCode_Method()
+  {
+    TestHashCode<LawTranscriptsResult, string>(nameof(LawTranscriptsResult.Number), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawTranscriptsResult.ToString()"/> method.</para>

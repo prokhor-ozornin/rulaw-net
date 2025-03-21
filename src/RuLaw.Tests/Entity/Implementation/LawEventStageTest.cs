@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="LawEventStage"/>.</para>
 /// </summary>
-public sealed class LawEventStageTest : ClassTest<LawEventStage>
+public sealed class LawEventStageTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -47,7 +47,10 @@ public sealed class LawEventStageTest : ClassTest<LawEventStage>
   ///   <para>Performs testing of <see cref="LawEventStage.CompareTo(ILawEventStage)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(LawEventStage.Name), "first", "second"); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo< LawEventStage, string>(nameof(LawEventStage.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -57,13 +60,19 @@ public sealed class LawEventStageTest : ClassTest<LawEventStage>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(LawEventStage.Id), 1, 2); }
+  public void Equals_Methods() 
+  {
+    TestEquality<LawEventStage, long>(nameof(LawEventStage.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEventStage.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(LawEventStage.Id), 1, 2); }
+  public void GetHashCode_Method()
+  {
+    TestHashCode<LawEventStage, long>(nameof(LawEventStage.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEventStage.ToString()"/> method.</para>

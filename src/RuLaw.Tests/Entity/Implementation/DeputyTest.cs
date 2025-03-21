@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Deputy"/>.</para>
 /// </summary>
-public sealed class DeputyTest : ClassTest<Deputy>
+public sealed class DeputyTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -67,7 +67,10 @@ public sealed class DeputyTest : ClassTest<Deputy>
   ///   <para>Performs testing of <see cref="Deputy.CompareTo(IDeputy)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(Deputy.Name), "first", "second"); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<Deputy, string>(nameof(Deputy.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -77,13 +80,19 @@ public sealed class DeputyTest : ClassTest<Deputy>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(Deputy.Id), 1, 2); }
+  public void Equals_Methods() 
+  {
+    TestEquality<Deputy, long>(nameof(Deputy.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Deputy.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(Deputy.Id), 1, 2); }
+  public void GetHashCode_Method() 
+  {
+    TestHashCode<Deputy, long>(nameof(Deputy.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Deputy.ToString()"/> method.</para>

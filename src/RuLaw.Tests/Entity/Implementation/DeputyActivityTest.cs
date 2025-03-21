@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyActivity"/>.</para>
 /// </summary>
-public sealed class DeputyActivityTest : ClassTest<DeputyActivity>
+public sealed class DeputyActivityTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -57,7 +57,10 @@ public sealed class DeputyActivityTest : ClassTest<DeputyActivity>
   ///   <para>Performs testing of <see cref="DeputyActivity.CompareTo(IDeputyActivity)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo("Name", "first", "second"); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<DeputyActivity, string>("Name", "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -67,13 +70,19 @@ public sealed class DeputyActivityTest : ClassTest<DeputyActivity>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(DeputyActivity.Name), "first", "second"); }
+  public void Equals_Methods() 
+  {
+    TestEquality<DeputyActivity, string>(nameof(DeputyActivity.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyActivity.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(DeputyActivity.Name), "first", "second"); }
+  public void GetHashCode_Method() 
+  {
+    TestHashCode<DeputyActivity, string>(nameof(DeputyActivity.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyActivity.ToString()"/> method.</para>

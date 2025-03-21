@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="LawEvent"/>.</para>
 /// </summary>
-public sealed class LawEventTest : ClassTest<LawEvent>
+public sealed class LawEventTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -80,7 +80,10 @@ public sealed class LawEventTest : ClassTest<LawEvent>
   ///   <para>Performs testing of <see cref="LawEvent.CompareTo(ILawEvent)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(LawEvent.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<LawEvent, DateTimeOffset>(nameof(LawEvent.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEvent.ToString()"/> method.</para>

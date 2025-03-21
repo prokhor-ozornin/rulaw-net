@@ -2,7 +2,7 @@
 
 namespace RuLaw.Tests;
 
-public class IntegrationTest<T> : ClassTest<T>
+public class IntegrationTest : UnitTest
 {
   protected IApi Api { get; } = null; //RuLaw.Api.Configure(configurator => configurator.ApiKey(/*ConfigurationManager.AppSettings["ApiKey"]*/"api").AppKey(ConfigurationManager.AppSettings["AppKey"]));
 
@@ -11,8 +11,4 @@ public class IntegrationTest<T> : ClassTest<T>
     base.Dispose();
     Api.Dispose();
   }
-}
-
-public class IntegrationTest : IntegrationTest<object>
-{
 }

@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="TranscriptVote"/>.</para>
 /// </summary>
-public sealed class TranscriptVoteTest : ClassTest<TranscriptVote>
+public sealed class TranscriptVoteTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -47,7 +47,10 @@ public sealed class TranscriptVoteTest : ClassTest<TranscriptVote>
   ///   <para>Performs testing of <see cref="TranscriptVote.CompareTo(ITranscriptVote)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(TranscriptVote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<TranscriptVote, DateTimeOffset>(nameof(TranscriptVote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -59,8 +62,8 @@ public sealed class TranscriptVoteTest : ClassTest<TranscriptVote>
   [Fact]
   public void Equals_Methods()
   {
-    TestEquality(nameof(TranscriptVote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
-    TestEquality(nameof(TranscriptVote.Line), 1, 2);
+    TestEquality<TranscriptVote, DateTimeOffset>(nameof(TranscriptVote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
+    TestEquality<TranscriptVote, int>(nameof(TranscriptVote.Line), 1, 2);
   }
 
   /// <summary>
@@ -69,8 +72,8 @@ public sealed class TranscriptVoteTest : ClassTest<TranscriptVote>
   [Fact]
   public void GetHashCode_Method()
   {
-    TestHashCode(nameof(TranscriptVote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
-    TestHashCode(nameof(TranscriptVote.Line), 1, 2);
+    TestHashCode<TranscriptVote, DateTimeOffset>(nameof(TranscriptVote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
+    TestHashCode<TranscriptVote, int>(nameof(TranscriptVote.Line), 1, 2);
   }
 
   /// <summary>

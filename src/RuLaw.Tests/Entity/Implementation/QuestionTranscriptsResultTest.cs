@@ -10,7 +10,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="QuestionTranscriptsResult"/>.</para>
 /// </summary>
-public sealed class QuestionTranscriptsResultTest : ClassTest<QuestionTranscriptsResult>
+public sealed class QuestionTranscriptsResultTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>

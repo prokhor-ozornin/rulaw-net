@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Instance"/>.</para>
 /// </summary>
-public sealed class InstanceTest : ClassTest<Instance>
+public sealed class InstanceTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -59,7 +59,7 @@ public sealed class InstanceTest : ClassTest<Instance>
   [Fact]
   public void CompareTo_Method()
   {
-    TestCompareTo(nameof(Instance.Name), "first", "second");
+    TestCompareTo<Instance, string>(nameof(Instance.Name), "first", "second");
   }
 
   /// <summary>
@@ -72,7 +72,7 @@ public sealed class InstanceTest : ClassTest<Instance>
   [Fact]
   public void Equals_Methods()
   {
-    TestEquality(nameof(Instance.Id), 1, 2);
+    TestEquality<Instance, long>(nameof(Instance.Id), 1, 2);
   }
 
   /// <summary>
@@ -81,7 +81,7 @@ public sealed class InstanceTest : ClassTest<Instance>
   [Fact]
   public void GetHashCode_Method()
   {
-    TestHashCode(nameof(Instance.Id), 1, 2);
+    TestHashCode<Instance, long>(nameof(Instance.Id), 1, 2);
   }
 
   /// <summary>

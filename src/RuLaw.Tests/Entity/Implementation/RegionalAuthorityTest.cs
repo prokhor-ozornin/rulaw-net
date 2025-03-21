@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="RegionalAuthority"/>.</para>
 /// </summary>
-public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
+public sealed class RegionalAuthorityTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -77,7 +77,10 @@ public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
   ///   <para>Performs testing of <see cref="RegionalAuthority.CompareTo(IAuthority)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(RegionalAuthority.Name), "first", "second"); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<RegionalAuthority, string>(nameof(RegionalAuthority.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -87,13 +90,19 @@ public sealed class RegionalAuthorityTest : ClassTest<RegionalAuthority>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(RegionalAuthority.Id), 1, 2); }
+  public void Equals_Methods()
+  {
+    TestEquality<RegionalAuthority, long>(nameof(RegionalAuthority.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="RegionalAuthority.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(RegionalAuthority.Id), 1, 2); }
+  public void GetHashCode_Method() 
+  {
+    TestHashCode<RegionalAuthority, long>(nameof(RegionalAuthority.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="RegionalAuthority.ToString()"/> method.</para>

@@ -10,7 +10,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyTranscriptsResult"/>.</para>
 /// </summary>
-public sealed class DeputyTranscriptsResultTest : ClassTest<DeputyTranscriptsResult>
+public sealed class DeputyTranscriptsResultTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -87,7 +87,10 @@ public sealed class DeputyTranscriptsResultTest : ClassTest<DeputyTranscriptsRes
   ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.CompareTo(IDeputyTranscriptsResult)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(DeputyTranscriptsResult.Name), "first", "second"); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<DeputyTranscriptsResult, string>(nameof(DeputyTranscriptsResult.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.ToString()"/> method.</para>

@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="LawEventDocument"/>.</para>
 /// </summary>
-public sealed class LawEventDocumentTest : ClassTest<LawEventDocument>
+public sealed class LawEventDocumentTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -47,7 +47,10 @@ public sealed class LawEventDocumentTest : ClassTest<LawEventDocument>
   ///   <para>Performs testing of <see cref="LawEventDocument.CompareTo(ILawEventDocument)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(LawEventDocument.Name), "first", "second"); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<LawEventDocument, string>(nameof(LawEventDocument.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -57,13 +60,19 @@ public sealed class LawEventDocumentTest : ClassTest<LawEventDocument>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(LawEventDocument.Name), "first", "second"); }
+  public void Equals_Methods() 
+  {
+    TestEquality<LawEventDocument, string>(nameof(LawEventDocument.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEventDocument.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(LawEventDocument.Name), "first", "second"); }
+  public void GetHashCode_Method() 
+  {
+    TestHashCode<LawEventDocument, string>(nameof(LawEventDocument.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEventDocument.ToString()"/> method.</para>

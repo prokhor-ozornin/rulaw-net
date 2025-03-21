@@ -10,7 +10,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="QuestionsSearchResult"/>.</para>
 /// </summary>
-public sealed class QuestionsSearchResultTest : ClassTest<QuestionsSearchResult>
+public sealed class QuestionsSearchResultTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -76,7 +76,10 @@ public sealed class QuestionsSearchResultTest : ClassTest<QuestionsSearchResult>
   ///   <para>Performs testing of <see cref="LawsSearchResult.CompareTo(ILawsSearchResult)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(LawsSearchResult.Count), 1, 2); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<LawsSearchResult, int>(nameof(LawsSearchResult.Count), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of serialization/deserialization process.</para>

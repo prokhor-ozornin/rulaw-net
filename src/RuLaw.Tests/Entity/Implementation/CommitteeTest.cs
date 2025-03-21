@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Committee"/>.</para>
 /// </summary>
-public sealed class CommitteeTest : ClassTest<Committee>
+public sealed class CommitteeTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -77,7 +77,10 @@ public sealed class CommitteeTest : ClassTest<Committee>
   ///   <para>Performs testing of <see cref="Committee.CompareTo(ICommittee)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(Committee.Name), "first", "second"); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<Committee, string>(nameof(Committee.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -87,13 +90,19 @@ public sealed class CommitteeTest : ClassTest<Committee>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(Committee.Id), 1, 2); }
+  public void Equals_Methods() 
+  {
+    TestEquality<Committee, long>(nameof(Committee.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Committee.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(Committee.Id), 1, 2); }
+  public void GetHashCode_Method() 
+  {
+    TestHashCode<Committee, long>(nameof(Committee.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Committee.ToString()"/> method.</para>

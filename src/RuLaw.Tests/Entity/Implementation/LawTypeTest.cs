@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="LawType"/>.</para>
 /// </summary>
-public sealed class LawTypeTest : ClassTest<LawType>
+public sealed class LawTypeTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -47,7 +47,10 @@ public sealed class LawTypeTest : ClassTest<LawType>
   ///   <para>Performs testing of <see cref="LawType.CompareTo(ILawType)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(LawType.Name), "first", "second"); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<LawType, string>(nameof(LawType.Name), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -57,13 +60,19 @@ public sealed class LawTypeTest : ClassTest<LawType>
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(LawType.Id), 1, 2); }
+  public void Equals_Methods()
+  {
+    TestEquality<LawType, long>(nameof(LawType.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawType.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(LawType.Id), 1, 2); }
+  public void GetHashCode_Method() 
+  {
+    TestHashCode<LawType, long>(nameof(LawType.Id), 1, 2); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawType.ToString()"/> method.</para>

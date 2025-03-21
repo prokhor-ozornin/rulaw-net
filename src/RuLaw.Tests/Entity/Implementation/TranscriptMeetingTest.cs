@@ -10,7 +10,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="TranscriptMeeting"/>.</para>
 /// </summary>
-public sealed class TranscriptMeetingTest : ClassTest<TranscriptMeeting>
+public sealed class TranscriptMeetingTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -77,7 +77,10 @@ public sealed class TranscriptMeetingTest : ClassTest<TranscriptMeeting>
   ///   <para>Performs testing of <see cref="TranscriptMeeting.CompareTo(ITranscriptMeeting)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(TranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); }
+  public void CompareTo_Method() 
+  {
+    TestCompareTo<TranscriptMeeting, DateTimeOffset>(nameof(TranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -89,8 +92,8 @@ public sealed class TranscriptMeetingTest : ClassTest<TranscriptMeeting>
   [Fact]
   public void Equals_Methods()
   {
-    TestEquality(nameof(TranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
-    TestEquality(nameof(TranscriptMeeting.Number), 1, 2);
+    TestEquality<TranscriptMeeting, DateTimeOffset>(nameof(TranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
+    TestEquality<TranscriptMeeting, int>(nameof(TranscriptMeeting.Number), 1, 2);
   }
 
   /// <summary>
@@ -99,8 +102,8 @@ public sealed class TranscriptMeetingTest : ClassTest<TranscriptMeeting>
   [Fact]
   public void GetHashCode_Method()
   {
-    TestHashCode(nameof(TranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
-    TestHashCode(nameof(TranscriptMeeting.Number), 1, 2);
+    TestHashCode<TranscriptMeeting,DateTimeOffset>(nameof(TranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
+    TestHashCode<TranscriptMeeting, int>(nameof(TranscriptMeeting.Number), 1, 2);
   }
 
   /// <summary>
