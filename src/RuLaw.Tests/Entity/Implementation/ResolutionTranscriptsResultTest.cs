@@ -1,6 +1,6 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="ResolutionTranscriptsResult"/>.</para>
 /// </summary>
-public sealed class ResolutionTranscriptsResultTest : UnitTest
+public sealed class ResolutionTranscriptsResultTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -20,9 +20,13 @@ public sealed class ResolutionTranscriptsResultTest : UnitTest
   {
     typeof(ResolutionTranscriptsResult).Should().BeDerivedFrom<object>().And.Implement<IResolutionTranscriptsResult>();
 
-    var result = new ResolutionTranscriptsResult();
-    result.Number.Should().BeNull();
-    result.Meetings.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new ResolutionTranscriptsResult();
+
+      result.Number.Should().BeNull();
+      result.Meetings.Should().BeEmpty();
+    }
   }
 
   /// <summary>

@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using FluentAssertions;
+﻿using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
 
@@ -8,7 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DateTimeOffsetExtensions"/>.</para>
 /// </summary>
-public sealed class DateTimeOffsetExtensionsTest : UnitTest
+public sealed class DateTimeOffsetExtensionsTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="DateTimeOffsetExtensions.AsString(DateTimeOffset)"/> method.</para>

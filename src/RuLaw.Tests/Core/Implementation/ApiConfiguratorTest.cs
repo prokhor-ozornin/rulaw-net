@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using FluentAssertions;
+﻿using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
 
@@ -8,7 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="ApiConfigurator"/>.</para>
 /// </summary>
-public sealed class ApiConfiguratorTest : UnitTest
+public sealed class ApiConfiguratorTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -19,9 +18,12 @@ public sealed class ApiConfiguratorTest : UnitTest
   {
     typeof(ApiConfigurator).Should().BeDerivedFrom<object>().And.Implement<IApiConfigurator>();
 
-    var configurator = new ApiConfigurator();
-    configurator.ApiKeyValue.Should().BeNull();
-    configurator.AppKeyValue.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var configurator = new ApiConfigurator();
+      configurator.ApiKeyValue.Should().BeNull();
+      configurator.AppKeyValue.Should().BeNull();
+    }
   }
 
   /// <summary>

@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using AutoFixture;
 using Catharsis.Extensions;
 using FluentAssertions.Execution;
 using FluentAssertions;
@@ -56,7 +56,7 @@ public sealed class IInstancesApiExtensionsTest : IntegrationTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
-      AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(Api.Instances, null, Attributes.CancellationToken())).ThrowExactly<OperationCanceledException>();
+      AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(Api.Instances, null, Fixture.Create<CancellationToken>())).ThrowExactly<OperationCanceledException>();
 
       Validate(Api.Instances.SearchAsync(request => request.Current()).ToArray());
     }

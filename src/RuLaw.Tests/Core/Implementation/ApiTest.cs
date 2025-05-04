@@ -1,9 +1,8 @@
-﻿using Catharsis.Extensions;
+﻿using AutoFixture;
+using Catharsis.Extensions;
 using RestSharp;
 using FluentAssertions;
 using Xunit;
-using System.Configuration;
-using Catharsis.Commons;
 using FluentAssertions.Execution;
 
 namespace RuLaw.Tests;
@@ -11,7 +10,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Api"/>.</para>
 /// </summary>
-public sealed class ApiTest : UnitTest
+public sealed class ApiTest : Test
 {
   private IApi Api { get; } = null; //RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));
 
@@ -63,7 +62,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Branches.AllAsync(Attributes.CancellationToken()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
+      AssertionExtensions.Should(() => Api.Branches.AllAsync(Fixture.Create<CancellationToken>()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
 
       var branches = Api.Branches.AllAsync().ToListAsync().Await();
       branches.Should().NotBeNullOrEmpty().And.BeOfType<List<LawBranch>>();
@@ -88,7 +87,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Committees.AllAsync(Attributes.CancellationToken()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Committees.AllAsync(Fixture.Create<CancellationToken>()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var committees = Api.Committees.AllAsync().ToListAsync().Await();
       
@@ -115,7 +114,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Deputies.FindAsync(0, Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Deputies.FindAsync(0, Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var deputy = Api.Deputies.FindAsync(99100142).Await();
       
@@ -157,7 +156,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Deputies.SearchAsync(null, Attributes.CancellationToken()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Deputies.SearchAsync(null, Fixture.Create<CancellationToken>()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var deputies = Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToListAsync().Await();
 
@@ -185,7 +184,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Authorities.FederalAsync(null, Attributes.CancellationToken()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Authorities.FederalAsync(null, Fixture.Create<CancellationToken>()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var authorities = Api.Authorities.FederalAsync(request => request.Current()).ToListAsync().Await();
 
@@ -214,7 +213,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Authorities.RegionalAsync(null, Attributes.CancellationToken()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Authorities.RegionalAsync(null, Fixture.Create<CancellationToken>()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var authorities = Api.Authorities.RegionalAsync(request => request.Current(false)).ToListAsync().Await();
 
@@ -243,7 +242,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Instances.SearchAsync(null, Attributes.CancellationToken()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Instances.SearchAsync(null, Fixture.Create<CancellationToken>()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var instances = Api.Instances.SearchAsync().ToListAsync().Await();
       instances.Should().NotBeNullOrEmpty().And.BeOfType<List<Instance>>();
@@ -275,7 +274,7 @@ public sealed class ApiTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => Api.Laws.SearchAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
-      AssertionExtensions.Should(() => Api.Laws.SearchAsync(new LawsApiRequest(), Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Laws.SearchAsync(new LawsApiRequest(), Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var result = Api.Laws.SearchAsync(new LawsApiRequest().Name("курение").Sorting(LawsSorting.DateDescending)).Await();
 
@@ -360,7 +359,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Convocations.AllAsync(Attributes.CancellationToken()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Convocations.AllAsync(Fixture.Create<CancellationToken>()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
       
       var convocations = Api.Convocations.AllAsync().ToListAsync().Await();
 
@@ -401,7 +400,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Questions.SearchAsync(null, Attributes.CancellationToken()).Await()).ThrowExactly<OperationCanceledException>();
+      AssertionExtensions.Should(() => Api.Questions.SearchAsync(null, Fixture.Create<CancellationToken>()).Await()).ThrowExactly<OperationCanceledException>();
 
       var result = Api.Questions.SearchAsync(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)).Await();
 
@@ -468,7 +467,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Questions.SearchAsync(null, Attributes.CancellationToken()).Await()).ThrowExactly<OperationCanceledException>();
+      AssertionExtensions.Should(() => Api.Questions.SearchAsync(null, Fixture.Create<CancellationToken>()).Await()).ThrowExactly<OperationCanceledException>();
 
       var requests = Api.Requests.AllAsync().ToListAsync().Await();
 
@@ -509,7 +508,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Stages.AllAsync(Attributes.CancellationToken()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
+      AssertionExtensions.Should(() => Api.Stages.AllAsync(Fixture.Create<CancellationToken>()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
 
       var stages = Api.Stages.AllAsync().ToListAsync().Await();
 
@@ -561,7 +560,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Topics.AllAsync(Attributes.CancellationToken()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
+      AssertionExtensions.Should(() => Api.Topics.AllAsync(Fixture.Create<CancellationToken>()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
 
       var topics = Api.Topics.AllAsync().ToListAsync().Await();
 
@@ -588,7 +587,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Topics.AllAsync(Attributes.CancellationToken()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
+      AssertionExtensions.Should(() => Api.Topics.AllAsync(Fixture.Create<CancellationToken>()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
 
       var result = Api.Transcripts.DateAsync(new DateTimeOffset(year: 2013, month: 5, day: 14, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Await();
 
@@ -627,7 +626,7 @@ public sealed class ApiTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
-      AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync(new DeputyTranscriptApiRequest(), Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync(new DeputyTranscriptApiRequest(), Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var result = Api.Transcripts.DeputyAsync(new DeputyTranscriptApiRequest().Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)).Await();
 
@@ -666,7 +665,7 @@ public sealed class ApiTest : UnitTest
     {
       AssertionExtensions.Should(() => Api.Transcripts.LawAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
       AssertionExtensions.Should(() => Api.Transcripts.LawAsync(string.Empty)).ThrowExactlyAsync<ArgumentException>().Await();
-      AssertionExtensions.Should(() => Api.Transcripts.LawAsync(Attributes.Random().Letters(25), Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Transcripts.LawAsync(Random.Letters(25), Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var result = Api.Transcripts.LawAsync("140513-6").Await();
 
@@ -733,7 +732,7 @@ public sealed class ApiTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Transcripts.QuestionAsync(0, 0, Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Transcripts.QuestionAsync(0, 0, Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var result = Api.Transcripts.QuestionAsync(80, 13).Await();
 
@@ -779,7 +778,7 @@ public sealed class ApiTest : UnitTest
     {
       AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
       AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(string.Empty)).ThrowExactlyAsync<ArgumentException>().Await();
-      AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(Attributes.Random().Letters(25), Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(Random.Letters(25), Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var result = Api.Transcripts.ResolutionAsync("276569-6").Await();
 
@@ -835,7 +834,7 @@ public sealed class ApiTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => Api.Votes.SearchAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
-      AssertionExtensions.Should(() => Api.Votes.SearchAsync(_ => {}, Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Votes.SearchAsync(_ => {}, Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var result = Api.Votes.SearchAsync(request => request.FromDate(DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(180))).ToDate(DateTimeOffset.UtcNow)).Await();
 

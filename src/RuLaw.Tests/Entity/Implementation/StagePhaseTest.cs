@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -10,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="StagePhase"/>.</para>
 /// </summary>
-public sealed class StagePhaseTest : UnitTest 
+public sealed class StagePhaseTest : Test 
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,10 +20,14 @@ public sealed class StagePhaseTest : UnitTest
   {
     typeof(StagePhase).Should().BeDerivedFrom<object>().And.Implement<IStagePhase>();
 
-    var phase = new StagePhase();
-    phase.Id.Should().BeNull();
-    phase.Name.Should().BeNull();
-    phase.Instance.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var phase = new StagePhase();
+
+      phase.Id.Should().BeNull();
+      phase.Name.Should().BeNull();
+      phase.Instance.Should().BeNull();
+    }
   }
 
   /// <summary>

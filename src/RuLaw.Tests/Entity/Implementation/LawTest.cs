@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -10,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Law"/>.</para>
 /// </summary>
-public sealed class LawTest : UnitTest
+public sealed class LawTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,18 +20,22 @@ public sealed class LawTest : UnitTest
   {
     typeof(Law).Should().BeDerivedFrom<object>().And.Implement<ILaw>();
 
-    var law = new Law();
-    law.Id.Should().BeNull();
-    law.Name.Should().BeNull();
-    law.Date.Should().BeNull();
-    law.Number.Should().BeNull();
-    law.Subject.Should().BeNull();
-    law.Type.Should().BeNull();
-    law.Url.Should().BeNull();
-    law.TranscriptUrl.Should().BeNull();
-    law.Comments.Should().BeNull();
-    law.LastEvent.Should().BeNull();
-    law.Committees.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var law = new Law();
+
+      law.Id.Should().BeNull();
+      law.Name.Should().BeNull();
+      law.Date.Should().BeNull();
+      law.Number.Should().BeNull();
+      law.Subject.Should().BeNull();
+      law.Type.Should().BeNull();
+      law.Url.Should().BeNull();
+      law.TranscriptUrl.Should().BeNull();
+      law.Comments.Should().BeNull();
+      law.LastEvent.Should().BeNull();
+      law.Committees.Should().BeNull();
+    }
   }
 
   /// <summary>

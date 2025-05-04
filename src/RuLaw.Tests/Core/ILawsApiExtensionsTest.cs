@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using AutoFixture;
 using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
@@ -119,7 +119,7 @@ public sealed class ILawsApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => ILawsApiExtensions.SearchAsync(null, _ => { })).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("api").Await();
       AssertionExtensions.Should(() => ILawsApiExtensions.SearchAsync(Api.Laws, null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("action").Await();
-      AssertionExtensions.Should(() => Api.Laws.SearchAsync(_ => { }, Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Laws.SearchAsync(_ => { }, Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       Validate(Api.Laws.SearchAsync(request => request.Name("курение").Sorting(LawsSorting.DateDescending)));
     }

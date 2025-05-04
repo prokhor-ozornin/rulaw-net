@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
@@ -9,7 +8,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyTranscriptApiRequest"/>.</para>
 /// </summary>
-public sealed class DeputyTranscriptApiRequestTest : UnitTest
+public sealed class DeputyTranscriptApiRequestTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -20,8 +19,12 @@ public sealed class DeputyTranscriptApiRequestTest : UnitTest
   {
     typeof(DeputyTranscriptApiRequest).Should().BeDerivedFrom<ApiRequest>().And.Implement<IDeputyTranscriptApiRequest>();
 
-    var request = new DeputyTranscriptApiRequest();
-    request.Parameters.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var request = new DeputyTranscriptApiRequest();
+
+      request.Parameters.Should().BeEmpty();
+    }
   }
 
   /// <summary>

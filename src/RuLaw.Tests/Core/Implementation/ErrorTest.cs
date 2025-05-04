@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -10,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Error"/>.</para>
 /// </summary>
-public sealed class ErrorTest :UnitTest
+public sealed class ErrorTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -22,13 +21,19 @@ public sealed class ErrorTest :UnitTest
   {
     typeof(Error).Should().BeDerivedFrom<object>().And.Implement<IError>();
 
-    var error = new Error();
-    error.Code.Should().Be(default);
-    error.Text.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var error = new Error();
+      error.Code.Should().Be(0);
+      error.Text.Should().BeNull();
+    }
 
-    error = new Error(1, "text");
-    error.Code.Should().Be(1);
-    error.Text.Should().Be("text");
+    using (new AssertionScope())
+    {
+      var error = new Error(1, "text");
+      error.Code.Should().Be(1);
+      error.Text.Should().Be("text");
+    }
   }
 
   /// <summary>

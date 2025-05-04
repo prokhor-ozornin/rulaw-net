@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -10,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyRequest"/>.</para>
 /// </summary>
-public sealed class DeputyRequestTest : UnitTest
+public sealed class DeputyRequestTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,18 +20,22 @@ public sealed class DeputyRequestTest : UnitTest
   {
     typeof(DeputyRequest).Should().BeDerivedFrom<object>().And.Implement<IDeputyRequest>();
 
-    var request = new DeputyRequest();
-    request.Id.Should().BeNull();
-    request.Name.Should().BeNull();
-    request.Date.Should().BeNull();
-    request.DocumentNumber.Should().BeNull();
-    request.Initiator.Should().BeNull();
-    request.Addressee.Should().BeNull();
-    request.Answer.Should().BeNull();
-    request.Signer.Should().BeNull();
-    request.SignDate.Should().BeNull();
-    request.ControlDate.Should().BeNull();
-    request.ResolutionNumber.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var request = new DeputyRequest();
+
+      request.Id.Should().BeNull();
+      request.Name.Should().BeNull();
+      request.Date.Should().BeNull();
+      request.DocumentNumber.Should().BeNull();
+      request.Initiator.Should().BeNull();
+      request.Addressee.Should().BeNull();
+      request.Answer.Should().BeNull();
+      request.Signer.Should().BeNull();
+      request.SignDate.Should().BeNull();
+      request.ControlDate.Should().BeNull();
+      request.ResolutionNumber.Should().BeNull();
+    }
   }
 
   /// <summary>

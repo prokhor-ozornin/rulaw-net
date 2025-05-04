@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -10,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Education"/>.</para>
 /// </summary>
-public sealed class EducationTest : UnitTest
+public sealed class EducationTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,9 +20,13 @@ public sealed class EducationTest : UnitTest
   {
     typeof(Education).Should().BeDerivedFrom<object>().And.Implement<IEducation>();
 
-    var education = new Education();
-    education.Institution.Should().BeNull();
-    education.Year.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var education = new Education();
+
+      education.Institution.Should().BeNull();
+      education.Year.Should().BeNull();
+    }
   }
 
   /// <summary>

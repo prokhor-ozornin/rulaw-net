@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using AutoFixture;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
@@ -8,7 +8,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="IDeputyExtensions"/>.</para>
 /// </summary>
-public sealed class IDeputyExtensionsTest : UnitTest
+public sealed class IDeputyExtensionsTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of following methods :</para>

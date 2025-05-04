@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -10,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="LawEventDocument"/>.</para>
 /// </summary>
-public sealed class LawEventDocumentTest : UnitTest
+public sealed class LawEventDocumentTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,9 +20,13 @@ public sealed class LawEventDocumentTest : UnitTest
   {
     typeof(LawEventDocument).Should().BeDerivedFrom<object>().And.Implement<ILawEventDocument>();
 
-    var document = new LawEventDocument();
-    document.Name.Should().BeNull();
-    document.Type.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var document = new LawEventDocument();
+
+      document.Name.Should().BeNull();
+      document.Type.Should().BeNull();
+    }
   }
 
   /// <summary>

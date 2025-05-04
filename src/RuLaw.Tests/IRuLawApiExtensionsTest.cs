@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
 using FluentAssertions.Execution;
@@ -9,7 +8,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="IRuLawApiExtensions"/>.</para>
 /// </summary>
-public sealed class IRuLawApiExtensionsTest : UnitTest
+public sealed class IRuLawApiExtensionsTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IRuLawApiExtensions.Configure(IRuLawApi, Action{IApiConfigurator})"/> method.</para>

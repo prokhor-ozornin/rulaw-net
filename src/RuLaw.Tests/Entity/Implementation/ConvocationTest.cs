@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -10,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Convocation"/>.</para>
 /// </summary>
-public sealed class ConvocationTest : UnitTest
+public sealed class ConvocationTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,12 +20,16 @@ public sealed class ConvocationTest : UnitTest
   {
     typeof(Convocation).Should().BeDerivedFrom<object>().And.Implement<IConvocation>();
 
-    var convocation = new Convocation();
-    convocation.Id.Should().BeNull();
-    convocation.Name.Should().BeNull();
-    convocation.FromDate.Should().BeNull();
-    convocation.ToDate.Should().BeNull();
-    convocation.Sessions.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var convocation = new Convocation();
+
+      convocation.Id.Should().BeNull();
+      convocation.Name.Should().BeNull();
+      convocation.FromDate.Should().BeNull();
+      convocation.ToDate.Should().BeNull();
+      convocation.Sessions.Should().BeEmpty();
+    }
   }
 
   /// <summary>

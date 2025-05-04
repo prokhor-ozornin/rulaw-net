@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -10,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyRequestSigner"/>.</para>
 /// </summary>
-public sealed class DeputyRequestSignerTest : UnitTest
+public sealed class DeputyRequestSignerTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,9 +20,13 @@ public sealed class DeputyRequestSignerTest : UnitTest
   {
     typeof(DeputyRequestSigner).Should().BeDerivedFrom<object>().And.Implement<IDeputyRequestSigner>();
 
-    var signer = new DeputyRequestSigner();
-    signer.Id.Should().BeNull();
-    signer.Name.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var signer = new DeputyRequestSigner();
+
+      signer.Id.Should().BeNull();
+      signer.Name.Should().BeNull();
+    }
   }
 
   /// <summary>

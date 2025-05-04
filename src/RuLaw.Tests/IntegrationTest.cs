@@ -1,8 +1,6 @@
-﻿using Catharsis.Commons;
+﻿namespace RuLaw.Tests;
 
-namespace RuLaw.Tests;
-
-public class IntegrationTest : UnitTest
+public class IntegrationTest : Test
 {
   protected IApi Api { get; } = null; //RuLaw.Api.Configure(configurator => configurator.ApiKey(/*ConfigurationManager.AppSettings["ApiKey"]*/"api").AppKey(ConfigurationManager.AppSettings["AppKey"]));
 

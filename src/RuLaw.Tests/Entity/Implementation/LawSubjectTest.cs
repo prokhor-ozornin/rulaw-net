@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -10,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="LawSubject"/>.</para>
 /// </summary>
-public sealed class LawSubjectTest : UnitTest
+public sealed class LawSubjectTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,9 +20,13 @@ public sealed class LawSubjectTest : UnitTest
   {
     typeof(LawSubject).Should().BeDerivedFrom<object>().And.Implement<ILawSubject>();
 
-    var subject = new LawSubject();
-    subject.Departments.Should().BeEmpty();
-    subject.Deputies.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var subject = new LawSubject();
+
+      subject.Departments.Should().BeEmpty();
+      subject.Deputies.Should().BeEmpty();
+    }
   }
 
   /// <summary>

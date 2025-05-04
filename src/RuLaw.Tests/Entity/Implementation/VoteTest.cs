@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -10,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Vote"/>.</para>
 /// </summary>
-public sealed class VoteTest : UnitTest
+public sealed class VoteTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,18 +20,22 @@ public sealed class VoteTest : UnitTest
   {
     typeof(Vote).Should().BeDerivedFrom<object>().And.Implement<IVote>();
 
-    var vote = new Vote();
-    vote.Id.Should().BeNull();
-    vote.Date.Should().BeNull();
-    vote.Subject.Should().BeNull();
-    vote.Successful.Should().BeNull();
-    vote.ResultType.Should().BeNull();
-    vote.PersonResult.Should().BeNull();
-    vote.TotalVotesCount.Should().BeNull();
-    vote.ForVotesCount.Should().BeNull();
-    vote.AgainstVotesCount.Should().BeNull();
-    vote.AbstainVotesCount.Should().BeNull();
-    vote.AbsentVotesCount.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var vote = new Vote();
+
+      vote.Id.Should().BeNull();
+      vote.Date.Should().BeNull();
+      vote.Subject.Should().BeNull();
+      vote.Successful.Should().BeNull();
+      vote.ResultType.Should().BeNull();
+      vote.PersonResult.Should().BeNull();
+      vote.TotalVotesCount.Should().BeNull();
+      vote.ForVotesCount.Should().BeNull();
+      vote.AgainstVotesCount.Should().BeNull();
+      vote.AbstainVotesCount.Should().BeNull();
+      vote.AbsentVotesCount.Should().BeNull();
+    }
   }
 
   /// <summary>

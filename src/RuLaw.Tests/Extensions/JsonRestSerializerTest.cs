@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using FluentAssertions.Execution;
+﻿using FluentAssertions.Execution;
 using Xunit;
 
 namespace RuLaw.Tests;
@@ -7,7 +6,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="JsonRestSerializer"/>.</para>
 /// </summary>
-public sealed class JsonRestSerializerTest : UnitTest
+public sealed class JsonRestSerializerTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of following methods :</para>

@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Json;
@@ -10,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="TranscriptMeeting"/>.</para>
 /// </summary>
-public sealed class TranscriptMeetingTest : UnitTest
+public sealed class TranscriptMeetingTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,11 +20,15 @@ public sealed class TranscriptMeetingTest : UnitTest
   {
     typeof(TranscriptMeeting).Should().BeDerivedFrom<object>().And.Implement<ITranscriptMeeting>();
 
-    var meeting = new TranscriptMeeting();
-    meeting.Date.Should().BeNull();
-    meeting.Number.Should().BeNull();
-    meeting.LinesCount.Should().BeNull();
-    meeting.Questions.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var meeting = new TranscriptMeeting();
+
+      meeting.Date.Should().BeNull();
+      meeting.Number.Should().BeNull();
+      meeting.LinesCount.Should().BeNull();
+      meeting.Questions.Should().BeEmpty();
+    }
   }
 
   /// <summary>

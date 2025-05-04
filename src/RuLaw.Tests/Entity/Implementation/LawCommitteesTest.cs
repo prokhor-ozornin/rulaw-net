@@ -1,6 +1,6 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Json;
 using Xunit;
 
@@ -9,7 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="LawCommittees"/>.</para>
 /// </summary>
-public sealed class LawCommitteesTest : UnitTest
+public sealed class LawCommitteesTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -20,10 +20,14 @@ public sealed class LawCommitteesTest : UnitTest
   {
     typeof(LawCommittees).Should().BeDerivedFrom<object>().And.Implement<ILawCommittees>();
 
-    var committees = new LawCommittees();
-    committees.Responsible.Should().BeNull();
-    committees.Profile.Should().BeEmpty();
-    committees.SoExecutor.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var committees = new LawCommittees();
+
+      committees.Responsible.Should().BeNull();
+      committees.Profile.Should().BeEmpty();
+      committees.SoExecutor.Should().BeEmpty();
+    }
   }
 
   /// <summary>

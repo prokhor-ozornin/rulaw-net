@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
@@ -9,7 +8,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="LawsApiRequest"/>.</para>
 /// </summary>
-public sealed class LawsApiRequestTest : UnitTest
+public sealed class LawsApiRequestTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -20,8 +19,12 @@ public sealed class LawsApiRequestTest : UnitTest
   {
     typeof(LawsApiRequest).Should().BeDerivedFrom<ApiRequest>().And.Implement<ILawsApiRequest>();
 
-    var request = new LawsApiRequest();
-    request.Parameters.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var request = new LawsApiRequest();
+
+      request.Parameters.Should().BeEmpty();
+    }
   }
 
   /// <summary>

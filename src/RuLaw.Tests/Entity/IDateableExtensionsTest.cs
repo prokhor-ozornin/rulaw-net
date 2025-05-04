@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using AutoFixture;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
@@ -8,7 +8,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="IDateableExtensions"/>.</para>
 /// </summary>
-public sealed class IDateableExtensionsTest : UnitTest
+public sealed class IDateableExtensionsTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IDateableExtensions.Date{TEntity}(IEnumerable{TEntity}, DateTimeOffset?, DateTimeOffset?)"/> method.</para>

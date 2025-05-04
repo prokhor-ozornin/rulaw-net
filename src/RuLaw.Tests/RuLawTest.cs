@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Xunit;
 
 namespace RuLaw.Tests;
@@ -7,7 +6,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="RuLaw"/>.</para>
 /// </summary>
-public sealed class RuLawTest : UnitTest
+public sealed class RuLawTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="RuLaw.Api"/> property.</para>

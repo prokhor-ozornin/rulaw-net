@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Xunit;
 using FluentAssertions.Execution;
 
@@ -8,7 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="INameableExtensions"/>.</para>
 /// </summary>
-public sealed class INameableExtensionsTest : UnitTest
+public sealed class INameableExtensionsTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="INameableExtensions.Name{T}(IEnumerable{T}, string)"/> method.</para>
