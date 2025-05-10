@@ -95,7 +95,7 @@ public sealed class DeputyRequestSignerTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new DeputyRequestSigner
+      Test(new DeputyRequestSigner
       {
         Id = 1,
         Name = "name"
@@ -104,6 +104,6 @@ public sealed class DeputyRequestSignerTest : Test
 
     return;
 
-    static void Validate(IDeputyRequestSigner instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IDeputyRequestSigner instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

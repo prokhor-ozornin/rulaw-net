@@ -20,18 +20,18 @@ public sealed class IDeputyRequestExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IDeputyRequestExtensions.Initiator<IDeputyRequest>(null, "initiator")).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
 
-      Validate([], [], null);
-      Validate([], [], "initiator");
+      Test([], [], null);
+      Test([], [], "initiator");
 
       var first = new DeputyRequest { Initiator = "first" };
       var second = new DeputyRequest { Initiator = "second" };
-      Validate([], [null], null);
-      Validate([first], [null, first, second, null], first.Initiator);
+      Test([], [null], null);
+      Test([first], [null, first, second, null], first.Initiator);
     }
 
     return;
 
-    static void Validate(IEnumerable<IDeputyRequest> result, IEnumerable<IDeputyRequest> requests, string initiator) => requests.Initiator(initiator).Should().BeAssignableTo<IEnumerable<IDeputyRequest>>().And.Equal(result);
+    static void Test(IEnumerable<IDeputyRequest> result, IEnumerable<IDeputyRequest> requests, string initiator) => requests.Initiator(initiator).Should().BeAssignableTo<IEnumerable<IDeputyRequest>>().And.Equal(result);
   }
 
   /// <summary>
@@ -44,18 +44,18 @@ public sealed class IDeputyRequestExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IDeputyRequestExtensions.Answer<IDeputyRequest>(null, "answer")).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
 
-      Validate([], [], null);
-      Validate([], [], "answer");
+      Test([], [], null);
+      Test([], [], "answer");
 
       var first = new DeputyRequest { Answer = "first" };
       var second = new DeputyRequest { Answer = "second" };
-      Validate([], [null], null);
-      Validate([first], [null, first, second, null], first.Answer);
+      Test([], [null], null);
+      Test([first], [null, first, second, null], first.Answer);
     }
 
     return;
 
-    static void Validate(IEnumerable<IDeputyRequest> result, IEnumerable<IDeputyRequest> requests, string answer) => requests.Answer(answer).Should().BeAssignableTo<IEnumerable<IDeputyRequest>>().And.Equal(result);
+    static void Test(IEnumerable<IDeputyRequest> result, IEnumerable<IDeputyRequest> requests, string answer) => requests.Answer(answer).Should().BeAssignableTo<IEnumerable<IDeputyRequest>>().And.Equal(result);
   }
 
   /// <summary>
@@ -68,7 +68,7 @@ public sealed class IDeputyRequestExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IDeputyRequestExtensions.SignDate<IDeputyRequest>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
 
-      Validate([], []);
+      Test([], []);
 
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
@@ -77,14 +77,14 @@ public sealed class IDeputyRequestExtensionsTest : Test
       var third = new DeputyRequest { SignDate = DateTimeOffset.MaxValue };
       var requests = new List<IDeputyRequest> { null, first, second, third, null };
 
-      Validate([first, second], requests, date);
-      Validate([first, second], requests, null, date);
-      Validate([first, second, third], requests, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
+      Test([first, second], requests, date);
+      Test([first, second], requests, null, date);
+      Test([first, second, third], requests, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
     }
 
     return;
 
-    static void Validate(IEnumerable<IDeputyRequest> result, IEnumerable<IDeputyRequest> requests, DateTimeOffset? from = null, DateTimeOffset? to = null) => requests.SignDate(from, to).Should().BeAssignableTo<IEnumerable<IDeputyRequest>>().And.Equal(result);
+    static void Test(IEnumerable<IDeputyRequest> result, IEnumerable<IDeputyRequest> requests, DateTimeOffset? from = null, DateTimeOffset? to = null) => requests.SignDate(from, to).Should().BeAssignableTo<IEnumerable<IDeputyRequest>>().And.Equal(result);
   }
 
   /// <summary>
@@ -97,7 +97,7 @@ public sealed class IDeputyRequestExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IDeputyRequestExtensions.ControlDate<IDeputyRequest>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("requests");
 
-      Validate([], []);
+      Test([], []);
 
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
@@ -106,13 +106,13 @@ public sealed class IDeputyRequestExtensionsTest : Test
       var third = new DeputyRequest { ControlDate = DateTimeOffset.MaxValue };
       var requests = new List<IDeputyRequest> { null, first, second, third, null };
 
-      Validate([first, second], requests, date);
-      Validate([first, second], requests, null, date);
-      Validate([first, second, third], requests, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
+      Test([first, second], requests, date);
+      Test([first, second], requests, null, date);
+      Test([first, second, third], requests, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
     }
 
     return;
 
-    static void Validate(IEnumerable<IDeputyRequest> result, IEnumerable<IDeputyRequest> requests, DateTimeOffset? from = null, DateTimeOffset? to = null) => requests.ControlDate(from, to).Should().BeAssignableTo<IEnumerable<IDeputyRequest>>().And.Equal(result);
+    static void Test(IEnumerable<IDeputyRequest> result, IEnumerable<IDeputyRequest> requests, DateTimeOffset? from = null, DateTimeOffset? to = null) => requests.ControlDate(from, to).Should().BeAssignableTo<IEnumerable<IDeputyRequest>>().And.Equal(result);
   }
 }

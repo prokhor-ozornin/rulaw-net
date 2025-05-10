@@ -19,18 +19,18 @@ public sealed class ILawExtensionsTest : Test
     {
       AssertionExtensions.Should(() => ((IEnumerable<ILaw>) null).Number("number")).ThrowExactly<ArgumentNullException>().WithParameterName("source");
 
-      Validate(null, [], null);
-      Validate(null, [], "solution");
+      Test(null, [], null);
+      Test(null, [], "solution");
 
       var first = new Law { Number = "first" };
       var second = new Law { Number = "second" };
-      Validate(null, [null], null);
-      Validate(first, [null, first, second, null], first.Number);
+      Test(null, [null], null);
+      Test(first, [null, first, second, null], first.Number);
     }
     
     return;
 
-    static void Validate(ILaw result, IEnumerable<ILaw> laws, string number)
+    static void Test(ILaw result, IEnumerable<ILaw> laws, string number)
     {
       var law = laws.Number(number);
 

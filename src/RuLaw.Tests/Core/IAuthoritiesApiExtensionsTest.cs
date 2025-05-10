@@ -25,19 +25,19 @@ public sealed class IAuthoritiesApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Federal(null, new AuthoritiesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Authorities.Federal(new AuthoritiesApiRequest().Current()));
+      Test(Api.Authorities.Federal(new AuthoritiesApiRequest().Current()));
     }
 
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Federal(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Authorities.Federal(request => request.Current()));
+      Test(Api.Authorities.Federal(request => request.Current()));
     }
 
     return;
 
-    static void Validate(IEnumerable<IAuthority> authorities)
+    static void Test(IEnumerable<IAuthority> authorities)
     {
       authorities.Should().BeOfType<List<FederalAuthority>>().And.NotBeEmpty();
 
@@ -63,19 +63,19 @@ public sealed class IAuthoritiesApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Regional(null, new AuthoritiesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Authorities.Regional(new AuthoritiesApiRequest().Current(false)));
+      Test(Api.Authorities.Regional(new AuthoritiesApiRequest().Current(false)));
     }
 
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.Regional(null, _ => { })).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Authorities.Regional(request => request.Current(false)));
+      Test(Api.Authorities.Regional(request => request.Current(false)));
     }
 
     return;
 
-    static void Validate(IEnumerable<IAuthority> authorities)
+    static void Test(IEnumerable<IAuthority> authorities)
     {
       authorities.Should().BeOfType<List<RegionalAuthority>>().And.NotBeEmpty();
 
@@ -98,12 +98,12 @@ public sealed class IAuthoritiesApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.FederalAsync(Api.Authorities, null, Fixture.Create<CancellationToken>())).ThrowExactly<OperationCanceledException>();
 
-      Validate(Api.Authorities.FederalAsync(new AuthoritiesApiRequest().Current()).ToArray());
+      Test(Api.Authorities.FederalAsync(new AuthoritiesApiRequest().Current()).ToArray());
     }
 
     return;
 
-    static void Validate(IEnumerable<IAuthority> authorities)
+    static void Test(IEnumerable<IAuthority> authorities)
     {
       authorities.Should().BeOfType<List<FederalAuthority>>().And.NotBeEmpty();
 
@@ -126,12 +126,12 @@ public sealed class IAuthoritiesApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => IAuthoritiesApiExtensions.RegionalAsync(Api.Authorities, null, Fixture.Create<CancellationToken>())).ThrowExactly<OperationCanceledException>();
 
-      Validate(Api.Authorities.RegionalAsync(new AuthoritiesApiRequest().Current(false)).ToArray());
+      Test(Api.Authorities.RegionalAsync(new AuthoritiesApiRequest().Current(false)).ToArray());
     }
 
     return;
 
-    static void Validate(IEnumerable<IAuthority> authorities)
+    static void Test(IEnumerable<IAuthority> authorities)
     {
       authorities.Should().BeOfType<List<RegionalAuthority>>().And.NotBeEmpty();
 

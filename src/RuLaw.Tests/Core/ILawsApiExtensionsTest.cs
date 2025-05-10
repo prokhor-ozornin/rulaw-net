@@ -26,7 +26,7 @@ public sealed class ILawsApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => ILawsApiExtensions.Search(null, new LawsApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => Api.Laws.Search((ILawsApiRequest) null)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      Validate(Api.Laws.Search(new LawsApiRequest().Name("курение").Sorting(LawsSorting.DateDescending)));
+      Test(Api.Laws.Search(new LawsApiRequest().Name("курение").Sorting(LawsSorting.DateDescending)));
     }
 
     using (new AssertionScope())
@@ -34,12 +34,12 @@ public sealed class ILawsApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => ILawsApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => Api.Laws.Search((Action<ILawsApiRequest>) null)).ThrowExactly<ArgumentNullException>().WithParameterName("action");
 
-      Validate(Api.Laws.Search(request => request.Name("курение").Sorting(LawsSorting.DateDescending)));
+      Test(Api.Laws.Search(request => request.Name("курение").Sorting(LawsSorting.DateDescending)));
     }
 
     return;
 
-    static void Validate(ILawsSearchResult result)
+    static void Test(ILawsSearchResult result)
     {
       result.Should().BeOfType<LawsSearchResult>();
 
@@ -121,12 +121,12 @@ public sealed class ILawsApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => ILawsApiExtensions.SearchAsync(Api.Laws, null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("action").Await();
       AssertionExtensions.Should(() => Api.Laws.SearchAsync(_ => { }, Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
-      Validate(Api.Laws.SearchAsync(request => request.Name("курение").Sorting(LawsSorting.DateDescending)));
+      Test(Api.Laws.SearchAsync(request => request.Name("курение").Sorting(LawsSorting.DateDescending)));
     }
 
     return;
 
-    static void Validate(Task<ILawsSearchResult> task)
+    static void Test(Task<ILawsSearchResult> task)
     {
       task.Should().BeAssignableTo<Task<ILawsSearchResult>>();
 

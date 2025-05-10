@@ -74,7 +74,7 @@ public sealed class LawSubjectTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new LawSubject
+      Test(new LawSubject
       {
         Departments = [new Authority { Id = 1 }],
         Deputies = [new Deputy { Id = 2 }]
@@ -83,6 +83,6 @@ public sealed class LawSubjectTest : Test
 
     return;
 
-    static void Validate(ILawSubject instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILawSubject instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

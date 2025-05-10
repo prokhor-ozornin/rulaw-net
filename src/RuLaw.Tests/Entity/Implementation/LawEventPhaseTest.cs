@@ -95,7 +95,7 @@ public sealed class LawEventPhaseTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new LawEventPhase
+      Test(new LawEventPhase
       {
         Id = 1,
         Name = "name"
@@ -104,6 +104,6 @@ public sealed class LawEventPhaseTest : Test
 
     return;
 
-    static void Validate(ILawEventPhase instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILawEventPhase instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

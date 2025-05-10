@@ -125,7 +125,7 @@ public sealed class CommitteeTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Committee
+      Test(new Committee
       {
         Id = 1,
         Active = true,
@@ -137,6 +137,6 @@ public sealed class CommitteeTest : Test
 
     return;
 
-    static void Validate(ICommittee instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ICommittee instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

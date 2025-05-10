@@ -20,7 +20,7 @@ public sealed class IDateableExtensionsTest : Test
     {
       AssertionExtensions.Should(() => ((IEnumerable<DateableEntity>) null).Date()).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-      Validate([], []);
+      Test([], []);
 
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
@@ -29,14 +29,14 @@ public sealed class IDateableExtensionsTest : Test
       var third = new DateableEntity { Date = DateTimeOffset.MaxValue };
       var entities = new List<IDateable> { null, first, second, third, null };
 
-      Validate([second, third], entities, date);
-      Validate([first, second], entities, null, date);
-      Validate([first, second, third], entities, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
+      Test([second, third], entities, date);
+      Test([first, second], entities, null, date);
+      Test([first, second, third], entities, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
     }
 
     return;
 
-    static void Validate(IEnumerable<IDateable> result, IEnumerable<IDateable> entities, DateTimeOffset? from = null, DateTimeOffset? to = null) => entities.Date(from, to).Should().BeAssignableTo<IEnumerable<IDateable>>().And.Equal(result);
+    static void Test(IEnumerable<IDateable> result, IEnumerable<IDateable> entities, DateTimeOffset? from = null, DateTimeOffset? to = null) => entities.Date(from, to).Should().BeAssignableTo<IEnumerable<IDateable>>().And.Equal(result);
   }
 
   private sealed class DateableEntity : IDateable

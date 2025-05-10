@@ -19,13 +19,13 @@ public sealed class IDeputiesApiRequestExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IDeputiesApiRequestExtensions.Position(null, DeputyPosition.DumaDeputy)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      Validate(null, null, new DeputiesApiRequest());
-      Validate("Депутат ГД", DeputyPosition.DumaDeputy, new DeputiesApiRequest());
-      Validate("Член СФ", DeputyPosition.FederationCouncilMember, new DeputiesApiRequest());
+      Test(null, null, new DeputiesApiRequest());
+      Test("Депутат ГД", DeputyPosition.DumaDeputy, new DeputiesApiRequest());
+      Test("Член СФ", DeputyPosition.FederationCouncilMember, new DeputiesApiRequest());
     }
 
     return;
 
-    static void Validate(string result, DeputyPosition? position, IDeputiesApiRequest request) => request.Position(position).Should().BeSameAs(request).And.BeOfType<DeputiesApiRequest>().Which.Parameters["position"].Should().Be(result);
+    static void Test(string result, DeputyPosition? position, IDeputiesApiRequest request) => request.Position(position).Should().BeSameAs(request).And.BeOfType<DeputiesApiRequest>().Which.Parameters["position"].Should().Be(result);
   }
 }

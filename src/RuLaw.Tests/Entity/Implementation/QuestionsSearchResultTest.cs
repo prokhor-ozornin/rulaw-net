@@ -92,7 +92,7 @@ public sealed class QuestionsSearchResultTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new QuestionsSearchResult
+      Test(new QuestionsSearchResult
       {
         Count = 1,
         Page = 2,
@@ -103,6 +103,6 @@ public sealed class QuestionsSearchResultTest : Test
 
     return;
 
-    static void Validate(IQuestionsSearchResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IQuestionsSearchResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

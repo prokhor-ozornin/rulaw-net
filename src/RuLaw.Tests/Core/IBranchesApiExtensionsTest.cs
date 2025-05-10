@@ -19,12 +19,12 @@ public sealed class IBranchesApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => IBranchesApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Branches.All());
+      Test(Api.Branches.All());
     }
 
     return;
 
-    static void Validate(IEnumerable<ILawBranch> branches)
+    static void Test(IEnumerable<ILawBranch> branches)
     {
       branches.Should().BeOfType<List<LawBranch>>().And.NotBeEmpty();
 

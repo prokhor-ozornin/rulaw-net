@@ -114,7 +114,7 @@ public sealed class PhaseStageTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new PhaseStage
+      Test(new PhaseStage
       {
         Id = 1,
         Name = "name",
@@ -124,6 +124,6 @@ public sealed class PhaseStageTest : Test
 
     return;
 
-    static void Validate(IPhaseStage instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IPhaseStage instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

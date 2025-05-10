@@ -19,7 +19,7 @@ public sealed class IPageableExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IPageableExtensions.Page<IPageable>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-      Validate([], []);
+      Test([], []);
 
       var page = 0;
 
@@ -28,14 +28,14 @@ public sealed class IPageableExtensionsTest : Test
       var third = new PageableEntity { Page = int.MaxValue };
       var entities = new List<IPageable> { null, first, second, third, null };
 
-      Validate([second, third], entities, page);
-      Validate([first, second], entities, null, page);
-      Validate([first, second, third], entities, int.MinValue, int.MaxValue);
+      Test([second, third], entities, page);
+      Test([first, second], entities, null, page);
+      Test([first, second, third], entities, int.MinValue, int.MaxValue);
     }
 
     return;
 
-    static void Validate(IEnumerable<IPageable> result, IEnumerable<IPageable> sequence, int? from = null, int? to = null) => sequence.Page(from, to).Should().BeAssignableTo<IEnumerable<IPageable>>().And.Equal(result);
+    static void Test(IEnumerable<IPageable> result, IEnumerable<IPageable> sequence, int? from = null, int? to = null) => sequence.Page(from, to).Should().BeAssignableTo<IEnumerable<IPageable>>().And.Equal(result);
   }
 
   /// <summary>
@@ -48,7 +48,7 @@ public sealed class IPageableExtensionsTest : Test
     {
       AssertionExtensions.Should(() => ((IEnumerable<PageableEntity>) null).Page(0)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-      Validate([], []);
+      Test([], []);
 
       var size = 0;
 
@@ -57,14 +57,14 @@ public sealed class IPageableExtensionsTest : Test
       var third = new PageableEntity { PageSize = int.MaxValue };
       var entities = new List<IPageable> { null, first, second, third, null };
 
-      Validate([second, third], entities, size);
-      Validate([first, second], entities, null, size);
-      Validate([first, second, third], entities, int.MinValue, int.MaxValue);
+      Test([second, third], entities, size);
+      Test([first, second], entities, null, size);
+      Test([first, second, third], entities, int.MinValue, int.MaxValue);
     }
 
     return;
 
-    static void Validate(IEnumerable<IPageable> result, IEnumerable<IPageable> sequence, int? from = null, int? to = null) => sequence.PageSize(from, to).Should().BeAssignableTo<IEnumerable<IPageable>>().And.Equal(result);
+    static void Test(IEnumerable<IPageable> result, IEnumerable<IPageable> sequence, int? from = null, int? to = null) => sequence.PageSize(from, to).Should().BeAssignableTo<IEnumerable<IPageable>>().And.Equal(result);
   }
 
   private sealed class PageableEntity : IPageable

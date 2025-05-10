@@ -95,7 +95,7 @@ public sealed class TopicTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Topic
+      Test(new Topic
       {
         Id = 1,
         Name = "name"
@@ -104,6 +104,6 @@ public sealed class TopicTest : Test
 
     return;
 
-    static void Validate(ITopic instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ITopic instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

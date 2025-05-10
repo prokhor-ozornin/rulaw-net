@@ -19,12 +19,12 @@ public sealed class IRequestsApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => IRequestsApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Requests.All());
+      Test(Api.Requests.All());
     }
 
     return;
 
-    static void Validate(IEnumerable<IDeputyRequest> requests)
+    static void Test(IEnumerable<IDeputyRequest> requests)
     {
       requests.Should().BeOfType<List<DeputyRequest>>().And.NotBeEmpty();
 

@@ -115,7 +115,7 @@ public sealed class SessionTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Session
+      Test(new Session
       {
         Id = 1,
         Name = "name",
@@ -126,6 +126,6 @@ public sealed class SessionTest : Test
 
     return;
 
-    static void Validate(ISession instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ISession instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

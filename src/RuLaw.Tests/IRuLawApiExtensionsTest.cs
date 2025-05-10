@@ -22,12 +22,12 @@ public sealed class IRuLawApiExtensionsTest : Test
       //AssertionExtensions.Should(() => IRuLawApiExtensions.Configure(RuLaw.Api, null)).ThrowExactly<ArgumentNullException>().WithParameterName("action");
       //AssertionExtensions.Should(() => RuLaw.Api.Configure(_ => {})).ThrowExactly<InvalidOperationException>();
       
-      Validate(RuLaw.Api);
+      Test(RuLaw.Api);
     }
 
     return;
 
-    static void Validate(IRuLawApi api)
+    static void Test(IRuLawApi api)
     {
       var result = api.Configure(configurator => configurator.ApiKey("apiKey").AppKey("appKey")).Should().BeOfType<Api>();
       result.GetPropertyValue<string>("ApiToken").Should().Be("apiKey");

@@ -97,7 +97,7 @@ public sealed class EducationTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Education
+      Test(new Education
       {
         Institution = "institution",
         Year = 1
@@ -106,6 +106,6 @@ public sealed class EducationTest : Test
 
     return;
 
-    static void Validate(IEducation instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IEducation instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

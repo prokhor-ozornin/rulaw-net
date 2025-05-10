@@ -125,7 +125,7 @@ public sealed class RegionalAuthorityTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new RegionalAuthority
+      Test(new RegionalAuthority
       {
         Id = 1,
         Active = true,
@@ -137,6 +137,6 @@ public sealed class RegionalAuthorityTest : Test
 
     return;
 
-    static void Validate(IAuthority instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IAuthority instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

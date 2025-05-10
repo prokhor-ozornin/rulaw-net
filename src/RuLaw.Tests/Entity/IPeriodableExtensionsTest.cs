@@ -19,7 +19,7 @@ public sealed class IPeriodableExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IPeriodableExtensions.Period<IPeriodable>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("entities");
 
-      Validate([], []);
+      Test([], []);
 
       var date = new DateTimeOffset(year: 2000, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero);
 
@@ -27,22 +27,22 @@ public sealed class IPeriodableExtensionsTest : Test
       var second = new PeriodableEntity { FromDate = date };
       var third = new PeriodableEntity { FromDate = DateTimeOffset.MaxValue };
       var entities = new List<IPeriodable> { null, first, second, third, null };
-      Validate([second, third], entities, date);
-      Validate([first, second, third], entities, null, date);
-      Validate([first, second, third], entities, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
+      Test([second, third], entities, date);
+      Test([first, second, third], entities, null, date);
+      Test([first, second, third], entities, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
 
       first = new PeriodableEntity { FromDate = DateTimeOffset.MinValue, ToDate = DateTimeOffset.MaxValue };
       second = new PeriodableEntity { FromDate = date, ToDate = date };
       third = new PeriodableEntity { FromDate = DateTimeOffset.MaxValue, ToDate = DateTimeOffset.MaxValue };
       entities = [null, first, second, third, null];
-      Validate([second, third], entities, date);
-      Validate([second], entities, null, date);
-      Validate([second], entities, date, date);
+      Test([second, third], entities, date);
+      Test([second], entities, null, date);
+      Test([second], entities, date, date);
     }
 
     return;
 
-    static void Validate(IEnumerable<IPeriodable> result, IEnumerable<IPeriodable> sequence, DateTimeOffset? from = null, DateTimeOffset? to = null) => sequence.Period(from, to).Should().BeAssignableTo<IEnumerable<IPeriodable>>().And.Equal(result);
+    static void Test(IEnumerable<IPeriodable> result, IEnumerable<IPeriodable> sequence, DateTimeOffset? from = null, DateTimeOffset? to = null) => sequence.Period(from, to).Should().BeAssignableTo<IEnumerable<IPeriodable>>().And.Equal(result);
   }
 
   private sealed class PeriodableEntity : IPeriodable

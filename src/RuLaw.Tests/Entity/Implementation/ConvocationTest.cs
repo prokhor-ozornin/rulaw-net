@@ -133,7 +133,7 @@ public sealed class ConvocationTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Convocation
+      Test(new Convocation
       {
         Id = 1,
         FromDate = DateTimeOffset.MinValue,
@@ -145,6 +145,6 @@ public sealed class ConvocationTest : Test
 
     return;
 
-    static void Validate(IConvocation instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IConvocation instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

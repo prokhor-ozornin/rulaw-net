@@ -137,7 +137,7 @@ public sealed class QuestionTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Question
+      Test(new Question
       {
         Code = 1,
         Date = DateTimeOffset.MinValue,
@@ -150,6 +150,6 @@ public sealed class QuestionTest : Test
 
     return;
 
-    static void Validate(IQuestion instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IQuestion instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

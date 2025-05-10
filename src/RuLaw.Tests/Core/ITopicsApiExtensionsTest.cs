@@ -19,12 +19,12 @@ public sealed class ITopicsApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => ITopicsApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Topics.All());
+      Test(Api.Topics.All());
     }
 
     return;
 
-    static void Validate(IEnumerable<ITopic> topics)
+    static void Test(IEnumerable<ITopic> topics)
     {
       topics.Should().BeOfType<List<Topic>>().And.NotBeEmpty();
       

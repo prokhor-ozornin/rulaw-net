@@ -21,12 +21,12 @@ public sealed class IDeputiesApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => IDeputiesApiExtensions.Find(null, 1)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Deputies.Find(99100142));
+      Test(Api.Deputies.Find(99100142));
     }
 
     return;
 
-    static void Validate(IDeputyInfo deputy)
+    static void Test(IDeputyInfo deputy)
     {
       deputy.Should().BeOfType<DeputyInfo>();
 
@@ -66,7 +66,7 @@ public sealed class IDeputiesApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null, new DeputiesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => Api.Deputies.Search((IDeputiesApiRequest) null)).ThrowExactly<TaskCanceledException>();
 
-      Validate(Api.Deputies.Search(new DeputiesApiRequest().Position(DeputyPosition.DumaDeputy).Current(false).Name("А")));
+      Test(Api.Deputies.Search(new DeputiesApiRequest().Position(DeputyPosition.DumaDeputy).Current(false).Name("А")));
     }
 
     using (new AssertionScope())
@@ -74,12 +74,12 @@ public sealed class IDeputiesApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => IDeputiesApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => Api.Deputies.Search((Action<IDeputiesApiRequest>) null)).ThrowExactly<TaskCanceledException>();
 
-      Validate(Api.Deputies.Search(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")));
+      Test(Api.Deputies.Search(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")));
     }
 
     return;
 
-    static void Validate(IEnumerable<IDeputy> deputies)
+    static void Test(IEnumerable<IDeputy> deputies)
     {
       deputies.Should().BeOfType<List<Deputy>>().And.NotBeEmpty();
 
@@ -102,12 +102,12 @@ public sealed class IDeputiesApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(Api.Deputies, null, Fixture.Create<CancellationToken>())).ThrowExactly<OperationCanceledException>();
 
-      Validate(Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToArray());
+      Test(Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToArray());
     }
 
     return;
 
-    static void Validate(IEnumerable<IDeputy> deputies)
+    static void Test(IEnumerable<IDeputy> deputies)
     {
       deputies.Should().BeOfType<List<Deputy>>().And.NotBeEmpty();
 

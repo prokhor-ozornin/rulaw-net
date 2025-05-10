@@ -105,7 +105,7 @@ public sealed class InstanceTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Instance
+      Test(new Instance
       {
         Id = 1,
         Active = true,
@@ -115,6 +115,6 @@ public sealed class InstanceTest : Test
 
     return;
 
-    static void Validate(IInstance instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IInstance instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

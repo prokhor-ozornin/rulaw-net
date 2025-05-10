@@ -102,11 +102,11 @@ public sealed class DateTranscriptsResultTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new DateTranscriptsResult());
+      Test(new DateTranscriptsResult());
     }
 
     return;
 
-    static void Validate(IDateTranscriptsResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IDateTranscriptsResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

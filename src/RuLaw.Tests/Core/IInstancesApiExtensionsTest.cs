@@ -25,19 +25,19 @@ public sealed class IInstancesApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null, new InstancesApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Instances.Search(new InstancesApiRequest().Current()));
+      Test(Api.Instances.Search(new InstancesApiRequest().Current()));
     }
 
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IInstancesApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Instances.Search(request => request.Current()));
+      Test(Api.Instances.Search(request => request.Current()));
     }
 
     return;
 
-    static void Validate(IEnumerable<IInstance> instances)
+    static void Test(IEnumerable<IInstance> instances)
     {
       instances.Should().BeOfType<List<Instance>>().And.NotBeEmpty();
 
@@ -58,12 +58,12 @@ public sealed class IInstancesApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => IInstancesApiExtensions.SearchAsync(Api.Instances, null, Fixture.Create<CancellationToken>())).ThrowExactly<OperationCanceledException>();
 
-      Validate(Api.Instances.SearchAsync(request => request.Current()).ToArray());
+      Test(Api.Instances.SearchAsync(request => request.Current()).ToArray());
     }
 
     return;
 
-    static void Validate(IEnumerable<IInstance> instances)
+    static void Test(IEnumerable<IInstance> instances)
     {
       instances.Should().BeOfType<List<Instance>>().And.NotBeEmpty();
 

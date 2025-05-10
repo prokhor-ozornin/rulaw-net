@@ -123,7 +123,7 @@ public sealed class LawTranscriptsResultTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new LawTranscriptsResult
+      Test(new LawTranscriptsResult
       {
         Name = "name",
         Number = "number",
@@ -134,6 +134,6 @@ public sealed class LawTranscriptsResultTest : Test
 
     return;
 
-    static void Validate(ILawTranscriptsResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILawTranscriptsResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

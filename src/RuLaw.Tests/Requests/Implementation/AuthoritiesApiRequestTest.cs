@@ -36,13 +36,13 @@ public sealed class AuthoritiesApiRequestTest : Test
     {
       var request = new AuthoritiesApiRequest();
       
-      Validate(null, request);
-      Validate(true, request);
-      Validate(false, request);
+      Test(null, request);
+      Test(true, request);
+      Test(false, request);
     }
 
     return;
 
-    static void Validate(bool? current, IAuthoritiesApiRequest request) => request.Current(current).Should().BeSameAs(request).And.BeOfType<AuthoritiesApiRequest>().Which.Parameters["current"].Should().Be(current?.ToString().ToLowerInvariant());
+    static void Test(bool? current, IAuthoritiesApiRequest request) => request.Current(current).Should().BeSameAs(request).And.BeOfType<AuthoritiesApiRequest>().Which.Parameters["current"].Should().Be(current?.ToString().ToLowerInvariant());
   }
 }

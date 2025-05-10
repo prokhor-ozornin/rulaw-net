@@ -187,7 +187,7 @@ public sealed class DeputyRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new DeputyRequest
+      Test(new DeputyRequest
       {
         Id = 1,
         Addressee = new DeputyRequestAddressee(),
@@ -205,6 +205,6 @@ public sealed class DeputyRequestTest : Test
 
     return;
 
-    static void Validate(IDeputyRequest instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IDeputyRequest instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

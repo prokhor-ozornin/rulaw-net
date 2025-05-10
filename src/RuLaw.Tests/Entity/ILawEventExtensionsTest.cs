@@ -20,17 +20,17 @@ public sealed class ILawEventExtensionsTest : Test
     {
       AssertionExtensions.Should(() => ILawEventExtensions.Solution<ILawEvent>(null, "solution")).ThrowExactly<ArgumentNullException>().WithParameterName("events");
 
-      Validate([], [], null);
-      Validate([], [], "solution");
+      Test([], [], null);
+      Test([], [], "solution");
 
       var first = new LawEvent { Solution = "first" };
       var second = new LawEvent { Solution = "second" };
-      Validate([], [null], null);
-      Validate([first], [null, first, second, null], first.Solution);
+      Test([], [null], null);
+      Test([first], [null, first, second, null], first.Solution);
     }
 
     return;
 
-    static void Validate(IEnumerable<ILawEvent> result, IEnumerable<ILawEvent> events, string solution) => events.Solution(solution).Should().BeAssignableTo<IEnumerable<ILawEvent>>().And.Equal(result);
+    static void Test(IEnumerable<ILawEvent> result, IEnumerable<ILawEvent> events, string solution) => events.Solution(solution).Should().BeAssignableTo<IEnumerable<ILawEvent>>().And.Equal(result);
   }
 }

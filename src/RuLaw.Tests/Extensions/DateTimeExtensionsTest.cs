@@ -17,13 +17,13 @@ public sealed class DateTimeOffsetExtensionsTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(DateTimeOffset.MinValue);
-      Validate(DateTimeOffset.MaxValue);
-      Validate(DateTimeOffset.Now);
+      Test(DateTimeOffset.MinValue);
+      Test(DateTimeOffset.MaxValue);
+      Test(DateTimeOffset.Now);
     }
 
     return;
 
-    static void Validate(DateTimeOffset date) => date.AsString().Should().BeOfType<string>().And.Be(date.ToString("yyyy-MM-dd"));
+    static void Test(DateTimeOffset date) => date.AsString().Should().BeOfType<string>().And.Be(date.ToString("yyyy-MM-dd"));
   }
 }

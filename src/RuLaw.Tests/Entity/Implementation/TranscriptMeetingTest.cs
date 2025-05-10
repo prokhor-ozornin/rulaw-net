@@ -126,7 +126,7 @@ public sealed class TranscriptMeetingTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new TranscriptMeeting
+      Test(new TranscriptMeeting
       {
         Date = DateTimeOffset.MinValue,
         LinesCount = 1,
@@ -137,6 +137,6 @@ public sealed class TranscriptMeetingTest : Test
 
     return;
 
-    static void Validate(ITranscriptMeeting instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ITranscriptMeeting instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

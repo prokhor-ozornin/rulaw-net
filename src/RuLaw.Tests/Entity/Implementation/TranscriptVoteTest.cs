@@ -88,7 +88,7 @@ public sealed class TranscriptVoteTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new TranscriptVote
+      Test(new TranscriptVote
       {
         Date = DateTimeOffset.MinValue,
         Line = 1
@@ -97,6 +97,6 @@ public sealed class TranscriptVoteTest : Test
 
     return;
 
-    static void Validate(ITranscriptVote instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ITranscriptVote instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

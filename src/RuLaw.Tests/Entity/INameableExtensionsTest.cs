@@ -21,12 +21,12 @@ public sealed class INameableExtensionsTest : Test
       AssertionExtensions.Should(() => Enumerable.Empty<INameable>().Name(null)).ThrowExactly<ArgumentNullException>().WithParameterName("name");
       AssertionExtensions.Should(() => Enumerable.Empty<INameable>().Name(string.Empty)).ThrowExactly<ArgumentException>().WithMessage("name");
       
-      Validate(new NameableEntity[] { new() { Name = "first" }, new() { Name = "second" } }, "first", 1);
+      Test(new NameableEntity[] { new() { Name = "first" }, new() { Name = "second" } }, "first", 1);
     }
 
     return;
 
-    static void Validate(IEnumerable<INameable> sequence, string name, int count) => sequence.Name(name).Should().NotBeNull().And.NotBeSameAs(sequence).And.HaveCount(count);
+    static void Test(IEnumerable<INameable> sequence, string name, int count) => sequence.Name(name).Should().NotBeNull().And.NotBeSameAs(sequence).And.HaveCount(count);
   }
 
   private sealed class NameableEntity : INameable

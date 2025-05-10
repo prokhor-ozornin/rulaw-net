@@ -19,18 +19,18 @@ public sealed class IEducationExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IEducationExtensions.Institution<IEducation>(null, "institution")).ThrowExactly<ArgumentNullException>().WithParameterName("educations");
 
-      Validate([], [], null);
-      Validate([], [], "institution");
+      Test([], [], null);
+      Test([], [], "institution");
 
       var first = new Education { Institution = "first" };
       var second = new Education { Institution = "second" };
-      Validate([], [null], null);
-      Validate([first], [null, first, second, null], first.Institution);
+      Test([], [null], null);
+      Test([first], [null, first, second, null], first.Institution);
     }
 
     return;
 
-    static void Validate(IEnumerable<IEducation> result, IEnumerable<IEducation> educations, string institution) => educations.Institution(institution).Should().BeAssignableTo<IEnumerable<IEducation>>().And.Equal(result);
+    static void Test(IEnumerable<IEducation> result, IEnumerable<IEducation> educations, string institution) => educations.Institution(institution).Should().BeAssignableTo<IEnumerable<IEducation>>().And.Equal(result);
   }
 
   /// <summary>
@@ -43,20 +43,20 @@ public sealed class IEducationExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IEducationExtensions.Year<IEducation>(null)).ThrowExactly<ArgumentNullException>();
 
-      Validate([], []);
+      Test([], []);
       
       var first = new Education { Year = 0 };
       var second = new Education { Year = 1 };
       var third = new Education { Year = 2 };
 
       var educations = new List<IEducation> { null, first, second, third, null };
-      Validate([second, third], educations, 1);
-      Validate([first, second], educations, null, 1);
-      Validate([first, second, third], educations, 0, 2);
+      Test([second, third], educations, 1);
+      Test([first, second], educations, null, 1);
+      Test([first, second, third], educations, 0, 2);
     }
 
     return;
 
-    static void Validate(IEnumerable<IEducation> result, IEnumerable<IEducation> educations, short? from = null, short? to = null) => educations.Year(from, to).Should().BeAssignableTo<IEnumerable<IEducation>>().And.Equal(result);
+    static void Test(IEnumerable<IEducation> result, IEnumerable<IEducation> educations, short? from = null, short? to = null) => educations.Year(from, to).Should().BeAssignableTo<IEnumerable<IEducation>>().And.Equal(result);
   }
 }

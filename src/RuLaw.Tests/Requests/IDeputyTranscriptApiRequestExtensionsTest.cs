@@ -19,13 +19,13 @@ public sealed class IDeputyTranscriptApiRequestExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IDeputyTranscriptApiRequestExtensions.Deputy(null, new Deputy())).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      Validate(null, new DeputyTranscriptApiRequest());
-      Validate(new Deputy { Id = long.MinValue }, new DeputyTranscriptApiRequest());
-      Validate(new Deputy { Id = long.MaxValue }, new DeputyTranscriptApiRequest());
+      Test(null, new DeputyTranscriptApiRequest());
+      Test(new Deputy { Id = long.MinValue }, new DeputyTranscriptApiRequest());
+      Test(new Deputy { Id = long.MaxValue }, new DeputyTranscriptApiRequest());
     }
 
     return;
 
-    static void Validate(IDeputy deputy, IDeputyTranscriptApiRequest request) => request.Deputy(deputy).Should().BeSameAs(request).And.BeOfType<DeputyTranscriptApiRequest>().Which.Parameters["deputy"].Should().Be(deputy?.Id);
+    static void Test(IDeputy deputy, IDeputyTranscriptApiRequest request) => request.Deputy(deputy).Should().BeSameAs(request).And.BeOfType<DeputyTranscriptApiRequest>().Which.Parameters["deputy"].Should().Be(deputy?.Id);
   }
 }

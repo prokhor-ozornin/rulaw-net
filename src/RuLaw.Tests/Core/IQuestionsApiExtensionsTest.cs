@@ -25,19 +25,19 @@ public sealed class IQuestionsApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => IQuestionsApiExtensions.Search(null, new QuestionsApiRequest())).ThrowExactly<ArgumentNullException>();
 
-      Validate(Api.Questions.Search(new QuestionsApiRequest().FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)));
+      Test(Api.Questions.Search(new QuestionsApiRequest().FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)));
     }
 
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IQuestionsApiExtensions.Search(null, _ => {})).ThrowExactly<ArgumentNullException>();
 
-      Validate(Api.Questions.Search(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)));
+      Test(Api.Questions.Search(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)));
     }
 
     return;
 
-    static void Validate(IQuestionsSearchResult result)
+    static void Test(IQuestionsSearchResult result)
     {
       result.Should().BeOfType<QuestionsSearchResult>();
 
@@ -100,12 +100,12 @@ public sealed class IQuestionsApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
       AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(Api.Questions, null, Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
-      Validate(Api.Questions.SearchAsync(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)));
+      Test(Api.Questions.SearchAsync(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)));
     }
 
     return;
 
-    static void Validate(Task<IQuestionsSearchResult> task)
+    static void Test(Task<IQuestionsSearchResult> task)
     {
       task.Should().BeAssignableTo<Task<IQuestionsSearchResult>>();
 

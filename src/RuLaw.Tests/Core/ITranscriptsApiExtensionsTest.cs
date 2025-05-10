@@ -21,12 +21,12 @@ public sealed class ITranscriptsApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => ITranscriptsApiExtensions.Date(null, DateTimeOffset.UtcNow)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Transcripts.Date(new DateTimeOffset(year: 2013, month: 5, day: 14, hour: 0, minute: 0, second: 0, TimeSpan.Zero)));
+      Test(Api.Transcripts.Date(new DateTimeOffset(year: 2013, month: 5, day: 14, hour: 0, minute: 0, second: 0, TimeSpan.Zero)));
     }
 
     return;
 
-    static void Validate(IDateTranscriptsResult result)
+    static void Test(IDateTranscriptsResult result)
     {
       result.Should().BeOfType<DateTranscriptsResult>();
 
@@ -62,7 +62,7 @@ public sealed class ITranscriptsApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => ITranscriptsApiExtensions.Deputy(null, new DeputyTranscriptApiRequest())).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => Api.Transcripts.Deputy((IDeputyTranscriptApiRequest) null)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      Validate(Api.Transcripts.Deputy(new DeputyTranscriptApiRequest().Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)));
+      Test(Api.Transcripts.Deputy(new DeputyTranscriptApiRequest().Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)));
     }
 
     using (new AssertionScope())
@@ -70,12 +70,12 @@ public sealed class ITranscriptsApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => ITranscriptsApiExtensions.Deputy(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
       AssertionExtensions.Should(() => Api.Transcripts.Deputy((Action<IDeputyTranscriptApiRequest>) null)).ThrowExactly<ArgumentNullException>().WithParameterName("action");
 
-      Validate(Api.Transcripts.Deputy(request => request.Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)));
+      Test(Api.Transcripts.Deputy(request => request.Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)));
     }
 
     return;
 
-    static void Validate(IDeputyTranscriptsResult result)
+    static void Test(IDeputyTranscriptsResult result)
     {
       result.Should().BeOfType<DeputyTranscriptsResult>();
 
@@ -107,12 +107,12 @@ public sealed class ITranscriptsApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync((Action<IDeputyTranscriptApiRequest>) null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("action").Await();
       AssertionExtensions.Should(() => Api.Transcripts.DeputyAsync(_ => { }, Fixture.Create<CancellationToken>())).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-      Validate(Api.Transcripts.DeputyAsync(request => request.Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)));
+      Test(Api.Transcripts.DeputyAsync(request => request.Deputy(99100142).FromDate(new DateTimeOffset(year: 2014, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2014, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Page(1).PageSize(PageSize.Ten)));
     }
 
     return;
 
-    static void Validate(Task<IDeputyTranscriptsResult> task)
+    static void Test(Task<IDeputyTranscriptsResult> task)
     {
       task.Should().BeAssignableTo<Task<IDeputyTranscriptsResult>>();
 
@@ -148,12 +148,12 @@ public sealed class ITranscriptsApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => Api.Transcripts.Law(null)).ThrowExactly<ArgumentNullException>().WithParameterName("number");
       AssertionExtensions.Should(() => Api.Transcripts.Law(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("number");
 
-      Validate(Api.Transcripts.Law("140513-6"));
+      Test(Api.Transcripts.Law("140513-6"));
     }
 
     return;
 
-    static void Validate(ILawTranscriptsResult result)
+    static void Test(ILawTranscriptsResult result)
     {
       result.Should().BeOfType<LawTranscriptsResult>();
 
@@ -213,12 +213,12 @@ public sealed class ITranscriptsApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => ITranscriptsApiExtensions.Question(null, 0, 0)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Transcripts.Question(80, 13));
+      Test(Api.Transcripts.Question(80, 13));
     }
 
     return;
 
-    static void Validate(IQuestionTranscriptsResult result)
+    static void Test(IQuestionTranscriptsResult result)
     {
       result.Should().BeOfType<QuestionTranscriptsResult>();
 
@@ -257,12 +257,12 @@ public sealed class ITranscriptsApiExtensionsTest : IntegrationTest
       AssertionExtensions.Should(() => Api.Transcripts.Resolution(null)).ThrowExactly<ArgumentNullException>().WithParameterName("number");
       AssertionExtensions.Should(() => Api.Transcripts.Resolution(string.Empty)).ThrowExactly<ArgumentException>().WithParameterName("number");
 
-      Validate(Api.Transcripts.Resolution("276569-6"));
+      Test(Api.Transcripts.Resolution("276569-6"));
     }
 
     return;
 
-    static void Validate(IResolutionTranscriptsResult result)
+    static void Test(IResolutionTranscriptsResult result)
     {
       result.Should().BeOfType<ResolutionTranscriptsResult>();
 

@@ -185,7 +185,7 @@ public sealed class VoteTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Vote
+      Test(new Vote
       {
         Id = 1,
         AbsentVotesCount = 1,
@@ -203,6 +203,6 @@ public sealed class VoteTest : Test
 
     return;
 
-    static void Validate(IVote instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IVote instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

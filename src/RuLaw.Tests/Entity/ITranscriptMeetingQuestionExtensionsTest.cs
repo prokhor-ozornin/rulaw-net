@@ -19,20 +19,20 @@ public sealed class ITranscriptMeetingQuestionExtensionsTest : Test
     {
       AssertionExtensions.Should(() => ITranscriptMeetingQuestionExtensions.Stage<ITranscriptMeetingQuestion>(null, "stage")).ThrowExactly<ArgumentNullException>().WithParameterName("questions");
 
-      Validate([], [], null);
-      Validate([], [], "subject");
+      Test([], [], null);
+      Test([], [], "subject");
 
       Enumerable.Empty<ITranscriptMeetingQuestion>().Stage("stage").Should().NotBeNull().And.BeEmpty();
 
       var first = new TranscriptMeetingQuestion { Stage = "first" };
       var second = new TranscriptMeetingQuestion { Stage = "second" };
-      Validate([], [null], null);
-      Validate([first], [null, first, second, null], first.Stage);
+      Test([], [null], null);
+      Test([first], [null, first, second, null], first.Stage);
 
     }
 
     return;
 
-    static void Validate(IEnumerable<ITranscriptMeetingQuestion> result, IEnumerable<ITranscriptMeetingQuestion> meetings, string stage) => meetings.Stage(stage).Should().BeAssignableTo<IEnumerable<ITranscriptMeetingQuestion>>().And.Equal(result);
+    static void Test(IEnumerable<ITranscriptMeetingQuestion> result, IEnumerable<ITranscriptMeetingQuestion> meetings, string stage) => meetings.Stage(stage).Should().BeAssignableTo<IEnumerable<ITranscriptMeetingQuestion>>().And.Equal(result);
   }
 }

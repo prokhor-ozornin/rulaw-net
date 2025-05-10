@@ -24,26 +24,26 @@ public sealed class IDeputyExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IDeputyExtensions.Position(null)).ThrowExactly<ArgumentNullException>().WithParameterName("deputy");
 
-      Validate(null, new Deputy());
-      Validate(DeputyPosition.DumaDeputy, new Deputy { Position = "Депутат ГД" });
-      Validate(DeputyPosition.FederationCouncilMember, new Deputy { Position = "Член СФ" });
+      Test(null, new Deputy());
+      Test(DeputyPosition.DumaDeputy, new Deputy { Position = "Депутат ГД" });
+      Test(DeputyPosition.FederationCouncilMember, new Deputy { Position = "Член СФ" });
 
-      static void Validate(DeputyPosition? result, IDeputy deputy) => deputy.Position().Should().Be(result);
+      static void Test(DeputyPosition? result, IDeputy deputy) => deputy.Position().Should().Be(result);
     }
 
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IDeputyExtensions.Position<IDeputy>(null, "position")).ThrowExactly<ArgumentNullException>().WithParameterName("deputies");
 
-      Validate([], [], null);
-      Validate([], [], "position");
+      Test([], [], null);
+      Test([], [], "position");
       
       var first = new Deputy { Position = "first" };
       var second = new Deputy { Position = "second" };
-      Validate([], [null], null);
-      Validate([first], [null, first, second, null], first.Position);
+      Test([], [null], null);
+      Test([first], [null, first, second, null], first.Position);
 
-      static void Validate(IEnumerable<IDeputy> result, IEnumerable<IDeputy> deputies, string position) => deputies.Position(position).Should().BeAssignableTo<IEnumerable<IDeputy>>().And.Equal(result);
+      static void Test(IEnumerable<IDeputy> result, IEnumerable<IDeputy> deputies, string position) => deputies.Position(position).Should().BeAssignableTo<IEnumerable<IDeputy>>().And.Equal(result);
     }
   }
 }

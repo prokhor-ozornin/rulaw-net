@@ -34,14 +34,14 @@ public sealed class DeputiesApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new DeputiesApiRequest(), null);
-      Validate(string.Empty, new DeputiesApiRequest(), string.Empty);
-      Validate("name", new DeputiesApiRequest(), "name");
+      Test(null, new DeputiesApiRequest(), null);
+      Test(string.Empty, new DeputiesApiRequest(), string.Empty);
+      Test("name", new DeputiesApiRequest(), "name");
     }
 
     return;
 
-    static void Validate(string result, IDeputiesApiRequest request, string name) => request.Name(name).Should().BeSameAs(request).And.BeOfType<DeputiesApiRequest>().Which.Parameters["begin"].Should().Be(name).And.Be(result);
+    static void Test(string result, IDeputiesApiRequest request, string name) => request.Name(name).Should().BeSameAs(request).And.BeOfType<DeputiesApiRequest>().Which.Parameters["begin"].Should().Be(name).And.Be(result);
   }
 
   /// <summary>
@@ -52,14 +52,14 @@ public sealed class DeputiesApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new DeputiesApiRequest(), null);
-      Validate(string.Empty, new DeputiesApiRequest(), string.Empty);
-      Validate("position", new DeputiesApiRequest(), "position");
+      Test(null, new DeputiesApiRequest(), null);
+      Test(string.Empty, new DeputiesApiRequest(), string.Empty);
+      Test("position", new DeputiesApiRequest(), "position");
     }
 
     return;
 
-    static void Validate(string result, IDeputiesApiRequest request, string position) => request.Position(position).Should().BeSameAs(request).And.BeOfType<DeputiesApiRequest>().Which.Parameters["position"].Should().Be(position).And.Be(result);
+    static void Test(string result, IDeputiesApiRequest request, string position) => request.Position(position).Should().BeSameAs(request).And.BeOfType<DeputiesApiRequest>().Which.Parameters["position"].Should().Be(position).And.Be(result);
   }
 
   /// <summary>
@@ -72,13 +72,13 @@ public sealed class DeputiesApiRequestTest : Test
     {
       var request = new DeputiesApiRequest();
 
-      Validate(null, request);
-      Validate(true, request);
-      Validate(false, request);
+      Test(null, request);
+      Test(true, request);
+      Test(false, request);
     }
 
     return;
 
-    static void Validate(bool? current, IDeputiesApiRequest request) => request.Current(current).Should().BeSameAs(request).And.BeOfType<DeputiesApiRequest>().Which.Parameters["current"].Should().Be(current?.ToString().ToLowerInvariant());
+    static void Test(bool? current, IDeputiesApiRequest request) => request.Current(current).Should().BeSameAs(request).And.BeOfType<DeputiesApiRequest>().Which.Parameters["current"].Should().Be(current?.ToString().ToLowerInvariant());
 }
 }

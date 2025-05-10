@@ -95,7 +95,7 @@ public sealed class LawEventDocumentTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new LawEventDocument
+      Test(new LawEventDocument
       {
         Name = "name",
         Type = "type"
@@ -104,6 +104,6 @@ public sealed class LawEventDocumentTest : Test
 
     return;
 
-    static void Validate(ILawEventDocument instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILawEventDocument instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

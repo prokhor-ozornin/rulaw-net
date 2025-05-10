@@ -189,11 +189,11 @@ public sealed class LawTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Law());
+      Test(new Law());
     }
 
     return;
 
-    static void Validate(ILaw instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILaw instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

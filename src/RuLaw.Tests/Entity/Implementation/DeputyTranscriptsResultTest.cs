@@ -112,11 +112,11 @@ public sealed class DeputyTranscriptsResultTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new DeputyTranscriptsResult());
+      Test(new DeputyTranscriptsResult());
     }
 
     return;
 
-    static void Validate(IDeputyTranscriptsResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IDeputyTranscriptsResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

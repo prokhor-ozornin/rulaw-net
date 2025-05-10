@@ -125,7 +125,7 @@ public sealed class FederalAuthorityTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new FederalAuthority
+      Test(new FederalAuthority
       {
         Id = 1,
         Active = true,
@@ -137,6 +137,6 @@ public sealed class FederalAuthorityTest : Test
 
     return;
 
-    static void Validate(IAuthority instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IAuthority instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

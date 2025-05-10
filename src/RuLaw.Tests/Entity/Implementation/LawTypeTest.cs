@@ -95,7 +95,7 @@ public sealed class LawTypeTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new LawType
+      Test(new LawType
       {
         Id = 1,
         Name = "name"
@@ -104,6 +104,6 @@ public sealed class LawTypeTest : Test
 
     return;
 
-    static void Validate(ILawType instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILawType instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

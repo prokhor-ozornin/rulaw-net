@@ -135,7 +135,7 @@ public sealed class TranscriptMeetingQuestionPartTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new TranscriptMeetingQuestionPart
+      Test(new TranscriptMeetingQuestionPart
       {
         EndLine = 2,
         Lines = ["line"],
@@ -146,6 +146,6 @@ public sealed class TranscriptMeetingQuestionPartTest : Test
 
     return;
 
-    static void Validate(ITranscriptMeetingQuestionPart instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ITranscriptMeetingQuestionPart instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

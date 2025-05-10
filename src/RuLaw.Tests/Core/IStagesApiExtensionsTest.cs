@@ -19,12 +19,12 @@ public sealed class IStagesApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => IStagesApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Stages.All());
+      Test(Api.Stages.All());
     }
 
     return;
 
-    static void Validate(IEnumerable<IPhaseStage> stages)
+    static void Test(IEnumerable<IPhaseStage> stages)
     {
       stages.Should().BeOfType<List<PhaseStage>>().And.NotBeEmpty();
 

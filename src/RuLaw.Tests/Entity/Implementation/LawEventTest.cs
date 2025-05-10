@@ -106,7 +106,7 @@ public sealed class LawEventTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new LawEvent
+      Test(new LawEvent
       {
         Date = DateTimeOffset.MinValue,
         Document = new LawEventDocument { Name = "document.name", Type = "document.type" },
@@ -118,6 +118,6 @@ public sealed class LawEventTest : Test
 
     return;
 
-    static void Validate(ILawEvent instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILawEvent instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

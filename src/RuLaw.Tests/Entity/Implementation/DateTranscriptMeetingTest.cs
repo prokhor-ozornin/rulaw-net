@@ -131,7 +131,7 @@ public sealed class DateTranscriptMeetingTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new DateTranscriptMeeting
+      Test(new DateTranscriptMeeting
       {
         Date = DateTimeOffset.MinValue,
         Lines = ["line"],
@@ -142,6 +142,6 @@ public sealed class DateTranscriptMeetingTest : Test
 
     return;
 
-    static void Validate(IDateTranscriptMeeting instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IDateTranscriptMeeting instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

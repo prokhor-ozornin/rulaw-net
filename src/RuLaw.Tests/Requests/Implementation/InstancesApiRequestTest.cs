@@ -36,13 +36,13 @@ public sealed class InstancesApiRequestTest : Test
     {
       var request = new InstancesApiRequest();
 
-      Validate(null, request);
-      Validate(true, request);
-      Validate(false, request);
+      Test(null, request);
+      Test(true, request);
+      Test(false, request);
     }
 
     return;
 
-    static void Validate(bool? current, IInstancesApiRequest request) => request.Current(current).Should().BeSameAs(request).And.BeOfType<InstancesApiRequest>().Which.Parameters["current"].Should().Be(current?.ToString().ToLowerInvariant());
+    static void Test(bool? current, IInstancesApiRequest request) => request.Current(current).Should().BeSameAs(request).And.BeOfType<InstancesApiRequest>().Which.Parameters["current"].Should().Be(current?.ToString().ToLowerInvariant());
   }
 }

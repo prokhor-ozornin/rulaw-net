@@ -116,14 +116,14 @@ public sealed class AuthorityTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(string.Empty, new Authority());
-      Validate(string.Empty, new Authority { Name = string.Empty });
-      //Validate("text", new Authority { Text = "text" });
+      Test(string.Empty, new Authority());
+      Test(string.Empty, new Authority { Name = string.Empty });
+      //Test("text", new Authority { Text = "text" });
     }
 
     return;
 
-    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
 
     //new Authority(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
   }
@@ -136,7 +136,7 @@ public sealed class AuthorityTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Authority
+      Test(new Authority
       {
         Id = 1,
         Name = "name",
@@ -148,6 +148,6 @@ public sealed class AuthorityTest : Test
 
     return;
 
-    static void Validate(IAuthority instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IAuthority instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

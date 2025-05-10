@@ -19,12 +19,12 @@ public sealed class IConvocationsApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => IConvocationsApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Convocations.All());
+      Test(Api.Convocations.All());
     }
 
     return;
 
-    static void Validate(IEnumerable<IConvocation> convocations)
+    static void Test(IEnumerable<IConvocation> convocations)
     {
       convocations.Should().BeOfType<List<Convocation>>().And.NotBeEmpty();
 

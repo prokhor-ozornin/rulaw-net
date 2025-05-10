@@ -19,12 +19,12 @@ public sealed class ICommitteesApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => ICommitteesApiExtensions.All(null)).ThrowExactly<ArgumentNullException>().WithParameterName("api");
 
-      Validate(Api.Committees.All());
+      Test(Api.Committees.All());
     }
 
     return;
 
-    static void Validate(IEnumerable<ICommittee> committees)
+    static void Test(IEnumerable<ICommittee> committees)
     {
       committees.Should().BeOfType<List<Committee>>().And.NotBeEmpty();
 

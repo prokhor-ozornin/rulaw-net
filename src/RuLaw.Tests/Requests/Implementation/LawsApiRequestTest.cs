@@ -35,14 +35,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(int.MinValue, new LawsApiRequest());
-      Validate(int.MaxValue, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(int.MinValue, new LawsApiRequest());
+      Test(int.MaxValue, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(int? page, ILawsApiRequest request) => request.Page(page).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["page"].Should().Be(page);
+    static void Test(int? page, ILawsApiRequest request) => request.Page(page).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["page"].Should().Be(page);
   }
 
   /// <summary>
@@ -53,13 +53,13 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Enum.GetValues<PageSize>().ForEach(size => Validate(size, new LawsApiRequest()));
+      Test(null, new LawsApiRequest());
+      Enum.GetValues<PageSize>().ForEach(size => Test(size, new LawsApiRequest()));
     }
 
     return;
 
-    static void Validate(PageSize? size, ILawsApiRequest request) => request.PageSize(size).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["limit"].Should().Be((int?) size);
+    static void Test(PageSize? size, ILawsApiRequest request) => request.PageSize(size).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["limit"].Should().Be((int?) size);
   }
 
   /// <summary>
@@ -70,14 +70,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(string.Empty, new LawsApiRequest());
-      Validate("keywords", new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(string.Empty, new LawsApiRequest());
+      Test("keywords", new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(string name, ILawsApiRequest request) => request.Name(name).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["name"].Should().Be(name);
+    static void Test(string name, ILawsApiRequest request) => request.Name(name).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["name"].Should().Be(name);
   }
 
   /// <summary>
@@ -88,14 +88,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(int.MinValue, new LawsApiRequest());
-      Validate(int.MaxValue, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(int.MinValue, new LawsApiRequest());
+      Test(int.MaxValue, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(int? type, ILawsApiRequest request) => request.Type(type).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["law_type"].Should().Be(type);
+    static void Test(int? type, ILawsApiRequest request) => request.Type(type).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["law_type"].Should().Be(type);
   }
 
   /// <summary>
@@ -106,14 +106,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(long.MinValue, new LawsApiRequest());
-      Validate(long.MaxValue, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(long.MinValue, new LawsApiRequest());
+      Test(long.MaxValue, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(long? topic, ILawsApiRequest request) => request.Topic(topic).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["topic"].Should().Be(topic);
+    static void Test(long? topic, ILawsApiRequest request) => request.Topic(topic).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["topic"].Should().Be(topic);
   }
 
   /// <summary>
@@ -124,14 +124,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(string.Empty, new LawsApiRequest());
-      Validate("number", new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(string.Empty, new LawsApiRequest());
+      Test("number", new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(string number, ILawsApiRequest request) => request.Number(number).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["number"].Should().Be(number);
+    static void Test(string number, ILawsApiRequest request) => request.Number(number).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["number"].Should().Be(number);
   }
 
   /// <summary>
@@ -142,14 +142,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(string.Empty, new LawsApiRequest());
-      Validate("number", new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(string.Empty, new LawsApiRequest());
+      Test("number", new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(string number, ILawsApiRequest request) => request.DocumentNumber(number).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["document_number"].Should().Be(number);
+    static void Test(string number, ILawsApiRequest request) => request.DocumentNumber(number).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["document_number"].Should().Be(number);
   }
 
   /// <summary>
@@ -160,14 +160,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(int.MinValue, new LawsApiRequest());
-      Validate(int.MaxValue, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(int.MinValue, new LawsApiRequest());
+      Test(int.MaxValue, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(int? status, ILawsApiRequest request) => request.Status(status).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["status"].Should().Be(status);
+    static void Test(int? status, ILawsApiRequest request) => request.Status(status).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["status"].Should().Be(status);
   }
 
   /// <summary>
@@ -178,14 +178,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(long.MinValue, new LawsApiRequest());
-      Validate(long.MaxValue, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(long.MinValue, new LawsApiRequest());
+      Test(long.MaxValue, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(long? branch, ILawsApiRequest request) => request.Branch(branch).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["class"].Should().Be(branch);
+    static void Test(long? branch, ILawsApiRequest request) => request.Branch(branch).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["class"].Should().Be(branch);
   }
 
   /// <summary>
@@ -196,15 +196,15 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(DateTimeOffset.MinValue, new LawsApiRequest());
-      Validate(DateTimeOffset.MaxValue, new LawsApiRequest());
-      Validate(DateTimeOffset.Now, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(DateTimeOffset.MinValue, new LawsApiRequest());
+      Test(DateTimeOffset.MaxValue, new LawsApiRequest());
+      Test(DateTimeOffset.Now, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(DateTimeOffset? date, ILawsApiRequest request) => request.RegistrationStart(date).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["registration_start"].Should().Be(date?.ToString("yyyy-MM-dd"));
+    static void Test(DateTimeOffset? date, ILawsApiRequest request) => request.RegistrationStart(date).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["registration_start"].Should().Be(date?.ToString("yyyy-MM-dd"));
   }
 
   /// <summary>
@@ -215,15 +215,15 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(DateTimeOffset.MinValue, new LawsApiRequest());
-      Validate(DateTimeOffset.MaxValue, new LawsApiRequest());
-      Validate(DateTimeOffset.Now, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(DateTimeOffset.MinValue, new LawsApiRequest());
+      Test(DateTimeOffset.MaxValue, new LawsApiRequest());
+      Test(DateTimeOffset.Now, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(DateTimeOffset? date, ILawsApiRequest request) => request.RegistrationEnd(date).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["registration_end"].Should().Be(date?.ToString("yyyy-MM-dd"));
+    static void Test(DateTimeOffset? date, ILawsApiRequest request) => request.RegistrationEnd(date).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["registration_end"].Should().Be(date?.ToString("yyyy-MM-dd"));
   }
 
   /// <summary>
@@ -234,14 +234,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(long.MinValue, new LawsApiRequest());
-      Validate(long.MaxValue, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(long.MinValue, new LawsApiRequest());
+      Test(long.MaxValue, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(long? deputy, ILawsApiRequest request) => request.Deputy(deputy).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["deputy"].Should().Be(deputy);
+    static void Test(long? deputy, ILawsApiRequest request) => request.Deputy(deputy).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["deputy"].Should().Be(deputy);
   }
 
   /// <summary>
@@ -252,14 +252,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(long.MinValue, new LawsApiRequest());
-      Validate(long.MaxValue, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(long.MinValue, new LawsApiRequest());
+      Test(long.MaxValue, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(long? authority, ILawsApiRequest request) => request.FederalAuthority(authority).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["federal_subject"].Should().Be(authority);
+    static void Test(long? authority, ILawsApiRequest request) => request.FederalAuthority(authority).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["federal_subject"].Should().Be(authority);
   }
 
   /// <summary>
@@ -270,14 +270,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(long.MinValue, new LawsApiRequest());
-      Validate(long.MaxValue, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(long.MinValue, new LawsApiRequest());
+      Test(long.MaxValue, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(long? authority, ILawsApiRequest request) => request.RegionalAuthority(authority).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["regional_subject"].Should().Be(authority);
+    static void Test(long? authority, ILawsApiRequest request) => request.RegionalAuthority(authority).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["regional_subject"].Should().Be(authority);
   }
 
   /// <summary>
@@ -288,14 +288,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(long.MinValue, new LawsApiRequest());
-      Validate(long.MaxValue, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(long.MinValue, new LawsApiRequest());
+      Test(long.MaxValue, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(long? committee, ILawsApiRequest request) => request.ProfileCommittee(committee).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["profile_committee"].Should().Be(committee);
+    static void Test(long? committee, ILawsApiRequest request) => request.ProfileCommittee(committee).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["profile_committee"].Should().Be(committee);
   }
 
   /// <summary>
@@ -306,14 +306,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(long.MinValue, new LawsApiRequest());
-      Validate(long.MaxValue, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(long.MinValue, new LawsApiRequest());
+      Test(long.MaxValue, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(long? committee, ILawsApiRequest request) => request.ResponsibleCommittee(committee).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["responsible_committee"].Should().Be(committee);
+    static void Test(long? committee, ILawsApiRequest request) => request.ResponsibleCommittee(committee).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["responsible_committee"].Should().Be(committee);
   }
 
   /// <summary>
@@ -324,14 +324,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(long.MinValue, new LawsApiRequest());
-      Validate(long.MaxValue, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(long.MinValue, new LawsApiRequest());
+      Test(long.MaxValue, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(long? committee, ILawsApiRequest request) => request.SoExecutorCommittee(committee).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["soexecutor_committee"].Should().Be(committee);
+    static void Test(long? committee, ILawsApiRequest request) => request.SoExecutorCommittee(committee).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["soexecutor_committee"].Should().Be(committee);
   }
 
   /// <summary>
@@ -342,14 +342,14 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(string.Empty, new LawsApiRequest());
-      Validate("sorting", new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(string.Empty, new LawsApiRequest());
+      Test("sorting", new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(string sorting, ILawsApiRequest request) => request.Sorting(sorting).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["sort"].Should().Be(sorting);
+    static void Test(string sorting, ILawsApiRequest request) => request.Sorting(sorting).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["sort"].Should().Be(sorting);
   }
 
   /// <summary>
@@ -360,13 +360,13 @@ public sealed class LawsApiRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, new LawsApiRequest());
-      Validate(int.MinValue, new LawsApiRequest());
-      Validate(int.MaxValue, new LawsApiRequest());
+      Test(null, new LawsApiRequest());
+      Test(int.MinValue, new LawsApiRequest());
+      Test(int.MaxValue, new LawsApiRequest());
     }
 
     return;
 
-    static void Validate(int? mode, ILawsApiRequest request) => request.EventsSearchMode(mode).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["search_mode"].Should().Be(mode);
+    static void Test(int? mode, ILawsApiRequest request) => request.EventsSearchMode(mode).Should().BeSameAs(request).And.BeOfType<LawsApiRequest>().Which.Parameters["search_mode"].Should().Be(mode);
   }
 }

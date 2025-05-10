@@ -95,7 +95,7 @@ public sealed class DeputyRequestAddresseeTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new DeputyRequestAddressee
+      Test(new DeputyRequestAddressee
       {
         Id = 1,
         Name = "name"
@@ -104,6 +104,6 @@ public sealed class DeputyRequestAddresseeTest : Test
 
     return;
 
-    static void Validate(IDeputyRequestAddressee instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IDeputyRequestAddressee instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

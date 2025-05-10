@@ -54,11 +54,11 @@ public sealed class QuestionTranscriptsResultTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new QuestionTranscriptsResult());
+      Test(new QuestionTranscriptsResult());
     }
 
     return;
 
-    static void Validate(IQuestionTranscriptsResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IQuestionTranscriptsResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

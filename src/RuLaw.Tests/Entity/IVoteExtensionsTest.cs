@@ -20,15 +20,15 @@ public sealed class IVoteExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IVoteExtensions.Personal(null)).ThrowExactly<ArgumentNullException>().WithParameterName("vote");
 
-      Enum.GetValues<VotePersonResult>().ForEach(result => Validate(true, new Vote { PersonResult = result.ToString() }));
-      Validate(false, new Vote());
-      Validate(false, new Vote { PersonResult = string.Empty });
-      Validate(false, new Vote { PersonResult = "result" });
+      Enum.GetValues<VotePersonResult>().ForEach(result => Test(true, new Vote { PersonResult = result.ToString() }));
+      Test(false, new Vote());
+      Test(false, new Vote { PersonResult = string.Empty });
+      Test(false, new Vote { PersonResult = "result" });
     }
 
     return;
 
-    static void Validate(bool result, IVote vote) => vote.Personal().Should().Be(result);
+    static void Test(bool result, IVote vote) => vote.Personal().Should().Be(result);
 }
 
   /// <summary>
@@ -41,17 +41,17 @@ public sealed class IVoteExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IVoteExtensions.PersonResult(null)).ThrowExactly<ArgumentNullException>().WithParameterName("vote");
 
-      Validate(null, new Vote());
-      Validate(null, new Vote { PersonResult = string.Empty });
-      Validate(VotePersonResult.For, new Vote { PersonResult = "for" });
-      Validate(VotePersonResult.Against, new Vote { PersonResult = "against" });
-      Validate(VotePersonResult.Abstain, new Vote { PersonResult = "abstain" });
-      Validate(VotePersonResult.Absent, new Vote { PersonResult = "absent" });
+      Test(null, new Vote());
+      Test(null, new Vote { PersonResult = string.Empty });
+      Test(VotePersonResult.For, new Vote { PersonResult = "for" });
+      Test(VotePersonResult.Against, new Vote { PersonResult = "against" });
+      Test(VotePersonResult.Abstain, new Vote { PersonResult = "abstain" });
+      Test(VotePersonResult.Absent, new Vote { PersonResult = "absent" });
     }
 
     return;
 
-    static void Validate(VotePersonResult? result, IVote vote) => vote.PersonResult().Should().Be(result);
+    static void Test(VotePersonResult? result, IVote vote) => vote.PersonResult().Should().Be(result);
   }
 
   /// <summary>
@@ -64,17 +64,17 @@ public sealed class IVoteExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IVoteExtensions.ResultType(null)).ThrowExactly<ArgumentNullException>().WithParameterName("vote");
 
-      Validate(null, new Vote());
-      Validate(null, new Vote { ResultType = string.Empty });
-      Validate(VoteResultType.Quantitative, new Vote { ResultType = "количественное" });
-      Validate(VoteResultType.Rating, new Vote { ResultType = "рейтинговое" });
-      Validate(VoteResultType.Qualitative, new Vote { ResultType = "качественное" });
-      Validate(VoteResultType.Alternative, new Vote { ResultType = "альтернативное" });
+      Test(null, new Vote());
+      Test(null, new Vote { ResultType = string.Empty });
+      Test(VoteResultType.Quantitative, new Vote { ResultType = "количественное" });
+      Test(VoteResultType.Rating, new Vote { ResultType = "рейтинговое" });
+      Test(VoteResultType.Qualitative, new Vote { ResultType = "качественное" });
+      Test(VoteResultType.Alternative, new Vote { ResultType = "альтернативное" });
     }
 
     return;
 
-    static void Validate(VoteResultType? result, IVote vote) => vote.ResultType().Should().Be(result);
+    static void Test(VoteResultType? result, IVote vote) => vote.ResultType().Should().Be(result);
   }
 
   /// <summary>
@@ -87,18 +87,18 @@ public sealed class IVoteExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IVoteExtensions.Subject<IVote>(null, "subject")).ThrowExactly<ArgumentNullException>().WithParameterName("votes");
 
-      Validate([], [], null);
-      Validate([], [], "subject");
+      Test([], [], null);
+      Test([], [], "subject");
 
       var first = new Vote { Subject = "first" };
       var second = new Vote { Subject = "second" };
-      Validate([], [null], null);
-      Validate([first], [null, first, second, null], first.Subject);
+      Test([], [null], null);
+      Test([first], [null, first, second, null], first.Subject);
     }
 
     return;
 
-    static void Validate(IEnumerable<IVote> result, IEnumerable<IVote> votes, string subject) => votes.Subject(subject).Should().BeAssignableTo<IEnumerable<IVote>>().And.Equal(result);
+    static void Test(IEnumerable<IVote> result, IEnumerable<IVote> votes, string subject) => votes.Subject(subject).Should().BeAssignableTo<IEnumerable<IVote>>().And.Equal(result);
   }
 
   /// <summary>
@@ -111,17 +111,17 @@ public sealed class IVoteExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IVoteExtensions.Successful<IVote>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("votes");
 
-      Validate([], []);
+      Test([], []);
 
       var first = new Vote { Successful = true };
       var second = new Vote { Successful = false };
       var third = new Vote { Successful = null };
-      Validate([first], [null, first, second, third, null]);
+      Test([first], [null, first, second, third, null]);
     }
 
     return;
 
-    static void Validate(IEnumerable<IVote> result, IEnumerable<IVote> votes) => votes.Successful().Should().BeAssignableTo<IEnumerable<IVote>>().And.Equal(result);
+    static void Test(IEnumerable<IVote> result, IEnumerable<IVote> votes) => votes.Successful().Should().BeAssignableTo<IEnumerable<IVote>>().And.Equal(result);
   }
 
   /// <summary>
@@ -137,11 +137,11 @@ public sealed class IVoteExtensionsTest : Test
       var first = new Vote { Successful = true };
       var second = new Vote { Successful = false };
       var third = new Vote { Successful = null };
-      Validate([second, third], [null, first, second, third, null]);
+      Test([second, third], [null, first, second, third, null]);
     }
 
     return;
 
-    static void Validate(IEnumerable<IVote> result, IEnumerable<IVote> votes) => votes.Unsuccessful().Should().BeAssignableTo<IEnumerable<IVote>>().And.Equal(result);
+    static void Test(IEnumerable<IVote> result, IEnumerable<IVote> votes) => votes.Unsuccessful().Should().BeAssignableTo<IEnumerable<IVote>>().And.Equal(result);
   }
 }

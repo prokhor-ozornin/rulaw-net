@@ -102,7 +102,7 @@ public sealed class LawsSearchResultTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new LawsSearchResult
+      Test(new LawsSearchResult
       {
         Page = 3,
         Count = 2,
@@ -113,6 +113,6 @@ public sealed class LawsSearchResultTest : Test
 
     return;
 
-    static void Validate(ILawsSearchResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILawsSearchResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }
