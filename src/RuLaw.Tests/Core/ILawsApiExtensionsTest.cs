@@ -1,8 +1,8 @@
-﻿using AutoFixture;
-using FluentAssertions.Execution;
+﻿using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
+using Catharsis.Fixture;
 
 namespace RuLaw.Tests.Core;
 
@@ -119,7 +119,7 @@ public sealed class ILawsApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => ILawsApiExtensions.SearchAsync(null, _ => { })).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("api").Await();
       AssertionExtensions.Should(() => ILawsApiExtensions.SearchAsync(Api.Laws, null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("action").Await();
-      AssertionExtensions.Should(() => Api.Laws.SearchAsync(_ => { }, Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Laws.SearchAsync(_ => { }, Fixture<CancellationToken>.Create())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       Test(Api.Laws.SearchAsync(request => request.Name("курение").Sorting(LawsSorting.DateDescending)));
     }

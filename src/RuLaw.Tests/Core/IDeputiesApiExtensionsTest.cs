@@ -1,5 +1,5 @@
-﻿using AutoFixture;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
+using Catharsis.Fixture;
 using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
@@ -100,7 +100,7 @@ public sealed class IDeputiesApiExtensionsTest : IntegrationTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(null, _ => {})).ThrowExactly<ArgumentNullException>().WithParameterName("api");
-      AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(Api.Deputies, null, Fixture.Create<CancellationToken>())).ThrowExactly<OperationCanceledException>();
+      AssertionExtensions.Should(() => IDeputiesApiExtensions.SearchAsync(Api.Deputies, null, Fixture<CancellationToken>.Create())).ThrowExactly<OperationCanceledException>();
 
       Test(Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToArray());
     }

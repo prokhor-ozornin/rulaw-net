@@ -1,8 +1,8 @@
-﻿using AutoFixture;
-using FluentAssertions.Execution;
+﻿using FluentAssertions.Execution;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
+using Catharsis.Fixture;
 
 namespace RuLaw.Tests.Core;
 
@@ -98,7 +98,7 @@ public sealed class IQuestionsApiExtensionsTest : IntegrationTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
-      AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(Api.Questions, null, Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => IQuestionsApiExtensions.SearchAsync(Api.Questions, null, Fixture<CancellationToken>.Create())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       Test(Api.Questions.SearchAsync(request => request.FromDate(new DateTimeOffset(year: 2013, month: 1, day: 1, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).ToDate(new DateTimeOffset(year: 2013, month: 12, day: 31, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Name("образование").PageSize(PageSize.Five).Page(2)));
     }

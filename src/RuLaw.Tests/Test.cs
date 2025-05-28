@@ -1,5 +1,5 @@
-﻿using AutoFixture;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
+using Catharsis.Fixture;
 using FluentAssertions;
 using Newtonsoft.Json;
 
@@ -7,12 +7,11 @@ namespace RuLaw.Tests;
 
 public class Test : IDisposable
 {
-  protected IFixture Fixture { get; } = new Fixture();
   protected Random Random { get; } = new();
 
   protected Test()
   {
-    Fixture.Customize<CancellationToken>(token => token.FromFactory<CancellationToken>(_ => new CancellationToken(true)));
+    Fixture.Current.Configuration.Constructor<CancellationToken>(() => new CancellationToken(true));
     JsonConvert.DefaultSettings = () => new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
   }
 

@@ -1,5 +1,5 @@
-﻿using AutoFixture;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
+using Catharsis.Fixture;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
@@ -60,7 +60,7 @@ public sealed class IVotesApiExtensionsTest : IntegrationTest
     {
       AssertionExtensions.Should(() => IVotesApiExtensions.SearchAsync(null, _ => { })).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("api").Await();
       AssertionExtensions.Should(() => IVotesApiExtensions.SearchAsync(Api.Votes, null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("action").Await();
-      AssertionExtensions.Should(() => Api.Votes.SearchAsync(_ => { }, Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Votes.SearchAsync(_ => { }, Fixture<CancellationToken>.Create())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       Test(Api.Votes.SearchAsync(request => request.FromDate(DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(180))).ToDate(DateTimeOffset.UtcNow).Deputy(99111987)));
     }
