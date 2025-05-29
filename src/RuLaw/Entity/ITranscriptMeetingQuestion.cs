@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace RuLaw;
+﻿namespace RuLaw;
 
 /// <summary>
 ///   <para>Transcript's question.</para>
