@@ -11,8 +11,9 @@ public class Test : IDisposable
 
   protected Test()
   {
-    Fixture.Current.Configuration.Constructor<CancellationToken>(() => new CancellationToken(true));
     JsonConvert.DefaultSettings = () => new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
+
+    Fixture.Current.Configuration.Type<CancellationToken>(x => x.Constructor(() => new CancellationToken(true)));
   }
 
   public virtual void Dispose()
