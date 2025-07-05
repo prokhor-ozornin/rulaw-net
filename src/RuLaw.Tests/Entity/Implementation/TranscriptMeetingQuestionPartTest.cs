@@ -35,19 +35,13 @@ public sealed class TranscriptMeetingQuestionPartTest : Test
   ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.StartLine"/> property.</para>
   /// </summary>
   [Fact]
-  public void StartLine_Property()
-  {
-    new TranscriptMeetingQuestionPart { StartLine = int.MaxValue }.StartLine.Should().Be(int.MaxValue);
-  }
+  public void StartLine_Property() => new TranscriptMeetingQuestionPart { StartLine = int.MaxValue }.StartLine.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.EndLine"/> property.</para>
   /// </summary>
   [Fact]
-  public void EndLine_Property()
-  {
-    new TranscriptMeetingQuestionPart { EndLine = int.MaxValue }.EndLine.Should().Be(int.MaxValue);
-  }
+  public void EndLine_Property() => new TranscriptMeetingQuestionPart { EndLine = int.MaxValue }.EndLine.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.Lines"/> property.</para>
@@ -89,10 +83,7 @@ public sealed class TranscriptMeetingQuestionPartTest : Test
   ///   <para>Performs testing of <see cref="TranscriptMeetingQuestionPart.CompareTo(ITranscriptMeetingQuestionPart)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<TranscriptMeetingQuestionPart, int>("StartLine", 1, 2); 
-  }
+  public void CompareTo_Method() => TestCompareTo<TranscriptMeetingQuestionPart, int>("StartLine", 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>

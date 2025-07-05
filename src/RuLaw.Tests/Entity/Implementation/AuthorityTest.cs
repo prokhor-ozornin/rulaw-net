@@ -36,55 +36,37 @@ public sealed class AuthorityTest : Test
   ///   <para>Performs testing of <see cref="Authority.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new Authority {Id = long.MaxValue}.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new Authority {Id = long.MaxValue}.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Authority.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new Authority {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new Authority {Name = Guid.Empty.ToString()}.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Authority.Active"/> property.</para>
   /// </summary>
   [Fact]
-  public void Active_Property()
-  {
-    new Authority {Active = true}.Active.Should().BeTrue();
-  }
+  public void Active_Property() => new Authority {Active = true}.Active.Should().BeTrue();
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Authority.FromDate"/> property.</para>
   /// </summary>
   [Fact]
-  public void FromDate_Property()
-  {
-    new Authority {FromDate = DateTimeOffset.MaxValue}.FromDate.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void FromDate_Property() => new Authority {FromDate = DateTimeOffset.MaxValue}.FromDate.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Authority.ToDate"/> property.</para>
   /// </summary>
   [Fact]
-  public void ToDate_Property()
-  {
-    new Authority {ToDate = DateTimeOffset.MaxValue}.ToDate.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void ToDate_Property() => new Authority {ToDate = DateTimeOffset.MaxValue}.ToDate.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Authority.CompareTo(IAuthority)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<Authority, string>(nameof(Authority.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<Authority, string>(nameof(Authority.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -94,19 +76,13 @@ public sealed class AuthorityTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<Authority, long>(nameof(Authority.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<Authority, long>(nameof(Authority.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Authority.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method()
-  {
-    TestHashCode<Authority, long>(nameof(Authority.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<Authority, long>(nameof(Authority.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Authority.ToString()"/> method.</para>

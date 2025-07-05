@@ -42,109 +42,73 @@ public sealed class VoteTest : Test
   ///   <para>Performs testing of <see cref="Vote.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new Vote { Id = int.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new Vote { Id = int.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.Date"/> property.</para>
   /// </summary>
   [Fact]
-  public void Date_Property()
-  {
-    new Vote { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void Date_Property() => new Vote { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.Subject"/> property.</para>
   /// </summary>
   [Fact]
-  public void Subject_Property()
-  {
-    new Vote { Subject = Guid.Empty.ToString() }.Subject.Should().Be(Guid.Empty.ToString());
-  }
+  public void Subject_Property() => new Vote { Subject = Guid.Empty.ToString() }.Subject.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.Successful"/> property.</para>
   /// </summary>
   [Fact]
-  public void Successfull_Property()
-  {
-    new Vote { Successful = true }.Successful.Should().BeTrue();
-  }
+  public void Successfull_Property() => new Vote { Successful = true }.Successful.Should().BeTrue();
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.ResultType"/> property.</para>
   /// </summary>
   [Fact]
-  public void ResultType_Property()
-  {
-    new Vote { ResultType = Guid.Empty.ToString() }.ResultType.Should().Be(Guid.Empty.ToString());
-  }
+  public void ResultType_Property() => new Vote { ResultType = Guid.Empty.ToString() }.ResultType.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.PersonResult"/> property.</para>
   /// </summary>
   [Fact]
-  public void PersonResult_Property()
-  {
-    new Vote { PersonResult = Guid.Empty.ToString() }.PersonResult.Should().Be(Guid.Empty.ToString());
-  }
+  public void PersonResult_Property() => new Vote { PersonResult = Guid.Empty.ToString() }.PersonResult.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.TotalVotesCount"/> property.</para>
   /// </summary>
   [Fact]
-  public void TotalVotesCount_Property()
-  {
-    new Vote { TotalVotesCount = int.MaxValue }.TotalVotesCount.Should().Be(int.MaxValue);
-  }
+  public void TotalVotesCount_Property() => new Vote { TotalVotesCount = int.MaxValue }.TotalVotesCount.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.ForVotesCount"/> property.</para>
   /// </summary>
   [Fact]
-  public void ForVotesCount_Property()
-  {
-    new Vote { ForVotesCount = int.MaxValue }.ForVotesCount.Should().Be(int.MaxValue);
-  }
+  public void ForVotesCount_Property() => new Vote { ForVotesCount = int.MaxValue }.ForVotesCount.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.AgainstVotesCount"/> property.</para>
   /// </summary>
   [Fact]
-  public void AgainstVotesCount_Property()
-  {
-    new Vote { AgainstVotesCount = int.MaxValue }.AgainstVotesCount.Should().Be(int.MaxValue);
-  }
+  public void AgainstVotesCount_Property() => new Vote { AgainstVotesCount = int.MaxValue }.AgainstVotesCount.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.AbstainVotesCount"/> property.</para>
   /// </summary>
   [Fact]
-  public void AbstainVotesCount_Property()
-  {
-    new Vote { AbstainVotesCount = int.MaxValue }.AbstainVotesCount.Should().Be(int.MaxValue);
-  }
-
+  public void AbstainVotesCount_Property() => new Vote { AbstainVotesCount = int.MaxValue }.AbstainVotesCount.Should().Be(int.MaxValue);
+  
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.AbsentVotesCount"/> property.</para>
   /// </summary>
   [Fact]
-  public void AbsentVotesCount_Property()
-  {
-    new Vote { AbsentVotesCount = int.MaxValue }.AbsentVotesCount.Should().Be(int.MaxValue);
-  }
+  public void AbsentVotesCount_Property() => new Vote { AbsentVotesCount = int.MaxValue }.AbsentVotesCount.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.CompareTo(IVote)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<Vote, DateTimeOffset>(nameof(Vote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
-  }
+  public void CompareTo_Method() => TestCompareTo<Vote, DateTimeOffset>(nameof(Vote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -154,19 +118,13 @@ public sealed class VoteTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<Vote, long>(nameof(Vote.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<Vote, long>(nameof(Vote.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method()
-  {
-    TestHashCode<Vote, long>(nameof(Vote.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<Vote, long>(nameof(Vote.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Vote.ToString()"/> method.</para>

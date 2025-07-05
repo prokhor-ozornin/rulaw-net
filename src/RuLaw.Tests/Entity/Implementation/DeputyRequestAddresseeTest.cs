@@ -33,28 +33,19 @@ public sealed class DeputyRequestAddresseeTest : Test
   ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new DeputyRequestAddressee { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new DeputyRequestAddressee { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestAddressee.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new DeputyRequestAddressee { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new DeputyRequestAddressee { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestAddressee.CompareTo(IDeputyRequestAddressee)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo< DeputyRequestAddressee, string>(nameof(DeputyRequestAddressee.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo< DeputyRequestAddressee, string>(nameof(DeputyRequestAddressee.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -64,19 +55,13 @@ public sealed class DeputyRequestAddresseeTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality< DeputyRequestAddressee, long>(nameof(DeputyRequestAddressee.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality< DeputyRequestAddressee, long>(nameof(DeputyRequestAddressee.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestAddressee.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method()
-  {
-    TestHashCode< DeputyRequestAddressee, long>(nameof(DeputyRequestAddressee.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode< DeputyRequestAddressee, long>(nameof(DeputyRequestAddressee.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestAddressee.ToString()"/> method.</para>

@@ -36,37 +36,25 @@ public sealed class ConvocationTest : Test
   ///   <para>Performs testing of <see cref="Convocation.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new Convocation { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new Convocation { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Convocation.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new Convocation { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new Convocation { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Convocation.FromDate"/> property.</para>
   /// </summary>
   [Fact]
-  public void FromDate_Property()
-  {
-    new Convocation { FromDate = DateTimeOffset.MaxValue }.FromDate.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void FromDate_Property() => new Convocation { FromDate = DateTimeOffset.MaxValue }.FromDate.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Convocation.ToDate"/> property.</para>
   /// </summary>
   [Fact]
-  public void ToDate_Property()
-  {
-    new Convocation { ToDate = DateTimeOffset.MaxValue }.ToDate.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void ToDate_Property() => new Convocation { ToDate = DateTimeOffset.MaxValue }.ToDate.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Convocation.Sessions"/> property.</para>
@@ -89,10 +77,7 @@ public sealed class ConvocationTest : Test
   ///   <para>Performs testing of <see cref="Convocation.CompareTo(IConvocation)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<Convocation, string>(nameof(Convocation.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<Convocation, string>(nameof(Convocation.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -102,19 +87,13 @@ public sealed class ConvocationTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<Convocation, long>(nameof(Convocation.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<Convocation, long>(nameof(Convocation.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Convocation.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method()
-  {
-    TestHashCode<Convocation, long>(nameof(Convocation.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<Convocation, long>(nameof(Convocation.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Convocation.ToString()"/> method.</para>

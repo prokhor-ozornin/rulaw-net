@@ -35,28 +35,19 @@ public sealed class LawTranscriptsResultTest : Test
   ///   <para>Performs testing of <see cref="LawTranscriptsResult.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new LawTranscriptsResult { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new LawTranscriptsResult { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawTranscriptsResult.Number"/> property.</para>
   /// </summary>
   [Fact]
-  public void Number_Property()
-  {
-    new LawTranscriptsResult { Number = Guid.Empty.ToString() }.Number.Should().Be(Guid.Empty.ToString());
-  }
-
+  public void Number_Property() => new LawTranscriptsResult { Number = Guid.Empty.ToString() }.Number.Should().Be(Guid.Empty.ToString());
+  
   /// <summary>
   ///   <para>Performs testing of <see cref="LawTranscriptsResult.Comments"/> property.</para>
   /// </summary>
   [Fact]
-  public void Comments_Property()
-  {
-    new LawTranscriptsResult { Comments = Guid.Empty.ToString() }.Comments.Should().Be(Guid.Empty.ToString());
-  }
+  public void Comments_Property() => new LawTranscriptsResult { Comments = Guid.Empty.ToString() }.Comments.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawTranscriptsResult.Meetings"/> property.</para>
@@ -79,10 +70,7 @@ public sealed class LawTranscriptsResultTest : Test
   ///   <para>Performs testing of <see cref="LawTranscriptsResult.CompareTo(ILawTranscriptsResult)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo< LawTranscriptsResult, string>(nameof(LawTranscriptsResult.Number), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo< LawTranscriptsResult, string>(nameof(LawTranscriptsResult.Number), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -92,19 +80,13 @@ public sealed class LawTranscriptsResultTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<LawTranscriptsResult, string>(nameof(LawTranscriptsResult.Number), "first", "second"); 
-  }
+  public void Equals_Methods() => TestEquality<LawTranscriptsResult, string>(nameof(LawTranscriptsResult.Number), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawTranscriptsResult.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method()
-  {
-    TestHashCode<LawTranscriptsResult, string>(nameof(LawTranscriptsResult.Number), "first", "second"); 
-  }
+  public void GetHashCode_Method() => TestHashCode<LawTranscriptsResult, string>(nameof(LawTranscriptsResult.Number), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawTranscriptsResult.ToString()"/> method.</para>

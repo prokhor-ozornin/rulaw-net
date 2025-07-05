@@ -33,28 +33,19 @@ public sealed class DeputyRequestSignerTest : Test
   ///   <para>Performs testing of <see cref="DeputyRequestSigner.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new DeputyRequestSigner { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new DeputyRequestSigner { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestSigner.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new DeputyRequestSigner { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new DeputyRequestSigner { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestSigner.CompareTo(IDeputyRequestSigner)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<DeputyRequestSigner, string>(nameof(DeputyRequestSigner.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<DeputyRequestSigner, string>(nameof(DeputyRequestSigner.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -64,19 +55,13 @@ public sealed class DeputyRequestSignerTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods()
-  {
-    TestEquality<DeputyRequestSigner, long>(nameof(DeputyRequestSigner.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<DeputyRequestSigner, long>(nameof(DeputyRequestSigner.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestSigner.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<DeputyRequestSigner, long>(nameof(DeputyRequestSigner.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<DeputyRequestSigner, long>(nameof(DeputyRequestSigner.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequestSigner.ToString()"/> method.</para>

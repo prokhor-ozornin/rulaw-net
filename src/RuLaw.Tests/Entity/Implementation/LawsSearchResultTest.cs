@@ -35,28 +35,19 @@ public sealed class LawsSearchResultTest : Test
   ///   <para>Performs testing of <see cref="LawsSearchResult.Page"/> property.</para>
   /// </summary>
   [Fact]
-  public void Page_Property()
-  {
-    new LawsSearchResult { Page = int.MaxValue }.Page.Should().Be(int.MaxValue);
-  }
+  public void Page_Property() => new LawsSearchResult { Page = int.MaxValue }.Page.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawsSearchResult.Count"/> property.</para>
   /// </summary>
   [Fact]
-  public void Count_Property()
-  {
-    new LawsSearchResult { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
-  }
+  public void Count_Property() => new LawsSearchResult { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawsSearchResult.Wording"/> property.</para>
   /// </summary>
   [Fact]
-  public void Wording_Property()
-  {
-    new LawsSearchResult { Wording = Guid.Empty.ToString() }.Wording.Should().Be(Guid.Empty.ToString());
-  }
+  public void Wording_Property() => new LawsSearchResult { Wording = Guid.Empty.ToString() }.Wording.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawsSearchResult.Laws"/> property.</para>
@@ -80,10 +71,7 @@ public sealed class LawsSearchResultTest : Test
   ///   <para>Performs testing of <see cref="LawsSearchResult.CompareTo(ILawsSearchResult)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<LawsSearchResult, int>(nameof(LawsSearchResult.Count), 1, 2); 
-  }
+  public void CompareTo_Method() => TestCompareTo<LawsSearchResult, int>(nameof(LawsSearchResult.Count), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawsSearchResult.ToString()"/> method.</para>

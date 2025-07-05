@@ -36,38 +36,26 @@ public sealed class VotesSearchResultTest : Test
   ///   <para>Performs testing of <see cref="VotesSearchResult.Page"/> property.</para>
   /// </summary>
   [Fact]
-  public void Page_Property()
-  {
-    new VotesSearchResult { Page = int.MaxValue }.Page.Should().Be(int.MaxValue);
-  }
+  public void Page_Property() => new VotesSearchResult { Page = int.MaxValue }.Page.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="VotesSearchResult.PageSize"/> property.</para>
   /// </summary>
   [Fact]
-  public void PageSize_Property()
-  {
-    new VotesSearchResult { PageSize = int.MaxValue }.PageSize.Should().Be(int.MaxValue);
-  }
+  public void PageSize_Property() => new VotesSearchResult { PageSize = int.MaxValue }.PageSize.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="VotesSearchResult.Count"/> property.</para>
   /// </summary>
   [Fact]
-  public void Count_Property()
-  {
-    new VotesSearchResult { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
-  }
+  public void Count_Property() => new VotesSearchResult { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="VotesSearchResult.Wording"/> property.</para>
   /// </summary>
   [Fact]
-  public void Wording_Property()
-  {
-    new VotesSearchResult { Wording = Guid.Empty.ToString() }.Wording.Should().Be(Guid.Empty.ToString());
-  }
-
+  public void Wording_Property() => new VotesSearchResult { Wording = Guid.Empty.ToString() }.Wording.Should().Be(Guid.Empty.ToString());
+  
   /// <summary>
   ///   <para>Performs testing of <see cref="VotesSearchResult.Votes"/> property.</para>
   /// </summary>
@@ -89,10 +77,7 @@ public sealed class VotesSearchResultTest : Test
   ///   <para>Performs testing of <see cref="VotesSearchResult.CompareTo(IVotesSearchResult)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<VotesSearchResult, int>(nameof(VotesSearchResult.Count), 1, 2); 
-  }
+  public void CompareTo_Method() => TestCompareTo<VotesSearchResult, int>(nameof(VotesSearchResult.Count), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="VotesSearchResult.ToString()"/> method.</para>

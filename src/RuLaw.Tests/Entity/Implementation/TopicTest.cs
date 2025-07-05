@@ -33,28 +33,19 @@ public sealed class TopicTest : Test
   ///   <para>Performs testing of <see cref="Topic.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new Topic { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new Topic { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Topic.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new Topic { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new Topic { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Topic.CompareTo(ITopic)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<Topic, string>(nameof(Topic.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<Topic, string>(nameof(Topic.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -64,19 +55,13 @@ public sealed class TopicTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<Topic, long>(nameof(Topic.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<Topic, long>(nameof(Topic.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Topic.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method()
-  {
-    TestHashCode<Topic, long>(nameof(Topic.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<Topic, long>(nameof(Topic.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Topic.ToString()"/> method.</para>

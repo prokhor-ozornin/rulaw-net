@@ -33,10 +33,7 @@ public sealed class DateTranscriptsResultTest : Test
   ///   <para>Performs testing of <see cref="DateTranscriptsResult.Date"/> property.</para>
   /// </summary>
   [Fact]
-  public void Date_Property()
-  {
-    new DateTranscriptsResult { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void Date_Property() => new DateTranscriptsResult { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DateTranscriptsResult.Meetings"/> property.</para>
@@ -58,10 +55,7 @@ public sealed class DateTranscriptsResultTest : Test
   ///   <para>Performs testing of <see cref="DateTranscriptsResult.CompareTo(IDateTranscriptsResult)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<DateTranscriptsResult, DateTimeOffset>(nameof(DateTranscriptsResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
-  }
+  public void CompareTo_Method() => TestCompareTo<DateTranscriptsResult, DateTimeOffset>(nameof(DateTranscriptsResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -71,19 +65,13 @@ public sealed class DateTranscriptsResultTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<DateTranscriptsResult, DateTimeOffset>(nameof(DateTranscriptsResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
-  }
+  public void Equals_Methods() => TestEquality<DateTranscriptsResult, DateTimeOffset>(nameof(DateTranscriptsResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DateTranscriptsResult.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<DateTranscriptsResult, DateTimeOffset>(nameof(DateTranscriptsResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
-  }
+  public void GetHashCode_Method() => TestHashCode<DateTranscriptsResult, DateTimeOffset>(nameof(DateTranscriptsResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DateTranscriptsResult.ToString()"/> method.</para>

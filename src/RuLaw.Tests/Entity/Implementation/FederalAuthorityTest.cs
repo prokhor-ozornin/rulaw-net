@@ -36,55 +36,37 @@ public sealed class FederalAuthorityTest : Test
   ///   <para>Performs testing of <see cref="FederalAuthority.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new RegionalAuthority { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new RegionalAuthority { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="FederalAuthority.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new FederalAuthority { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new FederalAuthority { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="FederalAuthority.Active"/> property.</para>
   /// </summary>
   [Fact]
-  public void Active_Property()
-  {
-    new FederalAuthority { Active = true }.Active.Should().BeTrue();
-  }
-
+  public void Active_Property() => new FederalAuthority { Active = true }.Active.Should().BeTrue();
+  
   /// <summary>
   ///   <para>Performs testing of <see cref="FederalAuthority.FromDate"/> property.</para>
   /// </summary>
   [Fact]
-  public void FromDate_Property()
-  {
-    new FederalAuthority { FromDate = DateTimeOffset.MaxValue }.FromDate.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void FromDate_Property() => new FederalAuthority { FromDate = DateTimeOffset.MaxValue }.FromDate.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="FederalAuthority.ToDate"/> property.</para>
   /// </summary>
   [Fact]
-  public void ToDate_Property()
-  {
-    new FederalAuthority { ToDate = DateTimeOffset.MaxValue }.ToDate.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void ToDate_Property() => new FederalAuthority { ToDate = DateTimeOffset.MaxValue }.ToDate.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="FederalAuthority.CompareTo(IAuthority)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<FederalAuthority, string>(nameof(FederalAuthority.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<FederalAuthority, string>(nameof(FederalAuthority.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -94,19 +76,13 @@ public sealed class FederalAuthorityTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<FederalAuthority, long>(nameof(FederalAuthority.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<FederalAuthority, long>(nameof(FederalAuthority.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="FederalAuthority.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<FederalAuthority, long>(nameof(FederalAuthority.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<FederalAuthority, long>(nameof(FederalAuthority.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="FederalAuthority.ToString()"/> method.</para>

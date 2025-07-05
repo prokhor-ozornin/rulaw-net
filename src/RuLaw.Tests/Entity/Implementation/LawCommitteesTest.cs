@@ -34,12 +34,8 @@ public sealed class LawCommitteesTest : Test
   ///   <para>Performs testing of <see cref="LawCommittees.Responsible"/> property.</para>
   /// </summary>
   [Fact]
-  public void Responsible_Property()
-  {
-    var committee = new Committee();
-    new LawCommittees { Responsible = committee }.Responsible.Should().BeSameAs(committee);
-  }
-
+  public void Responsible_Property() => new Committee().With(committee => new LawCommittees { Responsible = committee }.Responsible.Should().BeSameAs(committee));
+  
   /// <summary>
   ///   <para>Performs testing of <see cref="LawCommittees.Profile"/> property.</para>
   /// </summary>

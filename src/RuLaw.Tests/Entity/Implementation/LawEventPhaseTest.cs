@@ -33,28 +33,19 @@ public sealed class LawEventPhaseTest : Test
   ///   <para>Performs testing of <see cref="LawEventPhase.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new LawEventPhase { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new LawEventPhase { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEventPhase.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new LawEventPhase { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new LawEventPhase { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEventPhase.CompareTo(ILawEventPhase)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo< LawEventPhase, string>(nameof(LawEventPhase.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo< LawEventPhase, string>(nameof(LawEventPhase.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -64,19 +55,13 @@ public sealed class LawEventPhaseTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<LawEventPhase, long>(nameof(LawEventPhase.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<LawEventPhase, long>(nameof(LawEventPhase.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEventPhase.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<LawEventPhase, long>(nameof(LawEventPhase.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<LawEventPhase, long>(nameof(LawEventPhase.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEventPhase.ToString()"/> method.</para>

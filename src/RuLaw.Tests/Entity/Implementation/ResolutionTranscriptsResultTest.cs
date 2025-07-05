@@ -33,10 +33,7 @@ public sealed class ResolutionTranscriptsResultTest : Test
   ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.Number"/> property.</para>
   /// </summary>
   [Fact]
-  public void Number_Property()
-  {
-    new ResolutionTranscriptsResult { Number = Guid.Empty.ToString() }.Number.Should().Be(Guid.Empty.ToString());
-  }
+  public void Number_Property() => new ResolutionTranscriptsResult { Number = Guid.Empty.ToString() }.Number.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.Meetings"/> property.</para>
@@ -64,19 +61,13 @@ public sealed class ResolutionTranscriptsResultTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<ResolutionTranscriptsResult, string>(nameof(ResolutionTranscriptsResult.Number), "first", "second"); 
-  }
+  public void Equals_Methods() => TestEquality<ResolutionTranscriptsResult, string>(nameof(ResolutionTranscriptsResult.Number), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<ResolutionTranscriptsResult, string>(nameof(ResolutionTranscriptsResult.Number), "first", "second"); 
-  }
+  public void GetHashCode_Method() => TestHashCode<ResolutionTranscriptsResult, string>(nameof(ResolutionTranscriptsResult.Number), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="ResolutionTranscriptsResult.ToString()"/> method.</para>

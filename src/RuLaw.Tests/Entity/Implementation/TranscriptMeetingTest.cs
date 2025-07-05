@@ -35,28 +35,19 @@ public sealed class TranscriptMeetingTest : Test
   ///   <para>Performs testing of <see cref="TranscriptMeeting.Date"/> property.</para>
   /// </summary>
   [Fact]
-  public void Date_Property()
-  {
-    new TranscriptMeeting { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void Date_Property() => new TranscriptMeeting { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="TranscriptMeeting.Number"/> property.</para>
   /// </summary>
   [Fact]
-  public void Number_Property()
-  {
-    new TranscriptMeeting { Number = int.MaxValue }.Number.Should().Be(int.MaxValue);
-  }
+  public void Number_Property() => new TranscriptMeeting { Number = int.MaxValue }.Number.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="TranscriptMeeting.LinesCount"/> property.</para>
   /// </summary>
   [Fact]
-  public void LinesCount_Property()
-  {
-    new TranscriptMeeting { LinesCount = int.MaxValue }.LinesCount.Should().Be(int.MaxValue);
-  }
+  public void LinesCount_Property() => new TranscriptMeeting { LinesCount = int.MaxValue }.LinesCount.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="TranscriptMeeting.Questions"/> property.</para>
@@ -80,10 +71,7 @@ public sealed class TranscriptMeetingTest : Test
   ///   <para>Performs testing of <see cref="TranscriptMeeting.CompareTo(ITranscriptMeeting)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<TranscriptMeeting, DateTimeOffset>(nameof(TranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
-  }
+  public void CompareTo_Method() => TestCompareTo<TranscriptMeeting, DateTimeOffset>(nameof(TranscriptMeeting.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>

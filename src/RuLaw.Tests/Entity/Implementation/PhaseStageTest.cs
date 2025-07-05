@@ -34,20 +34,14 @@ public sealed class PhaseStageTest : Test
   ///   <para>Performs testing of <see cref="PhaseStage.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new PhaseStage { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new PhaseStage { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="PhaseStage.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new PhaseStage { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
+  public void Name_Property() => new PhaseStage { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  
   /// <summary>
   ///   <para>Performs testing of <see cref="PhaseStage.Phases"/> property.</para>
   /// </summary>
@@ -70,10 +64,7 @@ public sealed class PhaseStageTest : Test
   ///   <para>Performs testing of <see cref="PhaseStage.CompareTo(IStage)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<PhaseStage, string>(nameof(PhaseStage.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<PhaseStage, string>(nameof(PhaseStage.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -83,19 +74,13 @@ public sealed class PhaseStageTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<PhaseStage, long>(nameof(PhaseStage.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<PhaseStage, long>(nameof(PhaseStage.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="PhaseStage.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<PhaseStage, long>(nameof(PhaseStage.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<PhaseStage, long>(nameof(PhaseStage.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="PhaseStage.ToString()"/> method.</para>

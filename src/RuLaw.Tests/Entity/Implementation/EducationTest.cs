@@ -33,28 +33,19 @@ public sealed class EducationTest : Test
   ///   <para>Performs testing of <see cref="Education.Institution"/> property.</para>
   /// </summary>
   [Fact]
-  public void Institution_Property()
-  {
-    new Education { Institution = Guid.Empty.ToString() }.Institution.Should().Be(Guid.Empty.ToString());
-  }
+  public void Institution_Property() => new Education { Institution = Guid.Empty.ToString() }.Institution.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Education.Year"/> property.</para>
   /// </summary>
   [Fact]
-  public void Year_Property()
-  {
-    new Education { Year = short.MaxValue }.Year.Should().Be(short.MaxValue);
-  }
+  public void Year_Property() => new Education { Year = short.MaxValue }.Year.Should().Be(short.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Education.CompareTo(IEducation)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<Education, short>(nameof(Education.Year), (short) 1, (short) 2); 
-  }
+  public void CompareTo_Method() => TestCompareTo<Education, short>(nameof(Education.Year), (short) 1, (short) 2); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>

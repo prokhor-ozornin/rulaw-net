@@ -35,46 +35,31 @@ public sealed class SessionTest : Test
   ///   <para>Performs testing of <see cref="Session.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new Session { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new Session { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Session.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new Session { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
-
+  public void Name_Property() => new Session { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
+  
   /// <summary>
   ///   <para>Performs testing of <see cref="Session.FromDate"/> property.</para>
   /// </summary>
   [Fact]
-  public void From_Property()
-  {
-    new Session { FromDate = DateTimeOffset.MaxValue }.FromDate.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void From_Property() => new Session { FromDate = DateTimeOffset.MaxValue }.FromDate.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Session.ToDate"/> property.</para>
   /// </summary>
   [Fact]
-  public void ToDate_Property()
-  {
-    new Session { ToDate = DateTimeOffset.MaxValue }.ToDate.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void ToDate_Property() => new Session { ToDate = DateTimeOffset.MaxValue }.ToDate.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Session.CompareTo(ISession)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<Session, DateTimeOffset>(nameof(Session.FromDate), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
-  }
+  public void CompareTo_Method() => TestCompareTo<Session, DateTimeOffset>(nameof(Session.FromDate), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -84,19 +69,13 @@ public sealed class SessionTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<Session, long>(nameof(Session.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<Session, long>(nameof(Session.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Session.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method()
-  {
-    TestHashCode<Session, long>(nameof(Session.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<Session, long>(nameof(Session.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Session.ToString()"/> method.</para>

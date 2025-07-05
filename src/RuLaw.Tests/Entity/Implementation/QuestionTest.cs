@@ -37,64 +37,43 @@ public sealed class QuestionTest : Test
   ///   <para>Performs testing of <see cref="Question.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new Question { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new Question { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Question.Date"/> property.</para>
   /// </summary>
   [Fact]
-  public void Date_Property()
-  {
-    new Question { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void Date_Property() => new Question { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Question.Code"/> property.</para>
   /// </summary>
   [Fact]
-  public void Code_Property()
-  {
-    new Question { Code = int.MaxValue }.Code.Should().Be(int.MaxValue);
-  }
+  public void Code_Property() => new Question { Code = int.MaxValue }.Code.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Question.SessionCode"/> property.</para>
   /// </summary>
   [Fact]
-  public void SessionCode_Property()
-  {
-    new Question { SessionCode = int.MaxValue }.SessionCode.Should().Be(int.MaxValue);
-  }
+  public void SessionCode_Property() => new Question { SessionCode = int.MaxValue }.SessionCode.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Question.StartLine"/> property.</para>
   /// </summary>
   [Fact]
-  public void StartLine_Property()
-  {
-    new Question { StartLine = int.MaxValue }.StartLine.Should().Be(int.MaxValue);
-  }
+  public void StartLine_Property() => new Question { StartLine = int.MaxValue }.StartLine.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Question.EndLine"/> property.</para>
   /// </summary>
   [Fact]
-  public void EndLine_Property()
-  {
-    new Question { EndLine = int.MaxValue }.EndLine.Should().Be(int.MaxValue);
-  }
+  public void EndLine_Property() => new Question { EndLine = int.MaxValue }.EndLine.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Question.CompareTo(IQuestion)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<Question, string>(nameof(Question.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<Question, string>(nameof(Question.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>

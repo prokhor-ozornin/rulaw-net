@@ -34,37 +34,25 @@ public sealed class DeputyActivityTest : Test
   ///   <para>Performs testing of <see cref="DeputyActivity.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new Education { Institution = Guid.Empty.ToString() }.Institution.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new Education { Institution = Guid.Empty.ToString() }.Institution.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyActivity.CommitteeId"/> property.</para>
   /// </summary>
   [Fact]
-  public void CommitteeId_Property()
-  {
-    new DeputyActivity { CommitteeId = long.MaxValue }.CommitteeId.Should().Be(long.MaxValue);
-  }
+  public void CommitteeId_Property() => new DeputyActivity { CommitteeId = long.MaxValue }.CommitteeId.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyActivity.CommitteeNameGenitive"/> property.</para>
   /// </summary>
   [Fact]
-  public void CommitteeNameGenitive_Property()
-  {
-    new DeputyActivity {CommitteeNameGenitive = Guid.Empty.ToString() }.CommitteeNameGenitive.Should().Be(Guid.Empty.ToString());
-  }
+  public void CommitteeNameGenitive_Property() => new DeputyActivity {CommitteeNameGenitive = Guid.Empty.ToString() }.CommitteeNameGenitive.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyActivity.CompareTo(IDeputyActivity)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<DeputyActivity, string>("Name", "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<DeputyActivity, string>("Name", "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -74,19 +62,13 @@ public sealed class DeputyActivityTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<DeputyActivity, string>(nameof(DeputyActivity.Name), "first", "second"); 
-  }
+  public void Equals_Methods() => TestEquality<DeputyActivity, string>(nameof(DeputyActivity.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyActivity.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<DeputyActivity, string>(nameof(DeputyActivity.Name), "first", "second"); 
-  }
+  public void GetHashCode_Method() => TestHashCode<DeputyActivity, string>(nameof(DeputyActivity.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyActivity.ToString()"/> method.</para>

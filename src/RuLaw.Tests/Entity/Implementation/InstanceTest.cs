@@ -34,37 +34,25 @@ public sealed class InstanceTest : Test
   ///   <para>Performs testing of <see cref="Instance.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new Instance { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new Instance { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Instance.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new Instance { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new Instance { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Instance.Active"/> property.</para>
   /// </summary>
   [Fact]
-  public void Active_Property()
-  {
-    new Instance { Active = true }.Active.Should().BeTrue();
-  }
+  public void Active_Property() => new Instance { Active = true }.Active.Should().BeTrue();
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Instance.CompareTo(IInstance)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<Instance, string>(nameof(Instance.Name), "first", "second");
-  }
+  public void CompareTo_Method() => TestCompareTo<Instance, string>(nameof(Instance.Name), "first", "second");
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -74,19 +62,13 @@ public sealed class InstanceTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods()
-  {
-    TestEquality<Instance, long>(nameof(Instance.Id), 1, 2);
-  }
+  public void Equals_Methods() => TestEquality<Instance, long>(nameof(Instance.Id), 1, 2);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Instance.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method()
-  {
-    TestHashCode<Instance, long>(nameof(Instance.Id), 1, 2);
-  }
+  public void GetHashCode_Method() => TestHashCode<Instance, long>(nameof(Instance.Id), 1, 2);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Instance.ToString()"/> method.</para>

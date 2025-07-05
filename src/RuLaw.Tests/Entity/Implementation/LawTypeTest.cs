@@ -33,28 +33,19 @@ public sealed class LawTypeTest : Test
   ///   <para>Performs testing of <see cref="LawType.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new LawType { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new LawType { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawType.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new LawType { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new LawType { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawType.CompareTo(ILawType)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<LawType, string>(nameof(LawType.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<LawType, string>(nameof(LawType.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -64,19 +55,13 @@ public sealed class LawTypeTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods()
-  {
-    TestEquality<LawType, long>(nameof(LawType.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<LawType, long>(nameof(LawType.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawType.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<LawType, long>(nameof(LawType.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<LawType, long>(nameof(LawType.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawType.ToString()"/> method.</para>

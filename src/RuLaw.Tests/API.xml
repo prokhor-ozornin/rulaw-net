@@ -2502,7 +2502,7 @@
               <para>Performs testing of <see cref="P:RuLaw.TranscriptMeetingQuestion.Name"/> property.</para>
             </summary>
         </member>
-        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionTest.Stage_Property">
+        <member name="M:RuLaw.Tests.TranscriptMeetingQuestionTest.StageProperty">
             <summary>
               <para>Performs testing of <see cref="P:RuLaw.TranscriptMeetingQuestion.Stage"/> property.</para>
             </summary>

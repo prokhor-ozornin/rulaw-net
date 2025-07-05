@@ -33,28 +33,19 @@ public sealed class LawBranchTest : Test
   ///   <para>Performs testing of <see cref="LawBranch.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new LawBranch { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new LawBranch { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawBranch.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new LawBranch { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new LawBranch { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawBranch.CompareTo(ILawBranch)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<LawBranch, string>(nameof(LawBranch.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<LawBranch, string>(nameof(LawBranch.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -64,19 +55,13 @@ public sealed class LawBranchTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<LawBranch, long>(nameof(LawBranch.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<LawBranch, long>(nameof(LawBranch.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawBranch.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<LawBranch, long>(nameof(LawBranch.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<LawBranch, long>(nameof(LawBranch.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawBranch.ToString()"/> method.</para>

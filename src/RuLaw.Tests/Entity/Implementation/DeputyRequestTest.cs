@@ -42,111 +42,73 @@ public sealed class DeputyRequestTest : Test
   ///   <para>Performs testing of <see cref="DeputyRequest.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new DeputyRequest { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new DeputyRequest { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new DeputyRequest { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new DeputyRequest { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.Date"/> property.</para>
   /// </summary>
   [Fact]
-  public void Date_Property()
-  {
-    new DeputyRequest { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void Date_Property() => new DeputyRequest { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.DocumentNumber"/> property.</para>
   /// </summary>
   [Fact]
-  public void DocumentNumber_Property()
-  {
-    new DeputyRequest { DocumentNumber = Guid.Empty.ToString() }.DocumentNumber.Should().Be(Guid.Empty.ToString());
-  }
+  public void DocumentNumber_Property() => new DeputyRequest { DocumentNumber = Guid.Empty.ToString() }.DocumentNumber.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.Initiator"/> property.</para>
   /// </summary>
   [Fact]
-  public void Initiator_Property()
-  {
-    new DeputyRequest { Initiator = Guid.Empty.ToString() }.Initiator.Should().Be(Guid.Empty.ToString());
-  }
+  public void Initiator_Property() => new DeputyRequest { Initiator = Guid.Empty.ToString() }.Initiator.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.Addressee"/> property.</para>
   /// </summary>
   [Fact]
-  public void Addressee_Property()
-  {
-    var addressee = new DeputyRequestAddressee();
-    new DeputyRequest { Addressee = addressee }.Addressee.Should().BeSameAs(addressee);
-  }
+  public void Addressee_Property() => new DeputyRequestAddressee().With(addressee => new DeputyRequest { Addressee = addressee }.Addressee.Should().BeSameAs(addressee));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.Answer"/> property.</para>
   /// </summary>
   [Fact]
-  public void Answer_Property()
-  {
-    new DeputyRequest { Answer = Guid.Empty.ToString() }.Answer.Should().Be(Guid.Empty.ToString());
-  }
+  public void Answer_Property() => new DeputyRequest { Answer = Guid.Empty.ToString() }.Answer.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.Signer"/> property.</para>
   /// </summary>
   [Fact]
-  public void Signer_Property()
-  {
-    var signer = new DeputyRequestSigner();
-    new DeputyRequest { Signer = signer }.Signer.Should().BeSameAs(signer);
-  }
+  public void Signer_Property() => new DeputyRequestSigner().With(signer => new DeputyRequest { Signer = signer }.Signer.Should().BeSameAs(signer));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.SignDate"/> property.</para>
   /// </summary>
   [Fact]
-  public void SignDate_Property()
-  {
-    new DeputyRequest { SignDate = DateTimeOffset.MaxValue }.SignDate.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void SignDate_Property() => new DeputyRequest { SignDate = DateTimeOffset.MaxValue }.SignDate.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.ControlDate"/> property.</para>
   /// </summary>
   [Fact]
-  public void ControlDate_Property()
-  {
-    new DeputyRequest { ControlDate = DateTimeOffset.MaxValue }.ControlDate.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void ControlDate_Property() => new DeputyRequest { ControlDate = DateTimeOffset.MaxValue }.ControlDate.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.ResolutionNumber"/> property.</para>
   /// </summary>
   [Fact]
-  public void ResolutionNumber_Property()
-  {
-    new DeputyRequest { ResolutionNumber = Guid.Empty.ToString() }.ResolutionNumber.Should().Be(Guid.Empty.ToString());
-  }
+  public void ResolutionNumber_Property() => new DeputyRequest { ResolutionNumber = Guid.Empty.ToString() }.ResolutionNumber.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.CompareTo(IDeputyRequest)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo< DeputyRequest, DateTimeOffset>(nameof(DeputyRequest.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
-  }
+  public void CompareTo_Method() => TestCompareTo< DeputyRequest, DateTimeOffset>(nameof(DeputyRequest.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -156,19 +118,13 @@ public sealed class DeputyRequestTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<DeputyRequest, long>(nameof(DeputyRequest.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<DeputyRequest, long>(nameof(DeputyRequest.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<DeputyRequest, long>(nameof(DeputyRequest.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<DeputyRequest, long>(nameof(DeputyRequest.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyRequest.ToString()"/> method.</para>

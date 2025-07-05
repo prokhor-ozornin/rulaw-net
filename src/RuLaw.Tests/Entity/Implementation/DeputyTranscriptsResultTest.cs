@@ -36,37 +36,25 @@ public sealed class DeputyTranscriptsResultTest : Test
   ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new DeputyTranscriptsResult { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new DeputyTranscriptsResult { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Page"/> property.</para>
   /// </summary>
   [Fact]
-  public void Page_Property()
-  {
-    new DeputyTranscriptsResult { Page = int.MaxValue }.Page.Should().Be(int.MaxValue);
-  }
-
+  public void Page_Property() => new DeputyTranscriptsResult { Page = int.MaxValue }.Page.Should().Be(int.MaxValue);
+  
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.PageSize"/> property.</para>
   /// </summary>
   [Fact]
-  public void PageSize_Property()
-  {
-    new DeputyTranscriptsResult { PageSize = int.MaxValue }.PageSize.Should().Be(int.MaxValue);
-  }
+  public void PageSize_Property() => new DeputyTranscriptsResult { PageSize = int.MaxValue }.PageSize.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Count"/> property.</para>
   /// </summary>
   [Fact]
-  public void Count_Property()
-  {
-    new DeputyTranscriptsResult { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
-  }
+  public void Count_Property() => new DeputyTranscriptsResult { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.Meetings"/> property.</para>
@@ -90,10 +78,7 @@ public sealed class DeputyTranscriptsResultTest : Test
   ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.CompareTo(IDeputyTranscriptsResult)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<DeputyTranscriptsResult, string>(nameof(DeputyTranscriptsResult.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<DeputyTranscriptsResult, string>(nameof(DeputyTranscriptsResult.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="DeputyTranscriptsResult.ToString()"/> method.</para>

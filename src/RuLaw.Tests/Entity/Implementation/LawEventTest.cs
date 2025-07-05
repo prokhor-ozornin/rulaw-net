@@ -36,58 +36,37 @@ public sealed class LawEventTest : Test
   ///   <para>Performs testing of <see cref="LawEvent.Date"/> property.</para>
   /// </summary>
   [Fact]
-  public void Date_Property()
-  {
-    new LawEvent { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void Date_Property() => new LawEvent { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEvent.Solution"/> property.</para>
   /// </summary>
   [Fact]
-  public void Solution_Property()
-  {
-    new LawEvent { Solution = Guid.Empty.ToString() }.Solution.Should().Be(Guid.Empty.ToString());
-  }
+  public void Solution_Property() => new LawEvent { Solution = Guid.Empty.ToString() }.Solution.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEvent.Document"/> property.</para>
   /// </summary>
   [Fact]
-  public void Document_Property()
-  {
-    var document = new LawEventDocument();
-    new LawEvent { Document = document }.Document.Should().BeSameAs(document);
-  }
+  public void Document_Property() => new LawEventDocument().With(document => new LawEvent { Document = document }.Document.Should().BeSameAs(document));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEvent.Phase"/> property.</para>
   /// </summary>
   [Fact]
-  public void Phase_Property()
-  {
-    var phase = new LawEventPhase();
-    new LawEvent { Phase = phase }.Phase.Should().BeSameAs(phase);
-  }
+  public void Phase_Property() => new LawEventPhase().With(phase => new LawEvent { Phase = phase }.Phase.Should().BeSameAs(phase));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEvent.Stage"/> property.</para>
   /// </summary>
   [Fact]
-  public void Stage_Property()
-  {
-    var stage = new LawEventStage();
-    new LawEvent { Stage = stage }.Stage.Should().BeSameAs(stage);
-  }
+  public void Stage_Property() => new LawEventStage().With(stage => new LawEvent { Stage = stage }.Stage.Should().BeSameAs(stage));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEvent.CompareTo(ILawEvent)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<LawEvent, DateTimeOffset>(nameof(LawEvent.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
-  }
+  public void CompareTo_Method() => TestCompareTo<LawEvent, DateTimeOffset>(nameof(LawEvent.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEvent.ToString()"/> method.</para>

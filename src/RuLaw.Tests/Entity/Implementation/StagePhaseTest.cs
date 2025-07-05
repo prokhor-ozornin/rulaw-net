@@ -34,38 +34,25 @@ public sealed class StagePhaseTest : Test
   ///   <para>Performs testing of <see cref="StagePhase.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new Topic { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new Topic { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="StagePhase.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new StagePhase { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new StagePhase { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="StagePhase.Instance"/> property.</para>
   /// </summary>
   [Fact]
-  public void Instance_Property()
-  {
-    var instance = new Instance();
-    new StagePhase { Instance = instance }.Instance.Should().BeSameAs(instance);
-  }
+  public void Instance_Property() => new Instance().With(instance => new StagePhase { Instance = instance }.Instance.Should().BeSameAs(instance));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="StagePhase.CompareTo(IStagePhase)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<StagePhase, string>(nameof(StagePhase.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<StagePhase, string>(nameof(StagePhase.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -75,19 +62,13 @@ public sealed class StagePhaseTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<StagePhase, long>(nameof(StagePhase.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<StagePhase, long>(nameof(StagePhase.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="StagePhase.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<StagePhase, long>(nameof(StagePhase.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<StagePhase, long>(nameof(StagePhase.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="StagePhase.ToString()"/> method.</para>

@@ -33,28 +33,19 @@ public sealed class LawEventDocumentTest : Test
   ///   <para>Performs testing of <see cref="LawEventDocument.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new LawEventDocument { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new LawEventDocument { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEventDocument.Type"/> property.</para>
   /// </summary>
   [Fact]
-  public void Type_Property()
-  {
-    new LawEventDocument { Type = Guid.Empty.ToString() }.Type.Should().Be(Guid.Empty.ToString());
-  }
+  public void Type_Property() => new LawEventDocument { Type = Guid.Empty.ToString() }.Type.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEventDocument.CompareTo(ILawEventDocument)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<LawEventDocument, string>(nameof(LawEventDocument.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<LawEventDocument, string>(nameof(LawEventDocument.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -64,19 +55,13 @@ public sealed class LawEventDocumentTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<LawEventDocument, string>(nameof(LawEventDocument.Name), "first", "second"); 
-  }
+  public void Equals_Methods() => TestEquality<LawEventDocument, string>(nameof(LawEventDocument.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEventDocument.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<LawEventDocument, string>(nameof(LawEventDocument.Name), "first", "second"); 
-  }
+  public void GetHashCode_Method() => TestHashCode<LawEventDocument, string>(nameof(LawEventDocument.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="LawEventDocument.ToString()"/> method.</para>

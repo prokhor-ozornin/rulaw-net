@@ -35,46 +35,31 @@ public sealed class DeputyTest : Test
   ///   <para>Performs testing of <see cref="Deputy.Id"/> property.</para>
   /// </summary>
   [Fact]
-  public void Id_Property()
-  {
-    new Deputy { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
-  }
+  public void Id_Property() => new Deputy { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Deputy.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new Deputy { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new Deputy { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Deputy.Active"/> property.</para>
   /// </summary>
   [Fact]
-  public void Active_Property()
-  {
-    new Deputy { Active = true }.Active.Should().BeTrue();
-  }
+  public void Active_Property() => new Deputy { Active = true }.Active.Should().BeTrue();
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Deputy.Position"/> property.</para>
   /// </summary>
   [Fact]
-  public void Position_Property()
-  {
-    new Deputy { Position = Guid.Empty.ToString() }.Position.Should().Be(Guid.Empty.ToString());
-  }
+  public void Position_Property() => new Deputy { Position = Guid.Empty.ToString() }.Position.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Deputy.CompareTo(IDeputy)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<Deputy, string>(nameof(Deputy.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<Deputy, string>(nameof(Deputy.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -84,19 +69,13 @@ public sealed class DeputyTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<Deputy, long>(nameof(Deputy.Id), 1, 2); 
-  }
+  public void Equals_Methods() => TestEquality<Deputy, long>(nameof(Deputy.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Deputy.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<Deputy, long>(nameof(Deputy.Id), 1, 2); 
-  }
+  public void GetHashCode_Method() => TestHashCode<Deputy, long>(nameof(Deputy.Id), 1, 2); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Deputy.ToString()"/> method.</para>

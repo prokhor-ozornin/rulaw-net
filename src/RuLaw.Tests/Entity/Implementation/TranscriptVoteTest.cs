@@ -33,28 +33,19 @@ public sealed class TranscriptVoteTest : Test
   ///   <para>Performs testing of <see cref="TranscriptVote.Date"/> property.</para>
   /// </summary>
   [Fact]
-  public void Date_Property()
-  {
-    new TranscriptVote { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
-  }
-
+  public void Date_Property() => new TranscriptVote { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
+  
   /// <summary>
   ///   <para>Performs testing of <see cref="TranscriptVote.Line"/> property.</para>
   /// </summary>
   [Fact]
-  public void Line_Property()
-  {
-    new TranscriptVote { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
-  }
+  public void Line_Property() => new TranscriptVote { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="TranscriptVote.CompareTo(ITranscriptVote)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<TranscriptVote, DateTimeOffset>(nameof(TranscriptVote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
-  }
+  public void CompareTo_Method() => TestCompareTo<TranscriptVote, DateTimeOffset>(nameof(TranscriptVote.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>

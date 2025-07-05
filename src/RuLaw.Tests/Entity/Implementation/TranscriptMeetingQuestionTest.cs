@@ -34,19 +34,13 @@ public sealed class TranscriptMeetingQuestionTest : Test
   ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Name"/> property.</para>
   /// </summary>
   [Fact]
-  public void Name_Property()
-  {
-    new TranscriptMeetingQuestion { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
-  }
+  public void Name_Property() => new TranscriptMeetingQuestion { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Stage"/> property.</para>
   /// </summary>
   [Fact]
-  public void Stage_Property()
-  {
-    new TranscriptMeetingQuestion { Stage = Guid.Empty.ToString() }.Stage.Should().Be(Guid.Empty.ToString());
-  }
+  public void StageProperty() => new TranscriptMeetingQuestion { Stage = Guid.Empty.ToString() }.Stage.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
   ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.Parts"/> property.</para>
@@ -70,10 +64,7 @@ public sealed class TranscriptMeetingQuestionTest : Test
   ///   <para>Performs testing of <see cref="TranscriptMeetingQuestion.CompareTo(ITranscriptMeetingQuestion)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() 
-  {
-    TestCompareTo<TranscriptMeetingQuestion, string>(nameof(TranscriptMeetingQuestion.Name), "first", "second"); 
-  }
+  public void CompareTo_Method() => TestCompareTo<TranscriptMeetingQuestion, string>(nameof(TranscriptMeetingQuestion.Name), "first", "second"); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>

@@ -12,8 +12,5 @@ public sealed class RuLawTest : Test
   ///   <para>Performs testing of <see cref="RuLaw.Api"/> property.</para>
   /// </summary>
   [Fact]
-  public void Api_Property()
-  {
-    RuLaw.Api.Should().NotBeNull().And.BeSameAs(RuLaw.Api).And.BeOfType<Api>();
-  }
+  public void Api_Property() => RuLaw.Api.Should().NotBeNull().And.BeSameAs(RuLaw.Api).And.BeOfType<Api>();
 }
