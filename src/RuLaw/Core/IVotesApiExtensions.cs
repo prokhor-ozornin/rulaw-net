@@ -12,7 +12,13 @@ public static class IVotesApiExtensions
   /// <param name="api"></param>
   /// <param name="request"></param>
   /// <returns></returns>
-  public static IVotesSearchResult Search(this IVotesApi api, IVotesSearchApiRequest request) => api.SearchAsync(request).Result;
+  public static IVotesSearchResult Search(this IVotesApi api, IVotesSearchApiRequest request)
+  {
+    if (api is null) throw new ArgumentNullException(nameof(api));
+    if (request is null) throw new ArgumentNullException(nameof(request));
+   
+    return api.SearchAsync(request).Result;
+  }
 
   /// <summary>
   ///   <para>Returns results of votes search.</para>

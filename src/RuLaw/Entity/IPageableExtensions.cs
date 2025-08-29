@@ -14,6 +14,7 @@ public static class IPageableExtensions
   /// <param name="from"></param>
   /// <param name="to"></param>
   /// <returns></returns>
+  /// <exception cref="ArgumentNullException">If <paramref name="entities"/> is <see langword="null"/>.</exception>
   public static IEnumerable<TEntity> Page<TEntity>(this IEnumerable<TEntity> entities, int? from = null, int? to = null) where TEntity : IPageable
   {
     if (entities is null) throw new ArgumentNullException(nameof(entities));
@@ -39,6 +40,7 @@ public static class IPageableExtensions
   /// <param name="from"></param>
   /// <param name="to"></param>
   /// <returns></returns>
+  /// <exception cref="ArgumentNullException">If <paramref name="entities"/> is <see langword="null"/>.</exception>
   public static IEnumerable<TEntity> PageSize<TEntity>(this IEnumerable<TEntity> entities, int? from = null, int? to = null) where TEntity : IPageable
   {
     if (entities is null) throw new ArgumentNullException(nameof(entities));

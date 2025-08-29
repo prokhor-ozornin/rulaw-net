@@ -15,10 +15,6 @@ public static class ILawEventExtensions
   /// <param name="events">Source sequence of events to filter.</param>
   /// <param name="solution">Solution to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of events having a specified solution.</returns>
-  public static IEnumerable<TEntity> Solution<TEntity>(this IEnumerable<TEntity> events, string solution) where TEntity : ILawEvent
-  {
-    if (events is null) throw new ArgumentNullException(nameof(events));
-
-    return events.Where(lawEvent => lawEvent is not null && lawEvent.Solution.ToInvariantString().Contains(solution.ToInvariantString()));
-  }
+  /// <exception cref="ArgumentNullException">If <paramref name="events"/> is <see langword="null"/>.</exception>
+  public static IEnumerable<TEntity> Solution<TEntity>(this IEnumerable<TEntity> events, string solution) where TEntity : ILawEvent => events?.Where(lawEvent => lawEvent is not null && lawEvent.Solution.ToInvariantString().Contains(solution.ToInvariantString())) ?? throw new ArgumentNullException(nameof(events));
 }

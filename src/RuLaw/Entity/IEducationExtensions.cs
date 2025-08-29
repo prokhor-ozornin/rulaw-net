@@ -15,7 +15,8 @@ public static class IEducationExtensions
   /// <param name="educations">Source sequence of educations to filter.</param>
   /// <param name="institution">Full or partial name of institution to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of educations associated with given institution.</returns>
-  public static IEnumerable<TEntity> Institution<TEntity>(this IEnumerable<TEntity> educations, string institution) where TEntity : IEducation => educations is not null ? educations.Where(education => education is not null && education.Institution.ToInvariantString().Contains(institution.ToInvariantString())) : throw new ArgumentNullException(nameof(educations));
+  /// <exception cref="ArgumentNullException">If <paramref name="educations"/> is <see langword="null"/>.</exception>
+  public static IEnumerable<TEntity> Institution<TEntity>(this IEnumerable<TEntity> educations, string institution) where TEntity : IEducation => educations?.Where(education => education is not null && education.Institution.ToInvariantString().Contains(institution.ToInvariantString())) ?? throw new ArgumentNullException(nameof(educations));
 
   /// <summary>
   ///   <para>Filters sequence of educations, leaving those that were gained in specified date period.</para>
@@ -25,6 +26,7 @@ public static class IEducationExtensions
   /// <param name="from">Start date of period.</param>
   /// <param name="to">End date of period.</param>
   /// <returns>Filtered sequence of educations that were gained between <paramref name="from"/> and <paramref name="to"/> dates.</returns>
+  /// <exception cref="ArgumentNullException">If <paramref name="educations"/> is <see langword="null"/>.</exception>
   public static IEnumerable<TEntity> Year<TEntity>(this IEnumerable<TEntity> educations, short? from = null, short? to = null) where TEntity : IEducation
   {
     if (educations is null) throw new ArgumentNullException(nameof(educations));

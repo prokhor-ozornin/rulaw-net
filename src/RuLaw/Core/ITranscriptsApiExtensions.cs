@@ -14,7 +14,7 @@ public static class ITranscriptsApiExtensions
   /// <param name="api"></param>
   /// <param name="date"></param>
   /// <returns></returns>
-  public static IDateTranscriptsResult Date(this ITranscriptsApi api, DateTimeOffset date) => api is not null ? api.DateAsync(date).Result : throw new ArgumentNullException(nameof(api));
+  public static IDateTranscriptsResult Date(this ITranscriptsApi api, DateTimeOffset date) => api?.DateAsync(date).Result ?? throw new ArgumentNullException(nameof(api));
 
   /// <summary>
   ///   <para>Returns transcription of deputy's speeches.</para>
@@ -87,7 +87,7 @@ public static class ITranscriptsApiExtensions
   /// <param name="meeting"></param>
   /// <param name="question"></param>
   /// <returns></returns>
-  public static IQuestionTranscriptsResult Question(this ITranscriptsApi api, long meeting, long question) => api is not null ? api.QuestionAsync(meeting, question).Result : throw new ArgumentNullException(nameof(api));
+  public static IQuestionTranscriptsResult Question(this ITranscriptsApi api, long meeting, long question) => api?.QuestionAsync(meeting, question).Result ?? throw new ArgumentNullException(nameof(api));
 
   /// <summary>
   ///   <para></para>

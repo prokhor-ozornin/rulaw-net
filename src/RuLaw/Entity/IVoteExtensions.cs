@@ -13,13 +13,15 @@ public static class IVoteExtensions
   /// </summary>
   /// <param name="vote">Vote instances.</param>
   /// <returns><c>true</c> if <paramref name="vote"/> represents a deputy, <c>false</c> if it represents a faction.</returns>
-  public static bool Personal(this IVote vote) => vote is not null ? !vote.PersonResult().IsUnset() : throw new ArgumentNullException(nameof(vote));
+  /// <exception cref="ArgumentNullException">If <paramref name="vote"/> is <see langword="null"/>.</exception>
+  public static bool Personal(this IVote vote) => !vote?.PersonResult().IsUnset() ?? throw new ArgumentNullException(nameof(vote));
 
   /// <summary>
   ///   <para>Returns result of deputy voting as instance of <see cref="VotePersonResult"/> enumeration.</para>
   /// </summary>
   /// <param name="vote">Vote instance.</param>
   /// <returns>Result of deputy voting, or a <c>null</c> reference if <see cref="PersonResult"/> property was not yet set.</returns>
+  /// <exception cref="ArgumentNullException">If <paramref name="vote"/> is <see langword="null"/>.</exception>
   public static VotePersonResult? PersonResult(this IVote vote)
   {
     if (vote is null) throw new ArgumentNullException(nameof(vote));
@@ -39,6 +41,7 @@ public static class IVoteExtensions
   /// </summary>
   /// <param name="vote">Vote instance.</param>
   /// <returns>Type of voting result, or a <c>null</c> reference if <see cref="ResultType"/> property was not yet set.</returns>
+  /// <exception cref="ArgumentNullException">If <paramref name="vote"/> is <see langword="null"/>.</exception>
   public static VoteResultType? ResultType(this IVote vote)
   {
     if (vote is null) throw new ArgumentNullException(nameof(vote));
@@ -60,7 +63,8 @@ public static class IVoteExtensions
   /// <param name="votes">Source sequence of votes for filtering.</param>
   /// <param name="subject">Subject to search for (case-insensitive).</param>
   /// <returns>Filtered sequence of votes with specified subject.</returns>
-  public static IEnumerable<TEntity> Subject<TEntity>(this IEnumerable<TEntity> votes, string subject) where TEntity : IVote => votes is not null ? votes.Where(vote => vote?.Subject is not null && vote.Subject.ToInvariantString().Contains(subject.ToInvariantString())) : throw new ArgumentNullException(nameof(votes));
+  /// <exception cref="ArgumentNullException">If <paramref name="votes"/> is <see langword="null"/>.</exception>
+  public static IEnumerable<TEntity> Subject<TEntity>(this IEnumerable<TEntity> votes, string subject) where TEntity : IVote => votes?.Where(vote => vote?.Subject is not null && vote.Subject.ToInvariantString().Contains(subject.ToInvariantString())) ?? throw new ArgumentNullException(nameof(votes));
 
   /// <summary>
   ///   <para>Filters sequence of votes, leaving those that were successful.</para>
@@ -68,7 +72,8 @@ public static class IVoteExtensions
   /// <typeparam name="TEntity">Type of entities.</typeparam>
   /// <param name="votes">Source sequence of votes for filtering.</param>
   /// <returns>Filtered sequence of successful votes.</returns>
-  public static IEnumerable<TEntity> Successful<TEntity>(this IEnumerable<TEntity> votes) where TEntity : IVote => votes is not null ? votes.Where(vote => vote is not null && vote.Successful.GetValueOrDefault()) : throw new ArgumentNullException(nameof(votes));
+  /// <exception cref="ArgumentNullException">If <paramref name="votes"/> is <see langword="null"/>.</exception>
+  public static IEnumerable<TEntity> Successful<TEntity>(this IEnumerable<TEntity> votes) where TEntity : IVote => votes?.Where(vote => vote is not null && vote.Successful.GetValueOrDefault()) ?? throw new ArgumentNullException(nameof(votes));
 
   /// <summary>
   ///   <para>Filters sequence of votes, leaving those that were unsuccessful.</para>
@@ -76,5 +81,6 @@ public static class IVoteExtensions
   /// <typeparam name="TEntity">Type of entities.</typeparam>
   /// <param name="votes">Source sequence of votes for filtering.</param>
   /// <returns>Filtered sequence of unsuccessful votes.</returns>
-  public static IEnumerable<TEntity> Unsuccessful<TEntity>(this IEnumerable<TEntity> votes) where TEntity : IVote => votes is not null ? votes.Where(vote => vote is not null && !vote.Successful.GetValueOrDefault()) : throw new ArgumentNullException(nameof(votes));
+  /// <exception cref="ArgumentNullException">If <paramref name="votes"/> is <see langword="null"/>.</exception>
+  public static IEnumerable<TEntity> Unsuccessful<TEntity>(this IEnumerable<TEntity> votes) where TEntity : IVote => votes?.Where(vote => vote is not null && !vote.Successful.GetValueOrDefault()) ?? throw new ArgumentNullException(nameof(votes));
 }
