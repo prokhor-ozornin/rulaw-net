@@ -35,8 +35,8 @@ public sealed class LawsSearchResult : ILawsSearchResult
   /// <summary>
   ///   <para>Compares the current <see cref="ILawsSearchResult"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="ILawsSearchResult"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(ILawsSearchResult other) => Nullable.Compare(Count, other?.Count);
 
   /// <summary>

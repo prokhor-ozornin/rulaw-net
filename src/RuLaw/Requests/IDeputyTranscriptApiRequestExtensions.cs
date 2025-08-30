@@ -12,5 +12,6 @@ public static class IDeputyTranscriptApiRequestExtensions
   /// <param name="request">API request instance to use.</param>
   /// <param name="deputy">Subject deputy.</param>
   /// <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
-  public static IDeputyTranscriptApiRequest Deputy(this IDeputyTranscriptApiRequest request, IDeputy deputy) => request is not null ? request.Deputy(deputy?.Id) : throw new ArgumentNullException(nameof(request));
+  /// <exception cref="ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
+  public static IDeputyTranscriptApiRequest Deputy(this IDeputyTranscriptApiRequest request, IDeputy deputy) => request?.Deputy(deputy?.Id) ?? throw new ArgumentNullException(nameof(request));
 }

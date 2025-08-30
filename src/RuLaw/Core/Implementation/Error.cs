@@ -42,8 +42,8 @@ public sealed class Error : IError
   /// <summary>
   ///   <para>Compares the current <see cref="IError"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IError"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(IError other) => Code.CompareTo(other?.Code);
 
   /// <summary>

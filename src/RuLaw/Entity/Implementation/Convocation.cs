@@ -42,8 +42,8 @@ public sealed class Convocation : IConvocation
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the objects being compared.</returns>
   /// <param name="other">The <see cref="IConvocation"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the objects being compared.</returns>
   public int CompareTo(IConvocation other) => Name.Compare(other?.Name);
 
   /// <summary>

@@ -35,7 +35,7 @@ public sealed class QuestionsSearchResult : IQuestionsSearchResult
   /// <summary>
   ///   <para>Compares the current <see cref="IQuestionsSearchResult"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IQuestionsSearchResult"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(IQuestionsSearchResult other) => Nullable.Compare(Count, other?.Count);
 }

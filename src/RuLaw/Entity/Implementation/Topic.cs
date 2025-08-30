@@ -24,8 +24,8 @@ public sealed class Topic : ITopic
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the objects being compared.</returns>
   /// <param name="other">The <see cref="ITopic"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the objects being compared.</returns>
   public int CompareTo(ITopic other) => Name.Compare(other?.Name);
 
   /// <summary>

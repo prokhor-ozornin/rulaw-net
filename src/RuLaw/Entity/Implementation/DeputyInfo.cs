@@ -138,8 +138,8 @@ public sealed class DeputyInfo : IDeputyInfo
   /// <summary>
   ///   <para>Compares the current <see cref="IDeputyInfo"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IDeputyInfo"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(IDeputyInfo other) => string.Compare((this as IDeputyInfo).FullName, other?.FullName, StringComparison.InvariantCultureIgnoreCase);
 
   /// <summary>

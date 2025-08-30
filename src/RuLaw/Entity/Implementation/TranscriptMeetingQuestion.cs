@@ -30,8 +30,8 @@ public sealed class TranscriptMeetingQuestion : ITranscriptMeetingQuestion
   /// <summary>
   ///   <para>Compares the current <see cref="ITranscriptMeetingQuestion"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="ITranscriptMeetingQuestion"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(ITranscriptMeetingQuestion other) => Name.Compare(other?.Name);
 
   /// <summary>

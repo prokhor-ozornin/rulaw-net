@@ -36,8 +36,8 @@ public sealed class TranscriptMeeting : ITranscriptMeeting
   /// <summary>
   ///   <para>Compares the current <see cref="ITranscriptMeeting"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="ITranscriptMeeting"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(ITranscriptMeeting other) => Nullable.Compare(Date, other?.Date);
 
   /// <summary>

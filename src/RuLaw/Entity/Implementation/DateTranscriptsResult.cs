@@ -24,8 +24,8 @@ public sealed class DateTranscriptsResult : IDateTranscriptsResult
   /// <summary>
   ///   <para>Compares the current <see cref="DateTranscriptsResult"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="DateTranscriptsResult"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(IDateTranscriptsResult other) => Nullable.Compare(Date, other?.Date);
 
   /// <summary>

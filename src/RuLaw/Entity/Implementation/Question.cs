@@ -48,8 +48,8 @@ public sealed class Question : IQuestion
   /// <summary>
   ///   <para>Compares the current <see cref="IQuestion"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IQuestion"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(IQuestion other) => Name.Compare(other?.Name);
 
   /// <summary>

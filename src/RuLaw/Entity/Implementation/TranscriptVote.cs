@@ -24,8 +24,8 @@ public sealed class TranscriptVote : ITranscriptVote
   /// <summary>
   ///   <para>Compares the current <see cref="ITranscriptVote"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="ITranscriptVote"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(ITranscriptVote other) => Nullable.Compare(Date, other?.Date);
 
   /// <summary>

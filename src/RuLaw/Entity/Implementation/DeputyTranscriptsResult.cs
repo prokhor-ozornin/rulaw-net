@@ -42,8 +42,8 @@ public sealed class DeputyTranscriptsResult : IDeputyTranscriptsResult
   /// <summary>
   ///   <para>Compares the current <see cref="IDeputyTranscriptsResult"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IDeputyTranscriptsResult"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(IDeputyTranscriptsResult other) => Name.Compare(other?.Name);
 
   /// <summary>

@@ -78,8 +78,8 @@ public sealed class Vote : IVote
   /// <summary>
   ///   <para>Compares the current <see cref="IVote"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IVote"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(IVote other) => Nullable.Compare(Date, other?.Date);
 
   /// <summary>

@@ -36,8 +36,8 @@ public sealed class Session : ISession
   /// <summary>
   ///   <para>Compares the current <see cref="ISession"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="ISession"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(ISession other) => Nullable.Compare(FromDate, other?.FromDate);
 
   /// <summary>

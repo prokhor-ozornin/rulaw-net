@@ -11,6 +11,8 @@ public static class IRuLawApiExtensions
   /// </summary>
   /// <param name="api">API caller instance.</param>
   /// <param name="action">Delegate to perform API setup process.</param>
+  /// <returns></returns>
+  /// <exception cref="ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
   public static IApi Configure(this IRuLawApi api, Action<IApiConfigurator> action)
   {
     if (api is null) throw new ArgumentNullException(nameof(api));

@@ -24,8 +24,8 @@ public sealed class Education : IEducation
   /// <summary>
   ///   <para>Compares the current <see cref="IEducation"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IEducation"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(IEducation other) => Nullable.Compare(Year, other?.Year);
 
   /// <summary>

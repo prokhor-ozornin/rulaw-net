@@ -154,6 +154,7 @@
             <param name="api"></param>
             <param name="request"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IAuthoritiesApiExtensions.Federal(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest})">
             <summary>
@@ -162,6 +163,7 @@
             <param name="api"></param>
             <param name="action"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IAuthoritiesApiExtensions.Regional(RuLaw.IAuthoritiesApi,RuLaw.IAuthoritiesApiRequest)">
             <summary>
@@ -170,6 +172,7 @@
             <param name="api"></param>
             <param name="request"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IAuthoritiesApiExtensions.Regional(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest})">
             <summary>
@@ -178,6 +181,7 @@
             <param name="api"></param>
             <param name="action"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IAuthoritiesApiExtensions.FederalAsync(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest},System.Threading.CancellationToken)">
             <summary>
@@ -187,6 +191,7 @@
             <param name="action">Delegate to configure additional parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Collection of authorities.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-federalnih-organov-vlasti"/>
         </member>
@@ -198,6 +203,7 @@
             <param name="action">Delegate to configure additional parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Collection of authorities.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-regionalnih-organov-vlasti"/>
         </member>
@@ -226,6 +232,8 @@
               <para>Returns list of laws branches.</para>
             </summary>
             <param name="api">API caller instance to be used.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-otrasley-zakonodatelstva"/>
         </member>
         <member name="T:RuLaw.ICommitteesApi">
@@ -253,6 +261,8 @@
               <para>Returns list of committees.</para>
             </summary>
             <param name="api">API caller instance to be used.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-komitetov"/>
         </member>
         <member name="T:RuLaw.IConvocationsApi">
@@ -280,6 +290,8 @@
               <para>Returns list of State Duma's convocations and sessions.</para>
             </summary>
             <param name="api">API caller instance to be used.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-sozivov-i-sessiy"/>
         </member>
         <member name="T:RuLaw.IDeputiesApi">
@@ -319,6 +331,8 @@
             </summary>
             <param name="api">API caller instance to be used.</param>
             <param name="id">Identifier of deputy.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
         </member>
         <member name="M:RuLaw.IDeputiesApiExtensions.Search(RuLaw.IDeputiesApi,RuLaw.IDeputiesApiRequest)">
@@ -328,6 +342,7 @@
             <param name="api"></param>
             <param name="request"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IDeputiesApiExtensions.Search(RuLaw.IDeputiesApi,System.Action{RuLaw.IDeputiesApiRequest})">
             <summary>
@@ -335,6 +350,8 @@
             </summary>
             <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
         </member>
         <member name="M:RuLaw.IDeputiesApiExtensions.SearchAsync(RuLaw.IDeputiesApi,System.Action{RuLaw.IDeputiesApiRequest},System.Threading.CancellationToken)">
@@ -345,6 +362,7 @@
             <param name="action">Delegate to configure additional parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Collection of deputies.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
         </member>
@@ -391,6 +409,7 @@
             <param name="api"></param>
             <param name="request"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IInstancesApiExtensions.Search(RuLaw.IInstancesApi,System.Action{RuLaw.IInstancesApiRequest})">
             <summary>
@@ -398,6 +417,8 @@
             </summary>
             <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
         </member>
         <member name="M:RuLaw.IInstancesApiExtensions.SearchAsync(RuLaw.IInstancesApi,System.Action{RuLaw.IInstancesApiRequest},System.Threading.CancellationToken)">
@@ -408,6 +429,7 @@
             <param name="action">Delegate to configure additional parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Collection of instances.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
         </member>
@@ -438,6 +460,8 @@
             </summary>
             <param name="api">API caller instance to be used.</param>
             <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="request"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
         </member>
         <member name="M:RuLaw.ILawsApiExtensions.Search(RuLaw.ILawsApi,System.Action{RuLaw.ILawsApiRequest})">
@@ -447,6 +471,7 @@
             <param name="api"></param>
             <param name="action"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ILawsApiExtensions.SearchAsync(RuLaw.ILawsApi,System.Action{RuLaw.ILawsApiRequest},System.Threading.CancellationToken)">
             <summary>
@@ -456,6 +481,7 @@
             <param name="action">Delegate to configure parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Laws search result.</returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
         </member>
@@ -490,8 +516,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.IError"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IError"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.Error.Equals(RuLaw.IError)">
             <summary>
@@ -547,6 +573,7 @@
             <param name="api"></param>
             <param name="request"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IQuestionsApiExtensions.Search(RuLaw.IQuestionsApi,System.Action{RuLaw.IQuestionsApiRequest})">
             <summary>
@@ -554,6 +581,8 @@
             </summary>
             <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
         </member>
         <member name="M:RuLaw.IQuestionsApiExtensions.SearchAsync(RuLaw.IQuestionsApi,System.Action{RuLaw.IQuestionsApiRequest},System.Threading.CancellationToken)">
@@ -564,6 +593,7 @@
             <param name="action">Delegate to configure additional parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Questions search result.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
         </member>
@@ -592,6 +622,8 @@
               <para>Returns list of deputies requests.</para>
             </summary>
             <param name="api">API caller instance to be used.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/deputatskie-zaprosi"/>
         </member>
         <member name="T:RuLaw.IResultable`1">
@@ -630,6 +662,8 @@
               <para>Returns list of laws review stages.</para>
             </summary>
             <param name="api">API caller instance to be used.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-stadiy-rassmotreniya"/>
         </member>
         <member name="T:RuLaw.ITopicsApi">
@@ -657,6 +691,8 @@
               <para>Returns list of topics (subject units).</para>
             </summary>
             <param name="api">API caller instance to be used.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-tematicheskih-blokov"/>
         </member>
         <member name="T:RuLaw.ITranscriptsApi">
@@ -728,6 +764,7 @@
             <param name="api"></param>
             <param name="date"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ITranscriptsApiExtensions.Deputy(RuLaw.ITranscriptsApi,RuLaw.IDeputyTranscriptApiRequest)">
             <summary>
@@ -735,6 +772,8 @@
             </summary>
             <param name="api">API caller instance to be used.</param>
             <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="request"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
         </member>
         <member name="M:RuLaw.ITranscriptsApiExtensions.Deputy(RuLaw.ITranscriptsApi,System.Action{RuLaw.IDeputyTranscriptApiRequest})">
@@ -744,6 +783,7 @@
             <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
             <returns>Deputy's transcripts result.</returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
         </member>
@@ -755,6 +795,7 @@
             <param name="action"></param>
             <param name="cancellation"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ITranscriptsApiExtensions.Law(RuLaw.ITranscriptsApi,System.String)">
             <summary>
@@ -763,6 +804,8 @@
             <param name="api"></param>
             <param name="number"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="number"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">If <paramref name="number"/> is invalid string.</exception>
         </member>
         <member name="M:RuLaw.ITranscriptsApiExtensions.Question(RuLaw.ITranscriptsApi,System.Int64,System.Int64)">
             <summary>
@@ -772,6 +815,7 @@
             <param name="meeting"></param>
             <param name="question"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ITranscriptsApiExtensions.Resolution(RuLaw.ITranscriptsApi,System.String)">
             <summary>
@@ -780,6 +824,8 @@
             <param name="api"></param>
             <param name="number"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="number"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">If <paramref name="number"/> is invalid string.</exception>
         </member>
         <member name="T:RuLaw.IVotesApi">
             <summary>
@@ -794,6 +840,7 @@
             <param name="cancellation"></param>
             <returns>Votes search result.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
         </member>
         <member name="T:RuLaw.IVotesApiExtensions">
@@ -809,6 +856,7 @@
             <param name="api"></param>
             <param name="request"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IVotesApiExtensions.Search(RuLaw.IVotesApi,System.Action{RuLaw.IVotesSearchApiRequest})">
             <summary>
@@ -816,6 +864,8 @@
             </summary>
             <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
         </member>
         <member name="M:RuLaw.IVotesApiExtensions.SearchAsync(RuLaw.IVotesApi,System.Action{RuLaw.IVotesSearchApiRequest},System.Threading.CancellationToken)">
@@ -826,6 +876,7 @@
             <param name="action">Delegate to configure additional parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Votes search result.</returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
             <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
         </member>
@@ -897,6 +948,7 @@
             </summary>
             <param name="entities">Source sequence of entities to filter.</param>
             <returns>Filtered sequence of entities in active state.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="entities"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IActiveExtensions.Inactive``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
@@ -904,6 +956,7 @@
             </summary>
             <param name="entities">Source sequence of entities to filter.</param>
             <returns>Filtered sequence of entities in inactive state.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="entities"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IAuthority">
             <summary>
@@ -950,6 +1003,7 @@
             <param name="from">Lower bound of date and time range.</param>
             <param name="to">Upper bound of date and time range.</param>
             <returns>Filtered sequence of entities with creation date and time ranging inclusively from <paramref name="from"/> to <paramref name="to"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="entities"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IDateTranscriptMeeting">
             <summary>
@@ -1023,6 +1077,7 @@
             </summary>
             <param name="deputy">Deputy instance.</param>
             <returns>Work position of deputy, or a <c>null</c> reference if <see cref="M:RuLaw.IDeputyExtensions.Position(RuLaw.IDeputy)"/> property was not yet set.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="deputy"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IDeputyExtensions.Position``1(System.Collections.Generic.IEnumerable{``0},System.String)">
             <summary>
@@ -1032,6 +1087,7 @@
             <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="position">Position to search for (case-insensitive).</param>
             <returns>Filtered sequence of deputies with specified position.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IDeputyInfo">
             <summary>
@@ -1152,6 +1208,7 @@
             <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="name">Part or full name to search for (case-insensitive).</param>
             <returns>Filtered sequence of deputies with specified name.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IDeputyInfoExtensions.BirthDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
             <summary>
@@ -1162,6 +1219,7 @@
             <param name="from">Start date of period.</param>
             <param name="to">End date of period.</param>
             <returns>Filtered sequence of deputies that were born between <paramref name="from"/> and <paramref name="to"/> dates.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IDeputyInfoExtensions.WorkDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
             <summary>
@@ -1172,6 +1230,7 @@
             <param name="from">Lower bound of work starting date.</param>
             <param name="to">Upper bound of work ending date.</param>
             <returns>Filtered sequence of deputies.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IDeputyInfoExtensions.Faction``1(System.Collections.Generic.IEnumerable{``0},System.String)">
             <summary>
@@ -1181,6 +1240,7 @@
             <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="faction">Faction name to search for (case-insensitive).</param>
             <returns>Filtered sequence of deputies that belong to specified faction.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IDeputyInfoExtensions.Degree``1(System.Collections.Generic.IEnumerable{``0},System.String)">
             <summary>
@@ -1190,6 +1250,7 @@
             <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="degree">Scientific degree to search for (case-insensitive).</param>
             <returns>Filtered sequence of deputies that have a specified degree.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IDeputyInfoExtensions.Rank``1(System.Collections.Generic.IEnumerable{``0},System.String)">
             <summary>
@@ -1199,6 +1260,7 @@
             <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="rank">Rank to search for (case-insensitive).</param>
             <returns>Filtered sequence of deputies that have a specified rank.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IDeputyInfoExtensions.Region``1(System.Collections.Generic.IEnumerable{``0},System.String)">
             <summary>
@@ -1208,6 +1270,7 @@
             <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="region">Region to search for (case-insensitive).</param>
             <returns>Filtered sequence of deputies linked to a specified region.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IDeputyRequest">
             <summary>
@@ -1273,6 +1336,7 @@
             <param name="requests">Source sequence of requests to filter.</param>
             <param name="initiator">Full or partial name of initiator to search for (case-insensitive).</param>
             <returns>Filtered sequence of requests with specified initiator.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="requests"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IDeputyRequestExtensions.Answer``1(System.Collections.Generic.IEnumerable{``0},System.String)">
             <summary>
@@ -1282,6 +1346,7 @@
             <param name="requests">Source sequence of requests to filter.</param>
             <param name="text">Text fragment to search for (case-insensitive).</param>
             <returns>Filtered sequence of requests that contain specified text.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="requests"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IDeputyRequestExtensions.SignDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
             <summary>
@@ -1292,6 +1357,7 @@
             <param name="from">Lower bound of signing date period.</param>
             <param name="to">Upper bound of signing date period.</param>
             <returns>Filtered sequence of requests.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="requests"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IDeputyRequestExtensions.ControlDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
             <summary>
@@ -1302,6 +1368,7 @@
             <param name="from">Lower bound of control date period.</param>
             <param name="to">Upper bound of control date period.</param>
             <returns>Filtered sequence of requests.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="requests"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IDeputyRequestSigner">
             <summary>
@@ -1352,6 +1419,7 @@
             <param name="educations">Source sequence of educations to filter.</param>
             <param name="institution">Full or partial name of institution to search for (case-insensitive).</param>
             <returns>Filtered sequence of educations associated with given institution.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="educations"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IEducationExtensions.Year``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int16},System.Nullable{System.Int16})">
             <summary>
@@ -1362,6 +1430,7 @@
             <param name="from">Start date of period.</param>
             <param name="to">End date of period.</param>
             <returns>Filtered sequence of educations that were gained between <paramref name="from"/> and <paramref name="to"/> dates.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="educations"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IEntity">
             <summary>
@@ -1497,6 +1566,7 @@
             <param name="events">Source sequence of events to filter.</param>
             <param name="solution">Solution to search for (case-insensitive).</param>
             <returns>Filtered sequence of events having a specified solution.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="events"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.ILawEventPhase">
             <summary>
@@ -1522,6 +1592,7 @@
             <param name="laws">Source sequence of laws for searching.</param>
             <param name="number">Unique number of law to search for.</param>
             <returns>Law with a specified number, or a <c>null</c> reference if it could not be found.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="laws"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.ILawsSearchResult">
             <summary>
@@ -1622,8 +1693,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IAuthority"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.Authority.Equals(RuLaw.IAuthority)">
             <summary>
@@ -1685,8 +1756,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IAuthority"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.Committee.Equals(RuLaw.ICommittee)">
             <summary>
@@ -1748,8 +1819,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IConvocation"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.Convocation.Equals(RuLaw.IConvocation)">
             <summary>
@@ -1806,8 +1877,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.IDateTranscriptMeeting"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IDateTranscriptMeeting"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.DateTranscriptMeeting.Equals(RuLaw.IDateTranscriptMeeting)">
             <summary>
@@ -1854,8 +1925,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.DateTranscriptsResult"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.DateTranscriptsResult"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.DateTranscriptsResult.Equals(RuLaw.IDateTranscriptsResult)">
             <summary>
@@ -1912,8 +1983,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IDeputy"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.Deputy.Equals(RuLaw.IDeputy)">
             <summary>
@@ -1965,8 +2036,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.IDeputyActivity"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IDeputyActivity"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.DeputyActivity.Equals(RuLaw.IDeputyActivity)">
             <summary>
@@ -2108,8 +2179,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.IDeputyInfo"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IDeputyInfo"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.DeputyInfo.Equals(RuLaw.IDeputyInfo)">
             <summary>
@@ -2216,8 +2287,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.IDeputyRequest"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IDeputyRequest"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.DeputyRequest.Equals(RuLaw.IDeputyRequest)">
             <summary>
@@ -2264,8 +2335,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IDeputyRequestAddressee"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.DeputyRequestAddressee.Equals(RuLaw.IDeputyRequestAddressee)">
             <summary>
@@ -2312,8 +2383,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IDeputyRequestSigner"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.DeputyRequestSigner.Equals(RuLaw.IDeputyRequestSigner)">
             <summary>
@@ -2375,8 +2446,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.IDeputyTranscriptsResult"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IDeputyTranscriptsResult"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.DeputyTranscriptsResult.ToString">
             <summary>
@@ -2403,8 +2474,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.IEducation"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IEducation"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.Education.Equals(RuLaw.IEducation)">
             <summary>
@@ -2461,8 +2532,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IInstance"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.Instance.Equals(RuLaw.IInstance)">
             <summary>
@@ -2554,8 +2625,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.ILaw"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ILaw"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.Law.Equals(RuLaw.ILaw)">
             <summary>
@@ -2602,8 +2673,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ILawBranch"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.LawBranch.Equals(RuLaw.ILawBranch)">
             <summary>
@@ -2685,8 +2756,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.ILawEvent"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ILawEvent"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.LawEvent.ToString">
             <summary>
@@ -2713,8 +2784,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.ILawEventDocument"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ILawEventDocument"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.LawEventDocument.Equals(RuLaw.ILawEventDocument)">
             <summary>
@@ -2761,8 +2832,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ILawEventPhase"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.LawEventPhase.Equals(RuLaw.ILawEventPhase)">
             <summary>
@@ -2809,8 +2880,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ILawEventStage"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.LawEventStage.Equals(RuLaw.ILawEventStage)">
             <summary>
@@ -2867,8 +2938,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.ILawsSearchResult"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ILawsSearchResult"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.LawsSearchResult.ToString">
             <summary>
@@ -2920,8 +2991,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.ILawTranscriptsResult"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ILawTranscriptsResult"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.LawTranscriptsResult.Equals(RuLaw.ILawTranscriptsResult)">
             <summary>
@@ -2968,8 +3039,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ILawType"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.LawType.Equals(RuLaw.ILawType)">
             <summary>
@@ -3021,8 +3092,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IPhaseStage"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.PhaseStage.Equals(RuLaw.IPhaseStage)">
             <summary>
@@ -3089,8 +3160,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.IQuestion"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IQuestion"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.Question.Equals(RuLaw.IQuestion)">
             <summary>
@@ -3147,8 +3218,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.IQuestionsSearchResult"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IQuestionsSearchResult"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="T:RuLaw.QuestionTranscriptsResult">
             <summary>
@@ -3235,8 +3306,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.ISession"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ISession"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.Session.Equals(RuLaw.ISession)">
             <summary>
@@ -3288,8 +3359,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IStagePhase"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.StagePhase.Equals(RuLaw.IStagePhase)">
             <summary>
@@ -3336,8 +3407,8 @@
             <summary>
               <para>Compares the current entity with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the objects being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ITopic"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
         </member>
         <member name="M:RuLaw.Topic.Equals(RuLaw.ITopic)">
             <summary>
@@ -3394,8 +3465,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.ITranscriptMeeting"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ITranscriptMeeting"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.TranscriptMeeting.Equals(RuLaw.ITranscriptMeeting)">
             <summary>
@@ -3447,8 +3518,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.ITranscriptMeetingQuestion"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ITranscriptMeetingQuestion"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.TranscriptMeetingQuestion.Equals(RuLaw.ITranscriptMeetingQuestion)">
             <summary>
@@ -3505,8 +3576,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.ITranscriptMeetingQuestionPart"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ITranscriptMeetingQuestionPart"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.TranscriptMeetingQuestionPart.Equals(RuLaw.ITranscriptMeetingQuestionPart)">
             <summary>
@@ -3553,8 +3624,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.ITranscriptVote"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.ITranscriptVote"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.TranscriptVote.Equals(RuLaw.ITranscriptVote)">
             <summary>
@@ -3640,8 +3711,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.IVote"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IVote"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.Vote.Equals(RuLaw.IVote)">
             <summary>
@@ -3753,8 +3824,8 @@
             <summary>
               <para>Compares the current <see cref="T:RuLaw.IVotesSearchResult"/> instance with another.</para>
             </summary>
-            <returns>A value that indicates the relative order of the instances being compared.</returns>
             <param name="other">The <see cref="T:RuLaw.IVotesSearchResult"/> to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the instances being compared.</returns>
         </member>
         <member name="M:RuLaw.VotesSearchResult.ToString">
             <summary>
@@ -3786,6 +3857,7 @@
             <param name="entities">Source sequence of entities to filter.</param>
             <param name="name">Name to search for.</param>
             <returns>Filtered sequence of entities with specified name.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="entities"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IPageable">
             <summary>
@@ -3817,6 +3889,7 @@
             <param name="from"></param>
             <param name="to"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="entities"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IPageableExtensions.PageSize``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
@@ -3827,6 +3900,7 @@
             <param name="from"></param>
             <param name="to"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="entities"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IPeriodable">
             <summary>
@@ -3858,6 +3932,7 @@
             <param name="from">Lower bound of starting period.</param>
             <param name="to">Upper bound of ending period.</param>
             <returns>Filters sequence of entities.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="entities"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IPhaseStage">
             <summary>
@@ -4003,6 +4078,7 @@
             <param name="questions">Source sequence of questions for filtering.</param>
             <param name="stage">Stage to search for (case-insensitive).</param>
             <returns>Filtered sequence of questions that contain specified stage.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="questions"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.ITranscriptMeetingQuestionPart">
             <summary>
@@ -4101,6 +4177,7 @@
             </summary>
             <param name="vote">Vote instances.</param>
             <returns><c>true</c> if <paramref name="vote"/> represents a deputy, <c>false</c> if it represents a faction.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="vote"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IVoteExtensions.PersonResult(RuLaw.IVote)">
             <summary>
@@ -4108,6 +4185,7 @@
             </summary>
             <param name="vote">Vote instance.</param>
             <returns>Result of deputy voting, or a <c>null</c> reference if <see cref="M:RuLaw.IVoteExtensions.PersonResult(RuLaw.IVote)"/> property was not yet set.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="vote"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IVoteExtensions.ResultType(RuLaw.IVote)">
             <summary>
@@ -4115,6 +4193,7 @@
             </summary>
             <param name="vote">Vote instance.</param>
             <returns>Type of voting result, or a <c>null</c> reference if <see cref="M:RuLaw.IVoteExtensions.ResultType(RuLaw.IVote)"/> property was not yet set.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="vote"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IVoteExtensions.Subject``1(System.Collections.Generic.IEnumerable{``0},System.String)">
             <summary>
@@ -4124,6 +4203,7 @@
             <param name="votes">Source sequence of votes for filtering.</param>
             <param name="subject">Subject to search for (case-insensitive).</param>
             <returns>Filtered sequence of votes with specified subject.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="votes"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IVoteExtensions.Successful``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
@@ -4132,6 +4212,7 @@
             <typeparam name="TEntity">Type of entities.</typeparam>
             <param name="votes">Source sequence of votes for filtering.</param>
             <returns>Filtered sequence of successful votes.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="votes"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IVoteExtensions.Unsuccessful``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
@@ -4140,6 +4221,7 @@
             <typeparam name="TEntity">Type of entities.</typeparam>
             <param name="votes">Source sequence of votes for filtering.</param>
             <returns>Filtered sequence of unsuccessful votes.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="votes"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IVotesSearchResult">
             <summary>
@@ -4208,6 +4290,8 @@
               <para>Initializes a caller object to perform web requests to RuLaw API.</para>
             </summary>
             <param name="configurator">Configurator to perform API setup process.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="configurator"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IRuLawApiExtensions">
             <summary>
@@ -4221,6 +4305,8 @@
             </summary>
             <param name="api">API caller instance.</param>
             <param name="action">Delegate to perform API setup process.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IApiRequest">
             <summary>
@@ -4291,6 +4377,7 @@
             <param name="request">API request instance to use.</param>
             <param name="position">Position of deputies.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IDeputyTranscriptApiRequest">
             <summary>
@@ -4338,6 +4425,7 @@
             <param name="request">API request instance to use.</param>
             <param name="deputy">Subject deputy.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IInstancesApiRequest">
             <summary>
@@ -4488,6 +4576,7 @@
             <param name="request">API call instance to use.</param>
             <param name="type">Type of laws.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ILawsApiRequestExtensions.Topic(RuLaw.ILawsApiRequest,RuLaw.ITopic)">
             <summary>
@@ -4496,6 +4585,7 @@
             <param name="request">API call instance to use.</param>
             <param name="topic">Instance of topic.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ILawsApiRequestExtensions.Status(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawStatus})">
             <summary>
@@ -4504,6 +4594,7 @@
             <param name="request">API call instance to use.</param>
             <param name="status">Status of laws.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ILawsApiRequestExtensions.Branch(RuLaw.ILawsApiRequest,RuLaw.ILawBranch)">
             <summary>
@@ -4512,6 +4603,7 @@
             <param name="request">API call instance to use.</param>
             <param name="branch">Instance of law branch.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ILawsApiRequestExtensions.Deputy(RuLaw.ILawsApiRequest,RuLaw.IDeputy)">
             <summary>
@@ -4520,6 +4612,7 @@
             <param name="request">API call instance to use.</param>
             <param name="deputy">Instance of deputy.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ILawsApiRequestExtensions.FederalAuthority(RuLaw.ILawsApiRequest,RuLaw.IAuthority)">
             <summary>
@@ -4528,6 +4621,7 @@
             <param name="request">API call instance to use.</param>
             <param name="authority">Instance of authority.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ILawsApiRequestExtensions.RegionalAuthority(RuLaw.ILawsApiRequest,RuLaw.IAuthority)">
             <summary>
@@ -4536,6 +4630,7 @@
             <param name="request">API call instance to use.</param>
             <param name="authority">Instance of authority.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ILawsApiRequestExtensions.ProfileCommittee(RuLaw.ILawsApiRequest,RuLaw.ICommittee)">
             <summary>
@@ -4544,6 +4639,7 @@
             <param name="request">API call instance to use.</param>
             <param name="committee">Instance of committee.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ILawsApiRequestExtensions.ResponsibleCommittee(RuLaw.ILawsApiRequest,RuLaw.ICommittee)">
             <summary>
@@ -4552,6 +4648,7 @@
             <param name="committee">Instance of committee.</param>
             <param name="request">API call instance to use.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ILawsApiRequestExtensions.SoExecutorCommittee(RuLaw.ILawsApiRequest,RuLaw.ICommittee)">
             <summary>
@@ -4560,6 +4657,7 @@
             <param name="request">API call instance to use.</param>
             <param name="committee">Instance of committee.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ILawsApiRequestExtensions.Sorting(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawsSorting})">
             <summary>
@@ -4568,6 +4666,7 @@
             <param name="request">API call instance to use.</param>
             <param name="sort">Laws sorting type.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.ILawsApiRequestExtensions.EventsSearchMode(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawsEventsSearchMode})">
             <summary>
@@ -4576,6 +4675,7 @@
             <param name="request">API call instance to use.</param>
             <param name="mode">Events search mode.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IPagedApiRequest`1">
             <summary>
@@ -4711,6 +4811,7 @@
             <param name="request"></param>
             <param name="deputy"></param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:RuLaw.IVotesSearchApiRequestExtensions.Convocation(RuLaw.IVotesSearchApiRequest,RuLaw.IConvocation)">
             <summary>
@@ -4719,6 +4820,7 @@
             <param name="request"></param>
             <param name="convocation"></param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.LawsEventsSearchMode">
             <summary>

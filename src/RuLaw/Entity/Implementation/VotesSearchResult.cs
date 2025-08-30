@@ -41,8 +41,8 @@ public sealed class VotesSearchResult : IVotesSearchResult
   /// <summary>
   ///   <para>Compares the current <see cref="IVotesSearchResult"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IVotesSearchResult"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(IVotesSearchResult other) => Nullable.Compare(Count, other?.Count);
 
   /// <summary>

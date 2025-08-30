@@ -30,8 +30,8 @@ public sealed class PhaseStage : IPhaseStage
   /// <summary>
   ///   <para>Compares the current entity with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the objects being compared.</returns>
   /// <param name="other">The <see cref="IPhaseStage"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the objects being compared.</returns>
   public int CompareTo(IPhaseStage other) => Name.Compare(other?.Name);
 
   /// <summary>

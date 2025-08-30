@@ -36,8 +36,8 @@ public sealed class LawTranscriptsResult : ILawTranscriptsResult
   /// <summary>
   ///   <para>Compares the current <see cref="ILawTranscriptsResult"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="ILawTranscriptsResult"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(ILawTranscriptsResult other) => Number.Compare(other?.Number);
 
   /// <summary>

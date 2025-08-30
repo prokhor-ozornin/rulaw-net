@@ -78,8 +78,8 @@ public sealed class DeputyRequest : IDeputyRequest
   /// <summary>
   ///   <para>Compares the current <see cref="IDeputyRequest"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="IDeputyRequest"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(IDeputyRequest other) => Nullable.Compare(Date, other?.Date);
 
   /// <summary>

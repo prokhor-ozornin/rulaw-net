@@ -24,8 +24,8 @@ public sealed class LawEventDocument : ILawEventDocument
   /// <summary>
   ///   <para>Compares the current <see cref="ILawEventDocument"/> instance with another.</para>
   /// </summary>
-  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   /// <param name="other">The <see cref="ILawEventDocument"/> to compare with this instance.</param>
+  /// <returns>A value that indicates the relative order of the instances being compared.</returns>
   public int CompareTo(ILawEventDocument other) => Name.Compare(other?.Name);
 
   /// <summary>
