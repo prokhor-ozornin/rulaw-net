@@ -10,6 +10,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Api"/>.</para>
 /// </summary>
+/// <seealso cref="Api"/>
 public sealed class ApiTest : Test
 {
   private IApi Api { get; } = null; //RuLaw.Api.Configure(configurator => configurator.ApiKey(ConfigurationManager.AppSettings["ApiKey"]).AppKey(ConfigurationManager.AppSettings["AppKey"]));

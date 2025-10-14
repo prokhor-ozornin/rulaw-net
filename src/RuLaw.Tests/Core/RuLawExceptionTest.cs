@@ -7,6 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="RuLawException"/>.</para>
 /// </summary>
+/// <seealso cref="RuLawException"/>
 public sealed class RuLawExceptionTest : Test
 {
   /// <summary>

@@ -9,6 +9,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DateTranscriptsResult"/>.</para>
 /// </summary>
+/// <seealso cref="DateTranscriptsResult"/>
 public sealed class DateTranscriptsResultTest : Test
 {
   /// <summary>

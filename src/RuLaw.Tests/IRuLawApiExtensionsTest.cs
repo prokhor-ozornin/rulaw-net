@@ -8,6 +8,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="IRuLawApiExtensions"/>.</para>
 /// </summary>
+/// <seealso cref="IRuLawApiExtensions"/>
 public sealed class IRuLawApiExtensionsTest : Test
 {
   /// <summary>

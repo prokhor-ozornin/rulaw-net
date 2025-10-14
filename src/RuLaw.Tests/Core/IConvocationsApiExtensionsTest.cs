@@ -7,6 +7,7 @@ namespace RuLaw.Tests.Core;
 /// <summary>
 ///   <para>Tests set for class <see cref="IConvocationsApiExtensions"/>.</para>
 /// </summary>
+/// <seealso cref="IConvocationsApiExtensions"/>
 public sealed class IConvocationsApiExtensionsTest : IntegrationTest
 {
   /// <summary>

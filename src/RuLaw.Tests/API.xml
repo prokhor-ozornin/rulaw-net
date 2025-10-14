@@ -8,6 +8,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IAuthoritiesApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IAuthoritiesApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.Core.IAuthoritiesApiExtensionsTest.Federal_Methods">
             <summary>
@@ -41,6 +42,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IBranchesApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IBranchesApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.Core.IBranchesApiExtensionsTest.All_Method">
             <summary>
@@ -51,6 +53,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.ICommitteesApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.ICommitteesApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.Core.ICommitteesApiExtensionsTest.All_Method">
             <summary>
@@ -61,6 +64,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IConvocationsApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IConvocationsApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.Core.IConvocationsApiExtensionsTest.All_Method">
             <summary>
@@ -71,6 +75,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IDeputiesApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IDeputiesApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.Core.IDeputiesApiExtensionsTest.Find_Method">
             <summary>
@@ -95,6 +100,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IInstancesApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IInstancesApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.Core.IInstancesApiExtensionsTest.Search_Methods">
             <summary>
@@ -114,6 +120,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.ILawsApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.ILawsApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.Core.ILawsApiExtensionsTest.Search_Methods">
             <summary>
@@ -133,6 +140,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IQuestionsApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IQuestionsApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.Core.IQuestionsApiExtensionsTest.Search_Methods">
             <summary>
@@ -152,6 +160,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IRequestsApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IRequestsApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.Core.IRequestsApiExtensionsTest.All_Method">
             <summary>
@@ -162,6 +171,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IStagesApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IStagesApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.Core.IStagesApiExtensionsTest.All_Method">
             <summary>
@@ -172,6 +182,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.ITopicsApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.ITopicsApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.Core.ITopicsApiExtensionsTest.All_Method">
             <summary>
@@ -182,6 +193,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.ApiConfigurator"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.ApiConfigurator"/>
         </member>
         <member name="M:RuLaw.Tests.ApiConfiguratorTest.Constructors">
             <summary>
@@ -203,6 +215,7 @@
             <summary>
               <para>Tests set for class <see cref="P:RuLaw.Tests.ApiTest.Api"/>.</para>
             </summary>
+            <seealso cref="P:RuLaw.Tests.ApiTest.Api"/>
         </member>
         <member name="M:RuLaw.Tests.ApiTest.Constructors">
             <summary>
@@ -314,6 +327,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.Error"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.Error"/>
         </member>
         <member name="M:RuLaw.Tests.ErrorTest.Constructors">
             <summary>
@@ -365,6 +379,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.ITranscriptsApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.ITranscriptsApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.ITranscriptsApiExtensionsTest.Date_Method">
             <summary>
@@ -404,6 +419,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IVotesApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IVotesApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.IVotesApiExtensionsTest.Search_Methods">
             <summary>
@@ -423,6 +439,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.RuLawException"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.RuLawException"/>
         </member>
         <member name="M:RuLaw.Tests.RuLawExceptionTest.Constructors">
             <summary>
@@ -434,6 +451,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IActiveExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IActiveExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.IActiveExtensionsTest.Active_Method">
             <summary>
@@ -449,6 +467,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IDateableExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IDateableExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.IDateableExtensionsTest.Date_Method">
             <summary>
@@ -459,6 +478,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IDeputyExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IDeputyExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.IDeputyExtensionsTest.Position_Methods">
             <summary>
@@ -473,6 +493,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IDeputyInfoExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IDeputyInfoExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.IDeputyInfoExtensionsTest.FullName_Method">
             <summary>
@@ -513,6 +534,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IDeputyRequestExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IDeputyRequestExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.IDeputyRequestExtensionsTest.Initiator_Method">
             <summary>
@@ -538,6 +560,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IEducationExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IEducationExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.IEducationExtensionsTest.Institution_Method">
             <summary>
@@ -553,6 +576,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.ILawEventExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.ILawEventExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.ILawEventExtensionsTest.Solution_Method">
             <summary>
@@ -563,6 +587,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.ILawExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.ILawExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.ILawExtensionsTest.Number_Method">
             <summary>
@@ -573,6 +598,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.Authority"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.Authority"/>
         </member>
         <member name="M:RuLaw.Tests.AuthorityTest.Constructors">
             <summary>
@@ -638,6 +664,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.Committee"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.Committee"/>
         </member>
         <member name="M:RuLaw.Tests.CommitteeTest.Constructors">
             <summary>
@@ -703,6 +730,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.Convocation"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.Convocation"/>
         </member>
         <member name="M:RuLaw.Tests.ConvocationTest.Constructors">
             <summary>
@@ -768,6 +796,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.DateTranscriptMeeting"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.DateTranscriptMeeting"/>
         </member>
         <member name="M:RuLaw.Tests.DateTranscriptMeetingTest.Constructors">
             <summary>
@@ -828,6 +857,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.DateTranscriptsResult"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.DateTranscriptsResult"/>
         </member>
         <member name="M:RuLaw.Tests.DateTranscriptsResultTest.Constructors">
             <summary>
@@ -878,6 +908,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.DeputyActivity"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.DeputyActivity"/>
         </member>
         <member name="M:RuLaw.Tests.DeputyActivityTest.Constructors">
             <summary>
@@ -933,6 +964,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.DeputyRequestAddressee"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.DeputyRequestAddressee"/>
         </member>
         <member name="M:RuLaw.Tests.DeputyRequestAddresseeTest.Constructors">
             <summary>
@@ -983,6 +1015,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.DeputyRequestSigner"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.DeputyRequestSigner"/>
         </member>
         <member name="M:RuLaw.Tests.DeputyRequestSignerTest.Constructors">
             <summary>
@@ -1033,6 +1066,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.DeputyRequest"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.DeputyRequest"/>
         </member>
         <member name="M:RuLaw.Tests.DeputyRequestTest.Constructors">
             <summary>
@@ -1128,6 +1162,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.Deputy"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.Deputy"/>
         </member>
         <member name="M:RuLaw.Tests.DeputyTest.Constructors">
             <summary>
@@ -1188,6 +1223,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.DeputyTranscriptsResult"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.DeputyTranscriptsResult"/>
         </member>
         <member name="M:RuLaw.Tests.DeputyTranscriptsResultTest.Constructors">
             <summary>
@@ -1239,6 +1275,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.Education"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.Education"/>
         </member>
         <member name="M:RuLaw.Tests.EducationTest.Constructors">
             <summary>
@@ -1289,6 +1326,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.FederalAuthority"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.FederalAuthority"/>
         </member>
         <member name="M:RuLaw.Tests.FederalAuthorityTest.Constructors">
             <summary>
@@ -1354,6 +1392,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.Instance"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.Instance"/>
         </member>
         <member name="M:RuLaw.Tests.InstanceTest.Constructors">
             <summary>
@@ -1409,6 +1448,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.LawBranch"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.LawBranch"/>
         </member>
         <member name="M:RuLaw.Tests.LawBranchTest.Constructors">
             <summary>
@@ -1459,6 +1499,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.LawCommittees"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.LawCommittees"/>
         </member>
         <member name="M:RuLaw.Tests.LawCommitteesTest.Constructors">
             <summary>
@@ -1490,6 +1531,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.LawEventDocument"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.LawEventDocument"/>
         </member>
         <member name="M:RuLaw.Tests.LawEventDocumentTest.Constructors">
             <summary>
@@ -1540,6 +1582,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.LawEventPhase"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.LawEventPhase"/>
         </member>
         <member name="M:RuLaw.Tests.LawEventPhaseTest.Constructors">
             <summary>
@@ -1590,6 +1633,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.LawEventStage"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.LawEventStage"/>
         </member>
         <member name="M:RuLaw.Tests.LawEventStageTest.Constructors">
             <summary>
@@ -1640,6 +1684,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.LawEvent"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.LawEvent"/>
         </member>
         <member name="M:RuLaw.Tests.LawEventTest.Constructors">
             <summary>
@@ -1691,6 +1736,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.LawsSearchResult"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.LawsSearchResult"/>
         </member>
         <member name="M:RuLaw.Tests.LawsSearchResultTest.Constructors">
             <summary>
@@ -1737,6 +1783,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.LawSubject"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.LawSubject"/>
         </member>
         <member name="M:RuLaw.Tests.LawSubjectTest.Constructors">
             <summary>
@@ -1763,6 +1810,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.Law"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.Law"/>
         </member>
         <member name="M:RuLaw.Tests.LawTest.Constructors">
             <summary>
@@ -1858,6 +1906,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.LawTranscriptsResult"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.LawTranscriptsResult"/>
         </member>
         <member name="M:RuLaw.Tests.LawTranscriptsResultTest.Constructors">
             <summary>
@@ -1918,6 +1967,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.LawType"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.LawType"/>
         </member>
         <member name="M:RuLaw.Tests.LawTypeTest.Constructors">
             <summary>
@@ -1968,6 +2018,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.PhaseStage"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.PhaseStage"/>
         </member>
         <member name="M:RuLaw.Tests.PhaseStageTest.Constructors">
             <summary>
@@ -2023,6 +2074,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.QuestionsSearchResult"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.QuestionsSearchResult"/>
         </member>
         <member name="M:RuLaw.Tests.QuestionsSearchResultTest.Constructors">
             <summary>
@@ -2064,6 +2116,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.Question"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.Question"/>
         </member>
         <member name="M:RuLaw.Tests.QuestionTest.Constructors">
             <summary>
@@ -2134,6 +2187,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.QuestionTranscriptsResult"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.QuestionTranscriptsResult"/>
         </member>
         <member name="M:RuLaw.Tests.QuestionTranscriptsResultTest.Constructors">
             <summary>
@@ -2155,6 +2209,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.RegionalAuthority"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.RegionalAuthority"/>
         </member>
         <member name="M:RuLaw.Tests.RegionalAuthorityTest.Constructors">
             <summary>
@@ -2220,6 +2275,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.ResolutionTranscriptsResult"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.ResolutionTranscriptsResult"/>
         </member>
         <member name="M:RuLaw.Tests.ResolutionTranscriptsResultTest.Constructors">
             <summary>
@@ -2265,6 +2321,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.Session"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.Session"/>
         </member>
         <member name="M:RuLaw.Tests.SessionTest.Constructors">
             <summary>
@@ -2325,6 +2382,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.StagePhase"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.StagePhase"/>
         </member>
         <member name="M:RuLaw.Tests.StagePhaseTest.Constructors">
             <summary>
@@ -2380,6 +2438,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.Topic"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.Topic"/>
         </member>
         <member name="M:RuLaw.Tests.TopicTest.Constructors">
             <summary>
@@ -2430,6 +2489,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.TranscriptMeetingQuestionPart"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.TranscriptMeetingQuestionPart"/>
         </member>
         <member name="M:RuLaw.Tests.TranscriptMeetingQuestionPartTest.Constructors">
             <summary>
@@ -2490,6 +2550,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.TranscriptMeetingQuestion"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.TranscriptMeetingQuestion"/>
         </member>
         <member name="M:RuLaw.Tests.TranscriptMeetingQuestionTest.Constructors">
             <summary>
@@ -2545,6 +2606,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.TranscriptMeeting"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.TranscriptMeeting"/>
         </member>
         <member name="M:RuLaw.Tests.TranscriptMeetingTest.Constructors">
             <summary>
@@ -2605,6 +2667,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.TranscriptVote"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.TranscriptVote"/>
         </member>
         <member name="M:RuLaw.Tests.TranscriptVoteTest.Constructors">
             <summary>
@@ -2650,6 +2713,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.VotesSearchResult"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.VotesSearchResult"/>
         </member>
         <member name="M:RuLaw.Tests.VotesSearchResultTest.Constructors">
             <summary>
@@ -2701,6 +2765,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.Vote"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.Vote"/>
         </member>
         <member name="M:RuLaw.Tests.VoteTest.Constructors">
             <summary>
@@ -2796,6 +2861,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.INameableExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.INameableExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.INameableExtensionsTest.Name_Method">
             <summary>
@@ -2806,6 +2872,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IPageableExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IPageableExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.IPageableExtensionsTest.Page_Method">
             <summary>
@@ -2821,6 +2888,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IPeriodableExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IPeriodableExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.IPeriodableExtensionsTest.Period_Method">
             <summary>
@@ -2831,6 +2899,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.ITranscriptMeetingQuestionExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.ITranscriptMeetingQuestionExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.ITranscriptMeetingQuestionExtensionsTest.Stage_Method">
             <summary>
@@ -2841,6 +2910,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IVoteExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IVoteExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.IVoteExtensionsTest.Personal_Method">
             <summary>
@@ -2876,17 +2946,14 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.DateTimeOffsetExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.DateTimeOffsetExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.DateTimeOffsetExtensionsTest.DateTimeOffset_AsString_Method">
             <summary>
               <para>Performs testing of <see cref="M:RuLaw.DateTimeOffsetExtensions.AsString(System.DateTimeOffset)"/> method.</para>
             </summary>
         </member>
-        <member name="T:RuLaw.Tests.JsonRestSerializerTest">
-            <summary>
-              <para>Tests set for class <see cref="T:RuLaw.JsonRestSerializer"/>.</para>
-            </summary>
-        </member>
+        <!-- Badly formed XML comment ignored for member "T:RuLaw.Tests.JsonRestSerializerTest" -->
         <member name="M:RuLaw.Tests.JsonRestSerializerTest.Serialize_Methods">
             <summary>
               <para>Performs testing of following methods :</para>
@@ -2935,6 +3002,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IRuLawApiExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IRuLawApiExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.IRuLawApiExtensionsTest.Configure_Method">
             <summary>
@@ -2945,6 +3013,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IDeputiesApiRequestExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IDeputiesApiRequestExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.Calls.IDeputiesApiRequestExtensionsTest.Position_Method">
             <summary>
@@ -2955,6 +3024,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.IDeputyTranscriptApiRequestExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.IDeputyTranscriptApiRequestExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.IDeputyTranscriptApiRequestExtensionsTest.Deputy_Method">
             <summary>
@@ -2965,6 +3035,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.ILawsApiRequestExtensions"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.ILawsApiRequestExtensions"/>
         </member>
         <member name="M:RuLaw.Tests.ILawsApiRequestExtensionsTest.Type_Method">
             <summary>
@@ -3030,6 +3101,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.ApiRequest"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.ApiRequest"/>
         </member>
         <member name="M:RuLaw.Tests.ApiRequestTest.Constructors">
             <summary>
@@ -3041,6 +3113,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.AuthoritiesApiRequest"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.AuthoritiesApiRequest"/>
         </member>
         <member name="M:RuLaw.Tests.AuthoritiesApiRequestTest.Constructors">
             <summary>
@@ -3057,6 +3130,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.DeputiesApiRequest"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.DeputiesApiRequest"/>
         </member>
         <member name="M:RuLaw.Tests.DeputiesApiRequestTest.Constructors">
             <summary>
@@ -3083,6 +3157,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.DeputyTranscriptApiRequest"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.DeputyTranscriptApiRequest"/>
         </member>
         <member name="M:RuLaw.Tests.DeputyTranscriptApiRequestTest.Constructors">
             <summary>
@@ -3124,6 +3199,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.InstancesApiRequest"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.InstancesApiRequest"/>
         </member>
         <member name="M:RuLaw.Tests.InstancesApiRequestTest.Constructors">
             <summary>
@@ -3140,6 +3216,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.LawsApiRequest"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.LawsApiRequest"/>
         </member>
         <member name="M:RuLaw.Tests.LawsApiRequestTest.Constructors">
             <summary>
@@ -3246,6 +3323,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.QuestionsApiRequest"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.QuestionsApiRequest"/>
         </member>
         <member name="M:RuLaw.Tests.QuestionsApiRequestTest.Constructors">
             <summary>
@@ -3282,6 +3360,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.VotesSearchApiRequest"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.VotesSearchApiRequest"/>
         </member>
         <member name="M:RuLaw.Tests.VotesSearchApiRequestTest.Constructors">
             <summary>
@@ -3359,6 +3438,7 @@
             <summary>
               <para>Tests set for class <see cref="T:RuLaw.RuLaw"/>.</para>
             </summary>
+            <seealso cref="T:RuLaw.RuLaw"/>
         </member>
         <member name="M:RuLaw.Tests.RuLawTest.Api_Property">
             <summary>

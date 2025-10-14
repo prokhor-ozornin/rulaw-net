@@ -7,6 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="IEducationExtensions"/>.</para>
 /// </summary>
+/// <seealso cref="IEducationExtensions"/>
 public sealed class IEducationExtensionsTest : Test
 {
   /// <summary>

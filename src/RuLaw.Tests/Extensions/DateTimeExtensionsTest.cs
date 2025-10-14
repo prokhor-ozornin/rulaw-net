@@ -7,6 +7,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DateTimeOffsetExtensions"/>.</para>
 /// </summary>
+/// <seealso cref="DateTimeOffsetExtensions"/>
 public sealed class DateTimeOffsetExtensionsTest : Test
 {
   /// <summary>

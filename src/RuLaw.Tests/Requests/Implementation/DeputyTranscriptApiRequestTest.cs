@@ -8,6 +8,7 @@ namespace RuLaw.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="DeputyTranscriptApiRequest"/>.</para>
 /// </summary>
+/// <seealso cref="DeputyTranscriptApiRequest"/>
 public sealed class DeputyTranscriptApiRequestTest : Test
 {
   /// <summary>
