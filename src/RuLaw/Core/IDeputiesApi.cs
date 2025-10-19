@@ -12,7 +12,7 @@ public interface IDeputiesApi
   /// <param name="cancellation"></param>
   /// <returns>Detailed deputy information.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
   Task<IDeputyInfo> FindAsync(long id, CancellationToken cancellation = default);
 
   /// <summary>
@@ -22,6 +22,6 @@ public interface IDeputiesApi
   /// <param name="cancellation"></param>
   /// <returns>Collection of deputies.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
   IAsyncEnumerable<IDeputy> SearchAsync(IDeputiesApiRequest request = null, CancellationToken cancellation = default);
 }

@@ -1336,51 +1336,51 @@
         </member>
         <member name="M:RuLaw.Tests.FederalAuthorityTest.Id_Property">
             <summary>
-              <para>Performs testing of <see cref="!:FederalAuthority.Id"/> property.</para>
+              <para>Performs testing of <see cref="P:RuLaw.IEntity.Id"/> property.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.FederalAuthorityTest.Name_Property">
             <summary>
-              <para>Performs testing of <see cref="!:FederalAuthority.Name"/> property.</para>
+              <para>Performs testing of <see cref="P:RuLaw.INameable.Name"/> property.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.FederalAuthorityTest.Active_Property">
             <summary>
-              <para>Performs testing of <see cref="!:FederalAuthority.Active"/> property.</para>
+              <para>Performs testing of <see cref="P:RuLaw.IActive.Active"/> property.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.FederalAuthorityTest.FromDate_Property">
             <summary>
-              <para>Performs testing of <see cref="!:FederalAuthority.FromDate"/> property.</para>
+              <para>Performs testing of <see cref="P:RuLaw.IPeriodable.FromDate"/> property.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.FederalAuthorityTest.ToDate_Property">
             <summary>
-              <para>Performs testing of <see cref="!:FederalAuthority.ToDate"/> property.</para>
+              <para>Performs testing of <see cref="P:RuLaw.IPeriodable.ToDate"/> property.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.FederalAuthorityTest.CompareTo_Method">
             <summary>
-              <para>Performs testing of <see cref="!:FederalAuthority.CompareTo(IAuthority)"/> method.</para>
+              <para>Performs testing of <see cref="M:System.IComparable`1.CompareTo(`0)"/> method.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.FederalAuthorityTest.Equals_Methods">
             <summary>
               <para>Performs testing of following methods :</para>
               <list type="bullet">
-                <item><description><see cref="!:FederalAuthority.Equals(IAuthority)"/></description></item>
-                <item><description><see cref="!:FederalAuthority.Equals(object)"/></description></item>
+                <item><description><see cref="M:System.IEquatable`1.Equals(`0)"/></description></item>
+                <item><description><see cref="M:System.Object.Equals(System.Object)"/></description></item>
               </list>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.FederalAuthorityTest.GetHashCode_Method">
             <summary>
-              <para>Performs testing of <see cref="!:FederalAuthority.GetHashCode()"/> method.</para>
+              <para>Performs testing of <see cref="M:System.Object.GetHashCode"/> method.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.FederalAuthorityTest.ToString_Method">
             <summary>
-              <para>Performs testing of <see cref="!:FederalAuthority.ToString()"/> method.</para>
+              <para>Performs testing of <see cref="M:System.Object.ToString"/> method.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.FederalAuthorityTest.Serialization">
@@ -2043,7 +2043,7 @@
         </member>
         <member name="M:RuLaw.Tests.PhaseStageTest.CompareTo_Method">
             <summary>
-              <para>Performs testing of <see cref="!:PhaseStage.CompareTo(IStage)"/> method.</para>
+              <para>Performs testing of <see cref="M:RuLaw.PhaseStage.CompareTo(RuLaw.IPhaseStage)"/> method.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.PhaseStageTest.Equals_Methods">
@@ -2219,51 +2219,51 @@
         </member>
         <member name="M:RuLaw.Tests.RegionalAuthorityTest.Id_Property">
             <summary>
-              <para>Performs testing of <see cref="!:RegionalAuthority.Id"/> property.</para>
+              <para>Performs testing of <see cref="P:RuLaw.IEntity.Id"/> property.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.RegionalAuthorityTest.Name_Property">
             <summary>
-              <para>Performs testing of <see cref="!:RegionalAuthority.Name"/> property.</para>
+              <para>Performs testing of <see cref="P:RuLaw.INameable.Name"/> property.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.RegionalAuthorityTest.Active_Property">
             <summary>
-              <para>Performs testing of <see cref="!:RegionalAuthority.Active"/> property.</para>
+              <para>Performs testing of <see cref="P:RuLaw.IActive.Active"/> property.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.RegionalAuthorityTest.FromDate_Property">
             <summary>
-              <para>Performs testing of <see cref="!:RegionalAuthority.FromDate"/> property.</para>
+              <para>Performs testing of <see cref="P:RuLaw.IPeriodable.FromDate"/> property.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.RegionalAuthorityTest.ToDate_Property">
             <summary>
-              <para>Performs testing of <see cref="!:RegionalAuthority.ToDate"/> property.</para>
+              <para>Performs testing of <see cref="P:RuLaw.IPeriodable.ToDate"/> property.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.RegionalAuthorityTest.CompareTo_Method">
             <summary>
-              <para>Performs testing of <see cref="!:RegionalAuthority.CompareTo(IAuthority)"/> method.</para>
+              <para>Performs testing of <see cref="M:System.IComparable`1.CompareTo(`0)"/> method.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.RegionalAuthorityTest.Equals_Methods">
             <summary>
               <para>Performs testing of following methods :</para>
               <list type="bullet">
-                <item><description><see cref="!:RegionalAuthority.Equals(IAuthority)"/></description></item>
-                <item><description><see cref="!:RegionalAuthority.Equals(object)"/></description></item>
+                <item><description><see cref="M:System.IEquatable`1.Equals(`0)"/></description></item>
+                <item><description><see cref="M:System.Object.Equals(System.Object)"/></description></item>
               </list>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.RegionalAuthorityTest.GetHashCode_Method">
             <summary>
-              <para>Performs testing of <see cref="!:RegionalAuthority.GetHashCode()"/> method.</para>
+              <para>Performs testing of <see cref="M:System.Object.GetHashCode"/> method.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.RegionalAuthorityTest.ToString_Method">
             <summary>
-              <para>Performs testing of <see cref="!:RegionalAuthority.ToString()"/> method.</para>
+              <para>Performs testing of <see cref="M:System.Object.ToString"/> method.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.RegionalAuthorityTest.Serialization">
@@ -2953,7 +2953,12 @@
               <para>Performs testing of <see cref="M:RuLaw.DateTimeOffsetExtensions.AsString(System.DateTimeOffset)"/> method.</para>
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:RuLaw.Tests.JsonRestSerializerTest" -->
+        <member name="T:RuLaw.Tests.JsonRestSerializerTest">
+            <summary>
+              <para>Tests set for class <see cref="T:RuLaw.JsonRestSerializer"/>.</para>
+            </summary>
+            <seealso cref="T:RuLaw.JsonRestSerializer"/>
+        </member>
         <member name="M:RuLaw.Tests.JsonRestSerializerTest.Serialize_Methods">
             <summary>
               <para>Performs testing of following methods :</para>
@@ -2996,6 +3001,21 @@
         <member name="M:RuLaw.Tests.JsonRestSerializerTest.SupportsContentType_Delegate">
             <summary>
               <para>Performs testing of <see cref="P:RuLaw.JsonRestSerializer.SupportsContentType"/> delegate.</para>
+            </summary>
+        </member>
+        <member name="T:RuLaw.Tests.IntegrationTest">
+            <summary>
+              <para></para>
+            </summary>
+        </member>
+        <member name="P:RuLaw.Tests.IntegrationTest.Api">
+            <summary>
+              <para></para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.IntegrationTest.Dispose">
+            <summary>
+              <para></para>
             </summary>
         </member>
         <member name="T:RuLaw.Tests.IRuLawApiExtensionsTest">
@@ -3444,6 +3464,59 @@
             <summary>
               <para>Performs testing of <see cref="P:RuLaw.RuLaw.Api"/> property.</para>
             </summary>
+        </member>
+        <member name="T:RuLaw.Tests.Test">
+            <summary>
+              <para></para>
+            </summary>
+        </member>
+        <member name="P:RuLaw.Tests.Test.Random">
+            <summary>
+              <para></para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Test.#ctor">
+            <summary>
+              <para></para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Test.Dispose">
+            <summary>
+              <para></para>
+            </summary>
+        </member>
+        <member name="M:RuLaw.Tests.Test.TestCompareTo``2(System.String,``1,``1,System.Func{``0})">
+            <summary>
+              <para></para>
+            </summary>
+            <param name="property"></param>
+            <param name="lower"></param>
+            <param name="greater"></param>
+            <param name="constructor"></param>
+            <typeparam name="TClass"></typeparam>
+            <typeparam name="TProperty"></typeparam>
+        </member>
+        <member name="M:RuLaw.Tests.Test.TestEquality``2(System.String,``1,``1,System.Func{``0})">
+            <summary>
+              <para></para>
+            </summary>
+            <param name="property"></param>
+            <param name="oldValue"></param>
+            <param name="newValue"></param>
+            <param name="constructor"></param>
+            <typeparam name="TClass"></typeparam>
+            <typeparam name="TProperty"></typeparam>
+        </member>
+        <member name="M:RuLaw.Tests.Test.TestHashCode``2(System.String,``1,``1,System.Func{``0})">
+            <summary>
+              <para></para>
+            </summary>
+            <param name="property"></param>
+            <param name="oldValue"></param>
+            <param name="newValue"></param>
+            <param name="constructor"></param>
+            <typeparam name="TClass"></typeparam>
+            <typeparam name="TProperty"></typeparam>
         </member>
     </members>
 </doc>

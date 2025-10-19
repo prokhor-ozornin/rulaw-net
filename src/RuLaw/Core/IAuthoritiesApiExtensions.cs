@@ -53,7 +53,7 @@ public static class IAuthoritiesApiExtensions
   /// <returns>Collection of authorities.</returns>
   /// <exception cref="ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-federalnih-organov-vlasti"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-federalnih-organov-vlasti"/>
   public static IAsyncEnumerable<IAuthority> FederalAsync(this IAuthoritiesApi api, Action<IAuthoritiesApiRequest> action = null, CancellationToken cancellation = default)
   {
     if (api is null) throw new ArgumentNullException(nameof(api));
@@ -74,7 +74,7 @@ public static class IAuthoritiesApiExtensions
   /// <returns>Collection of authorities.</returns>
   /// <exception cref="ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-regionalnih-organov-vlasti"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-regionalnih-organov-vlasti"/>
   public static IAsyncEnumerable<IAuthority> RegionalAsync(this IAuthoritiesApi api, Action<IAuthoritiesApiRequest> action = null, CancellationToken cancellation = default)
   {
     if (api is null) throw new ArgumentNullException(nameof(api));

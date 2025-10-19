@@ -24,7 +24,7 @@ public static class ITranscriptsApiExtensions
   /// <param name="request"></param>
   /// <returns></returns>
   /// <exception cref="ArgumentNullException">If either <paramref name="api"/> or <paramref name="request"/> is <see langword="null"/>.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
   public static IDeputyTranscriptsResult Deputy(this ITranscriptsApi api, IDeputyTranscriptApiRequest request)
   {
     if (api is null) throw new ArgumentNullException(nameof(api));
@@ -41,7 +41,7 @@ public static class ITranscriptsApiExtensions
   /// <returns>Deputy's transcripts result.</returns>
   /// <exception cref="ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
   public static IDeputyTranscriptsResult Deputy(this ITranscriptsApi api, Action<IDeputyTranscriptApiRequest> action)
   {
     if (api is null) throw new ArgumentNullException(nameof(api));

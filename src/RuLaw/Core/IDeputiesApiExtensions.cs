@@ -15,7 +15,7 @@ public static class IDeputiesApiExtensions
   /// <param name="id">Identifier of deputy.</param>
   /// <returns></returns>
   /// <exception cref="ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
   public static IDeputyInfo Find(this IDeputiesApi api, long id) => api?.FindAsync(id).Result ?? throw new ArgumentNullException(nameof(api));
 
   /// <summary>
@@ -34,7 +34,7 @@ public static class IDeputiesApiExtensions
   /// <param name="action">Delegate to configure additional parameters of request.</param>
   /// <returns></returns>
   /// <exception cref="ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
   public static IEnumerable<IDeputy> Search(this IDeputiesApi api, Action<IDeputiesApiRequest> action = null) => api?.SearchAsync(action).ToListAsync().Result ?? throw new ArgumentNullException(nameof(api));
 
   /// <summary>
@@ -46,7 +46,7 @@ public static class IDeputiesApiExtensions
   /// <returns>Collection of deputies.</returns>
   /// <exception cref="ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
   public static IAsyncEnumerable<IDeputy> SearchAsync(this IDeputiesApi api, Action<IDeputiesApiRequest> action = null, CancellationToken cancellation = default)
   {
     if (api is null) throw new ArgumentNullException(nameof(api));

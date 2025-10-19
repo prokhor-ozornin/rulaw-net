@@ -28,7 +28,7 @@ public static class IVotesApiExtensions
   /// <param name="action">Delegate to configure additional parameters of request.</param>
   /// <returns></returns>
   /// <exception cref="ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
   public static IVotesSearchResult Search(this IVotesApi api, Action<IVotesSearchApiRequest> action)
   {
     if (api is null) throw new ArgumentNullException(nameof(api));
@@ -46,7 +46,7 @@ public static class IVotesApiExtensions
   /// <returns>Votes search result.</returns>
   /// <exception cref="ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
   public static Task<IVotesSearchResult> SearchAsync(this IVotesApi api, Action<IVotesSearchApiRequest> action, CancellationToken cancellation = default)
   {
     if (api is null) throw new ArgumentNullException(nameof(api));

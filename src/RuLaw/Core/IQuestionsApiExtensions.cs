@@ -22,7 +22,7 @@ public static class IQuestionsApiExtensions
   /// <param name="action">Delegate to configure additional parameters of request.</param>
   /// <returns></returns>
   /// <exception cref="ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
   public static IQuestionsSearchResult Search(this IQuestionsApi api, Action<IQuestionsApiRequest> action = null) => api?.SearchAsync(action).Result ?? throw new ArgumentNullException(nameof(api));
 
   /// <summary>
@@ -34,7 +34,7 @@ public static class IQuestionsApiExtensions
   /// <returns>Questions search result.</returns>
   /// <exception cref="ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
   public static Task<IQuestionsSearchResult> SearchAsync(this IQuestionsApi api, Action<IQuestionsApiRequest> action = null, CancellationToken cancellation = default)
   {
     if (api is null) throw new ArgumentNullException(nameof(api));

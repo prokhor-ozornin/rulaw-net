@@ -34,37 +34,37 @@ public sealed class RegionalAuthorityTest : Test
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Id"/> property.</para>
+  ///   <para>Performs testing of <see cref="IEntity.Id"/> property.</para>
   /// </summary>
   [Fact]
   public void Id_Property() => new RegionalAuthority { Id = long.MaxValue }.Id.Should().Be(long.MaxValue);
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Name"/> property.</para>
+  ///   <para>Performs testing of <see cref="INameable.Name"/> property.</para>
   /// </summary>
   [Fact]
   public void Name_Property() => new RegionalAuthority { Name = Guid.Empty.ToString() }.Name.Should().Be(Guid.Empty.ToString());
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.Active"/> property.</para>
+  ///   <para>Performs testing of <see cref="IActive.Active"/> property.</para>
   /// </summary>
   [Fact]
   public void Active_Property() => new RegionalAuthority { Active = true }.Active.Should().BeTrue();
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.FromDate"/> property.</para>
+  ///   <para>Performs testing of <see cref="IPeriodable.FromDate"/> property.</para>
   /// </summary>
   [Fact]
   public void FromDate_Property() => new RegionalAuthority { FromDate = DateTimeOffset.MaxValue }.FromDate.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.ToDate"/> property.</para>
+  ///   <para>Performs testing of <see cref="IPeriodable.ToDate"/> property.</para>
   /// </summary>
   [Fact]
   public void ToDate_Property() => new RegionalAuthority { ToDate = DateTimeOffset.MaxValue }.ToDate.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.CompareTo(IAuthority)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IComparable{IAuthority}.CompareTo(IAuthority)"/> method.</para>
   /// </summary>
   [Fact]
   public void CompareTo_Method() => TestCompareTo<RegionalAuthority, string>(nameof(RegionalAuthority.Name), "first", "second"); 
@@ -72,21 +72,21 @@ public sealed class RegionalAuthorityTest : Test
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
   ///   <list type="bullet">
-  ///     <item><description><see cref="RegionalAuthority.Equals(IAuthority)"/></description></item>
-  ///     <item><description><see cref="RegionalAuthority.Equals(object)"/></description></item>
+  ///     <item><description><see cref="IEquatable{IAuthority}.Equals(IAuthority)"/></description></item>
+  ///     <item><description><see cref="object.Equals(object)"/></description></item>
   ///   </list>
   /// </summary>
   [Fact]
   public void Equals_Methods() => TestEquality<RegionalAuthority, long>(nameof(RegionalAuthority.Id), 1, 2); 
   
   /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.GetHashCode()"/> method.</para>
+  ///   <para>Performs testing of <see cref="object.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
   public void GetHashCode_Method() => TestHashCode<RegionalAuthority, long>(nameof(RegionalAuthority.Id), 1, 2); 
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="RegionalAuthority.ToString()"/> method.</para>
+  ///   <para>Performs testing of <see cref="object.ToString()"/> method.</para>
   /// </summary>
   [Fact]
   public void ToString_Method()

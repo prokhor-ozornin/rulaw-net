@@ -12,6 +12,6 @@ public interface IInstancesApi
   /// <param name="cancellation"></param>
   /// <returns>Collection of instances.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
   IAsyncEnumerable<IInstance> SearchAsync(IInstancesApiRequest request = null, CancellationToken cancellation = default);
 }

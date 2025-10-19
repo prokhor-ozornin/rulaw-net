@@ -4,7 +4,7 @@ using Xunit;
 namespace RuLaw.Tests;
 
 /// <summary>
-///   <para>Tests set for class <see cre\f="JsonRestSerializer"/>.</para>
+///   <para>Tests set for class <see cref="JsonRestSerializer"/>.</para>
 /// </summary>
 /// <seealso cref="JsonRestSerializer"/>
 public sealed class JsonRestSerializerTest : Test

@@ -129,7 +129,7 @@
             <param name="cancellation"></param>
             <returns>Collection of authorities.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-federalnih-organov-vlasti"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-federalnih-organov-vlasti"/>
         </member>
         <member name="M:RuLaw.IAuthoritiesApi.RegionalAsync(RuLaw.IAuthoritiesApiRequest,System.Threading.CancellationToken)">
             <summary>
@@ -139,7 +139,7 @@
             <param name="cancellation"></param>
             <returns>Collection of authorities.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-regionalnih-organov-vlasti"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-regionalnih-organov-vlasti"/>
         </member>
         <member name="T:RuLaw.IAuthoritiesApiExtensions">
             <summary>
@@ -193,7 +193,7 @@
             <returns>Collection of authorities.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-federalnih-organov-vlasti"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-federalnih-organov-vlasti"/>
         </member>
         <member name="M:RuLaw.IAuthoritiesApiExtensions.RegionalAsync(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest},System.Threading.CancellationToken)">
             <summary>
@@ -205,7 +205,7 @@
             <returns>Collection of authorities.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-regionalnih-organov-vlasti"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-regionalnih-organov-vlasti"/>
         </member>
         <member name="T:RuLaw.IBranchesApi">
             <summary>
@@ -219,7 +219,7 @@
             <param name="cancellation"></param>
             <returns>Collection of laws branches.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-otrasley-zakonodatelstva"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-otrasley-zakonodatelstva"/>
         </member>
         <member name="T:RuLaw.IBranchesApiExtensions">
             <summary>
@@ -234,7 +234,7 @@
             <param name="api">API caller instance to be used.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-otrasley-zakonodatelstva"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-otrasley-zakonodatelstva"/>
         </member>
         <member name="T:RuLaw.ICommitteesApi">
             <summary>
@@ -248,7 +248,7 @@
             <param name="cancellation"></param>
             <returns>Collection of committees.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-komitetov"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-komitetov"/>
         </member>
         <member name="T:RuLaw.ICommitteesApiExtensions">
             <summary>
@@ -263,7 +263,7 @@
             <param name="api">API caller instance to be used.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-komitetov"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-komitetov"/>
         </member>
         <member name="T:RuLaw.IConvocationsApi">
             <summary>
@@ -277,7 +277,7 @@
             <param name="cancellation"></param>
             <returns>Collection of convocations.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-sozivov-i-sessiy"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-sozivov-i-sessiy"/>
         </member>
         <member name="T:RuLaw.IConvocationsApiExtensions">
             <summary>
@@ -292,7 +292,7 @@
             <param name="api">API caller instance to be used.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-sozivov-i-sessiy"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-sozivov-i-sessiy"/>
         </member>
         <member name="T:RuLaw.IDeputiesApi">
             <summary>
@@ -307,7 +307,7 @@
             <param name="cancellation"></param>
             <returns>Detailed deputy information.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
         </member>
         <member name="M:RuLaw.IDeputiesApi.SearchAsync(RuLaw.IDeputiesApiRequest,System.Threading.CancellationToken)">
             <summary>
@@ -317,7 +317,7 @@
             <param name="cancellation"></param>
             <returns>Collection of deputies.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
         </member>
         <member name="T:RuLaw.IDeputiesApiExtensions">
             <summary>
@@ -333,7 +333,7 @@
             <param name="id">Identifier of deputy.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
         </member>
         <member name="M:RuLaw.IDeputiesApiExtensions.Search(RuLaw.IDeputiesApi,RuLaw.IDeputiesApiRequest)">
             <summary>
@@ -352,7 +352,7 @@
             <param name="action">Delegate to configure additional parameters of request.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
         </member>
         <member name="M:RuLaw.IDeputiesApiExtensions.SearchAsync(RuLaw.IDeputiesApi,System.Action{RuLaw.IDeputiesApiRequest},System.Threading.CancellationToken)">
             <summary>
@@ -364,7 +364,7 @@
             <returns>Collection of deputies.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
         </member>
         <member name="T:RuLaw.IError">
             <summary>
@@ -394,7 +394,7 @@
             <param name="cancellation"></param>
             <returns>Collection of instances.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
         </member>
         <member name="T:RuLaw.IInstancesApiExtensions">
             <summary>
@@ -419,7 +419,7 @@
             <param name="action">Delegate to configure additional parameters of request.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
         </member>
         <member name="M:RuLaw.IInstancesApiExtensions.SearchAsync(RuLaw.IInstancesApi,System.Action{RuLaw.IInstancesApiRequest},System.Threading.CancellationToken)">
             <summary>
@@ -431,7 +431,7 @@
             <returns>Collection of instances.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
         </member>
         <member name="T:RuLaw.ILawsApi">
             <summary>
@@ -446,7 +446,7 @@
             <param name="cancellation"></param>
             <returns>Laws search result.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
         </member>
         <member name="T:RuLaw.ILawsApiExtensions">
             <summary>
@@ -462,7 +462,7 @@
             <param name="request"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="request"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
         </member>
         <member name="M:RuLaw.ILawsApiExtensions.Search(RuLaw.ILawsApi,System.Action{RuLaw.ILawsApiRequest})">
             <summary>
@@ -483,7 +483,7 @@
             <returns>Laws search result.</returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
         </member>
         <member name="T:RuLaw.Error">
             <summary>
@@ -558,7 +558,7 @@
             <param name="cancellation"></param>
             <returns>Questions search result.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
         </member>
         <member name="T:RuLaw.IQuestionsApiExtensions">
             <summary>
@@ -583,7 +583,7 @@
             <param name="action">Delegate to configure additional parameters of request.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
         </member>
         <member name="M:RuLaw.IQuestionsApiExtensions.SearchAsync(RuLaw.IQuestionsApi,System.Action{RuLaw.IQuestionsApiRequest},System.Threading.CancellationToken)">
             <summary>
@@ -595,7 +595,7 @@
             <returns>Questions search result.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
         </member>
         <member name="T:RuLaw.IRequestsApi">
             <summary>
@@ -609,7 +609,7 @@
             <param name="cancellation"></param>
             <returns>Collection of requests.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/deputatskie-zaprosi"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/deputatskie-zaprosi"/>
         </member>
         <member name="T:RuLaw.IRequestsApiExtensions">
             <summary>
@@ -624,7 +624,7 @@
             <param name="api">API caller instance to be used.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/deputatskie-zaprosi"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/deputatskie-zaprosi"/>
         </member>
         <member name="T:RuLaw.IResultable`1">
             <summary>
@@ -649,7 +649,7 @@
             <param name="cancellation"></param>
             <returns>Collection of stages.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-stadiy-rassmotreniya"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-stadiy-rassmotreniya"/>
         </member>
         <member name="T:RuLaw.IStagesApiExtensions">
             <summary>
@@ -664,7 +664,7 @@
             <param name="api">API caller instance to be used.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-stadiy-rassmotreniya"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-stadiy-rassmotreniya"/>
         </member>
         <member name="T:RuLaw.ITopicsApi">
             <summary>
@@ -678,7 +678,7 @@
             <param name="cancellation"></param>
             <returns>Collection of topics.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-tematicheskih-blokov"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-tematicheskih-blokov"/>
         </member>
         <member name="T:RuLaw.ITopicsApiExtensions">
             <summary>
@@ -693,7 +693,7 @@
             <param name="api">API caller instance to be used.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/spisok-tematicheskih-blokov"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-tematicheskih-blokov"/>
         </member>
         <member name="T:RuLaw.ITranscriptsApi">
             <summary>
@@ -708,7 +708,7 @@
             <param name="cancellation"></param>
             <returns>Transcripts for given date.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-na-zadannuyu-datu"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-na-zadannuyu-datu"/>
         </member>
         <member name="M:RuLaw.ITranscriptsApi.DeputyAsync(RuLaw.IDeputyTranscriptApiRequest,System.Threading.CancellationToken)">
             <summary>
@@ -718,7 +718,7 @@
             <param name="cancellation"></param>
             <returns>Transcripts of given deputy.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
         </member>
         <member name="M:RuLaw.ITranscriptsApi.LawAsync(System.String,System.Threading.CancellationToken)">
             <summary>
@@ -728,7 +728,7 @@
             <param name="cancellation"></param>
             <returns>Transcript of given law.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-po-zakonoproektu"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-po-zakonoproektu"/>
         </member>
         <member name="M:RuLaw.ITranscriptsApi.QuestionAsync(System.Int64,System.Int64,System.Threading.CancellationToken)">
             <summary>
@@ -739,7 +739,7 @@
             <param name="cancellation"></param>
             <returns>Transcript of agenda's question.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/stenogramma-rassmotreniya-voprosa"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogramma-rassmotreniya-voprosa"/>
         </member>
         <member name="M:RuLaw.ITranscriptsApi.ResolutionAsync(System.String,System.Threading.CancellationToken)">
             <summary>
@@ -749,7 +749,7 @@
             <param name="cancellation"></param>
             <returns>Transcript of resolution.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-po-proektu-postanovleniya"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-po-proektu-postanovleniya"/>
         </member>
         <member name="T:RuLaw.ITranscriptsApiExtensions">
             <summary>
@@ -774,7 +774,7 @@
             <param name="request"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="request"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
         </member>
         <member name="M:RuLaw.ITranscriptsApiExtensions.Deputy(RuLaw.ITranscriptsApi,System.Action{RuLaw.IDeputyTranscriptApiRequest})">
             <summary>
@@ -785,7 +785,7 @@
             <returns>Deputy's transcripts result.</returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
         </member>
         <member name="M:RuLaw.ITranscriptsApiExtensions.DeputyAsync(RuLaw.ITranscriptsApi,System.Action{RuLaw.IDeputyTranscriptApiRequest},System.Threading.CancellationToken)">
             <summary>
@@ -841,7 +841,7 @@
             <returns>Votes search result.</returns>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
         </member>
         <member name="T:RuLaw.IVotesApiExtensions">
             <summary>
@@ -866,7 +866,7 @@
             <param name="action">Delegate to configure additional parameters of request.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
         </member>
         <member name="M:RuLaw.IVotesApiExtensions.SearchAsync(RuLaw.IVotesApi,System.Action{RuLaw.IVotesSearchApiRequest},System.Threading.CancellationToken)">
             <summary>
@@ -878,7 +878,7 @@
             <returns>Votes search result.</returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-            <seealso cref="!:http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
+            <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
         </member>
         <member name="T:RuLaw.PageSize">
             <summary>
@@ -4105,6 +4105,11 @@
               <para>List of question' votes.</para>
             </summary>
         </member>
+        <member name="P:RuLaw.ITranscriptMeetingQuestionPart.Text">
+            <summary>
+              <para></para>
+            </summary>
+        </member>
         <member name="T:RuLaw.ITranscriptVote">
             <summary>
               <para></para>
@@ -5003,7 +5008,12 @@
             <summary>
               <para>Entry point to RuLaw API client service, allowing to perform remote calls to API web service.</para>
             </summary>
-            <seealso cref="!:http://api.duma.gov.ru"/>
+            <seealso href="http://api.duma.gov.ru"/>
+        </member>
+        <member name="P:RuLaw.RuLaw.Api">
+            <summary>
+              <para></para>
+            </summary>
         </member>
     </members>
 </doc>

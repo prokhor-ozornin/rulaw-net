@@ -62,7 +62,7 @@ public sealed class PhaseStageTest : Test
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="PhaseStage.CompareTo(IStage)"/> method.</para>
+  ///   <para>Performs testing of <see cref="PhaseStage.CompareTo(IPhaseStage)"/> method.</para>
   /// </summary>
   [Fact]
   public void CompareTo_Method() => TestCompareTo<PhaseStage, string>(nameof(PhaseStage.Name), "first", "second"); 

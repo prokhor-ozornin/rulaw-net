@@ -24,7 +24,7 @@ public static class IInstancesApiExtensions
   /// <param name="action">Delegate to configure additional parameters of request.</param>
   /// <returns></returns>
   /// <exception cref="ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
   public static IEnumerable<IInstance> Search(this IInstancesApi api, Action<IInstancesApiRequest> action = null) => api?.SearchAsync(action).ToListAsync().Result ?? throw new ArgumentNullException(nameof(api));
 
   /// <summary>
@@ -36,7 +36,7 @@ public static class IInstancesApiExtensions
   /// <returns>Collection of instances.</returns>
   /// <exception cref="ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
   public static IAsyncEnumerable<IInstance> SearchAsync(this IInstancesApi api, Action<IInstancesApiRequest> action = null, CancellationToken cancellation = default)
   {
     if (api is null) throw new ArgumentNullException(nameof(api));

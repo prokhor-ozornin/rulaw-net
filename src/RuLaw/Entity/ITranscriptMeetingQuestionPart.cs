@@ -27,5 +27,8 @@ public interface ITranscriptMeetingQuestionPart : IComparable<ITranscriptMeeting
   /// </summary>
   IEnumerable<ITranscriptVote> Votes { get; }
 
+  /// <summary>
+  ///   <para></para>
+  /// </summary>
   string Text => Lines.Join(Environment.NewLine);
 }

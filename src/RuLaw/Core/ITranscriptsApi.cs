@@ -12,7 +12,7 @@ public interface ITranscriptsApi
   /// <param name="cancellation"></param>
   /// <returns>Transcripts for given date.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-na-zadannuyu-datu"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-na-zadannuyu-datu"/>
   Task<IDateTranscriptsResult> DateAsync(DateTimeOffset date, CancellationToken cancellation = default);
 
   /// <summary>
@@ -22,7 +22,7 @@ public interface ITranscriptsApi
   /// <param name="cancellation"></param>
   /// <returns>Transcripts of given deputy.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
   Task<IDeputyTranscriptsResult> DeputyAsync(IDeputyTranscriptApiRequest request, CancellationToken cancellation = default);
 
   /// <summary>
@@ -32,7 +32,7 @@ public interface ITranscriptsApi
   /// <param name="cancellation"></param>
   /// <returns>Transcript of given law.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-po-zakonoproektu"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-po-zakonoproektu"/>
   Task<ILawTranscriptsResult> LawAsync(string number, CancellationToken cancellation = default);
 
   /// <summary>
@@ -43,7 +43,7 @@ public interface ITranscriptsApi
   /// <param name="cancellation"></param>
   /// <returns>Transcript of agenda's question.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogramma-rassmotreniya-voprosa"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogramma-rassmotreniya-voprosa"/>
   Task<IQuestionTranscriptsResult> QuestionAsync(long meeting, long question, CancellationToken cancellation = default);
 
   /// <summary>
@@ -53,6 +53,6 @@ public interface ITranscriptsApi
   /// <param name="cancellation"></param>
   /// <returns>Transcript of resolution.</returns>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-po-proektu-postanovleniya"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-po-proektu-postanovleniya"/>
   Task<IResolutionTranscriptsResult> ResolutionAsync(string number, CancellationToken cancellation = default);
 }

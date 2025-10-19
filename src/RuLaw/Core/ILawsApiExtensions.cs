@@ -13,7 +13,7 @@ public static class ILawsApiExtensions
   /// <param name="request"></param>
   /// <returns></returns>
   /// <exception cref="ArgumentNullException">If either <paramref name="api"/> or <paramref name="request"/> is <see langword="null"/>.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
   public static ILawsSearchResult Search(this ILawsApi api, ILawsApiRequest request)
   {
     if (api is null) throw new ArgumentNullException(nameof(api));
@@ -40,7 +40,7 @@ public static class ILawsApiExtensions
   /// <returns>Laws search result.</returns>
   /// <exception cref="ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
   /// <exception cref="RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
-  /// <seealso cref="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
+  /// <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
   public static Task<ILawsSearchResult> SearchAsync(this ILawsApi api, Action<ILawsApiRequest> action, CancellationToken cancellation = default)
   {
     if (api is null) throw new ArgumentNullException(nameof(api));
