@@ -63,7 +63,7 @@ public sealed class ApiTest : Test
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Branches.AllAsync(Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
+      AssertionExtensions.Should(() => Api.Branches.AllAsync(Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactly<OperationCanceledException>();
 
       var branches = Api.Branches.AllAsync().ToListAsync().Await();
       branches.Should().NotBeNullOrEmpty().And.BeOfType<List<LawBranch>>();
@@ -88,7 +88,7 @@ public sealed class ApiTest : Test
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Committees.AllAsync(Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Committees.AllAsync(Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactly<OperationCanceledException>();
 
       var committees = Api.Committees.AllAsync().ToListAsync().Await();
       
@@ -157,7 +157,7 @@ public sealed class ApiTest : Test
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Deputies.SearchAsync(null, Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Deputies.SearchAsync(null, Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactly<OperationCanceledException>();
 
       var deputies = Api.Deputies.SearchAsync(request => request.Position(DeputyPosition.DumaDeputy).Current(false).Name("А")).ToListAsync().Await();
 
@@ -185,7 +185,7 @@ public sealed class ApiTest : Test
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Authorities.FederalAsync(null, Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Authorities.FederalAsync(null, Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactly<OperationCanceledException>();
 
       var authorities = Api.Authorities.FederalAsync(request => request.Current()).ToListAsync().Await();
 
@@ -214,7 +214,7 @@ public sealed class ApiTest : Test
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Authorities.RegionalAsync(null, Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Authorities.RegionalAsync(null, Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactly<OperationCanceledException>();
 
       var authorities = Api.Authorities.RegionalAsync(request => request.Current(false)).ToListAsync().Await();
 
@@ -243,7 +243,7 @@ public sealed class ApiTest : Test
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Instances.SearchAsync(null, Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Instances.SearchAsync(null, Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactly<OperationCanceledException>();
 
       var instances = Api.Instances.SearchAsync().ToListAsync().Await();
       instances.Should().NotBeNullOrEmpty().And.BeOfType<List<Instance>>();
@@ -360,7 +360,7 @@ public sealed class ApiTest : Test
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Convocations.AllAsync(Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Convocations.AllAsync(Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactly<OperationCanceledException>();
       
       var convocations = Api.Convocations.AllAsync().ToListAsync().Await();
 
@@ -509,7 +509,7 @@ public sealed class ApiTest : Test
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Stages.AllAsync(Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
+      AssertionExtensions.Should(() => Api.Stages.AllAsync(Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactly<OperationCanceledException>();
 
       var stages = Api.Stages.AllAsync().ToListAsync().Await();
 
@@ -561,7 +561,7 @@ public sealed class ApiTest : Test
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Topics.AllAsync(Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
+      AssertionExtensions.Should(() => Api.Topics.AllAsync(Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactly<OperationCanceledException>();
 
       var topics = Api.Topics.AllAsync().ToListAsync().Await();
 
@@ -588,7 +588,7 @@ public sealed class ApiTest : Test
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Api.Topics.AllAsync(Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactlyAsync<OperationCanceledException>();
+      AssertionExtensions.Should(() => Api.Topics.AllAsync(Fixture<CancellationToken>.Create()).ToListAsync()).ThrowExactly<OperationCanceledException>();
 
       var result = Api.Transcripts.DateAsync(new DateTimeOffset(year: 2013, month: 5, day: 14, hour: 0, minute: 0, second: 0, TimeSpan.Zero)).Await();
 
