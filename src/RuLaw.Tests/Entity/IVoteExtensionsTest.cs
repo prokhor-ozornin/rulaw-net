@@ -12,14 +12,14 @@ namespace RuLaw.Tests;
 public sealed class IVoteExtensionsTest : Test
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="IVoteExtensions.Personal(IVote)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IVoteExtensions.get_Personal(IVote)"/> method.</para>
   /// </summary>
   [Fact]
   public void Personal_Method()
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IVoteExtensions.Personal(null)).ThrowExactly<ArgumentNullException>().WithParameterName("vote");
+      AssertionExtensions.Should(() => IVoteExtensions.get_Personal(null)).ThrowExactly<ArgumentNullException>().WithParameterName("vote");
 
       Enum.GetValues<VotePersonResult>().ForEach(result => Test(true, new Vote { PersonResult = result.ToString() }));
       Test(false, new Vote());
@@ -29,18 +29,18 @@ public sealed class IVoteExtensionsTest : Test
 
     return;
 
-    static void Test(bool result, IVote vote) => vote.Personal().Should().Be(result);
+    static void Test(bool result, IVote vote) => vote.Personal.Should().Be(result);
 }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IVoteExtensions.PersonResult(IVote)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IVoteExtensions.get_VotePersonResult(IVote)"/> method.</para>
   /// </summary>
   [Fact]
-  public void PersonResult_Method()
+  public void VotePersonResult_Method()
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IVoteExtensions.PersonResult(null)).ThrowExactly<ArgumentNullException>().WithParameterName("vote");
+      AssertionExtensions.Should(() => IVoteExtensions.get_VotePersonResult(null)).ThrowExactly<ArgumentNullException>().WithParameterName("vote");
 
       Test(null, new Vote());
       Test(null, new Vote { PersonResult = string.Empty });
@@ -52,18 +52,18 @@ public sealed class IVoteExtensionsTest : Test
 
     return;
 
-    static void Test(VotePersonResult? result, IVote vote) => vote.PersonResult().Should().Be(result);
+    static void Test(VotePersonResult? result, IVote vote) => vote.VotePersonResult.Should().Be(result);
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IVoteExtensions.ResultType(IVote)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IVoteExtensions.get_VoteResultType(IVote)"/> method.</para>
   /// </summary>
   [Fact]
   public void ResultType_Method()
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IVoteExtensions.ResultType(null)).ThrowExactly<ArgumentNullException>().WithParameterName("vote");
+      AssertionExtensions.Should(() => IVoteExtensions.get_VoteResultType(null)).ThrowExactly<ArgumentNullException>().WithParameterName("vote");
 
       Test(null, new Vote());
       Test(null, new Vote { ResultType = string.Empty });
@@ -75,7 +75,7 @@ public sealed class IVoteExtensionsTest : Test
 
     return;
 
-    static void Test(VoteResultType? result, IVote vote) => vote.ResultType().Should().Be(result);
+    static void Test(VoteResultType? result, IVote vote) => vote.VoteResultType.Should().Be(result);
   }
 
   /// <summary>
@@ -103,14 +103,14 @@ public sealed class IVoteExtensionsTest : Test
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IVoteExtensions.Successful{TEntity}(IEnumerable{TEntity})"/> method.</para>
+  ///   <para>Performs testing of <see cref="IVoteExtensions.get_Successful{TEntity}(IEnumerable{TEntity})"/> method.</para>
   /// </summary>
   [Fact]
   public void Successful_Method()
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IVoteExtensions.Successful<IVote>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("votes");
+      AssertionExtensions.Should(() => IVoteExtensions.get_Successful<IVote>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("votes");
 
       Test([], []);
 
@@ -122,18 +122,18 @@ public sealed class IVoteExtensionsTest : Test
 
     return;
 
-    static void Test(IEnumerable<IVote> result, IEnumerable<IVote> votes) => votes.Successful().Should().BeAssignableTo<IEnumerable<IVote>>().And.Equal(result);
+    static void Test(IEnumerable<IVote> result, IEnumerable<IVote> votes) => votes.Successful.Should().BeAssignableTo<IEnumerable<IVote>>().And.Equal(result);
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="IVoteExtensions.Unsuccessful{TEntity}(IEnumerable{TEntity})"/> method.</para>
+  ///   <para>Performs testing of <see cref="IVoteExtensions.get_Unsuccessful{TEntity}(IEnumerable{TEntity})"/> method.</para>
   /// </summary>
   [Fact]
   public void Unsuccessful_Method()
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IVoteExtensions.Unsuccessful<IVote>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("votes");
+      AssertionExtensions.Should(() => IVoteExtensions.get_Unsuccessful<IVote>(null)).ThrowExactly<ArgumentNullException>().WithParameterName("votes");
 
       var first = new Vote { Successful = true };
       var second = new Vote { Successful = false };
@@ -143,6 +143,6 @@ public sealed class IVoteExtensionsTest : Test
 
     return;
 
-    static void Test(IEnumerable<IVote> result, IEnumerable<IVote> votes) => votes.Unsuccessful().Should().BeAssignableTo<IEnumerable<IVote>>().And.Equal(result);
+    static void Test(IEnumerable<IVote> result, IEnumerable<IVote> votes) => votes.Unsuccessful.Should().BeAssignableTo<IEnumerable<IVote>>().And.Equal(result);
   }
 }

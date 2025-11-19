@@ -2914,17 +2914,17 @@
         </member>
         <member name="M:RuLaw.Tests.IVoteExtensionsTest.Personal_Method">
             <summary>
-              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.Personal(RuLaw.IVote)"/> method.</para>
+              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.get_Personal(RuLaw.IVote)"/> method.</para>
             </summary>
         </member>
-        <member name="M:RuLaw.Tests.IVoteExtensionsTest.PersonResult_Method">
+        <member name="M:RuLaw.Tests.IVoteExtensionsTest.VotePersonResult_Method">
             <summary>
-              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.PersonResult(RuLaw.IVote)"/> method.</para>
+              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.get_VotePersonResult(RuLaw.IVote)"/> method.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.IVoteExtensionsTest.ResultType_Method">
             <summary>
-              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.ResultType(RuLaw.IVote)"/> method.</para>
+              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.get_VoteResultType(RuLaw.IVote)"/> method.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.IVoteExtensionsTest.Subject_Method">
@@ -2934,12 +2934,12 @@
         </member>
         <member name="M:RuLaw.Tests.IVoteExtensionsTest.Successful_Method">
             <summary>
-              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.Successful``1(System.Collections.Generic.IEnumerable{``0})"/> method.</para>
+              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.get_Successful``1(System.Collections.Generic.IEnumerable{``0})"/> method.</para>
             </summary>
         </member>
         <member name="M:RuLaw.Tests.IVoteExtensionsTest.Unsuccessful_Method">
             <summary>
-              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.Unsuccessful``1(System.Collections.Generic.IEnumerable{``0})"/> method.</para>
+              <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.get_Unsuccessful``1(System.Collections.Generic.IEnumerable{``0})"/> method.</para>
             </summary>
         </member>
         <member name="T:RuLaw.Tests.DateTimeOffsetExtensionsTest">

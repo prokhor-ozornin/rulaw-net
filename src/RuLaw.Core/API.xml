@@ -148,46 +148,62 @@
             <seealso cref="T:RuLaw.IAuthoritiesApi"/>
         </member>
         <member name="M:RuLaw.IAuthoritiesApiExtensions.Federal(RuLaw.IAuthoritiesApi,RuLaw.IAuthoritiesApiRequest)">
-            <summary>
-              <para></para>
-            </summary>
-            <param name="api"></param>
-            <param name="request"></param>
-            <returns></returns>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
+            <inheritdoc cref="M:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.Federal(RuLaw.IAuthoritiesApiRequest)"/>
         </member>
         <member name="M:RuLaw.IAuthoritiesApiExtensions.Federal(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest})">
-            <summary>
-              <para></para>
-            </summary>
-            <param name="api"></param>
-            <param name="action"></param>
-            <returns></returns>
-            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
+            <inheritdoc cref="M:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.Federal(System.Action{RuLaw.IAuthoritiesApiRequest})"/>
         </member>
         <member name="M:RuLaw.IAuthoritiesApiExtensions.Regional(RuLaw.IAuthoritiesApi,RuLaw.IAuthoritiesApiRequest)">
+            <inheritdoc cref="M:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.Regional(RuLaw.IAuthoritiesApiRequest)"/>
+        </member>
+        <member name="M:RuLaw.IAuthoritiesApiExtensions.Regional(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest})">
+            <inheritdoc cref="M:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.Regional(System.Action{RuLaw.IAuthoritiesApiRequest})"/>
+        </member>
+        <member name="M:RuLaw.IAuthoritiesApiExtensions.FederalAsync(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.FederalAsync(System.Action{RuLaw.IAuthoritiesApiRequest},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:RuLaw.IAuthoritiesApiExtensions.RegionalAsync(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.RegionalAsync(System.Action{RuLaw.IAuthoritiesApiRequest},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="T:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.&lt;M&gt;$CDAA4ED1543B9A7AECC370644C0A955A">
+            <param name="api"></param>
+        </member>
+        <member name="M:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.Federal(RuLaw.IAuthoritiesApiRequest)">
             <summary>
               <para></para>
             </summary>
-            <param name="api"></param>
             <param name="request"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IAuthoritiesApiExtensions.Regional(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest})">
+        <member name="M:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.Federal(System.Action{RuLaw.IAuthoritiesApiRequest})">
             <summary>
               <para></para>
             </summary>
-            <param name="api"></param>
             <param name="action"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IAuthoritiesApiExtensions.FederalAsync(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest},System.Threading.CancellationToken)">
+        <member name="M:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.Regional(RuLaw.IAuthoritiesApiRequest)">
+            <summary>
+              <para></para>
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.Regional(System.Action{RuLaw.IAuthoritiesApiRequest})">
+            <summary>
+              <para></para>
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.FederalAsync(System.Action{RuLaw.IAuthoritiesApiRequest},System.Threading.CancellationToken)">
             <summary>
               <para>Returns list of federal law authorities.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Collection of authorities.</returns>
@@ -195,11 +211,10 @@
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
             <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-federalnih-organov-vlasti"/>
         </member>
-        <member name="M:RuLaw.IAuthoritiesApiExtensions.RegionalAsync(RuLaw.IAuthoritiesApi,System.Action{RuLaw.IAuthoritiesApiRequest},System.Threading.CancellationToken)">
+        <member name="M:RuLaw.IAuthoritiesApiExtensions.&lt;G&gt;$41E679773B3CC9E0BF2C71FACDD6B086.RegionalAsync(System.Action{RuLaw.IAuthoritiesApiRequest},System.Threading.CancellationToken)">
             <summary>
               <para>Returns list of regional law authorities.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Collection of authorities.</returns>
@@ -326,39 +341,50 @@
             <seealso cref="T:RuLaw.IDeputiesApi"/>
         </member>
         <member name="M:RuLaw.IDeputiesApiExtensions.Find(RuLaw.IDeputiesApi,System.Int64)">
+            <inheritdoc cref="M:RuLaw.IDeputiesApiExtensions.&lt;G&gt;$9C841FC841A9D3C92571391744889FC8.Find(System.Int64)"/>
+        </member>
+        <member name="M:RuLaw.IDeputiesApiExtensions.Search(RuLaw.IDeputiesApi,RuLaw.IDeputiesApiRequest)">
+            <inheritdoc cref="M:RuLaw.IDeputiesApiExtensions.&lt;G&gt;$9C841FC841A9D3C92571391744889FC8.Search(RuLaw.IDeputiesApiRequest)"/>
+        </member>
+        <member name="M:RuLaw.IDeputiesApiExtensions.Search(RuLaw.IDeputiesApi,System.Action{RuLaw.IDeputiesApiRequest})">
+            <inheritdoc cref="M:RuLaw.IDeputiesApiExtensions.&lt;G&gt;$9C841FC841A9D3C92571391744889FC8.Search(System.Action{RuLaw.IDeputiesApiRequest})"/>
+        </member>
+        <member name="M:RuLaw.IDeputiesApiExtensions.SearchAsync(RuLaw.IDeputiesApi,System.Action{RuLaw.IDeputiesApiRequest},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:RuLaw.IDeputiesApiExtensions.&lt;G&gt;$9C841FC841A9D3C92571391744889FC8.SearchAsync(System.Action{RuLaw.IDeputiesApiRequest},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="T:RuLaw.IDeputiesApiExtensions.&lt;G&gt;$9C841FC841A9D3C92571391744889FC8.&lt;M&gt;$9E7FF7F1F5CD629DD07ACD2974848122">
+            <param name="api">API caller instance to be used.</param>
+        </member>
+        <member name="M:RuLaw.IDeputiesApiExtensions.&lt;G&gt;$9C841FC841A9D3C92571391744889FC8.Find(System.Int64)">
             <summary>
               <para>Returns detailed information about specific deputy of the State Duma.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="id">Identifier of deputy.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/svedeniya-o-deputate"/>
         </member>
-        <member name="M:RuLaw.IDeputiesApiExtensions.Search(RuLaw.IDeputiesApi,RuLaw.IDeputiesApiRequest)">
+        <member name="M:RuLaw.IDeputiesApiExtensions.&lt;G&gt;$9C841FC841A9D3C92571391744889FC8.Search(RuLaw.IDeputiesApiRequest)">
             <summary>
               <para></para>
             </summary>
-            <param name="api"></param>
             <param name="request"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IDeputiesApiExtensions.Search(RuLaw.IDeputiesApi,System.Action{RuLaw.IDeputiesApiRequest})">
+        <member name="M:RuLaw.IDeputiesApiExtensions.&lt;G&gt;$9C841FC841A9D3C92571391744889FC8.Search(System.Action{RuLaw.IDeputiesApiRequest})">
             <summary>
               <para>Returns list of deputies of the State Duma and members of the Federation Council.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-deputatov-gd-i-chlenov-sf"/>
         </member>
-        <member name="M:RuLaw.IDeputiesApiExtensions.SearchAsync(RuLaw.IDeputiesApi,System.Action{RuLaw.IDeputiesApiRequest},System.Threading.CancellationToken)">
+        <member name="M:RuLaw.IDeputiesApiExtensions.&lt;G&gt;$9C841FC841A9D3C92571391744889FC8.SearchAsync(System.Action{RuLaw.IDeputiesApiRequest},System.Threading.CancellationToken)">
             <summary>
               <para>Returns list of deputies of the State Duma and members of the Federation Council.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Collection of deputies.</returns>
@@ -403,29 +429,38 @@
             <seealso cref="T:RuLaw.IInstancesApi"/>
         </member>
         <member name="M:RuLaw.IInstancesApiExtensions.Search(RuLaw.IInstancesApi,RuLaw.IInstancesApiRequest)">
+            <inheritdoc cref="M:RuLaw.IInstancesApiExtensions.&lt;G&gt;$34F1E9A91BCBC8C5A828CB916985F804.Search(RuLaw.IInstancesApiRequest)"/>
+        </member>
+        <member name="M:RuLaw.IInstancesApiExtensions.Search(RuLaw.IInstancesApi,System.Action{RuLaw.IInstancesApiRequest})">
+            <inheritdoc cref="M:RuLaw.IInstancesApiExtensions.&lt;G&gt;$34F1E9A91BCBC8C5A828CB916985F804.Search(System.Action{RuLaw.IInstancesApiRequest})"/>
+        </member>
+        <member name="M:RuLaw.IInstancesApiExtensions.SearchAsync(RuLaw.IInstancesApi,System.Action{RuLaw.IInstancesApiRequest},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:RuLaw.IInstancesApiExtensions.&lt;G&gt;$34F1E9A91BCBC8C5A828CB916985F804.SearchAsync(System.Action{RuLaw.IInstancesApiRequest},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="T:RuLaw.IInstancesApiExtensions.&lt;G&gt;$34F1E9A91BCBC8C5A828CB916985F804.&lt;M&gt;$C1EADC6BFCC0BF38B221B2615663C108">
+            <param name="api"></param>
+        </member>
+        <member name="M:RuLaw.IInstancesApiExtensions.&lt;G&gt;$34F1E9A91BCBC8C5A828CB916985F804.Search(RuLaw.IInstancesApiRequest)">
             <summary>
               <para></para>
             </summary>
-            <param name="api"></param>
             <param name="request"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IInstancesApiExtensions.Search(RuLaw.IInstancesApi,System.Action{RuLaw.IInstancesApiRequest})">
+        <member name="M:RuLaw.IInstancesApiExtensions.&lt;G&gt;$34F1E9A91BCBC8C5A828CB916985F804.Search(System.Action{RuLaw.IInstancesApiRequest})">
             <summary>
               <para>Returns list of instances.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/spisok-instantsiy-rassmotreniya"/>
         </member>
-        <member name="M:RuLaw.IInstancesApiExtensions.SearchAsync(RuLaw.IInstancesApi,System.Action{RuLaw.IInstancesApiRequest},System.Threading.CancellationToken)">
+        <member name="M:RuLaw.IInstancesApiExtensions.&lt;G&gt;$34F1E9A91BCBC8C5A828CB916985F804.SearchAsync(System.Action{RuLaw.IInstancesApiRequest},System.Threading.CancellationToken)">
             <summary>
               <para>Returns list of instances.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Collection of instances.</returns>
@@ -455,29 +490,38 @@
             <seealso cref="T:RuLaw.ILawsApi"/>
         </member>
         <member name="M:RuLaw.ILawsApiExtensions.Search(RuLaw.ILawsApi,RuLaw.ILawsApiRequest)">
+            <inheritdoc cref="M:RuLaw.ILawsApiExtensions.&lt;G&gt;$2BF1F7A723BF0E99FBD7965B90585C81.Search(RuLaw.ILawsApiRequest)"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiExtensions.Search(RuLaw.ILawsApi,System.Action{RuLaw.ILawsApiRequest})">
+            <inheritdoc cref="M:RuLaw.ILawsApiExtensions.&lt;G&gt;$2BF1F7A723BF0E99FBD7965B90585C81.Search(System.Action{RuLaw.ILawsApiRequest})"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiExtensions.SearchAsync(RuLaw.ILawsApi,System.Action{RuLaw.ILawsApiRequest},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:RuLaw.ILawsApiExtensions.&lt;G&gt;$2BF1F7A723BF0E99FBD7965B90585C81.SearchAsync(System.Action{RuLaw.ILawsApiRequest},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="T:RuLaw.ILawsApiExtensions.&lt;G&gt;$2BF1F7A723BF0E99FBD7965B90585C81.&lt;M&gt;$DA0B07A26E3A84F0C954674694F37DFC">
+            <param name="api">API caller instance to be used.</param>
+        </member>
+        <member name="M:RuLaw.ILawsApiExtensions.&lt;G&gt;$2BF1F7A723BF0E99FBD7965B90585C81.Search(RuLaw.ILawsApiRequest)">
             <summary>
               <para>Returns list of found laws. Response contains records of laws as well as latest events for each of the law.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="request"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="request"/> is <see langword="null"/>.</exception>
             <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-po-zakonoproektam"/>
         </member>
-        <member name="M:RuLaw.ILawsApiExtensions.Search(RuLaw.ILawsApi,System.Action{RuLaw.ILawsApiRequest})">
+        <member name="M:RuLaw.ILawsApiExtensions.&lt;G&gt;$2BF1F7A723BF0E99FBD7965B90585C81.Search(System.Action{RuLaw.ILawsApiRequest})">
             <summary>
               <para></para>
             </summary>
-            <param name="api"></param>
             <param name="action"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ILawsApiExtensions.SearchAsync(RuLaw.ILawsApi,System.Action{RuLaw.ILawsApiRequest},System.Threading.CancellationToken)">
+        <member name="M:RuLaw.ILawsApiExtensions.&lt;G&gt;$2BF1F7A723BF0E99FBD7965B90585C81.SearchAsync(System.Action{RuLaw.ILawsApiRequest},System.Threading.CancellationToken)">
             <summary>
               <para>Returns list of found laws. Response contains records of laws as well as latest events for each of the law.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Laws search result.</returns>
@@ -567,29 +611,38 @@
             <seealso cref="T:RuLaw.IQuestionsApi"/>
         </member>
         <member name="M:RuLaw.IQuestionsApiExtensions.Search(RuLaw.IQuestionsApi,RuLaw.IQuestionsApiRequest)">
+            <inheritdoc cref="M:RuLaw.IQuestionsApiExtensions.&lt;G&gt;$0F51846E08BF16609B25AE8CFDC48925.Search(RuLaw.IQuestionsApiRequest)"/>
+        </member>
+        <member name="M:RuLaw.IQuestionsApiExtensions.Search(RuLaw.IQuestionsApi,System.Action{RuLaw.IQuestionsApiRequest})">
+            <inheritdoc cref="M:RuLaw.IQuestionsApiExtensions.&lt;G&gt;$0F51846E08BF16609B25AE8CFDC48925.Search(System.Action{RuLaw.IQuestionsApiRequest})"/>
+        </member>
+        <member name="M:RuLaw.IQuestionsApiExtensions.SearchAsync(RuLaw.IQuestionsApi,System.Action{RuLaw.IQuestionsApiRequest},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:RuLaw.IQuestionsApiExtensions.&lt;G&gt;$0F51846E08BF16609B25AE8CFDC48925.SearchAsync(System.Action{RuLaw.IQuestionsApiRequest},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="T:RuLaw.IQuestionsApiExtensions.&lt;G&gt;$0F51846E08BF16609B25AE8CFDC48925.&lt;M&gt;$1138B9100FB7D7BE6F62F7DF494D0245">
+            <param name="api"></param>
+        </member>
+        <member name="M:RuLaw.IQuestionsApiExtensions.&lt;G&gt;$0F51846E08BF16609B25AE8CFDC48925.Search(RuLaw.IQuestionsApiRequest)">
             <summary>
               <para></para>
             </summary>
-            <param name="api"></param>
             <param name="request"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IQuestionsApiExtensions.Search(RuLaw.IQuestionsApi,System.Action{RuLaw.IQuestionsApiRequest})">
+        <member name="M:RuLaw.IQuestionsApiExtensions.&lt;G&gt;$0F51846E08BF16609B25AE8CFDC48925.Search(System.Action{RuLaw.IQuestionsApiRequest})">
             <summary>
               <para>Returns list of questions of the meetings agenda of the State Duma.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
             <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/voprosi-zasedaniy-gosudarstvennoy-dumi"/>
         </member>
-        <member name="M:RuLaw.IQuestionsApiExtensions.SearchAsync(RuLaw.IQuestionsApi,System.Action{RuLaw.IQuestionsApiRequest},System.Threading.CancellationToken)">
+        <member name="M:RuLaw.IQuestionsApiExtensions.&lt;G&gt;$0F51846E08BF16609B25AE8CFDC48925.SearchAsync(System.Action{RuLaw.IQuestionsApiRequest},System.Threading.CancellationToken)">
             <summary>
               <para>Returns list of questions of the meetings agenda of the State Duma.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Questions search result.</returns>
@@ -758,70 +811,87 @@
             <seealso cref="T:RuLaw.ITranscriptsApi"/>
         </member>
         <member name="M:RuLaw.ITranscriptsApiExtensions.Date(RuLaw.ITranscriptsApi,System.DateTimeOffset)">
+            <inheritdoc cref="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.Date(System.DateTimeOffset)"/>
+        </member>
+        <member name="M:RuLaw.ITranscriptsApiExtensions.Deputy(RuLaw.ITranscriptsApi,RuLaw.IDeputyTranscriptApiRequest)">
+            <inheritdoc cref="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.Deputy(RuLaw.IDeputyTranscriptApiRequest)"/>
+        </member>
+        <member name="M:RuLaw.ITranscriptsApiExtensions.Deputy(RuLaw.ITranscriptsApi,System.Action{RuLaw.IDeputyTranscriptApiRequest})">
+            <inheritdoc cref="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.Deputy(System.Action{RuLaw.IDeputyTranscriptApiRequest})"/>
+        </member>
+        <member name="M:RuLaw.ITranscriptsApiExtensions.DeputyAsync(RuLaw.ITranscriptsApi,System.Action{RuLaw.IDeputyTranscriptApiRequest},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.DeputyAsync(System.Action{RuLaw.IDeputyTranscriptApiRequest},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:RuLaw.ITranscriptsApiExtensions.Law(RuLaw.ITranscriptsApi,System.String)">
+            <inheritdoc cref="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.Law(System.String)"/>
+        </member>
+        <member name="M:RuLaw.ITranscriptsApiExtensions.Question(RuLaw.ITranscriptsApi,System.Int64,System.Int64)">
+            <inheritdoc cref="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.Question(System.Int64,System.Int64)"/>
+        </member>
+        <member name="M:RuLaw.ITranscriptsApiExtensions.Resolution(RuLaw.ITranscriptsApi,System.String)">
+            <inheritdoc cref="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.Resolution(System.String)"/>
+        </member>
+        <member name="T:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.&lt;M&gt;$73AB8DC40640B95314BDEBFCA30B4456">
+            <param name="api"></param>
+        </member>
+        <member name="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.Date(System.DateTimeOffset)">
             <summary>
               <para></para>
             </summary>
-            <param name="api"></param>
             <param name="date"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ITranscriptsApiExtensions.Deputy(RuLaw.ITranscriptsApi,RuLaw.IDeputyTranscriptApiRequest)">
+        <member name="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.Deputy(RuLaw.IDeputyTranscriptApiRequest)">
             <summary>
               <para>Returns transcription of deputy's speeches.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="request"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="request"/> is <see langword="null"/>.</exception>
             <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
         </member>
-        <member name="M:RuLaw.ITranscriptsApiExtensions.Deputy(RuLaw.ITranscriptsApi,System.Action{RuLaw.IDeputyTranscriptApiRequest})">
+        <member name="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.Deputy(System.Action{RuLaw.IDeputyTranscriptApiRequest})">
             <summary>
               <para>Returns transcription of deputy's speeches.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
             <returns>Deputy's transcripts result.</returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
             <exception cref="T:RuLaw.RuLawException">If there was an error during processing of web request, or if request was considered as invalid.</exception>
             <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/stenogrammi-vistupleniy-deputata"/>
         </member>
-        <member name="M:RuLaw.ITranscriptsApiExtensions.DeputyAsync(RuLaw.ITranscriptsApi,System.Action{RuLaw.IDeputyTranscriptApiRequest},System.Threading.CancellationToken)">
+        <member name="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.DeputyAsync(System.Action{RuLaw.IDeputyTranscriptApiRequest},System.Threading.CancellationToken)">
             <summary>
               <para></para>
             </summary>
-            <param name="api"></param>
             <param name="action"></param>
             <param name="cancellation"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ITranscriptsApiExtensions.Law(RuLaw.ITranscriptsApi,System.String)">
+        <member name="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.Law(System.String)">
             <summary>
               <para></para>
             </summary>
-            <param name="api"></param>
             <param name="number"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="number"/> is <see langword="null"/>.</exception>
             <exception cref="T:System.ArgumentException">If <paramref name="number"/> is invalid string.</exception>
         </member>
-        <member name="M:RuLaw.ITranscriptsApiExtensions.Question(RuLaw.ITranscriptsApi,System.Int64,System.Int64)">
+        <member name="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.Question(System.Int64,System.Int64)">
             <summary>
               <para></para>
             </summary>
-            <param name="api"></param>
             <param name="meeting"></param>
             <param name="question"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="api"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ITranscriptsApiExtensions.Resolution(RuLaw.ITranscriptsApi,System.String)">
+        <member name="M:RuLaw.ITranscriptsApiExtensions.&lt;G&gt;$0163A0B8EA242C7EF6A3B31D6072D8A8.Resolution(System.String)">
             <summary>
               <para></para>
             </summary>
-            <param name="api"></param>
             <param name="number"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="number"/> is <see langword="null"/>.</exception>
@@ -850,29 +920,38 @@
             <seealso cref="T:RuLaw.IVotesApi"/>
         </member>
         <member name="M:RuLaw.IVotesApiExtensions.Search(RuLaw.IVotesApi,RuLaw.IVotesSearchApiRequest)">
+            <inheritdoc cref="M:RuLaw.IVotesApiExtensions.&lt;G&gt;$3F09CC36EA4BE47B3DA2031B973D4F92.Search(RuLaw.IVotesSearchApiRequest)"/>
+        </member>
+        <member name="M:RuLaw.IVotesApiExtensions.Search(RuLaw.IVotesApi,System.Action{RuLaw.IVotesSearchApiRequest})">
+            <inheritdoc cref="M:RuLaw.IVotesApiExtensions.&lt;G&gt;$3F09CC36EA4BE47B3DA2031B973D4F92.Search(System.Action{RuLaw.IVotesSearchApiRequest})"/>
+        </member>
+        <member name="M:RuLaw.IVotesApiExtensions.SearchAsync(RuLaw.IVotesApi,System.Action{RuLaw.IVotesSearchApiRequest},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:RuLaw.IVotesApiExtensions.&lt;G&gt;$3F09CC36EA4BE47B3DA2031B973D4F92.SearchAsync(System.Action{RuLaw.IVotesSearchApiRequest},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="T:RuLaw.IVotesApiExtensions.&lt;G&gt;$3F09CC36EA4BE47B3DA2031B973D4F92.&lt;M&gt;$63ECE819720CB2DD39EF07458DB87F0D">
+            <param name="api"></param>
+        </member>
+        <member name="M:RuLaw.IVotesApiExtensions.&lt;G&gt;$3F09CC36EA4BE47B3DA2031B973D4F92.Search(RuLaw.IVotesSearchApiRequest)">
             <summary>
               <para></para>
             </summary>
-            <param name="api"></param>
             <param name="request"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IVotesApiExtensions.Search(RuLaw.IVotesApi,System.Action{RuLaw.IVotesSearchApiRequest})">
+        <member name="M:RuLaw.IVotesApiExtensions.&lt;G&gt;$3F09CC36EA4BE47B3DA2031B973D4F92.Search(System.Action{RuLaw.IVotesSearchApiRequest})">
             <summary>
               <para>Returns results of votes search.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="api"/> or <paramref name="action"/> is <see langword="null"/>.</exception>
             <seealso href="http://api.duma.gov.ru/pages/dokumentatsiya/poisk-golosovaniy"/>
         </member>
-        <member name="M:RuLaw.IVotesApiExtensions.SearchAsync(RuLaw.IVotesApi,System.Action{RuLaw.IVotesSearchApiRequest},System.Threading.CancellationToken)">
+        <member name="M:RuLaw.IVotesApiExtensions.&lt;G&gt;$3F09CC36EA4BE47B3DA2031B973D4F92.SearchAsync(System.Action{RuLaw.IVotesSearchApiRequest},System.Threading.CancellationToken)">
             <summary>
               <para>Returns results of votes search.</para>
             </summary>
-            <param name="api">API caller instance to be used.</param>
             <param name="action">Delegate to configure additional parameters of request.</param>
             <param name="cancellation"></param>
             <returns>Votes search result.</returns>
@@ -943,18 +1022,25 @@
             </summary>
         </member>
         <member name="M:RuLaw.IActiveExtensions.Active``1(System.Collections.Generic.IEnumerable{``0})">
+            <inheritdoc cref="M:RuLaw.IActiveExtensions.&lt;G&gt;$239DAB9BAC396C4BEF3D034172EA417D`1.Active"/>
+        </member>
+        <member name="M:RuLaw.IActiveExtensions.Inactive``1(System.Collections.Generic.IEnumerable{``0})">
+            <inheritdoc cref="M:RuLaw.IActiveExtensions.&lt;G&gt;$239DAB9BAC396C4BEF3D034172EA417D`1.Inactive"/>
+        </member>
+        <member name="T:RuLaw.IActiveExtensions.&lt;G&gt;$239DAB9BAC396C4BEF3D034172EA417D`1.&lt;M&gt;$FC8E80567FE1027D38DD66A4ADECAE73">
+            <param name="entities">Source sequence of entities to filter.</param>
+        </member>
+        <member name="M:RuLaw.IActiveExtensions.&lt;G&gt;$239DAB9BAC396C4BEF3D034172EA417D`1.Active">
             <summary>
               <para>Filters sequence of entities, leaving those in active state.</para>
             </summary>
-            <param name="entities">Source sequence of entities to filter.</param>
             <returns>Filtered sequence of entities in active state.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="entities"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IActiveExtensions.Inactive``1(System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:RuLaw.IActiveExtensions.&lt;G&gt;$239DAB9BAC396C4BEF3D034172EA417D`1.Inactive">
             <summary>
               <para>Filters sequence of entities, leaving those in inactive state.</para>
             </summary>
-            <param name="entities">Source sequence of entities to filter.</param>
             <returns>Filtered sequence of entities in inactive state.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="entities"/> is <see langword="null"/>.</exception>
         </member>
@@ -1201,73 +1287,84 @@
             <seealso cref="T:RuLaw.IDeputyInfo"/>
         </member>
         <member name="M:RuLaw.IDeputyInfoExtensions.FullName``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <inheritdoc cref="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.FullName(System.String)"/>
+        </member>
+        <member name="M:RuLaw.IDeputyInfoExtensions.BirthDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+            <inheritdoc cref="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.BirthDate(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})"/>
+        </member>
+        <member name="M:RuLaw.IDeputyInfoExtensions.WorkDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+            <inheritdoc cref="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.WorkDate(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})"/>
+        </member>
+        <member name="M:RuLaw.IDeputyInfoExtensions.Faction``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <inheritdoc cref="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.Faction(System.String)"/>
+        </member>
+        <member name="M:RuLaw.IDeputyInfoExtensions.Degree``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <inheritdoc cref="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.Degree(System.String)"/>
+        </member>
+        <member name="M:RuLaw.IDeputyInfoExtensions.Rank``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <inheritdoc cref="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.Rank(System.String)"/>
+        </member>
+        <member name="M:RuLaw.IDeputyInfoExtensions.Region``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <inheritdoc cref="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.Region(System.String)"/>
+        </member>
+        <member name="T:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.&lt;M&gt;$27EFAD9235EF1FCB308479679BF0E9DA">
+            <param name="deputies">Source sequence of deputies to filter.</param>
+            <typeparam name="TEntity">Type of entities.</typeparam>
+        </member>
+        <member name="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.FullName(System.String)">
             <summary>
               <para>Filters sequence of deputies, leaving those containing a given part in their names.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="name">Part or full name to search for (case-insensitive).</param>
             <returns>Filtered sequence of deputies with specified name.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IDeputyInfoExtensions.BirthDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+        <member name="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.BirthDate(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
             <summary>
               <para>Filters sequence of deputies, leaving those that were born in specified date period.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="from">Start date of period.</param>
             <param name="to">End date of period.</param>
             <returns>Filtered sequence of deputies that were born between <paramref name="from"/> and <paramref name="to"/> dates.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IDeputyInfoExtensions.WorkDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+        <member name="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.WorkDate(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
             <summary>
               <para>Filters sequence of deputies, leaving those with a work timespan in specified borders.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="from">Lower bound of work starting date.</param>
             <param name="to">Upper bound of work ending date.</param>
             <returns>Filtered sequence of deputies.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IDeputyInfoExtensions.Faction``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+        <member name="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.Faction(System.String)">
             <summary>
               <para>Filters sequence of deputies, leaving those belonging to specified faction.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="faction">Faction name to search for (case-insensitive).</param>
             <returns>Filtered sequence of deputies that belong to specified faction.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IDeputyInfoExtensions.Degree``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+        <member name="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.Degree(System.String)">
             <summary>
               <para>Filters sequence of deputies, leaving those that have a specified scientific degree.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="degree">Scientific degree to search for (case-insensitive).</param>
             <returns>Filtered sequence of deputies that have a specified degree.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IDeputyInfoExtensions.Rank``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+        <member name="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.Rank(System.String)">
             <summary>
               <para>Filters sequence of deputies, leaving those having a specified rank.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="rank">Rank to search for (case-insensitive).</param>
             <returns>Filtered sequence of deputies that have a specified rank.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IDeputyInfoExtensions.Region``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+        <member name="M:RuLaw.IDeputyInfoExtensions.&lt;G&gt;$10121F56B38F3A334E617CF6A7E1AF9C`1.Region(System.String)">
             <summary>
               <para>Filters sequence of deputies, leaving those linked to a specified region.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="deputies">Source sequence of deputies to filter.</param>
             <param name="region">Region to search for (case-insensitive).</param>
             <returns>Filtered sequence of deputies linked to a specified region.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="deputies"/> is <see langword="null"/>.</exception>
@@ -1329,42 +1426,50 @@
             <seealso cref="T:RuLaw.IDeputyRequest"/>
         </member>
         <member name="M:RuLaw.IDeputyRequestExtensions.Initiator``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <inheritdoc cref="M:RuLaw.IDeputyRequestExtensions.&lt;G&gt;$DCABCEA627C995F50EE04F217896DF45`1.Initiator(System.String)"/>
+        </member>
+        <member name="M:RuLaw.IDeputyRequestExtensions.Answer``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <inheritdoc cref="M:RuLaw.IDeputyRequestExtensions.&lt;G&gt;$DCABCEA627C995F50EE04F217896DF45`1.Answer(System.String)"/>
+        </member>
+        <member name="M:RuLaw.IDeputyRequestExtensions.SignDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+            <inheritdoc cref="M:RuLaw.IDeputyRequestExtensions.&lt;G&gt;$DCABCEA627C995F50EE04F217896DF45`1.SignDate(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})"/>
+        </member>
+        <member name="M:RuLaw.IDeputyRequestExtensions.ControlDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+            <inheritdoc cref="M:RuLaw.IDeputyRequestExtensions.&lt;G&gt;$DCABCEA627C995F50EE04F217896DF45`1.ControlDate(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})"/>
+        </member>
+        <member name="T:RuLaw.IDeputyRequestExtensions.&lt;G&gt;$DCABCEA627C995F50EE04F217896DF45`1.&lt;M&gt;$CB4F2FF50D8D02313495F18DD6AE03E2">
+            <param name="requests">Source sequence of requests to filter.</param>
+            <typeparam name="TEntity">Type of entities.</typeparam>
+        </member>
+        <member name="M:RuLaw.IDeputyRequestExtensions.&lt;G&gt;$DCABCEA627C995F50EE04F217896DF45`1.Initiator(System.String)">
             <summary>
               <para>Filters sequence of deputies requests, leaving those with a specified initiator.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="requests">Source sequence of requests to filter.</param>
             <param name="initiator">Full or partial name of initiator to search for (case-insensitive).</param>
             <returns>Filtered sequence of requests with specified initiator.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="requests"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IDeputyRequestExtensions.Answer``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+        <member name="M:RuLaw.IDeputyRequestExtensions.&lt;G&gt;$DCABCEA627C995F50EE04F217896DF45`1.Answer(System.String)">
             <summary>
               <para>Filters sequence of deputies requests, leaving those containing specified text fragment.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="requests">Source sequence of requests to filter.</param>
             <param name="text">Text fragment to search for (case-insensitive).</param>
             <returns>Filtered sequence of requests that contain specified text.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="requests"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IDeputyRequestExtensions.SignDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+        <member name="M:RuLaw.IDeputyRequestExtensions.&lt;G&gt;$DCABCEA627C995F50EE04F217896DF45`1.SignDate(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
             <summary>
               <para>Filters sequence of deputies requests, leaving those with signing date in specified borders.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="requests">Source sequence of requests to filter.</param>
             <param name="from">Lower bound of signing date period.</param>
             <param name="to">Upper bound of signing date period.</param>
             <returns>Filtered sequence of requests.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="requests"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IDeputyRequestExtensions.ControlDate``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+        <member name="M:RuLaw.IDeputyRequestExtensions.&lt;G&gt;$DCABCEA627C995F50EE04F217896DF45`1.ControlDate(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
             <summary>
               <para>Filters sequence of deputies requests, leaving those with control date in specified borders.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="requests">Source sequence of requests to filter.</param>
             <param name="from">Lower bound of control date period.</param>
             <param name="to">Upper bound of control date period.</param>
             <returns>Filtered sequence of requests.</returns>
@@ -1412,21 +1517,27 @@
             <seealso cref="T:RuLaw.IEducation"/>
         </member>
         <member name="M:RuLaw.IEducationExtensions.Institution``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <inheritdoc cref="M:RuLaw.IEducationExtensions.&lt;G&gt;$1682B9E66232623D693C58A719316139`1.Institution(System.String)"/>
+        </member>
+        <member name="M:RuLaw.IEducationExtensions.Year``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int16},System.Nullable{System.Int16})">
+            <inheritdoc cref="M:RuLaw.IEducationExtensions.&lt;G&gt;$1682B9E66232623D693C58A719316139`1.Year(System.Nullable{System.Int16},System.Nullable{System.Int16})"/>
+        </member>
+        <member name="T:RuLaw.IEducationExtensions.&lt;G&gt;$1682B9E66232623D693C58A719316139`1.&lt;M&gt;$17703A8D280BCF00FDA09DF470A3A50C">
+            <param name="educations">Source sequence of educations to filter.</param>
+            <typeparam name="TEntity">Type of entities.</typeparam>
+        </member>
+        <member name="M:RuLaw.IEducationExtensions.&lt;G&gt;$1682B9E66232623D693C58A719316139`1.Institution(System.String)">
             <summary>
               <para>Filters sequence of educations, leaving those associated with specified institution.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="educations">Source sequence of educations to filter.</param>
             <param name="institution">Full or partial name of institution to search for (case-insensitive).</param>
             <returns>Filtered sequence of educations associated with given institution.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="educations"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IEducationExtensions.Year``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int16},System.Nullable{System.Int16})">
+        <member name="M:RuLaw.IEducationExtensions.&lt;G&gt;$1682B9E66232623D693C58A719316139`1.Year(System.Nullable{System.Int16},System.Nullable{System.Int16})">
             <summary>
               <para>Filters sequence of educations, leaving those that were gained in specified date period.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="educations">Source sequence of educations to filter.</param>
             <param name="from">Start date of period.</param>
             <param name="to">End date of period.</param>
             <returns>Filtered sequence of educations that were gained between <paramref name="from"/> and <paramref name="to"/> dates.</returns>
@@ -3881,22 +3992,28 @@
             <seealso cref="T:RuLaw.IPageable"/>
         </member>
         <member name="M:RuLaw.IPageableExtensions.Page``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <inheritdoc cref="M:RuLaw.IPageableExtensions.&lt;G&gt;$1C74593E4B281010AE33950CD0A9C491`1.Page(System.Nullable{System.Int32},System.Nullable{System.Int32})"/>
+        </member>
+        <member name="M:RuLaw.IPageableExtensions.PageSize``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <inheritdoc cref="M:RuLaw.IPageableExtensions.&lt;G&gt;$1C74593E4B281010AE33950CD0A9C491`1.PageSize(System.Nullable{System.Int32},System.Nullable{System.Int32})"/>
+        </member>
+        <member name="T:RuLaw.IPageableExtensions.&lt;G&gt;$1C74593E4B281010AE33950CD0A9C491`1.&lt;M&gt;$622D540D0F2BE4553923533DAC62A234">
+            <param name="entities"></param>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:RuLaw.IPageableExtensions.&lt;G&gt;$1C74593E4B281010AE33950CD0A9C491`1.Page(System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
               <para></para>
             </summary>
-            <typeparam name="TEntity"></typeparam>
-            <param name="entities"></param>
             <param name="from"></param>
             <param name="to"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="entities"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IPageableExtensions.PageSize``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:RuLaw.IPageableExtensions.&lt;G&gt;$1C74593E4B281010AE33950CD0A9C491`1.PageSize(System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
               <para></para>
             </summary>
-            <typeparam name="TEntity"></typeparam>
-            <param name="entities"></param>
             <param name="from"></param>
             <param name="to"></param>
             <returns></returns>
@@ -4176,56 +4293,74 @@
             </summary>
             <seealso cref="T:RuLaw.IVote"/>
         </member>
-        <member name="M:RuLaw.IVoteExtensions.Personal(RuLaw.IVote)">
+        <member name="M:RuLaw.IVoteExtensions.get_Personal(RuLaw.IVote)">
+            <inheritdoc cref="P:RuLaw.IVoteExtensions.&lt;G&gt;$B3CC707CC57B921497AA2173872A75AA.Personal"/>
+        </member>
+        <member name="M:RuLaw.IVoteExtensions.get_VotePersonResult(RuLaw.IVote)">
+            <inheritdoc cref="P:RuLaw.IVoteExtensions.&lt;G&gt;$B3CC707CC57B921497AA2173872A75AA.VotePersonResult"/>
+        </member>
+        <member name="M:RuLaw.IVoteExtensions.get_VoteResultType(RuLaw.IVote)">
+            <inheritdoc cref="P:RuLaw.IVoteExtensions.&lt;G&gt;$B3CC707CC57B921497AA2173872A75AA.VoteResultType"/>
+        </member>
+        <member name="M:RuLaw.IVoteExtensions.Subject``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <inheritdoc cref="M:RuLaw.IVoteExtensions.&lt;G&gt;$BCEA21304C2451A6542F8BF6C8CFF6C9`1.Subject(System.String)"/>
+        </member>
+        <member name="M:RuLaw.IVoteExtensions.get_Successful``1(System.Collections.Generic.IEnumerable{``0})">
+            <inheritdoc cref="P:RuLaw.IVoteExtensions.&lt;G&gt;$BCEA21304C2451A6542F8BF6C8CFF6C9`1.Successful"/>
+        </member>
+        <member name="M:RuLaw.IVoteExtensions.get_Unsuccessful``1(System.Collections.Generic.IEnumerable{``0})">
+            <inheritdoc cref="P:RuLaw.IVoteExtensions.&lt;G&gt;$BCEA21304C2451A6542F8BF6C8CFF6C9`1.Unsuccessful"/>
+        </member>
+        <member name="T:RuLaw.IVoteExtensions.&lt;G&gt;$B3CC707CC57B921497AA2173872A75AA.&lt;M&gt;$9AA4FE05FA6AA8F64EF1BF581A50AAC4">
+            <param name="vote">Vote instances.</param>
+        </member>
+        <member name="P:RuLaw.IVoteExtensions.&lt;G&gt;$B3CC707CC57B921497AA2173872A75AA.Personal">
             <summary>
               <para>Whether the vote represents a faction, or a deputy result.</para>
             </summary>
-            <param name="vote">Vote instances.</param>
-            <returns><c>true</c> if <paramref name="vote"/> represents a deputy, <c>false</c> if it represents a faction.</returns>
+            <value>
+              <c>true</c> if <paramref name="vote"/> represents a deputy, <c>false</c> if it represents a faction.
+            </value>
             <exception cref="T:System.ArgumentNullException">If <paramref name="vote"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IVoteExtensions.PersonResult(RuLaw.IVote)">
+        <member name="P:RuLaw.IVoteExtensions.&lt;G&gt;$B3CC707CC57B921497AA2173872A75AA.VotePersonResult">
             <summary>
               <para>Returns result of deputy voting as instance of <see cref="T:RuLaw.VotePersonResult"/> enumeration.</para>
             </summary>
-            <param name="vote">Vote instance.</param>
-            <returns>Result of deputy voting, or a <c>null</c> reference if <see cref="M:RuLaw.IVoteExtensions.PersonResult(RuLaw.IVote)"/> property was not yet set.</returns>
+            <value>Result of deputy voting, or a <c>null</c> reference if <see cref="T:RuLaw.VotePersonResult"/> property was not yet set.</value>
             <exception cref="T:System.ArgumentNullException">If <paramref name="vote"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IVoteExtensions.ResultType(RuLaw.IVote)">
+        <member name="P:RuLaw.IVoteExtensions.&lt;G&gt;$B3CC707CC57B921497AA2173872A75AA.VoteResultType">
             <summary>
               <para>Returns type of voting result as instance of <see cref="T:RuLaw.VoteResultType"/> enumeration.</para>
             </summary>
-            <param name="vote">Vote instance.</param>
-            <returns>Type of voting result, or a <c>null</c> reference if <see cref="M:RuLaw.IVoteExtensions.ResultType(RuLaw.IVote)"/> property was not yet set.</returns>
+            <value>Type of voting result, or a <c>null</c> reference if <see cref="T:RuLaw.VoteResultType"/> property was not yet set.</value>
             <exception cref="T:System.ArgumentNullException">If <paramref name="vote"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IVoteExtensions.Subject``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+        <member name="T:RuLaw.IVoteExtensions.&lt;G&gt;$BCEA21304C2451A6542F8BF6C8CFF6C9`1.&lt;M&gt;$44FD47EA10845E47B20BB19CADA46DA3">
+            <param name="votes">Source sequence of votes for filtering.</param>
+            <typeparam name="TEntity">Type of entities.</typeparam>
+        </member>
+        <member name="M:RuLaw.IVoteExtensions.&lt;G&gt;$BCEA21304C2451A6542F8BF6C8CFF6C9`1.Subject(System.String)">
             <summary>
               <para>Filters sequence of votes, leaving those having a specified subject.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="votes">Source sequence of votes for filtering.</param>
             <param name="subject">Subject to search for (case-insensitive).</param>
             <returns>Filtered sequence of votes with specified subject.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="votes"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IVoteExtensions.Successful``1(System.Collections.Generic.IEnumerable{``0})">
+        <member name="P:RuLaw.IVoteExtensions.&lt;G&gt;$BCEA21304C2451A6542F8BF6C8CFF6C9`1.Successful">
             <summary>
               <para>Filters sequence of votes, leaving those that were successful.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="votes">Source sequence of votes for filtering.</param>
-            <returns>Filtered sequence of successful votes.</returns>
+            <value>Filtered sequence of successful votes.</value>
             <exception cref="T:System.ArgumentNullException">If <paramref name="votes"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IVoteExtensions.Unsuccessful``1(System.Collections.Generic.IEnumerable{``0})">
+        <member name="P:RuLaw.IVoteExtensions.&lt;G&gt;$BCEA21304C2451A6542F8BF6C8CFF6C9`1.Unsuccessful">
             <summary>
               <para>Filters sequence of votes, leaving those that were unsuccessful.</para>
             </summary>
-            <typeparam name="TEntity">Type of entities.</typeparam>
-            <param name="votes">Source sequence of votes for filtering.</param>
-            <returns>Filtered sequence of unsuccessful votes.</returns>
+            <value>Filtered sequence of unsuccessful votes.</value>
             <exception cref="T:System.ArgumentNullException">If <paramref name="votes"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:RuLaw.IVotesSearchResult">
@@ -4575,109 +4710,136 @@
             <seealso cref="T:RuLaw.ILawsApiRequest"/>
         </member>
         <member name="M:RuLaw.ILawsApiRequestExtensions.Type(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawTypes})">
+            <inheritdoc cref="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.Type(System.Nullable{RuLaw.LawTypes})"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiRequestExtensions.Topic(RuLaw.ILawsApiRequest,RuLaw.ITopic)">
+            <inheritdoc cref="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.Topic(RuLaw.ITopic)"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiRequestExtensions.Status(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawStatus})">
+            <inheritdoc cref="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.Status(System.Nullable{RuLaw.LawStatus})"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiRequestExtensions.Branch(RuLaw.ILawsApiRequest,RuLaw.ILawBranch)">
+            <inheritdoc cref="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.Branch(RuLaw.ILawBranch)"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiRequestExtensions.Deputy(RuLaw.ILawsApiRequest,RuLaw.IDeputy)">
+            <inheritdoc cref="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.Deputy(RuLaw.IDeputy)"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiRequestExtensions.FederalAuthority(RuLaw.ILawsApiRequest,RuLaw.IAuthority)">
+            <inheritdoc cref="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.FederalAuthority(RuLaw.IAuthority)"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiRequestExtensions.RegionalAuthority(RuLaw.ILawsApiRequest,RuLaw.IAuthority)">
+            <inheritdoc cref="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.RegionalAuthority(RuLaw.IAuthority)"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiRequestExtensions.ProfileCommittee(RuLaw.ILawsApiRequest,RuLaw.ICommittee)">
+            <inheritdoc cref="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.ProfileCommittee(RuLaw.ICommittee)"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiRequestExtensions.ResponsibleCommittee(RuLaw.ILawsApiRequest,RuLaw.ICommittee)">
+            <inheritdoc cref="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.ResponsibleCommittee(RuLaw.ICommittee)"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiRequestExtensions.SoExecutorCommittee(RuLaw.ILawsApiRequest,RuLaw.ICommittee)">
+            <inheritdoc cref="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.SoExecutorCommittee(RuLaw.ICommittee)"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiRequestExtensions.Sorting(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawsSorting})">
+            <inheritdoc cref="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.Sorting(System.Nullable{RuLaw.LawsSorting})"/>
+        </member>
+        <member name="M:RuLaw.ILawsApiRequestExtensions.EventsSearchMode(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawsEventsSearchMode})">
+            <inheritdoc cref="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.EventsSearchMode(System.Nullable{RuLaw.LawsEventsSearchMode})"/>
+        </member>
+        <member name="T:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.&lt;M&gt;$F16790DEF0688FB5E5619E9D6993DD33">
+            <param name="request">API call instance to use.</param>
+        </member>
+        <member name="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.Type(System.Nullable{RuLaw.LawTypes})">
             <summary>
               <para>Specifies type of laws.</para>
             </summary>
-            <param name="request">API call instance to use.</param>
             <param name="type">Type of laws.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ILawsApiRequestExtensions.Topic(RuLaw.ILawsApiRequest,RuLaw.ITopic)">
+        <member name="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.Topic(RuLaw.ITopic)">
             <summary>
               <para>Specifies topic.</para>
             </summary>
-            <param name="request">API call instance to use.</param>
             <param name="topic">Instance of topic.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ILawsApiRequestExtensions.Status(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawStatus})">
+        <member name="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.Status(System.Nullable{RuLaw.LawStatus})">
             <summary>
               <para>Specifies law's status.</para>
             </summary>
-            <param name="request">API call instance to use.</param>
             <param name="status">Status of laws.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ILawsApiRequestExtensions.Branch(RuLaw.ILawsApiRequest,RuLaw.ILawBranch)">
+        <member name="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.Branch(RuLaw.ILawBranch)">
             <summary>
               <para>Specifies law branch.</para>
             </summary>
-            <param name="request">API call instance to use.</param>
             <param name="branch">Instance of law branch.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ILawsApiRequestExtensions.Deputy(RuLaw.ILawsApiRequest,RuLaw.IDeputy)">
+        <member name="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.Deputy(RuLaw.IDeputy)">
             <summary>
               <para>Specifies deputy.</para>
             </summary>
-            <param name="request">API call instance to use.</param>
             <param name="deputy">Instance of deputy.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ILawsApiRequestExtensions.FederalAuthority(RuLaw.ILawsApiRequest,RuLaw.IAuthority)">
+        <member name="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.FederalAuthority(RuLaw.IAuthority)">
             <summary>
               <para>Specifies federal authority.</para>
             </summary>
-            <param name="request">API call instance to use.</param>
             <param name="authority">Instance of authority.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ILawsApiRequestExtensions.RegionalAuthority(RuLaw.ILawsApiRequest,RuLaw.IAuthority)">
+        <member name="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.RegionalAuthority(RuLaw.IAuthority)">
             <summary>
               <para>Specifies regional authority.</para>
             </summary>
-            <param name="request">API call instance to use.</param>
             <param name="authority">Instance of authority.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ILawsApiRequestExtensions.ProfileCommittee(RuLaw.ILawsApiRequest,RuLaw.ICommittee)">
+        <member name="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.ProfileCommittee(RuLaw.ICommittee)">
             <summary>
               <para>Specifies profile committee.</para>
             </summary>
-            <param name="request">API call instance to use.</param>
             <param name="committee">Instance of committee.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ILawsApiRequestExtensions.ResponsibleCommittee(RuLaw.ILawsApiRequest,RuLaw.ICommittee)">
+        <member name="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.ResponsibleCommittee(RuLaw.ICommittee)">
             <summary>
               <para>Specifies responsible committee.</para>
             </summary>
             <param name="committee">Instance of committee.</param>
-            <param name="request">API call instance to use.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ILawsApiRequestExtensions.SoExecutorCommittee(RuLaw.ILawsApiRequest,RuLaw.ICommittee)">
+        <member name="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.SoExecutorCommittee(RuLaw.ICommittee)">
             <summary>
               <para>Specifies so-executor committee.</para>
             </summary>
-            <param name="request">API call instance to use.</param>
             <param name="committee">Instance of committee.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ILawsApiRequestExtensions.Sorting(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawsSorting})">
+        <member name="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.Sorting(System.Nullable{RuLaw.LawsSorting})">
             <summary>
               <para>Specifies type of laws sorting.</para>
             </summary>
-            <param name="request">API call instance to use.</param>
             <param name="sort">Laws sorting type.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.ILawsApiRequestExtensions.EventsSearchMode(RuLaw.ILawsApiRequest,System.Nullable{RuLaw.LawsEventsSearchMode})">
+        <member name="M:RuLaw.ILawsApiRequestExtensions.&lt;G&gt;$33EE7A72B2D26A58073999F300572E54.EventsSearchMode(System.Nullable{RuLaw.LawsEventsSearchMode})">
             <summary>
               <para>Specifies events search mode.</para>
             </summary>
-            <param name="request">API call instance to use.</param>
             <param name="mode">Events search mode.</param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
@@ -4810,19 +4972,26 @@
             <seealso cref="T:RuLaw.IVotesSearchApiRequest"/>
         </member>
         <member name="M:RuLaw.IVotesSearchApiRequestExtensions.Deputy(RuLaw.IVotesSearchApiRequest,RuLaw.IDeputy)">
+            <inheritdoc cref="M:RuLaw.IVotesSearchApiRequestExtensions.&lt;G&gt;$7C42D4B62B3CF938E2026686C32D5D25.Deputy(RuLaw.IDeputy)"/>
+        </member>
+        <member name="M:RuLaw.IVotesSearchApiRequestExtensions.Convocation(RuLaw.IVotesSearchApiRequest,RuLaw.IConvocation)">
+            <inheritdoc cref="M:RuLaw.IVotesSearchApiRequestExtensions.&lt;G&gt;$7C42D4B62B3CF938E2026686C32D5D25.Convocation(RuLaw.IConvocation)"/>
+        </member>
+        <member name="T:RuLaw.IVotesSearchApiRequestExtensions.&lt;G&gt;$7C42D4B62B3CF938E2026686C32D5D25.&lt;M&gt;$641C5EFF6EA5E7839BC94F38BB0A5306">
+            <param name="request"></param>
+        </member>
+        <member name="M:RuLaw.IVotesSearchApiRequestExtensions.&lt;G&gt;$7C42D4B62B3CF938E2026686C32D5D25.Deputy(RuLaw.IDeputy)">
             <summary>
               <para></para>
             </summary>
-            <param name="request"></param>
             <param name="deputy"></param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:RuLaw.IVotesSearchApiRequestExtensions.Convocation(RuLaw.IVotesSearchApiRequest,RuLaw.IConvocation)">
+        <member name="M:RuLaw.IVotesSearchApiRequestExtensions.&lt;G&gt;$7C42D4B62B3CF938E2026686C32D5D25.Convocation(RuLaw.IConvocation)">
             <summary>
               <para></para>
             </summary>
-            <param name="request"></param>
             <param name="convocation"></param>
             <returns>Back reference to the provided <paramref name="request"/> instance.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
