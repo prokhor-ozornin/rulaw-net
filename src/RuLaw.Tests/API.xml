@@ -2912,17 +2912,17 @@
             </summary>
             <seealso cref="T:RuLaw.IVoteExtensions"/>
         </member>
-        <member name="M:RuLaw.Tests.IVoteExtensionsTest.Personal_Method">
+        <member name="M:RuLaw.Tests.IVoteExtensionsTest.Personal_Property">
             <summary>
               <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.get_Personal(RuLaw.IVote)"/> method.</para>
             </summary>
         </member>
-        <member name="M:RuLaw.Tests.IVoteExtensionsTest.VotePersonResult_Method">
+        <member name="M:RuLaw.Tests.IVoteExtensionsTest.VotePersonResult_Property">
             <summary>
               <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.get_VotePersonResult(RuLaw.IVote)"/> method.</para>
             </summary>
         </member>
-        <member name="M:RuLaw.Tests.IVoteExtensionsTest.ResultType_Method">
+        <member name="M:RuLaw.Tests.IVoteExtensionsTest.ResultType_Property">
             <summary>
               <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.get_VoteResultType(RuLaw.IVote)"/> method.</para>
             </summary>
@@ -2932,12 +2932,12 @@
               <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.Subject``1(System.Collections.Generic.IEnumerable{``0},System.String)"/> method.</para>
             </summary>
         </member>
-        <member name="M:RuLaw.Tests.IVoteExtensionsTest.Successful_Method">
+        <member name="M:RuLaw.Tests.IVoteExtensionsTest.Successful_Property">
             <summary>
               <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.get_Successful``1(System.Collections.Generic.IEnumerable{``0})"/> method.</para>
             </summary>
         </member>
-        <member name="M:RuLaw.Tests.IVoteExtensionsTest.Unsuccessful_Method">
+        <member name="M:RuLaw.Tests.IVoteExtensionsTest.Unsuccessful_Property">
             <summary>
               <para>Performs testing of <see cref="M:RuLaw.IVoteExtensions.get_Unsuccessful``1(System.Collections.Generic.IEnumerable{``0})"/> method.</para>
             </summary>

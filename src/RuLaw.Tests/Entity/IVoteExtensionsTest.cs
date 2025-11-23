@@ -15,7 +15,7 @@ public sealed class IVoteExtensionsTest : Test
   ///   <para>Performs testing of <see cref="IVoteExtensions.get_Personal(IVote)"/> method.</para>
   /// </summary>
   [Fact]
-  public void Personal_Method()
+  public void Personal_Property()
   {
     using (new AssertionScope())
     {
@@ -36,7 +36,7 @@ public sealed class IVoteExtensionsTest : Test
   ///   <para>Performs testing of <see cref="IVoteExtensions.get_VotePersonResult(IVote)"/> method.</para>
   /// </summary>
   [Fact]
-  public void VotePersonResult_Method()
+  public void VotePersonResult_Property()
   {
     using (new AssertionScope())
     {
@@ -59,7 +59,7 @@ public sealed class IVoteExtensionsTest : Test
   ///   <para>Performs testing of <see cref="IVoteExtensions.get_VoteResultType(IVote)"/> method.</para>
   /// </summary>
   [Fact]
-  public void ResultType_Method()
+  public void ResultType_Property()
   {
     using (new AssertionScope())
     {
@@ -106,7 +106,7 @@ public sealed class IVoteExtensionsTest : Test
   ///   <para>Performs testing of <see cref="IVoteExtensions.get_Successful{TEntity}(IEnumerable{TEntity})"/> method.</para>
   /// </summary>
   [Fact]
-  public void Successful_Method()
+  public void Successful_Property()
   {
     using (new AssertionScope())
     {
@@ -129,7 +129,7 @@ public sealed class IVoteExtensionsTest : Test
   ///   <para>Performs testing of <see cref="IVoteExtensions.get_Unsuccessful{TEntity}(IEnumerable{TEntity})"/> method.</para>
   /// </summary>
   [Fact]
-  public void Unsuccessful_Method()
+  public void Unsuccessful_Property()
   {
     using (new AssertionScope())
     {
