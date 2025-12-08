@@ -96,6 +96,6 @@ public sealed class DateTranscriptsResultTest : Test
 
     return;
 
-    static void Test(IDateTranscriptsResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IDateTranscriptsResult result) => result.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

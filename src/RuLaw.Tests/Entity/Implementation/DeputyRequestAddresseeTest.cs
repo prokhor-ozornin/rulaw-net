@@ -90,6 +90,6 @@ public sealed class DeputyRequestAddresseeTest : Test
 
     return;
 
-    static void Test(IDeputyRequestAddressee instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IDeputyRequestAddressee addressee) => addressee.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

@@ -98,6 +98,6 @@ public sealed class EducationTest : Test
 
     return;
 
-    static void Test(IEducation instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IEducation education) => education.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

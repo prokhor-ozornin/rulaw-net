@@ -102,6 +102,6 @@ public sealed class LawsSearchResultTest : Test
 
     return;
 
-    static void Test(ILawsSearchResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILawsSearchResult result) => result.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

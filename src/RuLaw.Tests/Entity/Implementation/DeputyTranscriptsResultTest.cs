@@ -103,6 +103,6 @@ public sealed class DeputyTranscriptsResultTest : Test
 
     return;
 
-    static void Test(IDeputyTranscriptsResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IDeputyTranscriptsResult result) => result.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

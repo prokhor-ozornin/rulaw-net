@@ -130,6 +130,6 @@ public sealed class QuestionTest : Test
 
     return;
 
-    static void Test(IQuestion instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IQuestion question) => question.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

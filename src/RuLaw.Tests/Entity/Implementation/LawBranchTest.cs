@@ -90,6 +90,6 @@ public sealed class LawBranchTest : Test
 
     return;
 
-    static void Test(ILawBranch instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILawBranch branch) => branch.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

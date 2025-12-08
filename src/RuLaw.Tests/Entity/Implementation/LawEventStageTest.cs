@@ -90,6 +90,6 @@ public sealed class LawEventStageTest : Test
 
     return;
 
-    static void Test(ILawEventStage instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILawEventStage stage) => stage.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

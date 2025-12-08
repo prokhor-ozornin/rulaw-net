@@ -106,6 +106,6 @@ public sealed class SessionTest : Test
 
     return;
 
-    static void Test(ISession instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ISession session) => session.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

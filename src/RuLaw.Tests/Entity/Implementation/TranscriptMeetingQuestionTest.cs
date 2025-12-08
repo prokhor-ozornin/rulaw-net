@@ -118,6 +118,6 @@ public sealed class TranscriptMeetingQuestionTest : Test
 
     return;
 
-    static void Test(ITranscriptMeetingQuestion instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ITranscriptMeetingQuestion question) => question.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

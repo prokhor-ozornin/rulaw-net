@@ -90,6 +90,6 @@ public sealed class LawTypeTest : Test
 
     return;
 
-    static void Test(ILawType instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILawType type) => type.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

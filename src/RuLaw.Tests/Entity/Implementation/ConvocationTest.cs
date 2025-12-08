@@ -125,6 +125,6 @@ public sealed class ConvocationTest : Test
 
     return;
 
-    static void Test(IConvocation instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IConvocation convocation) => convocation.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

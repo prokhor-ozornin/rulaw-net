@@ -114,6 +114,6 @@ public sealed class CommitteeTest : Test
 
     return;
 
-    static void Test(ICommittee instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ICommittee committee) => committee.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

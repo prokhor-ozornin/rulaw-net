@@ -98,6 +98,6 @@ public sealed class LawEventTest : Test
 
     return;
 
-    static void Test(ILawEvent instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILawEvent @event) => @event.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

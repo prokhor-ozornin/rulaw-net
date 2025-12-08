@@ -92,6 +92,6 @@ public sealed class QuestionsSearchResultTest : Test
 
     return;
 
-    static void Test(IQuestionsSearchResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IQuestionsSearchResult result) => result.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

@@ -114,6 +114,6 @@ public sealed class RegionalAuthorityTest : Test
 
     return;
 
-    static void Test(IAuthority instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IAuthority authority) => authority.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

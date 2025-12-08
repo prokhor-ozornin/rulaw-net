@@ -128,6 +128,6 @@ public sealed class DateTranscriptMeetingTest : Test
 
     return;
 
-    static void Test(IDateTranscriptMeeting instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IDateTranscriptMeeting meeting) => meeting.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

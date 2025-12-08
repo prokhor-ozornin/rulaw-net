@@ -100,7 +100,7 @@ public sealed class AuthorityTest : Test
 
     return;
 
-    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, Authority authority) => authority.ToString().Should().Be(value);
 
     //new Authority(new {Name = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
   }
@@ -125,6 +125,6 @@ public sealed class AuthorityTest : Test
 
     return;
 
-    static void Test(IAuthority instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IAuthority authority) => authority.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

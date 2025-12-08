@@ -149,6 +149,6 @@ public sealed class LawTest : Test
 
     return;
 
-    static void Test(ILaw instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ILaw law) => law.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

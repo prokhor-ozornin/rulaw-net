@@ -89,6 +89,6 @@ public sealed class TranscriptVoteTest : Test
 
     return;
 
-    static void Test(ITranscriptVote instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(ITranscriptVote vote) => vote.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

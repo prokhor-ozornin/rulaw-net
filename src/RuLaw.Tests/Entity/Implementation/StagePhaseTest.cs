@@ -98,6 +98,6 @@ public sealed class StagePhaseTest : Test
 
     return;
 
-    static void Test(IStagePhase instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IStagePhase phase) => phase.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

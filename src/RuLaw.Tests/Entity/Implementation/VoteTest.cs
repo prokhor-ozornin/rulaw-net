@@ -162,6 +162,6 @@ public sealed class VoteTest : Test
 
     return;
 
-    static void Test(IVote instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IVote vote) => vote.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

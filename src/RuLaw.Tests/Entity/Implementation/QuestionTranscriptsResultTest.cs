@@ -60,6 +60,6 @@ public sealed class QuestionTranscriptsResultTest : Test
 
     return;
 
-    static void Test(IQuestionTranscriptsResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IQuestionTranscriptsResult result) => result.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }

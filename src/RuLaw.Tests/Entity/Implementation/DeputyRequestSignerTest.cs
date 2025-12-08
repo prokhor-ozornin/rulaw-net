@@ -90,6 +90,6 @@ public sealed class DeputyRequestSignerTest : Test
 
     return;
 
-    static void Test(IDeputyRequestSigner instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
+    static void Test(IDeputyRequestSigner signer) => signer.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable().And.BeJsonSerializable();
   }
 }
