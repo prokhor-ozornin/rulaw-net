@@ -1,5 +1,5 @@
-﻿using RestSharp.Serializers;
-using RestSharp;
+﻿using RestSharp;
+using RestSharp.Serializers;
 
 namespace RuLaw;
 

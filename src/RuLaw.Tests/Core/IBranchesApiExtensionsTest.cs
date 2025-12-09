@@ -1,6 +1,6 @@
-﻿using Xunit;
-using FluentAssertions;
+﻿using FluentAssertions;
 using FluentAssertions.Execution;
+using Xunit;
 
 namespace RuLaw.Tests.Core;
 

@@ -1,9 +1,9 @@
 ﻿using Catharsis.Extensions;
 using Catharsis.Fixture;
-using RestSharp;
 using FluentAssertions;
-using Xunit;
 using FluentAssertions.Execution;
+using RestSharp;
+using Xunit;
 
 namespace RuLaw.Tests;
 

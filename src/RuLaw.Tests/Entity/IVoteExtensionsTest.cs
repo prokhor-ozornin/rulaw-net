@@ -1,7 +1,7 @@
-﻿using FluentAssertions;
-using Xunit;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
+using FluentAssertions;
 using FluentAssertions.Execution;
+using Xunit;
 
 namespace RuLaw.Tests;
 
