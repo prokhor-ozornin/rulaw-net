@@ -8,43 +8,49 @@ namespace RuLaw;
 /// </summary>
 public static class JsonExtensions
 {
-  /// <summary>
-  ///   <para>Serializes specified object into JSON string.</para>
-  /// </summary>
   /// <param name="subject">Target object to be serialized.</param>
-  /// <param name="settings">Serialization settings. If not specified, default settings set will be used.</param>
-  /// <returns>JSON serialized version of <paramref name="subject"/> instance.</returns>
-  /// <seealso cref="JsonConvert"/>
-  public static string AsJson(this object subject, JsonSerializerSettings settings = null) =>
-    JsonConvert.SerializeObject(subject, settings ?? new JsonSerializerSettings
-    {
-      ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
-      DateTimeZoneHandling = DateTimeZoneHandling.RoundtripKind,
-      NullValueHandling = NullValueHandling.Ignore,
-      ObjectCreationHandling = ObjectCreationHandling.Auto
-    });
+  extension(object subject)
+  {
+    /// <summary>
+    ///   <para>Serializes specified object into JSON string.</para>
+    /// </summary>
+    /// <param name="settings">Serialization settings. If not specified, default settings set will be used.</param>
+    /// <returns>JSON serialized version of <paramref name="subject"/> instance.</returns>
+    /// <seealso cref="JsonConvert"/>
+    public string AsJson(JsonSerializerSettings settings = null) =>
+      JsonConvert.SerializeObject(subject, settings ?? new JsonSerializerSettings
+      {
+        ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
+        DateTimeZoneHandling = DateTimeZoneHandling.RoundtripKind,
+        NullValueHandling = NullValueHandling.Ignore,
+        ObjectCreationHandling = ObjectCreationHandling.Auto
+      });
+  }
 
-  /// <summary>
-  ///   <para>Deserializes object from JSON string.</para>
-  /// </summary>
-  /// <typeparam name="T">Type of object to be instantiated during deserialization.</typeparam>
   /// <param name="json">Serialized JSON object of type <typeparamref name="T"/>.</param>
-  /// <param name="settings">Deserialization settings. If not specified, default settings set will be used.</param>
-  /// <returns>Instance of <typeparamref name="T"/> type, deserialized from <paramref name="json"/> string.</returns>
-  /// <seealso cref="JsonConvert"/>
-  public static T AsJson<T>(this string json, JsonSerializerSettings settings = null) =>
-    JsonConvert.DeserializeObject<T>(json, settings ?? new JsonSerializerSettings
-    {
-      ContractResolver = new JsonEntityOrderedContractResolver(),
-      Formatting = Formatting.None,
-      DateFormatString = "o",
-      DateFormatHandling = DateFormatHandling.IsoDateFormat,
-      DateTimeZoneHandling = DateTimeZoneHandling.RoundtripKind,
-      DefaultValueHandling = DefaultValueHandling.Include,
-      NullValueHandling = NullValueHandling.Ignore,
-      PreserveReferencesHandling = PreserveReferencesHandling.None,
-      ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-    });
+  extension(string json)
+  {
+    /// <summary>
+    ///   <para>Deserializes object from JSON string.</para>
+    /// </summary>
+    /// <typeparam name="T">Type of object to be instantiated during deserialization.</typeparam>
+    /// <param name="settings">Deserialization settings. If not specified, default settings set will be used.</param>
+    /// <returns>Instance of <typeparamref name="T"/> type, deserialized from <paramref name="json"/> string.</returns>
+    /// <seealso cref="JsonConvert"/>
+    public T AsJson<T>(JsonSerializerSettings settings = null) =>
+      JsonConvert.DeserializeObject<T>(json, settings ?? new JsonSerializerSettings
+      {
+        ContractResolver = new JsonEntityOrderedContractResolver(),
+        Formatting = Formatting.None,
+        DateFormatString = "o",
+        DateFormatHandling = DateFormatHandling.IsoDateFormat,
+        DateTimeZoneHandling = DateTimeZoneHandling.RoundtripKind,
+        DefaultValueHandling = DefaultValueHandling.Include,
+        NullValueHandling = NullValueHandling.Ignore,
+        PreserveReferencesHandling = PreserveReferencesHandling.None,
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+      });
+  }
 
   private sealed class JsonEntityOrderedContractResolver : DefaultContractResolver
   {

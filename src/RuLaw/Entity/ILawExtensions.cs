@@ -8,13 +8,16 @@ namespace RuLaw;
 /// <seealso cref="ILaw"/>
 public static class ILawExtensions
 {
-  /// <summary>
-  ///   <para>Searches for a law with specified number and returns it.</para>
-  /// </summary>
-  /// <typeparam name="TEntity">Type of entities.</typeparam>
   /// <param name="laws">Source sequence of laws for searching.</param>
-  /// <param name="number">Unique number of law to search for.</param>
-  /// <returns>Law with a specified number, or a <c>null</c> reference if it could not be found.</returns>
-  /// <exception cref="ArgumentNullException">If <paramref name="laws"/> is <see langword="null"/>.</exception>
-  public static TEntity Number<TEntity>(this IEnumerable<TEntity> laws, string number) where TEntity : ILaw => laws is not null ? laws.FirstOrDefault(law => law is not null && law.Number.ToInvariantString().Equals(number.ToInvariantString())) : throw new ArgumentNullException(nameof(laws));
+  /// <typeparam name="TEntity">Type of entities.</typeparam>
+  extension<TEntity>(IEnumerable<TEntity> laws) where TEntity : ILaw
+  {
+    /// <summary>
+    ///   <para>Searches for a law with specified number and returns it.</para>
+    /// </summary>
+    /// <param name="number">Unique number of law to search for.</param>
+    /// <returns>Law with a specified number, or a <c>null</c> reference if it could not be found.</returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="laws"/> is <see langword="null"/>.</exception>
+    public TEntity Number(string number) => laws is not null ? laws.FirstOrDefault(law => law is not null && law.Number.ToInvariantString().Equals(number.ToInvariantString())) : throw new ArgumentNullException(nameof(laws));
+  }
 }

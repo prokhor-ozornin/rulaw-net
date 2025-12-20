@@ -36,21 +36,24 @@ public enum VotesSorting
 /// </summary>
 public static class VotesSortingExtensions
 {
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
   /// <param name="sorting"></param>
-  /// <returns></returns>
-  public static string AsString(this VotesSorting sorting)
+  extension(VotesSorting sorting)
   {
-    return sorting switch
+    /// <summary>
+    ///   <para></para>
+    /// </summary>
+    /// <returns></returns>
+    public string AsString()
     {
-      VotesSorting.DateAscending => "date_asc",
-      VotesSorting.DateDescending => "date_desc_true",
-      VotesSorting.DateDescendingByDay => "date_desc",
-      VotesSorting.ResultAscending => "result_asc",
-      VotesSorting.ResultDescending => "result_desc",
-      _ => string.Empty
-    };
+      return sorting switch
+      {
+        VotesSorting.DateAscending => "date_asc",
+        VotesSorting.DateDescending => "date_desc_true",
+        VotesSorting.DateDescendingByDay => "date_desc",
+        VotesSorting.ResultAscending => "result_asc",
+        VotesSorting.ResultDescending => "result_desc",
+        _ => string.Empty
+      };
+    }
   }
 }
