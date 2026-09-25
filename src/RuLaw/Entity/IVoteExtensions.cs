@@ -18,7 +18,7 @@ public static class IVoteExtensions
     ///   <c>true</c> if <paramref name="vote"/> represents a deputy, <c>false</c> if it represents a faction.
     /// </value>
     /// <exception cref="ArgumentNullException">If <paramref name="vote"/> is <see langword="null"/>.</exception>
-    public bool Personal => !(vote?.PersonResult)?.IsUnset() ?? throw new ArgumentNullException(nameof(vote));
+    public bool Personal => !(vote?.PersonResult)?.IsUnset ?? throw new ArgumentNullException(nameof(vote));
 
     /// <summary>
     ///   <para>Returns result of deputy voting as instance of <see cref="VotePersonResult"/> enumeration.</para>

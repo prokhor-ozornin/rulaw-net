@@ -666,7 +666,7 @@ public sealed class ApiTest : Test
     {
       AssertionExtensions.Should(() => Api.Transcripts.LawAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
       AssertionExtensions.Should(() => Api.Transcripts.LawAsync(string.Empty)).ThrowExactlyAsync<ArgumentException>().Await();
-      AssertionExtensions.Should(() => Api.Transcripts.LawAsync(Random.Letters(25), Fixture<CancellationToken>.Create())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Transcripts.LawAsync(Random.ToLetters(25), Fixture<CancellationToken>.Create())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var result = Api.Transcripts.LawAsync("140513-6").Await();
 
@@ -779,7 +779,7 @@ public sealed class ApiTest : Test
     {
       AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
       AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(string.Empty)).ThrowExactlyAsync<ArgumentException>().Await();
-      AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(Random.Letters(25), Fixture<CancellationToken>.Create())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Api.Transcripts.ResolutionAsync(Random.ToLetters(25), Fixture<CancellationToken>.Create())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var result = Api.Transcripts.ResolutionAsync("276569-6").Await();
 

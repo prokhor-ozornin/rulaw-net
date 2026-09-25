@@ -17,7 +17,7 @@ public interface IRuLawApi
   {
     if (configurator is null) throw new ArgumentNullException(nameof(configurator));
     
-    if (configurator.ApiKeyValue.IsUnset())
+    if (configurator.ApiKeyValue.IsUnset)
     {
       throw new InvalidOperationException("Api key was not specified when configuring API caller");
     }

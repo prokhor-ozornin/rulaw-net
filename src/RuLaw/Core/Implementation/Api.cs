@@ -70,7 +70,7 @@ internal sealed class Api : IApi
   private async Task<T> Request<T>(string resource, IReadOnlyDictionary<string, object> parameters = null, CancellationToken cancellation = default) where T : new()
   {
     if (resource is null) throw new ArgumentNullException(nameof(resource));
-    if (resource.IsEmpty()) throw new ArgumentException(nameof(resource));
+    if (resource.IsEmpty) throw new ArgumentException(nameof(resource));
 
     var request = new RestRequest($"{resource}.json")
     {
@@ -103,7 +103,7 @@ internal sealed class Api : IApi
     {
     }
 
-    if (error is not null && !error.Text.IsUnset())
+    if (error is not null && !error.Text.IsUnset)
     {
       throw new RuLawException(error);
     }

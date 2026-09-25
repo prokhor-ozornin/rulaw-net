@@ -80,7 +80,7 @@ public static class ITranscriptsApiExtensions
     {
       if (api is null) throw new ArgumentNullException(nameof(api));
       if (number is null) throw new ArgumentNullException(nameof(number));
-      if (number.IsEmpty()) throw new ArgumentException(nameof(number));
+      if (number.IsEmpty) throw new ArgumentException(nameof(number));
 
       return api.LawAsync(number).Result;
     }
@@ -105,7 +105,7 @@ public static class ITranscriptsApiExtensions
     {
       if (api is null) throw new ArgumentNullException(nameof(api));
       if (number is null) throw new ArgumentNullException(nameof(number));
-      if (number.IsEmpty()) throw new ArgumentException(nameof(number));
+      if (number.IsEmpty) throw new ArgumentException(nameof(number));
 
       return api.ResolutionAsync(number).Result;
     }
